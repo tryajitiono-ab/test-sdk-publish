@@ -1,0 +1,131 @@
+/* 
+ * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
+ * This is licensed software from AccelByte Inc, for limitations
+ * and restrictions contact your company contract manager.
+ */
+/**
+ * AUTO GENERATED
+ */
+/* eslint-disable camelcase */
+// @ts-ignore -> ts-expect-error TS6133
+import { AccelByteSDK, ApiUtils, Network, SdkSetConfigParam } from '@accelbyte/sdk'
+import { AxiosResponse } from 'axios'
+import { GetLeaderboardRankingResp } from '../generated-definitions/GetLeaderboardRankingResp.js'
+import { UserRankingResponseV3 } from '../generated-definitions/UserRankingResponseV3.js'
+import { LeaderboardDataV3Admin$ } from './endpoints/LeaderboardDataV3Admin$.js'
+
+
+export function LeaderboardDataV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
+  const sdkAssembly = sdk.assembly()
+  
+  const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosConfig.request, args?.axiosConfig?.request)
+  const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
+  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const axiosInstance = Network.create(requestConfig)
+  
+  for (const interceptor of interceptors) {
+    if(interceptor.type === 'request') {
+      axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
+    }
+
+    if(interceptor.type === 'response') {
+      axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
+    }
+  }
+
+  
+  
+  /**
+   * Delete user ranking across leaderboard Remove entry with provided userId from leaderboard.  
+   */
+  async function deleteUser_ByUserId_v3(userId:string,  queryParams: {leaderboardCode: string[]}): Promise<AxiosResponse<unknown>> {
+    const $ = new LeaderboardDataV3Admin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.deleteUser_ByUserId_v3(userId,  queryParams)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * &lt;p&gt;This endpoint will delete user ranking by leaderboard code&lt;/p&gt; &lt;p&gt;&lt;b&gt;Warning&lt;/b&gt;: This will permanently delete your data. Make sure to back up anything important before continuing.&lt;/p&gt; 
+   */
+  async function deleteReset_ByLeaderboardCode_v3(leaderboardCode:string): Promise<AxiosResponse<unknown>> {
+    const $ = new LeaderboardDataV3Admin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.deleteReset_ByLeaderboardCode_v3(leaderboardCode, )
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * &lt;p&gt;Get rankings in an all time leaderboard.&lt;/p&gt; 
+   */
+  async function getAlltime_ByLeaderboardCode_v3(leaderboardCode:string,  queryParams?: {limit?: number, offset?: number}): Promise<AxiosResponse<GetLeaderboardRankingResp>> {
+    const $ = new LeaderboardDataV3Admin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.getAlltime_ByLeaderboardCode_v3(leaderboardCode,  queryParams)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * Delete user ranking Remove entry with provided userId from leaderboard. If leaderboard with given leaderboard code not found, it will return http status not found (404). If the leaderboard is found and no entry found in it, it will still return success (204)  
+   */
+  async function deleteUser_ByLeaderboardCode_ByUserId_v3(leaderboardCode:string, userId:string): Promise<AxiosResponse<unknown>> {
+    const $ = new LeaderboardDataV3Admin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.deleteUser_ByLeaderboardCode_ByUserId_v3(leaderboardCode, userId, )
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * &lt;p&gt;Get user ranking in leaderboard&lt;/p&gt; 
+   */
+  async function getUser_ByLeaderboardCode_ByUserId_v3(leaderboardCode:string, userId:string): Promise<AxiosResponse<UserRankingResponseV3>> {
+    const $ = new LeaderboardDataV3Admin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.getUser_ByLeaderboardCode_ByUserId_v3(leaderboardCode, userId, )
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * &lt;p&gt;Get rankings in cycle leaderboard.&lt;/p&gt; 
+   */
+  async function getCycle_ByLeaderboardCode_ByCycleId_v3(leaderboardCode:string, cycleId:string,  queryParams?: {limit?: number, offset?: number}): Promise<AxiosResponse<GetLeaderboardRankingResp>> {
+    const $ = new LeaderboardDataV3Admin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.getCycle_ByLeaderboardCode_ByCycleId_v3(leaderboardCode, cycleId,  queryParams)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * &lt;p&gt;This endpoint will delete user ranking by cycleId&lt;/p&gt; &lt;p&gt;&lt;b&gt;Warning&lt;/b&gt;: This will permanently delete your data. Make sure to back up anything important before continuing.&lt;/p&gt; 
+   */
+  async function deleteReset_ByLeaderboardCode_ByCycleId_v3(leaderboardCode:string, cycleId:string): Promise<AxiosResponse<unknown>> {
+    const $ = new LeaderboardDataV3Admin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.deleteReset_ByLeaderboardCode_ByCycleId_v3(leaderboardCode, cycleId, )
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * Delete user ranking by cycle id Remove entry with provided cycleId and userId from leaderboard. If leaderboard with given leaderboard code not found, it will return http status not found (404). If the leaderboard is found and no entry found in it, it will still return success (204)  
+   */
+  async function deleteUser_ByLeaderboardCode_ByCycleId_ByUserId_v3(leaderboardCode:string, cycleId:string, userId:string): Promise<AxiosResponse<unknown>> {
+    const $ = new LeaderboardDataV3Admin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.deleteUser_ByLeaderboardCode_ByCycleId_ByUserId_v3(leaderboardCode, cycleId, userId, )
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  return {
+    deleteUser_ByUserId_v3,deleteReset_ByLeaderboardCode_v3,getAlltime_ByLeaderboardCode_v3,deleteUser_ByLeaderboardCode_ByUserId_v3,getUser_ByLeaderboardCode_ByUserId_v3,getCycle_ByLeaderboardCode_ByCycleId_v3,deleteReset_ByLeaderboardCode_ByCycleId_v3,deleteUser_ByLeaderboardCode_ByCycleId_ByUserId_v3,
+  }
+}
+  

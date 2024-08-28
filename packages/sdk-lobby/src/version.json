@@ -1,0 +1,9 @@
+{
+  "buildDate": "2024-08-23T10:58:55+00:00",
+  "gitHash": "32dd79295f0f04e2305618e3a99de747f8a2235c",
+  "name": "justice-lobby-server",
+  "revisionID": "3.35.15",
+  "version": "3.35.15",
+  "version-justice": "3.45.0",
+  "version-roles-seeding": "1.2.52"
+}
