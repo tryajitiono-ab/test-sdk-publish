@@ -1,0 +1,20 @@
+{
+  "extends": "../../base.tsconfig.json",
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "ESNext",
+    "lib": ["dom", "esnext"],
+    "esModuleInterop": true,
+    "types": ["node"],
+    "allowJs": true,
+    "jsx": "react",
+    "outDir": "dist/es",
+    "sourceMap": false,
+    "baseUrl": ".",
+    "paths": {
+      "@accelbyte/sdk": ["../sdk/src"]
+    }
+  },
+  "include": ["src", "test"],
+  "exclude": ["scripts", "node_modules", "dist"]
+}

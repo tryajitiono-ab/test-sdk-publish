@@ -1,0 +1,160 @@
+/* 
+ * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
+ * This is licensed software from AccelByte Inc, for limitations
+ * and restrictions contact your company contract manager.
+ */
+/**
+ * AUTO GENERATED
+ */
+/* eslint-disable camelcase */
+// @ts-ignore -> ts-expect-error TS6133
+import { AccelByteSDK, ApiUtils, Network, SdkSetConfigParam } from '@accelbyte/sdk'
+import { AxiosResponse } from 'axios'
+import { BulkCycleStatsAdd } from '../generated-definitions/BulkCycleStatsAdd.js'
+import { BulkStatCycleOperationResultArray } from '../generated-definitions/BulkStatCycleOperationResultArray.js'
+import { BulkStatCycleRequest } from '../generated-definitions/BulkStatCycleRequest.js'
+import { BulkStatCycleResult } from '../generated-definitions/BulkStatCycleResult.js'
+import { StatCycleCreate } from '../generated-definitions/StatCycleCreate.js'
+import { StatCycleInfo } from '../generated-definitions/StatCycleInfo.js'
+import { StatCyclePagingSlicedResult } from '../generated-definitions/StatCyclePagingSlicedResult.js'
+import { StatCycleUpdate } from '../generated-definitions/StatCycleUpdate.js'
+import { StatImportInfo } from '../generated-definitions/StatImportInfo.js'
+import { StatCycleConfigurationAdmin$ } from './endpoints/StatCycleConfigurationAdmin$.js'
+
+
+export function StatCycleConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
+  const sdkAssembly = sdk.assembly()
+  
+  const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosConfig.request, args?.axiosConfig?.request)
+  const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
+  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const axiosInstance = Network.create(requestConfig)
+  
+  for (const interceptor of interceptors) {
+    if(interceptor.type === 'request') {
+      axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
+    }
+
+    if(interceptor.type === 'response') {
+      axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
+    }
+  }
+
+  
+  
+  /**
+   * List stat cycles by pagination.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat cycles&lt;/li&gt;&lt;/ul&gt; 
+   */
+  async function getStatCycles( queryParams?: {cycleType?: 'ANNUALLY' | 'DAILY' | 'MONTHLY' | 'SEASONAL' | 'WEEKLY', limit?: number, name?: string | null, offset?: number, sortBy?: string | null, status?: 'ACTIVE' | 'INIT' | 'STOPPED'}): Promise<AxiosResponse<StatCyclePagingSlicedResult>> {
+    const $ = new StatCycleConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.getStatCycles( queryParams)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * Create stat cycle.&lt;br&gt;Fields:&lt;ul&gt;&lt;li&gt;id: Cycle id, consist of alphanumeric characters with a maximum of 32 characters. if not provided will be generated. &lt;b&gt;(optional)&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;name: Cycle name, maximum length is 128 characters. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;resetTime: Reset time must follow &lt;b&gt;hours:minutes&lt;/b&gt; in 24 hours format e.g. 01:30, 23:15. &lt;b&gt;(required)&lt;/b&gt;&lt;/li&gt;&lt;li&gt;resetDay: Reset Day follows the ISO-8601 standard, from 1 (Monday) to 7 (Sunday). Required when cycleType is WEEKLY.&lt;/li&gt;&lt;li&gt;resetDate: Reset Date must be a number 1 - 31. Required when cycleType is MONTHLY or ANNUALLY.&lt;/li&gt;&lt;li&gt;resetMonth: Reset Month must be a number 1 - 12. Required when cycleType is ANNUALLY.&lt;/li&gt;&lt;li&gt;seasonPeriod: Season period must be a number greater than or equal to 1 (days). Required when cycleType is SEASONAL.&lt;/li&gt;&lt;li&gt;start: Start time must follow RFC3339 standard. e.g. 2023-02-24T05:10:24.865Z. &lt;b&gt;(required)&lt;/b&gt;&lt;/li&gt;&lt;li&gt;end: End time must follow RFC3339 standard. e.g. 2023-02-24T05:10:24.865Z.&lt;/li&gt;&lt;/ul&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created stat cycle&lt;/li&gt;&lt;/ul&gt; 
+   */
+  async function createStatCycle(data: StatCycleCreate): Promise<AxiosResponse<StatCycleInfo>> {
+    const $ = new StatCycleConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.createStatCycle(data,)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * Bulk get stat cycle.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of stat cycles&lt;/li&gt;&lt;/ul&gt; 
+   */
+  async function createStatCycleBulk(data: BulkStatCycleRequest): Promise<AxiosResponse<BulkStatCycleResult>> {
+    const $ = new StatCycleConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.createStatCycleBulk(data,)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * Export all stat cycle configurations for a given namespace into file At current, only JSON file is supported.&lt;p&gt; 
+   */
+  async function getStatCyclesExport(): Promise<AxiosResponse<unknown>> {
+    const $ = new StatCycleConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.getStatCyclesExport()
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * Import stat cycle configurations for a given namespace from file. At current, only JSON file is supported.&lt;p&gt; 
+   */
+  async function createStatCycleImport(data: {file?: File}, queryParams?: {replaceExisting?: boolean | null}): Promise<AxiosResponse<StatImportInfo>> {
+    const $ = new StatCycleConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.createStatCycleImport(data, queryParams)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * Deletes stat cycle.&lt;br&gt; 
+   */
+  async function deleteStatCycle_ByCycleId(cycleId:string): Promise<AxiosResponse<unknown>> {
+    const $ = new StatCycleConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.deleteStatCycle_ByCycleId(cycleId, )
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * Get stat cycle.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat cycle info&lt;/ul&gt; 
+   */
+  async function getStatCycle_ByCycleId(cycleId:string): Promise<AxiosResponse<StatCycleInfo>> {
+    const $ = new StatCycleConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.getStatCycle_ByCycleId(cycleId, )
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * Update stat cycle.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated stat cycle&lt;/li&gt;&lt;/ul&gt; 
+   */
+  async function updateStatCycle_ByCycleId(cycleId:string, data: StatCycleUpdate): Promise<AxiosResponse<StatCycleInfo>> {
+    const $ = new StatCycleConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.updateStatCycle_ByCycleId(cycleId, data,)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * Stop stat cycle.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated stat cycle&lt;/li&gt;&lt;/ul&gt; 
+   */
+  async function updateStop_ByCycleId(cycleId:string): Promise<AxiosResponse<StatCycleInfo>> {
+    const $ = new StatCycleConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.updateStop_ByCycleId(cycleId, )
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  /**
+   * Bulk add stat cycle to stats.&lt;br&gt; 
+   */
+  async function createStatAddBulk_ByCycleId(cycleId:string, data: BulkCycleStatsAdd): Promise<AxiosResponse<BulkStatCycleOperationResultArray>> {
+    const $ = new StatCycleConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.createStatAddBulk_ByCycleId(cycleId, data,)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+  
+  
+  return {
+    getStatCycles,createStatCycle,createStatCycleBulk,getStatCyclesExport,createStatCycleImport,deleteStatCycle_ByCycleId,getStatCycle_ByCycleId,updateStatCycle_ByCycleId,updateStop_ByCycleId,createStatAddBulk_ByCycleId,
+  }
+}
+  
