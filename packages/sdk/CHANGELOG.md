@@ -1,5 +1,13 @@
 # @accelbyte/sdk
 
+## 3.0.8
+
+### Patch Changes
+
+- a89f728: stub changeset
+- Updated dependencies [a89f728]
+  - @accelbyte/validator@0.2.22
+
 ## 3.0.7
 
 ### Major Changes
@@ -32,7 +40,7 @@
 
 ### Minor Changes
 
-- CW-3798 Add descriptive log when the other service is down. 
+- CW-3798 Add descriptive log when the other service is down.
 
 ## 2.0.6
 

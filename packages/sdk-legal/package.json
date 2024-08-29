@@ -1,6 +1,6 @@
 {
   "name": "@accelbyte/sdk-legal",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "author": "AccelByte Inc",
   "license": "SEE LICENSE IN LICENSE",
   "main": "./src/index.ts",
@@ -33,8 +33,8 @@
     "typescript": "5.5.4"
   },
   "dependencies": {
-    "@accelbyte/sdk-iam": "5.0.3",
-    "@accelbyte/validator": "0.2.21",
+    "@accelbyte/sdk-iam": "5.0.4",
+    "@accelbyte/validator": "0.2.22",
     "axios": "1.3.6",
     "buffer": "6.0.3",
     "crypto-js": "4.1.1",
@@ -45,7 +45,7 @@
     "zod": "3.17.3"
   },
   "peerDependencies": {
-    "@accelbyte/sdk": "^3.0.5",
+    "@accelbyte/sdk": "^3.0.8",
     "@tanstack/react-query": "^4.36.1"
   },
   "sideEffects": false,
