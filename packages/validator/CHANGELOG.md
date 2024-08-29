@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- a89f728: stub changeset
+- bb77414: stub changeset
 
 ## 0.2.21
 

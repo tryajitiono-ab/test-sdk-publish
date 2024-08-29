@@ -4,10 +4,10 @@
 
 ### Patch Changes
 
-- a89f728: stub changeset
-- Updated dependencies [a89f728]
-- Updated dependencies [a89f728]
-- Updated dependencies [a89f728]
+- bb77414: stub changeset
+- Updated dependencies [bb77414]
+- Updated dependencies [bb77414]
+- Updated dependencies [bb77414]
   - @accelbyte/sdk-iam@5.0.4
   - @accelbyte/sdk@3.0.8
   - @accelbyte/validator@0.2.22

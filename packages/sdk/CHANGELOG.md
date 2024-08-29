@@ -4,8 +4,8 @@
 
 ### Patch Changes
 
-- a89f728: stub changeset
-- Updated dependencies [a89f728]
+- bb77414: stub changeset
+- Updated dependencies [bb77414]
   - @accelbyte/validator@0.2.22
 
 ## 3.0.7

@@ -4,8 +4,8 @@
 
 ### Patch Changes
 
-- f427156: fix(codegen): fix codegen outputting invalid comments if comments contain end-of-multiline-comment
-- a89f728: stub changeset
+- 8de49a1: fix(codegen): fix codegen outputting invalid comments if comments contain end-of-multiline-comment
+- bb77414: stub changeset
 
 ## 3.0.0
 
