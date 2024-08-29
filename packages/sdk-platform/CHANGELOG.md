@@ -1,5 +1,15 @@
 # @accelbyte/sdk-platform
 
+## 6.0.2
+
+### Patch Changes
+
+- 9a0649c: stub changeset
+- Updated dependencies [9a0649c]
+- Updated dependencies [9a0649c]
+  - @accelbyte/sdk@3.1.2
+  - @accelbyte/validator@0.3.2
+
 ## 6.0.1
 
 ### Patch Changes

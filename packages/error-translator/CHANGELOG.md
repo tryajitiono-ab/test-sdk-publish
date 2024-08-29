@@ -1,5 +1,11 @@
 # @accelbyte/error-translator
 
+## 0.4.2
+
+### Patch Changes
+
+- 9a0649c: stub changeset
+
 ## 0.4.1
 
 ### Patch Changes
