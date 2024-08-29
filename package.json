@@ -4,17 +4,12 @@
   "private": true,
   "description": "[AccelByte TypeScript SDK](https://development.accelbyte.io/web-sdk-playground/) is a JavaScript library enabling the building of web applications using AccelByte API services. The library is platform-agnostic and can be consumed in a browser or in a server environment.",
   "scripts": {
-    "build:error-translator": "yarn workspace @accelbyte/error-translator build",
-    "build:sdk": "yarn build:sdk-core && node ./scripts/generate/sdk-generate.mjs sdk-build-all",
-    "build:sdk-core": "yarn workspace @accelbyte/validator build && yarn workspace @accelbyte/sdk build",
     "clean": "rimraf ./node_modules && yarn workspaces run clean",
-    "codegen:sdk": "node ./scripts/generate/sdk-generate.mjs sdk-codegen-all",
     "format:all": "prettier --write .",
     "lint": "eslint . --fix --quiet",
     "pre-commit": "node scripts/pre-commit",
     "prepare": "husky install",
-    "changeset:version": "changeset version && yarn install --mode=update-lockfile",
-    "sync-examples-versions": "node ./scripts/examples/sync-versions.js"
+    "changeset:version": "changeset version && yarn install --mode=update-lockfile"
   },
   "keywords": [],
   "author": "",
