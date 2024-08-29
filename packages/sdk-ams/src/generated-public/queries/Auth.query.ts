@@ -23,13 +23,23 @@ export enum Key_Auth {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Auth.Auth, input]
+ * }
+ * ```
+ */
 export const useAuthApi_GetAuth = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAuthApi_GetAuth>[1]

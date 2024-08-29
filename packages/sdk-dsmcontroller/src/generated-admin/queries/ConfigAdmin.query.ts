@@ -36,13 +36,23 @@ ConfigPort_ByName = 'Dsmcontroller.ConfigAdmin.ConfigPort_ByName',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigAdmin.Configs, input]
+ * }
+ * ```
+ */
 export const useConfigAdminApi_GetConfigs = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ListConfigResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListConfigResponse>) => void
   ): UseQueryResult<ListConfigResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigAdminApi_GetConfigs>[1]
@@ -68,7 +78,7 @@ export const useConfigAdminApi_CreateConfig = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DsmConfigRecord }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DsmConfigRecord }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DsmConfigRecord }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -91,7 +101,7 @@ export const useConfigAdminApi_DeleteConfig = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -109,13 +119,23 @@ export const useConfigAdminApi_DeleteConfig = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigAdmin.Configs_ByNS, input]
+ * }
+ * ```
+ */
 export const useConfigAdminApi_GetConfigs_ByNS = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<DsmConfigRecord, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DsmConfigRecord>) => void
   ): UseQueryResult<DsmConfigRecord, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigAdminApi_GetConfigs_ByNS>[1]
@@ -141,7 +161,7 @@ export const useConfigAdminApi_PatchConfig = (
     options?: Omit<UseMutationOptions<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { data: UpdateDsmConfigRequest }>, 'mutationKey'>,
     callback?: (data: DsmConfigRecord) => void
   ): UseMutationResult<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { data: UpdateDsmConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UpdateDsmConfigRequest }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -164,7 +184,7 @@ export const useConfigAdminApi_CreateConfig_ByNS = (
     options?: Omit<UseMutationOptions<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateDsmConfigRequest }>, 'mutationKey'>,
     callback?: (data: DsmConfigRecord) => void
   ): UseMutationResult<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateDsmConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateDsmConfigRequest }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -187,7 +207,7 @@ export const useConfigAdminApi_DeleteConfigCache = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -205,13 +225,23 @@ export const useConfigAdminApi_DeleteConfigCache = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigAdmin.ConfigsExport, input]
+ * }
+ * ```
+ */
 export const useConfigAdminApi_GetConfigsExport = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigAdminApi_GetConfigsExport>[1]
@@ -237,7 +267,7 @@ export const useConfigAdminApi_CreateConfigImport = (
     options?: Omit<UseMutationOptions<ImportResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File} }>, 'mutationKey'>,
     callback?: (data: ImportResponse) => void
   ): UseMutationResult<ImportResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {file?: File} }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -260,7 +290,7 @@ export const useConfigAdminApi_DeleteConfigPort_ByName = (
     options?: Omit<UseMutationOptions<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name:string }>, 'mutationKey'>,
     callback?: (data: DsmConfigRecord) => void
   ): UseMutationResult<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -283,7 +313,7 @@ export const useConfigAdminApi_PatchConfigPort_ByName = (
     options?: Omit<UseMutationOptions<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: UpdatePortRequest }>, 'mutationKey'>,
     callback?: (data: DsmConfigRecord) => void
   ): UseMutationResult<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: UpdatePortRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string, data: UpdatePortRequest }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -306,7 +336,7 @@ export const useConfigAdminApi_CreateConfigPort_ByName = (
     options?: Omit<UseMutationOptions<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: CreatePortRequest }>, 'mutationKey'>,
     callback?: (data: DsmConfigRecord) => void
   ): UseMutationResult<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: CreatePortRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string, data: CreatePortRequest }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -25,13 +25,23 @@ Goals_ByChallengeCode = 'Challenge.ChallengeList.Goals_ByChallengeCode',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ChallengeList.Challenges, input]
+ * }
+ * ```
+ */
 export const useChallengeListApi_GetChallenges = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, sortBy?: string | null, status?: 'INIT' | 'RETIRED' | 'TIED'} },
     options?: Omit<UseQueryOptions<ListChallengeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListChallengeResponse>) => void
   ): UseQueryResult<ListChallengeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useChallengeListApi_GetChallenges>[1]
@@ -52,13 +62,23 @@ export const useChallengeListApi_GetChallenges = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ChallengeList.Goals_ByChallengeCode, input]
+ * }
+ * ```
+ */
 export const useChallengeListApi_GetGoals_ByChallengeCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { challengeCode:string,  queryParams?: {limit?: number, offset?: number, tags?: string[]} },
     options?: Omit<UseQueryOptions<GetGoalsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetGoalsResponse>) => void
   ): UseQueryResult<GetGoalsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useChallengeListApi_GetGoals_ByChallengeCode>[1]

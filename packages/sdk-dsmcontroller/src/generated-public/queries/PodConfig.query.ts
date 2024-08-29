@@ -26,13 +26,23 @@ ConfigPod_ByName = 'Dsmcontroller.PodConfig.ConfigPod_ByName',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PodConfig.ConfigsPods, input]
+ * }
+ * ```
+ */
 export const usePodConfigApi_GetConfigsPods = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {count: number, offset: number} },
     options?: Omit<UseQueryOptions<ListPodConfigResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListPodConfigResponse>) => void
   ): UseQueryResult<ListPodConfigResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePodConfigApi_GetConfigsPods>[1]
@@ -58,7 +68,7 @@ export const usePodConfigApi_DeleteConfigPod_ByName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string }) => {
       const response = 
             (await PodConfigApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -81,7 +91,7 @@ export const usePodConfigApi_CreateConfigPod_ByName = (
     options?: Omit<UseMutationOptions<PodConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: CreatePodConfigRequest }>, 'mutationKey'>,
     callback?: (data: PodConfigRecord) => void
   ): UseMutationResult<PodConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: CreatePodConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string, data: CreatePodConfigRequest }) => {
       const response = 
             (await PodConfigApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

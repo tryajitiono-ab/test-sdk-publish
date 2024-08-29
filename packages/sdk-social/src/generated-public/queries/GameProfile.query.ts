@@ -31,13 +31,23 @@ Attribute_ByUserId_ByProfileId_ByAttributeName = 'Social.GameProfile.Attribute_B
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameProfile.Profiles, input]
+ * }
+ * ```
+ */
 export const useGameProfileApi_GetProfiles = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {userIds: string[]} },
     options?: Omit<UseQueryOptions<UserGameProfilesArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserGameProfilesArray>) => void
   ): UseQueryResult<UserGameProfilesArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameProfileApi_GetProfiles>[1]
@@ -58,13 +68,23 @@ export const useGameProfileApi_GetProfiles = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameProfile.Profiles_ByUserId, input]
+ * }
+ * ```
+ */
 export const useGameProfileApi_GetProfiles_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<GameProfileHeaderArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GameProfileHeaderArray>) => void
   ): UseQueryResult<GameProfileHeaderArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameProfileApi_GetProfiles_ByUserId>[1]
@@ -90,7 +110,7 @@ export const useGameProfileApi_CreateProfile_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: GameProfileRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: GameProfileRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: GameProfileRequest }) => {
       const response = 
             (await GameProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -113,7 +133,7 @@ export const useGameProfileApi_DeleteProfile_ByUserId_ByProfileId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, profileId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, profileId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, profileId:string }) => {
       const response = 
             (await GameProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -131,13 +151,23 @@ export const useGameProfileApi_DeleteProfile_ByUserId_ByProfileId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameProfile.Profile_ByUserId_ByProfileId, input]
+ * }
+ * ```
+ */
 export const useGameProfileApi_GetProfile_ByUserId_ByProfileId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, profileId:string },
     options?: Omit<UseQueryOptions<GameProfileInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GameProfileInfo>) => void
   ): UseQueryResult<GameProfileInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameProfileApi_GetProfile_ByUserId_ByProfileId>[1]
@@ -163,7 +193,7 @@ export const useGameProfileApi_UpdateProfile_ByUserId_ByProfileId = (
     options?: Omit<UseMutationOptions<GameProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, profileId:string, data: GameProfileRequest }>, 'mutationKey'>,
     callback?: (data: GameProfileInfo) => void
   ): UseMutationResult<GameProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, profileId:string, data: GameProfileRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, profileId:string, data: GameProfileRequest }) => {
       const response = 
             (await GameProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -181,13 +211,23 @@ export const useGameProfileApi_UpdateProfile_ByUserId_ByProfileId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameProfile.Attribute_ByUserId_ByProfileId_ByAttributeName, input]
+ * }
+ * ```
+ */
 export const useGameProfileApi_GetAttribute_ByUserId_ByProfileId_ByAttributeName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, profileId:string, attributeName:string },
     options?: Omit<UseQueryOptions<Attribute, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<Attribute>) => void
   ): UseQueryResult<Attribute, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameProfileApi_GetAttribute_ByUserId_ByProfileId_ByAttributeName>[1]
@@ -213,7 +253,7 @@ export const useGameProfileApi_UpdateAttribute_ByUserId_ByProfileId_ByAttributeN
     options?: Omit<UseMutationOptions<GameProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, profileId:string, attributeName:string, data: Attribute }>, 'mutationKey'>,
     callback?: (data: GameProfileInfo) => void
   ): UseMutationResult<GameProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, profileId:string, attributeName:string, data: Attribute }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, profileId:string, attributeName:string, data: Attribute }) => {
       const response = 
             (await GameProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

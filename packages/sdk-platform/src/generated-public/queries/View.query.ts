@@ -23,13 +23,23 @@ export enum Key_View {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_View.Views_ByUserId, input]
+ * }
+ * ```
+ */
 export const useViewApi_GetViews_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {language?: string | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<ViewInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ViewInfoArray>) => void
   ): UseQueryResult<ViewInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useViewApi_GetViews_ByUserId>[1]

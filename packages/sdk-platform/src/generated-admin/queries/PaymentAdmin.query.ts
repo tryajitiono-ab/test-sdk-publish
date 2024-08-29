@@ -38,13 +38,23 @@ RefundPayment_ByUserId_ByPaymentOrderNo = 'Platform.PaymentAdmin.RefundPayment_B
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentAdmin.PaymentOrders, input]
+ * }
+ * ```
+ */
 export const usePaymentAdminApi_GetPaymentOrders = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {channel?: 'EXTERNAL' | 'INTERNAL', extTxId?: string | null, limit?: number, offset?: number, status?: 'AUTHORISED' | 'AUTHORISE_FAILED' | 'CHARGEBACK' | 'CHARGEBACK_REVERSED' | 'CHARGED' | 'CHARGE_FAILED' | 'DELETED' | 'INIT' | 'NOTIFICATION_OF_CHARGEBACK' | 'REFUNDED' | 'REFUNDING' | 'REFUND_FAILED' | 'REQUEST_FOR_INFORMATION'} },
     options?: Omit<UseQueryOptions<PaymentOrderPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentOrderPagingSlicedResult>) => void
   ): UseQueryResult<PaymentOrderPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentAdminApi_GetPaymentOrders>[1]
@@ -65,13 +75,23 @@ export const usePaymentAdminApi_GetPaymentOrders = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentAdmin.PaymentNotifications, input]
+ * }
+ * ```
+ */
 export const usePaymentAdminApi_GetPaymentNotifications = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {endDate?: string | null, externalId?: string | null, limit?: number, notificationSource?: 'ADYEN' | 'ALIPAY' | 'CHECKOUT' | 'NEONPAY' | 'PAYPAL' | 'STRIPE' | 'WALLET' | 'WXPAY' | 'XSOLLA', notificationType?: string | null, offset?: number, paymentOrderNo?: string | null, startDate?: string | null, status?: 'ERROR' | 'IGNORED' | 'PROCESSED' | 'WARN'} },
     options?: Omit<UseQueryOptions<PaymentNotificationPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentNotificationPagingSlicedResult>) => void
   ): UseQueryResult<PaymentNotificationPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentAdminApi_GetPaymentNotifications>[1]
@@ -92,13 +112,23 @@ export const usePaymentAdminApi_GetPaymentNotifications = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentAdmin.PaymentOrdersByExtTxId, input]
+ * }
+ * ```
+ */
 export const usePaymentAdminApi_GetPaymentOrdersByExtTxId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {extTxId: string | null} },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentAdminApi_GetPaymentOrdersByExtTxId>[1]
@@ -124,7 +154,7 @@ export const usePaymentAdminApi_CreatePaymentOrder_ByUserId = (
     options?: Omit<UseMutationOptions<PaymentOrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: PaymentOrderCreate }>, 'mutationKey'>,
     callback?: (data: PaymentOrderInfo) => void
   ): UseMutationResult<PaymentOrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: PaymentOrderCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: PaymentOrderCreate }) => {
       const response = 
             (await PaymentAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -142,13 +172,23 @@ export const usePaymentAdminApi_CreatePaymentOrder_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentAdmin.PaymentOrder_ByPaymentOrderNo, input]
+ * }
+ * ```
+ */
 export const usePaymentAdminApi_GetPaymentOrder_ByPaymentOrderNo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { paymentOrderNo:string },
     options?: Omit<UseQueryOptions<PaymentOrderInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentOrderInfo>) => void
   ): UseQueryResult<PaymentOrderInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentAdminApi_GetPaymentOrder_ByPaymentOrderNo>[1]
@@ -174,7 +214,7 @@ export const usePaymentAdminApi_UpdatePaymentOrder_ByPaymentOrderNo = (
     options?: Omit<UseMutationOptions<PaymentOrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { paymentOrderNo:string, data: PaymentOrderChargeRequest }>, 'mutationKey'>,
     callback?: (data: PaymentOrderInfo) => void
   ): UseMutationResult<PaymentOrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { paymentOrderNo:string, data: PaymentOrderChargeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { paymentOrderNo:string, data: PaymentOrderChargeRequest }) => {
       const response = 
             (await PaymentAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -192,13 +232,23 @@ export const usePaymentAdminApi_UpdatePaymentOrder_ByPaymentOrderNo = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentAdmin.StatusPayment_ByPaymentOrderNo, input]
+ * }
+ * ```
+ */
 export const usePaymentAdminApi_GetStatusPayment_ByPaymentOrderNo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { paymentOrderNo:string },
     options?: Omit<UseQueryOptions<PaymentOrderChargeStatus, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentOrderChargeStatus>) => void
   ): UseQueryResult<PaymentOrderChargeStatus, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentAdminApi_GetStatusPayment_ByPaymentOrderNo>[1]
@@ -224,7 +274,7 @@ export const usePaymentAdminApi_UpdateSimulateNotificationPayment_ByPaymentOrder
     options?: Omit<UseMutationOptions<NotificationProcessResult, AxiosError<ApiError>, SdkSetConfigParam & { paymentOrderNo:string, data: PaymentOrderNotifySimulation }>, 'mutationKey'>,
     callback?: (data: NotificationProcessResult) => void
   ): UseMutationResult<NotificationProcessResult, AxiosError<ApiError>, SdkSetConfigParam & { paymentOrderNo:string, data: PaymentOrderNotifySimulation }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { paymentOrderNo:string, data: PaymentOrderNotifySimulation }) => {
       const response = 
             (await PaymentAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -247,7 +297,7 @@ export const usePaymentAdminApi_UpdateRefundPayment_ByUserId_ByPaymentOrderNo = 
     options?: Omit<UseMutationOptions<PaymentOrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, paymentOrderNo:string, data: PaymentOrderRefund }>, 'mutationKey'>,
     callback?: (data: PaymentOrderInfo) => void
   ): UseMutationResult<PaymentOrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, paymentOrderNo:string, data: PaymentOrderRefund }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, paymentOrderNo:string, data: PaymentOrderRefund }) => {
       const response = 
             (await PaymentAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

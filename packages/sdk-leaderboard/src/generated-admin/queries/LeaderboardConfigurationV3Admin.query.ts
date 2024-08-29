@@ -32,13 +32,23 @@ Hard_ByLeaderboardCode_v3 = 'Leaderboard.LeaderboardConfigurationV3Admin.Hard_By
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardConfigurationV3Admin.Leaderboards_v3, input]
+ * }
+ * ```
+ */
 export const useLeaderboardConfigurationV3AdminApi_GetLeaderboards_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {isDeleted?: boolean | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetAllLeaderboardConfigsRespV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetAllLeaderboardConfigsRespV3>) => void
   ): UseQueryResult<GetAllLeaderboardConfigsRespV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardConfigurationV3AdminApi_GetLeaderboards_v3>[1]
@@ -64,7 +74,7 @@ export const useLeaderboardConfigurationV3AdminApi_CreateLeaderboard_v3 = (
     options?: Omit<UseMutationOptions<GetLeaderboardConfigRespV3, AxiosError<ApiError>, SdkSetConfigParam & { data: LeaderboardConfigReqV3 }>, 'mutationKey'>,
     callback?: (data: GetLeaderboardConfigRespV3) => void
   ): UseMutationResult<GetLeaderboardConfigRespV3, AxiosError<ApiError>, SdkSetConfigParam & { data: LeaderboardConfigReqV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: LeaderboardConfigReqV3 }) => {
       const response = 
             (await LeaderboardConfigurationV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -87,7 +97,7 @@ export const useLeaderboardConfigurationV3AdminApi_CreateLeaderboardDelete_v3 = 
     options?: Omit<UseMutationOptions<DeleteBulkLeaderboardsResp, AxiosError<ApiError>, SdkSetConfigParam & { data: DeleteBulkLeaderboardsReq }>, 'mutationKey'>,
     callback?: (data: DeleteBulkLeaderboardsResp) => void
   ): UseMutationResult<DeleteBulkLeaderboardsResp, AxiosError<ApiError>, SdkSetConfigParam & { data: DeleteBulkLeaderboardsReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DeleteBulkLeaderboardsReq }) => {
       const response = 
             (await LeaderboardConfigurationV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -110,7 +120,7 @@ export const useLeaderboardConfigurationV3AdminApi_DeleteLeaderboard_ByLeaderboa
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { leaderboardCode:string }) => {
       const response = 
             (await LeaderboardConfigurationV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -128,13 +138,23 @@ export const useLeaderboardConfigurationV3AdminApi_DeleteLeaderboard_ByLeaderboa
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardConfigurationV3Admin.Leaderboard_ByLeaderboardCode_v3, input]
+ * }
+ * ```
+ */
 export const useLeaderboardConfigurationV3AdminApi_GetLeaderboard_ByLeaderboardCode_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string },
     options?: Omit<UseQueryOptions<GetLeaderboardConfigRespV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetLeaderboardConfigRespV3>) => void
   ): UseQueryResult<GetLeaderboardConfigRespV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardConfigurationV3AdminApi_GetLeaderboard_ByLeaderboardCode_v3>[1]
@@ -160,7 +180,7 @@ export const useLeaderboardConfigurationV3AdminApi_UpdateLeaderboard_ByLeaderboa
     options?: Omit<UseMutationOptions<GetLeaderboardConfigRespV3, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, data: UpdateLeaderboardConfigReqV3 }>, 'mutationKey'>,
     callback?: (data: GetLeaderboardConfigRespV3) => void
   ): UseMutationResult<GetLeaderboardConfigRespV3, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, data: UpdateLeaderboardConfigReqV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { leaderboardCode:string, data: UpdateLeaderboardConfigReqV3 }) => {
       const response = 
             (await LeaderboardConfigurationV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -183,7 +203,7 @@ export const useLeaderboardConfigurationV3AdminApi_DeleteHard_ByLeaderboardCode_
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { leaderboardCode:string }) => {
       const response = 
             (await LeaderboardConfigurationV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

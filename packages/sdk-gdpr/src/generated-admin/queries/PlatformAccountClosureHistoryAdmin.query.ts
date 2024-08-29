@@ -23,13 +23,23 @@ export enum Key_PlatformAccountClosureHistoryAdmin {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlatformAccountClosureHistoryAdmin.UsersPlatformsClosureHistories, input]
+ * }
+ * ```
+ */
 export const usePlatformAccountClosureHistoryAdminApi_GetUsersPlatformsClosureHistories = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, platform?: string | null, userId?: string | null} },
     options?: Omit<UseQueryOptions<UserPlatformAccountClosureHistoriesResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserPlatformAccountClosureHistoriesResponse>) => void
   ): UseQueryResult<UserPlatformAccountClosureHistoriesResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlatformAccountClosureHistoryAdminApi_GetUsersPlatformsClosureHistories>[1]

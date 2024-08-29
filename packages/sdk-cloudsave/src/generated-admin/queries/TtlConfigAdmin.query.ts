@@ -29,7 +29,7 @@ export const useTtlConfigAdminApi_DeleteTtl_ByKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string }) => {
       const response = 
             (await TtlConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -52,7 +52,7 @@ export const useTtlConfigAdminApi_DeleteTtl_ByKey_ByNS = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string }) => {
       const response = 
             (await TtlConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -28,13 +28,23 @@ UsersMeAttributes = 'Session.Player.UsersMeAttributes',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Player.UserBulkPlatform, input]
+ * }
+ * ```
+ */
 export const usePlayerApi_FetchUserBulkPlatform = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: PlayersCurrentPlatformRequest },
     options?: Omit<UseQueryOptions<PlayersCurrentPlatformResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlayersCurrentPlatformResponse>) => void
   ): UseQueryResult<PlayersCurrentPlatformResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerApi_FetchUserBulkPlatform>[1]
@@ -60,7 +70,7 @@ export const usePlayerApi_DeleteUserMeAttribute = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await PlayerApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -78,13 +88,23 @@ export const usePlayerApi_DeleteUserMeAttribute = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Player.UsersMeAttributes, input]
+ * }
+ * ```
+ */
 export const usePlayerApi_GetUsersMeAttributes = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<PlayerAttributesResponseBody, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlayerAttributesResponseBody>) => void
   ): UseQueryResult<PlayerAttributesResponseBody, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerApi_GetUsersMeAttributes>[1]
@@ -110,7 +130,7 @@ export const usePlayerApi_CreateUserMeAttribute = (
     options?: Omit<UseMutationOptions<PlayerAttributesResponseBody, AxiosError<ApiError>, SdkSetConfigParam & { data: PlayerAttributesRequestBody }>, 'mutationKey'>,
     callback?: (data: PlayerAttributesResponseBody) => void
   ): UseMutationResult<PlayerAttributesResponseBody, AxiosError<ApiError>, SdkSetConfigParam & { data: PlayerAttributesRequestBody }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PlayerAttributesRequestBody }) => {
       const response = 
             (await PlayerApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

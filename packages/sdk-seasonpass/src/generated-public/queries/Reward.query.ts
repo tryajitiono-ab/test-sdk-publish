@@ -30,7 +30,7 @@ export const useRewardApi_CreateSeasonCurrentReward_ByUserId = (
     options?: Omit<UseMutationOptions<ClaimableRewards, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserRewardClaim }>, 'mutationKey'>,
     callback?: (data: ClaimableRewards) => void
   ): UseMutationResult<ClaimableRewards, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserRewardClaim }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserRewardClaim }) => {
       const response = 
             (await RewardApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -53,7 +53,7 @@ export const useRewardApi_CreateSeasonCurrentRewardBulk_ByUserId = (
     options?: Omit<UseMutationOptions<ClaimableRewards, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: ClaimableRewards) => void
   ): UseMutationResult<ClaimableRewards, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await RewardApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

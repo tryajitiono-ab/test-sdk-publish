@@ -25,13 +25,23 @@ User_ByUserId = 'Ugc.PublicCreator.User_ByUserId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicCreator.Users, input]
+ * }
+ * ```
+ */
 export const usePublicCreatorApi_GetUsers = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, orderby?: string | null, sortby?: string | null} },
     options?: Omit<UseQueryOptions<PaginatedCreatorOverviewResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedCreatorOverviewResponse>) => void
   ): UseQueryResult<PaginatedCreatorOverviewResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicCreatorApi_GetUsers>[1]
@@ -52,13 +62,23 @@ export const usePublicCreatorApi_GetUsers = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicCreator.User_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePublicCreatorApi_GetUser_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<CreatorResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CreatorResponse>) => void
   ): UseQueryResult<CreatorResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicCreatorApi_GetUser_ByUserId>[1]

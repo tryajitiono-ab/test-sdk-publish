@@ -31,13 +31,23 @@ SeasonCurrentPasse_ByUserId = 'Seasonpass.PassAdmin.SeasonCurrentPasse_ByUserId'
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PassAdmin.Passes_BySeasonId, input]
+ * }
+ * ```
+ */
 export const usePassAdminApi_GetPasses_BySeasonId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { seasonId:string },
     options?: Omit<UseQueryOptions<PassInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PassInfoArray>) => void
   ): UseQueryResult<PassInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePassAdminApi_GetPasses_BySeasonId>[1]
@@ -63,7 +73,7 @@ export const usePassAdminApi_CreatePasse_BySeasonId = (
     options?: Omit<UseMutationOptions<PassInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, data: PassCreate }>, 'mutationKey'>,
     callback?: (data: PassInfo) => void
   ): UseMutationResult<PassInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, data: PassCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { seasonId:string, data: PassCreate }) => {
       const response = 
             (await PassAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -86,7 +96,7 @@ export const usePassAdminApi_DeletePasse_BySeasonId_ByCode = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, code:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, code:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { seasonId:string, code:string }) => {
       const response = 
             (await PassAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -104,13 +114,23 @@ export const usePassAdminApi_DeletePasse_BySeasonId_ByCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PassAdmin.Passe_BySeasonId_ByCode, input]
+ * }
+ * ```
+ */
 export const usePassAdminApi_GetPasse_BySeasonId_ByCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { seasonId:string, code:string },
     options?: Omit<UseQueryOptions<PassInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PassInfo>) => void
   ): UseQueryResult<PassInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePassAdminApi_GetPasse_BySeasonId_ByCode>[1]
@@ -136,7 +156,7 @@ export const usePassAdminApi_PatchPasse_BySeasonId_ByCode = (
     options?: Omit<UseMutationOptions<PassInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, code:string, data: PassUpdate }>, 'mutationKey'>,
     callback?: (data: PassInfo) => void
   ): UseMutationResult<PassInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, code:string, data: PassUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { seasonId:string, code:string, data: PassUpdate }) => {
       const response = 
             (await PassAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -159,7 +179,7 @@ export const usePassAdminApi_CreateSeasonCurrentPasse_ByUserId = (
     options?: Omit<UseMutationOptions<UserSeasonSummary, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserPassGrant }>, 'mutationKey'>,
     callback?: (data: UserSeasonSummary) => void
   ): UseMutationResult<UserSeasonSummary, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserPassGrant }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserPassGrant }) => {
       const response = 
             (await PassAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

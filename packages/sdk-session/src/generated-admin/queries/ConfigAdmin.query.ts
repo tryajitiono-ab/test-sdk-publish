@@ -23,13 +23,23 @@ export enum Key_ConfigAdmin {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigAdmin.ConfigLog, input]
+ * }
+ * ```
+ */
 export const useConfigAdminApi_GetConfigLog = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<Configuration, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<Configuration>) => void
   ): UseQueryResult<Configuration, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigAdminApi_GetConfigLog>[1]
@@ -55,7 +65,7 @@ export const useConfigAdminApi_PatchConfigLog = (
     options?: Omit<UseMutationOptions<Configuration, AxiosError<ApiError>, SdkSetConfigParam & { data: Configuration }>, 'mutationKey'>,
     callback?: (data: Configuration) => void
   ): UseMutationResult<Configuration, AxiosError<ApiError>, SdkSetConfigParam & { data: Configuration }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: Configuration }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

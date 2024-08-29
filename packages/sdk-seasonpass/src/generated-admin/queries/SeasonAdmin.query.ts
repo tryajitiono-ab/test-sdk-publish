@@ -55,13 +55,23 @@ SeasonsCurrentPassesOwnershipAny_ByUserId = 'Seasonpass.SeasonAdmin.SeasonsCurre
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SeasonAdmin.Seasons, input]
+ * }
+ * ```
+ */
 export const useSeasonAdminApi_GetSeasons = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, status?: string[]} },
     options?: Omit<UseQueryOptions<ListSeasonInfoPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListSeasonInfoPagingSlicedResult>) => void
   ): UseQueryResult<ListSeasonInfoPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonAdminApi_GetSeasons>[1]
@@ -87,7 +97,7 @@ export const useSeasonAdminApi_CreateSeason = (
     options?: Omit<UseMutationOptions<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: SeasonCreate }>, 'mutationKey'>,
     callback?: (data: SeasonInfo) => void
   ): UseMutationResult<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: SeasonCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: SeasonCreate }) => {
       const response = 
             (await SeasonAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -105,13 +115,23 @@ export const useSeasonAdminApi_CreateSeason = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SeasonAdmin.SeasonsCurrent, input]
+ * }
+ * ```
+ */
 export const useSeasonAdminApi_GetSeasonsCurrent = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<SeasonSummary, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SeasonSummary>) => void
   ): UseQueryResult<SeasonSummary, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonAdminApi_GetSeasonsCurrent>[1]
@@ -137,7 +157,7 @@ export const useSeasonAdminApi_DeleteSeason_BySeasonId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { seasonId:string }) => {
       const response = 
             (await SeasonAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -155,13 +175,23 @@ export const useSeasonAdminApi_DeleteSeason_BySeasonId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SeasonAdmin.Season_BySeasonId, input]
+ * }
+ * ```
+ */
 export const useSeasonAdminApi_GetSeason_BySeasonId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { seasonId:string },
     options?: Omit<UseQueryOptions<SeasonInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SeasonInfo>) => void
   ): UseQueryResult<SeasonInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonAdminApi_GetSeason_BySeasonId>[1]
@@ -187,7 +217,7 @@ export const useSeasonAdminApi_PatchSeason_BySeasonId = (
     options?: Omit<UseMutationOptions<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, data: SeasonUpdate }>, 'mutationKey'>,
     callback?: (data: SeasonInfo) => void
   ): UseMutationResult<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, data: SeasonUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { seasonId:string, data: SeasonUpdate }) => {
       const response = 
             (await SeasonAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -205,13 +235,23 @@ export const useSeasonAdminApi_PatchSeason_BySeasonId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SeasonAdmin.Seasons_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSeasonAdminApi_GetSeasons_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<ListUserSeasonInfoPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListUserSeasonInfoPagingSlicedResult>) => void
   ): UseQueryResult<ListUserSeasonInfoPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonAdminApi_GetSeasons_ByUserId>[1]
@@ -232,13 +272,23 @@ export const useSeasonAdminApi_GetSeasons_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SeasonAdmin.Full_BySeasonId, input]
+ * }
+ * ```
+ */
 export const useSeasonAdminApi_GetFull_BySeasonId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { seasonId:string },
     options?: Omit<UseQueryOptions<FullSeasonInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullSeasonInfo>) => void
   ): UseQueryResult<FullSeasonInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonAdminApi_GetFull_BySeasonId>[1]
@@ -264,7 +314,7 @@ export const useSeasonAdminApi_CreateClone_BySeasonId = (
     options?: Omit<UseMutationOptions<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, data: SeasonCloneRequest }>, 'mutationKey'>,
     callback?: (data: SeasonInfo) => void
   ): UseMutationResult<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, data: SeasonCloneRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { seasonId:string, data: SeasonCloneRequest }) => {
       const response = 
             (await SeasonAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -287,7 +337,7 @@ export const useSeasonAdminApi_UpdateRetire_BySeasonId = (
     options?: Omit<UseMutationOptions<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string,  queryParams?: {force?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: SeasonInfo) => void
   ): UseMutationResult<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string,  queryParams?: {force?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { seasonId:string,  queryParams?: {force?: boolean | null} }) => {
       const response = 
             (await SeasonAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -310,7 +360,7 @@ export const useSeasonAdminApi_UpdatePublish_BySeasonId = (
     options?: Omit<UseMutationOptions<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string }>, 'mutationKey'>,
     callback?: (data: SeasonInfo) => void
   ): UseMutationResult<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { seasonId:string }) => {
       const response = 
             (await SeasonAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -333,7 +383,7 @@ export const useSeasonAdminApi_UpdateUnpublish_BySeasonId = (
     options?: Omit<UseMutationOptions<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string,  queryParams?: {force?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: SeasonInfo) => void
   ): UseMutationResult<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string,  queryParams?: {force?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { seasonId:string,  queryParams?: {force?: boolean | null} }) => {
       const response = 
             (await SeasonAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -351,13 +401,23 @@ export const useSeasonAdminApi_UpdateUnpublish_BySeasonId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SeasonAdmin.SeasonsExpHistory_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSeasonAdminApi_GetSeasonsExpHistory_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {from?: string | null, limit?: number, offset?: number, seasonId?: string | null, source?: 'PAID_FOR' | 'SWEAT', tags?: string[], to?: string | null} },
     options?: Omit<UseQueryOptions<ExpGrantHistoryPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ExpGrantHistoryPagingSlicedResult>) => void
   ): UseQueryResult<ExpGrantHistoryPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonAdminApi_GetSeasonsExpHistory_ByUserId>[1]
@@ -383,7 +443,7 @@ export const useSeasonAdminApi_DeleteSeasonCurrentReset_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await SeasonAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -406,7 +466,7 @@ export const useSeasonAdminApi_CreateSeasonCurrentUserBulkProgression = (
     options?: Omit<UseMutationOptions<UserSeasonSummaryArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserProgressionRequest }>, 'mutationKey'>,
     callback?: (data: UserSeasonSummaryArray) => void
   ): UseMutationResult<UserSeasonSummaryArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserProgressionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkUserProgressionRequest }) => {
       const response = 
             (await SeasonAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -424,13 +484,23 @@ export const useSeasonAdminApi_CreateSeasonCurrentUserBulkProgression = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SeasonAdmin.Data_ByUserId_BySeasonId, input]
+ * }
+ * ```
+ */
 export const useSeasonAdminApi_GetData_ByUserId_BySeasonId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, seasonId:string },
     options?: Omit<UseQueryOptions<ClaimableUserSeasonInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ClaimableUserSeasonInfo>) => void
   ): UseQueryResult<ClaimableUserSeasonInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonAdminApi_GetData_ByUserId_BySeasonId>[1]
@@ -451,13 +521,23 @@ export const useSeasonAdminApi_GetData_ByUserId_BySeasonId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SeasonAdmin.SeasonsExpHistoryTags_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSeasonAdminApi_GetSeasonsExpHistoryTags_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {seasonId?: string | null} },
     options?: Omit<UseQueryOptions<ReasonTagsResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ReasonTagsResult>) => void
   ): UseQueryResult<ReasonTagsResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonAdminApi_GetSeasonsExpHistoryTags_ByUserId>[1]
@@ -478,13 +558,23 @@ export const useSeasonAdminApi_GetSeasonsExpHistoryTags_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SeasonAdmin.SeasonsCurrentProgression_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSeasonAdminApi_GetSeasonsCurrentProgression_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<UserSeasonSummary, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserSeasonSummary>) => void
   ): UseQueryResult<UserSeasonSummary, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonAdminApi_GetSeasonsCurrentProgression_ByUserId>[1]
@@ -510,7 +600,7 @@ export const useSeasonAdminApi_CreateSeasonCurrentPurchasable_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserPurchasable }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserPurchasable }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserPurchasable }) => {
       const response = 
             (await SeasonAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -528,13 +618,23 @@ export const useSeasonAdminApi_CreateSeasonCurrentPurchasable_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SeasonAdmin.SeasonsCurrentPassesOwnershipAny_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSeasonAdminApi_GetSeasonsCurrentPassesOwnershipAny_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {passCodes?: string[]} },
     options?: Omit<UseQueryOptions<Ownership, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<Ownership>) => void
   ): UseQueryResult<Ownership, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonAdminApi_GetSeasonsCurrentPassesOwnershipAny_ByUserId>[1]

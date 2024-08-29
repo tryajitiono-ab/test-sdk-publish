@@ -33,7 +33,7 @@ export const useCachingAdminApi_CreateDiffCache = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateDiffCacheRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateDiffCacheRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateDiffCacheRequest }) => {
       const response = 
             (await CachingAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -56,7 +56,7 @@ export const useCachingAdminApi_UpdateDiffCache = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CommitDiffCacheRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CommitDiffCacheRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CommitDiffCacheRequest }) => {
       const response = 
             (await CachingAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -79,7 +79,7 @@ export const useCachingAdminApi_CreateDiffCalculate = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CalculateDiffCacheRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CalculateDiffCacheRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CalculateDiffCacheRequest }) => {
       const response = 
             (await CachingAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -102,7 +102,7 @@ export const useCachingAdminApi_CreateDiffCalculateBulk = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkCalculateDiffCacheRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkCalculateDiffCacheRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkCalculateDiffCacheRequest }) => {
       const response = 
             (await CachingAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

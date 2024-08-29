@@ -25,13 +25,23 @@ Globalstatitem_ByStatCode = 'Social.GlobalStatisticAdmin.Globalstatitem_ByStatCo
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GlobalStatisticAdmin.Globalstatitems, input]
+ * }
+ * ```
+ */
 export const useGlobalStatisticAdminApi_GetGlobalstatitems = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, statCodes?: string | null} },
     options?: Omit<UseQueryOptions<GlobalStatItemPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GlobalStatItemPagingSlicedResult>) => void
   ): UseQueryResult<GlobalStatItemPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGlobalStatisticAdminApi_GetGlobalstatitems>[1]
@@ -52,13 +62,23 @@ export const useGlobalStatisticAdminApi_GetGlobalstatitems = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GlobalStatisticAdmin.Globalstatitem_ByStatCode, input]
+ * }
+ * ```
+ */
 export const useGlobalStatisticAdminApi_GetGlobalstatitem_ByStatCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { statCode:string },
     options?: Omit<UseQueryOptions<GlobalStatItemInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GlobalStatItemInfo>) => void
   ): UseQueryResult<GlobalStatItemInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGlobalStatisticAdminApi_GetGlobalstatitem_ByStatCode>[1]

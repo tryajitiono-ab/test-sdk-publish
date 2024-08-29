@@ -25,13 +25,23 @@ SupportedInstances = 'Ams.AmsInfoAdmin.SupportedInstances',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AmsInfoAdmin.Regions, input]
+ * }
+ * ```
+ */
 export const useAmsInfoAdminApi_GetRegions = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<AmsRegionsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AmsRegionsResponse>) => void
   ): UseQueryResult<AmsRegionsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAmsInfoAdminApi_GetRegions>[1]
@@ -52,13 +62,23 @@ export const useAmsInfoAdminApi_GetRegions = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AmsInfoAdmin.SupportedInstances, input]
+ * }
+ * ```
+ */
 export const useAmsInfoAdminApi_GetSupportedInstances = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<AvailableInstanceTypesResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AvailableInstanceTypesResponse>) => void
   ): UseQueryResult<AvailableInstanceTypesResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAmsInfoAdminApi_GetSupportedInstances>[1]

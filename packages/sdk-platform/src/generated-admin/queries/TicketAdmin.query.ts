@@ -33,13 +33,23 @@ Ticket_ByUserId_ByBoothName = 'Platform.TicketAdmin.Ticket_ByUserId_ByBoothName'
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TicketAdmin.Ticket_ByBoothName, input]
+ * }
+ * ```
+ */
 export const useTicketAdminApi_GetTicket_ByBoothName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { boothName:string },
     options?: Omit<UseQueryOptions<TicketDynamicInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TicketDynamicInfo>) => void
   ): UseQueryResult<TicketDynamicInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTicketAdminApi_GetTicket_ByBoothName>[1]
@@ -60,13 +70,23 @@ export const useTicketAdminApi_GetTicket_ByBoothName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TicketAdmin.Id_ByBoothName, input]
+ * }
+ * ```
+ */
 export const useTicketAdminApi_GetId_ByBoothName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { boothName:string },
     options?: Omit<UseQueryOptions<TicketBoothId, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TicketBoothId>) => void
   ): UseQueryResult<TicketBoothId, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTicketAdminApi_GetId_ByBoothName>[1]
@@ -92,7 +112,7 @@ export const useTicketAdminApi_UpdateDecrement_ByBoothName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { boothName:string, data: TicketSaleDecrementRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { boothName:string, data: TicketSaleDecrementRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { boothName:string, data: TicketSaleDecrementRequest }) => {
       const response = 
             (await TicketAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -115,7 +135,7 @@ export const useTicketAdminApi_UpdateIncrement_ByBoothName = (
     options?: Omit<UseMutationOptions<TicketSaleIncrementResult, AxiosError<ApiError>, SdkSetConfigParam & { boothName:string, data: TicketSaleIncrementRequest }>, 'mutationKey'>,
     callback?: (data: TicketSaleIncrementResult) => void
   ): UseMutationResult<TicketSaleIncrementResult, AxiosError<ApiError>, SdkSetConfigParam & { boothName:string, data: TicketSaleIncrementRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { boothName:string, data: TicketSaleIncrementRequest }) => {
       const response = 
             (await TicketAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -138,7 +158,7 @@ export const useTicketAdminApi_CreateTicket_ByUserId_ByBoothName = (
     options?: Omit<UseMutationOptions<TicketAcquireResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, boothName:string, data: TicketAcquireRequest }>, 'mutationKey'>,
     callback?: (data: TicketAcquireResult) => void
   ): UseMutationResult<TicketAcquireResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, boothName:string, data: TicketAcquireRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, boothName:string, data: TicketAcquireRequest }) => {
       const response = 
             (await TicketAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

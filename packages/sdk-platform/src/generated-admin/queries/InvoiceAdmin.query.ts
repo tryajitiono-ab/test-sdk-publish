@@ -24,13 +24,23 @@ InvoiceDetailsCsv = 'Platform.InvoiceAdmin.InvoiceDetailsCsv',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_InvoiceAdmin.InvoiceSummary, input]
+ * }
+ * ```
+ */
 export const useInvoiceAdminApi_GetInvoiceSummary = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endTime: string | null, feature: string | null, itemId: string | null, itemType: 'APP' | 'BUNDLE' | 'CODE' | 'COINS' | 'EXTENSION' | 'INGAMEITEM' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SEASON' | 'SUBSCRIPTION', startTime: string | null} },
     options?: Omit<UseQueryOptions<InvoiceSummary, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<InvoiceSummary>) => void
   ): UseQueryResult<InvoiceSummary, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useInvoiceAdminApi_GetInvoiceSummary>[1]
@@ -51,13 +61,23 @@ export const useInvoiceAdminApi_GetInvoiceSummary = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_InvoiceAdmin.InvoiceDetailsCsv, input]
+ * }
+ * ```
+ */
 export const useInvoiceAdminApi_GetInvoiceDetailsCsv = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endTime: string | null, feature: string | null, itemId: string | null, itemType: 'APP' | 'BUNDLE' | 'CODE' | 'COINS' | 'EXTENSION' | 'INGAMEITEM' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SEASON' | 'SUBSCRIPTION', startTime: string | null} },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useInvoiceAdminApi_GetInvoiceDetailsCsv>[1]

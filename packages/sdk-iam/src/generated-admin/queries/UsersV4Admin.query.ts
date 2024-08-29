@@ -85,7 +85,7 @@ export const useUsersV4AdminApi_PatchUserMe_v4 = (
     options?: Omit<UseMutationOptions<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: UserUpdateRequestV3 }>, 'mutationKey'>,
     callback?: (data: UserResponseV3) => void
   ): UseMutationResult<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: UserUpdateRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UserUpdateRequestV3 }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -108,7 +108,7 @@ export const useUsersV4AdminApi_CreateUserInvite_v4 = (
     options?: Omit<UseMutationOptions<InviteUserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: InviteUserRequestV4 }>, 'mutationKey'>,
     callback?: (data: InviteUserResponseV3) => void
   ): UseMutationResult<InviteUserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: InviteUserRequestV4 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: InviteUserRequestV4 }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -131,7 +131,7 @@ export const useUsersV4AdminApi_CreateUserUserInvite_v4 = (
     options?: Omit<UseMutationOptions<InviteUserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: InviteUserRequestV4 }>, 'mutationKey'>,
     callback?: (data: InviteUserResponseV3) => void
   ): UseMutationResult<InviteUserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: InviteUserRequestV4 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: InviteUserRequestV4 }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -149,13 +149,23 @@ export const useUsersV4AdminApi_CreateUserUserInvite_v4 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersV4Admin.InvitationHistories_v4, input]
+ * }
+ * ```
+ */
 export const useUsersV4AdminApi_GetInvitationHistories_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, namespace?: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<ListInvitationHistoriesV4Response, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListInvitationHistoriesV4Response>) => void
   ): UseQueryResult<ListInvitationHistoriesV4Response, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersV4AdminApi_GetInvitationHistories_v4>[1]
@@ -176,13 +186,23 @@ export const useUsersV4AdminApi_GetInvitationHistories_v4 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersV4Admin.UsersMeMfaFactor_v4, input]
+ * }
+ * ```
+ */
 export const useUsersV4AdminApi_GetUsersMeMfaFactor_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<EnabledFactorsResponseV4, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EnabledFactorsResponseV4>) => void
   ): UseQueryResult<EnabledFactorsResponseV4, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersV4AdminApi_GetUsersMeMfaFactor_v4>[1]
@@ -208,7 +228,7 @@ export const useUsersV4AdminApi_PostUserMeMfaFactor_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {factor: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {factor: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {factor: string | null} }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -226,13 +246,23 @@ export const useUsersV4AdminApi_PostUserMeMfaFactor_v4 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersV4Admin.UsersMeMfaStatus_v4, input]
+ * }
+ * ```
+ */
 export const useUsersV4AdminApi_GetUsersMeMfaStatus_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<UserMfaStatusResponseV4, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserMfaStatusResponseV4>) => void
   ): UseQueryResult<UserMfaStatusResponseV4, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersV4AdminApi_GetUsersMeMfaStatus_v4>[1]
@@ -258,7 +288,7 @@ export const useUsersV4AdminApi_CreateUserMeMfaStatus_v4 = (
     options?: Omit<UseMutationOptions<UserMfaStatusResponseV4, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: UserMfaStatusResponseV4) => void
   ): UseMutationResult<UserMfaStatusResponseV4, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -276,13 +306,23 @@ export const useUsersV4AdminApi_CreateUserMeMfaStatus_v4 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersV4Admin.UsersMeMfaBackupCode_v4, input]
+ * }
+ * ```
+ */
 export const useUsersV4AdminApi_GetUsersMeMfaBackupCode_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<BackupCodesResponseV4, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BackupCodesResponseV4>) => void
   ): UseQueryResult<BackupCodesResponseV4, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersV4AdminApi_GetUsersMeMfaBackupCode_v4>[1]
@@ -308,7 +348,7 @@ export const useUsersV4AdminApi_CreateUserMeMfaBackupCode_v4 = (
     options?: Omit<UseMutationOptions<BackupCodesResponseV4, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: BackupCodesResponseV4) => void
   ): UseMutationResult<BackupCodesResponseV4, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -331,7 +371,7 @@ export const useUsersV4AdminApi_PostUserMeMfaEmailCode_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {action?: string | null,languageTag?: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {action?: string | null,languageTag?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {action?: string | null,languageTag?: string | null} }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -349,13 +389,23 @@ export const useUsersV4AdminApi_PostUserMeMfaEmailCode_v4 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersV4Admin.UsersMeMfaBackupCodes_v4, input]
+ * }
+ * ```
+ */
 export const useUsersV4AdminApi_GetUsersMeMfaBackupCodes_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {languageTag?: string | null} },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersV4AdminApi_GetUsersMeMfaBackupCodes_v4>[1]
@@ -381,7 +431,7 @@ export const useUsersV4AdminApi_CreateUserMeMfaBackupCode_admin_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams?: {languageTag?: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams?: {languageTag?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & {  queryParams?: {languageTag?: string | null} }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -404,7 +454,7 @@ export const useUsersV4AdminApi_PostUserMeMfaEmailEnable_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {code: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {code: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {code: string | null} }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -427,7 +477,7 @@ export const useUsersV4AdminApi_CreateUserMeMfaEmailDisable_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DisableMfaRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DisableMfaRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DisableMfaRequest }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -450,7 +500,7 @@ export const useUsersV4AdminApi_CreateUser_v4 = (
     options?: Omit<UseMutationOptions<CreateUserResponseV4, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateUserRequestV4 }>, 'mutationKey'>,
     callback?: (data: CreateUserResponseV4) => void
   ): UseMutationResult<CreateUserResponseV4, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateUserRequestV4 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateUserRequestV4 }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -473,7 +523,7 @@ export const useUsersV4AdminApi_PostUserMeMfaChallengeVerify_v4 = (
     options?: Omit<UseMutationOptions<UserMfaTokenResponseV4, AxiosError<ApiError>, SdkSetConfigParam & { data: {code?: string | null,factor?: string | null} }>, 'mutationKey'>,
     callback?: (data: UserMfaTokenResponseV4) => void
   ): UseMutationResult<UserMfaTokenResponseV4, AxiosError<ApiError>, SdkSetConfigParam & { data: {code?: string | null,factor?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {code?: string | null,factor?: string | null} }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -496,7 +546,7 @@ export const useUsersV4AdminApi_CreateUserMeMfaAuthenticatorKey_v4 = (
     options?: Omit<UseMutationOptions<AuthenticatorKeyResponseV4, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: AuthenticatorKeyResponseV4) => void
   ): UseMutationResult<AuthenticatorKeyResponseV4, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -519,7 +569,7 @@ export const useUsersV4AdminApi_CreateUserMeMfaBackupCodeEnable_v4 = (
     options?: Omit<UseMutationOptions<BackupCodesResponseV4, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: BackupCodesResponseV4) => void
   ): UseMutationResult<BackupCodesResponseV4, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -542,7 +592,7 @@ export const useUsersV4AdminApi_DeleteUserMeMfaBackupCodeDisable_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DisableMfaRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DisableMfaRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DisableMfaRequest }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -565,7 +615,7 @@ export const useUsersV4AdminApi_CreateUserMeMfaBackupCodeEnable_admin_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams?: {languageTag?: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams?: {languageTag?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & {  queryParams?: {languageTag?: string | null} }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -583,13 +633,23 @@ export const useUsersV4AdminApi_CreateUserMeMfaBackupCodeEnable_admin_v4 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersV4Admin.UsersMeMfaBackupCodeDownload_v4, input]
+ * }
+ * ```
+ */
 export const useUsersV4AdminApi_GetUsersMeMfaBackupCodeDownload_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersV4AdminApi_GetUsersMeMfaBackupCodeDownload_v4>[1]
@@ -615,7 +675,7 @@ export const useUsersV4AdminApi_CreateTestUser_v4 = (
     options?: Omit<UseMutationOptions<CreateTestUsersResponseV4, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTestUsersRequestV4 }>, 'mutationKey'>,
     callback?: (data: CreateTestUsersResponseV4) => void
   ): UseMutationResult<CreateTestUsersResponseV4, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTestUsersRequestV4 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateTestUsersRequestV4 }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -638,7 +698,7 @@ export const useUsersV4AdminApi_PostUserMeMfaAuthenticatorEnable_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {code: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {code: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {code: string | null} }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -661,7 +721,7 @@ export const useUsersV4AdminApi_DeleteUserMeMfaAuthenticatorDisable_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DisableMfaRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DisableMfaRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DisableMfaRequest }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -684,7 +744,7 @@ export const useUsersV4AdminApi_UpdateUser_ByUserId_v4 = (
     options?: Omit<UseMutationOptions<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserUpdateRequestV3 }>, 'mutationKey'>,
     callback?: (data: UserResponseV3) => void
   ): UseMutationResult<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserUpdateRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserUpdateRequestV3 }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -702,13 +762,23 @@ export const useUsersV4AdminApi_UpdateUser_ByUserId_v4 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersV4Admin.InvitationHistories_ByNS_v4, input]
+ * }
+ * ```
+ */
 export const useUsersV4AdminApi_GetInvitationHistories_ByNS_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<InvitationHistoryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<InvitationHistoryResponse>) => void
   ): UseQueryResult<InvitationHistoryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersV4AdminApi_GetInvitationHistories_ByNS_v4>[1]
@@ -729,13 +799,23 @@ export const useUsersV4AdminApi_GetInvitationHistories_ByNS_v4 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersV4Admin.UserBulkValidate_v4, input]
+ * }
+ * ```
+ */
 export const useUsersV4AdminApi_FetchUserBulkValidate_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: CheckValidUserIdRequestV4 },
     options?: Omit<UseQueryOptions<ListValidUserIdResponseV4, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListValidUserIdResponseV4>) => void
   ): UseQueryResult<ListValidUserIdResponseV4, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersV4AdminApi_FetchUserBulkValidate_v4>[1]
@@ -761,7 +841,7 @@ export const useUsersV4AdminApi_UpdateEmail_ByUserId_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: EmailUpdateRequestV4 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: EmailUpdateRequestV4 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: EmailUpdateRequestV4 }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -784,7 +864,7 @@ export const useUsersV4AdminApi_DeleteRole_ByUserId_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: RemoveUserRoleV4Request }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: RemoveUserRoleV4Request }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: RemoveUserRoleV4Request }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -802,13 +882,23 @@ export const useUsersV4AdminApi_DeleteRole_ByUserId_v4 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersV4Admin.Roles_ByUserId_v4, input]
+ * }
+ * ```
+ */
 export const useUsersV4AdminApi_GetRoles_ByUserId_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<ListUserRolesV4Response, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListUserRolesV4Response>) => void
   ): UseQueryResult<ListUserRolesV4Response, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersV4AdminApi_GetRoles_ByUserId_v4>[1]
@@ -834,7 +924,7 @@ export const useUsersV4AdminApi_UpdateRole_ByUserId_v4 = (
     options?: Omit<UseMutationOptions<ListUserRolesV4Response, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: AddUserRoleV4Request }>, 'mutationKey'>,
     callback?: (data: ListUserRolesV4Response) => void
   ): UseMutationResult<ListUserRolesV4Response, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: AddUserRoleV4Request }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: AddUserRoleV4Request }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -857,7 +947,7 @@ export const useUsersV4AdminApi_UpdateRole_ByUserId_ByNS_v4 = (
     options?: Omit<UseMutationOptions<ListUserRolesV4Response, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: AddUserRoleV4Request }>, 'mutationKey'>,
     callback?: (data: ListUserRolesV4Response) => void
   ): UseMutationResult<ListUserRolesV4Response, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: AddUserRoleV4Request }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: AddUserRoleV4Request }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -880,7 +970,7 @@ export const useUsersV4AdminApi_PatchUserBulkAccountType_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkAccountTypeUpdateRequestV4 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkAccountTypeUpdateRequestV4 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkAccountTypeUpdateRequestV4 }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -898,13 +988,23 @@ export const useUsersV4AdminApi_PatchUserBulkAccountType_v4 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersV4Admin.InvitationHistoriesUsers_v4, input]
+ * }
+ * ```
+ */
 export const useUsersV4AdminApi_GetInvitationHistoriesUsers_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<NamespaceInvitationHistoryUserV4Response, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespaceInvitationHistoryUserV4Response>) => void
   ): UseQueryResult<NamespaceInvitationHistoryUserV4Response, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersV4AdminApi_GetInvitationHistoriesUsers_v4>[1]
@@ -930,7 +1030,7 @@ export const useUsersV4AdminApi_DeleteMfaDisable_ByUserId_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await UsersV4AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

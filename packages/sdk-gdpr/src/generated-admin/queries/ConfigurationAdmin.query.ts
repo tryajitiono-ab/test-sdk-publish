@@ -35,7 +35,7 @@ export const useConfigurationAdminApi_DeleteEmailConfiguration = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams: {emails: string[]} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams: {emails: string[]} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & {  queryParams: {emails: string[]} }) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -53,13 +53,23 @@ export const useConfigurationAdminApi_DeleteEmailConfiguration = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigurationAdmin.EmailsConfigurations, input]
+ * }
+ * ```
+ */
 export const useConfigurationAdminApi_GetEmailsConfigurations = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigurationAdminApi_GetEmailsConfigurations>[1]
@@ -85,7 +95,7 @@ export const useConfigurationAdminApi_CreateEmailConfiguration = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: string[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: string[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: string[] }) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -108,7 +118,7 @@ export const useConfigurationAdminApi_UpdateEmailConfiguration = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: string[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: string[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: string[] }) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -126,13 +136,23 @@ export const useConfigurationAdminApi_UpdateEmailConfiguration = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigurationAdmin.ServicesConfigurations, input]
+ * }
+ * ```
+ */
 export const useConfigurationAdminApi_GetServicesConfigurations = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ServicesConfigurationResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ServicesConfigurationResponse>) => void
   ): UseQueryResult<ServicesConfigurationResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigurationAdminApi_GetServicesConfigurations>[1]
@@ -158,7 +178,7 @@ export const useConfigurationAdminApi_UpdateServiceConfiguration = (
     options?: Omit<UseMutationOptions<ServiceConfigurationUpdateRequest, AxiosError<ApiError>, SdkSetConfigParam & { data: ServiceConfigurationUpdateRequest }>, 'mutationKey'>,
     callback?: (data: ServiceConfigurationUpdateRequest) => void
   ): UseMutationResult<ServiceConfigurationUpdateRequest, AxiosError<ApiError>, SdkSetConfigParam & { data: ServiceConfigurationUpdateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ServiceConfigurationUpdateRequest }) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -181,7 +201,7 @@ export const useConfigurationAdminApi_DeleteServiceConfigurationReset = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -204,7 +224,7 @@ export const useConfigurationAdminApi_DeleteServicePlatformClosureConfig = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -222,13 +242,23 @@ export const useConfigurationAdminApi_DeleteServicePlatformClosureConfig = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigurationAdmin.ServicesPlatformsClosureConfig, input]
+ * }
+ * ```
+ */
 export const useConfigurationAdminApi_GetServicesPlatformsClosureConfig = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ServicesConfigurationResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ServicesConfigurationResponse>) => void
   ): UseQueryResult<ServicesConfigurationResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigurationAdminApi_GetServicesPlatformsClosureConfig>[1]
@@ -254,7 +284,7 @@ export const useConfigurationAdminApi_UpdateServicePlatformClosureConfig = (
     options?: Omit<UseMutationOptions<ServiceConfigurationUpdateRequest, AxiosError<ApiError>, SdkSetConfigParam & { data: ServiceConfigurationUpdateRequest }>, 'mutationKey'>,
     callback?: (data: ServiceConfigurationUpdateRequest) => void
   ): UseMutationResult<ServiceConfigurationUpdateRequest, AxiosError<ApiError>, SdkSetConfigParam & { data: ServiceConfigurationUpdateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ServiceConfigurationUpdateRequest }) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

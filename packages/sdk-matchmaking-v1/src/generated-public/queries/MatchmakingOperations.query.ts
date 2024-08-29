@@ -24,13 +24,23 @@ Messages = 'Matchmaking.MatchmakingOperations.Messages',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchmakingOperations.Version, input]
+ * }
+ * ```
+ */
 export const useMatchmakingOperationsApi_GetVersion = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingOperationsApi_GetVersion>[1]
@@ -51,13 +61,23 @@ export const useMatchmakingOperationsApi_GetVersion = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchmakingOperations.Messages, input]
+ * }
+ * ```
+ */
 export const useMatchmakingOperationsApi_GetMessages = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<AppMessageDeclarationArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AppMessageDeclarationArray>) => void
   ): UseQueryResult<AppMessageDeclarationArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingOperationsApi_GetMessages>[1]

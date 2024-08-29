@@ -31,7 +31,7 @@ export const useGametelemetryOperationsApi_CreateProtectedEvent = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: TelemetryBody[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: TelemetryBody[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: TelemetryBody[] }) => {
       const response = 
             (await GametelemetryOperationsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -49,13 +49,23 @@ export const useGametelemetryOperationsApi_CreateProtectedEvent = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GametelemetryOperations.PlaytimeProtected_BySteamId, input]
+ * }
+ * ```
+ */
 export const useGametelemetryOperationsApi_GetPlaytimeProtected_BySteamId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { steamId:string },
     options?: Omit<UseQueryOptions<PlayTimeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlayTimeResponse>) => void
   ): UseQueryResult<PlayTimeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGametelemetryOperationsApi_GetPlaytimeProtected_BySteamId>[1]
@@ -81,7 +91,7 @@ export const useGametelemetryOperationsApi_UpdatePlaytimeProtected_BySteamId_ByP
     options?: Omit<UseMutationOptions<PlayTimeResponse, AxiosError<ApiError>, SdkSetConfigParam & { steamId:string, playtime:string }>, 'mutationKey'>,
     callback?: (data: PlayTimeResponse) => void
   ): UseMutationResult<PlayTimeResponse, AxiosError<ApiError>, SdkSetConfigParam & { steamId:string, playtime:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { steamId:string, playtime:string }) => {
       const response = 
             (await GametelemetryOperationsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

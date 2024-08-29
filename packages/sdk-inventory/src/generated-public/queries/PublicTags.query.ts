@@ -23,13 +23,23 @@ export enum Key_PublicTags {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicTags.Tags, input]
+ * }
+ * ```
+ */
 export const usePublicTagsApi_GetTags = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, sortBy?: 'createdAt' | 'createdAt:asc' | 'createdAt:desc' | 'name' | 'name:asc' | 'name:desc'} },
     options?: Omit<UseQueryOptions<ListTagsResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListTagsResp>) => void
   ): UseQueryResult<ListTagsResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicTagsApi_GetTags>[1]

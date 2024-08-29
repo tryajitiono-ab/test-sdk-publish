@@ -29,7 +29,7 @@ export const useBlocksApi_PatchSyncMeBlock = (
     options?: Omit<UseMutationOptions<NativeUserBlockResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: NativeUserBlockRequest[] }>, 'mutationKey'>,
     callback?: (data: NativeUserBlockResponseArray) => void
   ): UseMutationResult<NativeUserBlockResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: NativeUserBlockRequest[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: NativeUserBlockRequest[] }) => {
       const response = 
             (await BlocksApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

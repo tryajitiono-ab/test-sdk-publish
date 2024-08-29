@@ -33,13 +33,23 @@ TokenOauth_ByPlatformId = 'Iam.OAuth.TokenOauth_ByPlatformId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OAuth.OauthJwks, input]
+ * }
+ * ```
+ */
 export const useOAuthApi_GetOauthJwks = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<JwkSet, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<JwkSet>) => void
   ): UseQueryResult<JwkSet, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOAuthApi_GetOauthJwks>[1]
@@ -65,7 +75,7 @@ export const useOAuthApi_PostOauthToken = (
     options?: Omit<UseMutationOptions<TokenResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {grant_type: 'authorization_code' | 'client_credentials' | 'password' | 'refresh_token',code?: string | null,extend_exp?: boolean | null,namespace?: string | null,password?: string | null,redirect_uri?: string | null,refresh_token?: string | null,username?: string | null} }>, 'mutationKey'>,
     callback?: (data: TokenResponse) => void
   ): UseMutationResult<TokenResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {grant_type: 'authorization_code' | 'client_credentials' | 'password' | 'refresh_token',code?: string | null,extend_exp?: boolean | null,namespace?: string | null,password?: string | null,redirect_uri?: string | null,refresh_token?: string | null,username?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {grant_type: 'authorization_code' | 'client_credentials' | 'password' | 'refresh_token',code?: string | null,extend_exp?: boolean | null,namespace?: string | null,password?: string | null,redirect_uri?: string | null,refresh_token?: string | null,username?: string | null} }) => {
       const response = 
             (await OAuthApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -88,7 +98,7 @@ export const useOAuthApi_PostOauthVerify = (
     options?: Omit<UseMutationOptions<TokenResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {token: string | null} }>, 'mutationKey'>,
     callback?: (data: TokenResponse) => void
   ): UseMutationResult<TokenResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {token: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {token: string | null} }) => {
       const response = 
             (await OAuthApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -111,7 +121,7 @@ export const useOAuthApi_PostOauthAuthorize = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {client_id: string | null,redirect_uri: string | null,response_type: 'code' | 'token',login?: string | null,password?: string | null,scope?: string | null,state?: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {client_id: string | null,redirect_uri: string | null,response_type: 'code' | 'token',login?: string | null,password?: string | null,scope?: string | null,state?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {client_id: string | null,redirect_uri: string | null,response_type: 'code' | 'token',login?: string | null,password?: string | null,scope?: string | null,state?: string | null} }) => {
       const response = 
             (await OAuthApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -134,7 +144,7 @@ export const useOAuthApi_PostOauthRevokeUser = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {userID: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {userID: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {userID: string | null} }) => {
       const response = 
             (await OAuthApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -157,7 +167,7 @@ export const useOAuthApi_PostOauthRevokeToken = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {token: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {token: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {token: string | null} }) => {
       const response = 
             (await OAuthApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -175,13 +185,23 @@ export const useOAuthApi_PostOauthRevokeToken = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OAuth.OauthRevocationlist, input]
+ * }
+ * ```
+ */
 export const useOAuthApi_GetOauthRevocationlist = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<RevocationList, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RevocationList>) => void
   ): UseQueryResult<RevocationList, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOAuthApi_GetOauthRevocationlist>[1]
@@ -207,7 +227,7 @@ export const useOAuthApi_UpdateRevokeOauth_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await OAuthApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -230,7 +250,7 @@ export const useOAuthApi_PostTokenOauth_ByPlatformId = (
     options?: Omit<UseMutationOptions<TokenResponse, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: {device_id?: string | null,macAddress?: string | null,platform_token?: string | null} }>, 'mutationKey'>,
     callback?: (data: TokenResponse) => void
   ): UseMutationResult<TokenResponse, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: {device_id?: string | null,macAddress?: string | null,platform_token?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platformId:string, data: {device_id?: string | null,macAddress?: string | null,platform_token?: string | null} }) => {
       const response = 
             (await OAuthApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

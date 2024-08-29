@@ -33,7 +33,7 @@ export const useMatchTicketsApi_CreateMatchTicket = (
     options?: Omit<UseMutationOptions<MatchTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchTicketRequest }>, 'mutationKey'>,
     callback?: (data: MatchTicketResponse) => void
   ): UseMutationResult<MatchTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchTicketRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: MatchTicketRequest }) => {
       const response = 
             (await MatchTicketsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -51,13 +51,23 @@ export const useMatchTicketsApi_CreateMatchTicket = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchTickets.MatchTicketsMe, input]
+ * }
+ * ```
+ */
 export const useMatchTicketsApi_GetMatchTicketsMe = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, matchPool?: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<MatchTicketStatuses, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MatchTicketStatuses>) => void
   ): UseQueryResult<MatchTicketStatuses, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchTicketsApi_GetMatchTicketsMe>[1]
@@ -83,7 +93,7 @@ export const useMatchTicketsApi_DeleteMatchTicket_ByTicketid = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ticketid:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ticketid:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { ticketid:string }) => {
       const response = 
             (await MatchTicketsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -101,13 +111,23 @@ export const useMatchTicketsApi_DeleteMatchTicket_ByTicketid = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchTickets.MatchTicket_ByTicketid, input]
+ * }
+ * ```
+ */
 export const useMatchTicketsApi_GetMatchTicket_ByTicketid = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { ticketid:string },
     options?: Omit<UseQueryOptions<MatchTicketStatus, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MatchTicketStatus>) => void
   ): UseQueryResult<MatchTicketStatus, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchTicketsApi_GetMatchTicket_ByTicketid>[1]

@@ -31,13 +31,23 @@ CleanerConfigurations = 'Buildinfo.UtilityAdmin.CleanerConfigurations',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UtilityAdmin.PingDiffer, input]
+ * }
+ * ```
+ */
 export const useUtilityAdminApi_GetPingDiffer = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<PingResultResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PingResultResponse>) => void
   ): UseQueryResult<PingResultResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUtilityAdminApi_GetPingDiffer>[1]
@@ -58,13 +68,23 @@ export const useUtilityAdminApi_GetPingDiffer = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UtilityAdmin.Configurations, input]
+ * }
+ * ```
+ */
 export const useUtilityAdminApi_GetConfigurations = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ConfigurationInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigurationInfo>) => void
   ): UseQueryResult<ConfigurationInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUtilityAdminApi_GetConfigurations>[1]
@@ -90,7 +110,7 @@ export const useUtilityAdminApi_PatchConfiguration = (
     options?: Omit<UseMutationOptions<ConfigurationInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigurationUpdate }>, 'mutationKey'>,
     callback?: (data: ConfigurationInfo) => void
   ): UseMutationResult<ConfigurationInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigurationUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ConfigurationUpdate }) => {
       const response = 
             (await UtilityAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -108,13 +128,23 @@ export const useUtilityAdminApi_PatchConfiguration = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UtilityAdmin.ValidateSdkConfig, input]
+ * }
+ * ```
+ */
 export const useUtilityAdminApi_GetValidateSdkConfig = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {clientId: string | null, redirectUri: string | null} },
     options?: Omit<UseQueryOptions<ClientPayload, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ClientPayload>) => void
   ): UseQueryResult<ClientPayload, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUtilityAdminApi_GetValidateSdkConfig>[1]
@@ -135,13 +165,23 @@ export const useUtilityAdminApi_GetValidateSdkConfig = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UtilityAdmin.CleanerConfigurations, input]
+ * }
+ * ```
+ */
 export const useUtilityAdminApi_GetCleanerConfigurations = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<CleanerConfigObject, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CleanerConfigObject>) => void
   ): UseQueryResult<CleanerConfigObject, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUtilityAdminApi_GetCleanerConfigurations>[1]

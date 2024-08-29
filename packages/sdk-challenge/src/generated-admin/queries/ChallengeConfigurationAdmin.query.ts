@@ -33,13 +33,23 @@ Randomize_ByChallengeCode = 'Challenge.ChallengeConfigurationAdmin.Randomize_ByC
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ChallengeConfigurationAdmin.Challenges, input]
+ * }
+ * ```
+ */
 export const useChallengeConfigurationAdminApi_GetChallenges = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, sortBy?: string | null, status?: 'INIT' | 'RETIRED' | 'TIED'} },
     options?: Omit<UseQueryOptions<ListChallengeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListChallengeResponse>) => void
   ): UseQueryResult<ListChallengeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useChallengeConfigurationAdminApi_GetChallenges>[1]
@@ -65,7 +75,7 @@ export const useChallengeConfigurationAdminApi_CreateChallenge = (
     options?: Omit<UseMutationOptions<ChallengeResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateChallengeRequest }>, 'mutationKey'>,
     callback?: (data: ChallengeResponse) => void
   ): UseMutationResult<ChallengeResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateChallengeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateChallengeRequest }) => {
       const response = 
             (await ChallengeConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -88,7 +98,7 @@ export const useChallengeConfigurationAdminApi_DeleteChallenge_ByChallengeCode =
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { challengeCode:string }) => {
       const response = 
             (await ChallengeConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -106,13 +116,23 @@ export const useChallengeConfigurationAdminApi_DeleteChallenge_ByChallengeCode =
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ChallengeConfigurationAdmin.Challenge_ByChallengeCode, input]
+ * }
+ * ```
+ */
 export const useChallengeConfigurationAdminApi_GetChallenge_ByChallengeCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { challengeCode:string },
     options?: Omit<UseQueryOptions<ChallengeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChallengeResponse>) => void
   ): UseQueryResult<ChallengeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useChallengeConfigurationAdminApi_GetChallenge_ByChallengeCode>[1]
@@ -138,7 +158,7 @@ export const useChallengeConfigurationAdminApi_UpdateChallenge_ByChallengeCode =
     options?: Omit<UseMutationOptions<ChallengeResponse, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string, data: UpdateChallengeRequest }>, 'mutationKey'>,
     callback?: (data: ChallengeResponse) => void
   ): UseMutationResult<ChallengeResponse, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string, data: UpdateChallengeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { challengeCode:string, data: UpdateChallengeRequest }) => {
       const response = 
             (await ChallengeConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -161,7 +181,7 @@ export const useChallengeConfigurationAdminApi_DeleteTied_ByChallengeCode = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { challengeCode:string }) => {
       const response = 
             (await ChallengeConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -179,13 +199,23 @@ export const useChallengeConfigurationAdminApi_DeleteTied_ByChallengeCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ChallengeConfigurationAdmin.Periods_ByChallengeCode, input]
+ * }
+ * ```
+ */
 export const useChallengeConfigurationAdminApi_GetPeriods_ByChallengeCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { challengeCode:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<ListPeriodsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListPeriodsResponse>) => void
   ): UseQueryResult<ListPeriodsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useChallengeConfigurationAdminApi_GetPeriods_ByChallengeCode>[1]
@@ -211,7 +241,7 @@ export const useChallengeConfigurationAdminApi_CreateRandomize_ByChallengeCode =
     options?: Omit<UseMutationOptions<ScheduleArray, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string }>, 'mutationKey'>,
     callback?: (data: ScheduleArray) => void
   ): UseMutationResult<ScheduleArray, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { challengeCode:string }) => {
       const response = 
             (await ChallengeConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

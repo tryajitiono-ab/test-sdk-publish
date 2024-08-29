@@ -25,13 +25,23 @@ PresenceUserPresence = 'Lobby.Presence.PresenceUserPresence',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Presence.PresenceUsersPresence, input]
+ * }
+ * ```
+ */
 export const usePresenceApi_GetPresenceUsersPresence = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {userIds: string | null, countOnly?: boolean | null} },
     options?: Omit<UseQueryOptions<GetUsersPresenceResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUsersPresenceResponse>) => void
   ): UseQueryResult<GetUsersPresenceResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePresenceApi_GetPresenceUsersPresence>[1]
@@ -57,7 +67,7 @@ export const usePresenceApi_CreatePresenceUserPresence = (
     options?: Omit<UseMutationOptions<GetUsersPresenceResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: RequestUserPresence, queryParams?: {countOnly?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: GetUsersPresenceResponse) => void
   ): UseMutationResult<GetUsersPresenceResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: RequestUserPresence, queryParams?: {countOnly?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: RequestUserPresence, queryParams?: {countOnly?: boolean | null} }) => {
       const response = 
             (await PresenceApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

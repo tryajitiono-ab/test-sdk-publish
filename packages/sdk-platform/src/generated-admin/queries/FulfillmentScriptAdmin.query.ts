@@ -27,13 +27,23 @@ FulfillmentScript_ById = 'Platform.FulfillmentScriptAdmin.FulfillmentScript_ById
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_FulfillmentScriptAdmin.FulfillmentScripts, input]
+ * }
+ * ```
+ */
 export const useFulfillmentScriptAdminApi_GetFulfillmentScripts = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<FulfillmentScriptInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FulfillmentScriptInfoArray>) => void
   ): UseQueryResult<FulfillmentScriptInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFulfillmentScriptAdminApi_GetFulfillmentScripts>[1]
@@ -59,7 +69,7 @@ export const useFulfillmentScriptAdminApi_DeleteFulfillmentScript_ById = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { id:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { id:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string }) => {
       const response = 
             (await FulfillmentScriptAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -77,13 +87,23 @@ export const useFulfillmentScriptAdminApi_DeleteFulfillmentScript_ById = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_FulfillmentScriptAdmin.FulfillmentScript_ById, input]
+ * }
+ * ```
+ */
 export const useFulfillmentScriptAdminApi_GetFulfillmentScript_ById = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { id:string },
     options?: Omit<UseQueryOptions<FulfillmentScriptInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FulfillmentScriptInfo>) => void
   ): UseQueryResult<FulfillmentScriptInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFulfillmentScriptAdminApi_GetFulfillmentScript_ById>[1]
@@ -109,7 +129,7 @@ export const useFulfillmentScriptAdminApi_PatchFulfillmentScript_ById = (
     options?: Omit<UseMutationOptions<FulfillmentScriptInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: FulfillmentScriptUpdate }>, 'mutationKey'>,
     callback?: (data: FulfillmentScriptInfo) => void
   ): UseMutationResult<FulfillmentScriptInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: FulfillmentScriptUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: FulfillmentScriptUpdate }) => {
       const response = 
             (await FulfillmentScriptAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -132,7 +152,7 @@ export const useFulfillmentScriptAdminApi_CreateFulfillmentScript_ById = (
     options?: Omit<UseMutationOptions<FulfillmentScriptInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: FulfillmentScriptCreate }>, 'mutationKey'>,
     callback?: (data: FulfillmentScriptInfo) => void
   ): UseMutationResult<FulfillmentScriptInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: FulfillmentScriptCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: FulfillmentScriptCreate }) => {
       const response = 
             (await FulfillmentScriptAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

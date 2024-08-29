@@ -26,13 +26,23 @@ AchievementSteam_ByUserId = 'Platform.AchievementPlatformAdmin.AchievementSteam_
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AchievementPlatformAdmin.AchievementXbl_ByUserId, input]
+ * }
+ * ```
+ */
 export const useAchievementPlatformAdminApi_GetAchievementXbl_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {xboxUserId: string | null} },
     options?: Omit<UseQueryOptions<XblUserAchievements, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XblUserAchievements>) => void
   ): UseQueryResult<XblUserAchievements, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAchievementPlatformAdminApi_GetAchievementXbl_ByUserId>[1]
@@ -58,7 +68,7 @@ export const useAchievementPlatformAdminApi_UpdateAchievementXbl_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: XblAchievementUpdateRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: XblAchievementUpdateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: XblAchievementUpdateRequest }) => {
       const response = 
             (await AchievementPlatformAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -81,7 +91,7 @@ export const useAchievementPlatformAdminApi_UpdateAchievementSteam_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: SteamAchievementUpdateRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: SteamAchievementUpdateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: SteamAchievementUpdateRequest }) => {
       const response = 
             (await AchievementPlatformAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

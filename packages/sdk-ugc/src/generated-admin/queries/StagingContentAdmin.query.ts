@@ -28,13 +28,23 @@ Approve_ByContentId_v2 = 'Ugc.StagingContentAdmin.Approve_ByContentId_v2',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StagingContentAdmin.StagingContents_v2, input]
+ * }
+ * ```
+ */
 export const useStagingContentAdminApi_GetStagingContents_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, sortBy?: string | null, status?: string | null} },
     options?: Omit<UseQueryOptions<PaginatedListStagingContentResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedListStagingContentResponse>) => void
   ): UseQueryResult<PaginatedListStagingContentResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStagingContentAdminApi_GetStagingContents_v2>[1]
@@ -55,13 +65,23 @@ export const useStagingContentAdminApi_GetStagingContents_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StagingContentAdmin.StagingContent_ByContentId_v2, input]
+ * }
+ * ```
+ */
 export const useStagingContentAdminApi_GetStagingContent_ByContentId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { contentId:string },
     options?: Omit<UseQueryOptions<StagingContentResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StagingContentResponse>) => void
   ): UseQueryResult<StagingContentResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStagingContentAdminApi_GetStagingContent_ByContentId_v2>[1]
@@ -82,13 +102,23 @@ export const useStagingContentAdminApi_GetStagingContent_ByContentId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StagingContentAdmin.StagingContents_ByUserId_v2, input]
+ * }
+ * ```
+ */
 export const useStagingContentAdminApi_GetStagingContents_ByUserId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number, sortBy?: string | null, status?: string | null} },
     options?: Omit<UseQueryOptions<PaginatedListStagingContentResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedListStagingContentResponse>) => void
   ): UseQueryResult<PaginatedListStagingContentResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStagingContentAdminApi_GetStagingContents_ByUserId_v2>[1]
@@ -114,7 +144,7 @@ export const useStagingContentAdminApi_CreateApprove_ByContentId_v2 = (
     options?: Omit<UseMutationOptions<StagingContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, data: ApproveStagingContentRequest }>, 'mutationKey'>,
     callback?: (data: StagingContentResponse) => void
   ): UseMutationResult<StagingContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, data: ApproveStagingContentRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { contentId:string, data: ApproveStagingContentRequest }) => {
       const response = 
             (await StagingContentAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

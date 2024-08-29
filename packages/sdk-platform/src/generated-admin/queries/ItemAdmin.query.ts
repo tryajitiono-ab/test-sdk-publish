@@ -80,13 +80,23 @@ ItemPurchaseConditionValidate = 'Platform.ItemAdmin.ItemPurchaseConditionValidat
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsConfigs, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsConfigs = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ItemTypeConfigInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ItemTypeConfigInfoArray>) => void
   ): UseQueryResult<ItemTypeConfigInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsConfigs>[1]
@@ -112,7 +122,7 @@ export const useItemAdminApi_CreateItemConfig = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ItemTypeConfigCreate }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ItemTypeConfigCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ItemTypeConfigCreate }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -135,7 +145,7 @@ export const useItemAdminApi_DeleteItemConfig_ById = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { id:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { id:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -153,13 +163,23 @@ export const useItemAdminApi_DeleteItemConfig_ById = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemConfig_ById, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemConfig_ById = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { id:string },
     options?: Omit<UseQueryOptions<ItemTypeConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ItemTypeConfigInfo>) => void
   ): UseQueryResult<ItemTypeConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemConfig_ById>[1]
@@ -185,7 +205,7 @@ export const useItemAdminApi_UpdateItemConfig_ById = (
     options?: Omit<UseMutationOptions<ItemTypeConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: ItemTypeConfigUpdate }>, 'mutationKey'>,
     callback?: (data: ItemTypeConfigInfo) => void
   ): UseMutationResult<ItemTypeConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: ItemTypeConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: ItemTypeConfigUpdate }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -203,13 +223,23 @@ export const useItemAdminApi_UpdateItemConfig_ById = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsConfigsSearch, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsConfigsSearch = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {itemType: 'APP' | 'BUNDLE' | 'CODE' | 'COINS' | 'EXTENSION' | 'INGAMEITEM' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SEASON' | 'SUBSCRIPTION', clazz?: string | null} },
     options?: Omit<UseQueryOptions<ItemTypeConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ItemTypeConfigInfo>) => void
   ): UseQueryResult<ItemTypeConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsConfigsSearch>[1]
@@ -235,7 +265,7 @@ export const useItemAdminApi_CreateItem = (
     options?: Omit<UseMutationOptions<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: ItemCreate, queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: FullItemInfo) => void
   ): UseMutationResult<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: ItemCreate, queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ItemCreate, queryParams: {storeId: string | null} }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -258,7 +288,7 @@ export const useItemAdminApi_UpdateItem = (
     options?: Omit<UseMutationOptions<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: InGameItemSync, queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: FullItemInfo) => void
   ): UseMutationResult<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: InGameItemSync, queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: InGameItemSync, queryParams: {storeId: string | null} }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -276,13 +306,23 @@ export const useItemAdminApi_UpdateItem = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsByIds, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsByIds = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {itemIds: string | null, activeOnly?: boolean | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<FullItemInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullItemInfoArray>) => void
   ): UseQueryResult<FullItemInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsByIds>[1]
@@ -303,13 +343,23 @@ export const useItemAdminApi_GetItemsByIds = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsBySku, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsBySku = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {sku: string | null, activeOnly?: boolean | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<FullItemInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullItemInfo>) => void
   ): UseQueryResult<FullItemInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsBySku>[1]
@@ -330,13 +380,23 @@ export const useItemAdminApi_GetItemsBySku = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsSearch, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsSearch = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {keyword: string | null, language: string | null, activeOnly?: boolean | null, itemType?: 'APP' | 'BUNDLE' | 'CODE' | 'COINS' | 'EXTENSION' | 'INGAMEITEM' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SEASON' | 'SUBSCRIPTION', limit?: number, offset?: number, sortBy?: string | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<FullItemPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullItemPagingSlicedResult>) => void
   ): UseQueryResult<FullItemPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsSearch>[1]
@@ -357,13 +417,23 @@ export const useItemAdminApi_GetItemsSearch = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsByAppId, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsByAppId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {appId: string | null, activeOnly?: boolean | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<FullItemInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullItemInfo>) => void
   ): UseQueryResult<FullItemInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsByAppId>[1]
@@ -389,7 +459,7 @@ export const useItemAdminApi_DeleteItem_ByItemId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string,  queryParams?: {force?: boolean | null, storeId?: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string,  queryParams?: {force?: boolean | null, storeId?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { itemId:string,  queryParams?: {force?: boolean | null, storeId?: string | null} }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -407,13 +477,23 @@ export const useItemAdminApi_DeleteItem_ByItemId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.Item_ByItemId, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItem_ByItemId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { itemId:string,  queryParams?: {activeOnly?: boolean | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<FullItemInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullItemInfo>) => void
   ): UseQueryResult<FullItemInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItem_ByItemId>[1]
@@ -439,7 +519,7 @@ export const useItemAdminApi_UpdateItem_ByItemId = (
     options?: Omit<UseMutationOptions<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, data: ItemUpdate, queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: FullItemInfo) => void
   ): UseMutationResult<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, data: ItemUpdate, queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { itemId:string, data: ItemUpdate, queryParams: {storeId: string | null} }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -457,13 +537,23 @@ export const useItemAdminApi_UpdateItem_ByItemId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsByCriteria, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsByCriteria = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {activeOnly?: boolean | null, appType?: 'DEMO' | 'DLC' | 'GAME' | 'SOFTWARE', availableDate?: string | null, baseAppId?: string | null, categoryPath?: string | null, features?: string | null, includeSubCategoryItem?: boolean | null, itemType?: 'APP' | 'BUNDLE' | 'CODE' | 'COINS' | 'EXTENSION' | 'INGAMEITEM' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SEASON' | 'SUBSCRIPTION', limit?: number, offset?: number, region?: string | null, sortBy?: string[], storeId?: string | null, tags?: string | null, targetNamespace?: string | null} },
     options?: Omit<UseQueryOptions<FullItemPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullItemPagingSlicedResult>) => void
   ): UseQueryResult<FullItemPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsByCriteria>[1]
@@ -489,7 +579,7 @@ export const useItemAdminApi_UpdateItemRegiondata = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkRegionDataChangeRequest, queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkRegionDataChangeRequest, queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkRegionDataChangeRequest, queryParams: {storeId: string | null} }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -507,13 +597,23 @@ export const useItemAdminApi_UpdateItemRegiondata = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.App_ByItemId, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetApp_ByItemId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { itemId:string,  queryParams?: {activeOnly?: boolean | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<FullAppInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullAppInfo>) => void
   ): UseQueryResult<FullAppInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetApp_ByItemId>[1]
@@ -539,7 +639,7 @@ export const useItemAdminApi_UpdateApp_ByItemId = (
     options?: Omit<UseMutationOptions<FullAppInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, data: AppUpdate, queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: FullAppInfo) => void
   ): UseMutationResult<FullAppInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, data: AppUpdate, queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { itemId:string, data: AppUpdate, queryParams: {storeId: string | null} }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -557,13 +657,23 @@ export const useItemAdminApi_UpdateApp_ByItemId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsBySkuLocale, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsBySkuLocale = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {sku: string | null, activeOnly?: boolean | null, language?: string | null, populateBundle?: boolean | null, region?: string | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<PopulatedItemInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PopulatedItemInfo>) => void
   ): UseQueryResult<PopulatedItemInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsBySkuLocale>[1]
@@ -584,13 +694,23 @@ export const useItemAdminApi_GetItemsBySkuLocale = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsItemIdBySku, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsItemIdBySku = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {sku: string | null, activeOnly?: boolean | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<ItemId, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ItemId>) => void
   ): UseQueryResult<ItemId, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsItemIdBySku>[1]
@@ -611,13 +731,23 @@ export const useItemAdminApi_GetItemsItemIdBySku = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsLocaleByIds, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsLocaleByIds = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {itemIds: string | null, activeOnly?: boolean | null, language?: string | null, region?: string | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<ItemInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ItemInfoArray>) => void
   ): UseQueryResult<ItemInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsLocaleByIds>[1]
@@ -638,13 +768,23 @@ export const useItemAdminApi_GetItemsLocaleByIds = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsItemIdBySkus, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsItemIdBySkus = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {sku?: string[], storeId?: string | null} },
     options?: Omit<UseQueryOptions<ItemIdArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ItemIdArray>) => void
   ): UseQueryResult<ItemIdArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsItemIdBySkus>[1]
@@ -665,13 +805,23 @@ export const useItemAdminApi_GetItemsItemIdBySkus = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsUncategorized, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsUncategorized = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {activeOnly?: boolean | null, limit?: number, offset?: number, sortBy?: string[], storeId?: string | null} },
     options?: Omit<UseQueryOptions<FullItemPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullItemPagingSlicedResult>) => void
   ): UseQueryResult<FullItemPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsUncategorized>[1]
@@ -692,13 +842,23 @@ export const useItemAdminApi_GetItemsUncategorized = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsByCriteria_v2, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsByCriteria_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {appType?: 'DEMO' | 'DLC' | 'GAME' | 'SOFTWARE', availableDate?: string | null, baseAppId?: string | null, categoryPath?: string | null, features?: string | null, includeSubCategoryItem?: boolean | null, itemName?: string | null, itemStatus?: 'ACTIVE' | 'INACTIVE', itemType?: string[], limit?: number, offset?: number, region?: string | null, sectionExclusive?: boolean | null, sortBy?: string[], storeId?: string | null, tags?: string | null, targetNamespace?: string | null, withTotal?: boolean | null} },
     options?: Omit<UseQueryOptions<FullItemPagingResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullItemPagingResult>) => void
   ): UseQueryResult<FullItemPagingResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsByCriteria_v2>[1]
@@ -719,13 +879,23 @@ export const useItemAdminApi_GetItemsByCriteria_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsEstimatedPrice, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsEstimatedPrice = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {itemIds: string | null, userId: string | null, platform?: string | null, region?: string | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<EstimatedPriceInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EstimatedPriceInfo>) => void
   ): UseQueryResult<EstimatedPriceInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsEstimatedPrice>[1]
@@ -751,7 +921,7 @@ export const useItemAdminApi_UpdateEnable_ByItemId = (
     options?: Omit<UseMutationOptions<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string,  queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: FullItemInfo) => void
   ): UseMutationResult<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string,  queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { itemId:string,  queryParams: {storeId: string | null} }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -769,13 +939,23 @@ export const useItemAdminApi_UpdateEnable_ByItemId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.Locale_ByItemId, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetLocale_ByItemId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { itemId:string,  queryParams?: {activeOnly?: boolean | null, language?: string | null, populateBundle?: boolean | null, region?: string | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<PopulatedItemInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PopulatedItemInfo>) => void
   ): UseQueryResult<PopulatedItemInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetLocale_ByItemId>[1]
@@ -801,7 +981,7 @@ export const useItemAdminApi_UpdateReturn_ByItemId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, data: ItemReturnRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, data: ItemReturnRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { itemId:string, data: ItemReturnRequest }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -819,13 +999,23 @@ export const useItemAdminApi_UpdateReturn_ByItemId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsPredicateTypes, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsPredicateTypes = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<AvailablePredicateArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AvailablePredicateArray>) => void
   ): UseQueryResult<AvailablePredicateArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsPredicateTypes>[1]
@@ -851,7 +1041,7 @@ export const useItemAdminApi_UpdateAcquire_ByItemId = (
     options?: Omit<UseMutationOptions<ItemAcquireResult, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, data: ItemAcquireRequest }>, 'mutationKey'>,
     callback?: (data: ItemAcquireResult) => void
   ): UseMutationResult<ItemAcquireResult, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, data: ItemAcquireRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { itemId:string, data: ItemAcquireRequest }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -874,7 +1064,7 @@ export const useItemAdminApi_UpdateDisable_ByItemId = (
     options?: Omit<UseMutationOptions<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string,  queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: FullItemInfo) => void
   ): UseMutationResult<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string,  queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { itemId:string,  queryParams: {storeId: string | null} }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -892,13 +1082,23 @@ export const useItemAdminApi_UpdateDisable_ByItemId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.Dynamic_ByItemId, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetDynamic_ByItemId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { itemId:string },
     options?: Omit<UseQueryOptions<ItemDynamicDataInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ItemDynamicDataInfo>) => void
   ): UseQueryResult<ItemDynamicDataInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetDynamic_ByItemId>[1]
@@ -919,13 +1119,23 @@ export const useItemAdminApi_GetDynamic_ByItemId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemAdmin.ItemsByFeaturesBasic, input]
+ * }
+ * ```
+ */
 export const useItemAdminApi_GetItemsByFeaturesBasic = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {activeOnly?: boolean | null, features?: string[]} },
     options?: Omit<UseQueryOptions<BasicItemArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BasicItemArray>) => void
   ): UseQueryResult<BasicItemArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemAdminApi_GetItemsByFeaturesBasic>[1]
@@ -951,7 +1161,7 @@ export const useItemAdminApi_DeleteFeature_ByItemId_ByFeature = (
     options?: Omit<UseMutationOptions<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, feature:string,  queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: FullItemInfo) => void
   ): UseMutationResult<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, feature:string,  queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { itemId:string, feature:string,  queryParams: {storeId: string | null} }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -974,7 +1184,7 @@ export const useItemAdminApi_UpdateFeature_ByItemId_ByFeature = (
     options?: Omit<UseMutationOptions<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, feature:string,  queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: FullItemInfo) => void
   ): UseMutationResult<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, feature:string,  queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { itemId:string, feature:string,  queryParams: {storeId: string | null} }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -997,7 +1207,7 @@ export const useItemAdminApi_UpdatePurchaseCondition_ByItemId = (
     options?: Omit<UseMutationOptions<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, data: PurchaseConditionUpdate, queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: FullItemInfo) => void
   ): UseMutationResult<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId:string, data: PurchaseConditionUpdate, queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { itemId:string, data: PurchaseConditionUpdate, queryParams: {storeId: string | null} }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1020,7 +1230,7 @@ export const useItemAdminApi_CreateItemPurchaseConditionValidate = (
     options?: Omit<UseMutationOptions<ItemPurchaseConditionValidateResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: ItemPurchaseConditionValidateRequest, queryParams: {userId: string | null, platform?: string | null} }>, 'mutationKey'>,
     callback?: (data: ItemPurchaseConditionValidateResultArray) => void
   ): UseMutationResult<ItemPurchaseConditionValidateResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: ItemPurchaseConditionValidateRequest, queryParams: {userId: string | null, platform?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ItemPurchaseConditionValidateRequest, queryParams: {userId: string | null, platform?: string | null} }) => {
       const response = 
             (await ItemAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

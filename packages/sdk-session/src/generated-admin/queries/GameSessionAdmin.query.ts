@@ -32,13 +32,23 @@ Statu_BySessionId_ByMemberId_ByStatusType = 'Session.GameSessionAdmin.Statu_BySe
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameSessionAdmin.Gamesessions, input]
+ * }
+ * ```
+ */
 export const useGameSessionAdminApi_GetGamesessions = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {configurationName?: string | null, dsPodName?: string | null, fromTime?: string | null, gameMode?: string | null, isPersistent?: string | null, isSoftDeleted?: string | null, joinability?: string | null, limit?: number, matchPool?: string | null, memberID?: string | null, offset?: number, order?: string | null, orderBy?: string | null, sessionID?: string | null, status?: string | null, statusV2?: string | null, toTime?: string | null} },
     options?: Omit<UseQueryOptions<GameSessionQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GameSessionQueryResponse>) => void
   ): UseQueryResult<GameSessionQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameSessionAdminApi_GetGamesessions>[1]
@@ -59,13 +69,23 @@ export const useGameSessionAdminApi_GetGamesessions = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameSessionAdmin.Gamesession, input]
+ * }
+ * ```
+ */
 export const useGameSessionAdminApi_FetchGamesession = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<GameSessionQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GameSessionQueryResponse>) => void
   ): UseQueryResult<GameSessionQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameSessionAdminApi_FetchGamesession>[1]
@@ -91,7 +111,7 @@ export const useGameSessionAdminApi_DeleteGamesessionBulk = (
     options?: Omit<UseMutationOptions<DeleteBulkGameSessionsApiResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: DeleteBulkGameSessionRequest }>, 'mutationKey'>,
     callback?: (data: DeleteBulkGameSessionsApiResponse) => void
   ): UseMutationResult<DeleteBulkGameSessionsApiResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: DeleteBulkGameSessionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DeleteBulkGameSessionRequest }) => {
       const response = 
             (await GameSessionAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -114,7 +134,7 @@ export const useGameSessionAdminApi_UpdateD_BySessionId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId:string, data: SetDsReadyRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId:string, data: SetDsReadyRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sessionId:string, data: SetDsReadyRequest }) => {
       const response = 
             (await GameSessionAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -137,7 +157,7 @@ export const useGameSessionAdminApi_DeleteKick_BySessionId_ByMemberId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId:string, memberId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId:string, memberId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sessionId:string, memberId:string }) => {
       const response = 
             (await GameSessionAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -160,7 +180,7 @@ export const useGameSessionAdminApi_UpdateStatu_BySessionId_ByMemberId_ByStatusT
     options?: Omit<UseMutationOptions<UpdateGameSessionMemberStatusResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionId:string, memberId:string, statusType:string }>, 'mutationKey'>,
     callback?: (data: UpdateGameSessionMemberStatusResponse) => void
   ): UseMutationResult<UpdateGameSessionMemberStatusResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionId:string, memberId:string, statusType:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sessionId:string, memberId:string, statusType:string }) => {
       const response = 
             (await GameSessionAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

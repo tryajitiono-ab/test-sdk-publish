@@ -31,13 +31,23 @@ ExtensionCategory = 'Reporting.ExtensionCategoriesAndAutoModerationActionsAdmin.
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ExtensionCategoriesAndAutoModerationActionsAdmin.ExtensionActions, input]
+ * }
+ * ```
+ */
 export const useExtensionCategoriesAndAutoModerationActionsAdminApi_GetExtensionActions = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ActionListApiResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ActionListApiResponse>) => void
   ): UseQueryResult<ActionListApiResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useExtensionCategoriesAndAutoModerationActionsAdminApi_GetExtensionActions>[1]
@@ -63,7 +73,7 @@ export const useExtensionCategoriesAndAutoModerationActionsAdminApi_CreateExtens
     options?: Omit<UseMutationOptions<ActionApiResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ActionApiRequest }>, 'mutationKey'>,
     callback?: (data: ActionApiResponse) => void
   ): UseMutationResult<ActionApiResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ActionApiRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ActionApiRequest }) => {
       const response = 
             (await ExtensionCategoriesAndAutoModerationActionsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -81,13 +91,23 @@ export const useExtensionCategoriesAndAutoModerationActionsAdminApi_CreateExtens
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ExtensionCategoriesAndAutoModerationActionsAdmin.ExtensionCategories, input]
+ * }
+ * ```
+ */
 export const useExtensionCategoriesAndAutoModerationActionsAdminApi_GetExtensionCategories = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {order?: 'asc' | 'ascending' | 'desc' | 'descending', sortBy?: 'extensionCategory' | 'extensionCategoryName'} },
     options?: Omit<UseQueryOptions<ExtensionCategoryListApiResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ExtensionCategoryListApiResponse>) => void
   ): UseQueryResult<ExtensionCategoryListApiResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useExtensionCategoriesAndAutoModerationActionsAdminApi_GetExtensionCategories>[1]
@@ -113,7 +133,7 @@ export const useExtensionCategoriesAndAutoModerationActionsAdminApi_CreateExtens
     options?: Omit<UseMutationOptions<ExtensionCategoryApiResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ExtensionCategoryApiRequest }>, 'mutationKey'>,
     callback?: (data: ExtensionCategoryApiResponse) => void
   ): UseMutationResult<ExtensionCategoryApiResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ExtensionCategoryApiRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ExtensionCategoryApiRequest }) => {
       const response = 
             (await ExtensionCategoriesAndAutoModerationActionsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

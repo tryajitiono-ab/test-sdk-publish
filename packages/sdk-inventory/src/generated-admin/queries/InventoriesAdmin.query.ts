@@ -33,13 +33,23 @@ Inventory_ByUserId_ByInventoryConfigurationCode = 'Inventory.InventoriesAdmin.In
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_InventoriesAdmin.Inventories, input]
+ * }
+ * ```
+ */
 export const useInventoriesAdminApi_GetInventories = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {inventoryConfigurationCode?: string | null, limit?: number, offset?: number, sortBy?: 'createdAt' | 'createdAt:asc' | 'createdAt:desc' | 'inventoryConfigurationCode' | 'inventoryConfigurationCode:asc' | 'inventoryConfigurationCode:desc' | 'updatedAt' | 'updatedAt:asc' | 'updatedAt:desc', userId?: string | null} },
     options?: Omit<UseQueryOptions<ListInventoryResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListInventoryResp>) => void
   ): UseQueryResult<ListInventoryResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useInventoriesAdminApi_GetInventories>[1]
@@ -65,7 +75,7 @@ export const useInventoriesAdminApi_CreateInventory = (
     options?: Omit<UseMutationOptions<InventoryResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateInventoryReq }>, 'mutationKey'>,
     callback?: (data: InventoryResp) => void
   ): UseMutationResult<InventoryResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateInventoryReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateInventoryReq }) => {
       const response = 
             (await InventoriesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -88,7 +98,7 @@ export const useInventoriesAdminApi_DeleteInventory_ByInventoryId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId:string, data: DeleteInventoryReq }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId:string, data: DeleteInventoryReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { inventoryId:string, data: DeleteInventoryReq }) => {
       const response = 
             (await InventoriesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -106,13 +116,23 @@ export const useInventoriesAdminApi_DeleteInventory_ByInventoryId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_InventoriesAdmin.Inventory_ByInventoryId, input]
+ * }
+ * ```
+ */
 export const useInventoriesAdminApi_GetInventory_ByInventoryId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { inventoryId:string },
     options?: Omit<UseQueryOptions<InventoryResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<InventoryResp>) => void
   ): UseQueryResult<InventoryResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useInventoriesAdminApi_GetInventory_ByInventoryId>[1]
@@ -138,7 +158,7 @@ export const useInventoriesAdminApi_UpdateInventory_ByInventoryId = (
     options?: Omit<UseMutationOptions<InventoryResp, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId:string, data: UpdateInventoryReq }>, 'mutationKey'>,
     callback?: (data: InventoryResp) => void
   ): UseMutationResult<InventoryResp, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId:string, data: UpdateInventoryReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { inventoryId:string, data: UpdateInventoryReq }) => {
       const response = 
             (await InventoriesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -161,7 +181,7 @@ export const useInventoriesAdminApi_CreatePurchaseable_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: PurchaseValidationReq }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: PurchaseValidationReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: PurchaseValidationReq }) => {
       const response = 
             (await InventoriesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -184,7 +204,7 @@ export const useInventoriesAdminApi_UpdateInventory_ByUserId_ByInventoryConfigur
     options?: Omit<UseMutationOptions<InventoryRespArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, inventoryConfigurationCode:string, data: UpdateInventoryReq }>, 'mutationKey'>,
     callback?: (data: InventoryRespArray) => void
   ): UseMutationResult<InventoryRespArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, inventoryConfigurationCode:string, data: UpdateInventoryReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, inventoryConfigurationCode:string, data: UpdateInventoryReq }) => {
       const response = 
             (await InventoriesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

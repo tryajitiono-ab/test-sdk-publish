@@ -44,7 +44,7 @@ export const useImageConfigAdminApi_CreateImage = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateImageRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateImageRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateImageRequest }) => {
       const response = 
             (await ImageConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -67,7 +67,7 @@ export const useImageConfigAdminApi_UpdateImage = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ImageRecordUpdate }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ImageRecordUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ImageRecordUpdate }) => {
       const response = 
             (await ImageConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -90,7 +90,7 @@ export const useImageConfigAdminApi_CreateRepository = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateRepositoryRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateRepositoryRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateRepositoryRequest }) => {
       const response = 
             (await ImageConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -113,7 +113,7 @@ export const useImageConfigAdminApi_CreateImagePatche = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateImagePatchRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateImagePatchRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateImagePatchRequest }) => {
       const response = 
             (await ImageConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -136,7 +136,7 @@ export const useImageConfigAdminApi_DeleteImage = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams: {imageURI: string | null, version: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams: {imageURI: string | null, version: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & {  queryParams: {imageURI: string | null, version: string | null} }) => {
       const response = 
             (await ImageConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -154,13 +154,23 @@ export const useImageConfigAdminApi_DeleteImage = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ImageConfigAdmin.Images, input]
+ * }
+ * ```
+ */
 export const useImageConfigAdminApi_GetImages = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {count: number, offset: number, q?: string | null, sortBy?: 'createdAt' | 'updatedAt' | 'version', sortDirection?: 'asc' | 'desc'} },
     options?: Omit<UseQueryOptions<ListImageResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListImageResponse>) => void
   ): UseQueryResult<ListImageResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useImageConfigAdminApi_GetImages>[1]
@@ -181,13 +191,23 @@ export const useImageConfigAdminApi_GetImages = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ImageConfigAdmin.Repository, input]
+ * }
+ * ```
+ */
 export const useImageConfigAdminApi_GetRepository = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<RepositoryRecord, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RepositoryRecord>) => void
   ): UseQueryResult<RepositoryRecord, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useImageConfigAdminApi_GetRepository>[1]
@@ -208,13 +228,23 @@ export const useImageConfigAdminApi_GetRepository = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ImageConfigAdmin.ImagesLimit, input]
+ * }
+ * ```
+ */
 export const useImageConfigAdminApi_GetImagesLimit = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<GetImageLimitResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetImageLimitResponse>) => void
   ): UseQueryResult<GetImageLimitResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useImageConfigAdminApi_GetImagesLimit>[1]
@@ -240,7 +270,7 @@ export const useImageConfigAdminApi_DeleteImagePatche = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams: {imageURI: string | null, version: string | null, versionPatch: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams: {imageURI: string | null, version: string | null, versionPatch: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & {  queryParams: {imageURI: string | null, version: string | null, versionPatch: string | null} }) => {
       const response = 
             (await ImageConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -258,13 +288,23 @@ export const useImageConfigAdminApi_DeleteImagePatche = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ImageConfigAdmin.ImageVersion_ByVersion, input]
+ * }
+ * ```
+ */
 export const useImageConfigAdminApi_GetImageVersion_ByVersion = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { version:string },
     options?: Omit<UseQueryOptions<GetImageDetailResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetImageDetailResponse>) => void
   ): UseQueryResult<GetImageDetailResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useImageConfigAdminApi_GetImageVersion_ByVersion>[1]
@@ -285,13 +325,23 @@ export const useImageConfigAdminApi_GetImageVersion_ByVersion = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ImageConfigAdmin.PatchesImages_ByVersion, input]
+ * }
+ * ```
+ */
 export const useImageConfigAdminApi_GetPatchesImages_ByVersion = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { version:string },
     options?: Omit<UseQueryOptions<ListImagePatchesResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListImagePatchesResponse>) => void
   ): UseQueryResult<ListImagePatchesResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useImageConfigAdminApi_GetPatchesImages_ByVersion>[1]
@@ -312,13 +362,23 @@ export const useImageConfigAdminApi_GetPatchesImages_ByVersion = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ImageConfigAdmin.PatcheImage_ByVersion_ByVersionPatch, input]
+ * }
+ * ```
+ */
 export const useImageConfigAdminApi_GetPatcheImage_ByVersion_ByVersionPatch = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { version:string, versionPatch:string },
     options?: Omit<UseQueryOptions<GetImagePatchDetailResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetImagePatchDetailResponse>) => void
   ): UseQueryResult<GetImagePatchDetailResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useImageConfigAdminApi_GetPatcheImage_ByVersion_ByVersionPatch>[1]

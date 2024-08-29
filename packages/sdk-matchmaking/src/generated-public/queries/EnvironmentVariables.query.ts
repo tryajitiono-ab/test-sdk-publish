@@ -23,13 +23,23 @@ export enum Key_EnvironmentVariables {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EnvironmentVariables.EnvironmentVariables, input]
+ * }
+ * ```
+ */
 export const useEnvironmentVariablesApi_GetEnvironmentVariables = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ListEnvironmentVariablesResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListEnvironmentVariablesResponse>) => void
   ): UseQueryResult<ListEnvironmentVariablesResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEnvironmentVariablesApi_GetEnvironmentVariables>[1]

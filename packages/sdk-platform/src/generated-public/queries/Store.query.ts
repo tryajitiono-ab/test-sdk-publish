@@ -23,13 +23,23 @@ export enum Key_Store {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Store.Stores, input]
+ * }
+ * ```
+ */
 export const useStoreApi_GetStores = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<StoreInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StoreInfoArray>) => void
   ): UseQueryResult<StoreInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStoreApi_GetStores>[1]

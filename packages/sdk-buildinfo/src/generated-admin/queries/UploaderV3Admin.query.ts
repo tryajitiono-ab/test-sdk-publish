@@ -56,7 +56,7 @@ export const useUploaderV3AdminApi_CreateDiffSend = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DiffPatchRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DiffPatchRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DiffPatchRequest }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -79,7 +79,7 @@ export const useUploaderV3AdminApi_CreatePatchSend = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DiffPatchRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DiffPatchRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DiffPatchRequest }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -102,7 +102,7 @@ export const useUploaderV3AdminApi_CreateListenDiffStatu = (
     options?: Omit<UseMutationOptions<FileDiffingStatus, AxiosError<ApiError>, SdkSetConfigParam & { data: DiffPatchRequest }>, 'mutationKey'>,
     callback?: (data: FileDiffingStatus) => void
   ): UseMutationResult<FileDiffingStatus, AxiosError<ApiError>, SdkSetConfigParam & { data: DiffPatchRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DiffPatchRequest }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -125,7 +125,7 @@ export const useUploaderV3AdminApi_CreateListenPatchStatu = (
     options?: Omit<UseMutationOptions<FileDiffingStatus, AxiosError<ApiError>, SdkSetConfigParam & { data: DiffPatchRequest }>, 'mutationKey'>,
     callback?: (data: FileDiffingStatus) => void
   ): UseMutationResult<FileDiffingStatus, AxiosError<ApiError>, SdkSetConfigParam & { data: DiffPatchRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DiffPatchRequest }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -148,7 +148,7 @@ export const useUploaderV3AdminApi_CreatePrezsyncupload_v3 = (
     options?: Omit<UseMutationOptions<DifferentialUploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { data: PreCheckUploadRequest }>, 'mutationKey'>,
     callback?: (data: DifferentialUploadSummary) => void
   ): UseMutationResult<DifferentialUploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { data: PreCheckUploadRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PreCheckUploadRequest }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -171,7 +171,7 @@ export const useUploaderV3AdminApi_CreateStartbuildupload_v3 = (
     options?: Omit<UseMutationOptions<DifferentialBuildManifest, AxiosError<ApiError>, SdkSetConfigParam & { data: UploadBuildManifest }>, 'mutationKey'>,
     callback?: (data: DifferentialBuildManifest) => void
   ): UseMutationResult<DifferentialBuildManifest, AxiosError<ApiError>, SdkSetConfigParam & { data: UploadBuildManifest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UploadBuildManifest }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -189,13 +189,23 @@ export const useUploaderV3AdminApi_CreateStartbuildupload_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UploaderV3Admin.Current_ByAppId_ByPlatformId_v3, input]
+ * }
+ * ```
+ */
 export const useUploaderV3AdminApi_GetCurrent_ByAppId_ByPlatformId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { appId:string, platformId:string },
     options?: Omit<UseQueryOptions<BuildManifest, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BuildManifest>) => void
   ): UseQueryResult<BuildManifest, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUploaderV3AdminApi_GetCurrent_ByAppId_ByPlatformId_v3>[1]
@@ -221,7 +231,7 @@ export const useUploaderV3AdminApi_CreateStartfileupload_ByUploaderId_v3 = (
     options?: Omit<UseMutationOptions<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { uploaderId:string, data: BinaryUpload }>, 'mutationKey'>,
     callback?: (data: UploadSummary) => void
   ): UseMutationResult<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { uploaderId:string, data: BinaryUpload }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { uploaderId:string, data: BinaryUpload }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -244,7 +254,7 @@ export const useUploaderV3AdminApi_CreateStartzsyncfileupload_ByFileHash_v3 = (
     options?: Omit<UseMutationOptions<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { fileHash:string, data: ZsyncDiffRequest }>, 'mutationKey'>,
     callback?: (data: UploadSummary) => void
   ): UseMutationResult<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { fileHash:string, data: ZsyncDiffRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { fileHash:string, data: ZsyncDiffRequest }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -262,13 +272,23 @@ export const useUploaderV3AdminApi_CreateStartzsyncfileupload_ByFileHash_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UploaderV3Admin.Uploadmode_ByAppId_ByPlatformId_v3, input]
+ * }
+ * ```
+ */
 export const useUploaderV3AdminApi_GetUploadmode_ByAppId_ByPlatformId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { appId:string, platformId:string },
     options?: Omit<UseQueryOptions<UploadModeCheck, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UploadModeCheck>) => void
   ): UseQueryResult<UploadModeCheck, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUploaderV3AdminApi_GetUploadmode_ByAppId_ByPlatformId_v3>[1]
@@ -294,7 +314,7 @@ export const useUploaderV3AdminApi_CreateStartbuildupload_BySourceBuildId_v3 = (
     options?: Omit<UseMutationOptions<DifferentialBuildManifest, AxiosError<ApiError>, SdkSetConfigParam & { sourceBuildId:string, data: UploadBuildManifest }>, 'mutationKey'>,
     callback?: (data: DifferentialBuildManifest) => void
   ): UseMutationResult<DifferentialBuildManifest, AxiosError<ApiError>, SdkSetConfigParam & { sourceBuildId:string, data: UploadBuildManifest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sourceBuildId:string, data: UploadBuildManifest }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -317,7 +337,7 @@ export const useUploaderV3AdminApi_PatchCommitfileupload_ByBuildId_ByHash_v3 = (
     options?: Omit<UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string, hash:string }>, 'mutationKey'>,
     callback?: (data: BlockManifest) => void
   ): UseMutationResult<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string, hash:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { buildId:string, hash:string }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -340,7 +360,7 @@ export const useUploaderV3AdminApi_CreateCommitbuildmanifest_BySourceBuildId_v3 
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sourceBuildId:string, data: BuildManifest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sourceBuildId:string, data: BuildManifest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sourceBuildId:string, data: BuildManifest }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -363,7 +383,7 @@ export const useUploaderV3AdminApi_PatchCommitmissingbytesfileupload_ByHash_v3 =
     options?: Omit<UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash:string, data: DiffPatchRequest }>, 'mutationKey'>,
     callback?: (data: BlockManifest) => void
   ): UseMutationResult<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash:string, data: DiffPatchRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { hash:string, data: DiffPatchRequest }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -386,7 +406,7 @@ export const useUploaderV3AdminApi_PatchCommitzsyncfileupload_ByBuildId_ByHash_v
     options?: Omit<UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string, hash:string, data: DiffPatchRequest }>, 'mutationKey'>,
     callback?: (data: BlockManifest) => void
   ): UseMutationResult<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string, hash:string, data: DiffPatchRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { buildId:string, hash:string, data: DiffPatchRequest }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -409,7 +429,7 @@ export const useUploaderV3AdminApi_UpdateVersion_ByAppId_ByVersion_ByPlatformId_
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { appId:string, version:string, platformId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { appId:string, version:string, platformId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { appId:string, version:string, platformId:string }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -432,7 +452,7 @@ export const useUploaderV3AdminApi_PatchHash_ByBuildId_ByHash_ByBlockSize_v3 = (
     options?: Omit<UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string, hash:string, blockSize:number, data: DiffPatchRequest }>, 'mutationKey'>,
     callback?: (data: BlockManifest) => void
   ): UseMutationResult<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string, hash:string, blockSize:number, data: DiffPatchRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { buildId:string, hash:string, blockSize:number, data: DiffPatchRequest }) => {
       const response = 
             (await UploaderV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -450,13 +470,23 @@ export const useUploaderV3AdminApi_PatchHash_ByBuildId_ByHash_ByBlockSize_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UploaderV3Admin.DestinationBuildIdDiff_BySourceBuildId_ByDestinationBuildId_ByDestinationFilePath_v3, input]
+ * }
+ * ```
+ */
 export const useUploaderV3AdminApi_GetDestinationBuildIdDiff_BySourceBuildId_ByDestinationBuildId_ByDestinationFilePath_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { sourceBuildId:string, destinationBuildId:string, destinationFilePath:string },
     options?: Omit<UseQueryOptions<FileDiffingStatus, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FileDiffingStatus>) => void
   ): UseQueryResult<FileDiffingStatus, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUploaderV3AdminApi_GetDestinationBuildIdDiff_BySourceBuildId_ByDestinationBuildId_ByDestinationFilePath_v3>[1]

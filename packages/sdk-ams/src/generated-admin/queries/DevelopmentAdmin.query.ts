@@ -28,13 +28,23 @@ DevelopmentServerConfiguration_ByDevelopmentServerConfigId = 'Ams.DevelopmentAdm
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DevelopmentAdmin.DevelopmentServerConfigurations, input]
+ * }
+ * ```
+ */
 export const useDevelopmentAdminApi_GetDevelopmentServerConfigurations = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {count?: number, offset?: number} },
     options?: Omit<UseQueryOptions<DevelopmentServerConfigurationListResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DevelopmentServerConfigurationListResponse>) => void
   ): UseQueryResult<DevelopmentServerConfigurationListResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDevelopmentAdminApi_GetDevelopmentServerConfigurations>[1]
@@ -60,7 +70,7 @@ export const useDevelopmentAdminApi_CreateDevelopmentServerConfiguration = (
     options?: Omit<UseMutationOptions<DevelopmentServerConfigurationCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: DevelopmentServerConfigurationCreateRequest }>, 'mutationKey'>,
     callback?: (data: DevelopmentServerConfigurationCreateResponse) => void
   ): UseMutationResult<DevelopmentServerConfigurationCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: DevelopmentServerConfigurationCreateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DevelopmentServerConfigurationCreateRequest }) => {
       const response = 
             (await DevelopmentAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -83,7 +93,7 @@ export const useDevelopmentAdminApi_DeleteDevelopmentServerConfiguration_ByDevel
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { developmentServerConfigID:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { developmentServerConfigID:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { developmentServerConfigID:string }) => {
       const response = 
             (await DevelopmentAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -101,13 +111,23 @@ export const useDevelopmentAdminApi_DeleteDevelopmentServerConfiguration_ByDevel
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DevelopmentAdmin.DevelopmentServerConfiguration_ByDevelopmentServerConfigId, input]
+ * }
+ * ```
+ */
 export const useDevelopmentAdminApi_GetDevelopmentServerConfiguration_ByDevelopmentServerConfigId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { developmentServerConfigID:string },
     options?: Omit<UseQueryOptions<DevelopmentServerConfigurationGetResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DevelopmentServerConfigurationGetResponse>) => void
   ): UseQueryResult<DevelopmentServerConfigurationGetResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDevelopmentAdminApi_GetDevelopmentServerConfiguration_ByDevelopmentServerConfigId>[1]

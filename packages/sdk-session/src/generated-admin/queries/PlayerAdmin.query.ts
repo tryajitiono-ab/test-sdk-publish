@@ -25,13 +25,23 @@ Attributes_ByUserId = 'Session.PlayerAdmin.Attributes_ByUserId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerAdmin.UsersAttributes, input]
+ * }
+ * ```
+ */
 export const usePlayerAdminApi_GetUsersAttributes = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {users?: string | null} },
     options?: Omit<UseQueryOptions<PlayerAttributesResponseBodyArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlayerAttributesResponseBodyArray>) => void
   ): UseQueryResult<PlayerAttributesResponseBodyArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerAdminApi_GetUsersAttributes>[1]
@@ -52,13 +62,23 @@ export const usePlayerAdminApi_GetUsersAttributes = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerAdmin.Attributes_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePlayerAdminApi_GetAttributes_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<PlayerAttributesResponseBody, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlayerAttributesResponseBody>) => void
   ): UseQueryResult<PlayerAttributesResponseBody, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerAdminApi_GetAttributes_ByUserId>[1]

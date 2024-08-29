@@ -29,7 +29,7 @@ export const useDownloaderAdminApi_CreateBlockUrl_ByBuildId = (
     options?: Omit<UseMutationOptions<BlockDownloadUrls, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string, data: BlockDownloadUrlsRequest }>, 'mutationKey'>,
     callback?: (data: BlockDownloadUrls) => void
   ): UseMutationResult<BlockDownloadUrls, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string, data: BlockDownloadUrlsRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { buildId:string, data: BlockDownloadUrlsRequest }) => {
       const response = 
             (await DownloaderAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

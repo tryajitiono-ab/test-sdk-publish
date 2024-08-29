@@ -32,7 +32,7 @@ export const useConfigAdminApi_CreateConfig = (
     options?: Omit<UseMutationOptions<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigCreate }>, 'mutationKey'>,
     callback?: (data: ConfigInfo) => void
   ): UseMutationResult<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ConfigCreate }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -55,7 +55,7 @@ export const useConfigAdminApi_DeleteConfig_ByConfigKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { configKey:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { configKey:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { configKey:string }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -73,13 +73,23 @@ export const useConfigAdminApi_DeleteConfig_ByConfigKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigAdmin.Config_ByConfigKey, input]
+ * }
+ * ```
+ */
 export const useConfigAdminApi_GetConfig_ByConfigKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { configKey:string },
     options?: Omit<UseQueryOptions<ConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigInfo>) => void
   ): UseQueryResult<ConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigAdminApi_GetConfig_ByConfigKey>[1]
@@ -105,7 +115,7 @@ export const useConfigAdminApi_PatchConfig_ByConfigKey = (
     options?: Omit<UseMutationOptions<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { configKey:string, data: ConfigUpdate }>, 'mutationKey'>,
     callback?: (data: ConfigInfo) => void
   ): UseMutationResult<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { configKey:string, data: ConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { configKey:string, data: ConfigUpdate }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -123,13 +133,23 @@ export const useConfigAdminApi_PatchConfig_ByConfigKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigAdmin.PublisherConfig_ByConfigKey, input]
+ * }
+ * ```
+ */
 export const useConfigAdminApi_GetPublisherConfig_ByConfigKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { configKey:string },
     options?: Omit<UseQueryOptions<ConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigInfo>) => void
   ): UseQueryResult<ConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigAdminApi_GetPublisherConfig_ByConfigKey>[1]

@@ -34,7 +34,7 @@ export const useReleaseNoteAdminApi_PatchReleasenoteUploadCommit_ByHash = (
     options?: Omit<UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash:string }>, 'mutationKey'>,
     callback?: (data: BlockManifest) => void
   ): UseMutationResult<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { hash:string }) => {
       const response = 
             (await ReleaseNoteAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -57,7 +57,7 @@ export const useReleaseNoteAdminApi_CreateReleasenoteUploadStart_ByUploaderId = 
     options?: Omit<UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { uploaderId:string, data: BinaryUpload }>, 'mutationKey'>,
     callback?: (data: BlockManifest) => void
   ): UseMutationResult<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { uploaderId:string, data: BinaryUpload }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { uploaderId:string, data: BinaryUpload }) => {
       const response = 
             (await ReleaseNoteAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -80,7 +80,7 @@ export const useReleaseNoteAdminApi_CreateReleasenoteManifestSave_ByUploadMode =
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { uploadMode:string, data: ReleaseNoteManifest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { uploadMode:string, data: ReleaseNoteManifest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { uploadMode:string, data: ReleaseNoteManifest }) => {
       const response = 
             (await ReleaseNoteAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -98,13 +98,23 @@ export const useReleaseNoteAdminApi_CreateReleasenoteManifestSave_ByUploadMode =
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ReleaseNoteAdmin.ReleasenoteManifestGet_ByAppId_ByPlatformId, input]
+ * }
+ * ```
+ */
 export const useReleaseNoteAdminApi_GetReleasenoteManifestGet_ByAppId_ByPlatformId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { appId:string, platformId:string,  queryParams?: {version?: string | null} },
     options?: Omit<UseQueryOptions<ReleaseNoteDto, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ReleaseNoteDto>) => void
   ): UseQueryResult<ReleaseNoteDto, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useReleaseNoteAdminApi_GetReleasenoteManifestGet_ByAppId_ByPlatformId>[1]

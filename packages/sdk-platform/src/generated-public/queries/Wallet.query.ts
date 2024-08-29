@@ -26,13 +26,23 @@ Transactions_ByUserId_ByCurrencyCode = 'Platform.Wallet.Transactions_ByUserId_By
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Wallet.UserMeWallet_ByCurrencyCode, input]
+ * }
+ * ```
+ */
 export const useWalletApi_GetUserMeWallet_ByCurrencyCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { currencyCode:string },
     options?: Omit<UseQueryOptions<PlatformWallet, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlatformWallet>) => void
   ): UseQueryResult<PlatformWallet, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWalletApi_GetUserMeWallet_ByCurrencyCode>[1]
@@ -53,13 +63,23 @@ export const useWalletApi_GetUserMeWallet_ByCurrencyCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Wallet.Wallet_ByUserId_ByCurrencyCode, input]
+ * }
+ * ```
+ */
 export const useWalletApi_GetWallet_ByUserId_ByCurrencyCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, currencyCode:string },
     options?: Omit<UseQueryOptions<PlatformWallet, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlatformWallet>) => void
   ): UseQueryResult<PlatformWallet, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWalletApi_GetWallet_ByUserId_ByCurrencyCode>[1]
@@ -80,13 +100,23 @@ export const useWalletApi_GetWallet_ByUserId_ByCurrencyCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Wallet.Transactions_ByUserId_ByCurrencyCode, input]
+ * }
+ * ```
+ */
 export const useWalletApi_GetTransactions_ByUserId_ByCurrencyCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, currencyCode:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<WalletTransactionPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<WalletTransactionPagingSlicedResult>) => void
   ): UseQueryResult<WalletTransactionPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWalletApi_GetTransactions_ByUserId_ByCurrencyCode>[1]

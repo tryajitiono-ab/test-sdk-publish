@@ -40,7 +40,7 @@ export const useAdminApi_CreateNotificationFreeform = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: FreeFormNotificationRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: FreeFormNotificationRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: FreeFormNotificationRequest }) => {
       const response = 
             (await AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -63,7 +63,7 @@ export const useAdminApi_CreateNotificationTemplated = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: NotificationWithTemplateRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: NotificationWithTemplateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: NotificationWithTemplateRequest }) => {
       const response = 
             (await AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -81,13 +81,23 @@ export const useAdminApi_CreateNotificationTemplated = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Admin.NotificationTemplates, input]
+ * }
+ * ```
+ */
 export const useAdminApi_GetNotificationTemplates = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<TemplateResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TemplateResponseArray>) => void
   ): UseQueryResult<TemplateResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAdminApi_GetNotificationTemplates>[1]
@@ -113,7 +123,7 @@ export const useAdminApi_CreateNotificationTemplate = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTemplateRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTemplateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateTemplateRequest }) => {
       const response = 
             (await AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -136,7 +146,7 @@ export const useAdminApi_DeleteNotificationTemplate_ByTemplateSlug = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { templateSlug:string }) => {
       const response = 
             (await AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -154,13 +164,23 @@ export const useAdminApi_DeleteNotificationTemplate_ByTemplateSlug = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Admin.NotificationTemplate_ByTemplateSlug, input]
+ * }
+ * ```
+ */
 export const useAdminApi_GetNotificationTemplate_ByTemplateSlug = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { templateSlug:string,  queryParams?: {after?: string | null, before?: string | null, limit?: number} },
     options?: Omit<UseQueryOptions<TemplateLocalizationResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TemplateLocalizationResponse>) => void
   ): UseQueryResult<TemplateLocalizationResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAdminApi_GetNotificationTemplate_ByTemplateSlug>[1]
@@ -186,7 +206,7 @@ export const useAdminApi_DeleteLanguageNotification_ByTemplateSlug_ByTemplateLan
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string, templateLanguage:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string, templateLanguage:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { templateSlug:string, templateLanguage:string }) => {
       const response = 
             (await AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -204,13 +224,23 @@ export const useAdminApi_DeleteLanguageNotification_ByTemplateSlug_ByTemplateLan
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Admin.LanguageNotification_ByTemplateSlug_ByTemplateLanguage, input]
+ * }
+ * ```
+ */
 export const useAdminApi_GetLanguageNotification_ByTemplateSlug_ByTemplateLanguage = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { templateSlug:string, templateLanguage:string },
     options?: Omit<UseQueryOptions<TemplateLocalization, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TemplateLocalization>) => void
   ): UseQueryResult<TemplateLocalization, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAdminApi_GetLanguageNotification_ByTemplateSlug_ByTemplateLanguage>[1]
@@ -236,7 +266,7 @@ export const useAdminApi_UpdateLanguageNotification_ByTemplateSlug_ByTemplateLan
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string, templateLanguage:string, data: UpdateTemplateRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string, templateLanguage:string, data: UpdateTemplateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { templateSlug:string, templateLanguage:string, data: UpdateTemplateRequest }) => {
       const response = 
             (await AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -259,7 +289,7 @@ export const useAdminApi_CreatePublishNotification_ByTemplateSlug_ByTemplateLang
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string, templateLanguage:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string, templateLanguage:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { templateSlug:string, templateLanguage:string }) => {
       const response = 
             (await AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

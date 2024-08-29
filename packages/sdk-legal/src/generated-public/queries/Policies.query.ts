@@ -26,13 +26,23 @@ PolicyCountry_ByCountryCode_ByNS = 'Legal.Policies.PolicyCountry_ByCountryCode_B
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Policies.PoliciesCountriesList, input]
+ * }
+ * ```
+ */
 export const usePoliciesApi_GetPoliciesCountriesList = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePoliciesApi_GetPoliciesCountriesList>[1]
@@ -53,13 +63,23 @@ export const usePoliciesApi_GetPoliciesCountriesList = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Policies.Policy_ByNamespace, input]
+ * }
+ * ```
+ */
 export const usePoliciesApi_GetPolicy_ByNamespace = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {alwaysIncludeDefault?: boolean | null, defaultOnEmpty?: boolean | null, policyType?: 'LEGAL_DOCUMENT_TYPE' | 'MARKETING_PREFERENCE_TYPE', tags?: string | null, visibleOnly?: boolean | null} },
     options?: Omit<UseQueryOptions<RetrievePolicyPublicResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrievePolicyPublicResponseArray>) => void
   ): UseQueryResult<RetrievePolicyPublicResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePoliciesApi_GetPolicy_ByNamespace>[1]
@@ -80,13 +100,23 @@ export const usePoliciesApi_GetPolicy_ByNamespace = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Policies.PolicyCountry_ByCountryCode, input]
+ * }
+ * ```
+ */
 export const usePoliciesApi_GetPolicyCountry_ByCountryCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { countryCode:string,  queryParams?: {defaultOnEmpty?: boolean | null, policyType?: 'LEGAL_DOCUMENT_TYPE' | 'MARKETING_PREFERENCE_TYPE', tags?: string | null, visibleOnly?: boolean | null} },
     options?: Omit<UseQueryOptions<RetrievePolicyPublicResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrievePolicyPublicResponseArray>) => void
   ): UseQueryResult<RetrievePolicyPublicResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePoliciesApi_GetPolicyCountry_ByCountryCode>[1]
@@ -107,13 +137,23 @@ export const usePoliciesApi_GetPolicyCountry_ByCountryCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Policies.PolicyCountry_ByCountryCode_ByNS, input]
+ * }
+ * ```
+ */
 export const usePoliciesApi_GetPolicyCountry_ByCountryCode_ByNS = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { countryCode:string,  queryParams?: {alwaysIncludeDefault?: boolean | null, defaultOnEmpty?: boolean | null, policyType?: 'LEGAL_DOCUMENT_TYPE' | 'MARKETING_PREFERENCE_TYPE', tags?: string | null, visibleOnly?: boolean | null} },
     options?: Omit<UseQueryOptions<RetrievePolicyPublicResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrievePolicyPublicResponseArray>) => void
   ): UseQueryResult<RetrievePolicyPublicResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePoliciesApi_GetPolicyCountry_ByCountryCode_ByNS>[1]

@@ -40,7 +40,7 @@ export const useRewardAdminApi_CreateReward = (
     options?: Omit<UseMutationOptions<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: RewardCreate }>, 'mutationKey'>,
     callback?: (data: RewardInfo) => void
   ): UseMutationResult<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: RewardCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: RewardCreate }) => {
       const response = 
             (await RewardAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -58,13 +58,23 @@ export const useRewardAdminApi_CreateReward = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RewardAdmin.RewardsExport, input]
+ * }
+ * ```
+ */
 export const useRewardAdminApi_GetRewardsExport = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRewardAdminApi_GetRewardsExport>[1]
@@ -90,7 +100,7 @@ export const useRewardAdminApi_CreateRewardImport = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File}, queryParams: {replaceExisting: boolean | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File}, queryParams: {replaceExisting: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {file?: File}, queryParams: {replaceExisting: boolean | null} }) => {
       const response = 
             (await RewardAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -113,7 +123,7 @@ export const useRewardAdminApi_DeleteReward_ByRewardId = (
     options?: Omit<UseMutationOptions<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { rewardId:string }>, 'mutationKey'>,
     callback?: (data: RewardInfo) => void
   ): UseMutationResult<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { rewardId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { rewardId:string }) => {
       const response = 
             (await RewardAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -131,13 +141,23 @@ export const useRewardAdminApi_DeleteReward_ByRewardId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RewardAdmin.Reward_ByRewardId, input]
+ * }
+ * ```
+ */
 export const useRewardAdminApi_GetReward_ByRewardId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { rewardId:string },
     options?: Omit<UseQueryOptions<RewardInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RewardInfo>) => void
   ): UseQueryResult<RewardInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRewardAdminApi_GetReward_ByRewardId>[1]
@@ -163,7 +183,7 @@ export const useRewardAdminApi_UpdateReward_ByRewardId = (
     options?: Omit<UseMutationOptions<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { rewardId:string, data: RewardUpdate }>, 'mutationKey'>,
     callback?: (data: RewardInfo) => void
   ): UseMutationResult<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { rewardId:string, data: RewardUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { rewardId:string, data: RewardUpdate }) => {
       const response = 
             (await RewardAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -181,13 +201,23 @@ export const useRewardAdminApi_UpdateReward_ByRewardId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RewardAdmin.RewardsByCriteria, input]
+ * }
+ * ```
+ */
 export const useRewardAdminApi_GetRewardsByCriteria = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {eventTopic?: string | null, limit?: number, offset?: number, sortBy?: string[]} },
     options?: Omit<UseQueryOptions<RewardPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RewardPagingSlicedResult>) => void
   ): UseQueryResult<RewardPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRewardAdminApi_GetRewardsByCriteria>[1]
@@ -213,7 +243,7 @@ export const useRewardAdminApi_UpdateMatch_ByRewardId = (
     options?: Omit<UseMutationOptions<ConditionMatchResult, AxiosError<ApiError>, SdkSetConfigParam & { rewardId:string, data: EventPayload }>, 'mutationKey'>,
     callback?: (data: ConditionMatchResult) => void
   ): UseMutationResult<ConditionMatchResult, AxiosError<ApiError>, SdkSetConfigParam & { rewardId:string, data: EventPayload }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { rewardId:string, data: EventPayload }) => {
       const response = 
             (await RewardAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -236,7 +266,7 @@ export const useRewardAdminApi_DeleteRecord_ByRewardId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { rewardId:string, data: DeleteRewardConditionRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { rewardId:string, data: DeleteRewardConditionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { rewardId:string, data: DeleteRewardConditionRequest }) => {
       const response = 
             (await RewardAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

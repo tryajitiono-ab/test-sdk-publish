@@ -40,13 +40,23 @@ Player_BySessionId_ByUserId = 'Sessionbrowser.Session.Player_BySessionId_ByUserI
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Session.Gamesession, input]
+ * }
+ * ```
+ */
 export const useSessionApi_GetGamesession = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {session_type: string | null, game_mode?: string | null, game_version?: string | null, joinable?: string | null, limit?: number, match_exist?: string | null, match_id?: string | null, offset?: number, server_status?: string | null, user_id?: string | null} },
     options?: Omit<UseQueryOptions<SessionQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SessionQueryResponse>) => void
   ): UseQueryResult<SessionQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSessionApi_GetGamesession>[1]
@@ -72,7 +82,7 @@ export const useSessionApi_CreateGamesession = (
     options?: Omit<UseMutationOptions<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateSessionRequest }>, 'mutationKey'>,
     callback?: (data: SessionResponse) => void
   ): UseMutationResult<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateSessionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateSessionRequest }) => {
       const response = 
             (await SessionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -90,13 +100,23 @@ export const useSessionApi_CreateGamesession = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Session.GamesessionBulk, input]
+ * }
+ * ```
+ */
 export const useSessionApi_GetGamesessionBulk = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {user_ids: string | null} },
     options?: Omit<UseQueryOptions<SessionByUserIDsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SessionByUserIDsResponse>) => void
   ): UseQueryResult<SessionByUserIDsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSessionApi_GetGamesessionBulk>[1]
@@ -117,13 +137,23 @@ export const useSessionApi_GetGamesessionBulk = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Session.Recentplayer_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSessionApi_GetRecentplayer_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userID:string },
     options?: Omit<UseQueryOptions<RecentPlayerQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RecentPlayerQueryResponse>) => void
   ): UseQueryResult<RecentPlayerQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSessionApi_GetRecentplayer_ByUserId>[1]
@@ -149,7 +179,7 @@ export const useSessionApi_DeleteGamesession_BySessionId = (
     options?: Omit<UseMutationOptions<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string }>, 'mutationKey'>,
     callback?: (data: SessionResponse) => void
   ): UseMutationResult<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sessionID:string }) => {
       const response = 
             (await SessionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -167,13 +197,23 @@ export const useSessionApi_DeleteGamesession_BySessionId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Session.Gamesession_BySessionId, input]
+ * }
+ * ```
+ */
 export const useSessionApi_GetGamesession_BySessionId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { sessionID:string },
     options?: Omit<UseQueryOptions<SessionResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SessionResponse>) => void
   ): UseQueryResult<SessionResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSessionApi_GetGamesession_BySessionId>[1]
@@ -199,7 +239,7 @@ export const useSessionApi_UpdateGamesession_BySessionId = (
     options?: Omit<UseMutationOptions<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string, data: UpdateSessionRequest }>, 'mutationKey'>,
     callback?: (data: SessionResponse) => void
   ): UseMutationResult<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string, data: UpdateSessionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sessionID:string, data: UpdateSessionRequest }) => {
       const response = 
             (await SessionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -217,13 +257,23 @@ export const useSessionApi_UpdateGamesession_BySessionId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Session.Join_BySessionId, input]
+ * }
+ * ```
+ */
 export const useSessionApi_FetchJoin_BySessionId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { sessionID:string, data: JoinGameSessionRequest },
     options?: Omit<UseQueryOptions<SessionResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SessionResponse>) => void
   ): UseQueryResult<SessionResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSessionApi_FetchJoin_BySessionId>[1]
@@ -249,7 +299,7 @@ export const useSessionApi_UpdatePlayer_BySessionId = (
     options?: Omit<UseMutationOptions<AddPlayerResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string, data: AddPlayerRequest }>, 'mutationKey'>,
     callback?: (data: AddPlayerResponse) => void
   ): UseMutationResult<AddPlayerResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string, data: AddPlayerRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sessionID:string, data: AddPlayerRequest }) => {
       const response = 
             (await SessionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -272,7 +322,7 @@ export const useSessionApi_DeleteLocald_BySessionId = (
     options?: Omit<UseMutationOptions<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string }>, 'mutationKey'>,
     callback?: (data: SessionResponse) => void
   ): UseMutationResult<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sessionID:string }) => {
       const response = 
             (await SessionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -295,7 +345,7 @@ export const useSessionApi_UpdateSetting_BySessionId = (
     options?: Omit<UseMutationOptions<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string, data: UpdateSettingsRequest }>, 'mutationKey'>,
     callback?: (data: SessionResponse) => void
   ): UseMutationResult<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string, data: UpdateSettingsRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sessionID:string, data: UpdateSettingsRequest }) => {
       const response = 
             (await SessionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -318,7 +368,7 @@ export const useSessionApi_DeletePlayer_BySessionId_ByUserId = (
     options?: Omit<UseMutationOptions<AddPlayerResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string, userID:string }>, 'mutationKey'>,
     callback?: (data: AddPlayerResponse) => void
   ): UseMutationResult<AddPlayerResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string, userID:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sessionID:string, userID:string }) => {
       const response = 
             (await SessionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

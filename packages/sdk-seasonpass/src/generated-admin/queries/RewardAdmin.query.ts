@@ -28,13 +28,23 @@ Reward_BySeasonId_ByCode = 'Seasonpass.RewardAdmin.Reward_BySeasonId_ByCode',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RewardAdmin.Rewards_BySeasonId, input]
+ * }
+ * ```
+ */
 export const useRewardAdminApi_GetRewards_BySeasonId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { seasonId:string,  queryParams?: {q?: string | null} },
     options?: Omit<UseQueryOptions<RewardInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RewardInfoArray>) => void
   ): UseQueryResult<RewardInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRewardAdminApi_GetRewards_BySeasonId>[1]
@@ -60,7 +70,7 @@ export const useRewardAdminApi_CreateReward_BySeasonId = (
     options?: Omit<UseMutationOptions<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, data: RewardCreate }>, 'mutationKey'>,
     callback?: (data: RewardInfo) => void
   ): UseMutationResult<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, data: RewardCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { seasonId:string, data: RewardCreate }) => {
       const response = 
             (await RewardAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -83,7 +93,7 @@ export const useRewardAdminApi_DeleteReward_BySeasonId_ByCode = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, code:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, code:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { seasonId:string, code:string }) => {
       const response = 
             (await RewardAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -101,13 +111,23 @@ export const useRewardAdminApi_DeleteReward_BySeasonId_ByCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RewardAdmin.Reward_BySeasonId_ByCode, input]
+ * }
+ * ```
+ */
 export const useRewardAdminApi_GetReward_BySeasonId_ByCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { seasonId:string, code:string },
     options?: Omit<UseQueryOptions<RewardInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RewardInfo>) => void
   ): UseQueryResult<RewardInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRewardAdminApi_GetReward_BySeasonId_ByCode>[1]
@@ -133,7 +153,7 @@ export const useRewardAdminApi_PatchReward_BySeasonId_ByCode = (
     options?: Omit<UseMutationOptions<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, code:string, data: RewardUpdate }>, 'mutationKey'>,
     callback?: (data: RewardInfo) => void
   ): UseMutationResult<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId:string, code:string, data: RewardUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { seasonId:string, code:string, data: RewardUpdate }) => {
       const response = 
             (await RewardAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

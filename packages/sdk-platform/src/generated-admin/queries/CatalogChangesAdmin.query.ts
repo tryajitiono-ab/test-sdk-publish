@@ -38,7 +38,7 @@ export const useCatalogChangesAdminApi_UpdateCatalogChangeSelectAll_ByStoreId = 
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { storeId:string }) => {
       const response = 
             (await CatalogChangesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -56,13 +56,23 @@ export const useCatalogChangesAdminApi_UpdateCatalogChangeSelectAll_ByStoreId = 
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CatalogChangesAdmin.CatalogChangesByCriteria_ByStoreId, input]
+ * }
+ * ```
+ */
 export const useCatalogChangesAdminApi_GetCatalogChangesByCriteria_ByStoreId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { storeId:string,  queryParams?: {action?: 'CREATE' | 'DELETE' | 'UPDATE', itemSku?: string | null, itemType?: 'APP' | 'BUNDLE' | 'CODE' | 'COINS' | 'EXTENSION' | 'INGAMEITEM' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SEASON' | 'SUBSCRIPTION', limit?: number, offset?: number, selected?: boolean | null, sortBy?: string[], status?: 'PUBLISHED' | 'UNPUBLISHED', type?: 'CATEGORY' | 'ITEM' | 'SECTION' | 'STORE' | 'VIEW', updatedAtEnd?: string | null, updatedAtStart?: string | null, withTotal?: boolean | null} },
     options?: Omit<UseQueryOptions<CatalogChangePagingResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CatalogChangePagingResult>) => void
   ): UseQueryResult<CatalogChangePagingResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCatalogChangesAdminApi_GetCatalogChangesByCriteria_ByStoreId>[1]
@@ -88,7 +98,7 @@ export const useCatalogChangesAdminApi_UpdateCatalogChangePublishAll_ByStoreId =
     options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string }>, 'mutationKey'>,
     callback?: (data: StoreInfo) => void
   ): UseMutationResult<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { storeId:string }) => {
       const response = 
             (await CatalogChangesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -106,13 +116,23 @@ export const useCatalogChangesAdminApi_UpdateCatalogChangePublishAll_ByStoreId =
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CatalogChangesAdmin.CatalogChangesStatistics_ByStoreId, input]
+ * }
+ * ```
+ */
 export const useCatalogChangesAdminApi_GetCatalogChangesStatistics_ByStoreId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { storeId:string,  queryParams?: {action?: 'CREATE' | 'DELETE' | 'UPDATE', itemSku?: string | null, itemType?: 'APP' | 'BUNDLE' | 'CODE' | 'COINS' | 'EXTENSION' | 'INGAMEITEM' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SEASON' | 'SUBSCRIPTION', type?: 'CATEGORY' | 'ITEM' | 'SECTION' | 'STORE' | 'VIEW', updatedAtEnd?: string | null, updatedAtStart?: string | null} },
     options?: Omit<UseQueryOptions<CatalogChangeStatistics, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CatalogChangeStatistics>) => void
   ): UseQueryResult<CatalogChangeStatistics, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCatalogChangesAdminApi_GetCatalogChangesStatistics_ByStoreId>[1]
@@ -138,7 +158,7 @@ export const useCatalogChangesAdminApi_UpdateCatalogChangeUnselectAll_ByStoreId 
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { storeId:string }) => {
       const response = 
             (await CatalogChangesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -161,7 +181,7 @@ export const useCatalogChangesAdminApi_UpdateCatalogChangePublishSelected_ByStor
     options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string }>, 'mutationKey'>,
     callback?: (data: StoreInfo) => void
   ): UseMutationResult<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { storeId:string }) => {
       const response = 
             (await CatalogChangesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -184,7 +204,7 @@ export const useCatalogChangesAdminApi_UpdateSelect_ByStoreId_ByChangeId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string, changeId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string, changeId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { storeId:string, changeId:string }) => {
       const response = 
             (await CatalogChangesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -207,7 +227,7 @@ export const useCatalogChangesAdminApi_UpdateUnselect_ByStoreId_ByChangeId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string, changeId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string, changeId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { storeId:string, changeId:string }) => {
       const response = 
             (await CatalogChangesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -230,7 +250,7 @@ export const useCatalogChangesAdminApi_UpdateCatalogChangeSelectAllByCriteria_By
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string,  queryParams?: {action?: 'CREATE' | 'DELETE' | 'UPDATE', itemSku?: string | null, itemType?: 'APP' | 'BUNDLE' | 'CODE' | 'COINS' | 'EXTENSION' | 'INGAMEITEM' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SEASON' | 'SUBSCRIPTION', selected?: boolean | null, type?: 'CATEGORY' | 'ITEM' | 'SECTION' | 'STORE' | 'VIEW', updatedAtEnd?: string | null, updatedAtStart?: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string,  queryParams?: {action?: 'CREATE' | 'DELETE' | 'UPDATE', itemSku?: string | null, itemType?: 'APP' | 'BUNDLE' | 'CODE' | 'COINS' | 'EXTENSION' | 'INGAMEITEM' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SEASON' | 'SUBSCRIPTION', selected?: boolean | null, type?: 'CATEGORY' | 'ITEM' | 'SECTION' | 'STORE' | 'VIEW', updatedAtEnd?: string | null, updatedAtStart?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { storeId:string,  queryParams?: {action?: 'CREATE' | 'DELETE' | 'UPDATE', itemSku?: string | null, itemType?: 'APP' | 'BUNDLE' | 'CODE' | 'COINS' | 'EXTENSION' | 'INGAMEITEM' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SEASON' | 'SUBSCRIPTION', selected?: boolean | null, type?: 'CATEGORY' | 'ITEM' | 'SECTION' | 'STORE' | 'VIEW', updatedAtEnd?: string | null, updatedAtStart?: string | null} }) => {
       const response = 
             (await CatalogChangesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

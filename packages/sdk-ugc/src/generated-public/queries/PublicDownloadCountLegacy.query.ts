@@ -28,7 +28,7 @@ export const usePublicDownloadCountLegacyApi_CreateDownloadcount_ByContentId = (
     options?: Omit<UseMutationOptions<AddDownloadCountResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string }>, 'mutationKey'>,
     callback?: (data: AddDownloadCountResponse) => void
   ): UseMutationResult<AddDownloadCountResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { contentId:string }) => {
       const response = 
             (await PublicDownloadCountLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

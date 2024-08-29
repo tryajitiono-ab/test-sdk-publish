@@ -25,13 +25,23 @@ DeletionS2_ByUserId = 'Gdpr.DataDeletionS2S.DeletionS2_ByUserId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DataDeletionS2S.S2SDeletionsFinished, input]
+ * }
+ * ```
+ */
 export const useDataDeletionS2SApi_GetS2SDeletionsFinished = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {end: string | null, start: string | null} },
     options?: Omit<UseQueryOptions<ListFinishedDataDeletion, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListFinishedDataDeletion>) => void
   ): UseQueryResult<ListFinishedDataDeletion, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDataDeletionS2SApi_GetS2SDeletionsFinished>[1]
@@ -57,7 +67,7 @@ export const useDataDeletionS2SApi_CreateDeletionS2_ByUserId = (
     options?: Omit<UseMutationOptions<S2SRequestDeleteResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: S2SRequestDeleteResponse) => void
   ): UseMutationResult<S2SRequestDeleteResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await DataDeletionS2SApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

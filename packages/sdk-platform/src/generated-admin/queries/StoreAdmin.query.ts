@@ -52,13 +52,23 @@ ImportHistory_ByStoreId = 'Platform.StoreAdmin.ImportHistory_ByStoreId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StoreAdmin.Stores, input]
+ * }
+ * ```
+ */
 export const useStoreAdminApi_GetStores = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<StoreInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StoreInfoArray>) => void
   ): UseQueryResult<StoreInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStoreAdminApi_GetStores>[1]
@@ -84,7 +94,7 @@ export const useStoreAdminApi_CreateStore = (
     options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StoreCreate }>, 'mutationKey'>,
     callback?: (data: StoreInfo) => void
   ): UseMutationResult<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StoreCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: StoreCreate }) => {
       const response = 
             (await StoreAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -107,7 +117,7 @@ export const useStoreAdminApi_UpdateStoreImport = (
     options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File}, queryParams?: {storeId?: string | null} }>, 'mutationKey'>,
     callback?: (data: StoreInfo) => void
   ): UseMutationResult<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File}, queryParams?: {storeId?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {file?: File}, queryParams?: {storeId?: string | null} }) => {
       const response = 
             (await StoreAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -125,13 +135,23 @@ export const useStoreAdminApi_UpdateStoreImport = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StoreAdmin.CatalogConfigs, input]
+ * }
+ * ```
+ */
 export const useStoreAdminApi_GetCatalogConfigs = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<CatalogConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CatalogConfigInfo>) => void
   ): UseQueryResult<CatalogConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStoreAdminApi_GetCatalogConfigs>[1]
@@ -157,7 +177,7 @@ export const useStoreAdminApi_UpdateCatalogConfig = (
     options?: Omit<UseMutationOptions<CatalogConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CatalogConfigUpdate }>, 'mutationKey'>,
     callback?: (data: CatalogConfigInfo) => void
   ): UseMutationResult<CatalogConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CatalogConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CatalogConfigUpdate }) => {
       const response = 
             (await StoreAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -180,7 +200,7 @@ export const useStoreAdminApi_DeleteStore_ByStoreId = (
     options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string }>, 'mutationKey'>,
     callback?: (data: StoreInfo) => void
   ): UseMutationResult<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { storeId:string }) => {
       const response = 
             (await StoreAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -198,13 +218,23 @@ export const useStoreAdminApi_DeleteStore_ByStoreId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StoreAdmin.Store_ByStoreId, input]
+ * }
+ * ```
+ */
 export const useStoreAdminApi_GetStore_ByStoreId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { storeId:string },
     options?: Omit<UseQueryOptions<StoreInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StoreInfo>) => void
   ): UseQueryResult<StoreInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStoreAdminApi_GetStore_ByStoreId>[1]
@@ -230,7 +260,7 @@ export const useStoreAdminApi_UpdateStore_ByStoreId = (
     options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string, data: StoreUpdate }>, 'mutationKey'>,
     callback?: (data: StoreInfo) => void
   ): UseMutationResult<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string, data: StoreUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { storeId:string, data: StoreUpdate }) => {
       const response = 
             (await StoreAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -253,7 +283,7 @@ export const useStoreAdminApi_DeleteStorePublished = (
     options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: StoreInfo) => void
   ): UseMutationResult<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await StoreAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -271,13 +301,23 @@ export const useStoreAdminApi_DeleteStorePublished = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StoreAdmin.StoresPublished, input]
+ * }
+ * ```
+ */
 export const useStoreAdminApi_GetStoresPublished = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<StoreInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StoreInfo>) => void
   ): UseQueryResult<StoreInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStoreAdminApi_GetStoresPublished>[1]
@@ -303,7 +343,7 @@ export const useStoreAdminApi_UpdateStoreImport_v2 = (
     options?: Omit<UseMutationOptions<ImportStoreResult, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File}, queryParams?: {storeId?: string | null, strictMode?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: ImportStoreResult) => void
   ): UseMutationResult<ImportStoreResult, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File}, queryParams?: {storeId?: string | null, strictMode?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {file?: File}, queryParams?: {storeId?: string | null, strictMode?: boolean | null} }) => {
       const response = 
             (await StoreAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -326,7 +366,7 @@ export const useStoreAdminApi_CreateStoreExportByCsv = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ExportStoreToCsvRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ExportStoreToCsvRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ExportStoreToCsvRequest }) => {
       const response = 
             (await StoreAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -349,7 +389,7 @@ export const useStoreAdminApi_UpdateClone_ByStoreId = (
     options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string,  queryParams?: {targetStoreId?: string | null} }>, 'mutationKey'>,
     callback?: (data: StoreInfo) => void
   ): UseMutationResult<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string,  queryParams?: {targetStoreId?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { storeId:string,  queryParams?: {targetStoreId?: string | null} }) => {
       const response = 
             (await StoreAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -367,13 +407,23 @@ export const useStoreAdminApi_UpdateClone_ByStoreId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StoreAdmin.Export_ByStoreId, input]
+ * }
+ * ```
+ */
 export const useStoreAdminApi_GetExport_ByStoreId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { storeId:string },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStoreAdminApi_GetExport_ByStoreId>[1]
@@ -394,13 +444,23 @@ export const useStoreAdminApi_GetExport_ByStoreId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StoreAdmin.StoresPublishedBackup, input]
+ * }
+ * ```
+ */
 export const useStoreAdminApi_GetStoresPublishedBackup = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<StoreBackupInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StoreBackupInfo>) => void
   ): UseQueryResult<StoreBackupInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStoreAdminApi_GetStoresPublishedBackup>[1]
@@ -421,13 +481,23 @@ export const useStoreAdminApi_GetStoresPublishedBackup = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StoreAdmin.StoresCatalogDefinition, input]
+ * }
+ * ```
+ */
 export const useStoreAdminApi_GetStoresCatalogDefinition = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {catalogType: 'APP' | 'CATEGORY' | 'ITEM' | 'SECTION' | 'VIEW'} },
     options?: Omit<UseQueryOptions<CatalogDefinitionInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CatalogDefinitionInfoArray>) => void
   ): UseQueryResult<CatalogDefinitionInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStoreAdminApi_GetStoresCatalogDefinition>[1]
@@ -453,7 +523,7 @@ export const useStoreAdminApi_UpdateStorePublishedRollback = (
     options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: StoreInfo) => void
   ): UseMutationResult<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await StoreAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -476,7 +546,7 @@ export const useStoreAdminApi_CreateExport_ByStoreId_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string, data: ExportStoreRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string, data: ExportStoreRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { storeId:string, data: ExportStoreRequest }) => {
       const response = 
             (await StoreAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -494,13 +564,23 @@ export const useStoreAdminApi_CreateExport_ByStoreId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StoreAdmin.StoresDownloadCsvTemplates, input]
+ * }
+ * ```
+ */
 export const useStoreAdminApi_GetStoresDownloadCsvTemplates = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStoreAdminApi_GetStoresDownloadCsvTemplates>[1]
@@ -526,7 +606,7 @@ export const useStoreAdminApi_CreateImportByCsv_ByStoreId = (
     options?: Omit<UseMutationOptions<ImportStoreResult, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string, data: {category: File,display: File,item: File,notes: string | null,section: File} }>, 'mutationKey'>,
     callback?: (data: ImportStoreResult) => void
   ): UseMutationResult<ImportStoreResult, AxiosError<ApiError>, SdkSetConfigParam & { storeId:string, data: {category: File,display: File,item: File,notes: string | null,section: File} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { storeId:string, data: {category: File,display: File,item: File,notes: string | null,section: File} }) => {
       const response = 
             (await StoreAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -544,13 +624,23 @@ export const useStoreAdminApi_CreateImportByCsv_ByStoreId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StoreAdmin.ImportHistory_ByStoreId, input]
+ * }
+ * ```
+ */
 export const useStoreAdminApi_GetImportHistory_ByStoreId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { storeId:string,  queryParams?: {end?: string | null, limit?: number, offset?: number, sortBy?: string | null, start?: string | null, success?: boolean | null} },
     options?: Omit<UseQueryOptions<ImportStoreHistoryPagingResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ImportStoreHistoryPagingResult>) => void
   ): UseQueryResult<ImportStoreHistoryPagingResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStoreAdminApi_GetImportHistory_ByStoreId>[1]

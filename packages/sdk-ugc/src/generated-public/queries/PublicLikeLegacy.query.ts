@@ -26,13 +26,23 @@ Like_ByContentId = 'Ugc.PublicLikeLegacy.Like_ByContentId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicLikeLegacy.ContentsLiked, input]
+ * }
+ * ```
+ */
 export const usePublicLikeLegacyApi_GetContentsLiked = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {isofficial?: boolean | null, limit?: number, name?: string | null, offset?: number, orderby?: string | null, sortby?: string | null, subtype?: string | null, tags?: string[], type?: string | null} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloadResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloadResponse>) => void
   ): UseQueryResult<PaginatedContentDownloadResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicLikeLegacyApi_GetContentsLiked>[1]
@@ -58,7 +68,7 @@ export const usePublicLikeLegacyApi_UpdateLike_ByContentId = (
     options?: Omit<UseMutationOptions<ContentLikeResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, data: ContentLikeRequest }>, 'mutationKey'>,
     callback?: (data: ContentLikeResponse) => void
   ): UseMutationResult<ContentLikeResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, data: ContentLikeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { contentId:string, data: ContentLikeRequest }) => {
       const response = 
             (await PublicLikeLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

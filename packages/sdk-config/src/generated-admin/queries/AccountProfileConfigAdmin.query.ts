@@ -31,7 +31,7 @@ export const useAccountProfileConfigAdminApi_CreateConfigAccount = (
     options?: Omit<UseMutationOptions<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateConfig }>, 'mutationKey'>,
     callback?: (data: ConfigInfo) => void
   ): UseMutationResult<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateConfig }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateConfig }) => {
       const response = 
             (await AccountProfileConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -49,13 +49,23 @@ export const useAccountProfileConfigAdminApi_CreateConfigAccount = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AccountProfileConfigAdmin.ConfigAccount_ByConfigKey, input]
+ * }
+ * ```
+ */
 export const useAccountProfileConfigAdminApi_GetConfigAccount_ByConfigKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { configKey:string },
     options?: Omit<UseQueryOptions<ConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigInfo>) => void
   ): UseQueryResult<ConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAccountProfileConfigAdminApi_GetConfigAccount_ByConfigKey>[1]
@@ -81,7 +91,7 @@ export const useAccountProfileConfigAdminApi_UpdateConfigAccount_ByConfigKey = (
     options?: Omit<UseMutationOptions<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { configKey:string, data: UpdateConfig }>, 'mutationKey'>,
     callback?: (data: ConfigInfo) => void
   ): UseMutationResult<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { configKey:string, data: UpdateConfig }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { configKey:string, data: UpdateConfig }) => {
       const response = 
             (await AccountProfileConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

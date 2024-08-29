@@ -39,7 +39,7 @@ export const usePublicItemsApi_DeleteItemMeUser_ByInventoryId = (
     options?: Omit<UseMutationOptions<UpdateItemRespArray, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId:string, data: RemoveInventoryItemReq[] }>, 'mutationKey'>,
     callback?: (data: UpdateItemRespArray) => void
   ): UseMutationResult<UpdateItemRespArray, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId:string, data: RemoveInventoryItemReq[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { inventoryId:string, data: RemoveInventoryItemReq[] }) => {
       const response = 
             (await PublicItemsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -57,13 +57,23 @@ export const usePublicItemsApi_DeleteItemMeUser_ByInventoryId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicItems.ItemsMeUsers_ByInventoryId, input]
+ * }
+ * ```
+ */
 export const usePublicItemsApi_GetItemsMeUsers_ByInventoryId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { inventoryId:string,  queryParams?: {limit?: number, offset?: number, sortBy?: 'createdAt' | 'createdAt:asc' | 'createdAt:desc' | 'updatedAt' | 'updatedAt:asc' | 'updatedAt:desc', sourceItemId?: string | null, tags?: string | null} },
     options?: Omit<UseQueryOptions<ListItemResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListItemResp>) => void
   ): UseQueryResult<ListItemResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicItemsApi_GetItemsMeUsers_ByInventoryId>[1]
@@ -89,7 +99,7 @@ export const usePublicItemsApi_UpdateItemMeUser_ByInventoryId = (
     options?: Omit<UseMutationOptions<UpdateItemRespArray, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId:string, data: UpdateItemReq[] }>, 'mutationKey'>,
     callback?: (data: UpdateItemRespArray) => void
   ): UseMutationResult<UpdateItemRespArray, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId:string, data: UpdateItemReq[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { inventoryId:string, data: UpdateItemReq[] }) => {
       const response = 
             (await PublicItemsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -112,7 +122,7 @@ export const usePublicItemsApi_CreateConsumeUser_ByInventoryId = (
     options?: Omit<UseMutationOptions<ItemResp, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId:string, data: ConsumeItemReq }>, 'mutationKey'>,
     callback?: (data: ItemResp) => void
   ): UseMutationResult<ItemResp, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId:string, data: ConsumeItemReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { inventoryId:string, data: ConsumeItemReq }) => {
       const response = 
             (await PublicItemsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -135,7 +145,7 @@ export const usePublicItemsApi_CreateItemMovementUser_ByInventoryId = (
     options?: Omit<UseMutationOptions<MoveItemsResp, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId:string, data: MoveItemsReq }>, 'mutationKey'>,
     callback?: (data: MoveItemsResp) => void
   ): UseMutationResult<MoveItemsResp, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId:string, data: MoveItemsReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { inventoryId:string, data: MoveItemsReq }) => {
       const response = 
             (await PublicItemsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -153,13 +163,23 @@ export const usePublicItemsApi_CreateItemMovementUser_ByInventoryId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicItems.SourceItemMeUser_ByInventoryId_BySlotId_BySourceItemId, input]
+ * }
+ * ```
+ */
 export const usePublicItemsApi_GetSourceItemMeUser_ByInventoryId_BySlotId_BySourceItemId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { inventoryId:string, slotId:string, sourceItemId:string },
     options?: Omit<UseQueryOptions<ItemResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ItemResp>) => void
   ): UseQueryResult<ItemResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicItemsApi_GetSourceItemMeUser_ByInventoryId_BySlotId_BySourceItemId>[1]

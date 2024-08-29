@@ -39,13 +39,23 @@ Adminrecord_ByUserId_ByKey = 'Cloudsave.RecordAdmin.Adminrecord_ByUserId_ByKey',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RecordAdmin.Adminrecords, input]
+ * }
+ * ```
+ */
 export const useRecordAdminApi_GetAdminrecords = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, query?: string | null, tags?: string[]} },
     options?: Omit<UseQueryOptions<ListAdminGameRecordKeysResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListAdminGameRecordKeysResponse>) => void
   ): UseQueryResult<ListAdminGameRecordKeysResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRecordAdminApi_GetAdminrecords>[1]
@@ -66,13 +76,23 @@ export const useRecordAdminApi_GetAdminrecords = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RecordAdmin.AdminrecordBulk, input]
+ * }
+ * ```
+ */
 export const useRecordAdminApi_FetchAdminrecordBulk = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: BulkGetAdminGameRecordRequest },
     options?: Omit<UseQueryOptions<BulkGetAdminGameRecordResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BulkGetAdminGameRecordResponse>) => void
   ): UseQueryResult<BulkGetAdminGameRecordResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRecordAdminApi_FetchAdminrecordBulk>[1]
@@ -98,7 +118,7 @@ export const useRecordAdminApi_DeleteAdminrecord_ByKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string }) => {
       const response = 
             (await RecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -116,13 +136,23 @@ export const useRecordAdminApi_DeleteAdminrecord_ByKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RecordAdmin.Adminrecord_ByKey, input]
+ * }
+ * ```
+ */
 export const useRecordAdminApi_GetAdminrecord_ByKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { key:string },
     options?: Omit<UseQueryOptions<AdminGameRecordResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AdminGameRecordResponse>) => void
   ): UseQueryResult<AdminGameRecordResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRecordAdminApi_GetAdminrecord_ByKey>[1]
@@ -148,7 +178,7 @@ export const useRecordAdminApi_CreateAdminrecord_ByKey = (
     options?: Omit<UseMutationOptions<AdminGameRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: AdminGameRecordRequest }>, 'mutationKey'>,
     callback?: (data: AdminGameRecordResponse) => void
   ): UseMutationResult<AdminGameRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: AdminGameRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string, data: AdminGameRecordRequest }) => {
       const response = 
             (await RecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -171,7 +201,7 @@ export const useRecordAdminApi_UpdateAdminrecord_ByKey = (
     options?: Omit<UseMutationOptions<AdminGameRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: AdminGameRecordRequest }>, 'mutationKey'>,
     callback?: (data: AdminGameRecordResponse) => void
   ): UseMutationResult<AdminGameRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: AdminGameRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string, data: AdminGameRecordRequest }) => {
       const response = 
             (await RecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -189,13 +219,23 @@ export const useRecordAdminApi_UpdateAdminrecord_ByKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RecordAdmin.Adminrecords_ByUserId, input]
+ * }
+ * ```
+ */
 export const useRecordAdminApi_GetAdminrecords_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number, query?: string | null, tags?: string[]} },
     options?: Omit<UseQueryOptions<ListAdminPlayerRecordKeysResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListAdminPlayerRecordKeysResponse>) => void
   ): UseQueryResult<ListAdminPlayerRecordKeysResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRecordAdminApi_GetAdminrecords_ByUserId>[1]
@@ -216,13 +256,23 @@ export const useRecordAdminApi_GetAdminrecords_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RecordAdmin.BulkUser_ByKey, input]
+ * }
+ * ```
+ */
 export const useRecordAdminApi_FetchBulkUser_ByKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { key:string, data: BulkUserIDsRequest },
     options?: Omit<UseQueryOptions<BulkGetAdminPlayerRecordResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BulkGetAdminPlayerRecordResponse>) => void
   ): UseQueryResult<BulkGetAdminPlayerRecordResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRecordAdminApi_FetchBulkUser_ByKey>[1]
@@ -243,13 +293,23 @@ export const useRecordAdminApi_FetchBulkUser_ByKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RecordAdmin.AdminrecordBulk_ByUserId, input]
+ * }
+ * ```
+ */
 export const useRecordAdminApi_FetchAdminrecordBulk_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, data: BulkGetAdminPlayerRecordRequest },
     options?: Omit<UseQueryOptions<BulkGetAdminPlayerRecordResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BulkGetAdminPlayerRecordResponse>) => void
   ): UseQueryResult<BulkGetAdminPlayerRecordResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRecordAdminApi_FetchAdminrecordBulk_ByUserId>[1]
@@ -275,7 +335,7 @@ export const useRecordAdminApi_DeleteAdminrecord_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string }) => {
       const response = 
             (await RecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -293,13 +353,23 @@ export const useRecordAdminApi_DeleteAdminrecord_ByUserId_ByKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RecordAdmin.Adminrecord_ByUserId_ByKey, input]
+ * }
+ * ```
+ */
 export const useRecordAdminApi_GetAdminrecord_ByUserId_ByKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, key:string },
     options?: Omit<UseQueryOptions<AdminPlayerRecordResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AdminPlayerRecordResponse>) => void
   ): UseQueryResult<AdminPlayerRecordResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRecordAdminApi_GetAdminrecord_ByUserId_ByKey>[1]
@@ -325,7 +395,7 @@ export const useRecordAdminApi_CreateAdminrecord_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<AdminPlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: AdminPlayerRecordRequest }>, 'mutationKey'>,
     callback?: (data: AdminPlayerRecordResponse) => void
   ): UseMutationResult<AdminPlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: AdminPlayerRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: AdminPlayerRecordRequest }) => {
       const response = 
             (await RecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -348,7 +418,7 @@ export const useRecordAdminApi_UpdateAdminrecord_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<AdminPlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: AdminPlayerRecordRequest }>, 'mutationKey'>,
     callback?: (data: AdminPlayerRecordResponse) => void
   ): UseMutationResult<AdminPlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: AdminPlayerRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: AdminPlayerRecordRequest }) => {
       const response = 
             (await RecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

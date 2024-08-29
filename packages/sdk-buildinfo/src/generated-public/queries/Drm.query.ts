@@ -25,13 +25,23 @@ DrmlicenseRetrievePublicKey = 'Buildinfo.Drm.DrmlicenseRetrievePublicKey',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Drm.DrmlicenseEncrypt, input]
+ * }
+ * ```
+ */
 export const useDrmApi_GetDrmlicenseEncrypt = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {appId: string | null, machineId: string | null} },
     options?: Omit<UseQueryOptions<EncryptedIdentity, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EncryptedIdentity>) => void
   ): UseQueryResult<EncryptedIdentity, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDrmApi_GetDrmlicenseEncrypt>[1]
@@ -52,13 +62,23 @@ export const useDrmApi_GetDrmlicenseEncrypt = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Drm.DrmlicenseRetrievePublicKey, input]
+ * }
+ * ```
+ */
 export const useDrmApi_GetDrmlicenseRetrievePublicKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<PublicKeyPresignedUrl, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PublicKeyPresignedUrl>) => void
   ): UseQueryResult<PublicKeyPresignedUrl, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDrmApi_GetDrmlicenseRetrievePublicKey>[1]

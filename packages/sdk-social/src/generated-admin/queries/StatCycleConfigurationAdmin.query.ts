@@ -38,13 +38,23 @@ StatAddBulk_ByCycleId = 'Social.StatCycleConfigurationAdmin.StatAddBulk_ByCycleI
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StatCycleConfigurationAdmin.StatCycles, input]
+ * }
+ * ```
+ */
 export const useStatCycleConfigurationAdminApi_GetStatCycles = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {cycleType?: 'ANNUALLY' | 'DAILY' | 'MONTHLY' | 'SEASONAL' | 'WEEKLY', limit?: number, name?: string | null, offset?: number, sortBy?: string | null, status?: 'ACTIVE' | 'INIT' | 'STOPPED'} },
     options?: Omit<UseQueryOptions<StatCyclePagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StatCyclePagingSlicedResult>) => void
   ): UseQueryResult<StatCyclePagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStatCycleConfigurationAdminApi_GetStatCycles>[1]
@@ -70,7 +80,7 @@ export const useStatCycleConfigurationAdminApi_CreateStatCycle = (
     options?: Omit<UseMutationOptions<StatCycleInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StatCycleCreate }>, 'mutationKey'>,
     callback?: (data: StatCycleInfo) => void
   ): UseMutationResult<StatCycleInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StatCycleCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: StatCycleCreate }) => {
       const response = 
             (await StatCycleConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -93,7 +103,7 @@ export const useStatCycleConfigurationAdminApi_CreateStatCycleBulk = (
     options?: Omit<UseMutationOptions<BulkStatCycleResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkStatCycleRequest }>, 'mutationKey'>,
     callback?: (data: BulkStatCycleResult) => void
   ): UseMutationResult<BulkStatCycleResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkStatCycleRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkStatCycleRequest }) => {
       const response = 
             (await StatCycleConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -111,13 +121,23 @@ export const useStatCycleConfigurationAdminApi_CreateStatCycleBulk = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StatCycleConfigurationAdmin.StatCyclesExport, input]
+ * }
+ * ```
+ */
 export const useStatCycleConfigurationAdminApi_GetStatCyclesExport = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStatCycleConfigurationAdminApi_GetStatCyclesExport>[1]
@@ -143,7 +163,7 @@ export const useStatCycleConfigurationAdminApi_CreateStatCycleImport = (
     options?: Omit<UseMutationOptions<StatImportInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File}, queryParams?: {replaceExisting?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: StatImportInfo) => void
   ): UseMutationResult<StatImportInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File}, queryParams?: {replaceExisting?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {file?: File}, queryParams?: {replaceExisting?: boolean | null} }) => {
       const response = 
             (await StatCycleConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -166,7 +186,7 @@ export const useStatCycleConfigurationAdminApi_DeleteStatCycle_ByCycleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { cycleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { cycleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { cycleId:string }) => {
       const response = 
             (await StatCycleConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -184,13 +204,23 @@ export const useStatCycleConfigurationAdminApi_DeleteStatCycle_ByCycleId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StatCycleConfigurationAdmin.StatCycle_ByCycleId, input]
+ * }
+ * ```
+ */
 export const useStatCycleConfigurationAdminApi_GetStatCycle_ByCycleId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { cycleId:string },
     options?: Omit<UseQueryOptions<StatCycleInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StatCycleInfo>) => void
   ): UseQueryResult<StatCycleInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStatCycleConfigurationAdminApi_GetStatCycle_ByCycleId>[1]
@@ -216,7 +246,7 @@ export const useStatCycleConfigurationAdminApi_UpdateStatCycle_ByCycleId = (
     options?: Omit<UseMutationOptions<StatCycleInfo, AxiosError<ApiError>, SdkSetConfigParam & { cycleId:string, data: StatCycleUpdate }>, 'mutationKey'>,
     callback?: (data: StatCycleInfo) => void
   ): UseMutationResult<StatCycleInfo, AxiosError<ApiError>, SdkSetConfigParam & { cycleId:string, data: StatCycleUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { cycleId:string, data: StatCycleUpdate }) => {
       const response = 
             (await StatCycleConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -239,7 +269,7 @@ export const useStatCycleConfigurationAdminApi_UpdateStop_ByCycleId = (
     options?: Omit<UseMutationOptions<StatCycleInfo, AxiosError<ApiError>, SdkSetConfigParam & { cycleId:string }>, 'mutationKey'>,
     callback?: (data: StatCycleInfo) => void
   ): UseMutationResult<StatCycleInfo, AxiosError<ApiError>, SdkSetConfigParam & { cycleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { cycleId:string }) => {
       const response = 
             (await StatCycleConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -262,7 +292,7 @@ export const useStatCycleConfigurationAdminApi_CreateStatAddBulk_ByCycleId = (
     options?: Omit<UseMutationOptions<BulkStatCycleOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { cycleId:string, data: BulkCycleStatsAdd }>, 'mutationKey'>,
     callback?: (data: BulkStatCycleOperationResultArray) => void
   ): UseMutationResult<BulkStatCycleOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { cycleId:string, data: BulkCycleStatsAdd }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { cycleId:string, data: BulkCycleStatsAdd }) => {
       const response = 
             (await StatCycleConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

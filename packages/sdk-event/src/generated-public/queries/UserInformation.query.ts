@@ -31,7 +31,7 @@ export const useUserInformationApi_DeleteActivity_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await UserInformationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -49,13 +49,23 @@ export const useUserInformationApi_DeleteActivity_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserInformation.Activities_ByUserId, input]
+ * }
+ * ```
+ */
 export const useUserInformationApi_GetActivities_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {pageSize: number, offset?: number} },
     options?: Omit<UseQueryOptions<EventResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventResponse>) => void
   ): UseQueryResult<EventResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserInformationApi_GetActivities_ByUserId>[1]
@@ -76,13 +86,23 @@ export const useUserInformationApi_GetActivities_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserInformation.LastActivityTime_ByUserId, input]
+ * }
+ * ```
+ */
 export const useUserInformationApi_GetLastActivityTime_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<UserLastActivity, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserLastActivity>) => void
   ): UseQueryResult<UserLastActivity, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserInformationApi_GetLastActivityTime_ByUserId>[1]

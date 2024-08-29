@@ -34,13 +34,23 @@ ReceiptPdf_ByUserId_ByOrderNo = 'Platform.Order.ReceiptPdf_ByUserId_ByOrderNo',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Order.Orders_ByUserId, input]
+ * }
+ * ```
+ */
 export const useOrderApi_GetOrders_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {discounted?: boolean | null, itemId?: string | null, limit?: number, offset?: number, status?: 'CHARGEBACK' | 'CHARGEBACK_REVERSED' | 'CHARGED' | 'CLOSED' | 'DELETED' | 'FULFILLED' | 'FULFILL_FAILED' | 'INIT' | 'REFUNDED' | 'REFUNDING' | 'REFUND_FAILED'} },
     options?: Omit<UseQueryOptions<OrderPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<OrderPagingSlicedResult>) => void
   ): UseQueryResult<OrderPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderApi_GetOrders_ByUserId>[1]
@@ -66,7 +76,7 @@ export const useOrderApi_CreateOrder_ByUserId = (
     options?: Omit<UseMutationOptions<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: OrderCreate }>, 'mutationKey'>,
     callback?: (data: OrderInfo) => void
   ): UseMutationResult<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: OrderCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: OrderCreate }) => {
       const response = 
             (await OrderApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -84,13 +94,23 @@ export const useOrderApi_CreateOrder_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Order.Order_ByUserId_ByOrderNo, input]
+ * }
+ * ```
+ */
 export const useOrderApi_GetOrder_ByUserId_ByOrderNo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, orderNo:string },
     options?: Omit<UseQueryOptions<OrderInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<OrderInfo>) => void
   ): UseQueryResult<OrderInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderApi_GetOrder_ByUserId_ByOrderNo>[1]
@@ -116,7 +136,7 @@ export const useOrderApi_UpdateCancel_ByUserId_ByOrderNo = (
     options?: Omit<UseMutationOptions<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, orderNo:string }>, 'mutationKey'>,
     callback?: (data: OrderInfo) => void
   ): UseMutationResult<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, orderNo:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, orderNo:string }) => {
       const response = 
             (await OrderApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -139,7 +159,7 @@ export const useOrderApi_CreateOrderDiscountPreview_ByUserId = (
     options?: Omit<UseMutationOptions<OrderDiscountPreviewResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: OrderDiscountPreviewRequest }>, 'mutationKey'>,
     callback?: (data: OrderDiscountPreviewResponse) => void
   ): UseMutationResult<OrderDiscountPreviewResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: OrderDiscountPreviewRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: OrderDiscountPreviewRequest }) => {
       const response = 
             (await OrderApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -157,13 +177,23 @@ export const useOrderApi_CreateOrderDiscountPreview_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Order.History_ByUserId_ByOrderNo, input]
+ * }
+ * ```
+ */
 export const useOrderApi_GetHistory_ByUserId_ByOrderNo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, orderNo:string },
     options?: Omit<UseQueryOptions<OrderHistoryInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<OrderHistoryInfoArray>) => void
   ): UseQueryResult<OrderHistoryInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderApi_GetHistory_ByUserId_ByOrderNo>[1]
@@ -184,13 +214,23 @@ export const useOrderApi_GetHistory_ByUserId_ByOrderNo = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Order.ReceiptPdf_ByUserId_ByOrderNo, input]
+ * }
+ * ```
+ */
 export const useOrderApi_GetReceiptPdf_ByUserId_ByOrderNo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, orderNo:string },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderApi_GetReceiptPdf_ByUserId_ByOrderNo>[1]

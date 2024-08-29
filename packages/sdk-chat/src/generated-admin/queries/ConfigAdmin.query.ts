@@ -31,13 +31,23 @@ ConfigImport = 'Chat.ConfigAdmin.ConfigImport',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigAdmin.Config, input]
+ * }
+ * ```
+ */
 export const useConfigAdminApi_GetConfig = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ConfigList, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigList>) => void
   ): UseQueryResult<ConfigList, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigAdminApi_GetConfig>[1]
@@ -58,13 +68,23 @@ export const useConfigAdminApi_GetConfig = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigAdmin.ConfigLog, input]
+ * }
+ * ```
+ */
 export const useConfigAdminApi_GetConfigLog = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<Configuration, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<Configuration>) => void
   ): UseQueryResult<Configuration, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigAdminApi_GetConfigLog>[1]
@@ -90,7 +110,7 @@ export const useConfigAdminApi_PatchConfigLog = (
     options?: Omit<UseMutationOptions<Configuration, AxiosError<ApiError>, SdkSetConfigParam & { data: Configuration }>, 'mutationKey'>,
     callback?: (data: Configuration) => void
   ): UseMutationResult<Configuration, AxiosError<ApiError>, SdkSetConfigParam & { data: Configuration }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: Configuration }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -108,13 +128,23 @@ export const useConfigAdminApi_PatchConfigLog = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigAdmin.Config_ByNamespace, input]
+ * }
+ * ```
+ */
 export const useConfigAdminApi_GetConfig_ByNamespace = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ConfigResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigResponse>) => void
   ): UseQueryResult<ConfigResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigAdminApi_GetConfig_ByNamespace>[1]
@@ -140,7 +170,7 @@ export const useConfigAdminApi_UpdateConfig_ByNamespace = (
     options?: Omit<UseMutationOptions<ConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigResponse }>, 'mutationKey'>,
     callback?: (data: ConfigResponse) => void
   ): UseMutationResult<ConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigResponse }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ConfigResponse }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -158,13 +188,23 @@ export const useConfigAdminApi_UpdateConfig_ByNamespace = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigAdmin.ConfigExport, input]
+ * }
+ * ```
+ */
 export const useConfigAdminApi_GetConfigExport = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ConfigExportArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigExportArray>) => void
   ): UseQueryResult<ConfigExportArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigAdminApi_GetConfigExport>[1]
@@ -190,7 +230,7 @@ export const useConfigAdminApi_UpdateConfigImport = (
     options?: Omit<UseMutationOptions<ImportConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File} }>, 'mutationKey'>,
     callback?: (data: ImportConfigResponse) => void
   ): UseMutationResult<ImportConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {file?: File} }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

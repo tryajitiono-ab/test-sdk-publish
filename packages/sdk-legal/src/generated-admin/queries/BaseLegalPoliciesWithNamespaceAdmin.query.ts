@@ -34,13 +34,23 @@ Country_ByBasePolicyId_ByCountryCode = 'Legal.BaseLegalPoliciesWithNamespaceAdmi
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_BaseLegalPoliciesWithNamespaceAdmin.PolicyTypes, input]
+ * }
+ * ```
+ */
 export const useBaseLegalPoliciesWithNamespaceAdminApi_GetPolicyTypes = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {limit: number, offset?: number} },
     options?: Omit<UseQueryOptions<RetrievePolicyTypeResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrievePolicyTypeResponseArray>) => void
   ): UseQueryResult<RetrievePolicyTypeResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useBaseLegalPoliciesWithNamespaceAdminApi_GetPolicyTypes>[1]
@@ -61,13 +71,23 @@ export const useBaseLegalPoliciesWithNamespaceAdminApi_GetPolicyTypes = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_BaseLegalPoliciesWithNamespaceAdmin.BasePolicies, input]
+ * }
+ * ```
+ */
 export const useBaseLegalPoliciesWithNamespaceAdminApi_GetBasePolicies = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {visibleOnly?: boolean | null} },
     options?: Omit<UseQueryOptions<RetrieveBasePolicyResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveBasePolicyResponseArray>) => void
   ): UseQueryResult<RetrieveBasePolicyResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useBaseLegalPoliciesWithNamespaceAdminApi_GetBasePolicies>[1]
@@ -93,7 +113,7 @@ export const useBaseLegalPoliciesWithNamespaceAdminApi_CreateBasePolicy = (
     options?: Omit<UseMutationOptions<CreateBasePolicyResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateBasePolicyRequestV2 }>, 'mutationKey'>,
     callback?: (data: CreateBasePolicyResponse) => void
   ): UseMutationResult<CreateBasePolicyResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateBasePolicyRequestV2 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateBasePolicyRequestV2 }) => {
       const response = 
             (await BaseLegalPoliciesWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -111,13 +131,23 @@ export const useBaseLegalPoliciesWithNamespaceAdminApi_CreateBasePolicy = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_BaseLegalPoliciesWithNamespaceAdmin.BasePolicy_ByBasePolicyId, input]
+ * }
+ * ```
+ */
 export const useBaseLegalPoliciesWithNamespaceAdminApi_GetBasePolicy_ByBasePolicyId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { basePolicyId:string },
     options?: Omit<UseQueryOptions<RetrieveBasePolicyResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveBasePolicyResponse>) => void
   ): UseQueryResult<RetrieveBasePolicyResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useBaseLegalPoliciesWithNamespaceAdminApi_GetBasePolicy_ByBasePolicyId>[1]
@@ -143,7 +173,7 @@ export const useBaseLegalPoliciesWithNamespaceAdminApi_PatchBasePolicy_ByBasePol
     options?: Omit<UseMutationOptions<UpdateBasePolicyResponse, AxiosError<ApiError>, SdkSetConfigParam & { basePolicyId:string, data: UpdateBasePolicyRequestV2 }>, 'mutationKey'>,
     callback?: (data: UpdateBasePolicyResponse) => void
   ): UseMutationResult<UpdateBasePolicyResponse, AxiosError<ApiError>, SdkSetConfigParam & { basePolicyId:string, data: UpdateBasePolicyRequestV2 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { basePolicyId:string, data: UpdateBasePolicyRequestV2 }) => {
       const response = 
             (await BaseLegalPoliciesWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -161,13 +191,23 @@ export const useBaseLegalPoliciesWithNamespaceAdminApi_PatchBasePolicy_ByBasePol
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_BaseLegalPoliciesWithNamespaceAdmin.Country_ByBasePolicyId_ByCountryCode, input]
+ * }
+ * ```
+ */
 export const useBaseLegalPoliciesWithNamespaceAdminApi_GetCountry_ByBasePolicyId_ByCountryCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { basePolicyId:string, countryCode:string },
     options?: Omit<UseQueryOptions<RetrievePolicyResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrievePolicyResponse>) => void
   ): UseQueryResult<RetrievePolicyResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useBaseLegalPoliciesWithNamespaceAdminApi_GetCountry_ByBasePolicyId_ByCountryCode>[1]

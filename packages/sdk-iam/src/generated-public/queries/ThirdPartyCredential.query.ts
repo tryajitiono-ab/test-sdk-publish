@@ -24,13 +24,23 @@ PlatformsClientsActive_v3 = 'Iam.ThirdPartyCredential.PlatformsClientsActive_v3'
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ThirdPartyCredential.PlatformsClientsOidc_v3, input]
+ * }
+ * ```
+ */
 export const useThirdPartyCredentialApi_GetPlatformsClientsOidc_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {clientId: string | null} },
     options?: Omit<UseQueryOptions<PublicThirdPartyPlatformInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PublicThirdPartyPlatformInfoArray>) => void
   ): UseQueryResult<PublicThirdPartyPlatformInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useThirdPartyCredentialApi_GetPlatformsClientsOidc_v3>[1]
@@ -51,13 +61,23 @@ export const useThirdPartyCredentialApi_GetPlatformsClientsOidc_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ThirdPartyCredential.PlatformsClientsActive_v3, input]
+ * }
+ * ```
+ */
 export const useThirdPartyCredentialApi_GetPlatformsClientsActive_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<PublicThirdPartyPlatformInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PublicThirdPartyPlatformInfoArray>) => void
   ): UseQueryResult<PublicThirdPartyPlatformInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useThirdPartyCredentialApi_GetPlatformsClientsActive_v3>[1]

@@ -34,7 +34,7 @@ export const useOAuth20V4Api_PostOauthToken_v4 = (
     options?: Omit<UseMutationOptions<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {grant_type: 'authorization_code' | 'client_credentials' | 'password' | 'refresh_token' | 'urn:ietf:params:oauth:grant-type:extend_client_credentials' | 'urn:ietf:params:oauth:grant-type:login_queue_ticket',additionalData?: string | null,client_id?: string | null,client_secret?: string | null,code?: string | null,code_verifier?: string | null,extendNamespace?: string | null,extend_exp?: boolean | null,login_queue_ticket?: string | null,password?: string | null,redirect_uri?: string | null,refresh_token?: string | null,username?: string | null}, queryParams?: {code_challenge?: string | null, code_challenge_method?: 'S256' | 'plain'} }>, 'mutationKey'>,
     callback?: (data: LoginQueueTicketResponse) => void
   ): UseMutationResult<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {grant_type: 'authorization_code' | 'client_credentials' | 'password' | 'refresh_token' | 'urn:ietf:params:oauth:grant-type:extend_client_credentials' | 'urn:ietf:params:oauth:grant-type:login_queue_ticket',additionalData?: string | null,client_id?: string | null,client_secret?: string | null,code?: string | null,code_verifier?: string | null,extendNamespace?: string | null,extend_exp?: boolean | null,login_queue_ticket?: string | null,password?: string | null,redirect_uri?: string | null,refresh_token?: string | null,username?: string | null}, queryParams?: {code_challenge?: string | null, code_challenge_method?: 'S256' | 'plain'} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {grant_type: 'authorization_code' | 'client_credentials' | 'password' | 'refresh_token' | 'urn:ietf:params:oauth:grant-type:extend_client_credentials' | 'urn:ietf:params:oauth:grant-type:login_queue_ticket',additionalData?: string | null,client_id?: string | null,client_secret?: string | null,code?: string | null,code_verifier?: string | null,extendNamespace?: string | null,extend_exp?: boolean | null,login_queue_ticket?: string | null,password?: string | null,redirect_uri?: string | null,refresh_token?: string | null,username?: string | null}, queryParams?: {code_challenge?: string | null, code_challenge_method?: 'S256' | 'plain'} }) => {
       const response = 
             (await OAuth20V4Api(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -57,7 +57,7 @@ export const useOAuth20V4Api_PostOauthMfaVerify_v4 = (
     options?: Omit<UseMutationOptions<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {code: string | null,factor: string | null,mfaToken: string | null,rememberDevice: boolean | null} }>, 'mutationKey'>,
     callback?: (data: LoginQueueTicketResponse) => void
   ): UseMutationResult<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {code: string | null,factor: string | null,mfaToken: string | null,rememberDevice: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {code: string | null,factor: string | null,mfaToken: string | null,rememberDevice: boolean | null} }) => {
       const response = 
             (await OAuth20V4Api(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -80,7 +80,7 @@ export const useOAuth20V4Api_PostOauthHeadlesToken_v4 = (
     options?: Omit<UseMutationOptions<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {linkingToken: string | null,additionalData?: string | null,extend_exp?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: LoginQueueTicketResponse) => void
   ): UseMutationResult<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {linkingToken: string | null,additionalData?: string | null,extend_exp?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {linkingToken: string | null,additionalData?: string | null,extend_exp?: boolean | null} }) => {
       const response = 
             (await OAuth20V4Api(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -103,7 +103,7 @@ export const useOAuth20V4Api_PostOauthTokenExchange_v4 = (
     options?: Omit<UseMutationOptions<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {code: string | null,additionalData?: string | null} }>, 'mutationKey'>,
     callback?: (data: LoginQueueTicketResponse) => void
   ): UseMutationResult<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {code: string | null,additionalData?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {code: string | null,additionalData?: string | null} }) => {
       const response = 
             (await OAuth20V4Api(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -126,7 +126,7 @@ export const useOAuth20V4Api_PostOauthSimultaneousLogin_v4 = (
     options?: Omit<UseMutationOptions<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {nativePlatform: 'epicgames' | 'steam',nativePlatformTicket: string | null,simultaneousPlatform?: string | null,simultaneousTicket?: string | null}, queryParams?: {code_challenge?: string | null, code_challenge_method?: 'S256' | 'plain'} }>, 'mutationKey'>,
     callback?: (data: LoginQueueTicketResponse) => void
   ): UseMutationResult<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {nativePlatform: 'epicgames' | 'steam',nativePlatformTicket: string | null,simultaneousPlatform?: string | null,simultaneousTicket?: string | null}, queryParams?: {code_challenge?: string | null, code_challenge_method?: 'S256' | 'plain'} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {nativePlatform: 'epicgames' | 'steam',nativePlatformTicket: string | null,simultaneousPlatform?: string | null,simultaneousTicket?: string | null}, queryParams?: {code_challenge?: string | null, code_challenge_method?: 'S256' | 'plain'} }) => {
       const response = 
             (await OAuth20V4Api(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -149,7 +149,7 @@ export const useOAuth20V4Api_PostOauthAuthenticateWithLink_v4 = (
     options?: Omit<UseMutationOptions<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {client_id: string | null,linkingToken: string | null,password: string | null,username: string | null,extend_exp?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: LoginQueueTicketResponse) => void
   ): UseMutationResult<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {client_id: string | null,linkingToken: string | null,password: string | null,username: string | null,extend_exp?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {client_id: string | null,linkingToken: string | null,password: string | null,username: string | null,extend_exp?: boolean | null} }) => {
       const response = 
             (await OAuth20V4Api(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -172,7 +172,7 @@ export const useOAuth20V4Api_PostTokenOauth_ByPlatformId_v4 = (
     options?: Omit<UseMutationOptions<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: {additionalData?: string | null,client_id?: string | null,createHeadless?: boolean | null,device_id?: string | null,macAddress?: string | null,platform_token?: string | null,serviceLabel?: number,skipSetCookie?: boolean | null}, queryParams?: {code_challenge?: string | null, code_challenge_method?: 'S256' | 'plain'} }>, 'mutationKey'>,
     callback?: (data: LoginQueueTicketResponse) => void
   ): UseMutationResult<LoginQueueTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: {additionalData?: string | null,client_id?: string | null,createHeadless?: boolean | null,device_id?: string | null,macAddress?: string | null,platform_token?: string | null,serviceLabel?: number,skipSetCookie?: boolean | null}, queryParams?: {code_challenge?: string | null, code_challenge_method?: 'S256' | 'plain'} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platformId:string, data: {additionalData?: string | null,client_id?: string | null,createHeadless?: boolean | null,device_id?: string | null,macAddress?: string | null,platform_token?: string | null,serviceLabel?: number,skipSetCookie?: boolean | null}, queryParams?: {code_challenge?: string | null, code_challenge_method?: 'S256' | 'plain'} }) => {
       const response = 
             (await OAuth20V4Api(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -37,7 +37,7 @@ export const useAgreementWithNamespaceAdminApi_CreateAgreement = (
     options?: Omit<UseMutationOptions<UserAgreementsResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: UsersAgreementsRequest }>, 'mutationKey'>,
     callback?: (data: UserAgreementsResponseArray) => void
   ): UseMutationResult<UserAgreementsResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: UsersAgreementsRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UsersAgreementsRequest }) => {
       const response = 
             (await AgreementWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -55,13 +55,23 @@ export const useAgreementWithNamespaceAdminApi_CreateAgreement = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AgreementWithNamespaceAdmin.AgreementsPolicyVersionsUsers, input]
+ * }
+ * ```
+ */
 export const useAgreementWithNamespaceAdminApi_GetAgreementsPolicyVersionsUsers = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {policyVersionId: string | null, convertGameUserId?: boolean | null, keyword?: string | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PagedRetrieveUserAcceptedAgreementResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PagedRetrieveUserAcceptedAgreementResponse>) => void
   ): UseQueryResult<PagedRetrieveUserAcceptedAgreementResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAgreementWithNamespaceAdminApi_GetAgreementsPolicyVersionsUsers>[1]
@@ -82,13 +92,23 @@ export const useAgreementWithNamespaceAdminApi_GetAgreementsPolicyVersionsUsers 
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AgreementWithNamespaceAdmin.AgreementPolicyUser_ByUserId, input]
+ * }
+ * ```
+ */
 export const useAgreementWithNamespaceAdminApi_GetAgreementPolicyUser_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {excludeOtherNamespacesPolicies?: boolean | null} },
     options?: Omit<UseQueryOptions<RetrieveAcceptedAgreementResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveAcceptedAgreementResponseArray>) => void
   ): UseQueryResult<RetrieveAcceptedAgreementResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAgreementWithNamespaceAdminApi_GetAgreementPolicyUser_ByUserId>[1]
@@ -109,13 +129,23 @@ export const useAgreementWithNamespaceAdminApi_GetAgreementPolicyUser_ByUserId =
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AgreementWithNamespaceAdmin.AgreementsPolicyVersionsUsersExportCsvDownload, input]
+ * }
+ * ```
+ */
 export const useAgreementWithNamespaceAdminApi_GetAgreementsPolicyVersionsUsersExportCsvDownload = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {exportId: string | null} },
     options?: Omit<UseQueryOptions<DownloadExportedAgreementsInCsvResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DownloadExportedAgreementsInCsvResponse>) => void
   ): UseQueryResult<DownloadExportedAgreementsInCsvResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAgreementWithNamespaceAdminApi_GetAgreementsPolicyVersionsUsersExportCsvDownload>[1]
@@ -141,7 +171,7 @@ export const useAgreementWithNamespaceAdminApi_CreateAgreementPolicyVersionUserE
     options?: Omit<UseMutationOptions<InitiateExportAgreementsToCsvResponse, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams: {policyVersionId: string | null, start: string | null, end?: string | null} }>, 'mutationKey'>,
     callback?: (data: InitiateExportAgreementsToCsvResponse) => void
   ): UseMutationResult<InitiateExportAgreementsToCsvResponse, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams: {policyVersionId: string | null, start: string | null, end?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & {  queryParams: {policyVersionId: string | null, start: string | null, end?: string | null} }) => {
       const response = 
             (await AgreementWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

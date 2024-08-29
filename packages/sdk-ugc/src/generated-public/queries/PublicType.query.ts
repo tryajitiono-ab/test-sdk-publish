@@ -23,13 +23,23 @@ export enum Key_PublicType {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicType.Types, input]
+ * }
+ * ```
+ */
 export const usePublicTypeApi_GetTypes = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedGetTypeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedGetTypeResponse>) => void
   ): UseQueryResult<PaginatedGetTypeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicTypeApi_GetTypes>[1]

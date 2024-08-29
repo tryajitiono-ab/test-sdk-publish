@@ -27,13 +27,23 @@ CountryBlacklist_v3 = 'Iam.CountryAdmin.CountryBlacklist_v3',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CountryAdmin.Countries_v3, input]
+ * }
+ * ```
+ */
 export const useCountryAdminApi_GetCountries_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {filterBlacklist?: boolean | null} },
     options?: Omit<UseQueryOptions<CountryResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CountryResponseArray>) => void
   ): UseQueryResult<CountryResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCountryAdminApi_GetCountries_v3>[1]
@@ -54,13 +64,23 @@ export const useCountryAdminApi_GetCountries_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CountryAdmin.CountriesBlacklist_v3, input]
+ * }
+ * ```
+ */
 export const useCountryAdminApi_GetCountriesBlacklist_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<CountryBlacklistResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CountryBlacklistResponse>) => void
   ): UseQueryResult<CountryBlacklistResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCountryAdminApi_GetCountriesBlacklist_v3>[1]
@@ -86,7 +106,7 @@ export const useCountryAdminApi_UpdateCountryBlacklist_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CountryBlacklistRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CountryBlacklistRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CountryBlacklistRequest }) => {
       const response = 
             (await CountryAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

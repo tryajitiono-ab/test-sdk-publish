@@ -29,7 +29,7 @@ export const usePoliciesWithNamespaceAdminApi_PatchPolicy_ByPolicyId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { policyId:string, data: UpdatePolicyRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { policyId:string, data: UpdatePolicyRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { policyId:string, data: UpdatePolicyRequest }) => {
       const response = 
             (await PoliciesWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -52,7 +52,7 @@ export const usePoliciesWithNamespaceAdminApi_PatchDefault_ByPolicyId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { policyId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { policyId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { policyId:string }) => {
       const response = 
             (await PoliciesWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

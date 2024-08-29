@@ -24,13 +24,23 @@ AccountHistories_ByUserId = 'Audit.AccountHistoryAdmin.AccountHistories_ByUserId
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AccountHistoryAdmin.UsersMeAccountHistories, input]
+ * }
+ * ```
+ */
 export const useAccountHistoryAdminApi_GetUsersMeAccountHistories = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {endDate?: number, limit?: number, offset?: number, property?: string | null, startDate?: number} },
     options?: Omit<UseQueryOptions<PaginatedAccountHistoryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedAccountHistoryResponse>) => void
   ): UseQueryResult<PaginatedAccountHistoryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAccountHistoryAdminApi_GetUsersMeAccountHistories>[1]
@@ -51,13 +61,23 @@ export const useAccountHistoryAdminApi_GetUsersMeAccountHistories = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AccountHistoryAdmin.AccountHistories_ByUserId, input]
+ * }
+ * ```
+ */
 export const useAccountHistoryAdminApi_GetAccountHistories_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {endDate?: number, limit?: number, offset?: number, property?: string | null, startDate?: number} },
     options?: Omit<UseQueryOptions<PaginatedAccountHistoryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedAccountHistoryResponse>) => void
   ): UseQueryResult<PaginatedAccountHistoryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAccountHistoryAdminApi_GetAccountHistories_ByUserId>[1]

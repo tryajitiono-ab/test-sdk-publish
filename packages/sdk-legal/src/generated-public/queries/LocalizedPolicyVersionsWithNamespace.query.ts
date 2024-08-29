@@ -23,13 +23,23 @@ export enum Key_LocalizedPolicyVersionsWithNamespace {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LocalizedPolicyVersionsWithNamespace.LocalizedPolicyVersion_ByLocalizedPolicyVersionId, input]
+ * }
+ * ```
+ */
 export const useLocalizedPolicyVersionsWithNamespaceApi_GetLocalizedPolicyVersion_ByLocalizedPolicyVersionId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { localizedPolicyVersionId:string },
     options?: Omit<UseQueryOptions<RetrieveLocalizedPolicyVersionPublicResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveLocalizedPolicyVersionPublicResponse>) => void
   ): UseQueryResult<RetrieveLocalizedPolicyVersionPublicResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLocalizedPolicyVersionsWithNamespaceApi_GetLocalizedPolicyVersion_ByLocalizedPolicyVersionId>[1]

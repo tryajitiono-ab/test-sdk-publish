@@ -27,13 +27,23 @@ Tag_ByTagName = 'Inventory.TagsAdmin.Tag_ByTagName',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TagsAdmin.Tags, input]
+ * }
+ * ```
+ */
 export const useTagsAdminApi_GetTags = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, owner?: string | null, sortBy?: 'createdAt' | 'createdAt:asc' | 'createdAt:desc' | 'name' | 'name:asc' | 'name:desc'} },
     options?: Omit<UseQueryOptions<ListTagsResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListTagsResp>) => void
   ): UseQueryResult<ListTagsResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTagsAdminApi_GetTags>[1]
@@ -59,7 +69,7 @@ export const useTagsAdminApi_CreateTag = (
     options?: Omit<UseMutationOptions<CreateTagResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTagReq }>, 'mutationKey'>,
     callback?: (data: CreateTagResp) => void
   ): UseMutationResult<CreateTagResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTagReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateTagReq }) => {
       const response = 
             (await TagsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -82,7 +92,7 @@ export const useTagsAdminApi_DeleteTag_ByTagName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { tagName:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { tagName:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { tagName:string }) => {
       const response = 
             (await TagsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

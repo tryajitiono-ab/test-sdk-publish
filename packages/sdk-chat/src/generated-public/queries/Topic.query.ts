@@ -37,13 +37,23 @@ Chat_ByTopic_ByChatId = 'Chat.Topic.Chat_ByTopic_ByChatId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Topic.Muted, input]
+ * }
+ * ```
+ */
 export const useTopicApi_GetMuted = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<MutedTopicResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MutedTopicResponseArray>) => void
   ): UseQueryResult<MutedTopicResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicApi_GetMuted>[1]
@@ -64,13 +74,23 @@ export const useTopicApi_GetMuted = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Topic.Topic, input]
+ * }
+ * ```
+ */
 export const useTopicApi_GetTopic = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, topicType?: string | null} },
     options?: Omit<UseQueryOptions<ChatMessageResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChatMessageResponseArray>) => void
   ): UseQueryResult<ChatMessageResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicApi_GetTopic>[1]
@@ -96,7 +116,7 @@ export const useTopicApi_UpdateMute_ByTopic = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: MuteUserRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: MuteUserRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string, data: MuteUserRequest }) => {
       const response = 
             (await TopicApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -114,13 +134,23 @@ export const useTopicApi_UpdateMute_ByTopic = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Topic.Chats_ByTopic, input]
+ * }
+ * ```
+ */
 export const useTopicApi_GetChats_ByTopic = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { topic:string,  queryParams?: {limit?: number, order?: string | null, startCreatedAt?: number} },
     options?: Omit<UseQueryOptions<ChatMessageResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChatMessageResponseArray>) => void
   ): UseQueryResult<ChatMessageResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicApi_GetChats_ByTopic>[1]
@@ -146,7 +176,7 @@ export const useTopicApi_UpdateUnmute_ByTopic = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: UnmuteUserRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: UnmuteUserRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string, data: UnmuteUserRequest }) => {
       const response = 
             (await TopicApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -169,7 +199,7 @@ export const useTopicApi_UpdateBanMember_ByTopic = (
     options?: Omit<UseMutationOptions<PublicBanTopicMembersResponse, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: PublicBanTopicMembersRequest }>, 'mutationKey'>,
     callback?: (data: PublicBanTopicMembersResponse) => void
   ): UseMutationResult<PublicBanTopicMembersResponse, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: PublicBanTopicMembersRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string, data: PublicBanTopicMembersRequest }) => {
       const response = 
             (await TopicApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -192,7 +222,7 @@ export const useTopicApi_UpdateUnbanMember_ByTopic = (
     options?: Omit<UseMutationOptions<PublicUnbanTopicMembersResponse, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: PublicUnbanTopicMembersRequest }>, 'mutationKey'>,
     callback?: (data: PublicUnbanTopicMembersResponse) => void
   ): UseMutationResult<PublicUnbanTopicMembersResponse, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: PublicUnbanTopicMembersRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string, data: PublicUnbanTopicMembersRequest }) => {
       const response = 
             (await TopicApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -215,7 +245,7 @@ export const useTopicApi_DeleteChat_ByTopic_ByChatId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, chatId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, chatId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string, chatId:string }) => {
       const response = 
             (await TopicApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

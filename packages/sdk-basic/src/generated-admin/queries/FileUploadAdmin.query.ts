@@ -29,7 +29,7 @@ export const useFileUploadAdminApi_CreateFile_ByUserId = (
     options?: Omit<UseMutationOptions<FileUploadUrlInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string,  queryParams: {fileType: string | null, category?: string | null} }>, 'mutationKey'>,
     callback?: (data: FileUploadUrlInfo) => void
   ): UseMutationResult<FileUploadUrlInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string,  queryParams: {fileType: string | null, category?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string,  queryParams: {fileType: string | null, category?: string | null} }) => {
       const response = 
             (await FileUploadAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -52,7 +52,7 @@ export const useFileUploadAdminApi_CreateFile_ByFolder = (
     options?: Omit<UseMutationOptions<FileUploadUrlInfo, AxiosError<ApiError>, SdkSetConfigParam & { folder:string,  queryParams: {fileType: string | null} }>, 'mutationKey'>,
     callback?: (data: FileUploadUrlInfo) => void
   ): UseMutationResult<FileUploadUrlInfo, AxiosError<ApiError>, SdkSetConfigParam & { folder:string,  queryParams: {fileType: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { folder:string,  queryParams: {fileType: string | null} }) => {
       const response = 
             (await FileUploadAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -53,13 +53,23 @@ ContentS3Sharecode_ByUserId_ByChannelId_ByShareCode = 'Ugc.PublicContentLegacy.C
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicContentLegacy.Contents, input]
+ * }
+ * ```
+ */
 export const usePublicContentLegacyApi_GetContents = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {creator?: string | null, ishidden?: string | null, isofficial?: string | null, limit?: number, name?: string | null, offset?: number, orderby?: string | null, sortby?: string | null, subtype?: string | null, tags?: string[], type?: string | null, userId?: string | null} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloadResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloadResponse>) => void
   ): UseQueryResult<PaginatedContentDownloadResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicContentLegacyApi_GetContents>[1]
@@ -85,7 +95,7 @@ export const usePublicContentLegacyApi_CreateContentBulk = (
     options?: Omit<UseMutationOptions<ContentDownloadResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicGetContentBulkRequest }>, 'mutationKey'>,
     callback?: (data: ContentDownloadResponseArray) => void
   ): UseMutationResult<ContentDownloadResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicGetContentBulkRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PublicGetContentBulkRequest }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -103,13 +113,23 @@ export const usePublicContentLegacyApi_CreateContentBulk = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicContentLegacy.Content_ByContentId, input]
+ * }
+ * ```
+ */
 export const usePublicContentLegacyApi_GetContent_ByContentId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { contentId:string },
     options?: Omit<UseQueryOptions<ContentDownloadResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ContentDownloadResponse>) => void
   ): UseQueryResult<ContentDownloadResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicContentLegacyApi_GetContent_ByContentId>[1]
@@ -130,13 +150,23 @@ export const usePublicContentLegacyApi_GetContent_ByContentId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicContentLegacy.Contents_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePublicContentLegacyApi_GetContents_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloadResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloadResponse>) => void
   ): UseQueryResult<PaginatedContentDownloadResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicContentLegacyApi_GetContents_ByUserId>[1]
@@ -162,7 +192,7 @@ export const usePublicContentLegacyApi_CreateContentSharecodeBulk = (
     options?: Omit<UseMutationOptions<ContentDownloadResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: GetContentBulkByShareCodesRequest }>, 'mutationKey'>,
     callback?: (data: ContentDownloadResponseArray) => void
   ): UseMutationResult<ContentDownloadResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: GetContentBulkByShareCodesRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: GetContentBulkByShareCodesRequest }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -180,13 +210,23 @@ export const usePublicContentLegacyApi_CreateContentSharecodeBulk = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicContentLegacy.Preview_ByContentId, input]
+ * }
+ * ```
+ */
 export const usePublicContentLegacyApi_GetPreview_ByContentId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { contentId:string },
     options?: Omit<UseQueryOptions<GetContentPreviewResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetContentPreviewResponse>) => void
   ): UseQueryResult<GetContentPreviewResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicContentLegacyApi_GetPreview_ByContentId>[1]
@@ -207,13 +247,23 @@ export const usePublicContentLegacyApi_GetPreview_ByContentId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicContentLegacy.Contents_ByChannelId, input]
+ * }
+ * ```
+ */
 export const usePublicContentLegacyApi_GetContents_ByChannelId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { channelId:string,  queryParams?: {creator?: string | null, ishidden?: string | null, isofficial?: string | null, limit?: number, name?: string | null, offset?: number, orderby?: string | null, sortby?: string | null, subtype?: string | null, tags?: string[], type?: string | null, userId?: string | null} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloadResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloadResponse>) => void
   ): UseQueryResult<PaginatedContentDownloadResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicContentLegacyApi_GetContents_ByChannelId>[1]
@@ -234,13 +284,23 @@ export const usePublicContentLegacyApi_GetContents_ByChannelId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicContentLegacy.ContentSharecode_ByShareCode, input]
+ * }
+ * ```
+ */
 export const usePublicContentLegacyApi_GetContentSharecode_ByShareCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { shareCode:string },
     options?: Omit<UseQueryOptions<ContentDownloadResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ContentDownloadResponse>) => void
   ): UseQueryResult<ContentDownloadResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicContentLegacyApi_GetContentSharecode_ByShareCode>[1]
@@ -266,7 +326,7 @@ export const usePublicContentLegacyApi_CreateContent_ByUserId_ByChannelId = (
     options?: Omit<UseMutationOptions<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, data: CreateContentRequest }>, 'mutationKey'>,
     callback?: (data: CreateContentResponse) => void
   ): UseMutationResult<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, data: CreateContentRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, data: CreateContentRequest }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -289,7 +349,7 @@ export const usePublicContentLegacyApi_CreateContentS3_ByUserId_ByChannelId = (
     options?: Omit<UseMutationOptions<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, data: PublicCreateContentRequestS3 }>, 'mutationKey'>,
     callback?: (data: CreateContentResponse) => void
   ): UseMutationResult<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, data: PublicCreateContentRequestS3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, data: PublicCreateContentRequestS3 }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -312,7 +372,7 @@ export const usePublicContentLegacyApi_CreateScreenshot_ByUserId_ByContentId = (
     options?: Omit<UseMutationOptions<CreateScreenshotResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, contentId:string, data: CreateScreenshotRequest }>, 'mutationKey'>,
     callback?: (data: CreateScreenshotResponse) => void
   ): UseMutationResult<CreateScreenshotResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, contentId:string, data: CreateScreenshotRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, contentId:string, data: CreateScreenshotRequest }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -335,7 +395,7 @@ export const usePublicContentLegacyApi_UpdateScreenshot_ByUserId_ByContentId = (
     options?: Omit<UseMutationOptions<UpdateScreenshotResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, contentId:string, data: UpdateScreenshotRequest }>, 'mutationKey'>,
     callback?: (data: UpdateScreenshotResponse) => void
   ): UseMutationResult<UpdateScreenshotResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, contentId:string, data: UpdateScreenshotRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, contentId:string, data: UpdateScreenshotRequest }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -358,7 +418,7 @@ export const usePublicContentLegacyApi_DeleteContent_ByUserId_ByChannelId_ByCont
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, contentId:string }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -381,7 +441,7 @@ export const usePublicContentLegacyApi_UpdateContent_ByUserId_ByChannelId_ByCont
     options?: Omit<UseMutationOptions<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: CreateContentRequest }>, 'mutationKey'>,
     callback?: (data: CreateContentResponse) => void
   ): UseMutationResult<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: CreateContentRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: CreateContentRequest }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -404,7 +464,7 @@ export const usePublicContentLegacyApi_UpdateContentS3_ByUserId_ByChannelId_ByCo
     options?: Omit<UseMutationOptions<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: UpdateContentRequest }>, 'mutationKey'>,
     callback?: (data: CreateContentResponse) => void
   ): UseMutationResult<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: UpdateContentRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: UpdateContentRequest }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -427,7 +487,7 @@ export const usePublicContentLegacyApi_DeleteScreenshot_ByUserId_ByContentId_ByS
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, contentId:string, screenshotId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, contentId:string, screenshotId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, contentId:string, screenshotId:string }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -450,7 +510,7 @@ export const usePublicContentLegacyApi_PatchSharecode_ByUserId_ByChannelId_ByCon
     options?: Omit<UseMutationOptions<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: UpdateContentShareCodeRequest }>, 'mutationKey'>,
     callback?: (data: CreateContentResponse) => void
   ): UseMutationResult<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: UpdateContentShareCodeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: UpdateContentShareCodeRequest }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -473,7 +533,7 @@ export const usePublicContentLegacyApi_DeleteContentSharecode_ByUserId_ByChannel
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, shareCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, shareCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, shareCode:string }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -496,7 +556,7 @@ export const usePublicContentLegacyApi_UpdateContentS3Sharecode_ByUserId_ByChann
     options?: Omit<UseMutationOptions<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, shareCode:string, data: UpdateContentRequest }>, 'mutationKey'>,
     callback?: (data: CreateContentResponse) => void
   ): UseMutationResult<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, shareCode:string, data: UpdateContentRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, shareCode:string, data: UpdateContentRequest }) => {
       const response = 
             (await PublicContentLegacyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

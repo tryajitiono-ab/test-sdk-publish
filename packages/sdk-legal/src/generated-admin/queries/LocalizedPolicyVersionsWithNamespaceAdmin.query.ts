@@ -33,13 +33,23 @@ Attachment_ByLocalizedPolicyVersionId = 'Legal.LocalizedPolicyVersionsWithNamesp
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LocalizedPolicyVersionsWithNamespaceAdmin.LocalizedPolicyVersion_ByLocalizedPolicyVersionId, input]
+ * }
+ * ```
+ */
 export const useLocalizedPolicyVersionsWithNamespaceAdminApi_GetLocalizedPolicyVersion_ByLocalizedPolicyVersionId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { localizedPolicyVersionId:string },
     options?: Omit<UseQueryOptions<RetrieveLocalizedPolicyVersionResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveLocalizedPolicyVersionResponse>) => void
   ): UseQueryResult<RetrieveLocalizedPolicyVersionResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLocalizedPolicyVersionsWithNamespaceAdminApi_GetLocalizedPolicyVersion_ByLocalizedPolicyVersionId>[1]
@@ -65,7 +75,7 @@ export const useLocalizedPolicyVersionsWithNamespaceAdminApi_UpdateLocalizedPoli
     options?: Omit<UseMutationOptions<UpdateLocalizedPolicyVersionResponse, AxiosError<ApiError>, SdkSetConfigParam & { localizedPolicyVersionId:string, data: UpdateLocalizedPolicyVersionRequest }>, 'mutationKey'>,
     callback?: (data: UpdateLocalizedPolicyVersionResponse) => void
   ): UseMutationResult<UpdateLocalizedPolicyVersionResponse, AxiosError<ApiError>, SdkSetConfigParam & { localizedPolicyVersionId:string, data: UpdateLocalizedPolicyVersionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { localizedPolicyVersionId:string, data: UpdateLocalizedPolicyVersionRequest }) => {
       const response = 
             (await LocalizedPolicyVersionsWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -83,13 +93,23 @@ export const useLocalizedPolicyVersionsWithNamespaceAdminApi_UpdateLocalizedPoli
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LocalizedPolicyVersionsWithNamespaceAdmin.LocalizedPolicyVersionVersion_ByPolicyVersionId, input]
+ * }
+ * ```
+ */
 export const useLocalizedPolicyVersionsWithNamespaceAdminApi_GetLocalizedPolicyVersionVersion_ByPolicyVersionId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { policyVersionId:string },
     options?: Omit<UseQueryOptions<RetrieveLocalizedPolicyVersionResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveLocalizedPolicyVersionResponseArray>) => void
   ): UseQueryResult<RetrieveLocalizedPolicyVersionResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLocalizedPolicyVersionsWithNamespaceAdminApi_GetLocalizedPolicyVersionVersion_ByPolicyVersionId>[1]
@@ -115,7 +135,7 @@ export const useLocalizedPolicyVersionsWithNamespaceAdminApi_CreateLocalizedPoli
     options?: Omit<UseMutationOptions<CreateLocalizedPolicyVersionResponse, AxiosError<ApiError>, SdkSetConfigParam & { policyVersionId:string, data: CreateLocalizedPolicyVersionRequest }>, 'mutationKey'>,
     callback?: (data: CreateLocalizedPolicyVersionResponse) => void
   ): UseMutationResult<CreateLocalizedPolicyVersionResponse, AxiosError<ApiError>, SdkSetConfigParam & { policyVersionId:string, data: CreateLocalizedPolicyVersionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { policyVersionId:string, data: CreateLocalizedPolicyVersionRequest }) => {
       const response = 
             (await LocalizedPolicyVersionsWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -138,7 +158,7 @@ export const useLocalizedPolicyVersionsWithNamespaceAdminApi_PatchDefault_ByLoca
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { localizedPolicyVersionId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { localizedPolicyVersionId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { localizedPolicyVersionId:string }) => {
       const response = 
             (await LocalizedPolicyVersionsWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -161,7 +181,7 @@ export const useLocalizedPolicyVersionsWithNamespaceAdminApi_CreateAttachment_By
     options?: Omit<UseMutationOptions<UploadLocalizedPolicyVersionAttachmentResponse, AxiosError<ApiError>, SdkSetConfigParam & { localizedPolicyVersionId:string, data: UploadPolicyVersionAttachmentRequest }>, 'mutationKey'>,
     callback?: (data: UploadLocalizedPolicyVersionAttachmentResponse) => void
   ): UseMutationResult<UploadLocalizedPolicyVersionAttachmentResponse, AxiosError<ApiError>, SdkSetConfigParam & { localizedPolicyVersionId:string, data: UploadPolicyVersionAttachmentRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { localizedPolicyVersionId:string, data: UploadPolicyVersionAttachmentRequest }) => {
       const response = 
             (await LocalizedPolicyVersionsWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

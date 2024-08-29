@@ -29,13 +29,23 @@ RefundPayment_ByPaymentOrderNo = 'Platform.PaymentDedicatedAdmin.RefundPayment_B
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentDedicatedAdmin.PaymentOrders, input]
+ * }
+ * ```
+ */
 export const usePaymentDedicatedAdminApi_GetPaymentOrders = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {end: string | null, start: string | null, nextEvaluatedKey?: string | null} },
     options?: Omit<UseQueryOptions<PaymentOrderSyncResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentOrderSyncResult>) => void
   ): UseQueryResult<PaymentOrderSyncResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentDedicatedAdminApi_GetPaymentOrders>[1]
@@ -61,7 +71,7 @@ export const usePaymentDedicatedAdminApi_CreatePaymentOrder = (
     options?: Omit<UseMutationOptions<PaymentOrderCreateResult, AxiosError<ApiError>, SdkSetConfigParam & { data: ExternalPaymentOrderCreate }>, 'mutationKey'>,
     callback?: (data: PaymentOrderCreateResult) => void
   ): UseMutationResult<PaymentOrderCreateResult, AxiosError<ApiError>, SdkSetConfigParam & { data: ExternalPaymentOrderCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ExternalPaymentOrderCreate }) => {
       const response = 
             (await PaymentDedicatedAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -84,7 +94,7 @@ export const usePaymentDedicatedAdminApi_UpdateRefundPayment_ByPaymentOrderNo = 
     options?: Omit<UseMutationOptions<PaymentOrderRefundResult, AxiosError<ApiError>, SdkSetConfigParam & { paymentOrderNo:string, data: PaymentOrderRefund }>, 'mutationKey'>,
     callback?: (data: PaymentOrderRefundResult) => void
   ): UseMutationResult<PaymentOrderRefundResult, AxiosError<ApiError>, SdkSetConfigParam & { paymentOrderNo:string, data: PaymentOrderRefund }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { paymentOrderNo:string, data: PaymentOrderRefund }) => {
       const response = 
             (await PaymentDedicatedAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

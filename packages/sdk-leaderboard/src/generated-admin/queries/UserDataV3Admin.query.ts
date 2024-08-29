@@ -23,13 +23,23 @@ export enum Key_UserDataV3Admin {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserDataV3Admin.Leaderboards_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUserDataV3AdminApi_GetLeaderboards_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetAllUserLeaderboardsRespV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetAllUserLeaderboardsRespV3>) => void
   ): UseQueryResult<GetAllUserLeaderboardsRespV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserDataV3AdminApi_GetLeaderboards_ByUserId_v3>[1]

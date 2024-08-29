@@ -33,13 +33,23 @@ User_ByLeaderboardCode_ByUserId = 'Leaderboard.LeaderboardData.User_ByLeaderboar
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardData.Week_ByLeaderboardCode, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataApi_GetWeek_ByLeaderboardCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string,  queryParams?: {limit?: number, offset?: number, previousVersion?: number} },
     options?: Omit<UseQueryOptions<GetLeaderboardRankingResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetLeaderboardRankingResp>) => void
   ): UseQueryResult<GetLeaderboardRankingResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataApi_GetWeek_ByLeaderboardCode>[1]
@@ -60,13 +70,23 @@ export const useLeaderboardDataApi_GetWeek_ByLeaderboardCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardData.Month_ByLeaderboardCode, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataApi_GetMonth_ByLeaderboardCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string,  queryParams?: {limit?: number, offset?: number, previousVersion?: number} },
     options?: Omit<UseQueryOptions<GetLeaderboardRankingResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetLeaderboardRankingResp>) => void
   ): UseQueryResult<GetLeaderboardRankingResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataApi_GetMonth_ByLeaderboardCode>[1]
@@ -87,13 +107,23 @@ export const useLeaderboardDataApi_GetMonth_ByLeaderboardCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardData.Today_ByLeaderboardCode, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataApi_GetToday_ByLeaderboardCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string,  queryParams?: {limit?: number, offset?: number, previousVersion?: number} },
     options?: Omit<UseQueryOptions<GetLeaderboardRankingResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetLeaderboardRankingResp>) => void
   ): UseQueryResult<GetLeaderboardRankingResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataApi_GetToday_ByLeaderboardCode>[1]
@@ -114,13 +144,23 @@ export const useLeaderboardDataApi_GetToday_ByLeaderboardCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardData.Season_ByLeaderboardCode, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataApi_GetSeason_ByLeaderboardCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string,  queryParams?: {limit?: number, offset?: number, previousVersion?: number} },
     options?: Omit<UseQueryOptions<GetLeaderboardRankingResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetLeaderboardRankingResp>) => void
   ): UseQueryResult<GetLeaderboardRankingResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataApi_GetSeason_ByLeaderboardCode>[1]
@@ -141,13 +181,23 @@ export const useLeaderboardDataApi_GetSeason_ByLeaderboardCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardData.Alltime_ByLeaderboardCode, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataApi_GetAlltime_ByLeaderboardCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetLeaderboardRankingResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetLeaderboardRankingResp>) => void
   ): UseQueryResult<GetLeaderboardRankingResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataApi_GetAlltime_ByLeaderboardCode>[1]
@@ -168,13 +218,23 @@ export const useLeaderboardDataApi_GetAlltime_ByLeaderboardCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardData.Alltime_ByLeaderboardCode_v2, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataApi_GetAlltime_ByLeaderboardCode_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetPublicLeaderboardRankingResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetPublicLeaderboardRankingResponse>) => void
   ): UseQueryResult<GetPublicLeaderboardRankingResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataApi_GetAlltime_ByLeaderboardCode_v2>[1]
@@ -195,13 +255,23 @@ export const useLeaderboardDataApi_GetAlltime_ByLeaderboardCode_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardData.Archived_ByLeaderboardCode, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataApi_GetArchived_ByLeaderboardCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string,  queryParams: {leaderboardCodes: string | null, slug?: string | null} },
     options?: Omit<UseQueryOptions<ArchiveLeaderboardSignedUrlResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ArchiveLeaderboardSignedUrlResponseArray>) => void
   ): UseQueryResult<ArchiveLeaderboardSignedUrlResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataApi_GetArchived_ByLeaderboardCode>[1]
@@ -227,7 +297,7 @@ export const useLeaderboardDataApi_DeleteUser_ByLeaderboardCode_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { leaderboardCode:string, userId:string }) => {
       const response = 
             (await LeaderboardDataApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -245,13 +315,23 @@ export const useLeaderboardDataApi_DeleteUser_ByLeaderboardCode_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardData.User_ByLeaderboardCode_ByUserId, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataApi_GetUser_ByLeaderboardCode_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string, userId:string,  queryParams?: {previousVersion?: number} },
     options?: Omit<UseQueryOptions<UserRankingResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserRankingResponse>) => void
   ): UseQueryResult<UserRankingResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataApi_GetUser_ByLeaderboardCode_ByUserId>[1]

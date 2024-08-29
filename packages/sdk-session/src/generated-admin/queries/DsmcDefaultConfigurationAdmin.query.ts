@@ -23,13 +23,23 @@ export enum Key_DsmcDefaultConfigurationAdmin {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DsmcDefaultConfigurationAdmin.DsconfigsDefault, input]
+ * }
+ * ```
+ */
 export const useDsmcDefaultConfigurationAdminApi_GetDsconfigsDefault = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<DefaultDsmcConfig, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DefaultDsmcConfig>) => void
   ): UseQueryResult<DefaultDsmcConfig, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDsmcDefaultConfigurationAdminApi_GetDsconfigsDefault>[1]

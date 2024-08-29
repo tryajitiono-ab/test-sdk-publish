@@ -30,13 +30,23 @@ Permission_ByMemberRoleId = 'Groups.GroupRolesAdmin.Permission_ByMemberRoleId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupRolesAdmin.Roles, input]
+ * }
+ * ```
+ */
 export const useGroupRolesAdminApi_GetRoles = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetMemberRolesListResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetMemberRolesListResponseV1>) => void
   ): UseQueryResult<GetMemberRolesListResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupRolesAdminApi_GetRoles>[1]
@@ -62,7 +72,7 @@ export const useGroupRolesAdminApi_CreateRole = (
     options?: Omit<UseMutationOptions<MemberRoleResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateMemberRoleRequestV1 }>, 'mutationKey'>,
     callback?: (data: MemberRoleResponseV1) => void
   ): UseMutationResult<MemberRoleResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateMemberRoleRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateMemberRoleRequestV1 }) => {
       const response = 
             (await GroupRolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -85,7 +95,7 @@ export const useGroupRolesAdminApi_DeleteRole_ByMemberRoleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { memberRoleId:string }) => {
       const response = 
             (await GroupRolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -103,13 +113,23 @@ export const useGroupRolesAdminApi_DeleteRole_ByMemberRoleId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupRolesAdmin.Role_ByMemberRoleId, input]
+ * }
+ * ```
+ */
 export const useGroupRolesAdminApi_GetRole_ByMemberRoleId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { memberRoleId:string },
     options?: Omit<UseQueryOptions<MemberRoleResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MemberRoleResponseV1>) => void
   ): UseQueryResult<MemberRoleResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupRolesAdminApi_GetRole_ByMemberRoleId>[1]
@@ -135,7 +155,7 @@ export const useGroupRolesAdminApi_PatchRole_ByMemberRoleId = (
     options?: Omit<UseMutationOptions<MemberRoleResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string, data: UpdateMemberRoleRequestV1 }>, 'mutationKey'>,
     callback?: (data: MemberRoleResponseV1) => void
   ): UseMutationResult<MemberRoleResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string, data: UpdateMemberRoleRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { memberRoleId:string, data: UpdateMemberRoleRequestV1 }) => {
       const response = 
             (await GroupRolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -158,7 +178,7 @@ export const useGroupRolesAdminApi_UpdatePermission_ByMemberRoleId = (
     options?: Omit<UseMutationOptions<MemberRoleResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string, data: UpdateMemberRolePermissionsRequestV1 }>, 'mutationKey'>,
     callback?: (data: MemberRoleResponseV1) => void
   ): UseMutationResult<MemberRoleResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string, data: UpdateMemberRolePermissionsRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { memberRoleId:string, data: UpdateMemberRolePermissionsRequestV1 }) => {
       const response = 
             (await GroupRolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

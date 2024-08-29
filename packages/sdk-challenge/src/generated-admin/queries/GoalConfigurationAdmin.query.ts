@@ -28,13 +28,23 @@ Goal_ByChallengeCode_ByCode = 'Challenge.GoalConfigurationAdmin.Goal_ByChallenge
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GoalConfigurationAdmin.Goals_ByChallengeCode, input]
+ * }
+ * ```
+ */
 export const useGoalConfigurationAdminApi_GetGoals_ByChallengeCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { challengeCode:string,  queryParams?: {limit?: number, offset?: number, sortBy?: string | null} },
     options?: Omit<UseQueryOptions<GetGoalsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetGoalsResponse>) => void
   ): UseQueryResult<GetGoalsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGoalConfigurationAdminApi_GetGoals_ByChallengeCode>[1]
@@ -60,7 +70,7 @@ export const useGoalConfigurationAdminApi_CreateGoal_ByChallengeCode = (
     options?: Omit<UseMutationOptions<GoalResponse, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string, data: CreateGoalRequest }>, 'mutationKey'>,
     callback?: (data: GoalResponse) => void
   ): UseMutationResult<GoalResponse, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string, data: CreateGoalRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { challengeCode:string, data: CreateGoalRequest }) => {
       const response = 
             (await GoalConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -83,7 +93,7 @@ export const useGoalConfigurationAdminApi_DeleteGoal_ByChallengeCode_ByCode = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string, code:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string, code:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { challengeCode:string, code:string }) => {
       const response = 
             (await GoalConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -101,13 +111,23 @@ export const useGoalConfigurationAdminApi_DeleteGoal_ByChallengeCode_ByCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GoalConfigurationAdmin.Goal_ByChallengeCode_ByCode, input]
+ * }
+ * ```
+ */
 export const useGoalConfigurationAdminApi_GetGoal_ByChallengeCode_ByCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { challengeCode:string, code:string },
     options?: Omit<UseQueryOptions<GoalResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GoalResponse>) => void
   ): UseQueryResult<GoalResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGoalConfigurationAdminApi_GetGoal_ByChallengeCode_ByCode>[1]
@@ -133,7 +153,7 @@ export const useGoalConfigurationAdminApi_UpdateGoal_ByChallengeCode_ByCode = (
     options?: Omit<UseMutationOptions<GoalResponse, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string, code:string, data: UpdateGoalRequest }>, 'mutationKey'>,
     callback?: (data: GoalResponse) => void
   ): UseMutationResult<GoalResponse, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode:string, code:string, data: UpdateGoalRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { challengeCode:string, code:string, data: UpdateGoalRequest }) => {
       const response = 
             (await GoalConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

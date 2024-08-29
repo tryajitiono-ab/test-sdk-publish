@@ -29,13 +29,23 @@ Restore_ByImageId = 'Ams.ImagesAdmin.Restore_ByImageId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ImagesAdmin.Images, input]
+ * }
+ * ```
+ */
 export const useImagesAdminApi_GetImages = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ImageList, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ImageList>) => void
   ): UseQueryResult<ImageList, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useImagesAdminApi_GetImages>[1]
@@ -56,13 +66,23 @@ export const useImagesAdminApi_GetImages = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ImagesAdmin.ImagesStorage, input]
+ * }
+ * ```
+ */
 export const useImagesAdminApi_GetImagesStorage = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ImageStorage, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ImageStorage>) => void
   ): UseQueryResult<ImageStorage, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useImagesAdminApi_GetImagesStorage>[1]
@@ -88,7 +108,7 @@ export const useImagesAdminApi_DeleteImage_ByImageId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { imageID:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { imageID:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { imageID:string }) => {
       const response = 
             (await ImagesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -106,13 +126,23 @@ export const useImagesAdminApi_DeleteImage_ByImageId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ImagesAdmin.Image_ByImageId, input]
+ * }
+ * ```
+ */
 export const useImagesAdminApi_GetImage_ByImageId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { imageID:string },
     options?: Omit<UseQueryOptions<ImageDetails, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ImageDetails>) => void
   ): UseQueryResult<ImageDetails, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useImagesAdminApi_GetImage_ByImageId>[1]
@@ -138,7 +168,7 @@ export const useImagesAdminApi_PatchImage_ByImageId = (
     options?: Omit<UseMutationOptions<ImageDetails, AxiosError<ApiError>, SdkSetConfigParam & { imageID:string, data: ImageUpdate }>, 'mutationKey'>,
     callback?: (data: ImageDetails) => void
   ): UseMutationResult<ImageDetails, AxiosError<ApiError>, SdkSetConfigParam & { imageID:string, data: ImageUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { imageID:string, data: ImageUpdate }) => {
       const response = 
             (await ImagesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -161,7 +191,7 @@ export const useImagesAdminApi_CreateRestore_ByImageId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { imageID:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { imageID:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { imageID:string }) => {
       const response = 
             (await ImagesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

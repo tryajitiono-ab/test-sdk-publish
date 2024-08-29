@@ -25,13 +25,23 @@ Events = 'Gametelemetry.TelemetryAdmin.Events',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TelemetryAdmin.Namespaces, input]
+ * }
+ * ```
+ */
 export const useTelemetryAdminApi_GetNamespaces = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ListBaseResponseStr, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListBaseResponseStr>) => void
   ): UseQueryResult<ListBaseResponseStr, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTelemetryAdminApi_GetNamespaces>[1]
@@ -52,13 +62,23 @@ export const useTelemetryAdminApi_GetNamespaces = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TelemetryAdmin.Events, input]
+ * }
+ * ```
+ */
 export const useTelemetryAdminApi_GetEvents = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {startTime?: string | null, endTime?: string | null, offset?: number, limit?: number, userId?: string | null, flightId?: string | null, eventId?: string | null, eventName?: string | null, eventPayload?: string | null, deviceType?: string | null} },
     options?: Omit<UseQueryOptions<PagedResponseGetNamespaceEventResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PagedResponseGetNamespaceEventResponse>) => void
   ): UseQueryResult<PagedResponseGetNamespaceEventResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTelemetryAdminApi_GetEvents>[1]

@@ -44,7 +44,7 @@ export const useOAuth20ExtensionApi_CreateLogout_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await OAuth20ExtensionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -67,7 +67,7 @@ export const useOAuth20ExtensionApi_PostAuthenticate_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {password: string | null,request_id: string | null,user_name: string | null,client_id?: string | null,extend_exp?: boolean | null,redirect_uri?: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: {password: string | null,request_id: string | null,user_name: string | null,client_id?: string | null,extend_exp?: boolean | null,redirect_uri?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {password: string | null,request_id: string | null,user_name: string | null,client_id?: string | null,extend_exp?: boolean | null,redirect_uri?: string | null} }) => {
       const response = 
             (await OAuth20ExtensionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -90,7 +90,7 @@ export const useOAuth20ExtensionApi_PostHeadlesToken_v3 = (
     options?: Omit<UseMutationOptions<TokenResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: {linkingToken: string | null,additionalData?: string | null,extend_exp?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: TokenResponseV3) => void
   ): UseMutationResult<TokenResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: {linkingToken: string | null,additionalData?: string | null,extend_exp?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {linkingToken: string | null,additionalData?: string | null,extend_exp?: boolean | null} }) => {
       const response = 
             (await OAuth20ExtensionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -113,7 +113,7 @@ export const useOAuth20ExtensionApi_PostTokenExchange_v3 = (
     options?: Omit<UseMutationOptions<TokenResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: {code: string | null,additionalData?: string | null} }>, 'mutationKey'>,
     callback?: (data: TokenResponseV3) => void
   ): UseMutationResult<TokenResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: {code: string | null,additionalData?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {code: string | null,additionalData?: string | null} }) => {
       const response = 
             (await OAuth20ExtensionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -131,13 +131,23 @@ export const useOAuth20ExtensionApi_PostTokenExchange_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OAuth20Extension.LocationCountry_v3, input]
+ * }
+ * ```
+ */
 export const useOAuth20ExtensionApi_GetLocationCountry_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<CountryLocationResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CountryLocationResponse>) => void
   ): UseQueryResult<CountryLocationResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOAuth20ExtensionApi_GetLocationCountry_v3>[1]
@@ -163,7 +173,7 @@ export const useOAuth20ExtensionApi_PostLinkCodeRequest_v3 = (
     options?: Omit<UseMutationOptions<OneTimeLinkingCodeResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {platformId: string | null} }>, 'mutationKey'>,
     callback?: (data: OneTimeLinkingCodeResponse) => void
   ): UseMutationResult<OneTimeLinkingCodeResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {platformId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {platformId: string | null} }) => {
       const response = 
             (await OAuth20ExtensionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -186,7 +196,7 @@ export const useOAuth20ExtensionApi_PostLinkCodeValidate_v3 = (
     options?: Omit<UseMutationOptions<OneTimeLinkingCodeValidationResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {oneTimeLinkCode: string | null} }>, 'mutationKey'>,
     callback?: (data: OneTimeLinkingCodeValidationResponse) => void
   ): UseMutationResult<OneTimeLinkingCodeValidationResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {oneTimeLinkCode: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {oneTimeLinkCode: string | null} }) => {
       const response = 
             (await OAuth20ExtensionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -209,7 +219,7 @@ export const useOAuth20ExtensionApi_PostLinkTokenExchange_v3 = (
     options?: Omit<UseMutationOptions<TokenResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: {client_id: string | null,oneTimeLinkCode: string | null,additionalData?: string | null,isTransient?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: TokenResponseV3) => void
   ): UseMutationResult<TokenResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: {client_id: string | null,oneTimeLinkCode: string | null,additionalData?: string | null,isTransient?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {client_id: string | null,oneTimeLinkCode: string | null,additionalData?: string | null,isTransient?: boolean | null} }) => {
       const response = 
             (await OAuth20ExtensionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -232,7 +242,7 @@ export const useOAuth20ExtensionApi_PostAuthenticateWithLink_v3 = (
     options?: Omit<UseMutationOptions<TokenResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: {client_id: string | null,linkingToken: string | null,password: string | null,username: string | null,extend_exp?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: TokenResponseV3) => void
   ): UseMutationResult<TokenResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: {client_id: string | null,linkingToken: string | null,password: string | null,username: string | null,extend_exp?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {client_id: string | null,linkingToken: string | null,password: string | null,username: string | null,extend_exp?: boolean | null} }) => {
       const response = 
             (await OAuth20ExtensionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -255,7 +265,7 @@ export const useOAuth20ExtensionApi_PostTokenRequest_v3 = (
     options?: Omit<UseMutationOptions<TargetTokenCodeResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {client_id: string | null}, queryParams?: {code_challenge?: string | null, code_challenge_method?: 'S256' | 'plain'} }>, 'mutationKey'>,
     callback?: (data: TargetTokenCodeResponse) => void
   ): UseMutationResult<TargetTokenCodeResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {client_id: string | null}, queryParams?: {code_challenge?: string | null, code_challenge_method?: 'S256' | 'plain'} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {client_id: string | null}, queryParams?: {code_challenge?: string | null, code_challenge_method?: 'S256' | 'plain'} }) => {
       const response = 
             (await OAuth20ExtensionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -273,13 +283,23 @@ export const useOAuth20ExtensionApi_PostTokenRequest_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OAuth20Extension.Authenticate_ByPlatformId_v3, input]
+ * }
+ * ```
+ */
 export const useOAuth20ExtensionApi_GetAuthenticate_ByPlatformId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { platformId:string,  queryParams: {state: string | null, code?: string | null, error?: string | null, assoc_handle?: string | null, claimed_id?: string | null, identity?: string | null, mode?: string | null, ns?: string | null, op_endpoint?: string | null, response_nonce?: string | null, return_to?: string | null, sig?: string | null, signed?: string | null} },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOAuth20ExtensionApi_GetAuthenticate_ByPlatformId_v3>[1]
@@ -305,7 +325,7 @@ export const useOAuth20ExtensionApi_PostTokenVerify_ByPlatformId_v3 = (
     options?: Omit<UseMutationOptions<PlatformTokenRefreshResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: {platform_token: string | null} }>, 'mutationKey'>,
     callback?: (data: PlatformTokenRefreshResponseV3) => void
   ): UseMutationResult<PlatformTokenRefreshResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: {platform_token: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platformId:string, data: {platform_token: string | null} }) => {
       const response = 
             (await OAuth20ExtensionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -46,13 +46,23 @@ Permission_ByRoleId_ByResource_ByAction = 'Iam.Roles.Permission_ByRoleId_ByResou
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Roles.Roles, input]
+ * }
+ * ```
+ */
 export const useRolesApi_GetRoles = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {isWildcard?: string | null} },
     options?: Omit<UseQueryOptions<RoleResponseWithManagersArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleResponseWithManagersArray>) => void
   ): UseQueryResult<RoleResponseWithManagersArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesApi_GetRoles>[1]
@@ -78,7 +88,7 @@ export const useRolesApi_CreateRole = (
     options?: Omit<UseMutationOptions<Role, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleCreateRequest }>, 'mutationKey'>,
     callback?: (data: Role) => void
   ): UseMutationResult<Role, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleCreateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: RoleCreateRequest }) => {
       const response = 
             (await RolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -101,7 +111,7 @@ export const useRolesApi_DeleteRole_ByRoleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string }) => {
       const response = 
             (await RolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -119,13 +129,23 @@ export const useRolesApi_DeleteRole_ByRoleId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Roles.Role_ByRoleId, input]
+ * }
+ * ```
+ */
 export const useRolesApi_GetRole_ByRoleId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string },
     options?: Omit<UseQueryOptions<RoleResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleResponse>) => void
   ): UseQueryResult<RoleResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesApi_GetRole_ByRoleId>[1]
@@ -151,7 +171,7 @@ export const useRolesApi_UpdateRole_ByRoleId = (
     options?: Omit<UseMutationOptions<RoleResponse, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleUpdateRequest }>, 'mutationKey'>,
     callback?: (data: RoleResponse) => void
   ): UseMutationResult<RoleResponse, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleUpdateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: RoleUpdateRequest }) => {
       const response = 
             (await RolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -169,13 +189,23 @@ export const useRolesApi_UpdateRole_ByRoleId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Roles.Roles_v3, input]
+ * }
+ * ```
+ */
 export const useRolesApi_GetRoles_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {after?: string | null, before?: string | null, isWildcard?: boolean | null, limit?: number} },
     options?: Omit<UseQueryOptions<RoleNamesResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleNamesResponseV3>) => void
   ): UseQueryResult<RoleNamesResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesApi_GetRoles_v3>[1]
@@ -201,7 +231,7 @@ export const useRolesApi_DeleteAdmin_ByRoleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string }) => {
       const response = 
             (await RolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -219,13 +249,23 @@ export const useRolesApi_DeleteAdmin_ByRoleId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Roles.Admin_ByRoleId, input]
+ * }
+ * ```
+ */
 export const useRolesApi_GetAdmin_ByRoleId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string },
     options?: Omit<UseQueryOptions<RoleAdminStatusResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleAdminStatusResponse>) => void
   ): UseQueryResult<RoleAdminStatusResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesApi_GetAdmin_ByRoleId>[1]
@@ -251,7 +291,7 @@ export const useRolesApi_UpdateAdmin_ByRoleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string }) => {
       const response = 
             (await RolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -274,7 +314,7 @@ export const useRolesApi_DeleteMember_ByRoleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleMembersRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleMembersRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: RoleMembersRequest }) => {
       const response = 
             (await RolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -292,13 +332,23 @@ export const useRolesApi_DeleteMember_ByRoleId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Roles.Members_ByRoleId, input]
+ * }
+ * ```
+ */
 export const useRolesApi_GetMembers_ByRoleId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string },
     options?: Omit<UseQueryOptions<RoleMembersResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleMembersResponse>) => void
   ): UseQueryResult<RoleMembersResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesApi_GetMembers_ByRoleId>[1]
@@ -324,7 +374,7 @@ export const useRolesApi_UpdateMember_ByRoleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleMembersRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleMembersRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: RoleMembersRequest }) => {
       const response = 
             (await RolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -347,7 +397,7 @@ export const useRolesApi_DeleteManager_ByRoleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleManagersRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleManagersRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: RoleManagersRequest }) => {
       const response = 
             (await RolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -365,13 +415,23 @@ export const useRolesApi_DeleteManager_ByRoleId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Roles.Managers_ByRoleId, input]
+ * }
+ * ```
+ */
 export const useRolesApi_GetManagers_ByRoleId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string },
     options?: Omit<UseQueryOptions<RoleManagersResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleManagersResponse>) => void
   ): UseQueryResult<RoleManagersResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesApi_GetManagers_ByRoleId>[1]
@@ -397,7 +457,7 @@ export const useRolesApi_UpdateManager_ByRoleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleManagersRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleManagersRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: RoleManagersRequest }) => {
       const response = 
             (await RolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -415,13 +475,23 @@ export const useRolesApi_UpdateManager_ByRoleId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Roles.Role_ByRoleId_v3, input]
+ * }
+ * ```
+ */
 export const useRolesApi_GetRole_ByRoleId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string },
     options?: Omit<UseQueryOptions<RoleResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleResponse>) => void
   ): UseQueryResult<RoleResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesApi_GetRole_ByRoleId_v3>[1]
@@ -447,7 +517,7 @@ export const useRolesApi_UpdatePermission_ByRoleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: Permissions }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: Permissions }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: Permissions }) => {
       const response = 
             (await RolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -470,7 +540,7 @@ export const useRolesApi_DeletePermission_ByRoleId_ByResource_ByAction = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, resource:string, action:number }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, resource:string, action:number }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, resource:string, action:number }) => {
       const response = 
             (await RolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -493,7 +563,7 @@ export const useRolesApi_UpdatePermission_ByRoleId_ByResource_ByAction = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, resource:string, action:number, data: UpdatePermissionScheduleRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, resource:string, action:number, data: UpdatePermissionScheduleRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, resource:string, action:number, data: UpdatePermissionScheduleRequest }) => {
       const response = 
             (await RolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

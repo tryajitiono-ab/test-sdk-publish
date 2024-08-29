@@ -39,7 +39,7 @@ export const useMockMatchmakingAdminApi_DeleteMock_ByChannelName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelName:string }) => {
       const response = 
             (await MockMatchmakingAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -57,13 +57,23 @@ export const useMockMatchmakingAdminApi_DeleteMock_ByChannelName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MockMatchmakingAdmin.MocksMatches_ByChannelName, input]
+ * }
+ * ```
+ */
 export const useMockMatchmakingAdminApi_GetMocksMatches_ByChannelName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { channelName:string },
     options?: Omit<UseQueryOptions<GetMockMatchesResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetMockMatchesResponse>) => void
   ): UseQueryResult<GetMockMatchesResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMockMatchmakingAdminApi_GetMocksMatches_ByChannelName>[1]
@@ -84,13 +94,23 @@ export const useMockMatchmakingAdminApi_GetMocksMatches_ByChannelName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MockMatchmakingAdmin.MockMatche_ByChannelName, input]
+ * }
+ * ```
+ */
 export const useMockMatchmakingAdminApi_FetchMockMatche_ByChannelName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { channelName:string, data: QueryMockBy },
     options?: Omit<UseQueryOptions<GetMockMatchesResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetMockMatchesResponse>) => void
   ): UseQueryResult<GetMockMatchesResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMockMatchmakingAdminApi_FetchMockMatche_ByChannelName>[1]
@@ -111,13 +131,23 @@ export const useMockMatchmakingAdminApi_FetchMockMatche_ByChannelName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MockMatchmakingAdmin.MocksTickets_ByChannelName, input]
+ * }
+ * ```
+ */
 export const useMockMatchmakingAdminApi_GetMocksTickets_ByChannelName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { channelName:string },
     options?: Omit<UseQueryOptions<GetMockTicketsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetMockTicketsResponse>) => void
   ): UseQueryResult<GetMockTicketsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMockMatchmakingAdminApi_GetMocksTickets_ByChannelName>[1]
@@ -143,7 +173,7 @@ export const useMockMatchmakingAdminApi_CreateMockTicket_ByChannelName = (
     options?: Omit<UseMutationOptions<MockTicketArray, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string, data: CreateMockTicket }>, 'mutationKey'>,
     callback?: (data: MockTicketArray) => void
   ): UseMutationResult<MockTicketArray, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string, data: CreateMockTicket }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelName:string, data: CreateMockTicket }) => {
       const response = 
             (await MockMatchmakingAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -166,7 +196,7 @@ export const useMockMatchmakingAdminApi_CreateMockTicketBulk_ByChannelName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string, data: MatchingParty[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string, data: MatchingParty[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelName:string, data: MatchingParty[] }) => {
       const response = 
             (await MockMatchmakingAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -184,13 +214,23 @@ export const useMockMatchmakingAdminApi_CreateMockTicketBulk_ByChannelName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MockMatchmakingAdmin.MockTicketQuery_ByChannelName, input]
+ * }
+ * ```
+ */
 export const useMockMatchmakingAdminApi_FetchMockTicketQuery_ByChannelName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { channelName:string, data: QueryMockBy },
     options?: Omit<UseQueryOptions<GetMockTicketsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetMockTicketsResponse>) => void
   ): UseQueryResult<GetMockTicketsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMockMatchmakingAdminApi_FetchMockTicketQuery_ByChannelName>[1]

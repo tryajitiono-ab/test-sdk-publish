@@ -44,13 +44,23 @@ Offset_ByHash_ByUuid_ByOffset_ByBlockSize = 'Buildinfo.UploaderV1Admin.Offset_By
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UploaderV1Admin.BuildsByAppId, input]
+ * }
+ * ```
+ */
 export const useUploaderV1AdminApi_GetBuildsByAppId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {appId: string | null} },
     options?: Omit<UseQueryOptions<BuildIdVersionArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BuildIdVersionArray>) => void
   ): UseQueryResult<BuildIdVersionArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUploaderV1AdminApi_GetBuildsByAppId>[1]
@@ -76,7 +86,7 @@ export const useUploaderV1AdminApi_DeleteBuild_ByBuildId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { buildId:string }) => {
       const response = 
             (await UploaderV1AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -94,13 +104,23 @@ export const useUploaderV1AdminApi_DeleteBuild_ByBuildId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UploaderV1Admin.Build_ByBuildId, input]
+ * }
+ * ```
+ */
 export const useUploaderV1AdminApi_GetBuild_ByBuildId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { buildId:string },
     options?: Omit<UseQueryOptions<BuildManifest, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BuildManifest>) => void
   ): UseQueryResult<BuildManifest, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUploaderV1AdminApi_GetBuild_ByBuildId>[1]
@@ -126,7 +146,7 @@ export const useUploaderV1AdminApi_CreateStartchunkupload = (
     options?: Omit<UseMutationOptions<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { data: BinaryUpload }>, 'mutationKey'>,
     callback?: (data: UploadSummary) => void
   ): UseMutationResult<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { data: BinaryUpload }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BinaryUpload }) => {
       const response = 
             (await UploaderV1AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -144,13 +164,23 @@ export const useUploaderV1AdminApi_CreateStartchunkupload = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UploaderV1Admin.BuildsByNamespace, input]
+ * }
+ * ```
+ */
 export const useUploaderV1AdminApi_GetBuildsByNamespace = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<BasicBuildManifestArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BasicBuildManifestArray>) => void
   ): UseQueryResult<BasicBuildManifestArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUploaderV1AdminApi_GetBuildsByNamespace>[1]
@@ -176,7 +206,7 @@ export const useUploaderV1AdminApi_CreateCommitbuildmanifest = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BuildManifest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BuildManifest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BuildManifest }) => {
       const response = 
             (await UploaderV1AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -194,13 +224,23 @@ export const useUploaderV1AdminApi_CreateCommitbuildmanifest = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UploaderV1Admin.BuildsdeletionByAppId, input]
+ * }
+ * ```
+ */
 export const useUploaderV1AdminApi_GetBuildsdeletionByAppId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {appId: string | null, deletionStatus?: number, platformId?: string | null} },
     options?: Omit<UseQueryOptions<BuildDeletionDataArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BuildDeletionDataArray>) => void
   ): UseQueryResult<BuildDeletionDataArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUploaderV1AdminApi_GetBuildsdeletionByAppId>[1]
@@ -226,7 +266,7 @@ export const useUploaderV1AdminApi_UpdateSetcurrentbuild_ByBuildId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string,  queryParams?: {sendNotification?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string,  queryParams?: {sendNotification?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { buildId:string,  queryParams?: {sendNotification?: boolean | null} }) => {
       const response = 
             (await UploaderV1AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -244,13 +284,23 @@ export const useUploaderV1AdminApi_UpdateSetcurrentbuild_ByBuildId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UploaderV1Admin.Retrievechunkbyhash_ByHash, input]
+ * }
+ * ```
+ */
 export const useUploaderV1AdminApi_GetRetrievechunkbyhash_ByHash = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { hash:string },
     options?: Omit<UseQueryOptions<BlockData, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BlockData>) => void
   ): UseQueryResult<BlockData, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUploaderV1AdminApi_GetRetrievechunkbyhash_ByHash>[1]
@@ -276,7 +326,7 @@ export const useUploaderV1AdminApi_UpdateRetry_ByBuildId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { buildId:string }) => {
       const response = 
             (await UploaderV1AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -299,7 +349,7 @@ export const useUploaderV1AdminApi_DeleteCancel_ByBuildId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { buildId:string }) => {
       const response = 
             (await UploaderV1AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -322,7 +372,7 @@ export const useUploaderV1AdminApi_UpdateSetcurrentbuild_ByAppId_ByVersion = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { appId:string, version:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { appId:string, version:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { appId:string, version:string }) => {
       const response = 
             (await UploaderV1AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -345,7 +395,7 @@ export const useUploaderV1AdminApi_CreateStartbuildupload_ByAppId_ByVersion = (
     options?: Omit<UseMutationOptions<BuildIdManifest, AxiosError<ApiError>, SdkSetConfigParam & { appId:string, version:string }>, 'mutationKey'>,
     callback?: (data: BuildIdManifest) => void
   ): UseMutationResult<BuildIdManifest, AxiosError<ApiError>, SdkSetConfigParam & { appId:string, version:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { appId:string, version:string }) => {
       const response = 
             (await UploaderV1AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -368,7 +418,7 @@ export const useUploaderV1AdminApi_CreateUuid_ByHash_ByUuid_ByOffset = (
     options?: Omit<UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash:string, uuid:string, offset:number }>, 'mutationKey'>,
     callback?: (data: BlockManifest) => void
   ): UseMutationResult<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash:string, uuid:string, offset:number }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { hash:string, uuid:string, offset:number }) => {
       const response = 
             (await UploaderV1AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -391,7 +441,7 @@ export const useUploaderV1AdminApi_CreateOffset_ByHash_ByUuid_ByOffset_ByBlockSi
     options?: Omit<UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash:string, uuid:string, offset:number, blockSize:number }>, 'mutationKey'>,
     callback?: (data: BlockManifest) => void
   ): UseMutationResult<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash:string, uuid:string, offset:number, blockSize:number }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { hash:string, uuid:string, offset:number, blockSize:number }) => {
       const response = 
             (await UploaderV1AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

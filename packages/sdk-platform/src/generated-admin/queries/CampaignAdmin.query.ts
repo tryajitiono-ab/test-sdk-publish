@@ -51,13 +51,23 @@ DisableBulkCode_ByCampaignId = 'Platform.CampaignAdmin.DisableBulkCode_ByCampaig
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CampaignAdmin.Campaigns, input]
+ * }
+ * ```
+ */
 export const useCampaignAdminApi_GetCampaigns = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, name?: string | null, offset?: number, tag?: string | null} },
     options?: Omit<UseQueryOptions<CampaignPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CampaignPagingSlicedResult>) => void
   ): UseQueryResult<CampaignPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCampaignAdminApi_GetCampaigns>[1]
@@ -83,7 +93,7 @@ export const useCampaignAdminApi_CreateCampaign = (
     options?: Omit<UseMutationOptions<CampaignInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CampaignCreate }>, 'mutationKey'>,
     callback?: (data: CampaignInfo) => void
   ): UseMutationResult<CampaignInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CampaignCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CampaignCreate }) => {
       const response = 
             (await CampaignAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -101,13 +111,23 @@ export const useCampaignAdminApi_CreateCampaign = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CampaignAdmin.Code_ByCode, input]
+ * }
+ * ```
+ */
 export const useCampaignAdminApi_GetCode_ByCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { code:string,  queryParams?: {redeemable?: boolean | null, withBatchName?: boolean | null} },
     options?: Omit<UseQueryOptions<CodeInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CodeInfo>) => void
   ): UseQueryResult<CodeInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCampaignAdminApi_GetCode_ByCode>[1]
@@ -133,7 +153,7 @@ export const useCampaignAdminApi_UpdateEnable_ByCode = (
     options?: Omit<UseMutationOptions<CodeInfo, AxiosError<ApiError>, SdkSetConfigParam & { code:string }>, 'mutationKey'>,
     callback?: (data: CodeInfo) => void
   ): UseMutationResult<CodeInfo, AxiosError<ApiError>, SdkSetConfigParam & { code:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { code:string }) => {
       const response = 
             (await CampaignAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -156,7 +176,7 @@ export const useCampaignAdminApi_UpdateDisable_ByCode = (
     options?: Omit<UseMutationOptions<CodeInfo, AxiosError<ApiError>, SdkSetConfigParam & { code:string }>, 'mutationKey'>,
     callback?: (data: CodeInfo) => void
   ): UseMutationResult<CodeInfo, AxiosError<ApiError>, SdkSetConfigParam & { code:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { code:string }) => {
       const response = 
             (await CampaignAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -174,13 +194,23 @@ export const useCampaignAdminApi_UpdateDisable_ByCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CampaignAdmin.Campaign_ByCampaignId, input]
+ * }
+ * ```
+ */
 export const useCampaignAdminApi_GetCampaign_ByCampaignId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { campaignId:string },
     options?: Omit<UseQueryOptions<CampaignInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CampaignInfo>) => void
   ): UseQueryResult<CampaignInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCampaignAdminApi_GetCampaign_ByCampaignId>[1]
@@ -206,7 +236,7 @@ export const useCampaignAdminApi_UpdateCampaign_ByCampaignId = (
     options?: Omit<UseMutationOptions<CampaignInfo, AxiosError<ApiError>, SdkSetConfigParam & { campaignId:string, data: CampaignUpdate }>, 'mutationKey'>,
     callback?: (data: CampaignInfo) => void
   ): UseMutationResult<CampaignInfo, AxiosError<ApiError>, SdkSetConfigParam & { campaignId:string, data: CampaignUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { campaignId:string, data: CampaignUpdate }) => {
       const response = 
             (await CampaignAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -229,7 +259,7 @@ export const useCampaignAdminApi_CreateRedemption_ByUserId = (
     options?: Omit<UseMutationOptions<RedeemResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: RedeemRequest }>, 'mutationKey'>,
     callback?: (data: RedeemResult) => void
   ): UseMutationResult<RedeemResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: RedeemRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: RedeemRequest }) => {
       const response = 
             (await CampaignAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -247,13 +277,23 @@ export const useCampaignAdminApi_CreateRedemption_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CampaignAdmin.CodeCampaign_ByCampaignId, input]
+ * }
+ * ```
+ */
 export const useCampaignAdminApi_GetCodeCampaign_ByCampaignId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { campaignId:string,  queryParams?: {activeOnly?: boolean | null, batchName?: string | null, batchNo?: number[], code?: string | null, limit?: number, offset?: number, withBatchName?: boolean | null} },
     options?: Omit<UseQueryOptions<CodeInfoPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CodeInfoPagingSlicedResult>) => void
   ): UseQueryResult<CodeInfoPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCampaignAdminApi_GetCodeCampaign_ByCampaignId>[1]
@@ -279,7 +319,7 @@ export const useCampaignAdminApi_CreateCodeCampaign_ByCampaignId = (
     options?: Omit<UseMutationOptions<CodeCreateResult, AxiosError<ApiError>, SdkSetConfigParam & { campaignId:string, data: CodeCreate }>, 'mutationKey'>,
     callback?: (data: CodeCreateResult) => void
   ): UseMutationResult<CodeCreateResult, AxiosError<ApiError>, SdkSetConfigParam & { campaignId:string, data: CodeCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { campaignId:string, data: CodeCreate }) => {
       const response = 
             (await CampaignAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -297,13 +337,23 @@ export const useCampaignAdminApi_CreateCodeCampaign_ByCampaignId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CampaignAdmin.Dynamic_ByCampaignId, input]
+ * }
+ * ```
+ */
 export const useCampaignAdminApi_GetDynamic_ByCampaignId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { campaignId:string },
     options?: Omit<UseQueryOptions<CampaignDynamicInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CampaignDynamicInfo>) => void
   ): UseQueryResult<CampaignDynamicInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCampaignAdminApi_GetDynamic_ByCampaignId>[1]
@@ -329,7 +379,7 @@ export const useCampaignAdminApi_UpdateBatchName_ByCampaignId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { campaignId:string, data: CampaignBatchNameChange }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { campaignId:string, data: CampaignBatchNameChange }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { campaignId:string, data: CampaignBatchNameChange }) => {
       const response = 
             (await CampaignAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -347,13 +397,23 @@ export const useCampaignAdminApi_UpdateBatchName_ByCampaignId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CampaignAdmin.BatchNames_ByCampaignId, input]
+ * }
+ * ```
+ */
 export const useCampaignAdminApi_GetBatchNames_ByCampaignId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { campaignId:string,  queryParams?: {batchName?: string | null, limit?: number} },
     options?: Omit<UseQueryOptions<CampaignBatchNameInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CampaignBatchNameInfoArray>) => void
   ): UseQueryResult<CampaignBatchNameInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCampaignAdminApi_GetBatchNames_ByCampaignId>[1]
@@ -374,13 +434,23 @@ export const useCampaignAdminApi_GetBatchNames_ByCampaignId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CampaignAdmin.HistoryCodes_ByCampaignId, input]
+ * }
+ * ```
+ */
 export const useCampaignAdminApi_GetHistoryCodes_ByCampaignId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { campaignId:string,  queryParams?: {code?: string | null, limit?: number, offset?: number, userId?: string | null} },
     options?: Omit<UseQueryOptions<RedeemHistoryPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RedeemHistoryPagingSlicedResult>) => void
   ): UseQueryResult<RedeemHistoryPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCampaignAdminApi_GetHistoryCodes_ByCampaignId>[1]
@@ -401,13 +471,23 @@ export const useCampaignAdminApi_GetHistoryCodes_ByCampaignId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CampaignAdmin.CodesCsv_ByCampaignId, input]
+ * }
+ * ```
+ */
 export const useCampaignAdminApi_GetCodesCsv_ByCampaignId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { campaignId:string,  queryParams?: {batchName?: string | null, batchNo?: number[], withBatchName?: boolean | null} },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCampaignAdminApi_GetCodesCsv_ByCampaignId>[1]
@@ -433,7 +513,7 @@ export const useCampaignAdminApi_UpdateEnableBulkCode_ByCampaignId = (
     options?: Omit<UseMutationOptions<BulkOperationResult, AxiosError<ApiError>, SdkSetConfigParam & { campaignId:string,  queryParams?: {batchName?: string | null, batchNo?: number[]} }>, 'mutationKey'>,
     callback?: (data: BulkOperationResult) => void
   ): UseMutationResult<BulkOperationResult, AxiosError<ApiError>, SdkSetConfigParam & { campaignId:string,  queryParams?: {batchName?: string | null, batchNo?: number[]} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { campaignId:string,  queryParams?: {batchName?: string | null, batchNo?: number[]} }) => {
       const response = 
             (await CampaignAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -456,7 +536,7 @@ export const useCampaignAdminApi_UpdateDisableBulkCode_ByCampaignId = (
     options?: Omit<UseMutationOptions<BulkOperationResult, AxiosError<ApiError>, SdkSetConfigParam & { campaignId:string,  queryParams?: {batchName?: string | null, batchNo?: number[]} }>, 'mutationKey'>,
     callback?: (data: BulkOperationResult) => void
   ): UseMutationResult<BulkOperationResult, AxiosError<ApiError>, SdkSetConfigParam & { campaignId:string,  queryParams?: {batchName?: string | null, batchNo?: number[]} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { campaignId:string,  queryParams?: {batchName?: string | null, batchNo?: number[]} }) => {
       const response = 
             (await CampaignAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -26,13 +26,23 @@ UserMeRewardClaim = 'Challenge.PlayerReward.UserMeRewardClaim',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerReward.UsersMeRewards, input]
+ * }
+ * ```
+ */
 export const usePlayerRewardApi_GetUsersMeRewards = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, sortBy?: string | null, status?: 'CLAIMED' | 'UNCLAIMED'} },
     options?: Omit<UseQueryOptions<ListUserRewardsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListUserRewardsResponse>) => void
   ): UseQueryResult<ListUserRewardsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerRewardApi_GetUsersMeRewards>[1]
@@ -58,7 +68,7 @@ export const usePlayerRewardApi_CreateUserMeRewardClaim = (
     options?: Omit<UseMutationOptions<UserRewardArray, AxiosError<ApiError>, SdkSetConfigParam & { data: ClaimUserRewardsReq }>, 'mutationKey'>,
     callback?: (data: UserRewardArray) => void
   ): UseMutationResult<UserRewardArray, AxiosError<ApiError>, SdkSetConfigParam & { data: ClaimUserRewardsReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ClaimUserRewardsReq }) => {
       const response = 
             (await PlayerRewardApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

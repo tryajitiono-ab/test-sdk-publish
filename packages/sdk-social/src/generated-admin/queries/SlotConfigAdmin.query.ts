@@ -31,7 +31,7 @@ export const useSlotConfigAdminApi_DeleteConfig = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await SlotConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -49,13 +49,23 @@ export const useSlotConfigAdminApi_DeleteConfig = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SlotConfigAdmin.Config, input]
+ * }
+ * ```
+ */
 export const useSlotConfigAdminApi_GetConfig = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<NamespaceSlotConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespaceSlotConfigInfo>) => void
   ): UseQueryResult<NamespaceSlotConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSlotConfigAdminApi_GetConfig>[1]
@@ -81,7 +91,7 @@ export const useSlotConfigAdminApi_UpdateConfig = (
     options?: Omit<UseMutationOptions<NamespaceSlotConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: SlotConfigUpdate }>, 'mutationKey'>,
     callback?: (data: NamespaceSlotConfigInfo) => void
   ): UseMutationResult<NamespaceSlotConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: SlotConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: SlotConfigUpdate }) => {
       const response = 
             (await SlotConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -104,7 +114,7 @@ export const useSlotConfigAdminApi_DeleteConfig_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await SlotConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -122,13 +132,23 @@ export const useSlotConfigAdminApi_DeleteConfig_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SlotConfigAdmin.Config_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSlotConfigAdminApi_GetConfig_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<UserSlotConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserSlotConfigInfo>) => void
   ): UseQueryResult<UserSlotConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSlotConfigAdminApi_GetConfig_ByUserId>[1]
@@ -154,7 +174,7 @@ export const useSlotConfigAdminApi_UpdateConfig_ByUserId = (
     options?: Omit<UseMutationOptions<UserSlotConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: SlotConfigUpdate }>, 'mutationKey'>,
     callback?: (data: UserSlotConfigInfo) => void
   ): UseMutationResult<UserSlotConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: SlotConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: SlotConfigUpdate }) => {
       const response = 
             (await SlotConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

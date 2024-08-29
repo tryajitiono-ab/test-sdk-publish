@@ -28,13 +28,23 @@ InventoryConfiguration_ByInventoryConfigurationId = 'Inventory.InventoryConfigur
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_InventoryConfigurationsAdmin.InventoryConfigurations, input]
+ * }
+ * ```
+ */
 export const useInventoryConfigurationsAdminApi_GetInventoryConfigurations = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {code?: string | null, limit?: number, offset?: number, sortBy?: 'code' | 'code:asc' | 'code:desc' | 'createdAt' | 'createdAt:asc' | 'createdAt:desc' | 'updatedAt' | 'updatedAt:asc' | 'updatedAt:desc'} },
     options?: Omit<UseQueryOptions<ListInventoryConfigurationsResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListInventoryConfigurationsResp>) => void
   ): UseQueryResult<ListInventoryConfigurationsResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useInventoryConfigurationsAdminApi_GetInventoryConfigurations>[1]
@@ -60,7 +70,7 @@ export const useInventoryConfigurationsAdminApi_CreateInventoryConfiguration = (
     options?: Omit<UseMutationOptions<InventoryConfigurationResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateInventoryConfigurationReq }>, 'mutationKey'>,
     callback?: (data: InventoryConfigurationResp) => void
   ): UseMutationResult<InventoryConfigurationResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateInventoryConfigurationReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateInventoryConfigurationReq }) => {
       const response = 
             (await InventoryConfigurationsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -83,7 +93,7 @@ export const useInventoryConfigurationsAdminApi_DeleteInventoryConfiguration_ByI
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { inventoryConfigurationId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { inventoryConfigurationId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { inventoryConfigurationId:string }) => {
       const response = 
             (await InventoryConfigurationsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -101,13 +111,23 @@ export const useInventoryConfigurationsAdminApi_DeleteInventoryConfiguration_ByI
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_InventoryConfigurationsAdmin.InventoryConfiguration_ByInventoryConfigurationId, input]
+ * }
+ * ```
+ */
 export const useInventoryConfigurationsAdminApi_GetInventoryConfiguration_ByInventoryConfigurationId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { inventoryConfigurationId:string },
     options?: Omit<UseQueryOptions<InventoryConfigurationResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<InventoryConfigurationResp>) => void
   ): UseQueryResult<InventoryConfigurationResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useInventoryConfigurationsAdminApi_GetInventoryConfiguration_ByInventoryConfigurationId>[1]
@@ -133,7 +153,7 @@ export const useInventoryConfigurationsAdminApi_UpdateInventoryConfiguration_ByI
     options?: Omit<UseMutationOptions<InventoryConfigurationResp, AxiosError<ApiError>, SdkSetConfigParam & { inventoryConfigurationId:string, data: InventoryConfigurationReq }>, 'mutationKey'>,
     callback?: (data: InventoryConfigurationResp) => void
   ): UseMutationResult<InventoryConfigurationResp, AxiosError<ApiError>, SdkSetConfigParam & { inventoryConfigurationId:string, data: InventoryConfigurationReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { inventoryConfigurationId:string, data: InventoryConfigurationReq }) => {
       const response = 
             (await InventoryConfigurationsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

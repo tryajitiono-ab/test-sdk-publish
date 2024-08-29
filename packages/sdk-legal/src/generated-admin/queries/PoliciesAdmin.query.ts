@@ -31,7 +31,7 @@ export const usePoliciesAdminApi_PatchPolicy_ByPolicyId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { policyId:string, data: UpdatePolicyRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { policyId:string, data: UpdatePolicyRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { policyId:string, data: UpdatePolicyRequest }) => {
       const response = 
             (await PoliciesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -54,7 +54,7 @@ export const usePoliciesAdminApi_PatchDefault_ByPolicyId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { policyId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { policyId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { policyId:string }) => {
       const response = 
             (await PoliciesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -72,13 +72,23 @@ export const usePoliciesAdminApi_PatchDefault_ByPolicyId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PoliciesAdmin.PolicyCountry_ByCountryCode, input]
+ * }
+ * ```
+ */
 export const usePoliciesAdminApi_GetPolicyCountry_ByCountryCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { countryCode:string },
     options?: Omit<UseQueryOptions<RetrievePolicyResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrievePolicyResponseArray>) => void
   ): UseQueryResult<RetrievePolicyResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePoliciesAdminApi_GetPolicyCountry_ByCountryCode>[1]

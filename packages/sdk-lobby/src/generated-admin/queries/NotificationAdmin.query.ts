@@ -48,13 +48,23 @@ PublishNotification_ByTemplateSlug_ByTemplateLanguage = 'Lobby.NotificationAdmin
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_NotificationAdmin.NotificationTopics, input]
+ * }
+ * ```
+ */
 export const useNotificationAdminApi_GetNotificationTopics = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {after?: string | null, before?: string | null, limit?: number} },
     options?: Omit<UseQueryOptions<GetAllNotificationTopicsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetAllNotificationTopicsResponse>) => void
   ): UseQueryResult<GetAllNotificationTopicsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNotificationAdminApi_GetNotificationTopics>[1]
@@ -80,7 +90,7 @@ export const useNotificationAdminApi_CreateNotificationTopic = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTopicRequestV1 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTopicRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateTopicRequestV1 }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -98,13 +108,23 @@ export const useNotificationAdminApi_CreateNotificationTopic = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_NotificationAdmin.NotificationTemplates, input]
+ * }
+ * ```
+ */
 export const useNotificationAdminApi_GetNotificationTemplates = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<NotificationTemplateResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NotificationTemplateResponseArray>) => void
   ): UseQueryResult<NotificationTemplateResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNotificationAdminApi_GetNotificationTemplates>[1]
@@ -130,7 +150,7 @@ export const useNotificationAdminApi_CreateNotificationTemplate = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTemplateRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTemplateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateTemplateRequest }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -153,7 +173,7 @@ export const useNotificationAdminApi_CreateNotificationFreeformNotify = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: FreeFormNotificationRequestV1 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: FreeFormNotificationRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: FreeFormNotificationRequestV1 }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -176,7 +196,7 @@ export const useNotificationAdminApi_CreateNotificationTemplateNotify = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: NotificationWithTemplateRequestV1 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: NotificationWithTemplateRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: NotificationWithTemplateRequestV1 }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -199,7 +219,7 @@ export const useNotificationAdminApi_DeleteNotificationTopic_ByTopicName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topicName:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topicName:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topicName:string }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -217,13 +237,23 @@ export const useNotificationAdminApi_DeleteNotificationTopic_ByTopicName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_NotificationAdmin.NotificationTopic_ByTopicName, input]
+ * }
+ * ```
+ */
 export const useNotificationAdminApi_GetNotificationTopic_ByTopicName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { topicName:string },
     options?: Omit<UseQueryOptions<NotificationTopicResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NotificationTopicResponseV1>) => void
   ): UseQueryResult<NotificationTopicResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNotificationAdminApi_GetNotificationTopic_ByTopicName>[1]
@@ -249,7 +279,7 @@ export const useNotificationAdminApi_UpdateNotificationTopic_ByTopicName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topicName:string, data: UpdateTopicRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topicName:string, data: UpdateTopicRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topicName:string, data: UpdateTopicRequest }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -272,7 +302,7 @@ export const useNotificationAdminApi_DeleteNotificationTemplate_ByTemplateSlug =
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { templateSlug:string }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -290,13 +320,23 @@ export const useNotificationAdminApi_DeleteNotificationTemplate_ByTemplateSlug =
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_NotificationAdmin.NotificationTemplate_ByTemplateSlug, input]
+ * }
+ * ```
+ */
 export const useNotificationAdminApi_GetNotificationTemplate_ByTemplateSlug = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { templateSlug:string,  queryParams?: {after?: string | null, before?: string | null, limit?: number} },
     options?: Omit<UseQueryOptions<GetAllNotificationTemplateSlugResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetAllNotificationTemplateSlugResp>) => void
   ): UseQueryResult<GetAllNotificationTemplateSlugResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNotificationAdminApi_GetNotificationTemplate_ByTemplateSlug>[1]
@@ -322,7 +362,7 @@ export const useNotificationAdminApi_CreateNotificationBulkUserFreeformNotify = 
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUsersFreeFormNotificationRequestV1 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUsersFreeFormNotificationRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkUsersFreeFormNotificationRequestV1 }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -345,7 +385,7 @@ export const useNotificationAdminApi_CreateFreeformNotifyNotification_ByUserId =
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: FreeFormNotificationRequestV1 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: FreeFormNotificationRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: FreeFormNotificationRequestV1 }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -368,7 +408,7 @@ export const useNotificationAdminApi_CreateTemplateNotifyNotification_ByUserId =
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: NotificationWithTemplateRequestV1 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: NotificationWithTemplateRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: NotificationWithTemplateRequestV1 }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -391,7 +431,7 @@ export const useNotificationAdminApi_CreateFreeformNotifyNotification_ByPartyId 
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: FreeFormNotificationRequestV1 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: FreeFormNotificationRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string, data: FreeFormNotificationRequestV1 }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -414,7 +454,7 @@ export const useNotificationAdminApi_CreateTemplateNotifyNotification_ByPartyId 
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: NotificationWithTemplateRequestV1 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: NotificationWithTemplateRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string, data: NotificationWithTemplateRequestV1 }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -437,7 +477,7 @@ export const useNotificationAdminApi_DeleteLanguageNotification_ByTemplateSlug_B
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string, templateLanguage:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string, templateLanguage:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { templateSlug:string, templateLanguage:string }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -455,13 +495,23 @@ export const useNotificationAdminApi_DeleteLanguageNotification_ByTemplateSlug_B
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_NotificationAdmin.LanguageNotification_ByTemplateSlug_ByTemplateLanguage, input]
+ * }
+ * ```
+ */
 export const useNotificationAdminApi_GetLanguageNotification_ByTemplateSlug_ByTemplateLanguage = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { templateSlug:string, templateLanguage:string },
     options?: Omit<UseQueryOptions<Localization, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<Localization>) => void
   ): UseQueryResult<Localization, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNotificationAdminApi_GetLanguageNotification_ByTemplateSlug_ByTemplateLanguage>[1]
@@ -487,7 +537,7 @@ export const useNotificationAdminApi_UpdateLanguageNotification_ByTemplateSlug_B
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string, templateLanguage:string, data: UpdateTemplateRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string, templateLanguage:string, data: UpdateTemplateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { templateSlug:string, templateLanguage:string, data: UpdateTemplateRequest }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -510,7 +560,7 @@ export const useNotificationAdminApi_CreatePublishNotification_ByTemplateSlug_By
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string, templateLanguage:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug:string, templateLanguage:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { templateSlug:string, templateLanguage:string }) => {
       const response = 
             (await NotificationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

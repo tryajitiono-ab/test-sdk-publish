@@ -26,13 +26,23 @@ Tag_ByTag = 'Cloudsave.TagsAdmin.Tag_ByTag',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TagsAdmin.Tags, input]
+ * }
+ * ```
+ */
 export const useTagsAdminApi_GetTags = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<ListTagsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListTagsResponse>) => void
   ): UseQueryResult<ListTagsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTagsAdminApi_GetTags>[1]
@@ -58,7 +68,7 @@ export const useTagsAdminApi_CreateTag = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: TagRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: TagRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: TagRequest }) => {
       const response = 
             (await TagsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -81,7 +91,7 @@ export const useTagsAdminApi_DeleteTag_ByTag = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { tag:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { tag:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { tag:string }) => {
       const response = 
             (await TagsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

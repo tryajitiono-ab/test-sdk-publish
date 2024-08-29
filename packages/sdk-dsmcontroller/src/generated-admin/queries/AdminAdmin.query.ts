@@ -47,13 +47,23 @@ ServersCountDetailed = 'Dsmcontroller.AdminAdmin.ServersCountDetailed',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AdminAdmin.Workers, input]
+ * }
+ * ```
+ */
 export const useAdminAdminApi_GetWorkers = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<WorkerConfig, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<WorkerConfig>) => void
   ): UseQueryResult<WorkerConfig, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAdminAdminApi_GetWorkers>[1]
@@ -79,7 +89,7 @@ export const useAdminAdminApi_CreateWorker = (
     options?: Omit<UseMutationOptions<WorkerConfig, AxiosError<ApiError>, SdkSetConfigParam & { data: WorkerConfigRequest }>, 'mutationKey'>,
     callback?: (data: WorkerConfig) => void
   ): UseMutationResult<WorkerConfig, AxiosError<ApiError>, SdkSetConfigParam & { data: WorkerConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: WorkerConfigRequest }) => {
       const response = 
             (await AdminAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -102,7 +112,7 @@ export const useAdminAdminApi_UpdateWorker = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: WorkerConfigRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: WorkerConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: WorkerConfigRequest }) => {
       const response = 
             (await AdminAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -125,7 +135,7 @@ export const useAdminAdminApi_DeleteServer = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams: {version: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams: {version: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & {  queryParams: {version: string | null} }) => {
       const response = 
             (await AdminAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -143,13 +153,23 @@ export const useAdminAdminApi_DeleteServer = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AdminAdmin.Servers, input]
+ * }
+ * ```
+ */
 export const useAdminAdminApi_GetServers = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {count: number, offset: number, region?: string | null} },
     options?: Omit<UseQueryOptions<ListServerResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListServerResponse>) => void
   ): UseQueryResult<ListServerResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAdminAdminApi_GetServers>[1]
@@ -170,13 +190,23 @@ export const useAdminAdminApi_GetServers = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AdminAdmin.Sessions, input]
+ * }
+ * ```
+ */
 export const useAdminAdminApi_GetSessions = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {count: number, offset: number, region?: string | null, withServer?: boolean | null} },
     options?: Omit<UseQueryOptions<ListSessionResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListSessionResponse>) => void
   ): UseQueryResult<ListSessionResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAdminAdminApi_GetSessions>[1]
@@ -197,13 +227,23 @@ export const useAdminAdminApi_GetSessions = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AdminAdmin.ServersCount, input]
+ * }
+ * ```
+ */
 export const useAdminAdminApi_GetServersCount = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<CountServerResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CountServerResponse>) => void
   ): UseQueryResult<CountServerResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAdminAdminApi_GetServersCount>[1]
@@ -224,13 +264,23 @@ export const useAdminAdminApi_GetServersCount = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AdminAdmin.ServersLocal, input]
+ * }
+ * ```
+ */
 export const useAdminAdminApi_GetServersLocal = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ListServerResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListServerResponse>) => void
   ): UseQueryResult<ListServerResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAdminAdminApi_GetServersLocal>[1]
@@ -251,13 +301,23 @@ export const useAdminAdminApi_GetServersLocal = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AdminAdmin.WorkersGhost, input]
+ * }
+ * ```
+ */
 export const useAdminAdminApi_GetWorkersGhost = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAdminAdminApi_GetWorkersGhost>[1]
@@ -278,13 +338,23 @@ export const useAdminAdminApi_GetWorkersGhost = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AdminAdmin.SessionsCount, input]
+ * }
+ * ```
+ */
 export const useAdminAdminApi_GetSessionsCount = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {region?: string | null} },
     options?: Omit<UseQueryOptions<CountSessionResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CountSessionResponse>) => void
   ): UseQueryResult<CountSessionResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAdminAdminApi_GetSessionsCount>[1]
@@ -310,7 +380,7 @@ export const useAdminAdminApi_CreateWorkerZombie = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DeleteZombieRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DeleteZombieRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DeleteZombieRequest }) => {
       const response = 
             (await AdminAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -333,7 +403,7 @@ export const useAdminAdminApi_CreateManualBufferAdd = (
     options?: Omit<UseMutationOptions<AddBufferResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AddBufferRequest }>, 'mutationKey'>,
     callback?: (data: AddBufferResponse) => void
   ): UseMutationResult<AddBufferResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AddBufferRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: AddBufferRequest }) => {
       const response = 
             (await AdminAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -356,7 +426,7 @@ export const useAdminAdminApi_DeleteServer_ByPodName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { podName:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { podName:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { podName:string }) => {
       const response = 
             (await AdminAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -374,13 +444,23 @@ export const useAdminAdminApi_DeleteServer_ByPodName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AdminAdmin.Server_ByPodName, input]
+ * }
+ * ```
+ */
 export const useAdminAdminApi_GetServer_ByPodName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { podName:string },
     options?: Omit<UseQueryOptions<ServerDetailsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ServerDetailsResponse>) => void
   ): UseQueryResult<ServerDetailsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAdminAdminApi_GetServer_ByPodName>[1]
@@ -406,7 +486,7 @@ export const useAdminAdminApi_DeleteServerLocal_ByName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string }) => {
       const response = 
             (await AdminAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -429,7 +509,7 @@ export const useAdminAdminApi_DeleteSession_BySessionId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionID:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sessionID:string }) => {
       const response = 
             (await AdminAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -447,13 +527,23 @@ export const useAdminAdminApi_DeleteSession_BySessionId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AdminAdmin.ServersCountDetailed, input]
+ * }
+ * ```
+ */
 export const useAdminAdminApi_GetServersCountDetailed = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {region?: string | null} },
     options?: Omit<UseQueryOptions<DetailedCountServerResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DetailedCountServerResponse>) => void
   ): UseQueryResult<DetailedCountServerResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAdminAdminApi_GetServersCountDetailed>[1]

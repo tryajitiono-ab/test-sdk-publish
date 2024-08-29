@@ -44,13 +44,23 @@ User_ByChannelName_ByMatchId_ByUserId = 'Matchmaking.MatchmakingAdmin.User_ByCha
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchmakingAdmin.ChannelsExport, input]
+ * }
+ * ```
+ */
 export const useMatchmakingAdminApi_GetChannelsExport = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingAdminApi_GetChannelsExport>[1]
@@ -76,7 +86,7 @@ export const useMatchmakingAdminApi_UpdateChannelImport = (
     options?: Omit<UseMutationOptions<ImportConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File,strategy?: string | null} }>, 'mutationKey'>,
     callback?: (data: ImportConfigResponse) => void
   ): UseMutationResult<ImportConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File,strategy?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {file?: File,strategy?: string | null} }) => {
       const response = 
             (await MatchmakingAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -94,13 +104,23 @@ export const useMatchmakingAdminApi_UpdateChannelImport = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchmakingAdmin.ChannelsAllParties, input]
+ * }
+ * ```
+ */
 export const useMatchmakingAdminApi_GetChannelsAllParties = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingAdminApi_GetChannelsAllParties>[1]
@@ -121,13 +141,23 @@ export const useMatchmakingAdminApi_GetChannelsAllParties = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchmakingAdmin.Channel_ByChannelName, input]
+ * }
+ * ```
+ */
 export const useMatchmakingAdminApi_GetChannel_ByChannelName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { channelName:string },
     options?: Omit<UseQueryOptions<ChannelV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChannelV1>) => void
   ): UseQueryResult<ChannelV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingAdminApi_GetChannel_ByChannelName>[1]
@@ -153,7 +183,7 @@ export const useMatchmakingAdminApi_PatchChannel_ByChannelName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string, data: UpdateChannelRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string, data: UpdateChannelRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelName:string, data: UpdateChannelRequest }) => {
       const response = 
             (await MatchmakingAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -171,13 +201,23 @@ export const useMatchmakingAdminApi_PatchChannel_ByChannelName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchmakingAdmin.SessionsHistorySearch, input]
+ * }
+ * ```
+ */
 export const useMatchmakingAdminApi_GetSessionsHistorySearch = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {limit: number, offset: number, channel?: string | null, deleted?: boolean | null, matchID?: string | null, partyID?: string | null, userID?: string | null} },
     options?: Omit<UseQueryOptions<GetSessionHistorySearchResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetSessionHistorySearchResponse>) => void
   ): UseQueryResult<GetSessionHistorySearchResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingAdminApi_GetSessionsHistorySearch>[1]
@@ -198,13 +238,23 @@ export const useMatchmakingAdminApi_GetSessionsHistorySearch = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchmakingAdmin.SessionsHistorySearch_v2, input]
+ * }
+ * ```
+ */
 export const useMatchmakingAdminApi_GetSessionsHistorySearch_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {limit: number, offset: number, channel?: string | null, deleted?: boolean | null, matchID?: string | null, partyID?: string | null, userID?: string | null} },
     options?: Omit<UseQueryOptions<GetSessionHistorySearchResponseV2, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetSessionHistorySearchResponseV2>) => void
   ): UseQueryResult<GetSessionHistorySearchResponseV2, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingAdminApi_GetSessionsHistorySearch_v2>[1]
@@ -225,13 +275,23 @@ export const useMatchmakingAdminApi_GetSessionsHistorySearch_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchmakingAdmin.ChannelsAllSessionsBulk, input]
+ * }
+ * ```
+ */
 export const useMatchmakingAdminApi_GetChannelsAllSessionsBulk = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {matchIDs?: string | null} },
     options?: Omit<UseQueryOptions<MatchmakingResultArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MatchmakingResultArray>) => void
   ): UseQueryResult<MatchmakingResultArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingAdminApi_GetChannelsAllSessionsBulk>[1]
@@ -252,13 +312,23 @@ export const useMatchmakingAdminApi_GetChannelsAllSessionsBulk = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchmakingAdmin.Stats_ByChannelName, input]
+ * }
+ * ```
+ */
 export const useMatchmakingAdminApi_GetStats_ByChannelName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { channelName:string },
     options?: Omit<UseQueryOptions<StatResumeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StatResumeResponse>) => void
   ): UseQueryResult<StatResumeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingAdminApi_GetStats_ByChannelName>[1]
@@ -279,13 +349,23 @@ export const useMatchmakingAdminApi_GetStats_ByChannelName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchmakingAdmin.Parties_ByChannelName, input]
+ * }
+ * ```
+ */
 export const useMatchmakingAdminApi_GetParties_ByChannelName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { channelName:string },
     options?: Omit<UseQueryOptions<MatchingPartyArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MatchingPartyArray>) => void
   ): UseQueryResult<MatchingPartyArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingAdminApi_GetParties_ByChannelName>[1]
@@ -306,13 +386,23 @@ export const useMatchmakingAdminApi_GetParties_ByChannelName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchmakingAdmin.Sessions_ByChannelName, input]
+ * }
+ * ```
+ */
 export const useMatchmakingAdminApi_GetSessions_ByChannelName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { channelName:string },
     options?: Omit<UseQueryOptions<MatchmakingResultArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MatchmakingResultArray>) => void
   ): UseQueryResult<MatchmakingResultArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingAdminApi_GetSessions_ByChannelName>[1]
@@ -333,13 +423,23 @@ export const useMatchmakingAdminApi_GetSessions_ByChannelName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchmakingAdmin.HistoryDetailed_ByMatchId, input]
+ * }
+ * ```
+ */
 export const useMatchmakingAdminApi_GetHistoryDetailed_ByMatchId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { matchID:string },
     options?: Omit<UseQueryOptions<GetSessionHistoryDetailedResponseItemArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetSessionHistoryDetailedResponseItemArray>) => void
   ): UseQueryResult<GetSessionHistoryDetailedResponseItemArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingAdminApi_GetHistoryDetailed_ByMatchId>[1]
@@ -365,7 +465,7 @@ export const useMatchmakingAdminApi_DeleteSession_ByChannelName_ByMatchId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string, matchID:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string, matchID:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelName:string, matchID:string }) => {
       const response = 
             (await MatchmakingAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -388,7 +488,7 @@ export const useMatchmakingAdminApi_CreateSession_ByChannelName_ByMatchId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string, matchID:string, data: MatchAddUserIntoSessionRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string, matchID:string, data: MatchAddUserIntoSessionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelName:string, matchID:string, data: MatchAddUserIntoSessionRequest }) => {
       const response = 
             (await MatchmakingAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -411,7 +511,7 @@ export const useMatchmakingAdminApi_DeleteUser_ByChannelName_ByMatchId_ByUserId 
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string, matchID:string, userID:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName:string, matchID:string, userID:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelName:string, matchID:string, userID:string }) => {
       const response = 
             (await MatchmakingAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

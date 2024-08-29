@@ -28,7 +28,7 @@ export const useSessionPlatformAdminApi_UpdateSessionXbl_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: XblUserSessionRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: XblUserSessionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: XblUserSessionRequest }) => {
       const response = 
             (await SessionPlatformAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -27,13 +27,23 @@ Itemtype_ByItemTypeName = 'Inventory.ItemTypesAdmin.Itemtype_ByItemTypeName',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ItemTypesAdmin.Itemtypes, input]
+ * }
+ * ```
+ */
 export const useItemTypesAdminApi_GetItemtypes = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, sortBy?: 'createdAt' | 'createdAt:asc' | 'createdAt:desc' | 'name' | 'name:asc' | 'name:desc'} },
     options?: Omit<UseQueryOptions<ListItemTypesResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListItemTypesResp>) => void
   ): UseQueryResult<ListItemTypesResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useItemTypesAdminApi_GetItemtypes>[1]
@@ -59,7 +69,7 @@ export const useItemTypesAdminApi_CreateItemtype = (
     options?: Omit<UseMutationOptions<CreateItemTypeResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateItemTypeReq }>, 'mutationKey'>,
     callback?: (data: CreateItemTypeResp) => void
   ): UseMutationResult<CreateItemTypeResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateItemTypeReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateItemTypeReq }) => {
       const response = 
             (await ItemTypesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -82,7 +92,7 @@ export const useItemTypesAdminApi_DeleteItemtype_ByItemTypeName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { itemTypeName:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { itemTypeName:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { itemTypeName:string }) => {
       const response = 
             (await ItemTypesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

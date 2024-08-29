@@ -23,13 +23,23 @@ export enum Key_PublicInventoryConfigurations {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicInventoryConfigurations.InventoryConfigurations, input]
+ * }
+ * ```
+ */
 export const usePublicInventoryConfigurationsApi_GetInventoryConfigurations = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {code?: string | null, limit?: number, offset?: number, sortBy?: 'code' | 'code:asc' | 'code:desc' | 'createdAt' | 'createdAt:asc' | 'createdAt:desc' | 'updatedAt' | 'updatedAt:asc' | 'updatedAt:desc'} },
     options?: Omit<UseQueryOptions<ListInventoryConfigurationsResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListInventoryConfigurationsResp>) => void
   ): UseQueryResult<ListInventoryConfigurationsResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicInventoryConfigurationsApi_GetInventoryConfigurations>[1]

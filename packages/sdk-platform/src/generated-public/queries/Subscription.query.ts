@@ -34,13 +34,23 @@ BillingAccount_ByUserId_BySubscriptionId = 'Platform.Subscription.BillingAccount
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Subscription.Subscriptions_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSubscriptionApi_GetSubscriptions_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {chargeStatus?: 'CHARGED' | 'CHARGE_FAILED' | 'NEVER' | 'RECURRING_CHARGING' | 'SETUP', itemId?: string | null, limit?: number, offset?: number, sku?: string | null, status?: 'ACTIVE' | 'CANCELLED' | 'EXPIRED' | 'INIT', subscribedBy?: 'PLATFORM' | 'USER'} },
     options?: Omit<UseQueryOptions<SubscriptionPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SubscriptionPagingSlicedResult>) => void
   ): UseQueryResult<SubscriptionPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSubscriptionApi_GetSubscriptions_ByUserId>[1]
@@ -66,7 +76,7 @@ export const useSubscriptionApi_CreateSubscription_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: SubscribeRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: SubscribeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: SubscribeRequest }) => {
       const response = 
             (await SubscriptionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -84,13 +94,23 @@ export const useSubscriptionApi_CreateSubscription_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Subscription.Subscription_ByUserId_BySubscriptionId, input]
+ * }
+ * ```
+ */
 export const useSubscriptionApi_GetSubscription_ByUserId_BySubscriptionId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, subscriptionId:string },
     options?: Omit<UseQueryOptions<SubscriptionInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SubscriptionInfo>) => void
   ): UseQueryResult<SubscriptionInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSubscriptionApi_GetSubscription_ByUserId_BySubscriptionId>[1]
@@ -111,13 +131,23 @@ export const useSubscriptionApi_GetSubscription_ByUserId_BySubscriptionId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Subscription.SubscriptionsSubscribableByItemId_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSubscriptionApi_GetSubscriptionsSubscribableByItemId_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {itemId: string | null} },
     options?: Omit<UseQueryOptions<Subscribable, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<Subscribable>) => void
   ): UseQueryResult<Subscribable, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSubscriptionApi_GetSubscriptionsSubscribableByItemId_ByUserId>[1]
@@ -143,7 +173,7 @@ export const useSubscriptionApi_UpdateCancel_ByUserId_BySubscriptionId = (
     options?: Omit<UseMutationOptions<SubscriptionInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, subscriptionId:string, data: CancelRequest }>, 'mutationKey'>,
     callback?: (data: SubscriptionInfo) => void
   ): UseMutationResult<SubscriptionInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, subscriptionId:string, data: CancelRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, subscriptionId:string, data: CancelRequest }) => {
       const response = 
             (await SubscriptionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -161,13 +191,23 @@ export const useSubscriptionApi_UpdateCancel_ByUserId_BySubscriptionId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Subscription.History_ByUserId_BySubscriptionId, input]
+ * }
+ * ```
+ */
 export const useSubscriptionApi_GetHistory_ByUserId_BySubscriptionId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, subscriptionId:string,  queryParams?: {excludeFree?: boolean | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<BillingHistoryPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BillingHistoryPagingSlicedResult>) => void
   ): UseQueryResult<BillingHistoryPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSubscriptionApi_GetHistory_ByUserId_BySubscriptionId>[1]
@@ -193,7 +233,7 @@ export const useSubscriptionApi_UpdateBillingAccount_ByUserId_BySubscriptionId =
     options?: Omit<UseMutationOptions<SubscriptionInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, subscriptionId:string }>, 'mutationKey'>,
     callback?: (data: SubscriptionInfo) => void
   ): UseMutationResult<SubscriptionInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, subscriptionId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, subscriptionId:string }) => {
       const response = 
             (await SubscriptionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

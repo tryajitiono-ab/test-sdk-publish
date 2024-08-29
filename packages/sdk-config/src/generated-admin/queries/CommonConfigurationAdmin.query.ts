@@ -29,13 +29,23 @@ PublisherConfig_ByConfigKey = 'Config.CommonConfigurationAdmin.PublisherConfig_B
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CommonConfigurationAdmin.Configs, input]
+ * }
+ * ```
+ */
 export const useCommonConfigurationAdminApi_GetConfigs = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: string | null, offset?: string | null} },
     options?: Omit<UseQueryOptions<ConfigsWithPagination, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigsWithPagination>) => void
   ): UseQueryResult<ConfigsWithPagination, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCommonConfigurationAdminApi_GetConfigs>[1]
@@ -61,7 +71,7 @@ export const useCommonConfigurationAdminApi_CreateConfig = (
     options?: Omit<UseMutationOptions<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateConfig }>, 'mutationKey'>,
     callback?: (data: ConfigInfo) => void
   ): UseMutationResult<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateConfig }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateConfig }) => {
       const response = 
             (await CommonConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -79,13 +89,23 @@ export const useCommonConfigurationAdminApi_CreateConfig = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CommonConfigurationAdmin.Config_ByConfigKey, input]
+ * }
+ * ```
+ */
 export const useCommonConfigurationAdminApi_GetConfig_ByConfigKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { configKey:string },
     options?: Omit<UseQueryOptions<ConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigInfo>) => void
   ): UseQueryResult<ConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCommonConfigurationAdminApi_GetConfig_ByConfigKey>[1]
@@ -111,7 +131,7 @@ export const useCommonConfigurationAdminApi_DeleteConfig_ByConfigKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { configKey:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { configKey:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { configKey:string }) => {
       const response = 
             (await CommonConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -134,7 +154,7 @@ export const useCommonConfigurationAdminApi_PatchConfig_ByConfigKey = (
     options?: Omit<UseMutationOptions<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { configKey:string, data: UpdateConfig }>, 'mutationKey'>,
     callback?: (data: ConfigInfo) => void
   ): UseMutationResult<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { configKey:string, data: UpdateConfig }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { configKey:string, data: UpdateConfig }) => {
       const response = 
             (await CommonConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -152,13 +172,23 @@ export const useCommonConfigurationAdminApi_PatchConfig_ByConfigKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CommonConfigurationAdmin.PublisherConfig_ByConfigKey, input]
+ * }
+ * ```
+ */
 export const useCommonConfigurationAdminApi_GetPublisherConfig_ByConfigKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { configKey:string },
     options?: Omit<UseQueryOptions<ConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigInfo>) => void
   ): UseQueryResult<ConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCommonConfigurationAdminApi_GetPublisherConfig_ByConfigKey>[1]

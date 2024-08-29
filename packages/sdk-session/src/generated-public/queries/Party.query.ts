@@ -47,7 +47,7 @@ export const usePartyApi_CreateParty = (
     options?: Omit<UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreatePartyRequest }>, 'mutationKey'>,
     callback?: (data: PartySessionResponse) => void
   ): UseMutationResult<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreatePartyRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreatePartyRequest }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -65,13 +65,23 @@ export const usePartyApi_CreateParty = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Party.UsersMeParties, input]
+ * }
+ * ```
+ */
 export const usePartyApi_GetUsersMeParties = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {order?: string | null, orderBy?: string | null, status?: string | null} },
     options?: Omit<UseQueryOptions<PartyQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PartyQueryResponse>) => void
   ): UseQueryResult<PartyQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePartyApi_GetUsersMeParties>[1]
@@ -92,13 +102,23 @@ export const usePartyApi_GetUsersMeParties = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Party.Party_ByPartyId, input]
+ * }
+ * ```
+ */
 export const usePartyApi_GetParty_ByPartyId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { partyId:string },
     options?: Omit<UseQueryOptions<PartySessionResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PartySessionResponse>) => void
   ): UseQueryResult<PartySessionResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePartyApi_GetParty_ByPartyId>[1]
@@ -124,7 +144,7 @@ export const usePartyApi_PatchParty_ByPartyId = (
     options?: Omit<UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: UpdatePartyRequest }>, 'mutationKey'>,
     callback?: (data: PartySessionResponse) => void
   ): UseMutationResult<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: UpdatePartyRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string, data: UpdatePartyRequest }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -147,7 +167,7 @@ export const usePartyApi_UpdateParty_ByPartyId = (
     options?: Omit<UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: UpdatePartyRequest }>, 'mutationKey'>,
     callback?: (data: PartySessionResponse) => void
   ): UseMutationResult<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: UpdatePartyRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string, data: UpdatePartyRequest }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -170,7 +190,7 @@ export const usePartyApi_DeleteCode_ByPartyId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -193,7 +213,7 @@ export const usePartyApi_UpdateCode_ByPartyId = (
     options?: Omit<UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string }>, 'mutationKey'>,
     callback?: (data: PartySessionResponse) => void
   ): UseMutationResult<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -216,7 +236,7 @@ export const usePartyApi_CreateInvite_ByPartyId = (
     options?: Omit<UseMutationOptions<SessionInviteResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: SessionInviteRequest }>, 'mutationKey'>,
     callback?: (data: SessionInviteResponse) => void
   ): UseMutationResult<SessionInviteResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: SessionInviteRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string, data: SessionInviteRequest }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -239,7 +259,7 @@ export const usePartyApi_UpdateLeader_ByPartyId = (
     options?: Omit<UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: PromoteLeaderRequest }>, 'mutationKey'>,
     callback?: (data: PartySessionResponse) => void
   ): UseMutationResult<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: PromoteLeaderRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string, data: PromoteLeaderRequest }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -262,7 +282,7 @@ export const usePartyApi_CreatePartyUserMeJoinCode = (
     options?: Omit<UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: JoinByCodeRequest }>, 'mutationKey'>,
     callback?: (data: PartySessionResponse) => void
   ): UseMutationResult<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: JoinByCodeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: JoinByCodeRequest }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -285,7 +305,7 @@ export const usePartyApi_CreateUserMeJoin_ByPartyId = (
     options?: Omit<UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string }>, 'mutationKey'>,
     callback?: (data: PartySessionResponse) => void
   ): UseMutationResult<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -308,7 +328,7 @@ export const usePartyApi_DeleteUserMeLeave_ByPartyId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -331,7 +351,7 @@ export const usePartyApi_DeleteUserMeReject_ByPartyId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -354,7 +374,7 @@ export const usePartyApi_DeleteKick_ByPartyId_ByUserId = (
     options?: Omit<UseMutationOptions<KickResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, userId:string }>, 'mutationKey'>,
     callback?: (data: KickResponse) => void
   ): UseMutationResult<KickResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string, userId:string }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -377,7 +397,7 @@ export const usePartyApi_DeleteCancel_ByPartyId_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string, userId:string }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

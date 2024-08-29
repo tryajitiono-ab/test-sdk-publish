@@ -28,7 +28,7 @@ export const useServerApi_CreateServerHeartbeat = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: HeartbeatRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: HeartbeatRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: HeartbeatRequest }) => {
       const response = 
             (await ServerApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

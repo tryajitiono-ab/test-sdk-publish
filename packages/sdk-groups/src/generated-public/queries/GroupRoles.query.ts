@@ -29,13 +29,23 @@ Member_ByMemberRoleId_ByGroupId_v2 = 'Groups.GroupRoles.Member_ByMemberRoleId_By
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupRoles.Roles, input]
+ * }
+ * ```
+ */
 export const useGroupRolesApi_GetRoles = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetMemberRolesListResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetMemberRolesListResponseV1>) => void
   ): UseQueryResult<GetMemberRolesListResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupRolesApi_GetRoles>[1]
@@ -56,13 +66,23 @@ export const useGroupRolesApi_GetRoles = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupRoles.Roles_v2, input]
+ * }
+ * ```
+ */
 export const useGroupRolesApi_GetRoles_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetMemberRolesListResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetMemberRolesListResponseV1>) => void
   ): UseQueryResult<GetMemberRolesListResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupRolesApi_GetRoles_v2>[1]
@@ -88,7 +108,7 @@ export const useGroupRolesApi_DeleteMember_ByMemberRoleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string, data: RemoveRoleFromMemberRequestV1 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string, data: RemoveRoleFromMemberRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { memberRoleId:string, data: RemoveRoleFromMemberRequestV1 }) => {
       const response = 
             (await GroupRolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -111,7 +131,7 @@ export const useGroupRolesApi_CreateMember_ByMemberRoleId = (
     options?: Omit<UseMutationOptions<GetUserGroupInformationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string, data: AssignRoleToMemberRequestV1 }>, 'mutationKey'>,
     callback?: (data: GetUserGroupInformationResponseV1) => void
   ): UseMutationResult<GetUserGroupInformationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string, data: AssignRoleToMemberRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { memberRoleId:string, data: AssignRoleToMemberRequestV1 }) => {
       const response = 
             (await GroupRolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -134,7 +154,7 @@ export const useGroupRolesApi_DeleteMember_ByMemberRoleId_ByGroupId_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string, groupId:string, data: RemoveRoleFromMemberRequestV1 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string, groupId:string, data: RemoveRoleFromMemberRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { memberRoleId:string, groupId:string, data: RemoveRoleFromMemberRequestV1 }) => {
       const response = 
             (await GroupRolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -157,7 +177,7 @@ export const useGroupRolesApi_CreateMember_ByMemberRoleId_ByGroupId_v2 = (
     options?: Omit<UseMutationOptions<GetUserGroupInformationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string, groupId:string, data: AssignRoleToMemberRequestV1 }>, 'mutationKey'>,
     callback?: (data: GetUserGroupInformationResponseV1) => void
   ): UseMutationResult<GetUserGroupInformationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId:string, groupId:string, data: AssignRoleToMemberRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { memberRoleId:string, groupId:string, data: AssignRoleToMemberRequestV1 }) => {
       const response = 
             (await GroupRolesApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

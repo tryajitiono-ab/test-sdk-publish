@@ -8,7 +8,7 @@
  */
 /* eslint-disable camelcase */
 import { AccelByteSDK, SdkSetConfigParam, ApiError } from '@accelbyte/sdk'
-import { AxiosError } from 'axios'
+import { AxiosError, AxiosResponse } from 'axios'
 // @ts-ignore
 import { useQuery, UseQueryOptions, UseQueryResult, useMutation, UseMutationOptions, UseMutationResult } from '@tanstack/react-query'
 import { DiffCalculationApi } from "../DiffCalculationApi.js"
@@ -31,7 +31,7 @@ export const useDiffCalculationApi_CreateDiff = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: LateDiffRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: LateDiffRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: LateDiffRequest }) => {
       const response = 
             (await DiffCalculationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -49,13 +49,23 @@ export const useDiffCalculationApi_CreateDiff = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DiffCalculation.Ping, input]
+ * }
+ * ```
+ */
 export const useDiffCalculationApi_GetPing = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<PingResponse, AxiosError<ApiError>>, 'queryKey'>,
-    callback?: (data: PingResponse) => void
+    callback?: (data: AxiosResponse<PingResponse>) => void
   ): UseQueryResult<PingResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDiffCalculationApi_GetPing>[1]
@@ -63,7 +73,7 @@ export const useDiffCalculationApi_GetPing = (
       const response = 
             (await DiffCalculationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
                 getPing())
-      callback && callback(response.data)
+      callback && callback(response)
       return response.data
   }
   
@@ -81,7 +91,7 @@ export const useDiffCalculationApi_CreateDiff_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: LateDiffRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: LateDiffRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: LateDiffRequest }) => {
       const response = 
             (await DiffCalculationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

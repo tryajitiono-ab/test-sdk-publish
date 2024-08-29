@@ -24,13 +24,23 @@ Connect_ByWatchdogId_ByNS = 'Ams.Watchdogs.Connect_ByWatchdogId_ByNS',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Watchdogs.Connect_ByWatchdogId, input]
+ * }
+ * ```
+ */
 export const useWatchdogsApi_GetConnect_ByWatchdogId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { watchdogID:string },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWatchdogsApi_GetConnect_ByWatchdogId>[1]
@@ -51,13 +61,23 @@ export const useWatchdogsApi_GetConnect_ByWatchdogId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Watchdogs.Connect_ByWatchdogId_ByNS, input]
+ * }
+ * ```
+ */
 export const useWatchdogsApi_GetConnect_ByWatchdogId_ByNS = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { watchdogID:string },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWatchdogsApi_GetConnect_ByWatchdogId_ByNS>[1]

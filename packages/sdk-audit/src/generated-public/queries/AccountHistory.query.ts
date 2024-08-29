@@ -23,13 +23,23 @@ export enum Key_AccountHistory {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AccountHistory.UsersMeAccountHistories, input]
+ * }
+ * ```
+ */
 export const useAccountHistoryApi_GetUsersMeAccountHistories = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {endDate?: number, limit?: number, offset?: number, property?: string | null, startDate?: number} },
     options?: Omit<UseQueryOptions<PaginatedAccountHistoryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedAccountHistoryResponse>) => void
   ): UseQueryResult<PaginatedAccountHistoryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAccountHistoryApi_GetUsersMeAccountHistories>[1]

@@ -38,7 +38,7 @@ export const useBackfillApi_CreateBackfill = (
     options?: Omit<UseMutationOptions<BackfillCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: BackFillCreateRequest }>, 'mutationKey'>,
     callback?: (data: BackfillCreateResponse) => void
   ): UseMutationResult<BackfillCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: BackFillCreateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BackFillCreateRequest }) => {
       const response = 
             (await BackfillApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -56,13 +56,23 @@ export const useBackfillApi_CreateBackfill = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Backfill.BackfillProposal, input]
+ * }
+ * ```
+ */
 export const useBackfillApi_GetBackfillProposal = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {sessionID: string | null} },
     options?: Omit<UseQueryOptions<BackfillProposalResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BackfillProposalResponse>) => void
   ): UseQueryResult<BackfillProposalResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useBackfillApi_GetBackfillProposal>[1]
@@ -88,7 +98,7 @@ export const useBackfillApi_DeleteBackfill_ByBackfillId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { backfillID:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { backfillID:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { backfillID:string }) => {
       const response = 
             (await BackfillApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -106,13 +116,23 @@ export const useBackfillApi_DeleteBackfill_ByBackfillId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Backfill.Backfill_ByBackfillId, input]
+ * }
+ * ```
+ */
 export const useBackfillApi_GetBackfill_ByBackfillId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { backfillID:string },
     options?: Omit<UseQueryOptions<BackfillGetResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BackfillGetResponse>) => void
   ): UseQueryResult<BackfillGetResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useBackfillApi_GetBackfill_ByBackfillId>[1]
@@ -138,7 +158,7 @@ export const useBackfillApi_UpdateProposalAccept_ByBackfillId = (
     options?: Omit<UseMutationOptions<GameSession, AxiosError<ApiError>, SdkSetConfigParam & { backfillID:string, data: BackFillAcceptRequest }>, 'mutationKey'>,
     callback?: (data: GameSession) => void
   ): UseMutationResult<GameSession, AxiosError<ApiError>, SdkSetConfigParam & { backfillID:string, data: BackFillAcceptRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { backfillID:string, data: BackFillAcceptRequest }) => {
       const response = 
             (await BackfillApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -161,7 +181,7 @@ export const useBackfillApi_UpdateProposalReject_ByBackfillId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { backfillID:string, data: BackFillRejectRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { backfillID:string, data: BackFillRejectRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { backfillID:string, data: BackFillRejectRequest }) => {
       const response = 
             (await BackfillApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

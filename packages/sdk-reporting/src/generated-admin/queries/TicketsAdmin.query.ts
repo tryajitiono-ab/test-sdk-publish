@@ -31,13 +31,23 @@ Resolution_ByTicketId = 'Reporting.TicketsAdmin.Resolution_ByTicketId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TicketsAdmin.Tickets, input]
+ * }
+ * ```
+ */
 export const useTicketsAdminApi_GetTickets = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {category?: string | null, extensionCategory?: string | null, limit?: number, offset?: number, order?: string | null, reportedUserId?: string | null, sortBy?: string | null, status?: string | null} },
     options?: Omit<UseQueryOptions<TicketListResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TicketListResponse>) => void
   ): UseQueryResult<TicketListResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTicketsAdminApi_GetTickets>[1]
@@ -58,13 +68,23 @@ export const useTicketsAdminApi_GetTickets = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TicketsAdmin.TicketsStatistic, input]
+ * }
+ * ```
+ */
 export const useTicketsAdminApi_GetTicketsStatistic = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {category: string | null, extensionCategory?: string | null} },
     options?: Omit<UseQueryOptions<TicketStatisticResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TicketStatisticResponse>) => void
   ): UseQueryResult<TicketStatisticResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTicketsAdminApi_GetTicketsStatistic>[1]
@@ -90,7 +110,7 @@ export const useTicketsAdminApi_DeleteTicket_ByTicketId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ticketId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ticketId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { ticketId:string }) => {
       const response = 
             (await TicketsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -108,13 +128,23 @@ export const useTicketsAdminApi_DeleteTicket_ByTicketId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TicketsAdmin.Ticket_ByTicketId, input]
+ * }
+ * ```
+ */
 export const useTicketsAdminApi_GetTicket_ByTicketId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { ticketId:string },
     options?: Omit<UseQueryOptions<TicketResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TicketResponse>) => void
   ): UseQueryResult<TicketResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTicketsAdminApi_GetTicket_ByTicketId>[1]
@@ -135,13 +165,23 @@ export const useTicketsAdminApi_GetTicket_ByTicketId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TicketsAdmin.Reports_ByTicketId, input]
+ * }
+ * ```
+ */
 export const useTicketsAdminApi_GetReports_ByTicketId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { ticketId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<ReportListResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ReportListResponse>) => void
   ): UseQueryResult<ReportListResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTicketsAdminApi_GetReports_ByTicketId>[1]
@@ -167,7 +207,7 @@ export const useTicketsAdminApi_UpdateResolution_ByTicketId = (
     options?: Omit<UseMutationOptions<TicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { ticketId:string, data: UpdateTicketResolutionsRequest }>, 'mutationKey'>,
     callback?: (data: TicketResponse) => void
   ): UseMutationResult<TicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { ticketId:string, data: UpdateTicketResolutionsRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { ticketId:string, data: UpdateTicketResolutionsRequest }) => {
       const response = 
             (await TicketsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

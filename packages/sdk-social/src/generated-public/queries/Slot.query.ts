@@ -28,13 +28,23 @@ Metadata_ByUserId_BySlotId = 'Social.Slot.Metadata_ByUserId_BySlotId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Slot.Slots_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSlotApi_GetSlots_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<SlotInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SlotInfoArray>) => void
   ): UseQueryResult<SlotInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSlotApi_GetSlots_ByUserId>[1]
@@ -60,7 +70,7 @@ export const useSlotApi_CreateSlot_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: {checksum?: string | null,customAttribute?: string | null,file?: File}, queryParams?: {label?: string | null, tags?: string[]} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: {checksum?: string | null,customAttribute?: string | null,file?: File}, queryParams?: {label?: string | null, tags?: string[]} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: {checksum?: string | null,customAttribute?: string | null,file?: File}, queryParams?: {label?: string | null, tags?: string[]} }) => {
       const response = 
             (await SlotApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -83,7 +93,7 @@ export const useSlotApi_DeleteSlot_ByUserId_BySlotId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, slotId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, slotId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, slotId:string }) => {
       const response = 
             (await SlotApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -101,13 +111,23 @@ export const useSlotApi_DeleteSlot_ByUserId_BySlotId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Slot.Slot_ByUserId_BySlotId, input]
+ * }
+ * ```
+ */
 export const useSlotApi_GetSlot_ByUserId_BySlotId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, slotId:string },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSlotApi_GetSlot_ByUserId_BySlotId>[1]
@@ -133,7 +153,7 @@ export const useSlotApi_UpdateSlot_ByUserId_BySlotId = (
     options?: Omit<UseMutationOptions<SlotInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, slotId:string, data: {checksum?: string | null,customAttribute?: string | null,file?: File}, queryParams?: {label?: string | null, tags?: string[]} }>, 'mutationKey'>,
     callback?: (data: SlotInfo) => void
   ): UseMutationResult<SlotInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, slotId:string, data: {checksum?: string | null,customAttribute?: string | null,file?: File}, queryParams?: {label?: string | null, tags?: string[]} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, slotId:string, data: {checksum?: string | null,customAttribute?: string | null,file?: File}, queryParams?: {label?: string | null, tags?: string[]} }) => {
       const response = 
             (await SlotApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -156,7 +176,7 @@ export const useSlotApi_UpdateMetadata_ByUserId_BySlotId = (
     options?: Omit<UseMutationOptions<SlotInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, slotId:string, data: SlotMetadataUpdate }>, 'mutationKey'>,
     callback?: (data: SlotInfo) => void
   ): UseMutationResult<SlotInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, slotId:string, data: SlotMetadataUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, slotId:string, data: SlotMetadataUpdate }) => {
       const response = 
             (await SlotApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -23,13 +23,23 @@ export enum Key_Currency {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Currency.Currencies, input]
+ * }
+ * ```
+ */
 export const useCurrencyApi_GetCurrencies = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {currencyType?: 'REAL' | 'VIRTUAL'} },
     options?: Omit<UseQueryOptions<CurrencyInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CurrencyInfoArray>) => void
   ): UseQueryResult<CurrencyInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCurrencyApi_GetCurrencies>[1]

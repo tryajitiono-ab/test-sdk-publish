@@ -45,13 +45,23 @@ Notification_ByUserId_ByOrderNo = 'Platform.OrderAdmin.Notification_ByUserId_ByO
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OrderAdmin.Orders, input]
+ * }
+ * ```
+ */
 export const useOrderAdminApi_GetOrders = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {endTime?: string | null, limit?: number, offset?: number, orderNos?: string[], sortBy?: string | null, startTime?: string | null, status?: 'CHARGEBACK' | 'CHARGEBACK_REVERSED' | 'CHARGED' | 'CLOSED' | 'DELETED' | 'FULFILLED' | 'FULFILL_FAILED' | 'INIT' | 'REFUNDED' | 'REFUNDING' | 'REFUND_FAILED', withTotal?: boolean | null} },
     options?: Omit<UseQueryOptions<OrderPagingResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<OrderPagingResult>) => void
   ): UseQueryResult<OrderPagingResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderAdminApi_GetOrders>[1]
@@ -72,13 +82,23 @@ export const useOrderAdminApi_GetOrders = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OrderAdmin.OrdersStats, input]
+ * }
+ * ```
+ */
 export const useOrderAdminApi_GetOrdersStats = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<OrderStatistics, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<OrderStatistics>) => void
   ): UseQueryResult<OrderStatistics, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderAdminApi_GetOrdersStats>[1]
@@ -99,13 +119,23 @@ export const useOrderAdminApi_GetOrdersStats = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OrderAdmin.Order_ByOrderNo, input]
+ * }
+ * ```
+ */
 export const useOrderAdminApi_GetOrder_ByOrderNo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { orderNo:string },
     options?: Omit<UseQueryOptions<OrderInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<OrderInfo>) => void
   ): UseQueryResult<OrderInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderAdminApi_GetOrder_ByOrderNo>[1]
@@ -126,13 +156,23 @@ export const useOrderAdminApi_GetOrder_ByOrderNo = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OrderAdmin.Orders_ByUserId, input]
+ * }
+ * ```
+ */
 export const useOrderAdminApi_GetOrders_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {discounted?: boolean | null, itemId?: string | null, limit?: number, offset?: number, status?: 'CHARGEBACK' | 'CHARGEBACK_REVERSED' | 'CHARGED' | 'CLOSED' | 'DELETED' | 'FULFILLED' | 'FULFILL_FAILED' | 'INIT' | 'REFUNDED' | 'REFUNDING' | 'REFUND_FAILED'} },
     options?: Omit<UseQueryOptions<OrderPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<OrderPagingSlicedResult>) => void
   ): UseQueryResult<OrderPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderAdminApi_GetOrders_ByUserId>[1]
@@ -158,7 +198,7 @@ export const useOrderAdminApi_CreateOrder_ByUserId = (
     options?: Omit<UseMutationOptions<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: AdminOrderCreate }>, 'mutationKey'>,
     callback?: (data: OrderInfo) => void
   ): UseMutationResult<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: AdminOrderCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: AdminOrderCreate }) => {
       const response = 
             (await OrderAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -181,7 +221,7 @@ export const useOrderAdminApi_UpdateRefund_ByOrderNo = (
     options?: Omit<UseMutationOptions<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { orderNo:string, data: OrderRefundCreate }>, 'mutationKey'>,
     callback?: (data: OrderInfo) => void
   ): UseMutationResult<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { orderNo:string, data: OrderRefundCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { orderNo:string, data: OrderRefundCreate }) => {
       const response = 
             (await OrderAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -199,13 +239,23 @@ export const useOrderAdminApi_UpdateRefund_ByOrderNo = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OrderAdmin.Order_ByUserId_ByOrderNo, input]
+ * }
+ * ```
+ */
 export const useOrderAdminApi_GetOrder_ByUserId_ByOrderNo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, orderNo:string },
     options?: Omit<UseQueryOptions<OrderInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<OrderInfo>) => void
   ): UseQueryResult<OrderInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderAdminApi_GetOrder_ByUserId_ByOrderNo>[1]
@@ -231,7 +281,7 @@ export const useOrderAdminApi_UpdateOrder_ByUserId_ByOrderNo = (
     options?: Omit<UseMutationOptions<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, orderNo:string, data: OrderUpdate }>, 'mutationKey'>,
     callback?: (data: OrderInfo) => void
   ): UseMutationResult<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, orderNo:string, data: OrderUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, orderNo:string, data: OrderUpdate }) => {
       const response = 
             (await OrderAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -249,13 +299,23 @@ export const useOrderAdminApi_UpdateOrder_ByUserId_ByOrderNo = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OrderAdmin.OrdersCountOfItem_ByUserId, input]
+ * }
+ * ```
+ */
 export const useOrderAdminApi_GetOrdersCountOfItem_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {itemId: string | null} },
     options?: Omit<UseQueryOptions<PurchasedItemCount, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PurchasedItemCount>) => void
   ): UseQueryResult<PurchasedItemCount, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderAdminApi_GetOrdersCountOfItem_ByUserId>[1]
@@ -276,13 +336,23 @@ export const useOrderAdminApi_GetOrdersCountOfItem_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OrderAdmin.Grant_ByUserId_ByOrderNo, input]
+ * }
+ * ```
+ */
 export const useOrderAdminApi_GetGrant_ByUserId_ByOrderNo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, orderNo:string },
     options?: Omit<UseQueryOptions<OrderGrantInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<OrderGrantInfo>) => void
   ): UseQueryResult<OrderGrantInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderAdminApi_GetGrant_ByUserId_ByOrderNo>[1]
@@ -308,7 +378,7 @@ export const useOrderAdminApi_UpdateFulfill_ByUserId_ByOrderNo = (
     options?: Omit<UseMutationOptions<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, orderNo:string }>, 'mutationKey'>,
     callback?: (data: OrderInfo) => void
   ): UseMutationResult<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, orderNo:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, orderNo:string }) => {
       const response = 
             (await OrderAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -326,13 +396,23 @@ export const useOrderAdminApi_UpdateFulfill_ByUserId_ByOrderNo = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OrderAdmin.History_ByUserId_ByOrderNo, input]
+ * }
+ * ```
+ */
 export const useOrderAdminApi_GetHistory_ByUserId_ByOrderNo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, orderNo:string },
     options?: Omit<UseQueryOptions<OrderHistoryInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<OrderHistoryInfoArray>) => void
   ): UseQueryResult<OrderHistoryInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderAdminApi_GetHistory_ByUserId_ByOrderNo>[1]
@@ -353,13 +433,23 @@ export const useOrderAdminApi_GetHistory_ByUserId_ByOrderNo = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OrderAdmin.ReceiptPdf_ByUserId_ByOrderNo, input]
+ * }
+ * ```
+ */
 export const useOrderAdminApi_GetReceiptPdf_ByUserId_ByOrderNo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, orderNo:string },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderAdminApi_GetReceiptPdf_ByUserId_ByOrderNo>[1]
@@ -385,7 +475,7 @@ export const useOrderAdminApi_CreateNotification_ByUserId_ByOrderNo = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, orderNo:string, data: TradeNotification }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, orderNo:string, data: TradeNotification }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, orderNo:string, data: TradeNotification }) => {
       const response = 
             (await OrderAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

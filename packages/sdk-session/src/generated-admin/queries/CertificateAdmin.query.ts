@@ -28,7 +28,7 @@ export const useCertificateAdminApi_UpdateCertificatePfxPlatformXbl = (
     options?: Omit<UseMutationOptions<PlatformCredentials, AxiosError<ApiError>, SdkSetConfigParam & { data: {file: File,password: string | null,certname: string | null,description?: string | null} }>, 'mutationKey'>,
     callback?: (data: PlatformCredentials) => void
   ): UseMutationResult<PlatformCredentials, AxiosError<ApiError>, SdkSetConfigParam & { data: {file: File,password: string | null,certname: string | null,description?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {file: File,password: string | null,certname: string | null,description?: string | null} }) => {
       const response = 
             (await CertificateAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

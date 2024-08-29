@@ -47,7 +47,7 @@ export const useServicePluginConfigAdminApi_DeleteConfigServicePlugin = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await ServicePluginConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -65,13 +65,23 @@ export const useServicePluginConfigAdminApi_DeleteConfigServicePlugin = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ServicePluginConfigAdmin.ConfigsServicePlugin, input]
+ * }
+ * ```
+ */
 export const useServicePluginConfigAdminApi_GetConfigsServicePlugin = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ServicePluginConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ServicePluginConfigInfo>) => void
   ): UseQueryResult<ServicePluginConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServicePluginConfigAdminApi_GetConfigsServicePlugin>[1]
@@ -97,7 +107,7 @@ export const useServicePluginConfigAdminApi_UpdateConfigServicePlugin = (
     options?: Omit<UseMutationOptions<ServicePluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: ServicePluginConfigUpdate }>, 'mutationKey'>,
     callback?: (data: ServicePluginConfigInfo) => void
   ): UseMutationResult<ServicePluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: ServicePluginConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ServicePluginConfigUpdate }) => {
       const response = 
             (await ServicePluginConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -120,7 +130,7 @@ export const useServicePluginConfigAdminApi_DeleteCatalogPluginLootbox = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await ServicePluginConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -138,13 +148,23 @@ export const useServicePluginConfigAdminApi_DeleteCatalogPluginLootbox = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ServicePluginConfigAdmin.CatalogPluginsLootbox, input]
+ * }
+ * ```
+ */
 export const useServicePluginConfigAdminApi_GetCatalogPluginsLootbox = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<LootBoxPluginConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<LootBoxPluginConfigInfo>) => void
   ): UseQueryResult<LootBoxPluginConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServicePluginConfigAdminApi_GetCatalogPluginsLootbox>[1]
@@ -170,7 +190,7 @@ export const useServicePluginConfigAdminApi_UpdateCatalogPluginLootbox = (
     options?: Omit<UseMutationOptions<LootBoxPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: LootBoxPluginConfigUpdate }>, 'mutationKey'>,
     callback?: (data: LootBoxPluginConfigInfo) => void
   ): UseMutationResult<LootBoxPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: LootBoxPluginConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: LootBoxPluginConfigUpdate }) => {
       const response = 
             (await ServicePluginConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -193,7 +213,7 @@ export const useServicePluginConfigAdminApi_DeleteCatalogPluginSection = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await ServicePluginConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -211,13 +231,23 @@ export const useServicePluginConfigAdminApi_DeleteCatalogPluginSection = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ServicePluginConfigAdmin.CatalogPluginsSection, input]
+ * }
+ * ```
+ */
 export const useServicePluginConfigAdminApi_GetCatalogPluginsSection = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<SectionPluginConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SectionPluginConfigInfo>) => void
   ): UseQueryResult<SectionPluginConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServicePluginConfigAdminApi_GetCatalogPluginsSection>[1]
@@ -243,7 +273,7 @@ export const useServicePluginConfigAdminApi_UpdateCatalogPluginSection = (
     options?: Omit<UseMutationOptions<SectionPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: SectionPluginConfigUpdate }>, 'mutationKey'>,
     callback?: (data: SectionPluginConfigInfo) => void
   ): UseMutationResult<SectionPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: SectionPluginConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: SectionPluginConfigUpdate }) => {
       const response = 
             (await ServicePluginConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -266,7 +296,7 @@ export const useServicePluginConfigAdminApi_DeleteRevocationPluginRevocation = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await ServicePluginConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -284,13 +314,23 @@ export const useServicePluginConfigAdminApi_DeleteRevocationPluginRevocation = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ServicePluginConfigAdmin.RevocationPluginsRevocation, input]
+ * }
+ * ```
+ */
 export const useServicePluginConfigAdminApi_GetRevocationPluginsRevocation = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<RevocationPluginConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RevocationPluginConfigInfo>) => void
   ): UseQueryResult<RevocationPluginConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServicePluginConfigAdminApi_GetRevocationPluginsRevocation>[1]
@@ -316,7 +356,7 @@ export const useServicePluginConfigAdminApi_UpdateRevocationPluginRevocation = (
     options?: Omit<UseMutationOptions<RevocationPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: RevocationPluginConfigUpdate }>, 'mutationKey'>,
     callback?: (data: RevocationPluginConfigInfo) => void
   ): UseMutationResult<RevocationPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: RevocationPluginConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: RevocationPluginConfigUpdate }) => {
       const response = 
             (await ServicePluginConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -334,13 +374,23 @@ export const useServicePluginConfigAdminApi_UpdateRevocationPluginRevocation = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ServicePluginConfigAdmin.CatalogPluginsLootboxGrpcInfo, input]
+ * }
+ * ```
+ */
 export const useServicePluginConfigAdminApi_GetCatalogPluginsLootboxGrpcInfo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {force?: boolean | null} },
     options?: Omit<UseQueryOptions<GrpcServerInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GrpcServerInfo>) => void
   ): UseQueryResult<GrpcServerInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServicePluginConfigAdminApi_GetCatalogPluginsLootboxGrpcInfo>[1]
@@ -366,7 +416,7 @@ export const useServicePluginConfigAdminApi_UpdateCatalogPluginLootboxCustomConf
     options?: Omit<UseMutationOptions<LootBoxPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File} }>, 'mutationKey'>,
     callback?: (data: LootBoxPluginConfigInfo) => void
   ): UseMutationResult<LootBoxPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {file?: File} }) => {
       const response = 
             (await ServicePluginConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -389,7 +439,7 @@ export const useServicePluginConfigAdminApi_UpdateCatalogPluginSectionCustomConf
     options?: Omit<UseMutationOptions<SectionPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File} }>, 'mutationKey'>,
     callback?: (data: SectionPluginConfigInfo) => void
   ): UseMutationResult<SectionPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {file?: File} }) => {
       const response = 
             (await ServicePluginConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -412,7 +462,7 @@ export const useServicePluginConfigAdminApi_UpdateRevocationPluginRevocationRevo
     options?: Omit<UseMutationOptions<RevocationPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File} }>, 'mutationKey'>,
     callback?: (data: RevocationPluginConfigInfo) => void
   ): UseMutationResult<RevocationPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {file?: File} }) => {
       const response = 
             (await ServicePluginConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

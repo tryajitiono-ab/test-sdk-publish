@@ -37,13 +37,23 @@ Publisher = 'Basic.NamespaceAdmin.Publisher',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_NamespaceAdmin.Namespaces, input]
+ * }
+ * ```
+ */
 export const useNamespaceAdminApi_GetNamespaces = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {activeOnly?: boolean | null} },
     options?: Omit<UseQueryOptions<NamespaceInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespaceInfoArray>) => void
   ): UseQueryResult<NamespaceInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNamespaceAdminApi_GetNamespaces>[1]
@@ -69,7 +79,7 @@ export const useNamespaceAdminApi_CreateNamespace = (
     options?: Omit<UseMutationOptions<NamespaceInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: NamespaceCreate }>, 'mutationKey'>,
     callback?: (data: NamespaceInfo) => void
   ): UseMutationResult<NamespaceInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: NamespaceCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: NamespaceCreate }) => {
       const response = 
             (await NamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -92,7 +102,7 @@ export const useNamespaceAdminApi_DeleteNamespace_ByNamespace = (
     options?: Omit<UseMutationOptions<NamespaceInfo, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: NamespaceInfo) => void
   ): UseMutationResult<NamespaceInfo, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await NamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -110,13 +120,23 @@ export const useNamespaceAdminApi_DeleteNamespace_ByNamespace = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_NamespaceAdmin.Namespace_ByNamespace, input]
+ * }
+ * ```
+ */
 export const useNamespaceAdminApi_GetNamespace_ByNamespace = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {activeOnly?: boolean | null} },
     options?: Omit<UseQueryOptions<NamespaceInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespaceInfo>) => void
   ): UseQueryResult<NamespaceInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNamespaceAdminApi_GetNamespace_ByNamespace>[1]
@@ -137,13 +157,23 @@ export const useNamespaceAdminApi_GetNamespace_ByNamespace = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_NamespaceAdmin.Game, input]
+ * }
+ * ```
+ */
 export const useNamespaceAdminApi_GetGame = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {activeOnly?: boolean | null} },
     options?: Omit<UseQueryOptions<NamespaceInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespaceInfoArray>) => void
   ): UseQueryResult<NamespaceInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNamespaceAdminApi_GetGame>[1]
@@ -169,7 +199,7 @@ export const useNamespaceAdminApi_PatchBasic = (
     options?: Omit<UseMutationOptions<NamespaceInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: NamespaceUpdate }>, 'mutationKey'>,
     callback?: (data: NamespaceInfo) => void
   ): UseMutationResult<NamespaceInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: NamespaceUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: NamespaceUpdate }) => {
       const response = 
             (await NamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -187,13 +217,23 @@ export const useNamespaceAdminApi_PatchBasic = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_NamespaceAdmin.Child, input]
+ * }
+ * ```
+ */
 export const useNamespaceAdminApi_GetChild = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {activeOnly?: boolean | null} },
     options?: Omit<UseQueryOptions<NamespaceInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespaceInfoArray>) => void
   ): UseQueryResult<NamespaceInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNamespaceAdminApi_GetChild>[1]
@@ -219,7 +259,7 @@ export const useNamespaceAdminApi_PatchStatus = (
     options?: Omit<UseMutationOptions<NamespaceInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: NamespaceStatusUpdate }>, 'mutationKey'>,
     callback?: (data: NamespaceInfo) => void
   ): UseMutationResult<NamespaceInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: NamespaceStatusUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: NamespaceStatusUpdate }) => {
       const response = 
             (await NamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -237,13 +277,23 @@ export const useNamespaceAdminApi_PatchStatus = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_NamespaceAdmin.Context, input]
+ * }
+ * ```
+ */
 export const useNamespaceAdminApi_GetContext = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<NamespaceContext, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespaceContext>) => void
   ): UseQueryResult<NamespaceContext, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNamespaceAdminApi_GetContext>[1]
@@ -264,13 +314,23 @@ export const useNamespaceAdminApi_GetContext = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_NamespaceAdmin.Publisher, input]
+ * }
+ * ```
+ */
 export const useNamespaceAdminApi_GetPublisher = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<NamespacePublisherInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespacePublisherInfo>) => void
   ): UseQueryResult<NamespacePublisherInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNamespaceAdminApi_GetPublisher>[1]

@@ -29,7 +29,7 @@ export const useStatConfigurationApi_CreateStat = (
     options?: Omit<UseMutationOptions<StatInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StatCreate }>, 'mutationKey'>,
     callback?: (data: StatInfo) => void
   ): UseMutationResult<StatInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StatCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: StatCreate }) => {
       const response = 
             (await StatConfigurationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

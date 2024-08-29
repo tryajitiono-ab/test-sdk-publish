@@ -32,7 +32,7 @@ export const useDataDeletionApi_DeleteUserMeDeletion = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await DataDeletionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -55,7 +55,7 @@ export const useDataDeletionApi_PostUserMeDeletion = (
     options?: Omit<UseMutationOptions<RequestDeleteResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {platformId: string | null,platformToken: string | null} }>, 'mutationKey'>,
     callback?: (data: RequestDeleteResponse) => void
   ): UseMutationResult<RequestDeleteResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: {platformId: string | null,platformToken: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {platformId: string | null,platformToken: string | null} }) => {
       const response = 
             (await DataDeletionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -73,13 +73,23 @@ export const useDataDeletionApi_PostUserMeDeletion = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DataDeletion.UsersMeDeletionsStatus, input]
+ * }
+ * ```
+ */
 export const useDataDeletionApi_GetUsersMeDeletionsStatus = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<DeletionStatus, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DeletionStatus>) => void
   ): UseQueryResult<DeletionStatus, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDataDeletionApi_GetUsersMeDeletionsStatus>[1]
@@ -105,7 +115,7 @@ export const useDataDeletionApi_DeleteDeletion_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await DataDeletionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -128,7 +138,7 @@ export const useDataDeletionApi_PostDeletion_ByUserId = (
     options?: Omit<UseMutationOptions<RequestDeleteResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: {password: string | null,languageTag?: string | null} }>, 'mutationKey'>,
     callback?: (data: RequestDeleteResponse) => void
   ): UseMutationResult<RequestDeleteResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: {password: string | null,languageTag?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: {password: string | null,languageTag?: string | null} }) => {
       const response = 
             (await DataDeletionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -146,13 +156,23 @@ export const useDataDeletionApi_PostDeletion_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DataDeletion.DeletionsStatus_ByUserId, input]
+ * }
+ * ```
+ */
 export const useDataDeletionApi_GetDeletionsStatus_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<DeletionStatus, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DeletionStatus>) => void
   ): UseQueryResult<DeletionStatus, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDataDeletionApi_GetDeletionsStatus_ByUserId>[1]

@@ -24,13 +24,23 @@ Qos_ByNS = 'Qosmanager.Public.Qos_ByNS',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Public.Qos, input]
+ * }
+ * ```
+ */
 export const usePublicApi_GetQos = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ListServerResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListServerResponse>) => void
   ): UseQueryResult<ListServerResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicApi_GetQos>[1]
@@ -51,13 +61,23 @@ export const usePublicApi_GetQos = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Public.Qos_ByNS, input]
+ * }
+ * ```
+ */
 export const usePublicApi_GetQos_ByNS = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {status?: string | null} },
     options?: Omit<UseQueryOptions<ListServerResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListServerResponse>) => void
   ): UseQueryResult<ListServerResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicApi_GetQos_ByNS>[1]

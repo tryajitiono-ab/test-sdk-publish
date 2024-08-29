@@ -25,13 +25,23 @@ Config_ByKey_v2 = 'Ugc.ConfigAdmin.Config_ByKey_v2',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigAdmin.Configs_v2, input]
+ * }
+ * ```
+ */
 export const useConfigAdminApi_GetConfigs_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedGetConfigsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedGetConfigsResponse>) => void
   ): UseQueryResult<PaginatedGetConfigsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigAdminApi_GetConfigs_v2>[1]
@@ -57,7 +67,7 @@ export const useConfigAdminApi_PatchConfig_ByKey_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: UpdateConfigRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: UpdateConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string, data: UpdateConfigRequest }) => {
       const response = 
             (await ConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

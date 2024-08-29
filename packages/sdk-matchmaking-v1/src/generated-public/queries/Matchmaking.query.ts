@@ -44,13 +44,23 @@ Channel_ByChannelName = 'Matchmaking.Matchmaking.Channel_ByChannelName',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Matchmaking.Channels, input]
+ * }
+ * ```
+ */
 export const useMatchmakingApi_GetChannels = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetChannelsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetChannelsResponse>) => void
   ): UseQueryResult<GetChannelsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingApi_GetChannels>[1]
@@ -76,7 +86,7 @@ export const useMatchmakingApi_CreateChannel = (
     options?: Omit<UseMutationOptions<CreateChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ChannelRequest }>, 'mutationKey'>,
     callback?: (data: CreateChannelResponse) => void
   ): UseMutationResult<CreateChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ChannelRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ChannelRequest }) => {
       const response = 
             (await MatchmakingApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -99,7 +109,7 @@ export const useMatchmakingApi_CreateSession = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchmakingResult }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchmakingResult }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: MatchmakingResult }) => {
       const response = 
             (await MatchmakingApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -122,7 +132,7 @@ export const useMatchmakingApi_UpdateRebalance = (
     options?: Omit<UseMutationOptions<RebalanceResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: RebalanceRequest }>, 'mutationKey'>,
     callback?: (data: RebalanceResponse) => void
   ): UseMutationResult<RebalanceResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: RebalanceRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: RebalanceRequest }) => {
       const response = 
             (await MatchmakingApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -145,7 +155,7 @@ export const useMatchmakingApi_CreateMatchresult = (
     options?: Omit<UseMutationOptions<MatchResultResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchResultRequest }>, 'mutationKey'>,
     callback?: (data: MatchResultResponse) => void
   ): UseMutationResult<MatchResultResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchResultRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: MatchResultRequest }) => {
       const response = 
             (await MatchmakingApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -168,7 +178,7 @@ export const useMatchmakingApi_UpdateSessionDequeue = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DequeueRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DequeueRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DequeueRequest }) => {
       const response = 
             (await MatchmakingApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -191,7 +201,7 @@ export const useMatchmakingApi_DeleteChannel_ByChannel = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channel:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channel:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channel:string }) => {
       const response = 
             (await MatchmakingApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -209,13 +219,23 @@ export const useMatchmakingApi_DeleteChannel_ByChannel = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Matchmaking.Channels_ByNS, input]
+ * }
+ * ```
+ */
 export const useMatchmakingApi_GetChannels_ByNS = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ChannelV1Array, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChannelV1Array>) => void
   ): UseQueryResult<ChannelV1Array, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingApi_GetChannels_ByNS>[1]
@@ -236,13 +256,23 @@ export const useMatchmakingApi_GetChannels_ByNS = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Matchmaking.Status_ByMatchId, input]
+ * }
+ * ```
+ */
 export const useMatchmakingApi_GetStatus_ByMatchId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { matchID:string },
     options?: Omit<UseQueryOptions<MatchmakingResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MatchmakingResult>) => void
   ): UseQueryResult<MatchmakingResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingApi_GetStatus_ByMatchId>[1]
@@ -263,13 +293,23 @@ export const useMatchmakingApi_GetStatus_ByMatchId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Matchmaking.Metrics_ByChannelName, input]
+ * }
+ * ```
+ */
 export const useMatchmakingApi_GetMetrics_ByChannelName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { channelName:string },
     options?: Omit<UseQueryOptions<TicketMetricResultRecord, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TicketMetricResultRecord>) => void
   ): UseQueryResult<TicketMetricResultRecord, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingApi_GetMetrics_ByChannelName>[1]
@@ -290,13 +330,23 @@ export const useMatchmakingApi_GetMetrics_ByChannelName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Matchmaking.Channel_ByChannelName, input]
+ * }
+ * ```
+ */
 export const useMatchmakingApi_GetChannel_ByChannelName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { channelName:string },
     options?: Omit<UseQueryOptions<ChannelV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChannelV1>) => void
   ): UseQueryResult<ChannelV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchmakingApi_GetChannel_ByChannelName>[1]

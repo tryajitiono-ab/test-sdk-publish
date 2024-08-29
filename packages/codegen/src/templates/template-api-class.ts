@@ -12,7 +12,7 @@ const getImportableVarMap = () => ({
 
 const makeNewImportVarMap = () => ({
   '@accelbyte/sdk': ['AccelByteSDK', 'SdkSetConfigParam', 'ApiUtils', 'Network'],
-  axios: ['AxiosResponse']
+  axios: ['AxiosRequestConfig', 'AxiosResponse']
 })
 
 // TODO localStorage('ZodEnabled')=false disables Zod validation in browser only. TODO move to Featureflag instead
@@ -30,7 +30,7 @@ export function ${className}(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
   
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosConfig.request, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)

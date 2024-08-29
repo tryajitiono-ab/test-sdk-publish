@@ -29,13 +29,23 @@ Log_ByLogId = 'Audit.AuditLogsAdmin.Log_ByLogId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AuditLogsAdmin.Logs, input]
+ * }
+ * ```
+ */
 export const useAuditLogsAdminApi_GetLogs = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {action?: string | null, actor?: string | null, actorType?: 'CLIENT' | 'USER', category?: string | null, endDate?: number, limit?: number, namespace?: string | null, objectId?: string | null, objectType?: string | null, offset?: number, order?: -1 | 1, startDate?: number} },
     options?: Omit<UseQueryOptions<PaginatedAuditLogsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedAuditLogsResponse>) => void
   ): UseQueryResult<PaginatedAuditLogsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAuditLogsAdminApi_GetLogs>[1]
@@ -56,13 +66,23 @@ export const useAuditLogsAdminApi_GetLogs = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AuditLogsAdmin.ConfigCategories, input]
+ * }
+ * ```
+ */
 export const useAuditLogsAdminApi_GetConfigCategories = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {endDate?: number, namespace?: string | null, startDate?: number} },
     options?: Omit<UseQueryOptions<CategoryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CategoryResponse>) => void
   ): UseQueryResult<CategoryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAuditLogsAdminApi_GetConfigCategories>[1]
@@ -83,13 +103,23 @@ export const useAuditLogsAdminApi_GetConfigCategories = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AuditLogsAdmin.ConfigTimeRange, input]
+ * }
+ * ```
+ */
 export const useAuditLogsAdminApi_GetConfigTimeRange = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<TimeRangeConfigResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TimeRangeConfigResponse>) => void
   ): UseQueryResult<TimeRangeConfigResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAuditLogsAdminApi_GetConfigTimeRange>[1]
@@ -110,13 +140,23 @@ export const useAuditLogsAdminApi_GetConfigTimeRange = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AuditLogsAdmin.Log_ByLogId, input]
+ * }
+ * ```
+ */
 export const useAuditLogsAdminApi_GetLog_ByLogId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { logId:string },
     options?: Omit<UseQueryOptions<AuditLogInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AuditLogInfo>) => void
   ): UseQueryResult<AuditLogInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAuditLogsAdminApi_GetLog_ByLogId>[1]

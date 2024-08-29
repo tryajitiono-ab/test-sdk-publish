@@ -23,13 +23,23 @@ export enum Key_ConfigAdmin {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigAdmin.Config_ByConfigKey_v3, input]
+ * }
+ * ```
+ */
 export const useConfigAdminApi_GetConfig_ByConfigKey_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { configKey:string },
     options?: Omit<UseQueryOptions<ConfigValueResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigValueResponseV3>) => void
   ): UseQueryResult<ConfigValueResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigAdminApi_GetConfig_ByConfigKey_v3>[1]

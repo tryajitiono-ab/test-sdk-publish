@@ -26,13 +26,23 @@ IapClawbackPlaystationMock = 'Platform.ClawbackAdmin.IapClawbackPlaystationMock'
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ClawbackAdmin.IapClawbackHistories, input]
+ * }
+ * ```
+ */
 export const useClawbackAdminApi_GetIapClawbackHistories = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {endTime?: string | null, eventType?: 'CHARGEBACK' | 'CHARGEBACK_REVERSED' | 'OTHER' | 'REFUND', externalOrderId?: string | null, limit?: number, offset?: number, startTime?: string | null, status?: 'FAIL' | 'IGNORED' | 'INIT' | 'SUCCESS', userId?: string | null} },
     options?: Omit<UseQueryOptions<IapClawbackPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<IapClawbackPagingSlicedResult>) => void
   ): UseQueryResult<IapClawbackPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useClawbackAdminApi_GetIapClawbackHistories>[1]
@@ -58,7 +68,7 @@ export const useClawbackAdminApi_CreateIapClawbackPlaystationMock = (
     options?: Omit<UseMutationOptions<ClawbackInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StreamEvent }>, 'mutationKey'>,
     callback?: (data: ClawbackInfo) => void
   ): UseMutationResult<ClawbackInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StreamEvent }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: StreamEvent }) => {
       const response = 
             (await ClawbackAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -70,7 +70,7 @@ export const useXRayAdminApi_CreateXrayTicket_v2 = (
     options?: Omit<UseMutationOptions<XRayTicketObservabilityResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: XRayTicketObservabilityRequest }>, 'mutationKey'>,
     callback?: (data: XRayTicketObservabilityResponse) => void
   ): UseMutationResult<XRayTicketObservabilityResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: XRayTicketObservabilityRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: XRayTicketObservabilityRequest }) => {
       const response = 
             (await XRayAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -93,7 +93,7 @@ export const useXRayAdminApi_CreateXrayTicketBulk_v2 = (
     options?: Omit<UseMutationOptions<XRayBulkTicketObservabilityResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: XRayBulkTicketObservabilityRequest }>, 'mutationKey'>,
     callback?: (data: XRayBulkTicketObservabilityResponse) => void
   ): UseMutationResult<XRayBulkTicketObservabilityResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: XRayBulkTicketObservabilityRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: XRayBulkTicketObservabilityRequest }) => {
       const response = 
             (await XRayAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -111,13 +111,23 @@ export const useXRayAdminApi_CreateXrayTicketBulk_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayTicket_ByTicketId_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayTicket_ByTicketId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { ticketId:string,  queryParams: {endDate: string | null, startDate: string | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<XRayTicketQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayTicketQueryResponse>) => void
   ): UseQueryResult<XRayTicketQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayTicket_ByTicketId_v2>[1]
@@ -138,13 +148,23 @@ export const useXRayAdminApi_GetXrayTicket_ByTicketId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayMetricsTotalMatch_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayMetricsTotalMatch_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endDate: string | null, startDate: string | null, matchPool?: string[]} },
     options?: Omit<UseQueryOptions<XRayMatchMatchmakingQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayMatchMatchmakingQueryResponse>) => void
   ): UseQueryResult<XRayMatchMatchmakingQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayMetricsTotalMatch_v2>[1]
@@ -165,13 +185,23 @@ export const useXRayAdminApi_GetXrayMetricsTotalMatch_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayMetricsAcquiringDs_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayMetricsAcquiringDs_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endDate: string | null, startDate: string | null, matchPool?: string[]} },
     options?: Omit<UseQueryOptions<XRayAcquiringDsQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayAcquiringDsQueryResponse>) => void
   ): UseQueryResult<XRayAcquiringDsQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayMetricsAcquiringDs_v2>[1]
@@ -192,13 +222,23 @@ export const useXRayAdminApi_GetXrayMetricsAcquiringDs_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayMatchPool_ByPoolName_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayMatchPool_ByPoolName_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { poolName:string[],  queryParams: {endDate: string | null, startDate: string | null} },
     options?: Omit<UseQueryOptions<XRayMatchPoolQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayMatchPoolQueryResponse>) => void
   ): UseQueryResult<XRayMatchPoolQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayMatchPool_ByPoolName_v2>[1]
@@ -219,13 +259,23 @@ export const useXRayAdminApi_GetXrayMatchPool_ByPoolName_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.TicketsXray_ByUserId_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetTicketsXray_ByUserId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {endDate: string | null, startDate: string | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<XRayTicketQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayTicketQueryResponse>) => void
   ): UseQueryResult<XRayTicketQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetTicketsXray_ByUserId_v2>[1]
@@ -246,13 +296,23 @@ export const useXRayAdminApi_GetTicketsXray_ByUserId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.TicketsXray_ByMatchId_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetTicketsXray_ByMatchId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { matchId:string },
     options?: Omit<UseQueryOptions<XRayMatchesQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayMatchesQueryResponse>) => void
   ): UseQueryResult<XRayMatchesQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetTicketsXray_ByMatchId_v2>[1]
@@ -273,13 +333,23 @@ export const useXRayAdminApi_GetTicketsXray_ByMatchId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayMetricsTotalTicketMatch_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayMetricsTotalTicketMatch_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endDate: string | null, startDate: string | null, matchPool?: string[]} },
     options?: Omit<UseQueryOptions<XRayMatchMatchmakingTicketQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayMatchMatchmakingTicketQueryResponse>) => void
   ): UseQueryResult<XRayMatchMatchmakingTicketQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayMetricsTotalTicketMatch_v2>[1]
@@ -300,13 +370,23 @@ export const useXRayAdminApi_GetXrayMetricsTotalTicketMatch_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.HistoriesXray_ByMatchId_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetHistoriesXray_ByMatchId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { matchId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<XRayMatchHistorQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayMatchHistorQueryResponse>) => void
   ): UseQueryResult<XRayMatchHistorQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetHistoriesXray_ByMatchId_v2>[1]
@@ -327,13 +407,23 @@ export const useXRayAdminApi_GetHistoriesXray_ByMatchId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayMetricsTotalActiveSession_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayMetricsTotalActiveSession_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endDate: string | null, startDate: string | null, matchPool?: string[], region?: string | null} },
     options?: Omit<UseQueryOptions<XRayTotalActiveSessionQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayTotalActiveSessionQueryResponse>) => void
   ): UseQueryResult<XRayTotalActiveSessionQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayMetricsTotalActiveSession_v2>[1]
@@ -354,13 +444,23 @@ export const useXRayAdminApi_GetXrayMetricsTotalActiveSession_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayMetricsTotalTicketCreated_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayMetricsTotalTicketCreated_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endDate: string | null, startDate: string | null, matchPool?: string[]} },
     options?: Omit<UseQueryOptions<XRayCreatedMatchmakingTicketQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayCreatedMatchmakingTicketQueryResponse>) => void
   ): UseQueryResult<XRayCreatedMatchmakingTicketQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayMetricsTotalTicketCreated_v2>[1]
@@ -381,13 +481,23 @@ export const useXRayAdminApi_GetXrayMetricsTotalTicketCreated_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayMetricsTotalTicketExpired_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayMetricsTotalTicketExpired_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endDate: string | null, startDate: string | null, matchPool?: string[]} },
     options?: Omit<UseQueryOptions<XRayExpiredMatchmakingTicketQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayExpiredMatchmakingTicketQueryResponse>) => void
   ): UseQueryResult<XRayExpiredMatchmakingTicketQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayMetricsTotalTicketExpired_v2>[1]
@@ -408,13 +518,23 @@ export const useXRayAdminApi_GetXrayMetricsTotalTicketExpired_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayMetricsTotalTicketCanceled_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayMetricsTotalTicketCanceled_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endDate: string | null, startDate: string | null, matchPool?: string[]} },
     options?: Omit<UseQueryOptions<XRayCanceledMatchmakingTicketQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayCanceledMatchmakingTicketQueryResponse>) => void
   ): UseQueryResult<XRayCanceledMatchmakingTicketQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayMetricsTotalTicketCanceled_v2>[1]
@@ -435,13 +555,23 @@ export const useXRayAdminApi_GetXrayMetricsTotalTicketCanceled_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayMetricsMatchLengthDurationAvg_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayMetricsMatchLengthDurationAvg_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endDate: string | null, startDate: string | null, matchPool?: string[]} },
     options?: Omit<UseQueryOptions<XRayMatchLengthDurationQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayMatchLengthDurationQueryResponse>) => void
   ): UseQueryResult<XRayMatchLengthDurationQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayMetricsMatchLengthDurationAvg_v2>[1]
@@ -462,13 +592,23 @@ export const useXRayAdminApi_GetXrayMetricsMatchLengthDurationAvg_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayMetricsMatchLengthDurationP99_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayMetricsMatchLengthDurationP99_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endDate: string | null, startDate: string | null, matchPool?: string[]} },
     options?: Omit<UseQueryOptions<XRayMatchLengthDurationQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayMatchLengthDurationQueryResponse>) => void
   ): UseQueryResult<XRayMatchLengthDurationQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayMetricsMatchLengthDurationP99_v2>[1]
@@ -489,13 +629,23 @@ export const useXRayAdminApi_GetXrayMetricsMatchLengthDurationP99_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.TicketHistoriesXray_ByMatchId_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetTicketHistoriesXray_ByMatchId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { matchId:string },
     options?: Omit<UseQueryOptions<XRayMatchTicketHistoryQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayMatchTicketHistoryQueryResponse>) => void
   ): UseQueryResult<XRayMatchTicketHistoryQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetTicketHistoriesXray_ByMatchId_v2>[1]
@@ -516,13 +666,23 @@ export const useXRayAdminApi_GetTicketHistoriesXray_ByMatchId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayMetricsAcquiringDsWaitTimeAvg_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayMetricsAcquiringDsWaitTimeAvg_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endDate: string | null, startDate: string | null, matchPool?: string[]} },
     options?: Omit<UseQueryOptions<XRayAcquiringDsWaitTimeQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayAcquiringDsWaitTimeQueryResponse>) => void
   ): UseQueryResult<XRayAcquiringDsWaitTimeQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayMetricsAcquiringDsWaitTimeAvg_v2>[1]
@@ -543,13 +703,23 @@ export const useXRayAdminApi_GetXrayMetricsAcquiringDsWaitTimeAvg_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.XrayMetricsTotalPlayerPersessionAvg_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetXrayMetricsTotalPlayerPersessionAvg_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endDate: string | null, startDate: string | null, matchPool?: string[]} },
     options?: Omit<UseQueryOptions<XRayTotalPlayerPersessionAvgQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayTotalPlayerPersessionAvgQueryResponse>) => void
   ): UseQueryResult<XRayTotalPlayerPersessionAvgQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetXrayMetricsTotalPlayerPersessionAvg_v2>[1]
@@ -570,13 +740,23 @@ export const useXRayAdminApi_GetXrayMetricsTotalPlayerPersessionAvg_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.TicksXray_ByPoolName_ByPodName_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetTicksXray_ByPoolName_ByPodName_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { poolName:string, podName:string,  queryParams: {endDate: string | null, startDate: string | null, all?: boolean | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<XRayMatchPoolPodTickQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayMatchPoolPodTickQueryResponse>) => void
   ): UseQueryResult<XRayMatchPoolPodTickQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetTicksXray_ByPoolName_ByPodName_v2>[1]
@@ -597,13 +777,23 @@ export const useXRayAdminApi_GetTicksXray_ByPoolName_ByPodName_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.MatchesXray_ByPoolName_ByPodName_ByTickId_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetMatchesXray_ByPoolName_ByPodName_ByTickId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { poolName:string, podName:string, tickId:string },
     options?: Omit<UseQueryOptions<XRayMatchPoolPodTickMatchResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayMatchPoolPodTickMatchResponse>) => void
   ): UseQueryResult<XRayMatchPoolPodTickMatchResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetMatchesXray_ByPoolName_ByPodName_ByTickId_v2>[1]
@@ -624,13 +814,23 @@ export const useXRayAdminApi_GetMatchesXray_ByPoolName_ByPodName_ByTickId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_XRayAdmin.TicketsXray_ByPoolName_ByPodName_ByTickId_v2, input]
+ * }
+ * ```
+ */
 export const useXRayAdminApi_GetTicketsXray_ByPoolName_ByPodName_ByTickId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { poolName:string, podName:string, tickId:string },
     options?: Omit<UseQueryOptions<XRayMatchPoolPodTickTicketResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<XRayMatchPoolPodTickTicketResponse>) => void
   ): UseQueryResult<XRayMatchPoolPodTickTicketResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useXRayAdminApi_GetTicketsXray_ByPoolName_ByPodName_ByTickId_v2>[1]

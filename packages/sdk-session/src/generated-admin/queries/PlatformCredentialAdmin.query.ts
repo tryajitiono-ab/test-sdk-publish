@@ -30,7 +30,7 @@ export const usePlatformCredentialAdminApi_DeletePlatformCredential = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await PlatformCredentialAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -48,13 +48,23 @@ export const usePlatformCredentialAdminApi_DeletePlatformCredential = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlatformCredentialAdmin.PlatformCredentials, input]
+ * }
+ * ```
+ */
 export const usePlatformCredentialAdminApi_GetPlatformCredentials = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<PlatformCredentials, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlatformCredentials>) => void
   ): UseQueryResult<PlatformCredentials, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlatformCredentialAdminApi_GetPlatformCredentials>[1]
@@ -80,7 +90,7 @@ export const usePlatformCredentialAdminApi_UpdatePlatformCredential = (
     options?: Omit<UseMutationOptions<PlatformCredentials, AxiosError<ApiError>, SdkSetConfigParam & { data: PutPlatformCredentialsRequest }>, 'mutationKey'>,
     callback?: (data: PlatformCredentials) => void
   ): UseMutationResult<PlatformCredentials, AxiosError<ApiError>, SdkSetConfigParam & { data: PutPlatformCredentialsRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PutPlatformCredentialsRequest }) => {
       const response = 
             (await PlatformCredentialAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

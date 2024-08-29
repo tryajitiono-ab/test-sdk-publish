@@ -23,13 +23,23 @@ export enum Key_Caching {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Caching.DestCacheDiff_BySourceBuildId_ByDestinationBuildId, input]
+ * }
+ * ```
+ */
 export const useCachingApi_GetDestCacheDiff_BySourceBuildId_ByDestinationBuildId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { sourceBuildId:string, destinationBuildId:string },
     options?: Omit<UseQueryOptions<RetrieveDiffCacheResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveDiffCacheResponse>) => void
   ): UseQueryResult<RetrieveDiffCacheResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCachingApi_GetDestCacheDiff_BySourceBuildId_ByDestinationBuildId>[1]

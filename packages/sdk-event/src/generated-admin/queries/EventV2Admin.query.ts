@@ -25,13 +25,23 @@ Event_ByUserId_v2 = 'Event.EventV2Admin.Event_ByUserId_v2',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventV2Admin.Query_v2, input]
+ * }
+ * ```
+ */
 export const useEventV2AdminApi_FetchQuery_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: GenericQueryPayload, queryParams?: {endDate?: string | null, offset?: number, pageSize?: number, startDate?: string | null} },
     options?: Omit<UseQueryOptions<EventResponseV2, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventResponseV2>) => void
   ): UseQueryResult<EventResponseV2, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventV2AdminApi_FetchQuery_v2>[1]
@@ -52,13 +62,23 @@ export const useEventV2AdminApi_FetchQuery_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventV2Admin.Event_ByUserId_v2, input]
+ * }
+ * ```
+ */
 export const useEventV2AdminApi_GetEvent_ByUserId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {endDate?: string | null, eventName?: string | null, offset?: number, pageSize?: number, startDate?: string | null} },
     options?: Omit<UseQueryOptions<EventResponseV2, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventResponseV2>) => void
   ): UseQueryResult<EventResponseV2, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventV2AdminApi_GetEvent_ByUserId_v2>[1]

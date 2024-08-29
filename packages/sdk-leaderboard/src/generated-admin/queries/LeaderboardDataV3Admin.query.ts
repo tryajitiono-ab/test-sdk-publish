@@ -35,7 +35,7 @@ export const useLeaderboardDataV3AdminApi_DeleteUser_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string,  queryParams: {leaderboardCode: string[]} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string,  queryParams: {leaderboardCode: string[]} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string,  queryParams: {leaderboardCode: string[]} }) => {
       const response = 
             (await LeaderboardDataV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -58,7 +58,7 @@ export const useLeaderboardDataV3AdminApi_DeleteReset_ByLeaderboardCode_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { leaderboardCode:string }) => {
       const response = 
             (await LeaderboardDataV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -76,13 +76,23 @@ export const useLeaderboardDataV3AdminApi_DeleteReset_ByLeaderboardCode_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardDataV3Admin.Alltime_ByLeaderboardCode_v3, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataV3AdminApi_GetAlltime_ByLeaderboardCode_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetLeaderboardRankingResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetLeaderboardRankingResp>) => void
   ): UseQueryResult<GetLeaderboardRankingResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataV3AdminApi_GetAlltime_ByLeaderboardCode_v3>[1]
@@ -108,7 +118,7 @@ export const useLeaderboardDataV3AdminApi_DeleteUser_ByLeaderboardCode_ByUserId_
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { leaderboardCode:string, userId:string }) => {
       const response = 
             (await LeaderboardDataV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -126,13 +136,23 @@ export const useLeaderboardDataV3AdminApi_DeleteUser_ByLeaderboardCode_ByUserId_
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardDataV3Admin.User_ByLeaderboardCode_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataV3AdminApi_GetUser_ByLeaderboardCode_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string, userId:string },
     options?: Omit<UseQueryOptions<UserRankingResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserRankingResponseV3>) => void
   ): UseQueryResult<UserRankingResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataV3AdminApi_GetUser_ByLeaderboardCode_ByUserId_v3>[1]
@@ -153,13 +173,23 @@ export const useLeaderboardDataV3AdminApi_GetUser_ByLeaderboardCode_ByUserId_v3 
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardDataV3Admin.Cycle_ByLeaderboardCode_ByCycleId_v3, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataV3AdminApi_GetCycle_ByLeaderboardCode_ByCycleId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string, cycleId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetLeaderboardRankingResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetLeaderboardRankingResp>) => void
   ): UseQueryResult<GetLeaderboardRankingResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataV3AdminApi_GetCycle_ByLeaderboardCode_ByCycleId_v3>[1]
@@ -185,7 +215,7 @@ export const useLeaderboardDataV3AdminApi_DeleteReset_ByLeaderboardCode_ByCycleI
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, cycleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, cycleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { leaderboardCode:string, cycleId:string }) => {
       const response = 
             (await LeaderboardDataV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -208,7 +238,7 @@ export const useLeaderboardDataV3AdminApi_DeleteUser_ByLeaderboardCode_ByCycleId
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, cycleId:string, userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, cycleId:string, userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { leaderboardCode:string, cycleId:string, userId:string }) => {
       const response = 
             (await LeaderboardDataV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

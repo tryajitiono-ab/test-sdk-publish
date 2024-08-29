@@ -42,13 +42,23 @@ RuleDefined_ByGroupId_ByAllowedAction_v2 = 'Groups.Group.RuleDefined_ByGroupId_B
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Group.Groups, input]
+ * }
+ * ```
+ */
 export const useGroupApi_GetGroups = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {groupName?: string | null, groupRegion?: string | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetGroupsListResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetGroupsListResponseV1>) => void
   ): UseQueryResult<GetGroupsListResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupApi_GetGroups>[1]
@@ -74,7 +84,7 @@ export const useGroupApi_CreateGroup = (
     options?: Omit<UseMutationOptions<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicCreateNewGroupRequestV1 }>, 'mutationKey'>,
     callback?: (data: GroupResponseV1) => void
   ): UseMutationResult<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicCreateNewGroupRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PublicCreateNewGroupRequestV1 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -97,7 +107,7 @@ export const useGroupApi_CreateGroup_v2 = (
     options?: Omit<UseMutationOptions<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicCreateNewGroupRequestV1 }>, 'mutationKey'>,
     callback?: (data: GroupResponseV1) => void
   ): UseMutationResult<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicCreateNewGroupRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PublicCreateNewGroupRequestV1 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -120,7 +130,7 @@ export const useGroupApi_CreateGroupBulk_v2 = (
     options?: Omit<UseMutationOptions<GetGroupsResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { data: GetGroupListRequestV2 }>, 'mutationKey'>,
     callback?: (data: GetGroupsResponseV1) => void
   ): UseMutationResult<GetGroupsResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { data: GetGroupListRequestV2 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: GetGroupListRequestV2 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -143,7 +153,7 @@ export const useGroupApi_DeleteGroup_ByGroupId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -161,13 +171,23 @@ export const useGroupApi_DeleteGroup_ByGroupId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Group.Group_ByGroupId, input]
+ * }
+ * ```
+ */
 export const useGroupApi_GetGroup_ByGroupId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { groupId:string },
     options?: Omit<UseQueryOptions<GroupResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GroupResponseV1>) => void
   ): UseQueryResult<GroupResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupApi_GetGroup_ByGroupId>[1]
@@ -193,7 +213,7 @@ export const useGroupApi_PatchGroup_ByGroupId = (
     options?: Omit<UseMutationOptions<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupRequestV1 }>, 'mutationKey'>,
     callback?: (data: GroupResponseV1) => void
   ): UseMutationResult<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, data: UpdateGroupRequestV1 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -216,7 +236,7 @@ export const useGroupApi_UpdateGroup_ByGroupId = (
     options?: Omit<UseMutationOptions<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupRequestV1 }>, 'mutationKey'>,
     callback?: (data: GroupResponseV1) => void
   ): UseMutationResult<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, data: UpdateGroupRequestV1 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -239,7 +259,7 @@ export const useGroupApi_DeleteGroup_ByGroupId_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -262,7 +282,7 @@ export const useGroupApi_PatchGroup_ByGroupId_v2 = (
     options?: Omit<UseMutationOptions<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupRequestV1 }>, 'mutationKey'>,
     callback?: (data: GroupResponseV1) => void
   ): UseMutationResult<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, data: UpdateGroupRequestV1 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -285,7 +305,7 @@ export const useGroupApi_UpdateGroup_ByGroupId_v2 = (
     options?: Omit<UseMutationOptions<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupRequestV1 }>, 'mutationKey'>,
     callback?: (data: GroupResponseV1) => void
   ): UseMutationResult<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, data: UpdateGroupRequestV1 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -308,7 +328,7 @@ export const useGroupApi_UpdateRuleCustom_ByGroupId = (
     options?: Omit<UseMutationOptions<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupCustomRuleRequestV1 }>, 'mutationKey'>,
     callback?: (data: GroupResponseV1) => void
   ): UseMutationResult<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupCustomRuleRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, data: UpdateGroupCustomRuleRequestV1 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -331,7 +351,7 @@ export const useGroupApi_UpdateRuleCustom_ByGroupId_v2 = (
     options?: Omit<UseMutationOptions<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupCustomRuleRequestV1 }>, 'mutationKey'>,
     callback?: (data: GroupResponseV1) => void
   ): UseMutationResult<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupCustomRuleRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, data: UpdateGroupCustomRuleRequestV1 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -354,7 +374,7 @@ export const useGroupApi_UpdateAttributeCustom_ByGroupId = (
     options?: Omit<UseMutationOptions<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupCustomAttributesRequestV1 }>, 'mutationKey'>,
     callback?: (data: GroupResponseV1) => void
   ): UseMutationResult<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupCustomAttributesRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, data: UpdateGroupCustomAttributesRequestV1 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -377,7 +397,7 @@ export const useGroupApi_UpdateAttributeCustom_ByGroupId_v2 = (
     options?: Omit<UseMutationOptions<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupCustomAttributesRequestV1 }>, 'mutationKey'>,
     callback?: (data: GroupResponseV1) => void
   ): UseMutationResult<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: UpdateGroupCustomAttributesRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, data: UpdateGroupCustomAttributesRequestV1 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -400,7 +420,7 @@ export const useGroupApi_DeleteRuleDefined_ByGroupId_ByAllowedAction = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, allowedAction:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, allowedAction:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, allowedAction:string }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -423,7 +443,7 @@ export const useGroupApi_UpdateRuleDefined_ByGroupId_ByAllowedAction = (
     options?: Omit<UseMutationOptions<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, allowedAction:string, data: UpdateGroupPredefinedRuleRequestV1 }>, 'mutationKey'>,
     callback?: (data: GroupResponseV1) => void
   ): UseMutationResult<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, allowedAction:string, data: UpdateGroupPredefinedRuleRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, allowedAction:string, data: UpdateGroupPredefinedRuleRequestV1 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -446,7 +466,7 @@ export const useGroupApi_DeleteRuleDefined_ByGroupId_ByAllowedAction_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, allowedAction:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, allowedAction:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, allowedAction:string }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -469,7 +489,7 @@ export const useGroupApi_UpdateRuleDefined_ByGroupId_ByAllowedAction_v2 = (
     options?: Omit<UseMutationOptions<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, allowedAction:string, data: UpdateGroupPredefinedRuleRequestV1 }>, 'mutationKey'>,
     callback?: (data: GroupResponseV1) => void
   ): UseMutationResult<GroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, allowedAction:string, data: UpdateGroupPredefinedRuleRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, allowedAction:string, data: UpdateGroupPredefinedRuleRequestV1 }) => {
       const response = 
             (await GroupApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

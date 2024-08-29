@@ -27,13 +27,23 @@ InviteRequest_ByGroupId_v2 = 'Groups.MemberRequest.InviteRequest_ByGroupId_v2',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MemberRequest.UsersMeJoinRequest_v2, input]
+ * }
+ * ```
+ */
 export const useMemberRequestApi_GetUsersMeJoinRequest_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetMemberRequestsListResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetMemberRequestsListResponseV1>) => void
   ): UseQueryResult<GetMemberRequestsListResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMemberRequestApi_GetUsersMeJoinRequest_v2>[1]
@@ -54,13 +64,23 @@ export const useMemberRequestApi_GetUsersMeJoinRequest_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MemberRequest.UsersMeInviteRequest, input]
+ * }
+ * ```
+ */
 export const useMemberRequestApi_GetUsersMeInviteRequest = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetMemberRequestsListResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetMemberRequestsListResponseV1>) => void
   ): UseQueryResult<GetMemberRequestsListResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMemberRequestApi_GetUsersMeInviteRequest>[1]
@@ -81,13 +101,23 @@ export const useMemberRequestApi_GetUsersMeInviteRequest = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MemberRequest.JoinRequest_ByGroupId, input]
+ * }
+ * ```
+ */
 export const useMemberRequestApi_GetJoinRequest_ByGroupId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { groupId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetMemberRequestsListResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetMemberRequestsListResponseV1>) => void
   ): UseQueryResult<GetMemberRequestsListResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMemberRequestApi_GetJoinRequest_ByGroupId>[1]
@@ -108,13 +138,23 @@ export const useMemberRequestApi_GetJoinRequest_ByGroupId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MemberRequest.JoinRequest_ByGroupId_v2, input]
+ * }
+ * ```
+ */
 export const useMemberRequestApi_GetJoinRequest_ByGroupId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { groupId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetMemberRequestsListResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetMemberRequestsListResponseV1>) => void
   ): UseQueryResult<GetMemberRequestsListResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMemberRequestApi_GetJoinRequest_ByGroupId_v2>[1]
@@ -135,13 +175,23 @@ export const useMemberRequestApi_GetJoinRequest_ByGroupId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MemberRequest.InviteRequest_ByGroupId_v2, input]
+ * }
+ * ```
+ */
 export const useMemberRequestApi_GetInviteRequest_ByGroupId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { groupId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetMemberRequestsListResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetMemberRequestsListResponseV1>) => void
   ): UseQueryResult<GetMemberRequestsListResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMemberRequestApi_GetInviteRequest_ByGroupId_v2>[1]

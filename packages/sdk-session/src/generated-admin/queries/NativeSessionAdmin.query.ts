@@ -23,13 +23,23 @@ export enum Key_NativeSessionAdmin {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_NativeSessionAdmin.NativeSessions, input]
+ * }
+ * ```
+ */
 export const useNativeSessionAdminApi_GetNativeSessions = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, order?: string | null} },
     options?: Omit<UseQueryOptions<NativeSessionPagingResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NativeSessionPagingResponse>) => void
   ): UseQueryResult<NativeSessionPagingResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNativeSessionAdminApi_GetNativeSessions>[1]

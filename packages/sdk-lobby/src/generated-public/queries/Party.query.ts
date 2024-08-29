@@ -27,13 +27,23 @@ AttributeParty_ByPartyId = 'Lobby.Party.AttributeParty_ByPartyId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Party.PartyParty_ByPartyId, input]
+ * }
+ * ```
+ */
 export const usePartyApi_GetPartyParty_ByPartyId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { partyId:string },
     options?: Omit<UseQueryOptions<PartyData, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PartyData>) => void
   ): UseQueryResult<PartyData, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePartyApi_GetPartyParty_ByPartyId>[1]
@@ -59,7 +69,7 @@ export const usePartyApi_UpdateLimitParty_ByPartyId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: PartyPutLimitSizeRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: PartyPutLimitSizeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string, data: PartyPutLimitSizeRequest }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -82,7 +92,7 @@ export const usePartyApi_UpdateAttributeParty_ByPartyId = (
     options?: Omit<UseMutationOptions<PartyData, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: PartyPutCustomAttributesRequest }>, 'mutationKey'>,
     callback?: (data: PartyData) => void
   ): UseMutationResult<PartyData, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: PartyPutCustomAttributesRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string, data: PartyPutCustomAttributesRequest }) => {
       const response = 
             (await PartyApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

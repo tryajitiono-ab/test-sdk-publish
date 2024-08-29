@@ -27,13 +27,23 @@ Tag_ByTagId = 'Ugc.TagAdmin.Tag_ByTagId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TagAdmin.Tags, input]
+ * }
+ * ```
+ */
 export const useTagAdminApi_GetTags = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedGetTagResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedGetTagResponse>) => void
   ): UseQueryResult<PaginatedGetTagResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTagAdminApi_GetTags>[1]
@@ -59,7 +69,7 @@ export const useTagAdminApi_CreateTag = (
     options?: Omit<UseMutationOptions<CreateTagResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTagRequest }>, 'mutationKey'>,
     callback?: (data: CreateTagResponse) => void
   ): UseMutationResult<CreateTagResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTagRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateTagRequest }) => {
       const response = 
             (await TagAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -82,7 +92,7 @@ export const useTagAdminApi_DeleteTag_ByTagId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { tagId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { tagId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { tagId:string }) => {
       const response = 
             (await TagAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -105,7 +115,7 @@ export const useTagAdminApi_UpdateTag_ByTagId = (
     options?: Omit<UseMutationOptions<CreateTagResponse, AxiosError<ApiError>, SdkSetConfigParam & { tagId:string, data: CreateTagRequest }>, 'mutationKey'>,
     callback?: (data: CreateTagResponse) => void
   ): UseMutationResult<CreateTagResponse, AxiosError<ApiError>, SdkSetConfigParam & { tagId:string, data: CreateTagRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { tagId:string, data: CreateTagRequest }) => {
       const response = 
             (await TagAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

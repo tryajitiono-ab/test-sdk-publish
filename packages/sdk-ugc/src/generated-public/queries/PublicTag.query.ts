@@ -23,13 +23,23 @@ export enum Key_PublicTag {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicTag.Tags, input]
+ * }
+ * ```
+ */
 export const usePublicTagApi_GetTags = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedGetTagResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedGetTagResponse>) => void
   ): UseQueryResult<PaginatedGetTagResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicTagApi_GetTags>[1]

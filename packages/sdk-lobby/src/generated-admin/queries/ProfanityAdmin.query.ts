@@ -45,13 +45,23 @@ FilterBulkFileProfanity_ByList = 'Lobby.ProfanityAdmin.FilterBulkFileProfanity_B
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ProfanityAdmin.ProfanityRule, input]
+ * }
+ * ```
+ */
 export const useProfanityAdminApi_GetProfanityRule = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ProfanityRule, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ProfanityRule>) => void
   ): UseQueryResult<ProfanityRule, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useProfanityAdminApi_GetProfanityRule>[1]
@@ -77,7 +87,7 @@ export const useProfanityAdminApi_UpdateProfanityRule = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: AdminSetProfanityRuleForNamespaceRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: AdminSetProfanityRuleForNamespaceRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: AdminSetProfanityRuleForNamespaceRequest }) => {
       const response = 
             (await ProfanityAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -95,13 +105,23 @@ export const useProfanityAdminApi_UpdateProfanityRule = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ProfanityAdmin.ProfanityLists, input]
+ * }
+ * ```
+ */
 export const useProfanityAdminApi_GetProfanityLists = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<AdminGetProfanityListsListResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AdminGetProfanityListsListResponseArray>) => void
   ): UseQueryResult<AdminGetProfanityListsListResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useProfanityAdminApi_GetProfanityLists>[1]
@@ -127,7 +147,7 @@ export const useProfanityAdminApi_CreateProfanityList = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: AdminCreateProfanityListRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: AdminCreateProfanityListRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: AdminCreateProfanityListRequest }) => {
       const response = 
             (await ProfanityAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -145,13 +165,23 @@ export const useProfanityAdminApi_CreateProfanityList = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ProfanityAdmin.ProfanityVerify, input]
+ * }
+ * ```
+ */
 export const useProfanityAdminApi_FetchProfanityVerify = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: AdminVerifyMessageProfanityRequest },
     options?: Omit<UseQueryOptions<AdminVerifyMessageProfanityResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AdminVerifyMessageProfanityResponse>) => void
   ): UseQueryResult<AdminVerifyMessageProfanityResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useProfanityAdminApi_FetchProfanityVerify>[1]
@@ -177,7 +207,7 @@ export const useProfanityAdminApi_DeleteProfanityList_ByList = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { list:string }) => {
       const response = 
             (await ProfanityAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -200,7 +230,7 @@ export const useProfanityAdminApi_UpdateProfanityList_ByList = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list:string, data: AdminUpdateProfanityList }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list:string, data: AdminUpdateProfanityList }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { list:string, data: AdminUpdateProfanityList }) => {
       const response = 
             (await ProfanityAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -218,13 +248,23 @@ export const useProfanityAdminApi_UpdateProfanityList_ByList = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ProfanityAdmin.ProfanityFilterDebug, input]
+ * }
+ * ```
+ */
 export const useProfanityAdminApi_FetchProfanityFilterDebug = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: DebugProfanityFilterRequest },
     options?: Omit<UseQueryOptions<ProfanityFilterArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ProfanityFilterArray>) => void
   ): UseQueryResult<ProfanityFilterArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useProfanityAdminApi_FetchProfanityFilterDebug>[1]
@@ -245,13 +285,23 @@ export const useProfanityAdminApi_FetchProfanityFilterDebug = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ProfanityAdmin.FiltersProfanity_ByList, input]
+ * }
+ * ```
+ */
 export const useProfanityAdminApi_GetFiltersProfanity_ByList = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { list:string },
     options?: Omit<UseQueryOptions<AdminGetProfanityListFiltersV1Response, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AdminGetProfanityListFiltersV1Response>) => void
   ): UseQueryResult<AdminGetProfanityListFiltersV1Response, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useProfanityAdminApi_GetFiltersProfanity_ByList>[1]
@@ -277,7 +327,7 @@ export const useProfanityAdminApi_CreateFilterProfanity_ByList = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list:string, data: AdminAddProfanityFilterIntoListRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list:string, data: AdminAddProfanityFilterIntoListRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { list:string, data: AdminAddProfanityFilterIntoListRequest }) => {
       const response = 
             (await ProfanityAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -300,7 +350,7 @@ export const useProfanityAdminApi_CreateFilterBulkProfanity_ByList = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list:string, data: AdminAddProfanityFiltersRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list:string, data: AdminAddProfanityFiltersRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { list:string, data: AdminAddProfanityFiltersRequest }) => {
       const response = 
             (await ProfanityAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -323,7 +373,7 @@ export const useProfanityAdminApi_CreateFilterDeleteProfanity_ByList = (
     options?: Omit<UseMutationOptions<ProfanityFilterArray, AxiosError<ApiError>, SdkSetConfigParam & { list:string, data: AdminDeleteProfanityFilterRequest }>, 'mutationKey'>,
     callback?: (data: ProfanityFilterArray) => void
   ): UseMutationResult<ProfanityFilterArray, AxiosError<ApiError>, SdkSetConfigParam & { list:string, data: AdminDeleteProfanityFilterRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { list:string, data: AdminDeleteProfanityFilterRequest }) => {
       const response = 
             (await ProfanityAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -346,7 +396,7 @@ export const useProfanityAdminApi_CreateFilterBulkFileProfanity_ByList = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list:string, data: number[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list:string, data: number[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { list:string, data: number[] }) => {
       const response = 
             (await ProfanityAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

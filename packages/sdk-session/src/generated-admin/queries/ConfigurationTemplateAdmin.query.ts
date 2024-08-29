@@ -35,13 +35,23 @@ Configuration_ByName = 'Session.ConfigurationTemplateAdmin.Configuration_ByName'
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigurationTemplateAdmin.Dsconfigs, input]
+ * }
+ * ```
+ */
 export const useConfigurationTemplateAdminApi_GetDsconfigs = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<DsmConfigRecord, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DsmConfigRecord>) => void
   ): UseQueryResult<DsmConfigRecord, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigurationTemplateAdminApi_GetDsconfigs>[1]
@@ -67,7 +77,7 @@ export const useConfigurationTemplateAdminApi_CreateConfiguration = (
     options?: Omit<UseMutationOptions<ConfigurationTemplateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateConfigurationTemplateRequest }>, 'mutationKey'>,
     callback?: (data: ConfigurationTemplateResponse) => void
   ): UseMutationResult<ConfigurationTemplateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateConfigurationTemplateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateConfigurationTemplateRequest }) => {
       const response = 
             (await ConfigurationTemplateAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -85,13 +95,23 @@ export const useConfigurationTemplateAdminApi_CreateConfiguration = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigurationTemplateAdmin.Configurations, input]
+ * }
+ * ```
+ */
 export const useConfigurationTemplateAdminApi_GetConfigurations = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, name?: string | null, offset?: number, order?: string | null, orderBy?: string | null} },
     options?: Omit<UseQueryOptions<ConfigurationTemplatesResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigurationTemplatesResponse>) => void
   ): UseQueryResult<ConfigurationTemplatesResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigurationTemplateAdminApi_GetConfigurations>[1]
@@ -112,13 +132,23 @@ export const useConfigurationTemplateAdminApi_GetConfigurations = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigurationTemplateAdmin.DsconfigsSync, input]
+ * }
+ * ```
+ */
 export const useConfigurationTemplateAdminApi_GetDsconfigsSync = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<DsmConfigRecord, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DsmConfigRecord>) => void
   ): UseQueryResult<DsmConfigRecord, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigurationTemplateAdminApi_GetDsconfigsSync>[1]
@@ -144,7 +174,7 @@ export const useConfigurationTemplateAdminApi_DeleteAlertsConfiguration = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await ConfigurationTemplateAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -162,13 +192,23 @@ export const useConfigurationTemplateAdminApi_DeleteAlertsConfiguration = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigurationTemplateAdmin.AlertsConfiguration, input]
+ * }
+ * ```
+ */
 export const useConfigurationTemplateAdminApi_GetAlertsConfiguration = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ConfigAlertResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigAlertResponse>) => void
   ): UseQueryResult<ConfigAlertResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigurationTemplateAdminApi_GetAlertsConfiguration>[1]
@@ -194,7 +234,7 @@ export const useConfigurationTemplateAdminApi_UpdateAlertsConfiguration = (
     options?: Omit<UseMutationOptions<ConfigAlertResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigAlertRequestCreate }>, 'mutationKey'>,
     callback?: (data: ConfigAlertResponse) => void
   ): UseMutationResult<ConfigAlertResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigAlertRequestCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ConfigAlertRequestCreate }) => {
       const response = 
             (await ConfigurationTemplateAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -217,7 +257,7 @@ export const useConfigurationTemplateAdminApi_UpdateAlertsConfiguration_ByNS = (
     options?: Omit<UseMutationOptions<ConfigAlertResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigAlertRequestCreate }>, 'mutationKey'>,
     callback?: (data: ConfigAlertResponse) => void
   ): UseMutationResult<ConfigAlertResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigAlertRequestCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ConfigAlertRequestCreate }) => {
       const response = 
             (await ConfigurationTemplateAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -240,7 +280,7 @@ export const useConfigurationTemplateAdminApi_DeleteConfiguration_ByName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string }) => {
       const response = 
             (await ConfigurationTemplateAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -258,13 +298,23 @@ export const useConfigurationTemplateAdminApi_DeleteConfiguration_ByName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigurationTemplateAdmin.Configuration_ByName, input]
+ * }
+ * ```
+ */
 export const useConfigurationTemplateAdminApi_GetConfiguration_ByName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { name:string },
     options?: Omit<UseQueryOptions<ConfigurationTemplateResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigurationTemplateResponse>) => void
   ): UseQueryResult<ConfigurationTemplateResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigurationTemplateAdminApi_GetConfiguration_ByName>[1]
@@ -290,7 +340,7 @@ export const useConfigurationTemplateAdminApi_UpdateConfiguration_ByName = (
     options?: Omit<UseMutationOptions<ConfigurationTemplateResponse, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: UpdateConfigurationTemplateRequest }>, 'mutationKey'>,
     callback?: (data: ConfigurationTemplateResponse) => void
   ): UseMutationResult<ConfigurationTemplateResponse, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: UpdateConfigurationTemplateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string, data: UpdateConfigurationTemplateRequest }) => {
       const response = 
             (await ConfigurationTemplateAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

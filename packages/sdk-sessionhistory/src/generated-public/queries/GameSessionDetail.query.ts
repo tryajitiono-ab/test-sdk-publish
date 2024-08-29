@@ -23,13 +23,23 @@ export enum Key_GameSessionDetail {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameSessionDetail.UsersMeGamesessions, input]
+ * }
+ * ```
+ */
 export const useGameSessionDetailApi_GetUsersMeGamesessions = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, order?: string | null} },
     options?: Omit<UseQueryOptions<GameSessionDetailQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GameSessionDetailQueryResponse>) => void
   ): UseQueryResult<GameSessionDetailQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameSessionDetailApi_GetUsersMeGamesessions>[1]

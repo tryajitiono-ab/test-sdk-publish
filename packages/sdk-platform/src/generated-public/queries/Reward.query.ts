@@ -26,13 +26,23 @@ RewardsByCriteria = 'Platform.Reward.RewardsByCriteria',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Reward.RewardsByCode, input]
+ * }
+ * ```
+ */
 export const useRewardApi_GetRewardsByCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {rewardCode: string | null} },
     options?: Omit<UseQueryOptions<RewardInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RewardInfo>) => void
   ): UseQueryResult<RewardInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRewardApi_GetRewardsByCode>[1]
@@ -53,13 +63,23 @@ export const useRewardApi_GetRewardsByCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Reward.Reward_ByRewardId, input]
+ * }
+ * ```
+ */
 export const useRewardApi_GetReward_ByRewardId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { rewardId:string },
     options?: Omit<UseQueryOptions<RewardInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RewardInfo>) => void
   ): UseQueryResult<RewardInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRewardApi_GetReward_ByRewardId>[1]
@@ -80,13 +100,23 @@ export const useRewardApi_GetReward_ByRewardId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Reward.RewardsByCriteria, input]
+ * }
+ * ```
+ */
 export const useRewardApi_GetRewardsByCriteria = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {eventTopic?: string | null, limit?: number, offset?: number, sortBy?: string[]} },
     options?: Omit<UseQueryOptions<RewardPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RewardPagingSlicedResult>) => void
   ): UseQueryResult<RewardPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRewardApi_GetRewardsByCriteria>[1]

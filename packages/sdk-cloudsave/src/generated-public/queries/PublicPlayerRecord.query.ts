@@ -35,13 +35,23 @@ Public_ByUserId_ByKey = 'Cloudsave.PublicPlayerRecord.Public_ByUserId_ByKey',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicPlayerRecord.UsersMeRecords, input]
+ * }
+ * ```
+ */
 export const usePublicPlayerRecordApi_GetUsersMeRecords = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, tags?: string[]} },
     options?: Omit<UseQueryOptions<ListPlayerRecordKeysResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListPlayerRecordKeysResponse>) => void
   ): UseQueryResult<ListPlayerRecordKeysResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicPlayerRecordApi_GetUsersMeRecords>[1]
@@ -67,7 +77,7 @@ export const usePublicPlayerRecordApi_CreateUserMeRecordBulk = (
     options?: Omit<UseMutationOptions<BulkGetPlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkGetPlayerRecordsRequest }>, 'mutationKey'>,
     callback?: (data: BulkGetPlayerRecordResponse) => void
   ): UseMutationResult<BulkGetPlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkGetPlayerRecordsRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkGetPlayerRecordsRequest }) => {
       const response = 
             (await PublicPlayerRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -90,7 +100,7 @@ export const usePublicPlayerRecordApi_DeleteRecord_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string }) => {
       const response = 
             (await PublicPlayerRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -108,13 +118,23 @@ export const usePublicPlayerRecordApi_DeleteRecord_ByUserId_ByKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicPlayerRecord.Record_ByUserId_ByKey, input]
+ * }
+ * ```
+ */
 export const usePublicPlayerRecordApi_GetRecord_ByUserId_ByKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, key:string },
     options?: Omit<UseQueryOptions<PlayerRecordResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlayerRecordResponse>) => void
   ): UseQueryResult<PlayerRecordResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicPlayerRecordApi_GetRecord_ByUserId_ByKey>[1]
@@ -140,7 +160,7 @@ export const usePublicPlayerRecordApi_CreateRecord_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<PlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: PlayerRecordRequest }>, 'mutationKey'>,
     callback?: (data: PlayerRecordResponse) => void
   ): UseMutationResult<PlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: PlayerRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: PlayerRecordRequest }) => {
       const response = 
             (await PublicPlayerRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -163,7 +183,7 @@ export const usePublicPlayerRecordApi_UpdateRecord_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<PlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: PlayerRecordRequest }>, 'mutationKey'>,
     callback?: (data: PlayerRecordResponse) => void
   ): UseMutationResult<PlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: PlayerRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: PlayerRecordRequest }) => {
       const response = 
             (await PublicPlayerRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -181,13 +201,23 @@ export const usePublicPlayerRecordApi_UpdateRecord_ByUserId_ByKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicPlayerRecord.RecordsPublic_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePublicPlayerRecordApi_GetRecordsPublic_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number, tags?: string[]} },
     options?: Omit<UseQueryOptions<ListPlayerRecordKeysResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListPlayerRecordKeysResponse>) => void
   ): UseQueryResult<ListPlayerRecordKeysResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicPlayerRecordApi_GetRecordsPublic_ByUserId>[1]
@@ -213,7 +243,7 @@ export const usePublicPlayerRecordApi_DeletePublicMeUser_ByKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string }) => {
       const response = 
             (await PublicPlayerRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -231,13 +261,23 @@ export const usePublicPlayerRecordApi_DeletePublicMeUser_ByKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicPlayerRecord.PublicBulkUser_ByKey, input]
+ * }
+ * ```
+ */
 export const usePublicPlayerRecordApi_FetchPublicBulkUser_ByKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { key:string, data: BulkUserIDsRequest },
     options?: Omit<UseQueryOptions<BulkGetPlayerRecordResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BulkGetPlayerRecordResponse>) => void
   ): UseQueryResult<BulkGetPlayerRecordResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicPlayerRecordApi_FetchPublicBulkUser_ByKey>[1]
@@ -258,13 +298,23 @@ export const usePublicPlayerRecordApi_FetchPublicBulkUser_ByKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicPlayerRecord.RecordBulk_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePublicPlayerRecordApi_FetchRecordBulk_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, data: BulkGetPlayerRecordsRequest },
     options?: Omit<UseQueryOptions<BulkGetPlayerRecordResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BulkGetPlayerRecordResponse>) => void
   ): UseQueryResult<BulkGetPlayerRecordResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicPlayerRecordApi_FetchRecordBulk_ByUserId>[1]
@@ -285,13 +335,23 @@ export const usePublicPlayerRecordApi_FetchRecordBulk_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicPlayerRecord.Public_ByUserId_ByKey, input]
+ * }
+ * ```
+ */
 export const usePublicPlayerRecordApi_GetPublic_ByUserId_ByKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, key:string },
     options?: Omit<UseQueryOptions<PlayerRecordResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlayerRecordResponse>) => void
   ): UseQueryResult<PlayerRecordResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicPlayerRecordApi_GetPublic_ByUserId_ByKey>[1]
@@ -317,7 +377,7 @@ export const usePublicPlayerRecordApi_CreatePublic_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<PlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: PlayerRecordRequest }>, 'mutationKey'>,
     callback?: (data: PlayerRecordResponse) => void
   ): UseMutationResult<PlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: PlayerRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: PlayerRecordRequest }) => {
       const response = 
             (await PublicPlayerRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -340,7 +400,7 @@ export const usePublicPlayerRecordApi_UpdatePublic_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<PlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: PlayerRecordRequest }>, 'mutationKey'>,
     callback?: (data: PlayerRecordResponse) => void
   ): UseMutationResult<PlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: PlayerRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: PlayerRecordRequest }) => {
       const response = 
             (await PublicPlayerRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -33,13 +33,23 @@ Presigned_ByUserId_ByKey = 'Cloudsave.PlayerBinaryRecordAdmin.Presigned_ByUserId
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerBinaryRecordAdmin.Binaries_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePlayerBinaryRecordAdminApi_GetBinaries_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number, query?: string | null, tags?: string[]} },
     options?: Omit<UseQueryOptions<ListPlayerBinaryRecordsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListPlayerBinaryRecordsResponse>) => void
   ): UseQueryResult<ListPlayerBinaryRecordsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerBinaryRecordAdminApi_GetBinaries_ByUserId>[1]
@@ -65,7 +75,7 @@ export const usePlayerBinaryRecordAdminApi_CreateBinary_ByUserId = (
     options?: Omit<UseMutationOptions<UploadBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: PlayerBinaryRecordCreate }>, 'mutationKey'>,
     callback?: (data: UploadBinaryRecordResponse) => void
   ): UseMutationResult<UploadBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: PlayerBinaryRecordCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: PlayerBinaryRecordCreate }) => {
       const response = 
             (await PlayerBinaryRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -88,7 +98,7 @@ export const usePlayerBinaryRecordAdminApi_DeleteBinary_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string }) => {
       const response = 
             (await PlayerBinaryRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -106,13 +116,23 @@ export const usePlayerBinaryRecordAdminApi_DeleteBinary_ByUserId_ByKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerBinaryRecordAdmin.Binary_ByUserId_ByKey, input]
+ * }
+ * ```
+ */
 export const usePlayerBinaryRecordAdminApi_GetBinary_ByUserId_ByKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, key:string },
     options?: Omit<UseQueryOptions<PlayerBinaryRecordResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlayerBinaryRecordResponse>) => void
   ): UseQueryResult<PlayerBinaryRecordResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerBinaryRecordAdminApi_GetBinary_ByUserId_ByKey>[1]
@@ -138,7 +158,7 @@ export const usePlayerBinaryRecordAdminApi_UpdateBinary_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<PlayerBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: BinaryRecordRequest }>, 'mutationKey'>,
     callback?: (data: PlayerBinaryRecordResponse) => void
   ): UseMutationResult<PlayerBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: BinaryRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: BinaryRecordRequest }) => {
       const response = 
             (await PlayerBinaryRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -161,7 +181,7 @@ export const usePlayerBinaryRecordAdminApi_UpdateMetadata_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<PlayerBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: PlayerBinaryRecordMetadataRequest }>, 'mutationKey'>,
     callback?: (data: PlayerBinaryRecordResponse) => void
   ): UseMutationResult<PlayerBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: PlayerBinaryRecordMetadataRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: PlayerBinaryRecordMetadataRequest }) => {
       const response = 
             (await PlayerBinaryRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -184,7 +204,7 @@ export const usePlayerBinaryRecordAdminApi_CreatePresigned_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<UploadBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: UploadBinaryRecordRequest }>, 'mutationKey'>,
     callback?: (data: UploadBinaryRecordResponse) => void
   ): UseMutationResult<UploadBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: UploadBinaryRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: UploadBinaryRecordRequest }) => {
       const response = 
             (await PlayerBinaryRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

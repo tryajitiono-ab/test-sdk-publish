@@ -27,13 +27,23 @@ Type_ByTypeId = 'Ugc.TypeAdmin.Type_ByTypeId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TypeAdmin.Types, input]
+ * }
+ * ```
+ */
 export const useTypeAdminApi_GetTypes = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedGetTypeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedGetTypeResponse>) => void
   ): UseQueryResult<PaginatedGetTypeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTypeAdminApi_GetTypes>[1]
@@ -59,7 +69,7 @@ export const useTypeAdminApi_CreateType = (
     options?: Omit<UseMutationOptions<CreateTypeResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTypeRequest }>, 'mutationKey'>,
     callback?: (data: CreateTypeResponse) => void
   ): UseMutationResult<CreateTypeResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTypeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateTypeRequest }) => {
       const response = 
             (await TypeAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -82,7 +92,7 @@ export const useTypeAdminApi_DeleteType_ByTypeId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { typeId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { typeId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { typeId:string }) => {
       const response = 
             (await TypeAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -105,7 +115,7 @@ export const useTypeAdminApi_UpdateType_ByTypeId = (
     options?: Omit<UseMutationOptions<CreateTypeResponse, AxiosError<ApiError>, SdkSetConfigParam & { typeId:string, data: CreateTypeRequest }>, 'mutationKey'>,
     callback?: (data: CreateTypeResponse) => void
   ): UseMutationResult<CreateTypeResponse, AxiosError<ApiError>, SdkSetConfigParam & { typeId:string, data: CreateTypeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { typeId:string, data: CreateTypeRequest }) => {
       const response = 
             (await TypeAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -40,13 +40,23 @@ StatusPayment_ByPaymentOrderNo = 'Platform.PaymentStation.StatusPayment_ByPaymen
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentStation.PaymentTax, input]
+ * }
+ * ```
+ */
 export const usePaymentStationApi_GetPaymentTax = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {paymentOrderNo: string | null, paymentProvider: 'ADYEN' | 'ALIPAY' | 'CHECKOUT' | 'NEONPAY' | 'PAYPAL' | 'STRIPE' | 'WALLET' | 'WXPAY' | 'XSOLLA', zipCode?: string | null} },
     options?: Omit<UseQueryOptions<TaxResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TaxResult>) => void
   ): UseQueryResult<TaxResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentStationApi_GetPaymentTax>[1]
@@ -72,7 +82,7 @@ export const usePaymentStationApi_CreatePaymentLink = (
     options?: Omit<UseMutationOptions<PaymentUrl, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentUrlCreate }>, 'mutationKey'>,
     callback?: (data: PaymentUrl) => void
   ): UseMutationResult<PaymentUrl, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentUrlCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PaymentUrlCreate }) => {
       const response = 
             (await PaymentStationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -90,13 +100,23 @@ export const usePaymentStationApi_CreatePaymentLink = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentStation.PaymentQrcode, input]
+ * }
+ * ```
+ */
 export const usePaymentStationApi_GetPaymentQrcode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {code: string | null} },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentStationApi_GetPaymentQrcode>[1]
@@ -117,13 +137,23 @@ export const usePaymentStationApi_GetPaymentQrcode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentStation.PaymentMethods, input]
+ * }
+ * ```
+ */
 export const usePaymentStationApi_GetPaymentMethods = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {paymentOrderNo: string | null} },
     options?: Omit<UseQueryOptions<PaymentMethodArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentMethodArray>) => void
   ): UseQueryResult<PaymentMethodArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentStationApi_GetPaymentMethods>[1]
@@ -144,13 +174,23 @@ export const usePaymentStationApi_GetPaymentMethods = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentStation.PaymentReturnurl, input]
+ * }
+ * ```
+ */
 export const usePaymentStationApi_GetPaymentReturnurl = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {orderNo: string | null, paymentOrderNo: string | null, paymentProvider: 'ADYEN' | 'ALIPAY' | 'CHECKOUT' | 'NEONPAY' | 'PAYPAL' | 'STRIPE' | 'WALLET' | 'WXPAY' | 'XSOLLA', returnUrl: string | null, PayerID?: string | null, foreinginvoice?: string | null, invoice_id?: string | null, payload?: string | null, redirectResult?: string | null, resultCode?: string | null, sessionId?: string | null, status?: string | null, token?: string | null, type?: string | null, user_id?: string | null} },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentStationApi_GetPaymentReturnurl>[1]
@@ -171,13 +211,23 @@ export const usePaymentStationApi_GetPaymentReturnurl = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentStation.PaymentPublicconfig, input]
+ * }
+ * ```
+ */
 export const usePaymentStationApi_GetPaymentPublicconfig = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {paymentProvider: 'ADYEN' | 'ALIPAY' | 'CHECKOUT' | 'NEONPAY' | 'PAYPAL' | 'STRIPE' | 'WALLET' | 'WXPAY' | 'XSOLLA', region: string | null, sandbox?: boolean | null} },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentStationApi_GetPaymentPublicconfig>[1]
@@ -198,13 +248,23 @@ export const usePaymentStationApi_GetPaymentPublicconfig = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentStation.PaymentCustomization, input]
+ * }
+ * ```
+ */
 export const usePaymentStationApi_GetPaymentCustomization = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {paymentProvider: 'ADYEN' | 'ALIPAY' | 'CHECKOUT' | 'NEONPAY' | 'PAYPAL' | 'STRIPE' | 'WALLET' | 'WXPAY' | 'XSOLLA', region: string | null, sandbox?: boolean | null} },
     options?: Omit<UseQueryOptions<Customization, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<Customization>) => void
   ): UseQueryResult<Customization, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentStationApi_GetPaymentCustomization>[1]
@@ -230,7 +290,7 @@ export const usePaymentStationApi_CreatePayPayment_ByPaymentOrderNo = (
     options?: Omit<UseMutationOptions<PaymentProcessResult, AxiosError<ApiError>, SdkSetConfigParam & { paymentOrderNo:string, data: PaymentToken, queryParams?: {paymentProvider?: 'ADYEN' | 'ALIPAY' | 'CHECKOUT' | 'NEONPAY' | 'PAYPAL' | 'STRIPE' | 'WALLET' | 'WXPAY' | 'XSOLLA', zipCode?: string | null} }>, 'mutationKey'>,
     callback?: (data: PaymentProcessResult) => void
   ): UseMutationResult<PaymentProcessResult, AxiosError<ApiError>, SdkSetConfigParam & { paymentOrderNo:string, data: PaymentToken, queryParams?: {paymentProvider?: 'ADYEN' | 'ALIPAY' | 'CHECKOUT' | 'NEONPAY' | 'PAYPAL' | 'STRIPE' | 'WALLET' | 'WXPAY' | 'XSOLLA', zipCode?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { paymentOrderNo:string, data: PaymentToken, queryParams?: {paymentProvider?: 'ADYEN' | 'ALIPAY' | 'CHECKOUT' | 'NEONPAY' | 'PAYPAL' | 'STRIPE' | 'WALLET' | 'WXPAY' | 'XSOLLA', zipCode?: string | null} }) => {
       const response = 
             (await PaymentStationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -248,13 +308,23 @@ export const usePaymentStationApi_CreatePayPayment_ByPaymentOrderNo = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentStation.InfoPayment_ByPaymentOrderNo, input]
+ * }
+ * ```
+ */
 export const usePaymentStationApi_GetInfoPayment_ByPaymentOrderNo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { paymentOrderNo:string },
     options?: Omit<UseQueryOptions<PaymentOrderDetails, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentOrderDetails>) => void
   ): UseQueryResult<PaymentOrderDetails, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentStationApi_GetInfoPayment_ByPaymentOrderNo>[1]
@@ -275,13 +345,23 @@ export const usePaymentStationApi_GetInfoPayment_ByPaymentOrderNo = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentStation.StatusPayment_ByPaymentOrderNo, input]
+ * }
+ * ```
+ */
 export const usePaymentStationApi_GetStatusPayment_ByPaymentOrderNo = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { paymentOrderNo:string },
     options?: Omit<UseQueryOptions<PaymentOrderPaidResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentOrderPaidResult>) => void
   ): UseQueryResult<PaymentOrderPaidResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentStationApi_GetStatusPayment_ByPaymentOrderNo>[1]

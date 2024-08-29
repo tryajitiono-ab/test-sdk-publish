@@ -29,13 +29,23 @@ EmailsenderAuthenticationVerify = 'Config.EmailSenderConfigurationAdmin.Emailsen
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EmailSenderConfigurationAdmin.Emailsender, input]
+ * }
+ * ```
+ */
 export const useEmailSenderConfigurationAdminApi_GetEmailsender = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {includeEmailTemplates?: boolean | null} },
     options?: Omit<UseQueryOptions<EmailSenderResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EmailSenderResponse>) => void
   ): UseQueryResult<EmailSenderResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEmailSenderConfigurationAdminApi_GetEmailsender>[1]
@@ -61,7 +71,7 @@ export const useEmailSenderConfigurationAdminApi_CreateEmailsender = (
     options?: Omit<UseMutationOptions<EmailSenderDomainResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateEmailSenderRequest }>, 'mutationKey'>,
     callback?: (data: EmailSenderDomainResponse) => void
   ): UseMutationResult<EmailSenderDomainResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateEmailSenderRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateEmailSenderRequest }) => {
       const response = 
             (await EmailSenderConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -84,7 +94,7 @@ export const useEmailSenderConfigurationAdminApi_DeleteEmailsender = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await EmailSenderConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -107,7 +117,7 @@ export const useEmailSenderConfigurationAdminApi_PatchEmailsender = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UpdateEmailSenderRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UpdateEmailSenderRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UpdateEmailSenderRequest }) => {
       const response = 
             (await EmailSenderConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -125,13 +135,23 @@ export const useEmailSenderConfigurationAdminApi_PatchEmailsender = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EmailSenderConfigurationAdmin.EmailsenderAuthentication, input]
+ * }
+ * ```
+ */
 export const useEmailSenderConfigurationAdminApi_GetEmailsenderAuthentication = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<EmailSenderDomainResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EmailSenderDomainResponse>) => void
   ): UseQueryResult<EmailSenderDomainResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEmailSenderConfigurationAdminApi_GetEmailsenderAuthentication>[1]
@@ -157,7 +177,7 @@ export const useEmailSenderConfigurationAdminApi_CreateEmailsenderAuthentication
     options?: Omit<UseMutationOptions<EmailSenderVerifyResponse, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: EmailSenderVerifyResponse) => void
   ): UseMutationResult<EmailSenderVerifyResponse, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await EmailSenderConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

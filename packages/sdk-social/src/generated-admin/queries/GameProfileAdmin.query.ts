@@ -25,13 +25,23 @@ Profile_ByUserId_ByProfileId = 'Social.GameProfileAdmin.Profile_ByUserId_ByProfi
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameProfileAdmin.Profiles_ByUserId, input]
+ * }
+ * ```
+ */
 export const useGameProfileAdminApi_GetProfiles_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<GameProfileHeaderArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GameProfileHeaderArray>) => void
   ): UseQueryResult<GameProfileHeaderArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameProfileAdminApi_GetProfiles_ByUserId>[1]
@@ -52,13 +62,23 @@ export const useGameProfileAdminApi_GetProfiles_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameProfileAdmin.Profile_ByUserId_ByProfileId, input]
+ * }
+ * ```
+ */
 export const useGameProfileAdminApi_GetProfile_ByUserId_ByProfileId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, profileId:string },
     options?: Omit<UseQueryOptions<GameProfileInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GameProfileInfo>) => void
   ): UseQueryResult<GameProfileInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameProfileAdminApi_GetProfile_ByUserId_ByProfileId>[1]

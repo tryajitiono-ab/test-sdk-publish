@@ -33,13 +33,23 @@ Tied_ByStatCode = 'Social.StatConfigurationAdmin.Tied_ByStatCode',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StatConfigurationAdmin.Stats, input]
+ * }
+ * ```
+ */
 export const useStatConfigurationAdminApi_GetStats = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {cycleIds?: string | null, isGlobal?: boolean | null, isPublic?: boolean | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<StatPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StatPagingSlicedResult>) => void
   ): UseQueryResult<StatPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStatConfigurationAdminApi_GetStats>[1]
@@ -65,7 +75,7 @@ export const useStatConfigurationAdminApi_CreateStat = (
     options?: Omit<UseMutationOptions<StatInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StatCreate }>, 'mutationKey'>,
     callback?: (data: StatInfo) => void
   ): UseMutationResult<StatInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StatCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: StatCreate }) => {
       const response = 
             (await StatConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -83,13 +93,23 @@ export const useStatConfigurationAdminApi_CreateStat = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StatConfigurationAdmin.StatsExport, input]
+ * }
+ * ```
+ */
 export const useStatConfigurationAdminApi_GetStatsExport = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStatConfigurationAdminApi_GetStatsExport>[1]
@@ -115,7 +135,7 @@ export const useStatConfigurationAdminApi_CreateStatImport = (
     options?: Omit<UseMutationOptions<StatImportInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File}, queryParams?: {replaceExisting?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: StatImportInfo) => void
   ): UseMutationResult<StatImportInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: {file?: File}, queryParams?: {replaceExisting?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: {file?: File}, queryParams?: {replaceExisting?: boolean | null} }) => {
       const response = 
             (await StatConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -133,13 +153,23 @@ export const useStatConfigurationAdminApi_CreateStatImport = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StatConfigurationAdmin.StatsSearch, input]
+ * }
+ * ```
+ */
 export const useStatConfigurationAdminApi_GetStatsSearch = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {keyword: string | null, isGlobal?: boolean | null, isPublic?: boolean | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<StatPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StatPagingSlicedResult>) => void
   ): UseQueryResult<StatPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStatConfigurationAdminApi_GetStatsSearch>[1]
@@ -165,7 +195,7 @@ export const useStatConfigurationAdminApi_DeleteStat_ByStatCode = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { statCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { statCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { statCode:string }) => {
       const response = 
             (await StatConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -183,13 +213,23 @@ export const useStatConfigurationAdminApi_DeleteStat_ByStatCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StatConfigurationAdmin.Stat_ByStatCode, input]
+ * }
+ * ```
+ */
 export const useStatConfigurationAdminApi_GetStat_ByStatCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { statCode:string },
     options?: Omit<UseQueryOptions<StatInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StatInfo>) => void
   ): UseQueryResult<StatInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStatConfigurationAdminApi_GetStat_ByStatCode>[1]
@@ -215,7 +255,7 @@ export const useStatConfigurationAdminApi_PatchStat_ByStatCode = (
     options?: Omit<UseMutationOptions<StatInfo, AxiosError<ApiError>, SdkSetConfigParam & { statCode:string, data: StatUpdate }>, 'mutationKey'>,
     callback?: (data: StatInfo) => void
   ): UseMutationResult<StatInfo, AxiosError<ApiError>, SdkSetConfigParam & { statCode:string, data: StatUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { statCode:string, data: StatUpdate }) => {
       const response = 
             (await StatConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -238,7 +278,7 @@ export const useStatConfigurationAdminApi_DeleteTied_ByStatCode = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { statCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { statCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { statCode:string }) => {
       const response = 
             (await StatConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

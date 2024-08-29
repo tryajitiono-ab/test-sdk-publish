@@ -30,7 +30,7 @@ export const useGlobalConfigurationAdminApi_DeleteGlobalConfiguration = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await GlobalConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -48,13 +48,23 @@ export const useGlobalConfigurationAdminApi_DeleteGlobalConfiguration = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GlobalConfigurationAdmin.GlobalConfigurations, input]
+ * }
+ * ```
+ */
 export const useGlobalConfigurationAdminApi_GetGlobalConfigurations = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<GlobalConfigurationResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GlobalConfigurationResponse>) => void
   ): UseQueryResult<GlobalConfigurationResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGlobalConfigurationAdminApi_GetGlobalConfigurations>[1]
@@ -80,7 +90,7 @@ export const useGlobalConfigurationAdminApi_UpdateGlobalConfiguration = (
     options?: Omit<UseMutationOptions<GlobalConfigurationResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: PutGlobalConfigurationRequest }>, 'mutationKey'>,
     callback?: (data: GlobalConfigurationResponse) => void
   ): UseMutationResult<GlobalConfigurationResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: PutGlobalConfigurationRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PutGlobalConfigurationRequest }) => {
       const response = 
             (await GlobalConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

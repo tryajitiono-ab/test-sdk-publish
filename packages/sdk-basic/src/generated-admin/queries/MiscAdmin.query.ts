@@ -33,13 +33,23 @@ MiscCountrygroup_ByCountryGroupCode = 'Basic.MiscAdmin.MiscCountrygroup_ByCountr
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MiscAdmin.MiscCountries, input]
+ * }
+ * ```
+ */
 export const useMiscAdminApi_GetMiscCountries = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {lang?: string | null} },
     options?: Omit<UseQueryOptions<CountryObjectArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CountryObjectArray>) => void
   ): UseQueryResult<CountryObjectArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMiscAdminApi_GetMiscCountries>[1]
@@ -60,13 +70,23 @@ export const useMiscAdminApi_GetMiscCountries = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MiscAdmin.MiscLanguages, input]
+ * }
+ * ```
+ */
 export const useMiscAdminApi_GetMiscLanguages = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMiscAdminApi_GetMiscLanguages>[1]
@@ -87,13 +107,23 @@ export const useMiscAdminApi_GetMiscLanguages = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MiscAdmin.MiscTimezones, input]
+ * }
+ * ```
+ */
 export const useMiscAdminApi_GetMiscTimezones = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMiscAdminApi_GetMiscTimezones>[1]
@@ -114,13 +144,23 @@ export const useMiscAdminApi_GetMiscTimezones = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MiscAdmin.MiscCountrygroups, input]
+ * }
+ * ```
+ */
 export const useMiscAdminApi_GetMiscCountrygroups = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {groupCode?: string | null} },
     options?: Omit<UseQueryOptions<RetrieveCountryGroupResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveCountryGroupResponseArray>) => void
   ): UseQueryResult<RetrieveCountryGroupResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMiscAdminApi_GetMiscCountrygroups>[1]
@@ -146,7 +186,7 @@ export const useMiscAdminApi_CreateMiscCountrygroup = (
     options?: Omit<UseMutationOptions<AddCountryGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AddCountryGroupRequest }>, 'mutationKey'>,
     callback?: (data: AddCountryGroupResponse) => void
   ): UseMutationResult<AddCountryGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AddCountryGroupRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: AddCountryGroupRequest }) => {
       const response = 
             (await MiscAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -169,7 +209,7 @@ export const useMiscAdminApi_DeleteMiscCountrygroup_ByCountryGroupCode = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { countryGroupCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { countryGroupCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { countryGroupCode:string }) => {
       const response = 
             (await MiscAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -192,7 +232,7 @@ export const useMiscAdminApi_UpdateMiscCountrygroup_ByCountryGroupCode = (
     options?: Omit<UseMutationOptions<CountryGroupObject, AxiosError<ApiError>, SdkSetConfigParam & { countryGroupCode:string, data: UpdateCountryGroupRequest }>, 'mutationKey'>,
     callback?: (data: CountryGroupObject) => void
   ): UseMutationResult<CountryGroupObject, AxiosError<ApiError>, SdkSetConfigParam & { countryGroupCode:string, data: UpdateCountryGroupRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { countryGroupCode:string, data: UpdateCountryGroupRequest }) => {
       const response = 
             (await MiscAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

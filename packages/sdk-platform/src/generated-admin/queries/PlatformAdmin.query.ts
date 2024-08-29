@@ -32,7 +32,7 @@ export const usePlatformAdminApi_CreateOwnershipXblPlatform_ByProductSku = (
     options?: Omit<UseMutationOptions<PlatformOwnership, AxiosError<ApiError>, SdkSetConfigParam & { productSku:string, data: XblEntitlementOwnershipRequest }>, 'mutationKey'>,
     callback?: (data: PlatformOwnership) => void
   ): UseMutationResult<PlatformOwnership, AxiosError<ApiError>, SdkSetConfigParam & { productSku:string, data: XblEntitlementOwnershipRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { productSku:string, data: XblEntitlementOwnershipRequest }) => {
       const response = 
             (await PlatformAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -55,7 +55,7 @@ export const usePlatformAdminApi_CreateOwnershipPsnPlatform_ByEntitlementLabel =
     options?: Omit<UseMutationOptions<Ownership, AxiosError<ApiError>, SdkSetConfigParam & { entitlementLabel:string, data: PsnEntitlementOwnershipRequest }>, 'mutationKey'>,
     callback?: (data: Ownership) => void
   ): UseMutationResult<Ownership, AxiosError<ApiError>, SdkSetConfigParam & { entitlementLabel:string, data: PsnEntitlementOwnershipRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { entitlementLabel:string, data: PsnEntitlementOwnershipRequest }) => {
       const response = 
             (await PlatformAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

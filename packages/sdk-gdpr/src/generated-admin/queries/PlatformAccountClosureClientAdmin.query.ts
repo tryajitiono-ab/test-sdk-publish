@@ -29,7 +29,7 @@ export const usePlatformAccountClosureClientAdminApi_DeleteClosureClient_ByPlatf
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platform:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platform:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platform:string }) => {
       const response = 
             (await PlatformAccountClosureClientAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -47,13 +47,23 @@ export const usePlatformAccountClosureClientAdminApi_DeleteClosureClient_ByPlatf
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlatformAccountClosureClientAdmin.ClosureClient_ByPlatform, input]
+ * }
+ * ```
+ */
 export const usePlatformAccountClosureClientAdminApi_GetClosureClient_ByPlatform = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { platform:string },
     options?: Omit<UseQueryOptions<PlatformAccountClosureClientResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlatformAccountClosureClientResponse>) => void
   ): UseQueryResult<PlatformAccountClosureClientResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlatformAccountClosureClientAdminApi_GetClosureClient_ByPlatform>[1]
@@ -79,7 +89,7 @@ export const usePlatformAccountClosureClientAdminApi_UpdateClosureClient_ByPlatf
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platform:string, data: PlatformAccountClosureClientRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platform:string, data: PlatformAccountClosureClientRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platform:string, data: PlatformAccountClosureClientRequest }) => {
       const response = 
             (await PlatformAccountClosureClientAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

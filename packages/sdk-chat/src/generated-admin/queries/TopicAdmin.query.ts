@@ -63,13 +63,23 @@ Chat_ByTopic_ByChatId = 'Chat.TopicAdmin.Chat_ByTopic_ByChatId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TopicAdmin.Chats, input]
+ * }
+ * ```
+ */
 export const useTopicAdminApi_GetChats = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {chatId?: string[], endCreatedAt?: number, keyword?: string | null, limit?: number, offset?: number, order?: string | null, senderUserId?: string | null, shardId?: string | null, startCreatedAt?: number, topic?: string[], unfiltered?: boolean | null} },
     options?: Omit<UseQueryOptions<ChatMessageWithPaginationResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChatMessageWithPaginationResponse>) => void
   ): UseQueryResult<ChatMessageWithPaginationResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicAdminApi_GetChats>[1]
@@ -90,13 +100,23 @@ export const useTopicAdminApi_GetChats = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TopicAdmin.Topic, input]
+ * }
+ * ```
+ */
 export const useTopicAdminApi_GetTopic = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, topicType?: string | null} },
     options?: Omit<UseQueryOptions<TopicResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TopicResponseArray>) => void
   ): UseQueryResult<TopicResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicAdminApi_GetTopic>[1]
@@ -122,7 +142,7 @@ export const useTopicAdminApi_CreateTopic = (
     options?: Omit<UseMutationOptions<CreateTopicResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTopicParams }>, 'mutationKey'>,
     callback?: (data: CreateTopicResponse) => void
   ): UseMutationResult<CreateTopicResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTopicParams }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateTopicParams }) => {
       const response = 
             (await TopicAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -140,13 +160,23 @@ export const useTopicAdminApi_CreateTopic = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TopicAdmin.Topics, input]
+ * }
+ * ```
+ */
 export const useTopicAdminApi_GetTopics = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {includeMembers?: boolean | null, includePastMembers?: boolean | null, includePastTopics?: boolean | null, limit?: number, offset?: number, topic?: string[], topicSubType?: 'CLAN' | 'NAMESPACE' | 'NORMAL' | 'PARTY' | 'SESSION', topicType?: 'GROUP' | 'PERSONAL', userId?: string | null} },
     options?: Omit<UseQueryOptions<TopicInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TopicInfoArray>) => void
   ): UseQueryResult<TopicInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicAdminApi_GetTopics>[1]
@@ -167,13 +197,23 @@ export const useTopicAdminApi_GetTopics = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TopicAdmin.TopicLog, input]
+ * }
+ * ```
+ */
 export const useTopicAdminApi_GetTopicLog = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {endCreatedAt?: number, limit?: number, offset?: number, senderUserId?: string | null, startCreatedAt?: number, topicId?: string | null, topicIds?: string[], userId?: string | null} },
     options?: Omit<UseQueryOptions<TopicLogWithPaginationResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TopicLogWithPaginationResponse>) => void
   ): UseQueryResult<TopicLogWithPaginationResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicAdminApi_GetTopicLog>[1]
@@ -194,13 +234,23 @@ export const useTopicAdminApi_GetTopicLog = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TopicAdmin.ChatFilter, input]
+ * }
+ * ```
+ */
 export const useTopicAdminApi_FetchChatFilter = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: MessageRequest, queryParams?: {detail?: boolean | null} },
     options?: Omit<UseQueryOptions<MessageResultWithAttributes, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MessageResultWithAttributes>) => void
   ): UseQueryResult<MessageResultWithAttributes, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicAdminApi_FetchChatFilter>[1]
@@ -226,7 +276,7 @@ export const useTopicAdminApi_DeleteTopic_ByTopic = (
     options?: Omit<UseMutationOptions<ActionDeleteTopicResult, AxiosError<ApiError>, SdkSetConfigParam & { topic:string }>, 'mutationKey'>,
     callback?: (data: ActionDeleteTopicResult) => void
   ): UseMutationResult<ActionDeleteTopicResult, AxiosError<ApiError>, SdkSetConfigParam & { topic:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string }) => {
       const response = 
             (await TopicAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -249,7 +299,7 @@ export const useTopicAdminApi_UpdateTopic_ByTopic = (
     options?: Omit<UseMutationOptions<CreateTopicResponse, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: UpdateTopicParams }>, 'mutationKey'>,
     callback?: (data: CreateTopicResponse) => void
   ): UseMutationResult<CreateTopicResponse, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: UpdateTopicParams }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string, data: UpdateTopicParams }) => {
       const response = 
             (await TopicAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -267,13 +317,23 @@ export const useTopicAdminApi_UpdateTopic_ByTopic = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TopicAdmin.TopicChannel, input]
+ * }
+ * ```
+ */
 export const useTopicAdminApi_GetTopicChannel = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, topicName?: string | null} },
     options?: Omit<UseQueryOptions<ChannelTopicWithPaginationResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChannelTopicWithPaginationResponse>) => void
   ): UseQueryResult<ChannelTopicWithPaginationResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicAdminApi_GetTopicChannel>[1]
@@ -299,7 +359,7 @@ export const useTopicAdminApi_CreateNamespaceTopic = (
     options?: Omit<UseMutationOptions<CreateTopicResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateNamespaceTopicParams }>, 'mutationKey'>,
     callback?: (data: CreateTopicResponse) => void
   ): UseMutationResult<CreateTopicResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateNamespaceTopicParams }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateNamespaceTopicParams }) => {
       const response = 
             (await TopicAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -317,13 +377,23 @@ export const useTopicAdminApi_CreateNamespaceTopic = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TopicAdmin.Chats_ByTopic, input]
+ * }
+ * ```
+ */
 export const useTopicAdminApi_GetChats_ByTopic = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { topic:string,  queryParams?: {endCreatedAt?: number, keyword?: string | null, limit?: number, offset?: number, order?: string | null, senderUserId?: string | null, shardId?: string | null, startCreatedAt?: number, unfiltered?: boolean | null} },
     options?: Omit<UseQueryOptions<ChatMessageWithPaginationResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChatMessageWithPaginationResponse>) => void
   ): UseQueryResult<ChatMessageWithPaginationResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicAdminApi_GetChats_ByTopic>[1]
@@ -349,7 +419,7 @@ export const useTopicAdminApi_UpdateChat_ByTopic = (
     options?: Omit<UseMutationOptions<ChatMessageResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: SendChatParams }>, 'mutationKey'>,
     callback?: (data: ChatMessageResponseArray) => void
   ): UseMutationResult<ChatMessageResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: SendChatParams }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string, data: SendChatParams }) => {
       const response = 
             (await TopicAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -367,13 +437,23 @@ export const useTopicAdminApi_UpdateChat_ByTopic = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TopicAdmin.Shards_ByTopic, input]
+ * }
+ * ```
+ */
 export const useTopicAdminApi_GetShards_ByTopic = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { topic:string },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicAdminApi_GetShards_ByTopic>[1]
@@ -394,13 +474,23 @@ export const useTopicAdminApi_GetShards_ByTopic = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TopicAdmin.Channel_ByTopic, input]
+ * }
+ * ```
+ */
 export const useTopicAdminApi_GetChannel_ByTopic = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { topic:string },
     options?: Omit<UseQueryOptions<ChannelTopicResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChannelTopicResponse>) => void
   ): UseQueryResult<ChannelTopicResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicAdminApi_GetChannel_ByTopic>[1]
@@ -421,13 +511,23 @@ export const useTopicAdminApi_GetChannel_ByTopic = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TopicAdmin.Members_ByTopic, input]
+ * }
+ * ```
+ */
 export const useTopicAdminApi_GetMembers_ByTopic = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { topic:string,  queryParams?: {isBanned?: boolean | null, isModerator?: boolean | null, limit?: number, offset?: number, shardId?: string | null} },
     options?: Omit<UseQueryOptions<TopicMemberWithPaginationResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TopicMemberWithPaginationResponse>) => void
   ): UseQueryResult<TopicMemberWithPaginationResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicAdminApi_GetMembers_ByTopic>[1]
@@ -448,13 +548,23 @@ export const useTopicAdminApi_GetMembers_ByTopic = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TopicAdmin.TopicChannelSummary, input]
+ * }
+ * ```
+ */
 export const useTopicAdminApi_GetTopicChannelSummary = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ChannelTopicSummaryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChannelTopicSummaryResponse>) => void
   ): UseQueryResult<ChannelTopicSummaryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicAdminApi_GetTopicChannelSummary>[1]
@@ -475,13 +585,23 @@ export const useTopicAdminApi_GetTopicChannelSummary = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TopicAdmin.Topics_ByUserId, input]
+ * }
+ * ```
+ */
 export const useTopicAdminApi_GetTopics_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {includePastTopics?: boolean | null, limit?: number, offset?: number, topicSubType?: 'CLAN' | 'NAMESPACE' | 'NORMAL' | 'PARTY' | 'SESSION', topicType?: 'GROUP' | 'PERSONAL'} },
     options?: Omit<UseQueryOptions<TopicLogWithPaginationResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TopicLogWithPaginationResponse>) => void
   ): UseQueryResult<TopicLogWithPaginationResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTopicAdminApi_GetTopics_ByUserId>[1]
@@ -507,7 +627,7 @@ export const useTopicAdminApi_UpdateBanMember_ByTopic = (
     options?: Omit<UseMutationOptions<BanTopicMemberResult, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: BanTopicMemberParam }>, 'mutationKey'>,
     callback?: (data: BanTopicMemberResult) => void
   ): UseMutationResult<BanTopicMemberResult, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: BanTopicMemberParam }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string, data: BanTopicMemberParam }) => {
       const response = 
             (await TopicAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -530,7 +650,7 @@ export const useTopicAdminApi_UpdateUnbanMember_ByTopic = (
     options?: Omit<UseMutationOptions<UnbanTopicMemberResult, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: UnbanTopicMemberParam }>, 'mutationKey'>,
     callback?: (data: UnbanTopicMemberResult) => void
   ): UseMutationResult<UnbanTopicMemberResult, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, data: UnbanTopicMemberParam }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string, data: UnbanTopicMemberParam }) => {
       const response = 
             (await TopicAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -553,7 +673,7 @@ export const useTopicAdminApi_DeleteUser_ByTopic_ByUserId = (
     options?: Omit<UseMutationOptions<ActionAddUserToTopicResult, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, userId:string }>, 'mutationKey'>,
     callback?: (data: ActionAddUserToTopicResult) => void
   ): UseMutationResult<ActionAddUserToTopicResult, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string, userId:string }) => {
       const response = 
             (await TopicAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -576,7 +696,7 @@ export const useTopicAdminApi_UpdateUser_ByTopic_ByUserId = (
     options?: Omit<UseMutationOptions<ActionAddUserToTopicResult, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, userId:string, data: AddMemberParams }>, 'mutationKey'>,
     callback?: (data: ActionAddUserToTopicResult) => void
   ): UseMutationResult<ActionAddUserToTopicResult, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, userId:string, data: AddMemberParams }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string, userId:string, data: AddMemberParams }) => {
       const response = 
             (await TopicAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -599,7 +719,7 @@ export const useTopicAdminApi_DeleteChat_ByTopic_ByChatId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, chatId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic:string, chatId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { topic:string, chatId:string }) => {
       const response = 
             (await TopicAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

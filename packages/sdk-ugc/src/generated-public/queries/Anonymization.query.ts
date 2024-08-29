@@ -31,7 +31,7 @@ export const useAnonymizationApi_DeleteGroup_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await AnonymizationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -54,7 +54,7 @@ export const useAnonymizationApi_DeleteState_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await AnonymizationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -77,7 +77,7 @@ export const useAnonymizationApi_DeleteChannel_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await AnonymizationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -100,7 +100,7 @@ export const useAnonymizationApi_DeleteContent_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await AnonymizationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

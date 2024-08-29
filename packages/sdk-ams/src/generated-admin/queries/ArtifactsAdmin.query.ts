@@ -37,7 +37,7 @@ export const useArtifactsAdminApi_DeleteArtifact = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams?: {artifactType?: string | null, fleetId?: string | null, uploadedBefore?: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams?: {artifactType?: string | null, fleetId?: string | null, uploadedBefore?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & {  queryParams?: {artifactType?: string | null, fleetId?: string | null, uploadedBefore?: string | null} }) => {
       const response = 
             (await ArtifactsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -55,13 +55,23 @@ export const useArtifactsAdminApi_DeleteArtifact = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ArtifactsAdmin.Artifacts, input]
+ * }
+ * ```
+ */
 export const useArtifactsAdminApi_GetArtifacts = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {artifactType?: string | null, count?: number, endDate?: string | null, fleetID?: string | null, imageID?: string | null, maxSize?: number, minSize?: number, offset?: number, region?: string | null, serverId?: string | null, startDate?: string | null, status?: string | null} },
     options?: Omit<UseQueryOptions<ArtifactListResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ArtifactListResponse>) => void
   ): UseQueryResult<ArtifactListResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useArtifactsAdminApi_GetArtifacts>[1]
@@ -82,13 +92,23 @@ export const useArtifactsAdminApi_GetArtifacts = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ArtifactsAdmin.ArtifactsUsage, input]
+ * }
+ * ```
+ */
 export const useArtifactsAdminApi_GetArtifactsUsage = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ArtifactUsageResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ArtifactUsageResponse>) => void
   ): UseQueryResult<ArtifactUsageResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useArtifactsAdminApi_GetArtifactsUsage>[1]
@@ -114,7 +134,7 @@ export const useArtifactsAdminApi_DeleteArtifact_ByArtifactId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { artifactID:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { artifactID:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { artifactID:string }) => {
       const response = 
             (await ArtifactsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -132,13 +152,23 @@ export const useArtifactsAdminApi_DeleteArtifact_ByArtifactId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ArtifactsAdmin.Url_ByArtifactId, input]
+ * }
+ * ```
+ */
 export const useArtifactsAdminApi_GetUrl_ByArtifactId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { artifactID:string },
     options?: Omit<UseQueryOptions<ArtifactUrlResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ArtifactUrlResponse>) => void
   ): UseQueryResult<ArtifactUrlResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useArtifactsAdminApi_GetUrl_ByArtifactId>[1]
@@ -159,13 +189,23 @@ export const useArtifactsAdminApi_GetUrl_ByArtifactId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ArtifactsAdmin.ArtifactsSamplingRules_ByFleetId, input]
+ * }
+ * ```
+ */
 export const useArtifactsAdminApi_GetArtifactsSamplingRules_ByFleetId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { fleetID:string },
     options?: Omit<UseQueryOptions<FleetArtifactsSampleRules, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FleetArtifactsSampleRules>) => void
   ): UseQueryResult<FleetArtifactsSampleRules, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useArtifactsAdminApi_GetArtifactsSamplingRules_ByFleetId>[1]
@@ -191,7 +231,7 @@ export const useArtifactsAdminApi_UpdateArtifactsSamplingRule_ByFleetId = (
     options?: Omit<UseMutationOptions<FleetArtifactsSampleRules, AxiosError<ApiError>, SdkSetConfigParam & { fleetID:string, data: FleetArtifactsSampleRules }>, 'mutationKey'>,
     callback?: (data: FleetArtifactsSampleRules) => void
   ): UseMutationResult<FleetArtifactsSampleRules, AxiosError<ApiError>, SdkSetConfigParam & { fleetID:string, data: FleetArtifactsSampleRules }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { fleetID:string, data: FleetArtifactsSampleRules }) => {
       const response = 
             (await ArtifactsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

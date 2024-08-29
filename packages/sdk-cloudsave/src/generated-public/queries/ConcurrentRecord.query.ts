@@ -31,7 +31,7 @@ export const useConcurrentRecordApi_UpdateConcurrentRecord_ByKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: ConcurrentRecordRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: ConcurrentRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string, data: ConcurrentRecordRequest }) => {
       const response = 
             (await ConcurrentRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -54,7 +54,7 @@ export const useConcurrentRecordApi_UpdateConcurrentRecord_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<PlayerRecordConcurrentUpdateResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: ConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PlayerRecordConcurrentUpdateResponse) => void
   ): UseMutationResult<PlayerRecordConcurrentUpdateResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: ConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: ConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }) => {
       const response = 
             (await ConcurrentRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -77,7 +77,7 @@ export const useConcurrentRecordApi_UpdatePublicConcurrent_ByUserId_ByKey = (
     options?: Omit<UseMutationOptions<PlayerRecordConcurrentUpdateResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: ConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PlayerRecordConcurrentUpdateResponse) => void
   ): UseMutationResult<PlayerRecordConcurrentUpdateResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: ConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: ConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }) => {
       const response = 
             (await ConcurrentRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

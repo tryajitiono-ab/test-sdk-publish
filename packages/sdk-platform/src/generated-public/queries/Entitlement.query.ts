@@ -61,13 +61,23 @@ Decrement_ByUserId_ByEntitlementId = 'Platform.Entitlement.Decrement_ByUserId_By
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.Entitlements_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlements_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {appType?: 'DEMO' | 'DLC' | 'GAME' | 'SOFTWARE', entitlementClazz?: 'APP' | 'CODE' | 'ENTITLEMENT' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SUBSCRIPTION', entitlementName?: string | null, features?: string[], itemId?: string[], limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<EntitlementPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EntitlementPagingSlicedResult>) => void
   ): UseQueryResult<EntitlementPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlements_ByUserId>[1]
@@ -88,13 +98,23 @@ export const useEntitlementApi_GetEntitlements_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.EntitlementsByIds_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlementsByIds_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {availablePlatformOnly?: boolean | null, ids?: string[]} },
     options?: Omit<UseQueryOptions<EntitlementInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EntitlementInfoArray>) => void
   ): UseQueryResult<EntitlementInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlementsByIds_ByUserId>[1]
@@ -115,13 +135,23 @@ export const useEntitlementApi_GetEntitlementsByIds_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.EntitlementsBySku_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlementsBySku_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {sku: string | null, entitlementClazz?: 'APP' | 'CODE' | 'ENTITLEMENT' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SUBSCRIPTION'} },
     options?: Omit<UseQueryOptions<EntitlementInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EntitlementInfo>) => void
   ): UseQueryResult<EntitlementInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlementsBySku_ByUserId>[1]
@@ -142,13 +172,23 @@ export const useEntitlementApi_GetEntitlementsBySku_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.EntitlementsByAppId_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlementsByAppId_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {appId: string | null} },
     options?: Omit<UseQueryOptions<AppEntitlementInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AppEntitlementInfo>) => void
   ): UseQueryResult<AppEntitlementInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlementsByAppId_ByUserId>[1]
@@ -169,13 +209,23 @@ export const useEntitlementApi_GetEntitlementsByAppId_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.EntitlementsHistory_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlementsHistory_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {endDate?: string | null, entitlementClazz?: 'APP' | 'CODE' | 'ENTITLEMENT' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SUBSCRIPTION', limit?: number, offset?: number, startDate?: string | null} },
     options?: Omit<UseQueryOptions<UserEntitlementHistoryPagingSlicedResultArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserEntitlementHistoryPagingSlicedResultArray>) => void
   ): UseQueryResult<UserEntitlementHistoryPagingSlicedResultArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlementsHistory_ByUserId>[1]
@@ -196,13 +246,23 @@ export const useEntitlementApi_GetEntitlementsHistory_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.UsersMeEntitlementsOwnershipAny, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetUsersMeEntitlementsOwnershipAny = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {appIds?: string[], itemIds?: string[], skus?: string[]} },
     options?: Omit<UseQueryOptions<Ownership, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<Ownership>) => void
   ): UseQueryResult<Ownership, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetUsersMeEntitlementsOwnershipAny>[1]
@@ -223,13 +283,23 @@ export const useEntitlementApi_GetUsersMeEntitlementsOwnershipAny = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.EntitlementsByItemId_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlementsByItemId_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {itemId: string | null, entitlementClazz?: 'APP' | 'CODE' | 'ENTITLEMENT' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SUBSCRIPTION'} },
     options?: Omit<UseQueryOptions<EntitlementInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EntitlementInfo>) => void
   ): UseQueryResult<EntitlementInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlementsByItemId_ByUserId>[1]
@@ -250,13 +320,23 @@ export const useEntitlementApi_GetEntitlementsByItemId_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.UsersMeEntitlementsOwnershipToken, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetUsersMeEntitlementsOwnershipToken = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {appIds?: string[], itemIds?: string[], skus?: string[]} },
     options?: Omit<UseQueryOptions<OwnershipToken, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<OwnershipToken>) => void
   ): UseQueryResult<OwnershipToken, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetUsersMeEntitlementsOwnershipToken>[1]
@@ -277,13 +357,23 @@ export const useEntitlementApi_GetUsersMeEntitlementsOwnershipToken = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.EntitlementsByAppType_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlementsByAppType_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {appType: 'DEMO' | 'DLC' | 'GAME' | 'SOFTWARE', limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<AppEntitlementPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AppEntitlementPagingSlicedResult>) => void
   ): UseQueryResult<AppEntitlementPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlementsByAppType_ByUserId>[1]
@@ -304,13 +394,23 @@ export const useEntitlementApi_GetEntitlementsByAppType_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.UsersMeEntitlementsOwnershipBySku, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetUsersMeEntitlementsOwnershipBySku = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {sku: string | null, entitlementClazz?: 'APP' | 'CODE' | 'ENTITLEMENT' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SUBSCRIPTION'} },
     options?: Omit<UseQueryOptions<TimedOwnership, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TimedOwnership>) => void
   ): UseQueryResult<TimedOwnership, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetUsersMeEntitlementsOwnershipBySku>[1]
@@ -331,13 +431,23 @@ export const useEntitlementApi_GetUsersMeEntitlementsOwnershipBySku = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.UsersMeEntitlementsOwnershipByAppId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetUsersMeEntitlementsOwnershipByAppId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {appId: string | null} },
     options?: Omit<UseQueryOptions<Ownership, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<Ownership>) => void
   ): UseQueryResult<Ownership, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetUsersMeEntitlementsOwnershipByAppId>[1]
@@ -358,13 +468,23 @@ export const useEntitlementApi_GetUsersMeEntitlementsOwnershipByAppId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.UsersMeEntitlementsOwnershipByItemId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetUsersMeEntitlementsOwnershipByItemId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {itemId: string | null, entitlementClazz?: 'APP' | 'CODE' | 'ENTITLEMENT' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SUBSCRIPTION'} },
     options?: Omit<UseQueryOptions<TimedOwnership, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TimedOwnership>) => void
   ): UseQueryResult<TimedOwnership, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetUsersMeEntitlementsOwnershipByItemId>[1]
@@ -385,13 +505,23 @@ export const useEntitlementApi_GetUsersMeEntitlementsOwnershipByItemId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.EntitlementsOwnershipAny_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlementsOwnershipAny_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {appIds?: string[], itemIds?: string[], skus?: string[]} },
     options?: Omit<UseQueryOptions<Ownership, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<Ownership>) => void
   ): UseQueryResult<Ownership, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlementsOwnershipAny_ByUserId>[1]
@@ -412,13 +542,23 @@ export const useEntitlementApi_GetEntitlementsOwnershipAny_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.Entitlement_ByUserId_ByEntitlementId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlement_ByUserId_ByEntitlementId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, entitlementId:string },
     options?: Omit<UseQueryOptions<EntitlementInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EntitlementInfo>) => void
   ): UseQueryResult<EntitlementInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlement_ByUserId_ByEntitlementId>[1]
@@ -439,13 +579,23 @@ export const useEntitlementApi_GetEntitlement_ByUserId_ByEntitlementId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.EntitlementsOwnershipBySku_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlementsOwnershipBySku_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {sku: string | null, entitlementClazz?: 'APP' | 'CODE' | 'ENTITLEMENT' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SUBSCRIPTION'} },
     options?: Omit<UseQueryOptions<TimedOwnership, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TimedOwnership>) => void
   ): UseQueryResult<TimedOwnership, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlementsOwnershipBySku_ByUserId>[1]
@@ -466,13 +616,23 @@ export const useEntitlementApi_GetEntitlementsOwnershipBySku_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.EntitlementsOwnershipByAppId_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlementsOwnershipByAppId_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {appId: string | null} },
     options?: Omit<UseQueryOptions<Ownership, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<Ownership>) => void
   ): UseQueryResult<Ownership, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlementsOwnershipByAppId_ByUserId>[1]
@@ -493,13 +653,23 @@ export const useEntitlementApi_GetEntitlementsOwnershipByAppId_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.EntitlementsOwnershipByItemId_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlementsOwnershipByItemId_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {itemId: string | null, entitlementClazz?: 'APP' | 'CODE' | 'ENTITLEMENT' | 'LOOTBOX' | 'MEDIA' | 'OPTIONBOX' | 'SUBSCRIPTION'} },
     options?: Omit<UseQueryOptions<TimedOwnership, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TimedOwnership>) => void
   ): UseQueryResult<TimedOwnership, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlementsOwnershipByItemId_ByUserId>[1]
@@ -520,13 +690,23 @@ export const useEntitlementApi_GetEntitlementsOwnershipByItemId_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Entitlement.EntitlementsOwnershipByItemIds_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEntitlementApi_GetEntitlementsOwnershipByItemIds_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {ids?: string[]} },
     options?: Omit<UseQueryOptions<EntitlementOwnershipArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EntitlementOwnershipArray>) => void
   ): UseQueryResult<EntitlementOwnershipArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEntitlementApi_GetEntitlementsOwnershipByItemIds_ByUserId>[1]
@@ -552,7 +732,7 @@ export const useEntitlementApi_UpdateSell_ByUserId_ByEntitlementId = (
     options?: Omit<UseMutationOptions<EntitlementSoldResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, entitlementId:string, data: EntitlementSoldRequest }>, 'mutationKey'>,
     callback?: (data: EntitlementSoldResult) => void
   ): UseMutationResult<EntitlementSoldResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, entitlementId:string, data: EntitlementSoldRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, entitlementId:string, data: EntitlementSoldRequest }) => {
       const response = 
             (await EntitlementApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -575,7 +755,7 @@ export const useEntitlementApi_UpdateSplit_ByUserId_ByEntitlementId = (
     options?: Omit<UseMutationOptions<EntitlementSplitResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, entitlementId:string, data: EntitlementSplitRequest }>, 'mutationKey'>,
     callback?: (data: EntitlementSplitResult) => void
   ): UseMutationResult<EntitlementSplitResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, entitlementId:string, data: EntitlementSplitRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, entitlementId:string, data: EntitlementSplitRequest }) => {
       const response = 
             (await EntitlementApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -598,7 +778,7 @@ export const useEntitlementApi_UpdateTransfer_ByUserId_ByEntitlementId = (
     options?: Omit<UseMutationOptions<EntitlementTransferResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, entitlementId:string, data: EntitlementTransferRequest }>, 'mutationKey'>,
     callback?: (data: EntitlementTransferResult) => void
   ): UseMutationResult<EntitlementTransferResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, entitlementId:string, data: EntitlementTransferRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, entitlementId:string, data: EntitlementTransferRequest }) => {
       const response = 
             (await EntitlementApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -621,7 +801,7 @@ export const useEntitlementApi_UpdateDecrement_ByUserId_ByEntitlementId = (
     options?: Omit<UseMutationOptions<EntitlementDecrementResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, entitlementId:string, data: PublicEntitlementDecrement }>, 'mutationKey'>,
     callback?: (data: EntitlementDecrementResult) => void
   ): UseMutationResult<EntitlementDecrementResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, entitlementId:string, data: PublicEntitlementDecrement }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, entitlementId:string, data: PublicEntitlementDecrement }) => {
       const response = 
             (await EntitlementApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

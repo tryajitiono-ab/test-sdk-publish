@@ -57,13 +57,23 @@ TransactionsWallets_ByUserId_ByCurrencyCode = 'Platform.WalletAdmin.Transactions
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_WalletAdmin.Wallets, input]
+ * }
+ * ```
+ */
 export const useWalletAdminApi_GetWallets = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {currencyCode?: string | null, limit?: number, offset?: number, origin?: 'Epic' | 'GooglePlay' | 'IOS' | 'Nintendo' | 'Oculus' | 'Other' | 'Playstation' | 'Steam' | 'System' | 'Twitch' | 'Xbox', userId?: string | null} },
     options?: Omit<UseQueryOptions<WalletPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<WalletPagingSlicedResult>) => void
   ): UseQueryResult<WalletPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWalletAdminApi_GetWallets>[1]
@@ -89,7 +99,7 @@ export const useWalletAdminApi_CreateWalletDebit = (
     options?: Omit<UseMutationOptions<BulkDebitResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkDebitRequest[] }>, 'mutationKey'>,
     callback?: (data: BulkDebitResult) => void
   ): UseMutationResult<BulkDebitResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkDebitRequest[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkDebitRequest[] }) => {
       const response = 
             (await WalletAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -112,7 +122,7 @@ export const useWalletAdminApi_CreateWalletCredit = (
     options?: Omit<UseMutationOptions<BulkCreditResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkCreditRequest[] }>, 'mutationKey'>,
     callback?: (data: BulkCreditResult) => void
   ): UseMutationResult<BulkCreditResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkCreditRequest[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkCreditRequest[] }) => {
       const response = 
             (await WalletAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -130,13 +140,23 @@ export const useWalletAdminApi_CreateWalletCredit = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_WalletAdmin.Wallet_ByWalletId, input]
+ * }
+ * ```
+ */
 export const useWalletAdminApi_GetWallet_ByWalletId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { walletId:string },
     options?: Omit<UseQueryOptions<WalletInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<WalletInfo>) => void
   ): UseQueryResult<WalletInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWalletAdminApi_GetWallet_ByWalletId>[1]
@@ -157,13 +177,23 @@ export const useWalletAdminApi_GetWallet_ByWalletId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_WalletAdmin.Wallet_ByUserId_ByWalletId, input]
+ * }
+ * ```
+ */
 export const useWalletAdminApi_GetWallet_ByUserId_ByWalletId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, walletId:string },
     options?: Omit<UseQueryOptions<WalletInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<WalletInfo>) => void
   ): UseQueryResult<WalletInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWalletAdminApi_GetWallet_ByUserId_ByWalletId>[1]
@@ -184,13 +214,23 @@ export const useWalletAdminApi_GetWallet_ByUserId_ByWalletId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_WalletAdmin.WalletConfig_ByPlatform, input]
+ * }
+ * ```
+ */
 export const useWalletAdminApi_GetWalletConfig_ByPlatform = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { platform:string },
     options?: Omit<UseQueryOptions<PlatformWalletConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlatformWalletConfigInfo>) => void
   ): UseQueryResult<PlatformWalletConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWalletAdminApi_GetWalletConfig_ByPlatform>[1]
@@ -216,7 +256,7 @@ export const useWalletAdminApi_UpdateWalletConfig_ByPlatform = (
     options?: Omit<UseMutationOptions<PlatformWalletConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { platform:string, data: PlatformWalletConfigUpdate }>, 'mutationKey'>,
     callback?: (data: PlatformWalletConfigInfo) => void
   ): UseMutationResult<PlatformWalletConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { platform:string, data: PlatformWalletConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platform:string, data: PlatformWalletConfigUpdate }) => {
       const response = 
             (await WalletAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -239,7 +279,7 @@ export const useWalletAdminApi_UpdateDebit_ByUserId_ByWalletId = (
     options?: Omit<UseMutationOptions<WalletInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, walletId:string, data: DebitRequest }>, 'mutationKey'>,
     callback?: (data: WalletInfo) => void
   ): UseMutationResult<WalletInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, walletId:string, data: DebitRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, walletId:string, data: DebitRequest }) => {
       const response = 
             (await WalletAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -262,7 +302,7 @@ export const useWalletAdminApi_UpdateWalletConfigReset_ByPlatform = (
     options?: Omit<UseMutationOptions<PlatformWalletConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { platform:string }>, 'mutationKey'>,
     callback?: (data: PlatformWalletConfigInfo) => void
   ): UseMutationResult<PlatformWalletConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { platform:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platform:string }) => {
       const response = 
             (await WalletAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -285,7 +325,7 @@ export const useWalletAdminApi_UpdateEnable_ByUserId_ByWalletId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, walletId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, walletId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, walletId:string }) => {
       const response = 
             (await WalletAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -308,7 +348,7 @@ export const useWalletAdminApi_UpdateDisable_ByUserId_ByWalletId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, walletId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, walletId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, walletId:string }) => {
       const response = 
             (await WalletAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -326,13 +366,23 @@ export const useWalletAdminApi_UpdateDisable_ByUserId_ByWalletId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_WalletAdmin.WalletsCurrenciesSummary_ByUserId, input]
+ * }
+ * ```
+ */
 export const useWalletAdminApi_GetWalletsCurrenciesSummary_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<CurrencyWalletArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CurrencyWalletArray>) => void
   ): UseQueryResult<CurrencyWalletArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWalletAdminApi_GetWalletsCurrenciesSummary_ByUserId>[1]
@@ -353,13 +403,23 @@ export const useWalletAdminApi_GetWalletsCurrenciesSummary_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_WalletAdmin.Check_ByUserId_ByCurrencyCode, input]
+ * }
+ * ```
+ */
 export const useWalletAdminApi_GetCheck_ByUserId_ByCurrencyCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, currencyCode:string,  queryParams: {origin: 'Epic' | 'GooglePlay' | 'IOS' | 'Nintendo' | 'Oculus' | 'Other' | 'Playstation' | 'Steam' | 'System' | 'Twitch' | 'Xbox'} },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWalletAdminApi_GetCheck_ByUserId_ByCurrencyCode>[1]
@@ -385,7 +445,7 @@ export const useWalletAdminApi_UpdateCredit_ByUserId_ByCurrencyCode = (
     options?: Omit<UseMutationOptions<WalletInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, currencyCode:string, data: CreditRequest }>, 'mutationKey'>,
     callback?: (data: WalletInfo) => void
   ): UseMutationResult<WalletInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, currencyCode:string, data: CreditRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, currencyCode:string, data: CreditRequest }) => {
       const response = 
             (await WalletAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -408,7 +468,7 @@ export const useWalletAdminApi_UpdatePayment_ByUserId_ByCurrencyCode = (
     options?: Omit<UseMutationOptions<PlatformWallet, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, currencyCode:string, data: PaymentRequest }>, 'mutationKey'>,
     callback?: (data: PlatformWallet) => void
   ): UseMutationResult<PlatformWallet, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, currencyCode:string, data: PaymentRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, currencyCode:string, data: PaymentRequest }) => {
       const response = 
             (await WalletAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -426,13 +486,23 @@ export const useWalletAdminApi_UpdatePayment_ByUserId_ByCurrencyCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_WalletAdmin.Transactions_ByUserId_ByWalletId, input]
+ * }
+ * ```
+ */
 export const useWalletAdminApi_GetTransactions_ByUserId_ByWalletId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, walletId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<DetailedWalletTransactionPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DetailedWalletTransactionPagingSlicedResult>) => void
   ): UseQueryResult<DetailedWalletTransactionPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWalletAdminApi_GetTransactions_ByUserId_ByWalletId>[1]
@@ -458,7 +528,7 @@ export const useWalletAdminApi_CreateBalanceCheck_ByUserId_ByCurrencyCode = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, currencyCode:string, data: DebitByWalletPlatformRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, currencyCode:string, data: DebitByWalletPlatformRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, currencyCode:string, data: DebitByWalletPlatformRequest }) => {
       const response = 
             (await WalletAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -481,7 +551,7 @@ export const useWalletAdminApi_UpdateDebitWallet_ByUserId_ByCurrencyCode = (
     options?: Omit<UseMutationOptions<WalletInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, currencyCode:string, data: DebitByCurrencyCodeRequest }>, 'mutationKey'>,
     callback?: (data: WalletInfo) => void
   ): UseMutationResult<WalletInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, currencyCode:string, data: DebitByCurrencyCodeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, currencyCode:string, data: DebitByCurrencyCodeRequest }) => {
       const response = 
             (await WalletAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -504,7 +574,7 @@ export const useWalletAdminApi_UpdateDebitByWalletPlatform_ByUserId_ByCurrencyCo
     options?: Omit<UseMutationOptions<PlatformWallet, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, currencyCode:string, data: DebitByWalletPlatformRequest }>, 'mutationKey'>,
     callback?: (data: PlatformWallet) => void
   ): UseMutationResult<PlatformWallet, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, currencyCode:string, data: DebitByWalletPlatformRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, currencyCode:string, data: DebitByWalletPlatformRequest }) => {
       const response = 
             (await WalletAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -522,13 +592,23 @@ export const useWalletAdminApi_UpdateDebitByWalletPlatform_ByUserId_ByCurrencyCo
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_WalletAdmin.TransactionsWallets_ByUserId_ByCurrencyCode, input]
+ * }
+ * ```
+ */
 export const useWalletAdminApi_GetTransactionsWallets_ByUserId_ByCurrencyCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, currencyCode:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<WalletTransactionPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<WalletTransactionPagingSlicedResult>) => void
   ): UseQueryResult<WalletTransactionPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useWalletAdminApi_GetTransactionsWallets_ByUserId_ByCurrencyCode>[1]

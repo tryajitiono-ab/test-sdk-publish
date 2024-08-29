@@ -30,7 +30,7 @@ export const useMaxActiveAdminApi_UpdateReconcile_ByName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: RequestReconcileMaxActiveSession }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: RequestReconcileMaxActiveSession }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string, data: RequestReconcileMaxActiveSession }) => {
       const response = 
             (await MaxActiveAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -48,13 +48,23 @@ export const useMaxActiveAdminApi_UpdateReconcile_ByName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MaxActiveAdmin.Memberactivesession_ByName_ByUserId, input]
+ * }
+ * ```
+ */
 export const useMaxActiveAdminApi_GetMemberactivesession_ByName_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { name:string, userId:string },
     options?: Omit<UseQueryOptions<MemberActiveSession, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MemberActiveSession>) => void
   ): UseQueryResult<MemberActiveSession, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMaxActiveAdminApi_GetMemberactivesession_ByName_ByUserId>[1]

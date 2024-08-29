@@ -29,13 +29,23 @@ AccountLink = 'Ams.AccountAdmin.AccountLink',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AccountAdmin.Account, input]
+ * }
+ * ```
+ */
 export const useAccountAdminApi_GetAccount = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<AccountResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AccountResponse>) => void
   ): UseQueryResult<AccountResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAccountAdminApi_GetAccount>[1]
@@ -61,7 +71,7 @@ export const useAccountAdminApi_CreateAccount = (
     options?: Omit<UseMutationOptions<AccountCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AccountCreateRequest }>, 'mutationKey'>,
     callback?: (data: AccountCreateResponse) => void
   ): UseMutationResult<AccountCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AccountCreateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: AccountCreateRequest }) => {
       const response = 
             (await AccountAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -79,13 +89,23 @@ export const useAccountAdminApi_CreateAccount = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_AccountAdmin.AccountLink, input]
+ * }
+ * ```
+ */
 export const useAccountAdminApi_GetAccountLink = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<AccountLinkTokenResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AccountLinkTokenResponse>) => void
   ): UseQueryResult<AccountLinkTokenResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAccountAdminApi_GetAccountLink>[1]
@@ -111,7 +131,7 @@ export const useAccountAdminApi_CreateAccountLink = (
     options?: Omit<UseMutationOptions<AccountLinkResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AccountLinkRequest }>, 'mutationKey'>,
     callback?: (data: AccountLinkResponse) => void
   ): UseMutationResult<AccountLinkResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AccountLinkRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: AccountLinkRequest }) => {
       const response = 
             (await AccountAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

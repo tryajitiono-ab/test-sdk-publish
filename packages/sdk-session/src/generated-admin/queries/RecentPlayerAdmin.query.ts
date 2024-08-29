@@ -24,13 +24,23 @@ RecentTeamPlayer = 'Session.RecentPlayerAdmin.RecentTeamPlayer',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RecentPlayerAdmin.RecentPlayer, input]
+ * }
+ * ```
+ */
 export const useRecentPlayerAdminApi_GetRecentPlayer = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, userId?: string | null} },
     options?: Omit<UseQueryOptions<RecentPlayerQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RecentPlayerQueryResponse>) => void
   ): UseQueryResult<RecentPlayerQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRecentPlayerAdminApi_GetRecentPlayer>[1]
@@ -51,13 +61,23 @@ export const useRecentPlayerAdminApi_GetRecentPlayer = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RecentPlayerAdmin.RecentTeamPlayer, input]
+ * }
+ * ```
+ */
 export const useRecentPlayerAdminApi_GetRecentTeamPlayer = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, userId?: string | null} },
     options?: Omit<UseQueryOptions<RecentPlayerQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RecentPlayerQueryResponse>) => void
   ): UseQueryResult<RecentPlayerQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRecentPlayerAdminApi_GetRecentTeamPlayer>[1]

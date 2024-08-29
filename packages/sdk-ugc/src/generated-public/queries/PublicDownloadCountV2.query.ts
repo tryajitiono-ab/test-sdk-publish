@@ -25,13 +25,23 @@ Downloadcount_ByContentId_v2 = 'Ugc.PublicDownloadCountV2.Downloadcount_ByConten
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicDownloadCountV2.Downloader_ByContentId_v2, input]
+ * }
+ * ```
+ */
 export const usePublicDownloadCountV2Api_GetDownloader_ByContentId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { contentId:string,  queryParams?: {limit?: number, offset?: number, sortBy?: string | null, userId?: string | null} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloaderResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloaderResponse>) => void
   ): UseQueryResult<PaginatedContentDownloaderResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicDownloadCountV2Api_GetDownloader_ByContentId_v2>[1]
@@ -57,7 +67,7 @@ export const usePublicDownloadCountV2Api_CreateDownloadcount_ByContentId_v2 = (
     options?: Omit<UseMutationOptions<AddDownloadCountResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string }>, 'mutationKey'>,
     callback?: (data: AddDownloadCountResponse) => void
   ): UseMutationResult<AddDownloadCountResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { contentId:string }) => {
       const response = 
             (await PublicDownloadCountV2Api(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

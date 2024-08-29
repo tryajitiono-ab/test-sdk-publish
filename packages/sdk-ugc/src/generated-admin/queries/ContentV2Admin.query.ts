@@ -63,13 +63,23 @@ ContentS3Sharecode_ByUserId_ByChannelId_ByShareCode_v2 = 'Ugc.ContentV2Admin.Con
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ContentV2Admin.Contents_v2, input]
+ * }
+ * ```
+ */
 export const useContentV2AdminApi_GetContents_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {isOfficial?: boolean | null, limit?: number, name?: string | null, offset?: number, sortBy?: string | null, subType?: string | null, tags?: string[], type?: string | null} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloadResponseV2, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloadResponseV2>) => void
   ): UseQueryResult<PaginatedContentDownloadResponseV2, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useContentV2AdminApi_GetContents_v2>[1]
@@ -90,13 +100,23 @@ export const useContentV2AdminApi_GetContents_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ContentV2Admin.ContentBulk_v2, input]
+ * }
+ * ```
+ */
 export const useContentV2AdminApi_FetchContentBulk_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: AdminGetContentBulkRequest },
     options?: Omit<UseQueryOptions<ContentDownloadResponseV2Array, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ContentDownloadResponseV2Array>) => void
   ): UseQueryResult<ContentDownloadResponseV2Array, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useContentV2AdminApi_FetchContentBulk_v2>[1]
@@ -117,13 +137,23 @@ export const useContentV2AdminApi_FetchContentBulk_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ContentV2Admin.Content_ByContentId_v2, input]
+ * }
+ * ```
+ */
 export const useContentV2AdminApi_GetContent_ByContentId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { contentId:string },
     options?: Omit<UseQueryOptions<ContentDownloadResponseV2, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ContentDownloadResponseV2>) => void
   ): UseQueryResult<ContentDownloadResponseV2, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useContentV2AdminApi_GetContent_ByContentId_v2>[1]
@@ -144,13 +174,23 @@ export const useContentV2AdminApi_GetContent_ByContentId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ContentV2Admin.Contents_ByUserId_v2, input]
+ * }
+ * ```
+ */
 export const useContentV2AdminApi_GetContents_ByUserId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number, sortBy?: string | null} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloadResponseV2, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloadResponseV2>) => void
   ): UseQueryResult<PaginatedContentDownloadResponseV2, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useContentV2AdminApi_GetContents_ByUserId_v2>[1]
@@ -171,13 +211,23 @@ export const useContentV2AdminApi_GetContents_ByUserId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ContentV2Admin.ContentSharecodeBulk_v2, input]
+ * }
+ * ```
+ */
 export const useContentV2AdminApi_FetchContentSharecodeBulk_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: GetContentBulkByShareCodesRequest },
     options?: Omit<UseQueryOptions<ContentDownloadResponseV2Array, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ContentDownloadResponseV2Array>) => void
   ): UseQueryResult<ContentDownloadResponseV2Array, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useContentV2AdminApi_FetchContentSharecodeBulk_v2>[1]
@@ -198,13 +248,23 @@ export const useContentV2AdminApi_FetchContentSharecodeBulk_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ContentV2Admin.Contents_ByChannelId_v2, input]
+ * }
+ * ```
+ */
 export const useContentV2AdminApi_GetContents_ByChannelId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { channelId:string,  queryParams?: {limit?: number, name?: string | null, offset?: number, sortBy?: string | null} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloadResponseV2, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloadResponseV2>) => void
   ): UseQueryResult<PaginatedContentDownloadResponseV2, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useContentV2AdminApi_GetContents_ByChannelId_v2>[1]
@@ -230,7 +290,7 @@ export const useContentV2AdminApi_CreateContent_ByChannelId_v2 = (
     options?: Omit<UseMutationOptions<CreateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, data: AdminContentRequestV2 }>, 'mutationKey'>,
     callback?: (data: CreateContentResponseV2) => void
   ): UseMutationResult<CreateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, data: AdminContentRequestV2 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelId:string, data: AdminContentRequestV2 }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -248,13 +308,23 @@ export const useContentV2AdminApi_CreateContent_ByChannelId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ContentV2Admin.Versions_ByContentId_v2, input]
+ * }
+ * ```
+ */
 export const useContentV2AdminApi_GetVersions_ByContentId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { contentId:string },
     options?: Omit<UseQueryOptions<ListContentVersionsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListContentVersionsResponse>) => void
   ): UseQueryResult<ListContentVersionsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useContentV2AdminApi_GetVersions_ByContentId_v2>[1]
@@ -275,13 +345,23 @@ export const useContentV2AdminApi_GetVersions_ByContentId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ContentV2Admin.ContentSharecode_ByShareCode_v2, input]
+ * }
+ * ```
+ */
 export const useContentV2AdminApi_GetContentSharecode_ByShareCode_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { shareCode:string },
     options?: Omit<UseQueryOptions<ContentDownloadResponseV2, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ContentDownloadResponseV2>) => void
   ): UseQueryResult<ContentDownloadResponseV2, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useContentV2AdminApi_GetContentSharecode_ByShareCode_v2>[1]
@@ -307,7 +387,7 @@ export const useContentV2AdminApi_CreateScreenshot_ByContentId_v2 = (
     options?: Omit<UseMutationOptions<CreateScreenshotResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, data: CreateScreenshotRequest }>, 'mutationKey'>,
     callback?: (data: CreateScreenshotResponse) => void
   ): UseMutationResult<CreateScreenshotResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, data: CreateScreenshotRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { contentId:string, data: CreateScreenshotRequest }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -330,7 +410,7 @@ export const useContentV2AdminApi_UpdateScreenshot_ByContentId_v2 = (
     options?: Omit<UseMutationOptions<UpdateScreenshotResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, data: UpdateScreenshotRequest }>, 'mutationKey'>,
     callback?: (data: UpdateScreenshotResponse) => void
   ): UseMutationResult<UpdateScreenshotResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, data: UpdateScreenshotRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { contentId:string, data: UpdateScreenshotRequest }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -353,7 +433,7 @@ export const useContentV2AdminApi_UpdateHide_ByUserId_ByContentId_v2 = (
     options?: Omit<UseMutationOptions<CreateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, contentId:string, data: HideContentRequest }>, 'mutationKey'>,
     callback?: (data: CreateContentResponseV2) => void
   ): UseMutationResult<CreateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, contentId:string, data: HideContentRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, contentId:string, data: HideContentRequest }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -376,7 +456,7 @@ export const useContentV2AdminApi_DeleteContent_ByChannelId_ByContentId_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, contentId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, contentId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelId:string, contentId:string }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -399,7 +479,7 @@ export const useContentV2AdminApi_PatchContent_ByChannelId_ByContentId_v2 = (
     options?: Omit<UseMutationOptions<UpdateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, contentId:string, data: AdminUpdateContentRequestV2 }>, 'mutationKey'>,
     callback?: (data: UpdateContentResponseV2) => void
   ): UseMutationResult<UpdateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, contentId:string, data: AdminUpdateContentRequestV2 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelId:string, contentId:string, data: AdminUpdateContentRequestV2 }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -422,7 +502,7 @@ export const useContentV2AdminApi_UpdateRollback_ByContentId_ByVersionId_v2 = (
     options?: Omit<UseMutationOptions<ContentDownloadResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, versionId:string }>, 'mutationKey'>,
     callback?: (data: ContentDownloadResponse) => void
   ): UseMutationResult<ContentDownloadResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, versionId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { contentId:string, versionId:string }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -445,7 +525,7 @@ export const useContentV2AdminApi_CreateCopy_ByChannelId_ByContentId_v2 = (
     options?: Omit<UseMutationOptions<ContentDownloadResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, contentId:string, data: CopyContentRequest }>, 'mutationKey'>,
     callback?: (data: ContentDownloadResponseV2) => void
   ): UseMutationResult<ContentDownloadResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, contentId:string, data: CopyContentRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelId:string, contentId:string, data: CopyContentRequest }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -468,7 +548,7 @@ export const useContentV2AdminApi_DeleteScreenshot_ByContentId_ByScreenshotId_v2
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, screenshotId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, screenshotId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { contentId:string, screenshotId:string }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -491,7 +571,7 @@ export const useContentV2AdminApi_PatchUploadUrl_ByChannelId_ByContentId_v2 = (
     options?: Omit<UseMutationOptions<GenerateContentUploadUrlResponse, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, contentId:string, data: GenerateContentUploadUrlRequest }>, 'mutationKey'>,
     callback?: (data: GenerateContentUploadUrlResponse) => void
   ): UseMutationResult<GenerateContentUploadUrlResponse, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, contentId:string, data: GenerateContentUploadUrlRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelId:string, contentId:string, data: GenerateContentUploadUrlRequest }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -514,7 +594,7 @@ export const useContentV2AdminApi_PatchFileLocation_ByChannelId_ByContentId_v2 =
     options?: Omit<UseMutationOptions<UpdateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, contentId:string, data: UpdateFileLocationRequest }>, 'mutationKey'>,
     callback?: (data: UpdateContentResponseV2) => void
   ): UseMutationResult<UpdateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, contentId:string, data: UpdateFileLocationRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelId:string, contentId:string, data: UpdateFileLocationRequest }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -537,7 +617,7 @@ export const useContentV2AdminApi_DeleteContent_ByUserId_ByChannelId_ByContentId
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, contentId:string }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -560,7 +640,7 @@ export const useContentV2AdminApi_PatchContent_ByUserId_ByChannelId_ByContentId_
     options?: Omit<UseMutationOptions<UpdateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: AdminUpdateContentRequestV2 }>, 'mutationKey'>,
     callback?: (data: UpdateContentResponseV2) => void
   ): UseMutationResult<UpdateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: AdminUpdateContentRequestV2 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: AdminUpdateContentRequestV2 }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -583,7 +663,7 @@ export const useContentV2AdminApi_PatchUploadUrl_ByUserId_ByChannelId_ByContentI
     options?: Omit<UseMutationOptions<GenerateContentUploadUrlResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: GenerateContentUploadUrlRequest }>, 'mutationKey'>,
     callback?: (data: GenerateContentUploadUrlResponse) => void
   ): UseMutationResult<GenerateContentUploadUrlResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: GenerateContentUploadUrlRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: GenerateContentUploadUrlRequest }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -606,7 +686,7 @@ export const useContentV2AdminApi_DeleteContentSharecode_ByUserId_ByChannelId_By
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, shareCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, shareCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, shareCode:string }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -629,7 +709,7 @@ export const useContentV2AdminApi_PatchFileLocation_ByUserId_ByChannelId_ByConte
     options?: Omit<UseMutationOptions<UpdateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: UpdateFileLocationRequest }>, 'mutationKey'>,
     callback?: (data: UpdateContentResponseV2) => void
   ): UseMutationResult<UpdateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: UpdateFileLocationRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, contentId:string, data: UpdateFileLocationRequest }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -652,7 +732,7 @@ export const useContentV2AdminApi_UpdateContentS3Sharecode_ByUserId_ByChannelId_
     options?: Omit<UseMutationOptions<CreateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, shareCode:string, data: AdminUpdateContentRequestV2 }>, 'mutationKey'>,
     callback?: (data: CreateContentResponseV2) => void
   ): UseMutationResult<CreateContentResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, shareCode:string, data: AdminUpdateContentRequestV2 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, shareCode:string, data: AdminUpdateContentRequestV2 }) => {
       const response = 
             (await ContentV2AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

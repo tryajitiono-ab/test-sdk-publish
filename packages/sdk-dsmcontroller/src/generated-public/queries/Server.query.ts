@@ -40,13 +40,23 @@ ConfigSessiontimeout_ByPodName = 'Dsmcontroller.Server.ConfigSessiontimeout_ByPo
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Server.Servers, input]
+ * }
+ * ```
+ */
 export const useServerApi_GetServers = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {count: number, offset: number, region?: string | null} },
     options?: Omit<UseQueryOptions<ListServerResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListServerResponse>) => void
   ): UseQueryResult<ListServerResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServerApi_GetServers>[1]
@@ -72,7 +82,7 @@ export const useServerApi_CreateServerRegister = (
     options?: Omit<UseMutationOptions<Server, AxiosError<ApiError>, SdkSetConfigParam & { data: RegisterServerRequest }>, 'mutationKey'>,
     callback?: (data: Server) => void
   ): UseMutationResult<Server, AxiosError<ApiError>, SdkSetConfigParam & { data: RegisterServerRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: RegisterServerRequest }) => {
       const response = 
             (await ServerApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -95,7 +105,7 @@ export const useServerApi_CreateServerShutdown = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ShutdownServerRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ShutdownServerRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ShutdownServerRequest }) => {
       const response = 
             (await ServerApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -118,7 +128,7 @@ export const useServerApi_UpdateServerHeartbeat = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DsHeartbeatRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DsHeartbeatRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DsHeartbeatRequest }) => {
       const response = 
             (await ServerApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -136,13 +146,23 @@ export const useServerApi_UpdateServerHeartbeat = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Server.ServersCountDetailed, input]
+ * }
+ * ```
+ */
 export const useServerApi_GetServersCountDetailed = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {region?: string | null} },
     options?: Omit<UseQueryOptions<DetailedCountServerResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DetailedCountServerResponse>) => void
   ): UseQueryResult<DetailedCountServerResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServerApi_GetServersCountDetailed>[1]
@@ -168,7 +188,7 @@ export const useServerApi_CreateServerLocalRegister = (
     options?: Omit<UseMutationOptions<Server, AxiosError<ApiError>, SdkSetConfigParam & { data: RegisterLocalServerRequest }>, 'mutationKey'>,
     callback?: (data: Server) => void
   ): UseMutationResult<Server, AxiosError<ApiError>, SdkSetConfigParam & { data: RegisterLocalServerRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: RegisterLocalServerRequest }) => {
       const response = 
             (await ServerApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -191,7 +211,7 @@ export const useServerApi_CreateServerLocalDeregister = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DeregisterLocalServerRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DeregisterLocalServerRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DeregisterLocalServerRequest }) => {
       const response = 
             (await ServerApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -209,13 +229,23 @@ export const useServerApi_CreateServerLocalDeregister = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Server.Session_ByPodName, input]
+ * }
+ * ```
+ */
 export const useServerApi_GetSession_ByPodName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { podName:string },
     options?: Omit<UseQueryOptions<ServerSessionResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ServerSessionResponse>) => void
   ): UseQueryResult<ServerSessionResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServerApi_GetSession_ByPodName>[1]
@@ -236,13 +266,23 @@ export const useServerApi_GetSession_ByPodName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Server.ConfigSessiontimeout_ByPodName, input]
+ * }
+ * ```
+ */
 export const useServerApi_GetConfigSessiontimeout_ByPodName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { podName:string },
     options?: Omit<UseQueryOptions<ServerDeploymentConfigSessionTimeoutResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ServerDeploymentConfigSessionTimeoutResponse>) => void
   ): UseQueryResult<ServerDeploymentConfigSessionTimeoutResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServerApi_GetConfigSessiontimeout_ByPodName>[1]

@@ -23,13 +23,23 @@ export enum Key_UserStatisticCycleAdmin {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserStatisticCycleAdmin.StatCycleitems_ByUserId_ByCycleId, input]
+ * }
+ * ```
+ */
 export const useUserStatisticCycleAdminApi_GetStatCycleitems_ByUserId_ByCycleId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, cycleId:string,  queryParams?: {isPublic?: boolean | null, limit?: number, offset?: number, sortBy?: string | null, statCodes?: string | null} },
     options?: Omit<UseQueryOptions<UserStatCycleItemPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserStatCycleItemPagingSlicedResult>) => void
   ): UseQueryResult<UserStatCycleItemPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserStatisticCycleAdminApi_GetStatCycleitems_ByUserId_ByCycleId>[1]

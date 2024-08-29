@@ -30,7 +30,7 @@ export const useDlcAdminApi_UpdateDlcLink = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateDependencyLinkRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateDependencyLinkRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateDependencyLinkRequest }) => {
       const response = 
             (await DlcAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -48,13 +48,23 @@ export const useDlcAdminApi_UpdateDlcLink = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DlcAdmin.Link_ByBuildId, input]
+ * }
+ * ```
+ */
 export const useDlcAdminApi_GetLink_ByBuildId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { buildId:string },
     options?: Omit<UseQueryOptions<RetrieveDependencyLinkResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveDependencyLinkResponse>) => void
   ): UseQueryResult<RetrieveDependencyLinkResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDlcAdminApi_GetLink_ByBuildId>[1]

@@ -32,7 +32,7 @@ export const useUserVisibilityV3AdminApi_UpdateVisibility_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<GetUserVisibilityResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: SetUserVisibilityRequest }>, 'mutationKey'>,
     callback?: (data: GetUserVisibilityResponse) => void
   ): UseMutationResult<GetUserVisibilityResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: SetUserVisibilityRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: SetUserVisibilityRequest }) => {
       const response = 
             (await UserVisibilityV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -50,13 +50,23 @@ export const useUserVisibilityV3AdminApi_UpdateVisibility_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserVisibilityV3Admin.UsersHidden_ByLeaderboardCode_v3, input]
+ * }
+ * ```
+ */
 export const useUserVisibilityV3AdminApi_GetUsersHidden_ByLeaderboardCode_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetHiddenUserResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetHiddenUserResponse>) => void
   ): UseQueryResult<GetHiddenUserResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserVisibilityV3AdminApi_GetUsersHidden_ByLeaderboardCode_v3>[1]
@@ -77,13 +87,23 @@ export const useUserVisibilityV3AdminApi_GetUsersHidden_ByLeaderboardCode_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserVisibilityV3Admin.Visibility_ByLeaderboardCode_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUserVisibilityV3AdminApi_GetVisibility_ByLeaderboardCode_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string, userId:string },
     options?: Omit<UseQueryOptions<GetUserVisibilityResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUserVisibilityResponse>) => void
   ): UseQueryResult<GetUserVisibilityResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserVisibilityV3AdminApi_GetVisibility_ByLeaderboardCode_ByUserId_v3>[1]
@@ -109,7 +129,7 @@ export const useUserVisibilityV3AdminApi_UpdateVisibility_ByLeaderboardCode_ByUs
     options?: Omit<UseMutationOptions<GetUserVisibilityResponse, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, userId:string, data: SetUserVisibilityRequest }>, 'mutationKey'>,
     callback?: (data: GetUserVisibilityResponse) => void
   ): UseMutationResult<GetUserVisibilityResponse, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, userId:string, data: SetUserVisibilityRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { leaderboardCode:string, userId:string, data: SetUserVisibilityRequest }) => {
       const response = 
             (await UserVisibilityV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -26,13 +26,23 @@ Report = 'Reporting.ReportsAdmin.Report',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ReportsAdmin.Reports, input]
+ * }
+ * ```
+ */
 export const useReportsAdminApi_GetReports = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {category?: string | null, limit?: number, offset?: number, reportedUserId?: string | null, sortBy?: string | null} },
     options?: Omit<UseQueryOptions<ReportListResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ReportListResponse>) => void
   ): UseQueryResult<ReportListResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useReportsAdminApi_GetReports>[1]
@@ -58,7 +68,7 @@ export const useReportsAdminApi_CreateReport = (
     options?: Omit<UseMutationOptions<SubmitReportResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: SubmitReportRequest }>, 'mutationKey'>,
     callback?: (data: SubmitReportResponse) => void
   ): UseMutationResult<SubmitReportResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: SubmitReportRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: SubmitReportRequest }) => {
       const response = 
             (await ReportsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

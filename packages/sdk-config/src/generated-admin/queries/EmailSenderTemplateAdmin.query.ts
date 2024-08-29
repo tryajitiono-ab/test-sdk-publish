@@ -25,13 +25,23 @@ EmailtemplateEmailsender_ByAccount = 'Config.EmailSenderTemplateAdmin.Emailtempl
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EmailSenderTemplateAdmin.EmailtemplatesEmailsender_ByAccount, input]
+ * }
+ * ```
+ */
 export const useEmailSenderTemplateAdminApi_GetEmailtemplatesEmailsender_ByAccount = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { account:string },
     options?: Omit<UseQueryOptions<EmailTemplatePairArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EmailTemplatePairArray>) => void
   ): UseQueryResult<EmailTemplatePairArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEmailSenderTemplateAdminApi_GetEmailtemplatesEmailsender_ByAccount>[1]
@@ -57,7 +67,7 @@ export const useEmailSenderTemplateAdminApi_UpdateEmailtemplateEmailsender_ByAcc
     options?: Omit<UseMutationOptions<EmailTemplatePairArray, AxiosError<ApiError>, SdkSetConfigParam & { account:string, data: EmailTemplatePair[] }>, 'mutationKey'>,
     callback?: (data: EmailTemplatePairArray) => void
   ): UseMutationResult<EmailTemplatePairArray, AxiosError<ApiError>, SdkSetConfigParam & { account:string, data: EmailTemplatePair[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { account:string, data: EmailTemplatePair[] }) => {
       const response = 
             (await EmailSenderTemplateAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -80,7 +90,7 @@ export const useEmailSenderTemplateAdminApi_DeleteEmailtemplateEmailsender_ByAcc
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { account:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { account:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { account:string }) => {
       const response = 
             (await EmailSenderTemplateAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

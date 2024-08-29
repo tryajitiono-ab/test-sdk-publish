@@ -34,7 +34,7 @@ export const useModerationRuleAdminApi_CreateRule = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ModerationRuleRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ModerationRuleRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ModerationRuleRequest }) => {
       const response = 
             (await ModerationRuleAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -52,13 +52,23 @@ export const useModerationRuleAdminApi_CreateRule = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ModerationRuleAdmin.Rules, input]
+ * }
+ * ```
+ */
 export const useModerationRuleAdminApi_GetRules = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {category?: string | null, extensionCategory?: string | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<ModerationRulesList, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ModerationRulesList>) => void
   ): UseQueryResult<ModerationRulesList, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useModerationRuleAdminApi_GetRules>[1]
@@ -84,7 +94,7 @@ export const useModerationRuleAdminApi_DeleteRule_ByRuleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ruleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ruleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { ruleId:string }) => {
       const response = 
             (await ModerationRuleAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -107,7 +117,7 @@ export const useModerationRuleAdminApi_UpdateRule_ByRuleId = (
     options?: Omit<UseMutationOptions<ModerationRuleResponse, AxiosError<ApiError>, SdkSetConfigParam & { ruleId:string, data: ModerationRuleRequest }>, 'mutationKey'>,
     callback?: (data: ModerationRuleResponse) => void
   ): UseMutationResult<ModerationRuleResponse, AxiosError<ApiError>, SdkSetConfigParam & { ruleId:string, data: ModerationRuleRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { ruleId:string, data: ModerationRuleRequest }) => {
       const response = 
             (await ModerationRuleAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -125,13 +135,23 @@ export const useModerationRuleAdminApi_UpdateRule_ByRuleId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ModerationRuleAdmin.Rule_ByRuleId, input]
+ * }
+ * ```
+ */
 export const useModerationRuleAdminApi_GetRule_ByRuleId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { ruleId:string },
     options?: Omit<UseQueryOptions<ModerationRuleResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ModerationRuleResponse>) => void
   ): UseQueryResult<ModerationRuleResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useModerationRuleAdminApi_GetRule_ByRuleId>[1]
@@ -157,7 +177,7 @@ export const useModerationRuleAdminApi_UpdateStatus_ByRuleId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ruleId:string, data: ModerationRuleActiveRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ruleId:string, data: ModerationRuleActiveRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { ruleId:string, data: ModerationRuleActiveRequest }) => {
       const response = 
             (await ModerationRuleAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

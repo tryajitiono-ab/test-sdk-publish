@@ -34,13 +34,23 @@ Presigned_ByKey = 'Cloudsave.PublicGameBinaryRecord.Presigned_ByKey',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicGameBinaryRecord.Binaries, input]
+ * }
+ * ```
+ */
 export const usePublicGameBinaryRecordApi_GetBinaries = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, query?: string | null, tags?: string[]} },
     options?: Omit<UseQueryOptions<ListGameBinaryRecordsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListGameBinaryRecordsResponse>) => void
   ): UseQueryResult<ListGameBinaryRecordsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicGameBinaryRecordApi_GetBinaries>[1]
@@ -66,7 +76,7 @@ export const usePublicGameBinaryRecordApi_CreateBinary = (
     options?: Omit<UseMutationOptions<UploadBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicGameBinaryRecordCreate }>, 'mutationKey'>,
     callback?: (data: UploadBinaryRecordResponse) => void
   ): UseMutationResult<UploadBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicGameBinaryRecordCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PublicGameBinaryRecordCreate }) => {
       const response = 
             (await PublicGameBinaryRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -89,7 +99,7 @@ export const usePublicGameBinaryRecordApi_CreateBinaryBulk = (
     options?: Omit<UseMutationOptions<BulkGetGameBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkGetGameRecordRequest }>, 'mutationKey'>,
     callback?: (data: BulkGetGameBinaryRecordResponse) => void
   ): UseMutationResult<BulkGetGameBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkGetGameRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkGetGameRecordRequest }) => {
       const response = 
             (await PublicGameBinaryRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -112,7 +122,7 @@ export const usePublicGameBinaryRecordApi_DeleteBinary_ByKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string }) => {
       const response = 
             (await PublicGameBinaryRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -130,13 +140,23 @@ export const usePublicGameBinaryRecordApi_DeleteBinary_ByKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicGameBinaryRecord.Binary_ByKey, input]
+ * }
+ * ```
+ */
 export const usePublicGameBinaryRecordApi_GetBinary_ByKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { key:string },
     options?: Omit<UseQueryOptions<GameBinaryRecordResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GameBinaryRecordResponse>) => void
   ): UseQueryResult<GameBinaryRecordResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicGameBinaryRecordApi_GetBinary_ByKey>[1]
@@ -162,7 +182,7 @@ export const usePublicGameBinaryRecordApi_UpdateBinary_ByKey = (
     options?: Omit<UseMutationOptions<GameBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: BinaryRecordRequest }>, 'mutationKey'>,
     callback?: (data: GameBinaryRecordResponse) => void
   ): UseMutationResult<GameBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: BinaryRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string, data: BinaryRecordRequest }) => {
       const response = 
             (await PublicGameBinaryRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -185,7 +205,7 @@ export const usePublicGameBinaryRecordApi_CreatePresigned_ByKey = (
     options?: Omit<UseMutationOptions<UploadBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: UploadBinaryRecordRequest }>, 'mutationKey'>,
     callback?: (data: UploadBinaryRecordResponse) => void
   ): UseMutationResult<UploadBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: UploadBinaryRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string, data: UploadBinaryRecordRequest }) => {
       const response = 
             (await PublicGameBinaryRecordApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

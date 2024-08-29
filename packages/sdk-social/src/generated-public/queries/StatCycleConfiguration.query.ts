@@ -28,13 +28,23 @@ StatCycle_ByCycleId = 'Social.StatCycleConfiguration.StatCycle_ByCycleId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StatCycleConfiguration.StatCycles, input]
+ * }
+ * ```
+ */
 export const useStatCycleConfigurationApi_GetStatCycles = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {cycleType?: 'ANNUALLY' | 'DAILY' | 'MONTHLY' | 'SEASONAL' | 'WEEKLY', limit?: number, name?: string | null, offset?: number, sortBy?: string | null, status?: 'ACTIVE' | 'INIT' | 'STOPPED'} },
     options?: Omit<UseQueryOptions<StatCyclePagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StatCyclePagingSlicedResult>) => void
   ): UseQueryResult<StatCyclePagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStatCycleConfigurationApi_GetStatCycles>[1]
@@ -60,7 +70,7 @@ export const useStatCycleConfigurationApi_CreateStatCycleBulk = (
     options?: Omit<UseMutationOptions<BulkStatCycleResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkStatCycleRequest }>, 'mutationKey'>,
     callback?: (data: BulkStatCycleResult) => void
   ): UseMutationResult<BulkStatCycleResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkStatCycleRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkStatCycleRequest }) => {
       const response = 
             (await StatCycleConfigurationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -78,13 +88,23 @@ export const useStatCycleConfigurationApi_CreateStatCycleBulk = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_StatCycleConfiguration.StatCycle_ByCycleId, input]
+ * }
+ * ```
+ */
 export const useStatCycleConfigurationApi_GetStatCycle_ByCycleId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { cycleId:string },
     options?: Omit<UseQueryOptions<StatCycleInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StatCycleInfo>) => void
   ): UseQueryResult<StatCycleInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useStatCycleConfigurationApi_GetStatCycle_ByCycleId>[1]

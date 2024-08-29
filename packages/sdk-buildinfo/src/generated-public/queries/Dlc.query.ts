@@ -29,13 +29,23 @@ AppLatestByDlcAppId_ByDlcAppId = 'Buildinfo.Dlc.AppLatestByDlcAppId_ByDlcAppId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Dlc.Link_ByBuildId, input]
+ * }
+ * ```
+ */
 export const useDlcApi_GetLink_ByBuildId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { buildId:string },
     options?: Omit<UseQueryOptions<RetrieveDependencyLinkResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveDependencyLinkResponse>) => void
   ): UseQueryResult<RetrieveDependencyLinkResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDlcApi_GetLink_ByBuildId>[1]
@@ -56,13 +66,23 @@ export const useDlcApi_GetLink_ByBuildId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Dlc.Compatibility_ByBuildId, input]
+ * }
+ * ```
+ */
 export const useDlcApi_GetCompatibility_ByBuildId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { buildId:string },
     options?: Omit<UseQueryOptions<RetrieveDependencyCompatibilityResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveDependencyCompatibilityResponse>) => void
   ): UseQueryResult<RetrieveDependencyCompatibilityResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDlcApi_GetCompatibility_ByBuildId>[1]
@@ -83,13 +103,23 @@ export const useDlcApi_GetCompatibility_ByBuildId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Dlc.DlcLatestByGameAppId_ByAppId, input]
+ * }
+ * ```
+ */
 export const useDlcApi_GetDlcLatestByGameAppId_ByAppId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { appId:string },
     options?: Omit<UseQueryOptions<RetrieveLatestDlcResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveLatestDlcResponseArray>) => void
   ): UseQueryResult<RetrieveLatestDlcResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDlcApi_GetDlcLatestByGameAppId_ByAppId>[1]
@@ -110,13 +140,23 @@ export const useDlcApi_GetDlcLatestByGameAppId_ByAppId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Dlc.AppLatestByDlcAppId_ByDlcAppId, input]
+ * }
+ * ```
+ */
 export const useDlcApi_GetAppLatestByDlcAppId_ByDlcAppId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { dlcAppId:string },
     options?: Omit<UseQueryOptions<RetrieveBaseGameResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveBaseGameResponseArray>) => void
   ): UseQueryResult<RetrieveBaseGameResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDlcApi_GetAppLatestByDlcAppId_ByDlcAppId>[1]

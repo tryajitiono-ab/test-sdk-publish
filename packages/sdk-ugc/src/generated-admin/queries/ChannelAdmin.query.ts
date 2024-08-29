@@ -30,13 +30,23 @@ Channel_ByUserId_ByChannelId = 'Ugc.ChannelAdmin.Channel_ByUserId_ByChannelId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ChannelAdmin.Channels, input]
+ * }
+ * ```
+ */
 export const useChannelAdminApi_GetChannels = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedGetChannelResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedGetChannelResponse>) => void
   ): UseQueryResult<PaginatedGetChannelResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useChannelAdminApi_GetChannels>[1]
@@ -62,7 +72,7 @@ export const useChannelAdminApi_CreateChannel = (
     options?: Omit<UseMutationOptions<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ChannelRequest }>, 'mutationKey'>,
     callback?: (data: ChannelResponse) => void
   ): UseMutationResult<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ChannelRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ChannelRequest }) => {
       const response = 
             (await ChannelAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -85,7 +95,7 @@ export const useChannelAdminApi_DeleteChannel_ByChannelId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelId:string }) => {
       const response = 
             (await ChannelAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -108,7 +118,7 @@ export const useChannelAdminApi_UpdateChannel_ByChannelId = (
     options?: Omit<UseMutationOptions<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, data: UpdateChannelRequest }>, 'mutationKey'>,
     callback?: (data: ChannelResponse) => void
   ): UseMutationResult<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { channelId:string, data: UpdateChannelRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { channelId:string, data: UpdateChannelRequest }) => {
       const response = 
             (await ChannelAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -126,13 +136,23 @@ export const useChannelAdminApi_UpdateChannel_ByChannelId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ChannelAdmin.Channels_ByUserId, input]
+ * }
+ * ```
+ */
 export const useChannelAdminApi_GetChannels_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, name?: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedGetChannelResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedGetChannelResponse>) => void
   ): UseQueryResult<PaginatedGetChannelResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useChannelAdminApi_GetChannels_ByUserId>[1]
@@ -158,7 +178,7 @@ export const useChannelAdminApi_DeleteChannel_ByUserId_ByChannelId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string }) => {
       const response = 
             (await ChannelAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -181,7 +201,7 @@ export const useChannelAdminApi_UpdateChannel_ByUserId_ByChannelId = (
     options?: Omit<UseMutationOptions<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, data: UpdateChannelRequest }>, 'mutationKey'>,
     callback?: (data: ChannelResponse) => void
   ): UseMutationResult<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, data: UpdateChannelRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, data: UpdateChannelRequest }) => {
       const response = 
             (await ChannelAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

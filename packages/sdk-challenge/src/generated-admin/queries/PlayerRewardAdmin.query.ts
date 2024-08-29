@@ -34,7 +34,7 @@ export const usePlayerRewardAdminApi_CreateUserRewardClaim = (
     options?: Omit<UseMutationOptions<ClaimUsersRewardsResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: ClaimUsersRewardsRequest[] }>, 'mutationKey'>,
     callback?: (data: ClaimUsersRewardsResponseArray) => void
   ): UseMutationResult<ClaimUsersRewardsResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: ClaimUsersRewardsRequest[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ClaimUsersRewardsRequest[] }) => {
       const response = 
             (await PlayerRewardAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -52,13 +52,23 @@ export const usePlayerRewardAdminApi_CreateUserRewardClaim = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerRewardAdmin.Rewards_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePlayerRewardAdminApi_GetRewards_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number, sortBy?: string | null, status?: 'CLAIMED' | 'UNCLAIMED'} },
     options?: Omit<UseQueryOptions<ListUserRewardsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListUserRewardsResponse>) => void
   ): UseQueryResult<ListUserRewardsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerRewardAdminApi_GetRewards_ByUserId>[1]
@@ -84,7 +94,7 @@ export const usePlayerRewardAdminApi_CreateRewardClaim_ByUserId = (
     options?: Omit<UseMutationOptions<UserRewardArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: ClaimUserRewardsReq }>, 'mutationKey'>,
     callback?: (data: UserRewardArray) => void
   ): UseMutationResult<UserRewardArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: ClaimUserRewardsReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: ClaimUserRewardsReq }) => {
       const response = 
             (await PlayerRewardAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

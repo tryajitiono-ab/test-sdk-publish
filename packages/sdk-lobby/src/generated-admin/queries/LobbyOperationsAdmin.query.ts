@@ -30,7 +30,7 @@ export const useLobbyOperationsAdminApi_UpdateAttributeParty_ByPartyId = (
     options?: Omit<UseMutationOptions<PartyData, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: PartyPutCustomAttributesRequest }>, 'mutationKey'>,
     callback?: (data: PartyData) => void
   ): UseMutationResult<PartyData, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, data: PartyPutCustomAttributesRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string, data: PartyPutCustomAttributesRequest }) => {
       const response = 
             (await LobbyOperationsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -53,7 +53,7 @@ export const useLobbyOperationsAdminApi_UpdateJoinParty_ByPartyId_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId:string, userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { partyId:string, userId:string }) => {
       const response = 
             (await LobbyOperationsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

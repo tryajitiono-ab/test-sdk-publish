@@ -150,13 +150,23 @@ LinkRestriction_ByUserId_ByPlatformId_v3 = 'Iam.UsersAdmin.LinkRestriction_ByUse
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.UsersMe_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetUsersMe_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<UserResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserResponseV3>) => void
   ): UseQueryResult<UserResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetUsersMe_v3>[1]
@@ -177,13 +187,23 @@ export const useUsersAdminApi_GetUsersMe_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.Users_v2, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetUsers_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {platformId: string | null, after?: string | null, before?: string | null, displayName?: string | null, limit?: number, loginId?: string | null, platformUserId?: string | null, roleId?: string | null, userId?: string | null} },
     options?: Omit<UseQueryOptions<SearchUsersByPlatformIdResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SearchUsersByPlatformIdResponse>) => void
   ): UseQueryResult<SearchUsersByPlatformIdResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetUsers_v2>[1]
@@ -204,13 +224,23 @@ export const useUsersAdminApi_GetUsers_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.Users_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetUsers_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {emailAddress?: string | null} },
     options?: Omit<UseQueryOptions<UserResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserResponseV3>) => void
   ): UseQueryResult<UserResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetUsers_v3>[1]
@@ -236,7 +266,7 @@ export const useUsersAdminApi_UpdateUser_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UsersUpdateRequestV3 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UsersUpdateRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UsersUpdateRequestV3 }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -254,13 +284,23 @@ export const useUsersAdminApi_UpdateUser_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.Admins_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetAdmins_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {after?: string | null, before?: string | null, endDate?: string | null, limit?: number, query?: string | null, roleId?: string | null, startDate?: string | null} },
     options?: Omit<UseQueryOptions<GetUsersResponseWithPaginationV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUsersResponseWithPaginationV3>) => void
   ): UseQueryResult<GetUsersResponseWithPaginationV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetAdmins_v3>[1]
@@ -281,13 +321,23 @@ export const useUsersAdminApi_GetAdmins_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.UserBan_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_FetchUserBan_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: GetBulkUserBansRequest, queryParams?: {activeOnly?: boolean | null, banType?: string | null} },
     options?: Omit<UseQueryOptions<GetUserBanV3Response, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUserBanV3Response>) => void
   ): UseQueryResult<GetUserBanV3Response, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_FetchUserBan_v3>[1]
@@ -313,7 +363,7 @@ export const useUsersAdminApi_CreateUserBulk_v3 = (
     options?: Omit<UseMutationOptions<ListUserInformationResult, AxiosError<ApiError>, SdkSetConfigParam & { data: UserIDsRequest }>, 'mutationKey'>,
     callback?: (data: ListUserInformationResult) => void
   ): UseMutationResult<ListUserInformationResult, AxiosError<ApiError>, SdkSetConfigParam & { data: UserIDsRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UserIDsRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -336,7 +386,7 @@ export const useUsersAdminApi_CreateUserInvite_v3 = (
     options?: Omit<UseMutationOptions<InviteUserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: InviteUserRequestV3 }>, 'mutationKey'>,
     callback?: (data: InviteUserResponseV3) => void
   ): UseMutationResult<InviteUserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: InviteUserRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: InviteUserRequestV3 }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -354,13 +404,23 @@ export const useUsersAdminApi_CreateUserInvite_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.UsersSearch_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetUsersSearch_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {by?: string | null, endDate?: string | null, includeTotal?: boolean | null, limit?: number, offset?: number, platformBy?: string | null, platformId?: string | null, query?: string | null, roleIds?: string | null, skipLoginQueue?: boolean | null, startDate?: string | null, testAccount?: boolean | null} },
     options?: Omit<UseQueryOptions<SearchUsersResponseWithPaginationV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SearchUsersResponseWithPaginationV3>) => void
   ): UseQueryResult<SearchUsersResponseWithPaginationV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetUsersSearch_v3>[1]
@@ -381,13 +441,23 @@ export const useUsersAdminApi_GetUsersSearch_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.User_ByUserId_v2, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetUser_ByUserId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<UserResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserResponse>) => void
   ): UseQueryResult<UserResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetUser_ByUserId_v2>[1]
@@ -413,7 +483,7 @@ export const useUsersAdminApi_PatchUser_ByUserId_v2 = (
     options?: Omit<UseMutationOptions<UserResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserUpdateRequest }>, 'mutationKey'>,
     callback?: (data: UserResponse) => void
   ): UseMutationResult<UserResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserUpdateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserUpdateRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -431,13 +501,23 @@ export const useUsersAdminApi_PatchUser_ByUserId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.User_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetUser_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<UserResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserResponseV3>) => void
   ): UseQueryResult<UserResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetUser_ByUserId_v3>[1]
@@ -463,7 +543,7 @@ export const useUsersAdminApi_PatchUser_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserUpdateRequestV3 }>, 'mutationKey'>,
     callback?: (data: UserResponseV3) => void
   ): UseMutationResult<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserUpdateRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserUpdateRequestV3 }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -481,13 +561,23 @@ export const useUsersAdminApi_PatchUser_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.Agerestrictions_v2, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetAgerestrictions_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<AgeRestrictionResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AgeRestrictionResponse>) => void
   ): UseQueryResult<AgeRestrictionResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetAgerestrictions_v2>[1]
@@ -513,7 +603,7 @@ export const useUsersAdminApi_PatchAgerestriction_v2 = (
     options?: Omit<UseMutationOptions<AgeRestrictionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AgeRestrictionRequest }>, 'mutationKey'>,
     callback?: (data: AgeRestrictionResponse) => void
   ): UseMutationResult<AgeRestrictionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AgeRestrictionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: AgeRestrictionRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -531,13 +621,23 @@ export const useUsersAdminApi_PatchAgerestriction_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.Agerestrictions_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetAgerestrictions_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<AgeRestrictionResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AgeRestrictionResponseV3>) => void
   ): UseQueryResult<AgeRestrictionResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetAgerestrictions_v3>[1]
@@ -563,7 +663,7 @@ export const useUsersAdminApi_PatchAgerestriction_v3 = (
     options?: Omit<UseMutationOptions<AgeRestrictionResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: AgeRestrictionRequestV3 }>, 'mutationKey'>,
     callback?: (data: AgeRestrictionResponseV3) => void
   ): UseMutationResult<AgeRestrictionResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: AgeRestrictionRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: AgeRestrictionRequestV3 }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -581,13 +681,23 @@ export const useUsersAdminApi_PatchAgerestriction_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.UserSearchBulk_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_FetchUserSearchBulk_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: ListEmailAddressRequest },
     options?: Omit<UseQueryOptions<ListUserResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListUserResponseV3>) => void
   ): UseQueryResult<ListUserResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_FetchUserSearchBulk_v3>[1]
@@ -613,7 +723,7 @@ export const useUsersAdminApi_CreateBan_ByUserId_v2 = (
     options?: Omit<UseMutationOptions<UserBanResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BanCreateRequest }>, 'mutationKey'>,
     callback?: (data: UserBanResponse) => void
   ): UseMutationResult<UserBanResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BanCreateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: BanCreateRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -631,13 +741,23 @@ export const useUsersAdminApi_CreateBan_ByUserId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.Bans_ByUserId_v2, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetBans_ByUserId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {activeOnly?: boolean | null} },
     options?: Omit<UseQueryOptions<UserBanResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserBanResponseArray>) => void
   ): UseQueryResult<UserBanResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetBans_ByUserId_v2>[1]
@@ -658,13 +778,23 @@ export const useUsersAdminApi_GetBans_ByUserId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.Bans_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetBans_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {activeOnly?: boolean | null, after?: string | null, before?: string | null, limit?: number} },
     options?: Omit<UseQueryOptions<GetUserBanV3Response, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUserBanV3Response>) => void
   ): UseQueryResult<GetUserBanV3Response, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetBans_ByUserId_v3>[1]
@@ -690,7 +820,7 @@ export const useUsersAdminApi_CreateBan_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<UserBanResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BanCreateRequest }>, 'mutationKey'>,
     callback?: (data: UserBanResponseV3) => void
   ): UseMutationResult<UserBanResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BanCreateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: BanCreateRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -708,13 +838,23 @@ export const useUsersAdminApi_CreateBan_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.UsersLinkhistories_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetUsersLinkhistories_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {platformId: string | null, limit?: number, offset?: number, platformUserId?: string | null} },
     options?: Omit<UseQueryOptions<LinkingHistoryResponseWithPaginationV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<LinkingHistoryResponseWithPaginationV3>) => void
   ): UseQueryResult<LinkingHistoryResponseWithPaginationV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetUsersLinkhistories_v3>[1]
@@ -740,7 +880,7 @@ export const useUsersAdminApi_UpdateRole_ByUserId_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: string[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: string[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: string[] }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -763,7 +903,7 @@ export const useUsersAdminApi_UpdateRole_ByUserId_ByNS_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: string[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: string[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: string[] }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -781,13 +921,23 @@ export const useUsersAdminApi_UpdateRole_ByUserId_ByNS_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.Users_ByRoleId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetUsers_ByRoleId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string,  queryParams?: {after?: number, before?: number, limit?: number} },
     options?: Omit<UseQueryOptions<GetUsersResponseWithPaginationV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUsersResponseWithPaginationV3>) => void
   ): UseQueryResult<GetUsersResponseWithPaginationV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetUsers_ByRoleId_v3>[1]
@@ -808,13 +958,23 @@ export const useUsersAdminApi_GetUsers_ByRoleId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.Codes_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetCodes_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<VerificationCodeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<VerificationCodeResponse>) => void
   ): UseQueryResult<VerificationCodeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetCodes_ByUserId_v3>[1]
@@ -840,7 +1000,7 @@ export const useUsersAdminApi_DeleteRole_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: string[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: string[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: string[] }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -863,7 +1023,7 @@ export const useUsersAdminApi_PatchRole_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: NamespaceRoleRequest[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: NamespaceRoleRequest[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: NamespaceRoleRequest[] }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -881,13 +1041,23 @@ export const useUsersAdminApi_PatchRole_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.UserBulkPlatform_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_FetchUserBulkPlatform_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: UserIDsRequest },
     options?: Omit<UseQueryOptions<ListBulkUserPlatformsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListBulkUserPlatformsResponse>) => void
   ): UseQueryResult<ListBulkUserPlatformsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_FetchUserBulkPlatform_v3>[1]
@@ -913,7 +1083,7 @@ export const useUsersAdminApi_UpdateEnable_ByUserId_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -936,7 +1106,7 @@ export const useUsersAdminApi_PatchStatus_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UpdateUserStatusRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UpdateUserStatusRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UpdateUserStatusRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -959,7 +1129,7 @@ export const useUsersAdminApi_UpdateVerify_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -982,7 +1152,7 @@ export const useUsersAdminApi_UpdateDisable_ByUserId_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: DisableUserRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: DisableUserRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: DisableUserRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1005,7 +1175,7 @@ export const useUsersAdminApi_PatchCountry_ByCountryCode_v2 = (
     options?: Omit<UseMutationOptions<Country, AxiosError<ApiError>, SdkSetConfigParam & { countryCode:string, data: CountryAgeRestrictionRequest }>, 'mutationKey'>,
     callback?: (data: Country) => void
   ): UseMutationResult<Country, AxiosError<ApiError>, SdkSetConfigParam & { countryCode:string, data: CountryAgeRestrictionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { countryCode:string, data: CountryAgeRestrictionRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1028,7 +1198,7 @@ export const useUsersAdminApi_UpdatePassword_ByUserId_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserPasswordUpdateRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserPasswordUpdateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserPasswordUpdateRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1051,7 +1221,7 @@ export const useUsersAdminApi_UpdatePassword_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserPasswordUpdateV3Request }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserPasswordUpdateV3Request }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserPasswordUpdateV3Request }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1069,13 +1239,23 @@ export const useUsersAdminApi_UpdatePassword_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.UsersPlatformsJustice_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetUsersPlatformsJustice_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<ListUsersWithPlatformAccountsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListUsersWithPlatformAccountsResponse>) => void
   ): UseQueryResult<ListUsersWithPlatformAccountsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetUsersPlatformsJustice_v3>[1]
@@ -1096,13 +1276,23 @@ export const useUsersAdminApi_GetUsersPlatformsJustice_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.Platforms_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetPlatforms_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {after?: string | null, before?: string | null, limit?: number, platformId?: string | null, targetNamespace?: string | null} },
     options?: Omit<UseQueryOptions<UserLinkedPlatformsResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserLinkedPlatformsResponseV3>) => void
   ): UseQueryResult<UserLinkedPlatformsResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetPlatforms_ByUserId_v3>[1]
@@ -1123,13 +1313,23 @@ export const useUsersAdminApi_GetPlatforms_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.CountriesAgerestrictions_v2, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetCountriesAgerestrictions_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<CountryAgeRestrictionArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CountryAgeRestrictionArray>) => void
   ): UseQueryResult<CountryAgeRestrictionArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetCountriesAgerestrictions_v2>[1]
@@ -1150,13 +1350,23 @@ export const useUsersAdminApi_GetCountriesAgerestrictions_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.AgerestrictionsCountries_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetAgerestrictionsCountries_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<CountryV3ResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CountryV3ResponseArray>) => void
   ): UseQueryResult<CountryV3ResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetAgerestrictionsCountries_v3>[1]
@@ -1182,7 +1392,7 @@ export const useUsersAdminApi_UpdateCodeVerify_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserVerificationRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserVerificationRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserVerificationRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1205,7 +1415,7 @@ export const useUsersAdminApi_DeleteInformation_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1228,7 +1438,7 @@ export const useUsersAdminApi_DeletePermission_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: PermissionDeleteRequest[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: PermissionDeleteRequest[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: PermissionDeleteRequest[] }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1251,7 +1461,7 @@ export const useUsersAdminApi_CreatePermission_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: Permissions }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: Permissions }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: Permissions }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1274,7 +1484,7 @@ export const useUsersAdminApi_UpdatePermission_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: Permissions }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: Permissions }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: Permissions }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1297,7 +1507,7 @@ export const useUsersAdminApi_PatchBan_ByUserId_ByBanId_v3 = (
     options?: Omit<UseMutationOptions<UserBanResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, banId:string, data: BanUpdateRequest }>, 'mutationKey'>,
     callback?: (data: UserBanResponseV3) => void
   ): UseMutationResult<UserBanResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, banId:string, data: BanUpdateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, banId:string, data: BanUpdateRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1315,13 +1525,23 @@ export const useUsersAdminApi_PatchBan_ByUserId_ByBanId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.BansSummary_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetBansSummary_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<GetUserBanSummaryV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUserBanSummaryV3>) => void
   ): UseQueryResult<GetUserBanSummaryV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetBansSummary_ByUserId_v3>[1]
@@ -1347,7 +1567,7 @@ export const useUsersAdminApi_UpdateCodeRequest_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: SendVerificationCodeRequestV3 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: SendVerificationCodeRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: SendVerificationCodeRequestV3 }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1365,13 +1585,23 @@ export const useUsersAdminApi_UpdateCodeRequest_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.User_ByPlatformId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_FetchUser_ByPlatformId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { platformId:string, data: PlatformUserIdRequest, queryParams?: {rawPID?: boolean | null, rawPUID?: boolean | null} },
     options?: Omit<UseQueryOptions<UserPlatforms, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserPlatforms>) => void
   ): UseQueryResult<UserPlatforms, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_FetchUser_ByPlatformId_v3>[1]
@@ -1397,7 +1627,7 @@ export const useUsersAdminApi_UpdatePlatformLink_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: LinkPlatformAccountRequest, queryParams?: {skipConflict?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: LinkPlatformAccountRequest, queryParams?: {skipConflict?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: LinkPlatformAccountRequest, queryParams?: {skipConflict?: boolean | null} }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1420,7 +1650,7 @@ export const useUsersAdminApi_DeleteRole_ByUserId_ByRoleId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, roleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, roleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, roleId:string }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1443,7 +1673,7 @@ export const useUsersAdminApi_UpdateRole_ByUserId_ByRoleId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, roleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, roleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, roleId:string }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1461,13 +1691,23 @@ export const useUsersAdminApi_UpdateRole_ByUserId_ByRoleId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.DeletionStatus_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetDeletionStatus_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<UserDeletionStatusResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserDeletionStatusResponse>) => void
   ): UseQueryResult<UserDeletionStatusResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetDeletionStatus_ByUserId_v3>[1]
@@ -1493,7 +1733,7 @@ export const useUsersAdminApi_PatchDeletionStatus_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UpdateUserDeletionStatusRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UpdateUserDeletionStatusRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UpdateUserDeletionStatusRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1511,13 +1751,23 @@ export const useUsersAdminApi_PatchDeletionStatus_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.LoginsHistories_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetLoginsHistories_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {after?: number, before?: number, limit?: number} },
     options?: Omit<UseQueryOptions<LoginHistoriesResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<LoginHistoriesResponse>) => void
   ): UseQueryResult<LoginHistoriesResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetLoginsHistories_ByUserId_v3>[1]
@@ -1543,7 +1793,7 @@ export const useUsersAdminApi_PatchTrustlyIdentity_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserIdentityUpdateRequestV3 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserIdentityUpdateRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserIdentityUpdateRequestV3 }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1561,13 +1811,23 @@ export const useUsersAdminApi_PatchTrustlyIdentity_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.DistinctPlatforms_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetDistinctPlatforms_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<DistinctPlatformResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DistinctPlatformResponseV3>) => void
   ): UseQueryResult<DistinctPlatformResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetDistinctPlatforms_ByUserId_v3>[1]
@@ -1588,13 +1848,23 @@ export const useUsersAdminApi_GetDistinctPlatforms_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.PlatformsJustice_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetPlatformsJustice_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<GetUserMappingArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUserMappingArray>) => void
   ): UseQueryResult<GetUserMappingArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetPlatformsJustice_ByUserId_v3>[1]
@@ -1615,13 +1885,23 @@ export const useUsersAdminApi_GetPlatformsJustice_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.PlatformsDistinct_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetPlatformsDistinct_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {status?: string | null} },
     options?: Omit<UseQueryOptions<DistinctPlatformResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DistinctPlatformResponseV3>) => void
   ): UseQueryResult<DistinctPlatformResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetPlatformsDistinct_ByUserId_v3>[1]
@@ -1647,7 +1927,7 @@ export const useUsersAdminApi_UpdateHeadlesCodeVerify_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UpgradeHeadlessAccountWithVerificationCodeRequestV3 }>, 'mutationKey'>,
     callback?: (data: UserResponseV3) => void
   ): UseMutationResult<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UpgradeHeadlessAccountWithVerificationCodeRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UpgradeHeadlessAccountWithVerificationCodeRequestV3 }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1670,7 +1950,7 @@ export const useUsersAdminApi_DeletePlatform_ByUserId_ByPlatformId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string, data: UnlinkUserPlatformRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string, data: UnlinkUserPlatformRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, platformId:string, data: UnlinkUserPlatformRequest }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1693,7 +1973,7 @@ export const useUsersAdminApi_PatchAgerestrictionCountry_ByCountryCode_v3 = (
     options?: Omit<UseMutationOptions<CountryV3Response, AxiosError<ApiError>, SdkSetConfigParam & { countryCode:string, data: CountryAgeRestrictionV3Request }>, 'mutationKey'>,
     callback?: (data: CountryV3Response) => void
   ): UseMutationResult<CountryV3Response, AxiosError<ApiError>, SdkSetConfigParam & { countryCode:string, data: CountryAgeRestrictionV3Request }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { countryCode:string, data: CountryAgeRestrictionV3Request }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1711,13 +1991,23 @@ export const useUsersAdminApi_PatchAgerestrictionCountry_ByCountryCode_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.PlatformsLinkHistories_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetPlatformsLinkHistories_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {platformId: string | null} },
     options?: Omit<UseQueryOptions<UserPlatformLinkHistories, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserPlatformLinkHistories>) => void
   ): UseQueryResult<UserPlatformLinkHistories, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetPlatformsLinkHistories_ByUserId_v3>[1]
@@ -1743,7 +2033,7 @@ export const useUsersAdminApi_DeleteAll_ByUserId_ByPlatformId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, platformId:string }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1766,7 +2056,7 @@ export const useUsersAdminApi_DeleteLink_ByUserId_ByPlatformId_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string, data: {platform_namespace?: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string, data: {platform_namespace?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, platformId:string, data: {platform_namespace?: string | null} }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1789,7 +2079,7 @@ export const useUsersAdminApi_PostLink_ByUserId_ByPlatformId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string, data: {ticket: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string, data: {ticket: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, platformId:string, data: {ticket: string | null} }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1807,13 +2097,23 @@ export const useUsersAdminApi_PostLink_ByUserId_ByPlatformId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.User_ByPlatformId_ByPlatformUserId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetUser_ByPlatformId_ByPlatformUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { platformId:string, platformUserId:string },
     options?: Omit<UseQueryOptions<UserResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserResponseV3>) => void
   ): UseQueryResult<UserResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetUser_ByPlatformId_ByPlatformUserId_v3>[1]
@@ -1839,7 +2139,7 @@ export const useUsersAdminApi_DeletePermission_ByUserId_ByResource_ByAction_v3 =
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, resource:string, action:number }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, resource:string, action:number }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, resource:string, action:number }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1857,13 +2157,23 @@ export const useUsersAdminApi_DeletePermission_ByUserId_ByResource_ByAction_v3 =
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.Metadata_ByUserId_ByPlatformId_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetMetadata_ByUserId_ByPlatformId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, platformId:string,  queryParams?: {crossNamespace?: boolean | null} },
     options?: Omit<UseQueryOptions<UserPlatformMetadata, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserPlatformMetadata>) => void
   ): UseQueryResult<UserPlatformMetadata, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetMetadata_ByUserId_ByPlatformId_v3>[1]
@@ -1889,7 +2199,7 @@ export const useUsersAdminApi_PostLinkStatu_ByUserId_ByPlatformId_v3 = (
     options?: Omit<UseMutationOptions<TokenThirdPartyLinkStatusResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string, data: {platformToken: string | null} }>, 'mutationKey'>,
     callback?: (data: TokenThirdPartyLinkStatusResponse) => void
   ): UseMutationResult<TokenThirdPartyLinkStatusResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string, data: {platformToken: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, platformId:string, data: {platformToken: string | null} }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1907,13 +2217,23 @@ export const useUsersAdminApi_PostLinkStatu_ByUserId_ByPlatformId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UsersAdmin.PlatformJustice_ByUserId_ByTargetNamespace_v3, input]
+ * }
+ * ```
+ */
 export const useUsersAdminApi_GetPlatformJustice_ByUserId_ByTargetNamespace_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, targetNamespace:string },
     options?: Omit<UseQueryOptions<GetUserMappingV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUserMappingV3>) => void
   ): UseQueryResult<GetUserMappingV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUsersAdminApi_GetPlatformJustice_ByUserId_ByTargetNamespace_v3>[1]
@@ -1939,7 +2259,7 @@ export const useUsersAdminApi_CreatePlatformJustice_ByUserId_ByTargetNamespace_v
     options?: Omit<UseMutationOptions<CreateJusticeUserResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, targetNamespace:string }>, 'mutationKey'>,
     callback?: (data: CreateJusticeUserResponse) => void
   ): UseMutationResult<CreateJusticeUserResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, targetNamespace:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, targetNamespace:string }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1962,7 +2282,7 @@ export const useUsersAdminApi_DeleteLinkHistory_ByUserId_ByPlatformId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, platformId:string }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -1985,7 +2305,7 @@ export const useUsersAdminApi_DeleteLinkRestriction_ByUserId_ByPlatformId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, platformId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, platformId:string }) => {
       const response = 
             (await UsersAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

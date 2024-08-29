@@ -8,27 +8,21 @@
  */
 /* eslint-disable camelcase */
 // @ts-ignore -> ts-expect-error TS6133
-import { AccelbyteSDK, ApiUtils, SdkSetConfigParam } from '@accelbyte/sdk'
-import { AxiosDefaults, AxiosResponse, HeadersDefaults } from 'axios'
+import { AccelByteSDK, ApiUtils, Network, SdkSetConfigParam } from '@accelbyte/sdk'
+import { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { LateDiffRequest } from '../generated-definitions/LateDiffRequest.js'
 import { PingResponse } from '../generated-definitions/PingResponse.js'
 import { DiffCalculation$ } from './endpoints/DiffCalculation$.js'
 
 
-export function DiffCalculationApi(sdk: AccelbyteSDK, args?: SdkSetConfigParam) {
+export function DiffCalculationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
   
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosConfig.request, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
-  const axiosInstance = sdkAssembly.axiosIntance
-
-  axiosInstance.defaults = {...axiosInstance.defaults, requestConfig } as Omit<AxiosDefaults<any>, 'headers'> & {
-    headers: HeadersDefaults & {
-      [key: string]: any
-    }
-  }
+  const axiosInstance = Network.create(requestConfig)
   
   for (const interceptor of interceptors) {
     if(interceptor.type === 'request') {

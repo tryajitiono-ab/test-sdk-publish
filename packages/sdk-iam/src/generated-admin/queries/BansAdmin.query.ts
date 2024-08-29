@@ -33,13 +33,23 @@ BanUserDisabled_v3 = 'Iam.BansAdmin.BanUserDisabled_v3',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_BansAdmin.Bans_v3, input]
+ * }
+ * ```
+ */
 export const useBansAdminApi_GetBans_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<BansV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BansV3>) => void
   ): UseQueryResult<BansV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useBansAdminApi_GetBans_v3>[1]
@@ -60,13 +70,23 @@ export const useBansAdminApi_GetBans_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_BansAdmin.BansReasons_v3, input]
+ * }
+ * ```
+ */
 export const useBansAdminApi_GetBansReasons_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<BanReasonsV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BanReasonsV3>) => void
   ): UseQueryResult<BanReasonsV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useBansAdminApi_GetBansReasons_v3>[1]
@@ -87,13 +107,23 @@ export const useBansAdminApi_GetBansReasons_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_BansAdmin.Bantypes_v3, input]
+ * }
+ * ```
+ */
 export const useBansAdminApi_GetBantypes_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<BansV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BansV3>) => void
   ): UseQueryResult<BansV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useBansAdminApi_GetBantypes_v3>[1]
@@ -114,13 +144,23 @@ export const useBansAdminApi_GetBantypes_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_BansAdmin.BansUsers_v3, input]
+ * }
+ * ```
+ */
 export const useBansAdminApi_GetBansUsers_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {activeOnly?: boolean | null, banType?: string | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetUserBanV3Response, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUserBanV3Response>) => void
   ): UseQueryResult<GetUserBanV3Response, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useBansAdminApi_GetBansUsers_v3>[1]
@@ -146,7 +186,7 @@ export const useBansAdminApi_CreateBanUser_v3 = (
     options?: Omit<UseMutationOptions<ListBulkUserBanResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkBanCreateRequestV3 }>, 'mutationKey'>,
     callback?: (data: ListBulkUserBanResponseV3) => void
   ): UseMutationResult<ListBulkUserBanResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkBanCreateRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkBanCreateRequestV3 }) => {
       const response = 
             (await BansAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -169,7 +209,7 @@ export const useBansAdminApi_PatchBanUserDisabled_v3 = (
     options?: Omit<UseMutationOptions<ListBulkUserBanResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUnbanCreateRequestV3 }>, 'mutationKey'>,
     callback?: (data: ListBulkUserBanResponseV3) => void
   ): UseMutationResult<ListBulkUserBanResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUnbanCreateRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkUnbanCreateRequestV3 }) => {
       const response = 
             (await BansAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

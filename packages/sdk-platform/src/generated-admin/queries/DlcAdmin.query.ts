@@ -36,7 +36,7 @@ export const useDlcAdminApi_DeleteDlcConfigItem = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await DlcAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -54,13 +54,23 @@ export const useDlcAdminApi_DeleteDlcConfigItem = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DlcAdmin.DlcConfigItem, input]
+ * }
+ * ```
+ */
 export const useDlcAdminApi_GetDlcConfigItem = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<DlcItemConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DlcItemConfigInfo>) => void
   ): UseQueryResult<DlcItemConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDlcAdminApi_GetDlcConfigItem>[1]
@@ -86,7 +96,7 @@ export const useDlcAdminApi_UpdateDlcConfigItem = (
     options?: Omit<UseMutationOptions<DlcItemConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: DlcItemConfigUpdate }>, 'mutationKey'>,
     callback?: (data: DlcItemConfigInfo) => void
   ): UseMutationResult<DlcItemConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: DlcItemConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: DlcItemConfigUpdate }) => {
       const response = 
             (await DlcAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -104,13 +114,23 @@ export const useDlcAdminApi_UpdateDlcConfigItem = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DlcAdmin.Dlc_ByUserId, input]
+ * }
+ * ```
+ */
 export const useDlcAdminApi_GetDlc_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {type: 'EPICGAMES' | 'OCULUS' | 'PSN' | 'STEAM' | 'XBOX'} },
     options?: Omit<UseQueryOptions<UserDlc, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserDlc>) => void
   ): UseQueryResult<UserDlc, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDlcAdminApi_GetDlc_ByUserId>[1]
@@ -136,7 +156,7 @@ export const useDlcAdminApi_DeleteDlcConfigPlatformMap = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await DlcAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -154,13 +174,23 @@ export const useDlcAdminApi_DeleteDlcConfigPlatformMap = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DlcAdmin.DlcConfigPlatformMap, input]
+ * }
+ * ```
+ */
 export const useDlcAdminApi_GetDlcConfigPlatformMap = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<PlatformDlcConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlatformDlcConfigInfo>) => void
   ): UseQueryResult<PlatformDlcConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDlcAdminApi_GetDlcConfigPlatformMap>[1]
@@ -186,7 +216,7 @@ export const useDlcAdminApi_UpdateDlcConfigPlatformMap = (
     options?: Omit<UseMutationOptions<PlatformDlcConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PlatformDlcConfigUpdate }>, 'mutationKey'>,
     callback?: (data: PlatformDlcConfigInfo) => void
   ): UseMutationResult<PlatformDlcConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PlatformDlcConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PlatformDlcConfigUpdate }) => {
       const response = 
             (await DlcAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -204,13 +234,23 @@ export const useDlcAdminApi_UpdateDlcConfigPlatformMap = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DlcAdmin.DlcRecords_ByUserId, input]
+ * }
+ * ```
+ */
 export const useDlcAdminApi_GetDlcRecords_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {includeAllNamespaces?: boolean | null, status?: 'FULFILLED' | 'REVOKED' | 'REVOKE_FAILED', type?: 'EPICGAMES' | 'OCULUS' | 'PSN' | 'STEAM' | 'XBOX'} },
     options?: Omit<UseQueryOptions<UserDlcRecordArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserDlcRecordArray>) => void
   ): UseQueryResult<UserDlcRecordArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDlcAdminApi_GetDlcRecords_ByUserId>[1]

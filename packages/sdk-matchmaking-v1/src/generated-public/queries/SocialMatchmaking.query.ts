@@ -29,7 +29,7 @@ export const useSocialMatchmakingApi_PatchSocialPlaytimeWeight = (
     options?: Omit<UseMutationOptions<UpdatePlayerPlaytimeWeightResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: UpdatePlayTimeWeightRequest }>, 'mutationKey'>,
     callback?: (data: UpdatePlayerPlaytimeWeightResponse) => void
   ): UseMutationResult<UpdatePlayerPlaytimeWeightResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: UpdatePlayTimeWeightRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UpdatePlayTimeWeightRequest }) => {
       const response = 
             (await SocialMatchmakingApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

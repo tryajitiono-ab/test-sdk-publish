@@ -26,13 +26,23 @@ Status_ByUserId_ByGroupId_v2 = 'Groups.GroupMemberAdmin.Status_ByUserId_ByGroupI
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupMemberAdmin.Groups_ByUserId_v2, input]
+ * }
+ * ```
+ */
 export const useGroupMemberAdminApi_GetGroups_ByUserId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetGroupMemberListResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetGroupMemberListResponseV1>) => void
   ): UseQueryResult<GetGroupMemberListResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupMemberAdminApi_GetGroups_ByUserId_v2>[1]
@@ -53,13 +63,23 @@ export const useGroupMemberAdminApi_GetGroups_ByUserId_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupMemberAdmin.Members_ByGroupId, input]
+ * }
+ * ```
+ */
 export const useGroupMemberAdminApi_GetMembers_ByGroupId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { groupId:string,  queryParams?: {limit?: number, offset?: number, order?: string | null} },
     options?: Omit<UseQueryOptions<GetGroupMemberListResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetGroupMemberListResponseV1>) => void
   ): UseQueryResult<GetGroupMemberListResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupMemberAdminApi_GetMembers_ByGroupId>[1]
@@ -80,13 +100,23 @@ export const useGroupMemberAdminApi_GetMembers_ByGroupId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupMemberAdmin.Status_ByUserId_ByGroupId_v2, input]
+ * }
+ * ```
+ */
 export const useGroupMemberAdminApi_GetStatus_ByUserId_ByGroupId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, groupId:string },
     options?: Omit<UseQueryOptions<GetUserGroupInformationResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUserGroupInformationResponseV1>) => void
   ): UseQueryResult<GetUserGroupInformationResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupMemberAdminApi_GetStatus_ByUserId_ByGroupId_v2>[1]

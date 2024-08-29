@@ -26,13 +26,23 @@ Leaderboards_v2 = 'Leaderboard.LeaderboardConfiguration.Leaderboards_v2',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardConfiguration.Leaderboards, input]
+ * }
+ * ```
+ */
 export const useLeaderboardConfigurationApi_GetLeaderboards = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {isArchived?: boolean | null, isDeleted?: boolean | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetAllLeaderboardConfigsPublicResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetAllLeaderboardConfigsPublicResp>) => void
   ): UseQueryResult<GetAllLeaderboardConfigsPublicResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardConfigurationApi_GetLeaderboards>[1]
@@ -58,7 +68,7 @@ export const useLeaderboardConfigurationApi_CreateLeaderboard = (
     options?: Omit<UseMutationOptions<LeaderboardConfigReq, AxiosError<ApiError>, SdkSetConfigParam & { data: LeaderboardConfigReq }>, 'mutationKey'>,
     callback?: (data: LeaderboardConfigReq) => void
   ): UseMutationResult<LeaderboardConfigReq, AxiosError<ApiError>, SdkSetConfigParam & { data: LeaderboardConfigReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: LeaderboardConfigReq }) => {
       const response = 
             (await LeaderboardConfigurationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -76,13 +86,23 @@ export const useLeaderboardConfigurationApi_CreateLeaderboard = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardConfiguration.Leaderboards_v2, input]
+ * }
+ * ```
+ */
 export const useLeaderboardConfigurationApi_GetLeaderboards_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetAllLeaderboardConfigsPublicResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetAllLeaderboardConfigsPublicResp>) => void
   ): UseQueryResult<GetAllLeaderboardConfigsPublicResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardConfigurationApi_GetLeaderboards_v2>[1]

@@ -34,7 +34,7 @@ export const usePlayerApi_CreatePlayerUserMeBlock = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BlockPlayerRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BlockPlayerRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BlockPlayerRequest }) => {
       const response = 
             (await PlayerApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -52,13 +52,23 @@ export const usePlayerApi_CreatePlayerUserMeBlock = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Player.PlayerUsersMeBlocked, input]
+ * }
+ * ```
+ */
 export const usePlayerApi_GetPlayerUsersMeBlocked = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<GetAllPlayerBlockedUsersResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetAllPlayerBlockedUsersResponse>) => void
   ): UseQueryResult<GetAllPlayerBlockedUsersResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerApi_GetPlayerUsersMeBlocked>[1]
@@ -84,7 +94,7 @@ export const usePlayerApi_CreatePlayerUserMeUnblock = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UnblockPlayerRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UnblockPlayerRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UnblockPlayerRequest }) => {
       const response = 
             (await PlayerApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -102,13 +112,23 @@ export const usePlayerApi_CreatePlayerUserMeUnblock = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Player.PlayerUsersMeBlockedBy, input]
+ * }
+ * ```
+ */
 export const usePlayerApi_GetPlayerUsersMeBlockedBy = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<GetAllPlayerBlockedByUsersResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetAllPlayerBlockedByUsersResponse>) => void
   ): UseQueryResult<GetAllPlayerBlockedByUsersResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerApi_GetPlayerUsersMeBlockedBy>[1]

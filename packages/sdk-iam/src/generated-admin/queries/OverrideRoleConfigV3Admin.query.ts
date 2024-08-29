@@ -30,13 +30,23 @@ Permissions_ByRoleId_v3 = 'Iam.OverrideRoleConfigV3Admin.Permissions_ByRoleId_v3
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OverrideRoleConfigV3Admin.Roleoverride_v3, input]
+ * }
+ * ```
+ */
 export const useOverrideRoleConfigV3AdminApi_GetRoleoverride_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {identity: 'GAME_ADMIN' | 'USER' | 'VIEW_ONLY'} },
     options?: Omit<UseQueryOptions<RoleOverrideResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleOverrideResponse>) => void
   ): UseQueryResult<RoleOverrideResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOverrideRoleConfigV3AdminApi_GetRoleoverride_v3>[1]
@@ -62,7 +72,7 @@ export const useOverrideRoleConfigV3AdminApi_PatchRoleoverride_v3 = (
     options?: Omit<UseMutationOptions<RoleOverrideResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleOverrideUpdateRequest, queryParams: {identity: 'GAME_ADMIN' | 'USER' | 'VIEW_ONLY'} }>, 'mutationKey'>,
     callback?: (data: RoleOverrideResponse) => void
   ): UseMutationResult<RoleOverrideResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleOverrideUpdateRequest, queryParams: {identity: 'GAME_ADMIN' | 'USER' | 'VIEW_ONLY'} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: RoleOverrideUpdateRequest, queryParams: {identity: 'GAME_ADMIN' | 'USER' | 'VIEW_ONLY'} }) => {
       const response = 
             (await OverrideRoleConfigV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -80,13 +90,23 @@ export const useOverrideRoleConfigV3AdminApi_PatchRoleoverride_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OverrideRoleConfigV3Admin.RoleoverrideSource_v3, input]
+ * }
+ * ```
+ */
 export const useOverrideRoleConfigV3AdminApi_GetRoleoverrideSource_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {identity: 'GAME_ADMIN' | 'USER' | 'VIEW_ONLY'} },
     options?: Omit<UseQueryOptions<RoleOverrideSourceResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleOverrideSourceResponse>) => void
   ): UseQueryResult<RoleOverrideSourceResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOverrideRoleConfigV3AdminApi_GetRoleoverrideSource_v3>[1]
@@ -112,7 +132,7 @@ export const useOverrideRoleConfigV3AdminApi_PatchRoleoverrideStatus_v3 = (
     options?: Omit<UseMutationOptions<RoleOverrideResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleOverrideStatsUpdateRequest, queryParams: {identity: 'GAME_ADMIN' | 'USER' | 'VIEW_ONLY'} }>, 'mutationKey'>,
     callback?: (data: RoleOverrideResponse) => void
   ): UseMutationResult<RoleOverrideResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleOverrideStatsUpdateRequest, queryParams: {identity: 'GAME_ADMIN' | 'USER' | 'VIEW_ONLY'} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: RoleOverrideStatsUpdateRequest, queryParams: {identity: 'GAME_ADMIN' | 'USER' | 'VIEW_ONLY'} }) => {
       const response = 
             (await OverrideRoleConfigV3AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -130,13 +150,23 @@ export const useOverrideRoleConfigV3AdminApi_PatchRoleoverrideStatus_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OverrideRoleConfigV3Admin.Permissions_ByRoleId_v3, input]
+ * }
+ * ```
+ */
 export const useOverrideRoleConfigV3AdminApi_GetPermissions_ByRoleId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string },
     options?: Omit<UseQueryOptions<RolePermissionResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RolePermissionResponseV3>) => void
   ): UseQueryResult<RolePermissionResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOverrideRoleConfigV3AdminApi_GetPermissions_ByRoleId_v3>[1]

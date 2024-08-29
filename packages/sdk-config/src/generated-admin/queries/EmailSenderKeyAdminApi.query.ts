@@ -29,13 +29,23 @@ LinkedsendersApikeysEmailsender_ByAccount = 'Config.EmailSenderKeyAdminApi.Linke
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EmailSenderKeyAdminApi.EmailsenderApikeysAccounts, input]
+ * }
+ * ```
+ */
 export const useEmailSenderApiKeyAdminApi_GetEmailsenderApikeysAccounts = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<EmailSenderApiKeyResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EmailSenderApiKeyResponseArray>) => void
   ): UseQueryResult<EmailSenderApiKeyResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEmailSenderApiKeyAdminApi_GetEmailsenderApikeysAccounts>[1]
@@ -61,7 +71,7 @@ export const useEmailSenderApiKeyAdminApi_CreateEmailsenderApikeyAccount = (
     options?: Omit<UseMutationOptions<EmailSenderApiKeyResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateEmailSenderApiKeyRequest }>, 'mutationKey'>,
     callback?: (data: EmailSenderApiKeyResponse) => void
   ): UseMutationResult<EmailSenderApiKeyResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateEmailSenderApiKeyRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateEmailSenderApiKeyRequest }) => {
       const response = 
             (await EmailSenderApiKeyAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -84,7 +94,7 @@ export const useEmailSenderApiKeyAdminApi_DeleteEmailsenderApikeyAccount_ByAccou
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { account:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { account:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { account:string }) => {
       const response = 
             (await EmailSenderApiKeyAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -102,13 +112,23 @@ export const useEmailSenderApiKeyAdminApi_DeleteEmailsenderApikeyAccount_ByAccou
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EmailSenderKeyAdminApi.LinkedsendersApikeysEmailsender_ByAccount, input]
+ * }
+ * ```
+ */
 export const useEmailSenderApiKeyAdminApi_GetLinkedsendersApikeysEmailsender_ByAccount = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { account:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<LinkedEmailSendersResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<LinkedEmailSendersResponse>) => void
   ): UseQueryResult<LinkedEmailSendersResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEmailSenderApiKeyAdminApi_GetLinkedsendersApikeysEmailsender_ByAccount>[1]

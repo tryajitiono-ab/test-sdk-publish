@@ -25,13 +25,23 @@ Leaderboard_ByLeaderboardCode_v3 = 'Leaderboard.LeaderboardConfigurationV3.Leade
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardConfigurationV3.Leaderboards_v3, input]
+ * }
+ * ```
+ */
 export const useLeaderboardConfigurationV3Api_GetLeaderboards_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {isDeleted?: boolean | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetAllLeaderboardConfigsPublicRespV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetAllLeaderboardConfigsPublicRespV3>) => void
   ): UseQueryResult<GetAllLeaderboardConfigsPublicRespV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardConfigurationV3Api_GetLeaderboards_v3>[1]
@@ -52,13 +62,23 @@ export const useLeaderboardConfigurationV3Api_GetLeaderboards_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardConfigurationV3.Leaderboard_ByLeaderboardCode_v3, input]
+ * }
+ * ```
+ */
 export const useLeaderboardConfigurationV3Api_GetLeaderboard_ByLeaderboardCode_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string },
     options?: Omit<UseQueryOptions<GetLeaderboardConfigPublicRespV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetLeaderboardConfigPublicRespV3>) => void
   ): UseQueryResult<GetLeaderboardConfigPublicRespV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardConfigurationV3Api_GetLeaderboard_ByLeaderboardCode_v3>[1]

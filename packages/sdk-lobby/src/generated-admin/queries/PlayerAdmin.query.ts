@@ -40,13 +40,23 @@ AttributePlayer_ByUserId_ByAttribute = 'Lobby.PlayerAdmin.AttributePlayer_ByUser
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerAdmin.PlayerCcu, input]
+ * }
+ * ```
+ */
 export const usePlayerAdminApi_GetPlayerCcu = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<GetLobbyCcuResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetLobbyCcuResponse>) => void
   ): UseQueryResult<GetLobbyCcuResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerAdminApi_GetPlayerCcu>[1]
@@ -67,13 +77,23 @@ export const usePlayerAdminApi_GetPlayerCcu = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerAdmin.PlayerUserBulkBlocked, input]
+ * }
+ * ```
+ */
 export const usePlayerAdminApi_FetchPlayerUserBulkBlocked = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { data: GetBulkAllPlayerBlockedUsersRequest },
     options?: Omit<UseQueryOptions<GetBulkAllPlayerBlockedUsersResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetBulkAllPlayerBlockedUsersResponse>) => void
   ): UseQueryResult<GetBulkAllPlayerBlockedUsersResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerAdminApi_FetchPlayerUserBulkBlocked>[1]
@@ -94,13 +114,23 @@ export const usePlayerAdminApi_FetchPlayerUserBulkBlocked = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerAdmin.BlockedPlayer_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePlayerAdminApi_GetBlockedPlayer_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<GetAllPlayerBlockedUsersResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetAllPlayerBlockedUsersResponse>) => void
   ): UseQueryResult<GetAllPlayerBlockedUsersResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerAdminApi_GetBlockedPlayer_ByUserId>[1]
@@ -121,13 +151,23 @@ export const usePlayerAdminApi_GetBlockedPlayer_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerAdmin.AttributesPlayer_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePlayerAdminApi_GetAttributesPlayer_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<GetAllPlayerSessionAttributeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetAllPlayerSessionAttributeResponse>) => void
   ): UseQueryResult<GetAllPlayerSessionAttributeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerAdminApi_GetAttributesPlayer_ByUserId>[1]
@@ -153,7 +193,7 @@ export const usePlayerAdminApi_UpdateAttributePlayer_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: SetPlayerSessionAttributeRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: SetPlayerSessionAttributeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: SetPlayerSessionAttributeRequest }) => {
       const response = 
             (await PlayerAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -171,13 +211,23 @@ export const usePlayerAdminApi_UpdateAttributePlayer_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerAdmin.BlockedByPlayer_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePlayerAdminApi_GetBlockedByPlayer_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<GetAllPlayerBlockedByUsersResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetAllPlayerBlockedByUsersResponse>) => void
   ): UseQueryResult<GetAllPlayerBlockedByUsersResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerAdminApi_GetBlockedByPlayer_ByUserId>[1]
@@ -203,7 +253,7 @@ export const usePlayerAdminApi_CreateBulkBlockPlayer_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: ListBlockedPlayerRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: ListBlockedPlayerRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: ListBlockedPlayerRequest }) => {
       const response = 
             (await PlayerAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -226,7 +276,7 @@ export const usePlayerAdminApi_DeleteBulkUnblockPlayer_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: ListUnblockPlayerRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: ListUnblockPlayerRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: ListUnblockPlayerRequest }) => {
       const response = 
             (await PlayerAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -244,13 +294,23 @@ export const usePlayerAdminApi_DeleteBulkUnblockPlayer_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerAdmin.AttributePlayer_ByUserId_ByAttribute, input]
+ * }
+ * ```
+ */
 export const usePlayerAdminApi_GetAttributePlayer_ByUserId_ByAttribute = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, attribute:string },
     options?: Omit<UseQueryOptions<GetPlayerSessionAttributeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetPlayerSessionAttributeResponse>) => void
   ): UseQueryResult<GetPlayerSessionAttributeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePlayerAdminApi_GetAttributePlayer_ByUserId_ByAttribute>[1]

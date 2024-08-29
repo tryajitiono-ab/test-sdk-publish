@@ -30,7 +30,7 @@ export const usePluginsAdminApi_DeletePluginAssignment = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await PluginsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -48,13 +48,23 @@ export const usePluginsAdminApi_DeletePluginAssignment = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PluginsAdmin.PluginsAssignment, input]
+ * }
+ * ```
+ */
 export const usePluginsAdminApi_GetPluginsAssignment = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<PluginAssignmentResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PluginAssignmentResponse>) => void
   ): UseQueryResult<PluginAssignmentResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePluginsAdminApi_GetPluginsAssignment>[1]
@@ -80,7 +90,7 @@ export const usePluginsAdminApi_CreatePluginAssignment = (
     options?: Omit<UseMutationOptions<PluginAssignmentResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: PluginAssignmentRequest }>, 'mutationKey'>,
     callback?: (data: PluginAssignmentResponse) => void
   ): UseMutationResult<PluginAssignmentResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: PluginAssignmentRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PluginAssignmentRequest }) => {
       const response = 
             (await PluginsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -103,7 +113,7 @@ export const usePluginsAdminApi_UpdatePluginAssignment = (
     options?: Omit<UseMutationOptions<PluginAssignmentResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: PluginAssignmentRequest }>, 'mutationKey'>,
     callback?: (data: PluginAssignmentResponse) => void
   ): UseMutationResult<PluginAssignmentResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: PluginAssignmentRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PluginAssignmentRequest }) => {
       const response = 
             (await PluginsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

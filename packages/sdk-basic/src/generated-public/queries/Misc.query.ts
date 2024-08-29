@@ -27,13 +27,23 @@ MiscTimezones = 'Basic.Misc.MiscTimezones',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Misc.MiscTime, input]
+ * }
+ * ```
+ */
 export const useMiscApi_GetMiscTime = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<RetrieveTimeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveTimeResponse>) => void
   ): UseQueryResult<RetrieveTimeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMiscApi_GetMiscTime>[1]
@@ -54,13 +64,23 @@ export const useMiscApi_GetMiscTime = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Misc.MiscCountries, input]
+ * }
+ * ```
+ */
 export const useMiscApi_GetMiscCountries = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {lang?: string | null} },
     options?: Omit<UseQueryOptions<CountryObjectArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CountryObjectArray>) => void
   ): UseQueryResult<CountryObjectArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMiscApi_GetMiscCountries>[1]
@@ -81,13 +101,23 @@ export const useMiscApi_GetMiscCountries = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Misc.MiscLanguages, input]
+ * }
+ * ```
+ */
 export const useMiscApi_GetMiscLanguages = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMiscApi_GetMiscLanguages>[1]
@@ -108,13 +138,23 @@ export const useMiscApi_GetMiscLanguages = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Misc.MiscTimezones, input]
+ * }
+ * ```
+ */
 export const useMiscApi_GetMiscTimezones = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMiscApi_GetMiscTimezones>[1]

@@ -47,13 +47,23 @@ UserMeProfilePrivateCustomAttribute = 'Basic.UserProfile.UserMeProfilePrivateCus
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserProfile.ProfilesPublic, input]
+ * }
+ * ```
+ */
 export const useUserProfileApi_GetProfilesPublic = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {userIds: string | null} },
     options?: Omit<UseQueryOptions<UserProfilePublicInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserProfilePublicInfoArray>) => void
   ): UseQueryResult<UserProfilePublicInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserProfileApi_GetProfilesPublic>[1]
@@ -79,7 +89,7 @@ export const useUserProfileApi_CreateProfilePublic = (
     options?: Omit<UseMutationOptions<UserProfilePublicInfoArray, AxiosError<ApiError>, SdkSetConfigParam & { data: UserProfileBulkRequest }>, 'mutationKey'>,
     callback?: (data: UserProfilePublicInfoArray) => void
   ): UseMutationResult<UserProfilePublicInfoArray, AxiosError<ApiError>, SdkSetConfigParam & { data: UserProfileBulkRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UserProfileBulkRequest }) => {
       const response = 
             (await UserProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -97,13 +107,23 @@ export const useUserProfileApi_CreateProfilePublic = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserProfile.UsersMeProfiles, input]
+ * }
+ * ```
+ */
 export const useUserProfileApi_GetUsersMeProfiles = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<UserProfilePrivateInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserProfilePrivateInfo>) => void
   ): UseQueryResult<UserProfilePrivateInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserProfileApi_GetUsersMeProfiles>[1]
@@ -129,7 +149,7 @@ export const useUserProfileApi_CreateUserMeProfile = (
     options?: Omit<UseMutationOptions<UserProfilePrivateInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: UserProfilePrivateCreate }>, 'mutationKey'>,
     callback?: (data: UserProfilePrivateInfo) => void
   ): UseMutationResult<UserProfilePrivateInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: UserProfilePrivateCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UserProfilePrivateCreate }) => {
       const response = 
             (await UserProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -152,7 +172,7 @@ export const useUserProfileApi_UpdateUserMeProfile = (
     options?: Omit<UseMutationOptions<UserProfilePrivateInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: UserProfileUpdate }>, 'mutationKey'>,
     callback?: (data: UserProfilePrivateInfo) => void
   ): UseMutationResult<UserProfilePrivateInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: UserProfileUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UserProfileUpdate }) => {
       const response = 
             (await UserProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -170,13 +190,23 @@ export const useUserProfileApi_UpdateUserMeProfile = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserProfile.Profiles_ByUserId, input]
+ * }
+ * ```
+ */
 export const useUserProfileApi_GetProfiles_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<UserProfileInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserProfileInfo>) => void
   ): UseQueryResult<UserProfileInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserProfileApi_GetProfiles_ByUserId>[1]
@@ -202,7 +232,7 @@ export const useUserProfileApi_CreateProfile_ByUserId = (
     options?: Omit<UseMutationOptions<UserProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserProfileCreate }>, 'mutationKey'>,
     callback?: (data: UserProfileInfo) => void
   ): UseMutationResult<UserProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserProfileCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserProfileCreate }) => {
       const response = 
             (await UserProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -225,7 +255,7 @@ export const useUserProfileApi_UpdateProfile_ByUserId = (
     options?: Omit<UseMutationOptions<UserProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserProfileUpdate }>, 'mutationKey'>,
     callback?: (data: UserProfileInfo) => void
   ): UseMutationResult<UserProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserProfileUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserProfileUpdate }) => {
       const response = 
             (await UserProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -243,13 +273,23 @@ export const useUserProfileApi_UpdateProfile_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserProfile.UsersMeProfilesZipCode, input]
+ * }
+ * ```
+ */
 export const useUserProfileApi_GetUsersMeProfilesZipCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<UserZipCode, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserZipCode>) => void
   ): UseQueryResult<UserZipCode, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserProfileApi_GetUsersMeProfilesZipCode>[1]
@@ -275,7 +315,7 @@ export const useUserProfileApi_PatchUserMeProfileZipCode = (
     options?: Omit<UseMutationOptions<UserZipCode, AxiosError<ApiError>, SdkSetConfigParam & { data: UserZipCodeUpdate }>, 'mutationKey'>,
     callback?: (data: UserZipCode) => void
   ): UseMutationResult<UserZipCode, AxiosError<ApiError>, SdkSetConfigParam & { data: UserZipCodeUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UserZipCodeUpdate }) => {
       const response = 
             (await UserProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -293,13 +333,23 @@ export const useUserProfileApi_PatchUserMeProfileZipCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserProfile.ProfilesPublicByPublicId, input]
+ * }
+ * ```
+ */
 export const useUserProfileApi_GetProfilesPublicByPublicId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {publicId: string | null} },
     options?: Omit<UseQueryOptions<UserProfilePublicInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserProfilePublicInfo>) => void
   ): UseQueryResult<UserProfilePublicInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserProfileApi_GetProfilesPublicByPublicId>[1]
@@ -320,13 +370,23 @@ export const useUserProfileApi_GetProfilesPublicByPublicId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserProfile.ProfilesPublic_ByUserId, input]
+ * }
+ * ```
+ */
 export const useUserProfileApi_GetProfilesPublic_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<UserProfilePublicInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserProfilePublicInfo>) => void
   ): UseQueryResult<UserProfilePublicInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserProfileApi_GetProfilesPublic_ByUserId>[1]
@@ -352,7 +412,7 @@ export const useUserProfileApi_PatchProfileStatus_ByUserId = (
     options?: Omit<UseMutationOptions<UserProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserProfileStatusUpdate }>, 'mutationKey'>,
     callback?: (data: UserProfileInfo) => void
   ): UseMutationResult<UserProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserProfileStatusUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserProfileStatusUpdate }) => {
       const response = 
             (await UserProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -370,13 +430,23 @@ export const useUserProfileApi_PatchProfileStatus_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserProfile.ProfilesCustomAttributes_ByUserId, input]
+ * }
+ * ```
+ */
 export const useUserProfileApi_GetProfilesCustomAttributes_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserProfileApi_GetProfilesCustomAttributes_ByUserId>[1]
@@ -402,7 +472,7 @@ export const useUserProfileApi_UpdateProfileCustomAttribute_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: any }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: any }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: any }) => {
       const response = 
             (await UserProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -420,13 +490,23 @@ export const useUserProfileApi_UpdateProfileCustomAttribute_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserProfile.UsersMeProfilesPrivateCustomAttributes, input]
+ * }
+ * ```
+ */
 export const useUserProfileApi_GetUsersMeProfilesPrivateCustomAttributes = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserProfileApi_GetUsersMeProfilesPrivateCustomAttributes>[1]
@@ -452,7 +532,7 @@ export const useUserProfileApi_UpdateUserMeProfilePrivateCustomAttribute = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: any }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: any }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: any }) => {
       const response = 
             (await UserProfileApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

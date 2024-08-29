@@ -27,13 +27,23 @@ GenerateS2_ByUserId_ByRequestDate = 'Gdpr.DataRetrievalS2S.GenerateS2_ByUserId_B
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DataRetrievalS2S.S2SRequestsFinished, input]
+ * }
+ * ```
+ */
 export const useDataRetrievalS2SApi_GetS2SRequestsFinished = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {end: string | null, start: string | null} },
     options?: Omit<UseQueryOptions<ListFinishedDataRequests, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListFinishedDataRequests>) => void
   ): UseQueryResult<ListFinishedDataRequests, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDataRetrievalS2SApi_GetS2SRequestsFinished>[1]
@@ -59,7 +69,7 @@ export const useDataRetrievalS2SApi_CreateRequestS2_ByUserId = (
     options?: Omit<UseMutationOptions<S2SDataRetrievalResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: S2SDataRetrievalResponse) => void
   ): UseMutationResult<S2SDataRetrievalResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await DataRetrievalS2SApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -77,13 +87,23 @@ export const useDataRetrievalS2SApi_CreateRequestS2_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DataRetrievalS2S.GenerateS2_ByUserId_ByRequestDate, input]
+ * }
+ * ```
+ */
 export const useDataRetrievalS2SApi_FetchGenerateS2_ByUserId_ByRequestDate = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, requestDate:string },
     options?: Omit<UseQueryOptions<S2SUserDataUrl, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<S2SUserDataUrl>) => void
   ): UseQueryResult<S2SUserDataUrl, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDataRetrievalS2SApi_FetchGenerateS2_ByUserId_ByRequestDate>[1]

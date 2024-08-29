@@ -25,13 +25,23 @@ ReasonGroups = 'Reporting.PublicReasons.ReasonGroups',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicReasons.Reasons, input]
+ * }
+ * ```
+ */
 export const usePublicReasonsApi_GetReasons = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {group?: string | null, limit?: number, offset?: number, title?: string | null} },
     options?: Omit<UseQueryOptions<PublicReasonListResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PublicReasonListResponse>) => void
   ): UseQueryResult<PublicReasonListResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicReasonsApi_GetReasons>[1]
@@ -52,13 +62,23 @@ export const usePublicReasonsApi_GetReasons = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicReasons.ReasonGroups, input]
+ * }
+ * ```
+ */
 export const usePublicReasonsApi_GetReasonGroups = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<ReasonGroupListResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ReasonGroupListResponse>) => void
   ): UseQueryResult<ReasonGroupListResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicReasonsApi_GetReasonGroups>[1]

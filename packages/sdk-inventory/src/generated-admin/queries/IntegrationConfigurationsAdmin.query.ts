@@ -30,13 +30,23 @@ Status_ByIntegrationConfigurationId = 'Inventory.IntegrationConfigurationsAdmin.
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_IntegrationConfigurationsAdmin.IntegrationConfigurations, input]
+ * }
+ * ```
+ */
 export const useIntegrationConfigurationsAdminApi_GetIntegrationConfigurations = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, sortBy?: 'createdAt' | 'createdAt:asc' | 'createdAt:desc'} },
     options?: Omit<UseQueryOptions<ListIntegrationConfigurationsResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListIntegrationConfigurationsResp>) => void
   ): UseQueryResult<ListIntegrationConfigurationsResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useIntegrationConfigurationsAdminApi_GetIntegrationConfigurations>[1]
@@ -62,7 +72,7 @@ export const useIntegrationConfigurationsAdminApi_CreateIntegrationConfiguration
     options?: Omit<UseMutationOptions<IntegrationConfigurationResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateIntegrationConfigurationReq }>, 'mutationKey'>,
     callback?: (data: IntegrationConfigurationResp) => void
   ): UseMutationResult<IntegrationConfigurationResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateIntegrationConfigurationReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateIntegrationConfigurationReq }) => {
       const response = 
             (await IntegrationConfigurationsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -85,7 +95,7 @@ export const useIntegrationConfigurationsAdminApi_UpdateIntegrationConfiguration
     options?: Omit<UseMutationOptions<IntegrationConfigurationResp, AxiosError<ApiError>, SdkSetConfigParam & { integrationConfigurationId:string, data: UpdateIntegrationConfigurationReq }>, 'mutationKey'>,
     callback?: (data: IntegrationConfigurationResp) => void
   ): UseMutationResult<IntegrationConfigurationResp, AxiosError<ApiError>, SdkSetConfigParam & { integrationConfigurationId:string, data: UpdateIntegrationConfigurationReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { integrationConfigurationId:string, data: UpdateIntegrationConfigurationReq }) => {
       const response = 
             (await IntegrationConfigurationsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -108,7 +118,7 @@ export const useIntegrationConfigurationsAdminApi_UpdateStatus_ByIntegrationConf
     options?: Omit<UseMutationOptions<IntegrationConfigurationResp, AxiosError<ApiError>, SdkSetConfigParam & { integrationConfigurationId:string, data: UpdateStatusIntegrationConfigurationReq }>, 'mutationKey'>,
     callback?: (data: IntegrationConfigurationResp) => void
   ): UseMutationResult<IntegrationConfigurationResp, AxiosError<ApiError>, SdkSetConfigParam & { integrationConfigurationId:string, data: UpdateStatusIntegrationConfigurationReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { integrationConfigurationId:string, data: UpdateStatusIntegrationConfigurationReq }) => {
       const response = 
             (await IntegrationConfigurationsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -28,7 +28,7 @@ export const useAnonymizationAdminApi_DeleteAnonymizationLeaderboard_ByUserId = 
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string }) => {
       const response = 
             (await AnonymizationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

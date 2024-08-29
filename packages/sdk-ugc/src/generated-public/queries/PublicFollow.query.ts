@@ -30,13 +30,23 @@ Following_ByUserId = 'Ugc.PublicFollow.Following_ByUserId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicFollow.UsersFollowed, input]
+ * }
+ * ```
+ */
 export const usePublicFollowApi_GetUsersFollowed = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedCreatorOverviewResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedCreatorOverviewResponse>) => void
   ): UseQueryResult<PaginatedCreatorOverviewResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicFollowApi_GetUsersFollowed>[1]
@@ -57,13 +67,23 @@ export const usePublicFollowApi_GetUsersFollowed = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicFollow.ContentsFollowed, input]
+ * }
+ * ```
+ */
 export const usePublicFollowApi_GetContentsFollowed = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloadResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloadResponse>) => void
   ): UseQueryResult<PaginatedContentDownloadResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicFollowApi_GetContentsFollowed>[1]
@@ -89,7 +109,7 @@ export const usePublicFollowApi_UpdateFollow_ByUserId = (
     options?: Omit<UseMutationOptions<UserFollowResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserFollowRequest }>, 'mutationKey'>,
     callback?: (data: UserFollowResponse) => void
   ): UseMutationResult<UserFollowResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: UserFollowRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: UserFollowRequest }) => {
       const response = 
             (await PublicFollowApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -107,13 +127,23 @@ export const usePublicFollowApi_UpdateFollow_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicFollow.Followers_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePublicFollowApi_GetFollowers_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedCreatorOverviewResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedCreatorOverviewResponse>) => void
   ): UseQueryResult<PaginatedCreatorOverviewResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicFollowApi_GetFollowers_ByUserId>[1]
@@ -134,13 +164,23 @@ export const usePublicFollowApi_GetFollowers_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicFollow.Following_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePublicFollowApi_GetFollowing_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedCreatorOverviewResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedCreatorOverviewResponse>) => void
   ): UseQueryResult<PaginatedCreatorOverviewResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicFollowApi_GetFollowing_ByUserId>[1]

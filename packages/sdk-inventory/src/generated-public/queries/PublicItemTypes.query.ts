@@ -23,13 +23,23 @@ export enum Key_PublicItemTypes {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicItemTypes.Itemtypes, input]
+ * }
+ * ```
+ */
 export const usePublicItemTypesApi_GetItemtypes = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, sortBy?: 'createdAt' | 'createdAt:asc' | 'createdAt:desc' | 'name' | 'name:asc' | 'name:desc'} },
     options?: Omit<UseQueryOptions<ListItemTypesResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListItemTypesResp>) => void
   ): UseQueryResult<ListItemTypesResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicItemTypesApi_GetItemtypes>[1]

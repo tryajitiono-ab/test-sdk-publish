@@ -26,13 +26,23 @@ RegistryEventType_ByEventType = 'Event.EventRegistry.RegistryEventType_ByEventTy
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventRegistry.RegistryEventIds, input]
+ * }
+ * ```
+ */
 export const useEventRegistryApi_GetRegistryEventIds = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<EventRegistry, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventRegistry>) => void
   ): UseQueryResult<EventRegistry, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventRegistryApi_GetRegistryEventIds>[1]
@@ -58,7 +68,7 @@ export const useEventRegistryApi_CreateRegistryEventId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: EventRegistry }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: EventRegistry }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: EventRegistry }) => {
       const response = 
             (await EventRegistryApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -81,7 +91,7 @@ export const useEventRegistryApi_DeleteRegistryEventId_ByEventId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { eventId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { eventId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { eventId:string }) => {
       const response = 
             (await EventRegistryApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -99,13 +109,23 @@ export const useEventRegistryApi_DeleteRegistryEventId_ByEventId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventRegistry.RegistryEventId_ByEventId, input]
+ * }
+ * ```
+ */
 export const useEventRegistryApi_GetRegistryEventId_ByEventId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { eventId:string },
     options?: Omit<UseQueryOptions<EventRegistry, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventRegistry>) => void
   ): UseQueryResult<EventRegistry, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventRegistryApi_GetRegistryEventId_ByEventId>[1]
@@ -131,7 +151,7 @@ export const useEventRegistryApi_CreateRegistryEventId_ByEventId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { eventId:string, data: EventRegistry }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { eventId:string, data: EventRegistry }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { eventId:string, data: EventRegistry }) => {
       const response = 
             (await EventRegistryApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -149,13 +169,23 @@ export const useEventRegistryApi_CreateRegistryEventId_ByEventId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventRegistry.RegistryEventType_ByEventType, input]
+ * }
+ * ```
+ */
 export const useEventRegistryApi_GetRegistryEventType_ByEventType = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { eventType:string },
     options?: Omit<UseQueryOptions<EventRegistry, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventRegistry>) => void
   ): UseQueryResult<EventRegistry, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventRegistryApi_GetRegistryEventType_ByEventType>[1]

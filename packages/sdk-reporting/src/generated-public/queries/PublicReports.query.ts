@@ -29,7 +29,7 @@ export const usePublicReportsApi_CreateReport = (
     options?: Omit<UseMutationOptions<SubmitReportResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: SubmitReportRequest }>, 'mutationKey'>,
     callback?: (data: SubmitReportResponse) => void
   ): UseMutationResult<SubmitReportResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: SubmitReportRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: SubmitReportRequest }) => {
       const response = 
             (await PublicReportsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

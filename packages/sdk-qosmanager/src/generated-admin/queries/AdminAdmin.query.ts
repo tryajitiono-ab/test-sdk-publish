@@ -30,7 +30,7 @@ export const useAdminAdminApi_DeleteServer_ByRegion = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { region:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { region:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { region:string }) => {
       const response = 
             (await AdminAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -53,7 +53,7 @@ export const useAdminAdminApi_CreateAlia_ByRegion = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { region:string, data: SetAliasRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { region:string, data: SetAliasRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { region:string, data: SetAliasRequest }) => {
       const response = 
             (await AdminAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -76,7 +76,7 @@ export const useAdminAdminApi_PatchServer_ByRegion = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { region:string, data: UpdateServerRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { region:string, data: UpdateServerRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { region:string, data: UpdateServerRequest }) => {
       const response = 
             (await AdminAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

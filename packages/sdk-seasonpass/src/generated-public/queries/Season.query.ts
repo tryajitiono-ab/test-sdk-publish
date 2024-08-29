@@ -26,13 +26,23 @@ Data_ByUserId_BySeasonId = 'Seasonpass.Season.Data_ByUserId_BySeasonId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Season.SeasonsCurrent, input]
+ * }
+ * ```
+ */
 export const useSeasonApi_GetSeasonsCurrent = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {language?: string | null} },
     options?: Omit<UseQueryOptions<LocalizedSeasonInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<LocalizedSeasonInfo>) => void
   ): UseQueryResult<LocalizedSeasonInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonApi_GetSeasonsCurrent>[1]
@@ -53,13 +63,23 @@ export const useSeasonApi_GetSeasonsCurrent = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Season.SeasonsCurrentData_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSeasonApi_GetSeasonsCurrentData_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<ClaimableUserSeasonInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ClaimableUserSeasonInfo>) => void
   ): UseQueryResult<ClaimableUserSeasonInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonApi_GetSeasonsCurrentData_ByUserId>[1]
@@ -80,13 +100,23 @@ export const useSeasonApi_GetSeasonsCurrentData_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Season.Data_ByUserId_BySeasonId, input]
+ * }
+ * ```
+ */
 export const useSeasonApi_GetData_ByUserId_BySeasonId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, seasonId:string },
     options?: Omit<UseQueryOptions<ClaimableUserSeasonInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ClaimableUserSeasonInfo>) => void
   ): UseQueryResult<ClaimableUserSeasonInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSeasonApi_GetData_ByUserId_BySeasonId>[1]

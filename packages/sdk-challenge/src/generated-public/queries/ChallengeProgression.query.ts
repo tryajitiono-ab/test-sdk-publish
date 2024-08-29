@@ -30,7 +30,7 @@ export const useChallengeProgressionApi_CreateUserMeProgresEvaluate = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await ChallengeProgressionApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -48,13 +48,23 @@ export const useChallengeProgressionApi_CreateUserMeProgresEvaluate = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ChallengeProgression.UserMeProgres_ByChallengeCode, input]
+ * }
+ * ```
+ */
 export const useChallengeProgressionApi_GetUserMeProgres_ByChallengeCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { challengeCode:string,  queryParams?: {dateTime?: string | null, goalCode?: string | null, limit?: number, offset?: number, tags?: string[]} },
     options?: Omit<UseQueryOptions<UserProgressionResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserProgressionResponse>) => void
   ): UseQueryResult<UserProgressionResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useChallengeProgressionApi_GetUserMeProgres_ByChallengeCode>[1]
@@ -75,13 +85,23 @@ export const useChallengeProgressionApi_GetUserMeProgres_ByChallengeCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ChallengeProgression.IndexMeUser_ByChallengeCode_ByIndex, input]
+ * }
+ * ```
+ */
 export const useChallengeProgressionApi_GetIndexMeUser_ByChallengeCode_ByIndex = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { challengeCode:string, index:number,  queryParams?: {goalCode?: string | null, limit?: number, offset?: number, tags?: string[]} },
     options?: Omit<UseQueryOptions<UserProgressionResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserProgressionResponse>) => void
   ): UseQueryResult<UserProgressionResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useChallengeProgressionApi_GetIndexMeUser_ByChallengeCode_ByIndex>[1]

@@ -29,7 +29,7 @@ export const useSessionStorageAdminApi_DeleteStorage_BySessionId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { sessionId:string }) => {
       const response = 
             (await SessionStorageAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -47,13 +47,23 @@ export const useSessionStorageAdminApi_DeleteStorage_BySessionId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SessionStorageAdmin.Storage_BySessionId, input]
+ * }
+ * ```
+ */
 export const useSessionStorageAdminApi_GetStorage_BySessionId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { sessionId:string },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSessionStorageAdminApi_GetStorage_BySessionId>[1]
@@ -74,13 +84,23 @@ export const useSessionStorageAdminApi_GetStorage_BySessionId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SessionStorageAdmin.StorageUser_BySessionId_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSessionStorageAdminApi_GetStorageUser_BySessionId_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { sessionId:string, userId:string },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSessionStorageAdminApi_GetStorageUser_BySessionId_ByUserId>[1]

@@ -23,13 +23,23 @@ export enum Key_UserEligibilitiesAdmin {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserEligibilitiesAdmin.Eligibilities_ByUserId, input]
+ * }
+ * ```
+ */
 export const useUserEligibilitiesAdminApi_GetEligibilities_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {clientId: string | null, countryCode: string | null, publisherUserId?: string | null} },
     options?: Omit<UseQueryOptions<RetrieveUserEligibilitiesIndirectResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveUserEligibilitiesIndirectResponse>) => void
   ): UseQueryResult<RetrieveUserEligibilitiesIndirectResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserEligibilitiesAdminApi_GetEligibilities_ByUserId>[1]

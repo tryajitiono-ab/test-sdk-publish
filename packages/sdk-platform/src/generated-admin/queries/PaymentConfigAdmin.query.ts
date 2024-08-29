@@ -75,13 +75,23 @@ CheckoutconfigTestPayment_ById = 'Platform.PaymentConfigAdmin.CheckoutconfigTest
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.PaymentConfigTax, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetPaymentConfigTax = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<PaymentTaxConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentTaxConfigInfo>) => void
   ): UseQueryResult<PaymentTaxConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetPaymentConfigTax>[1]
@@ -107,7 +117,7 @@ export const usePaymentConfigAdminApi_UpdatePaymentConfigTax = (
     options?: Omit<UseMutationOptions<PaymentTaxConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentTaxConfigEdit }>, 'mutationKey'>,
     callback?: (data: PaymentTaxConfigInfo) => void
   ): UseMutationResult<PaymentTaxConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentTaxConfigEdit }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PaymentTaxConfigEdit }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -125,13 +135,23 @@ export const usePaymentConfigAdminApi_UpdatePaymentConfigTax = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.PaymentConfigProvider, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetPaymentConfigProvider = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, namespace?: string | null, offset?: number, region?: string | null} },
     options?: Omit<UseQueryOptions<PaymentProviderConfigPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentProviderConfigPagingSlicedResult>) => void
   ): UseQueryResult<PaymentProviderConfigPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetPaymentConfigProvider>[1]
@@ -157,7 +177,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigProvider = (
     options?: Omit<UseMutationOptions<PaymentProviderConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentProviderConfigEdit }>, 'mutationKey'>,
     callback?: (data: PaymentProviderConfigInfo) => void
   ): UseMutationResult<PaymentProviderConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentProviderConfigEdit }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PaymentProviderConfigEdit }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -175,13 +195,23 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigProvider = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.PaymentConfigMerchant_ById, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetPaymentConfigMerchant_ById = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { id:string },
     options?: Omit<UseQueryOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentMerchantConfigInfo>) => void
   ): UseQueryResult<PaymentMerchantConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetPaymentConfigMerchant_ById>[1]
@@ -207,7 +237,7 @@ export const usePaymentConfigAdminApi_DeletePaymentConfigProvider_ById = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { id:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { id:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -230,7 +260,7 @@ export const usePaymentConfigAdminApi_UpdatePaymentConfigProvider_ById = (
     options?: Omit<UseMutationOptions<PaymentProviderConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: PaymentProviderConfigEdit }>, 'mutationKey'>,
     callback?: (data: PaymentProviderConfigInfo) => void
   ): UseMutationResult<PaymentProviderConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: PaymentProviderConfigEdit }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: PaymentProviderConfigEdit }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -248,13 +278,23 @@ export const usePaymentConfigAdminApi_UpdatePaymentConfigProvider_ById = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.PaymentConfigMerchantMatched, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetPaymentConfigMerchantMatched = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {namespace?: string | null, region?: string | null} },
     options?: Omit<UseQueryOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentMerchantConfigInfo>) => void
   ): UseQueryResult<PaymentMerchantConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetPaymentConfigMerchantMatched>[1]
@@ -275,13 +315,23 @@ export const usePaymentConfigAdminApi_GetPaymentConfigMerchantMatched = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.PaymentConfigProviderMatched, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetPaymentConfigProviderMatched = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {namespace?: string | null, region?: string | null} },
     options?: Omit<UseQueryOptions<PaymentProviderConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentProviderConfigInfo>) => void
   ): UseQueryResult<PaymentProviderConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetPaymentConfigProviderMatched>[1]
@@ -302,13 +352,23 @@ export const usePaymentConfigAdminApi_GetPaymentConfigProviderMatched = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.PaymentConfigProviderSpecial, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetPaymentConfigProviderSpecial = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetPaymentConfigProviderSpecial>[1]
@@ -329,13 +389,23 @@ export const usePaymentConfigAdminApi_GetPaymentConfigProviderSpecial = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.PaymentConfigProviderAggregate, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetPaymentConfigProviderAggregate = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetPaymentConfigProviderAggregate>[1]
@@ -361,7 +431,7 @@ export const usePaymentConfigAdminApi_UpdateAdyenconfigPayment_ById = (
     options?: Omit<UseMutationOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: AdyenConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PaymentMerchantConfigInfo) => void
   ): UseMutationResult<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: AdyenConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: AdyenConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -384,7 +454,7 @@ export const usePaymentConfigAdminApi_UpdateWxpayconfigPayment_ById = (
     options?: Omit<UseMutationOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: WxPayConfigRequest, queryParams?: {validate?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PaymentMerchantConfigInfo) => void
   ): UseMutationResult<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: WxPayConfigRequest, queryParams?: {validate?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: WxPayConfigRequest, queryParams?: {validate?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -407,7 +477,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantAdyenconfigTest
     options?: Omit<UseMutationOptions<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: AdyenConfig, queryParams?: {sandbox?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: TestResult) => void
   ): UseMutationResult<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: AdyenConfig, queryParams?: {sandbox?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: AdyenConfig, queryParams?: {sandbox?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -430,7 +500,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantWxpayconfigTest
     options?: Omit<UseMutationOptions<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: WxPayConfigRequest }>, 'mutationKey'>,
     callback?: (data: TestResult) => void
   ): UseMutationResult<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: WxPayConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: WxPayConfigRequest }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -453,7 +523,7 @@ export const usePaymentConfigAdminApi_UpdateAlipayconfigPayment_ById = (
     options?: Omit<UseMutationOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: AliPayConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PaymentMerchantConfigInfo) => void
   ): UseMutationResult<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: AliPayConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: AliPayConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -476,7 +546,7 @@ export const usePaymentConfigAdminApi_UpdatePaypalconfigPayment_ById = (
     options?: Omit<UseMutationOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: PayPalConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PaymentMerchantConfigInfo) => void
   ): UseMutationResult<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: PayPalConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: PayPalConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -499,7 +569,7 @@ export const usePaymentConfigAdminApi_UpdateStripeconfigPayment_ById = (
     options?: Omit<UseMutationOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: StripeConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PaymentMerchantConfigInfo) => void
   ): UseMutationResult<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: StripeConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: StripeConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -522,7 +592,7 @@ export const usePaymentConfigAdminApi_UpdateXsollaconfigPayment_ById = (
     options?: Omit<UseMutationOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: XsollaConfig, queryParams?: {validate?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PaymentMerchantConfigInfo) => void
   ): UseMutationResult<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: XsollaConfig, queryParams?: {validate?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: XsollaConfig, queryParams?: {validate?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -545,7 +615,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantAlipayconfigTes
     options?: Omit<UseMutationOptions<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: AliPayConfig, queryParams?: {sandbox?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: TestResult) => void
   ): UseMutationResult<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: AliPayConfig, queryParams?: {sandbox?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: AliPayConfig, queryParams?: {sandbox?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -568,7 +638,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantPaypalconfigTes
     options?: Omit<UseMutationOptions<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: PayPalConfig, queryParams?: {sandbox?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: TestResult) => void
   ): UseMutationResult<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: PayPalConfig, queryParams?: {sandbox?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PayPalConfig, queryParams?: {sandbox?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -591,7 +661,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantStripeconfigTes
     options?: Omit<UseMutationOptions<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: StripeConfig, queryParams?: {sandbox?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: TestResult) => void
   ): UseMutationResult<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: StripeConfig, queryParams?: {sandbox?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: StripeConfig, queryParams?: {sandbox?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -614,7 +684,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantXsollaconfigTes
     options?: Omit<UseMutationOptions<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: XsollaConfig }>, 'mutationKey'>,
     callback?: (data: TestResult) => void
   ): UseMutationResult<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: XsollaConfig }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: XsollaConfig }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -637,7 +707,7 @@ export const usePaymentConfigAdminApi_UpdateNeonpayconfigPayment_ById = (
     options?: Omit<UseMutationOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: NeonPayConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PaymentMerchantConfigInfo) => void
   ): UseMutationResult<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: NeonPayConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: NeonPayConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -660,7 +730,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantNeonpayconfigTe
     options?: Omit<UseMutationOptions<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: NeonPayConfig, queryParams?: {sandbox?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: TestResult) => void
   ): UseMutationResult<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: NeonPayConfig, queryParams?: {sandbox?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: NeonPayConfig, queryParams?: {sandbox?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -683,7 +753,7 @@ export const usePaymentConfigAdminApi_UpdateCheckoutconfigPayment_ById = (
     options?: Omit<UseMutationOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: CheckoutConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PaymentMerchantConfigInfo) => void
   ): UseMutationResult<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: CheckoutConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: CheckoutConfig, queryParams?: {sandbox?: boolean | null, validate?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -706,7 +776,7 @@ export const usePaymentConfigAdminApi_UpdateXsollauiconfigPayment_ById = (
     options?: Omit<UseMutationOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: XsollaPaywallConfigRequest }>, 'mutationKey'>,
     callback?: (data: PaymentMerchantConfigInfo) => void
   ): UseMutationResult<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: XsollaPaywallConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: XsollaPaywallConfigRequest }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -729,7 +799,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantCheckoutconfigT
     options?: Omit<UseMutationOptions<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: CheckoutConfig, queryParams?: {sandbox?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: TestResult) => void
   ): UseMutationResult<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: CheckoutConfig, queryParams?: {sandbox?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CheckoutConfig, queryParams?: {sandbox?: boolean | null} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -747,13 +817,23 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantCheckoutconfigT
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.PaymentConfigDomains, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetPaymentConfigDomains = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<PaymentDomainWhitelistConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentDomainWhitelistConfigInfo>) => void
   ): UseQueryResult<PaymentDomainWhitelistConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetPaymentConfigDomains>[1]
@@ -779,7 +859,7 @@ export const usePaymentConfigAdminApi_UpdatePaymentConfigDomain = (
     options?: Omit<UseMutationOptions<PaymentDomainWhitelistConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentDomainWhitelistConfigEdit }>, 'mutationKey'>,
     callback?: (data: PaymentDomainWhitelistConfigInfo) => void
   ): UseMutationResult<PaymentDomainWhitelistConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentDomainWhitelistConfigEdit }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PaymentDomainWhitelistConfigEdit }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -797,13 +877,23 @@ export const usePaymentConfigAdminApi_UpdatePaymentConfigDomain = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.AdyenconfigTestPayment_ById, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetAdyenconfigTestPayment_ById = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { id:string,  queryParams?: {sandbox?: boolean | null} },
     options?: Omit<UseQueryOptions<TestResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TestResult>) => void
   ): UseQueryResult<TestResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetAdyenconfigTestPayment_ById>[1]
@@ -829,7 +919,7 @@ export const usePaymentConfigAdminApi_UpdateWxpayconfigCertPayment_ById = (
     options?: Omit<UseMutationOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: {file?: File} }>, 'mutationKey'>,
     callback?: (data: PaymentMerchantConfigInfo) => void
   ): UseMutationResult<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id:string, data: {file?: File} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { id:string, data: {file?: File} }) => {
       const response = 
             (await PaymentConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -847,13 +937,23 @@ export const usePaymentConfigAdminApi_UpdateWxpayconfigCertPayment_ById = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.WxpayconfigTestPayment_ById, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetWxpayconfigTestPayment_ById = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { id:string },
     options?: Omit<UseQueryOptions<TestResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TestResult>) => void
   ): UseQueryResult<TestResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetWxpayconfigTestPayment_ById>[1]
@@ -874,13 +974,23 @@ export const usePaymentConfigAdminApi_GetWxpayconfigTestPayment_ById = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.AlipayconfigTestPayment_ById, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetAlipayconfigTestPayment_ById = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { id:string,  queryParams?: {sandbox?: boolean | null} },
     options?: Omit<UseQueryOptions<TestResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TestResult>) => void
   ): UseQueryResult<TestResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetAlipayconfigTestPayment_ById>[1]
@@ -901,13 +1011,23 @@ export const usePaymentConfigAdminApi_GetAlipayconfigTestPayment_ById = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.PaypalconfigTestPayment_ById, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetPaypalconfigTestPayment_ById = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { id:string,  queryParams?: {sandbox?: boolean | null} },
     options?: Omit<UseQueryOptions<TestResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TestResult>) => void
   ): UseQueryResult<TestResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetPaypalconfigTestPayment_ById>[1]
@@ -928,13 +1048,23 @@ export const usePaymentConfigAdminApi_GetPaypalconfigTestPayment_ById = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.StripeconfigTestPayment_ById, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetStripeconfigTestPayment_ById = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { id:string,  queryParams?: {sandbox?: boolean | null} },
     options?: Omit<UseQueryOptions<TestResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TestResult>) => void
   ): UseQueryResult<TestResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetStripeconfigTestPayment_ById>[1]
@@ -955,13 +1085,23 @@ export const usePaymentConfigAdminApi_GetStripeconfigTestPayment_ById = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.XsollaconfigTestPayment_ById, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetXsollaconfigTestPayment_ById = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { id:string },
     options?: Omit<UseQueryOptions<TestResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TestResult>) => void
   ): UseQueryResult<TestResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetXsollaconfigTestPayment_ById>[1]
@@ -982,13 +1122,23 @@ export const usePaymentConfigAdminApi_GetXsollaconfigTestPayment_ById = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.NeonpayconfigTestPayment_ById, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetNeonpayconfigTestPayment_ById = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { id:string,  queryParams?: {sandbox?: boolean | null} },
     options?: Omit<UseQueryOptions<TestResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TestResult>) => void
   ): UseQueryResult<TestResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetNeonpayconfigTestPayment_ById>[1]
@@ -1009,13 +1159,23 @@ export const usePaymentConfigAdminApi_GetNeonpayconfigTestPayment_ById = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentConfigAdmin.CheckoutconfigTestPayment_ById, input]
+ * }
+ * ```
+ */
 export const usePaymentConfigAdminApi_GetCheckoutconfigTestPayment_ById = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { id:string,  queryParams?: {sandbox?: boolean | null} },
     options?: Omit<UseQueryOptions<TestResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TestResult>) => void
   ): UseQueryResult<TestResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentConfigAdminApi_GetCheckoutconfigTestPayment_ById>[1]

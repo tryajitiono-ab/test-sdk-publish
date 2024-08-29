@@ -35,13 +35,23 @@ Contents_ByUserId_ByGroupId_v2 = 'Ugc.GroupAdmin.Contents_ByUserId_ByGroupId_v2'
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupAdmin.Groups, input]
+ * }
+ * ```
+ */
 export const useGroupAdminApi_GetGroups = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedGroupResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedGroupResponse>) => void
   ): UseQueryResult<PaginatedGroupResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupAdminApi_GetGroups>[1]
@@ -67,7 +77,7 @@ export const useGroupAdminApi_CreateGroup = (
     options?: Omit<UseMutationOptions<CreateGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateGroupRequest }>, 'mutationKey'>,
     callback?: (data: CreateGroupResponse) => void
   ): UseMutationResult<CreateGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateGroupRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateGroupRequest }) => {
       const response = 
             (await GroupAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -90,7 +100,7 @@ export const useGroupAdminApi_DeleteGroup_ByGroupId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string }) => {
       const response = 
             (await GroupAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -108,13 +118,23 @@ export const useGroupAdminApi_DeleteGroup_ByGroupId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupAdmin.Group_ByGroupId, input]
+ * }
+ * ```
+ */
 export const useGroupAdminApi_GetGroup_ByGroupId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { groupId:string },
     options?: Omit<UseQueryOptions<CreateGroupResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CreateGroupResponse>) => void
   ): UseQueryResult<CreateGroupResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupAdminApi_GetGroup_ByGroupId>[1]
@@ -140,7 +160,7 @@ export const useGroupAdminApi_UpdateGroup_ByGroupId = (
     options?: Omit<UseMutationOptions<CreateGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: CreateGroupRequest }>, 'mutationKey'>,
     callback?: (data: CreateGroupResponse) => void
   ): UseMutationResult<CreateGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { groupId:string, data: CreateGroupRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { groupId:string, data: CreateGroupRequest }) => {
       const response = 
             (await GroupAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -158,13 +178,23 @@ export const useGroupAdminApi_UpdateGroup_ByGroupId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupAdmin.Groups_ByUserId, input]
+ * }
+ * ```
+ */
 export const useGroupAdminApi_GetGroups_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedGroupResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedGroupResponse>) => void
   ): UseQueryResult<PaginatedGroupResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupAdminApi_GetGroups_ByUserId>[1]
@@ -185,13 +215,23 @@ export const useGroupAdminApi_GetGroups_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupAdmin.Contents_ByGroupId, input]
+ * }
+ * ```
+ */
 export const useGroupAdminApi_GetContents_ByGroupId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { groupId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloadResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloadResponse>) => void
   ): UseQueryResult<PaginatedContentDownloadResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupAdminApi_GetContents_ByGroupId>[1]
@@ -212,13 +252,23 @@ export const useGroupAdminApi_GetContents_ByGroupId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupAdmin.Contents_ByGroupId_v2, input]
+ * }
+ * ```
+ */
 export const useGroupAdminApi_GetContents_ByGroupId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { groupId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloadResponseV2, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloadResponseV2>) => void
   ): UseQueryResult<PaginatedContentDownloadResponseV2, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupAdminApi_GetContents_ByGroupId_v2>[1]
@@ -244,7 +294,7 @@ export const useGroupAdminApi_DeleteGroup_ByUserId_ByGroupId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, groupId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, groupId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, groupId:string }) => {
       const response = 
             (await GroupAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -262,13 +312,23 @@ export const useGroupAdminApi_DeleteGroup_ByUserId_ByGroupId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupAdmin.Group_ByUserId_ByGroupId, input]
+ * }
+ * ```
+ */
 export const useGroupAdminApi_GetGroup_ByUserId_ByGroupId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, groupId:string },
     options?: Omit<UseQueryOptions<CreateGroupResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CreateGroupResponse>) => void
   ): UseQueryResult<CreateGroupResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupAdminApi_GetGroup_ByUserId_ByGroupId>[1]
@@ -294,7 +354,7 @@ export const useGroupAdminApi_UpdateGroup_ByUserId_ByGroupId = (
     options?: Omit<UseMutationOptions<CreateGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, groupId:string, data: CreateGroupRequest }>, 'mutationKey'>,
     callback?: (data: CreateGroupResponse) => void
   ): UseMutationResult<CreateGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, groupId:string, data: CreateGroupRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, groupId:string, data: CreateGroupRequest }) => {
       const response = 
             (await GroupAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -312,13 +372,23 @@ export const useGroupAdminApi_UpdateGroup_ByUserId_ByGroupId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupAdmin.Contents_ByUserId_ByGroupId, input]
+ * }
+ * ```
+ */
 export const useGroupAdminApi_GetContents_ByUserId_ByGroupId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, groupId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloadResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloadResponse>) => void
   ): UseQueryResult<PaginatedContentDownloadResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupAdminApi_GetContents_ByUserId_ByGroupId>[1]
@@ -339,13 +409,23 @@ export const useGroupAdminApi_GetContents_ByUserId_ByGroupId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GroupAdmin.Contents_ByUserId_ByGroupId_v2, input]
+ * }
+ * ```
+ */
 export const useGroupAdminApi_GetContents_ByUserId_ByGroupId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, groupId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedContentDownloadResponseV2, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentDownloadResponseV2>) => void
   ): UseQueryResult<PaginatedContentDownloadResponseV2, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGroupAdminApi_GetContents_ByUserId_ByGroupId_v2>[1]

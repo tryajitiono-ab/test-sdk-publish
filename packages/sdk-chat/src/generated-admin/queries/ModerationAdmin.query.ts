@@ -28,7 +28,7 @@ export const useModerationAdminApi_DeleteSnapshot_ByChatId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { chatId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { chatId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { chatId:string }) => {
       const response = 
             (await ModerationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -46,13 +46,23 @@ export const useModerationAdminApi_DeleteSnapshot_ByChatId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ModerationAdmin.Snapshot_ByChatId, input]
+ * }
+ * ```
+ */
 export const useModerationAdminApi_GetSnapshot_ByChatId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { chatId:string },
     options?: Omit<UseQueryOptions<ChatSnapshots, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChatSnapshots>) => void
   ): UseQueryResult<ChatSnapshots, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useModerationAdminApi_GetSnapshot_ByChatId>[1]

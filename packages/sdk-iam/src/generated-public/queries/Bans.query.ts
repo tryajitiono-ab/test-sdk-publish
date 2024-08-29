@@ -25,13 +25,23 @@ BansReasons = 'Iam.Bans.BansReasons',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Bans.Bans, input]
+ * }
+ * ```
+ */
 export const useBansApi_GetBans = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<Bans, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<Bans>) => void
   ): UseQueryResult<Bans, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useBansApi_GetBans>[1]
@@ -52,13 +62,23 @@ export const useBansApi_GetBans = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Bans.BansReasons, input]
+ * }
+ * ```
+ */
 export const useBansApi_GetBansReasons = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<BanReasons, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BanReasons>) => void
   ): UseQueryResult<BanReasons, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useBansApi_GetBansReasons>[1]

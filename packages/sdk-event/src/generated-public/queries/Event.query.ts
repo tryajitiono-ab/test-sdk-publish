@@ -31,13 +31,23 @@ EventId_ByUserId_ByEventType_ByEventId = 'Event.Event.EventId_ByUserId_ByEventTy
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Event.Namespace_ByNamespace, input]
+ * }
+ * ```
+ */
 export const useEventApi_GetNamespace_ByNamespace = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {endDate: string | null, pageSize: number, startDate: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<EventResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventResponse>) => void
   ): UseQueryResult<EventResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventApi_GetNamespace_ByNamespace>[1]
@@ -63,7 +73,7 @@ export const useEventApi_CreateNamespace_ByNamespace = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: Event }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: Event }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: Event }) => {
       const response = 
             (await EventApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -81,13 +91,23 @@ export const useEventApi_CreateNamespace_ByNamespace = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Event.User_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEventApi_GetUser_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams: {endDate: string | null, pageSize: number, startDate: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<EventResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventResponse>) => void
   ): UseQueryResult<EventResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventApi_GetUser_ByUserId>[1]
@@ -108,13 +128,23 @@ export const useEventApi_GetUser_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Event.EventId_ByEventId, input]
+ * }
+ * ```
+ */
 export const useEventApi_GetEventId_ByEventId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { eventId:number,  queryParams: {endDate: string | null, pageSize: number, startDate: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<EventResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventResponse>) => void
   ): UseQueryResult<EventResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventApi_GetEventId_ByEventId>[1]
@@ -135,13 +165,23 @@ export const useEventApi_GetEventId_ByEventId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Event.EventType_ByEventType, input]
+ * }
+ * ```
+ */
 export const useEventApi_GetEventType_ByEventType = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { eventType:number,  queryParams: {endDate: string | null, pageSize: number, startDate: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<EventResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventResponse>) => void
   ): UseQueryResult<EventResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventApi_GetEventType_ByEventType>[1]
@@ -162,13 +202,23 @@ export const useEventApi_GetEventType_ByEventType = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Event.EventId_ByUserId_ByEventId, input]
+ * }
+ * ```
+ */
 export const useEventApi_GetEventId_ByUserId_ByEventId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, eventId:number,  queryParams: {endDate: string | null, pageSize: number, startDate: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<EventResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventResponse>) => void
   ): UseQueryResult<EventResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventApi_GetEventId_ByUserId_ByEventId>[1]
@@ -189,13 +239,23 @@ export const useEventApi_GetEventId_ByUserId_ByEventId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Event.EventType_ByUserId_ByEventType, input]
+ * }
+ * ```
+ */
 export const useEventApi_GetEventType_ByUserId_ByEventType = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, eventType:number,  queryParams: {endDate: string | null, pageSize: number, startDate: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<EventResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventResponse>) => void
   ): UseQueryResult<EventResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventApi_GetEventType_ByUserId_ByEventType>[1]
@@ -216,13 +276,23 @@ export const useEventApi_GetEventType_ByUserId_ByEventType = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Event.EventId_ByEventType_ByEventId, input]
+ * }
+ * ```
+ */
 export const useEventApi_GetEventId_ByEventType_ByEventId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { eventType:number, eventId:number,  queryParams: {endDate: string | null, pageSize: number, startDate: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<EventResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventResponse>) => void
   ): UseQueryResult<EventResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventApi_GetEventId_ByEventType_ByEventId>[1]
@@ -243,13 +313,23 @@ export const useEventApi_GetEventId_ByEventType_ByEventId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Event.EventId_ByUserId_ByEventType_ByEventId, input]
+ * }
+ * ```
+ */
 export const useEventApi_GetEventId_ByUserId_ByEventType_ByEventId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, eventType:number, eventId:number,  queryParams: {endDate: string | null, pageSize: number, startDate: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<EventResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<EventResponse>) => void
   ): UseQueryResult<EventResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventApi_GetEventId_ByUserId_ByEventType_ByEventId>[1]

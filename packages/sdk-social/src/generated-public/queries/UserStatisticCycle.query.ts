@@ -24,13 +24,23 @@ StatCycleitems_ByUserId_ByCycleId = 'Social.UserStatisticCycle.StatCycleitems_By
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserStatisticCycle.StatCycleitemsMeUsers_ByCycleId, input]
+ * }
+ * ```
+ */
 export const useUserStatisticCycleApi_GetStatCycleitemsMeUsers_ByCycleId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { cycleId:string,  queryParams?: {limit?: number, offset?: number, sortBy?: string | null, statCodes?: string[]} },
     options?: Omit<UseQueryOptions<UserStatCycleItemPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserStatCycleItemPagingSlicedResult>) => void
   ): UseQueryResult<UserStatCycleItemPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserStatisticCycleApi_GetStatCycleitemsMeUsers_ByCycleId>[1]
@@ -51,13 +61,23 @@ export const useUserStatisticCycleApi_GetStatCycleitemsMeUsers_ByCycleId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserStatisticCycle.StatCycleitems_ByUserId_ByCycleId, input]
+ * }
+ * ```
+ */
 export const useUserStatisticCycleApi_GetStatCycleitems_ByUserId_ByCycleId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, cycleId:string,  queryParams?: {limit?: number, offset?: number, sortBy?: string | null, statCodes?: string | null} },
     options?: Omit<UseQueryOptions<UserStatCycleItemPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserStatCycleItemPagingSlicedResult>) => void
   ): UseQueryResult<UserStatCycleItemPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserStatisticCycleApi_GetStatCycleitems_ByUserId_ByCycleId>[1]

@@ -30,13 +30,23 @@ Generate_ByUserId_ByRequestDate = 'Gdpr.DataRetrievalAdmin.Generate_ByUserId_ByR
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DataRetrievalAdmin.Requests, input]
+ * }
+ * ```
+ */
 export const useDataRetrievalAdminApi_GetRequests = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, requestDate?: string | null} },
     options?: Omit<UseQueryOptions<ListPersonalDataResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListPersonalDataResponse>) => void
   ): UseQueryResult<ListPersonalDataResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDataRetrievalAdminApi_GetRequests>[1]
@@ -57,13 +67,23 @@ export const useDataRetrievalAdminApi_GetRequests = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_DataRetrievalAdmin.Requests_ByUserId, input]
+ * }
+ * ```
+ */
 export const useDataRetrievalAdminApi_GetRequests_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<UserPersonalDataResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserPersonalDataResponse>) => void
   ): UseQueryResult<UserPersonalDataResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useDataRetrievalAdminApi_GetRequests_ByUserId>[1]
@@ -89,7 +109,7 @@ export const useDataRetrievalAdminApi_PostRequest_ByUserId = (
     options?: Omit<UseMutationOptions<DataRetrievalResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: {password?: string | null} }>, 'mutationKey'>,
     callback?: (data: DataRetrievalResponse) => void
   ): UseMutationResult<DataRetrievalResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: {password?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: {password?: string | null} }) => {
       const response = 
             (await DataRetrievalAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -112,7 +132,7 @@ export const useDataRetrievalAdminApi_DeleteRequest_ByUserId_ByRequestDate = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, requestDate:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, requestDate:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, requestDate:string }) => {
       const response = 
             (await DataRetrievalAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -135,7 +155,7 @@ export const useDataRetrievalAdminApi_PostGenerate_ByUserId_ByRequestDate = (
     options?: Omit<UseMutationOptions<UserDataUrl, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, requestDate:string, data: {password: string | null} }>, 'mutationKey'>,
     callback?: (data: UserDataUrl) => void
   ): UseMutationResult<UserDataUrl, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, requestDate:string, data: {password: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, requestDate:string, data: {password: string | null} }) => {
       const response = 
             (await DataRetrievalAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

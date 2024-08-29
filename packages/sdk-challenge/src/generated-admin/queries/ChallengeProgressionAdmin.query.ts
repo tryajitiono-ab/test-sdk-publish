@@ -28,7 +28,7 @@ export const useChallengeProgressionAdminApi_CreateProgresEvaluate = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: EvaluatePlayerProgressionRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: EvaluatePlayerProgressionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: EvaluatePlayerProgressionRequest }) => {
       const response = 
             (await ChallengeProgressionAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

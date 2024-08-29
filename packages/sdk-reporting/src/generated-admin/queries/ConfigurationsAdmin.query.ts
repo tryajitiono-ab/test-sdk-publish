@@ -25,13 +25,23 @@ Configuration = 'Reporting.ConfigurationsAdmin.Configuration',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigurationsAdmin.Configurations, input]
+ * }
+ * ```
+ */
 export const useConfigurationsAdminApi_GetConfigurations = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {category?: 'all' | 'extension'} },
     options?: Omit<UseQueryOptions<ConfigResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigResponse>) => void
   ): UseQueryResult<ConfigResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigurationsAdminApi_GetConfigurations>[1]
@@ -57,7 +67,7 @@ export const useConfigurationsAdminApi_CreateConfiguration = (
     options?: Omit<UseMutationOptions<ConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ReportingLimit }>, 'mutationKey'>,
     callback?: (data: ConfigResponse) => void
   ): UseMutationResult<ConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ReportingLimit }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ReportingLimit }) => {
       const response = 
             (await ConfigurationsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

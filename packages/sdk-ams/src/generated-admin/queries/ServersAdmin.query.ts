@@ -29,13 +29,23 @@ Connectioninfo_ByServerId = 'Ams.ServersAdmin.Connectioninfo_ByServerId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ServersAdmin.Server_ByServerId, input]
+ * }
+ * ```
+ */
 export const useServersAdminApi_GetServer_ByServerId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { serverID:string },
     options?: Omit<UseQueryOptions<FleetServerInfoResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FleetServerInfoResponse>) => void
   ): UseQueryResult<FleetServerInfoResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServersAdminApi_GetServer_ByServerId>[1]
@@ -56,13 +66,23 @@ export const useServersAdminApi_GetServer_ByServerId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ServersAdmin.History_ByServerId, input]
+ * }
+ * ```
+ */
 export const useServersAdminApi_GetHistory_ByServerId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { serverID:string },
     options?: Omit<UseQueryOptions<FleetServerHistoryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FleetServerHistoryResponse>) => void
   ): UseQueryResult<FleetServerHistoryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServersAdminApi_GetHistory_ByServerId>[1]
@@ -83,13 +103,23 @@ export const useServersAdminApi_GetHistory_ByServerId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ServersAdmin.ServersHistory_ByFleetId, input]
+ * }
+ * ```
+ */
 export const useServersAdminApi_GetServersHistory_ByFleetId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { fleetID:string,  queryParams?: {count?: number, offset?: number, reason?: string | null, region?: string | null, serverId?: string | null, sortDirection?: string | null, status?: string | null} },
     options?: Omit<UseQueryOptions<DsHistoryList, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<DsHistoryList>) => void
   ): UseQueryResult<DsHistoryList, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServersAdminApi_GetServersHistory_ByFleetId>[1]
@@ -110,13 +140,23 @@ export const useServersAdminApi_GetServersHistory_ByFleetId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ServersAdmin.Connectioninfo_ByServerId, input]
+ * }
+ * ```
+ */
 export const useServersAdminApi_GetConnectioninfo_ByServerId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { serverID:string },
     options?: Omit<UseQueryOptions<FleetServerConnectionInfoResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FleetServerConnectionInfoResponse>) => void
   ): UseQueryResult<FleetServerConnectionInfoResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useServersAdminApi_GetConnectioninfo_ByServerId>[1]

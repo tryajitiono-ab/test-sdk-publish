@@ -34,13 +34,23 @@ ClientDomain_ByPlatformId_v3 = 'Iam.ThirdPartyCredentialAdmin.ClientDomain_ByPla
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ThirdPartyCredentialAdmin.Availability_ByPlatformId_v3, input]
+ * }
+ * ```
+ */
 export const useThirdPartyCredentialAdminApi_GetAvailability_ByPlatformId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { platformId:string },
     options?: Omit<UseQueryOptions<CheckAvailabilityResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CheckAvailabilityResponse>) => void
   ): UseQueryResult<CheckAvailabilityResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useThirdPartyCredentialAdminApi_GetAvailability_ByPlatformId_v3>[1]
@@ -61,13 +71,23 @@ export const useThirdPartyCredentialAdminApi_GetAvailability_ByPlatformId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ThirdPartyCredentialAdmin.PlatformsAllClients_v3, input]
+ * }
+ * ```
+ */
 export const useThirdPartyCredentialAdminApi_GetPlatformsAllClients_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ThirdPartyLoginPlatformCredentialResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ThirdPartyLoginPlatformCredentialResponseArray>) => void
   ): UseQueryResult<ThirdPartyLoginPlatformCredentialResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useThirdPartyCredentialAdminApi_GetPlatformsAllClients_v3>[1]
@@ -88,13 +108,23 @@ export const useThirdPartyCredentialAdminApi_GetPlatformsAllClients_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ThirdPartyCredentialAdmin.PlatformsAllClientsActive_v3, input]
+ * }
+ * ```
+ */
 export const useThirdPartyCredentialAdminApi_GetPlatformsAllClientsActive_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ThirdPartyLoginPlatformCredentialResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ThirdPartyLoginPlatformCredentialResponseArray>) => void
   ): UseQueryResult<ThirdPartyLoginPlatformCredentialResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useThirdPartyCredentialAdminApi_GetPlatformsAllClientsActive_v3>[1]
@@ -120,7 +150,7 @@ export const useThirdPartyCredentialAdminApi_DeleteClient_ByPlatformId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platformId:string }) => {
       const response = 
             (await ThirdPartyCredentialAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -138,13 +168,23 @@ export const useThirdPartyCredentialAdminApi_DeleteClient_ByPlatformId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ThirdPartyCredentialAdmin.Clients_ByPlatformId_v3, input]
+ * }
+ * ```
+ */
 export const useThirdPartyCredentialAdminApi_GetClients_ByPlatformId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { platformId:string },
     options?: Omit<UseQueryOptions<ThirdPartyLoginPlatformCredentialResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ThirdPartyLoginPlatformCredentialResponse>) => void
   ): UseQueryResult<ThirdPartyLoginPlatformCredentialResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useThirdPartyCredentialAdminApi_GetClients_ByPlatformId_v3>[1]
@@ -170,7 +210,7 @@ export const useThirdPartyCredentialAdminApi_PatchClient_ByPlatformId_v3 = (
     options?: Omit<UseMutationOptions<ThirdPartyLoginPlatformCredentialResponse, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: ThirdPartyLoginPlatformCredentialRequest }>, 'mutationKey'>,
     callback?: (data: ThirdPartyLoginPlatformCredentialResponse) => void
   ): UseMutationResult<ThirdPartyLoginPlatformCredentialResponse, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: ThirdPartyLoginPlatformCredentialRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platformId:string, data: ThirdPartyLoginPlatformCredentialRequest }) => {
       const response = 
             (await ThirdPartyCredentialAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -193,7 +233,7 @@ export const useThirdPartyCredentialAdminApi_CreateClient_ByPlatformId_v3 = (
     options?: Omit<UseMutationOptions<ThirdPartyLoginPlatformCredentialResponse, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: ThirdPartyLoginPlatformCredentialRequest }>, 'mutationKey'>,
     callback?: (data: ThirdPartyLoginPlatformCredentialResponse) => void
   ): UseMutationResult<ThirdPartyLoginPlatformCredentialResponse, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: ThirdPartyLoginPlatformCredentialRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platformId:string, data: ThirdPartyLoginPlatformCredentialRequest }) => {
       const response = 
             (await ThirdPartyCredentialAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -216,7 +256,7 @@ export const useThirdPartyCredentialAdminApi_DeleteClientDomain_ByPlatformId_v3 
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: PlatformDomainDeleteRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: PlatformDomainDeleteRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platformId:string, data: PlatformDomainDeleteRequest }) => {
       const response = 
             (await ThirdPartyCredentialAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -239,7 +279,7 @@ export const useThirdPartyCredentialAdminApi_UpdateClientDomain_ByPlatformId_v3 
     options?: Omit<UseMutationOptions<PlatformDomainResponse, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: PlatformDomainUpdateRequest }>, 'mutationKey'>,
     callback?: (data: PlatformDomainResponse) => void
   ): UseMutationResult<PlatformDomainResponse, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string, data: PlatformDomainUpdateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platformId:string, data: PlatformDomainUpdateRequest }) => {
       const response = 
             (await ThirdPartyCredentialAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

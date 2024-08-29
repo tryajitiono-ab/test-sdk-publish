@@ -52,13 +52,23 @@ DeleteBulkFriend_ByUserId = 'Lobby.Friends.DeleteBulkFriend_ByUserId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Friends.FriendsMe, input]
+ * }
+ * ```
+ */
 export const useFriendsApi_GetFriendsMe = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetUserFriendsResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUserFriendsResponseArray>) => void
   ): UseQueryResult<GetUserFriendsResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFriendsApi_GetFriendsMe>[1]
@@ -84,7 +94,7 @@ export const useFriendsApi_PatchFriendSyncMe = (
     options?: Omit<UseMutationOptions<NativeFriendSyncResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: NativeFriendRequest[] }>, 'mutationKey'>,
     callback?: (data: NativeFriendSyncResponseArray) => void
   ): UseMutationResult<NativeFriendSyncResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: NativeFriendRequest[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: NativeFriendRequest[] }) => {
       const response = 
             (await FriendsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -107,7 +117,7 @@ export const useFriendsApi_CreateFriendMeRequest = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserRequestFriendRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserRequestFriendRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UserRequestFriendRequest }) => {
       const response = 
             (await FriendsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -125,13 +135,23 @@ export const useFriendsApi_CreateFriendMeRequest = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Friends.FriendsMeIncoming, input]
+ * }
+ * ```
+ */
 export const useFriendsApi_GetFriendsMeIncoming = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetUserIncomingFriendsResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUserIncomingFriendsResponseArray>) => void
   ): UseQueryResult<GetUserIncomingFriendsResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFriendsApi_GetFriendsMeIncoming>[1]
@@ -152,13 +172,23 @@ export const useFriendsApi_GetFriendsMeIncoming = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Friends.FriendsMeOutgoing, input]
+ * }
+ * ```
+ */
 export const useFriendsApi_GetFriendsMeOutgoing = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetUserOutgoingFriendsResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetUserOutgoingFriendsResponseArray>) => void
   ): UseQueryResult<GetUserOutgoingFriendsResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFriendsApi_GetFriendsMeOutgoing>[1]
@@ -184,7 +214,7 @@ export const useFriendsApi_CreateFriendMeUnfriend = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserUnfriendRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserUnfriendRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UserUnfriendRequest }) => {
       const response = 
             (await FriendsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -202,13 +232,23 @@ export const useFriendsApi_CreateFriendMeUnfriend = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Friends.FriendsMePlatforms, input]
+ * }
+ * ```
+ */
 export const useFriendsApi_GetFriendsMePlatforms = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<ListBulkUserPlatformsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListBulkUserPlatformsResponse>) => void
   ): UseQueryResult<ListBulkUserPlatformsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFriendsApi_GetFriendsMePlatforms>[1]
@@ -229,13 +269,23 @@ export const useFriendsApi_GetFriendsMePlatforms = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Friends.FriendsMeIncomingTime, input]
+ * }
+ * ```
+ */
 export const useFriendsApi_GetFriendsMeIncomingTime = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<LoadIncomingFriendsWithTimeResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<LoadIncomingFriendsWithTimeResponseArray>) => void
   ): UseQueryResult<LoadIncomingFriendsWithTimeResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFriendsApi_GetFriendsMeIncomingTime>[1]
@@ -256,13 +306,23 @@ export const useFriendsApi_GetFriendsMeIncomingTime = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Friends.FriendsMeOutgoingTime, input]
+ * }
+ * ```
+ */
 export const useFriendsApi_GetFriendsMeOutgoingTime = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<LoadOutgoingFriendsWithTimeResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<LoadOutgoingFriendsWithTimeResponseArray>) => void
   ): UseQueryResult<LoadOutgoingFriendsWithTimeResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFriendsApi_GetFriendsMeOutgoingTime>[1]
@@ -288,7 +348,7 @@ export const useFriendsApi_CreateFriendMeRequestAccept = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserAcceptFriendRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserAcceptFriendRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UserAcceptFriendRequest }) => {
       const response = 
             (await FriendsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -311,7 +371,7 @@ export const useFriendsApi_CreateFriendMeRequestCancel = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserCancelFriendRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserCancelFriendRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UserCancelFriendRequest }) => {
       const response = 
             (await FriendsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -334,7 +394,7 @@ export const useFriendsApi_CreateFriendMeRequestReject = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserRejectFriendRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserRejectFriendRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UserRejectFriendRequest }) => {
       const response = 
             (await FriendsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -352,13 +412,23 @@ export const useFriendsApi_CreateFriendMeRequestReject = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Friends.FriendMeStatu_ByFriendId, input]
+ * }
+ * ```
+ */
 export const useFriendsApi_GetFriendMeStatu_ByFriendId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { friendId:string },
     options?: Omit<UseQueryOptions<UserGetFriendshipStatusResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserGetFriendshipStatusResponse>) => void
   ): UseQueryResult<UserGetFriendshipStatusResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFriendsApi_GetFriendMeStatu_ByFriendId>[1]
@@ -384,7 +454,7 @@ export const useFriendsApi_CreateAddBulkFriend_ByUserId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkFriendsRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkFriendsRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: BulkFriendsRequest }) => {
       const response = 
             (await FriendsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -407,7 +477,7 @@ export const useFriendsApi_CreateDeleteBulkFriend_ByUserId = (
     options?: Omit<UseMutationOptions<BulkFriendsResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkFriendsRequest }>, 'mutationKey'>,
     callback?: (data: BulkFriendsResponse) => void
   ): UseMutationResult<BulkFriendsResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkFriendsRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: BulkFriendsRequest }) => {
       const response = 
             (await FriendsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

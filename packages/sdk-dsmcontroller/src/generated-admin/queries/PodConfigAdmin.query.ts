@@ -29,13 +29,23 @@ ConfigPod_ByName = 'Dsmcontroller.PodConfigAdmin.ConfigPod_ByName',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PodConfigAdmin.InstancesSpecLowest, input]
+ * }
+ * ```
+ */
 export const usePodConfigAdminApi_GetInstancesSpecLowest = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<InstanceSpec, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<InstanceSpec>) => void
   ): UseQueryResult<InstanceSpec, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePodConfigAdminApi_GetInstancesSpecLowest>[1]
@@ -56,13 +66,23 @@ export const usePodConfigAdminApi_GetInstancesSpecLowest = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PodConfigAdmin.ConfigsPods, input]
+ * }
+ * ```
+ */
 export const usePodConfigAdminApi_GetConfigsPods = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {count: number, offset: number} },
     options?: Omit<UseQueryOptions<ListPodConfigResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListPodConfigResponse>) => void
   ): UseQueryResult<ListPodConfigResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePodConfigAdminApi_GetConfigsPods>[1]
@@ -88,7 +108,7 @@ export const usePodConfigAdminApi_DeleteConfigPod_ByName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string }) => {
       const response = 
             (await PodConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -106,13 +126,23 @@ export const usePodConfigAdminApi_DeleteConfigPod_ByName = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PodConfigAdmin.ConfigPod_ByName, input]
+ * }
+ * ```
+ */
 export const usePodConfigAdminApi_GetConfigPod_ByName = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { name:string },
     options?: Omit<UseQueryOptions<PodConfigRecord, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PodConfigRecord>) => void
   ): UseQueryResult<PodConfigRecord, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePodConfigAdminApi_GetConfigPod_ByName>[1]
@@ -138,7 +168,7 @@ export const usePodConfigAdminApi_PatchConfigPod_ByName = (
     options?: Omit<UseMutationOptions<PodConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: UpdatePodConfigRequest }>, 'mutationKey'>,
     callback?: (data: PodConfigRecord) => void
   ): UseMutationResult<PodConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: UpdatePodConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string, data: UpdatePodConfigRequest }) => {
       const response = 
             (await PodConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -161,7 +191,7 @@ export const usePodConfigAdminApi_CreateConfigPod_ByName = (
     options?: Omit<UseMutationOptions<PodConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: CreatePodConfigRequest }>, 'mutationKey'>,
     callback?: (data: PodConfigRecord) => void
   ): UseMutationResult<PodConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: CreatePodConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string, data: CreatePodConfigRequest }) => {
       const response = 
             (await PodConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

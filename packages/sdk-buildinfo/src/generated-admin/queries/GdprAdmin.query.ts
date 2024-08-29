@@ -29,7 +29,7 @@ export const useGdprAdminApi_DeleteGdprRemove = (
     options?: Omit<UseMutationOptions<BuildInfoPii, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams: {userId: string | null} }>, 'mutationKey'>,
     callback?: (data: BuildInfoPii) => void
   ): UseMutationResult<BuildInfoPii, AxiosError<ApiError>, SdkSetConfigParam & {  queryParams: {userId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & {  queryParams: {userId: string | null} }) => {
       const response = 
             (await GdprAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -47,13 +47,23 @@ export const useGdprAdminApi_DeleteGdprRemove = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GdprAdmin.GdprRetrieve, input]
+ * }
+ * ```
+ */
 export const useGdprAdminApi_GetGdprRetrieve = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {userId: string | null} },
     options?: Omit<UseQueryOptions<BuildInfoPii, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BuildInfoPii>) => void
   ): UseQueryResult<BuildInfoPii, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGdprAdminApi_GetGdprRetrieve>[1]

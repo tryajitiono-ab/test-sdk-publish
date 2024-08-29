@@ -59,13 +59,23 @@ StatitemValueReset_ByUserId_ByStatCode = 'Social.UserStatisticAdmin.StatitemValu
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserStatisticAdmin.StatitemsBulk, input]
+ * }
+ * ```
+ */
 export const useUserStatisticAdminApi_GetStatitemsBulk = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {statCode: string | null, userIds: string | null} },
     options?: Omit<UseQueryOptions<UserStatItemInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserStatItemInfoArray>) => void
   ): UseQueryResult<UserStatItemInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserStatisticAdminApi_GetStatitemsBulk>[1]
@@ -91,7 +101,7 @@ export const useUserStatisticAdminApi_PatchStatitemValueBulk = (
     options?: Omit<UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserStatItemInc[] }>, 'mutationKey'>,
     callback?: (data: BulkStatOperationResultArray) => void
   ): UseMutationResult<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserStatItemInc[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkUserStatItemInc[] }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -114,7 +124,7 @@ export const useUserStatisticAdminApi_UpdateStatitemValueBulk = (
     options?: Omit<UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserStatItemInc[] }>, 'mutationKey'>,
     callback?: (data: BulkStatOperationResultArray) => void
   ): UseMutationResult<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserStatItemInc[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkUserStatItemInc[] }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -137,7 +147,7 @@ export const useUserStatisticAdminApi_UpdateStatitemValueBulk_v2 = (
     options?: Omit<UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserStatItemUpdate[] }>, 'mutationKey'>,
     callback?: (data: BulkStatOperationResultArray) => void
   ): UseMutationResult<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserStatItemUpdate[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkUserStatItemUpdate[] }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -155,13 +165,23 @@ export const useUserStatisticAdminApi_UpdateStatitemValueBulk_v2 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserStatisticAdmin.Statitems_ByUserId, input]
+ * }
+ * ```
+ */
 export const useUserStatisticAdminApi_GetStatitems_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {isPublic?: boolean | null, limit?: number, offset?: number, sortBy?: string | null, statCodes?: string | null, tags?: string | null} },
     options?: Omit<UseQueryOptions<UserStatItemPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserStatItemPagingSlicedResult>) => void
   ): UseQueryResult<UserStatItemPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserStatisticAdminApi_GetStatitems_ByUserId>[1]
@@ -187,7 +207,7 @@ export const useUserStatisticAdminApi_UpdateStatitemValueResetBulk = (
     options?: Omit<UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserStatItemReset[] }>, 'mutationKey'>,
     callback?: (data: BulkStatOperationResultArray) => void
   ): UseMutationResult<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserStatItemReset[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: BulkUserStatItemReset[] }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -205,13 +225,23 @@ export const useUserStatisticAdminApi_UpdateStatitemValueResetBulk = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserStatisticAdmin.Statitems_ByStatCode, input]
+ * }
+ * ```
+ */
 export const useUserStatisticAdminApi_GetStatitems_ByStatCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { statCode:string,  queryParams?: {limit?: number, offset?: number, sortBy?: string | null} },
     options?: Omit<UseQueryOptions<StatItemValuePagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StatItemValuePagingSlicedResult>) => void
   ): UseQueryResult<StatItemValuePagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserStatisticAdminApi_GetStatitems_ByStatCode>[1]
@@ -237,7 +267,7 @@ export const useUserStatisticAdminApi_CreateStatitemBulk_ByUserId = (
     options?: Omit<UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkStatItemCreate[] }>, 'mutationKey'>,
     callback?: (data: BulkStatOperationResultArray) => void
   ): UseMutationResult<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkStatItemCreate[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: BulkStatItemCreate[] }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -255,13 +285,23 @@ export const useUserStatisticAdminApi_CreateStatitemBulk_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserStatisticAdmin.StatitemsValueBulkGetOrDefault, input]
+ * }
+ * ```
+ */
 export const useUserStatisticAdminApi_GetStatitemsValueBulkGetOrDefault = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {statCode: string | null, userIds: string[]} },
     options?: Omit<UseQueryOptions<ADtoObjectForUserStatItemValueArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ADtoObjectForUserStatItemValueArray>) => void
   ): UseQueryResult<ADtoObjectForUserStatItemValueArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserStatisticAdminApi_GetStatitemsValueBulkGetOrDefault>[1]
@@ -282,13 +322,23 @@ export const useUserStatisticAdminApi_GetStatitemsValueBulkGetOrDefault = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserStatisticAdmin.StatitemsValueBulkGetOrDefault_v2, input]
+ * }
+ * ```
+ */
 export const useUserStatisticAdminApi_GetStatitemsValueBulkGetOrDefault_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {statCode: string | null, userIds: string[], additionalKey?: string | null} },
     options?: Omit<UseQueryOptions<ADtoObjectForUserStatItemValueArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ADtoObjectForUserStatItemValueArray>) => void
   ): UseQueryResult<ADtoObjectForUserStatItemValueArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserStatisticAdminApi_GetStatitemsValueBulkGetOrDefault_v2>[1]
@@ -314,7 +364,7 @@ export const useUserStatisticAdminApi_PatchStatitemValueBulk_ByUserId = (
     options?: Omit<UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkStatItemInc[] }>, 'mutationKey'>,
     callback?: (data: BulkStatOperationResultArray) => void
   ): UseMutationResult<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkStatItemInc[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: BulkStatItemInc[] }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -337,7 +387,7 @@ export const useUserStatisticAdminApi_UpdateStatitemValueBulk_ByUserId = (
     options?: Omit<UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkStatItemInc[] }>, 'mutationKey'>,
     callback?: (data: BulkStatOperationResultArray) => void
   ): UseMutationResult<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkStatItemInc[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: BulkStatItemInc[] }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -355,13 +405,23 @@ export const useUserStatisticAdminApi_UpdateStatitemValueBulk_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_UserStatisticAdmin.StatitemsValueBulk_ByUserId_v2, input]
+ * }
+ * ```
+ */
 export const useUserStatisticAdminApi_GetStatitemsValueBulk_ByUserId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {additionalKey?: string | null, statCodes?: string[], tags?: string[]} },
     options?: Omit<UseQueryOptions<ADtoObjectForUserStatItemValueArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ADtoObjectForUserStatItemValueArray>) => void
   ): UseQueryResult<ADtoObjectForUserStatItemValueArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUserStatisticAdminApi_GetStatitemsValueBulk_ByUserId_v2>[1]
@@ -387,7 +447,7 @@ export const useUserStatisticAdminApi_UpdateStatitemValueBulk_ByUserId_v2 = (
     options?: Omit<UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkStatItemUpdate[], queryParams?: {additionalKey?: string | null} }>, 'mutationKey'>,
     callback?: (data: BulkStatOperationResultArray) => void
   ): UseMutationResult<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkStatItemUpdate[], queryParams?: {additionalKey?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: BulkStatItemUpdate[], queryParams?: {additionalKey?: string | null} }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -410,7 +470,7 @@ export const useUserStatisticAdminApi_UpdateStatitemValueResetBulk_ByUserId = (
     options?: Omit<UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkStatItemReset[] }>, 'mutationKey'>,
     callback?: (data: BulkStatOperationResultArray) => void
   ): UseMutationResult<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkStatItemReset[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: BulkStatItemReset[] }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -433,7 +493,7 @@ export const useUserStatisticAdminApi_DeleteStatitem_ByUserId_ByStatCode = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, statCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, statCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, statCode:string }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -456,7 +516,7 @@ export const useUserStatisticAdminApi_CreateStatitem_ByUserId_ByStatCode = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, statCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, statCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, statCode:string }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -479,7 +539,7 @@ export const useUserStatisticAdminApi_UpdateStatitemValueResetBulk_ByUserId_v2 =
     options?: Omit<UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: ADtoObjectForResettingUserStatItems[], queryParams?: {additionalKey?: string | null} }>, 'mutationKey'>,
     callback?: (data: BulkStatOperationResultArray) => void
   ): UseMutationResult<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: ADtoObjectForResettingUserStatItems[], queryParams?: {additionalKey?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: ADtoObjectForResettingUserStatItems[], queryParams?: {additionalKey?: string | null} }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -502,7 +562,7 @@ export const useUserStatisticAdminApi_DeleteStatitem_ByUserId_ByStatCode_v2 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, statCode:string,  queryParams?: {additionalKey?: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, statCode:string,  queryParams?: {additionalKey?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, statCode:string,  queryParams?: {additionalKey?: string | null} }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -525,7 +585,7 @@ export const useUserStatisticAdminApi_PatchStatitemValue_ByUserId_ByStatCode = (
     options?: Omit<UseMutationOptions<StatItemIncResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, statCode:string, data: StatItemInc }>, 'mutationKey'>,
     callback?: (data: StatItemIncResult) => void
   ): UseMutationResult<StatItemIncResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, statCode:string, data: StatItemInc }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, statCode:string, data: StatItemInc }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -548,7 +608,7 @@ export const useUserStatisticAdminApi_UpdateStatitemValue_ByUserId_ByStatCode_v2
     options?: Omit<UseMutationOptions<StatItemIncResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, statCode:string, data: StatItemUpdate, queryParams?: {additionalKey?: string | null} }>, 'mutationKey'>,
     callback?: (data: StatItemIncResult) => void
   ): UseMutationResult<StatItemIncResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, statCode:string, data: StatItemUpdate, queryParams?: {additionalKey?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, statCode:string, data: StatItemUpdate, queryParams?: {additionalKey?: string | null} }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -571,7 +631,7 @@ export const useUserStatisticAdminApi_CreateStatitemValueBulkGetOrDefault_ByUser
     options?: Omit<UseMutationOptions<ADtoObjectForUserStatItemValueArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkUserStatItemByStatCodes, queryParams?: {additionalKey?: string | null} }>, 'mutationKey'>,
     callback?: (data: ADtoObjectForUserStatItemValueArray) => void
   ): UseMutationResult<ADtoObjectForUserStatItemValueArray, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: BulkUserStatItemByStatCodes, queryParams?: {additionalKey?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: BulkUserStatItemByStatCodes, queryParams?: {additionalKey?: string | null} }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -594,7 +654,7 @@ export const useUserStatisticAdminApi_UpdateStatitemValueReset_ByUserId_ByStatCo
     options?: Omit<UseMutationOptions<StatItemIncResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, statCode:string, data: StatResetInfo, queryParams?: {additionalKey?: string | null} }>, 'mutationKey'>,
     callback?: (data: StatItemIncResult) => void
   ): UseMutationResult<StatItemIncResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, statCode:string, data: StatResetInfo, queryParams?: {additionalKey?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, statCode:string, data: StatResetInfo, queryParams?: {additionalKey?: string | null} }) => {
       const response = 
             (await UserStatisticAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

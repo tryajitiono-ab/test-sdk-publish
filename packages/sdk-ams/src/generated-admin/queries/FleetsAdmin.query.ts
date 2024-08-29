@@ -30,13 +30,23 @@ Servers_ByFleetId = 'Ams.FleetsAdmin.Servers_ByFleetId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_FleetsAdmin.Fleets, input]
+ * }
+ * ```
+ */
 export const useFleetsAdminApi_GetFleets = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<FleetListResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FleetListResponse>) => void
   ): UseQueryResult<FleetListResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFleetsAdminApi_GetFleets>[1]
@@ -62,7 +72,7 @@ export const useFleetsAdminApi_CreateFleet = (
     options?: Omit<UseMutationOptions<FleetCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: FleetParameters }>, 'mutationKey'>,
     callback?: (data: FleetCreateResponse) => void
   ): UseMutationResult<FleetCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: FleetParameters }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: FleetParameters }) => {
       const response = 
             (await FleetsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -85,7 +95,7 @@ export const useFleetsAdminApi_DeleteFleet_ByFleetId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { fleetID:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { fleetID:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { fleetID:string }) => {
       const response = 
             (await FleetsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -103,13 +113,23 @@ export const useFleetsAdminApi_DeleteFleet_ByFleetId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_FleetsAdmin.Fleet_ByFleetId, input]
+ * }
+ * ```
+ */
 export const useFleetsAdminApi_GetFleet_ByFleetId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { fleetID:string },
     options?: Omit<UseQueryOptions<FleetGetResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FleetGetResponse>) => void
   ): UseQueryResult<FleetGetResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFleetsAdminApi_GetFleet_ByFleetId>[1]
@@ -135,7 +155,7 @@ export const useFleetsAdminApi_UpdateFleet_ByFleetId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { fleetID:string, data: FleetParameters }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { fleetID:string, data: FleetParameters }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { fleetID:string, data: FleetParameters }) => {
       const response = 
             (await FleetsAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -153,13 +173,23 @@ export const useFleetsAdminApi_UpdateFleet_ByFleetId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_FleetsAdmin.Servers_ByFleetId, input]
+ * }
+ * ```
+ */
 export const useFleetsAdminApi_GetServers_ByFleetId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { fleetID:string,  queryParams?: {count?: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<FleetServersResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FleetServersResponse>) => void
   ): UseQueryResult<FleetServersResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFleetsAdminApi_GetServers_ByFleetId>[1]

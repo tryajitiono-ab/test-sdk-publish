@@ -23,13 +23,23 @@ export enum Key_Config {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Config.Config_ByNamespace, input]
+ * }
+ * ```
+ */
 export const useConfigApi_GetConfig_ByNamespace = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<PublicConfigResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PublicConfigResponse>) => void
   ): UseQueryResult<PublicConfigResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigApi_GetConfig_ByNamespace>[1]

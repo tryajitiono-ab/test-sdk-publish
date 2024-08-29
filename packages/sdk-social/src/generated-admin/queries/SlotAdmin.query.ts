@@ -24,13 +24,23 @@ Slot_ByUserId_BySlotId = 'Social.SlotAdmin.Slot_ByUserId_BySlotId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SlotAdmin.Slots_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSlotAdminApi_GetSlots_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<SlotInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SlotInfoArray>) => void
   ): UseQueryResult<SlotInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSlotAdminApi_GetSlots_ByUserId>[1]
@@ -51,13 +61,23 @@ export const useSlotAdminApi_GetSlots_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_SlotAdmin.Slot_ByUserId_BySlotId, input]
+ * }
+ * ```
+ */
 export const useSlotAdminApi_GetSlot_ByUserId_BySlotId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, slotId:string },
     options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<unknown>) => void
   ): UseQueryResult<unknown, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSlotAdminApi_GetSlot_ByUserId_BySlotId>[1]

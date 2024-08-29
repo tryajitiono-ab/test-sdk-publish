@@ -37,13 +37,23 @@ Clientpermission_ByClientId_ByResource_ByAction = 'Iam.Clients.Clientpermission_
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Clients.Clients, input]
+ * }
+ * ```
+ */
 export const useClientsApi_GetClients = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ClientResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ClientResponseArray>) => void
   ): UseQueryResult<ClientResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useClientsApi_GetClients>[1]
@@ -69,7 +79,7 @@ export const useClientsApi_CreateClient = (
     options?: Omit<UseMutationOptions<ClientCreationResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ClientCreateRequest }>, 'mutationKey'>,
     callback?: (data: ClientCreationResponse) => void
   ): UseMutationResult<ClientCreationResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ClientCreateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ClientCreateRequest }) => {
       const response = 
             (await ClientsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -92,7 +102,7 @@ export const useClientsApi_DeleteClient_ByClientId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { clientId:string }) => {
       const response = 
             (await ClientsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -110,13 +120,23 @@ export const useClientsApi_DeleteClient_ByClientId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Clients.Client_ByClientId, input]
+ * }
+ * ```
+ */
 export const useClientsApi_GetClient_ByClientId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { clientId:string },
     options?: Omit<UseQueryOptions<ClientResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ClientResponse>) => void
   ): UseQueryResult<ClientResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useClientsApi_GetClient_ByClientId>[1]
@@ -142,7 +162,7 @@ export const useClientsApi_UpdateClient_ByClientId = (
     options?: Omit<UseMutationOptions<ClientResponse, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string, data: ClientUpdateRequest }>, 'mutationKey'>,
     callback?: (data: ClientResponse) => void
   ): UseMutationResult<ClientResponse, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string, data: ClientUpdateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { clientId:string, data: ClientUpdateRequest }) => {
       const response = 
             (await ClientsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -165,7 +185,7 @@ export const useClientsApi_UpdateSecret_ByClientId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string, data: ClientUpdateSecretRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string, data: ClientUpdateSecretRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { clientId:string, data: ClientUpdateSecretRequest }) => {
       const response = 
             (await ClientsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -183,13 +203,23 @@ export const useClientsApi_UpdateSecret_ByClientId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Clients.Clients_ByNS, input]
+ * }
+ * ```
+ */
 export const useClientsApi_GetClients_ByNS = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ClientResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ClientResponseArray>) => void
   ): UseQueryResult<ClientResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useClientsApi_GetClients_ByNS>[1]
@@ -215,7 +245,7 @@ export const useClientsApi_CreateClient_ByNS = (
     options?: Omit<UseMutationOptions<ClientCreationResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ClientCreateRequest }>, 'mutationKey'>,
     callback?: (data: ClientCreationResponse) => void
   ): UseMutationResult<ClientCreationResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ClientCreateRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: ClientCreateRequest }) => {
       const response = 
             (await ClientsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -238,7 +268,7 @@ export const useClientsApi_UpdateClientpermission_ByClientId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string, data: ClientPermissions }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string, data: ClientPermissions }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { clientId:string, data: ClientPermissions }) => {
       const response = 
             (await ClientsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -261,7 +291,7 @@ export const useClientsApi_DeleteClient_ByClientId_ByNS = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { clientId:string }) => {
       const response = 
             (await ClientsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -284,7 +314,7 @@ export const useClientsApi_DeleteClientpermission_ByClientId_ByResource_ByAction
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string, resource:string, action:number }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string, resource:string, action:number }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { clientId:string, resource:string, action:number }) => {
       const response = 
             (await ClientsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -307,7 +337,7 @@ export const useClientsApi_UpdateClientpermission_ByClientId_ByResource_ByAction
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string, resource:string, action:number }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId:string, resource:string, action:number }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { clientId:string, resource:string, action:number }) => {
       const response = 
             (await ClientsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

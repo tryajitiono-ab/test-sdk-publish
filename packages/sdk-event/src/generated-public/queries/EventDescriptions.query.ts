@@ -36,13 +36,23 @@ DescriptionsEventLevelListByEventLevels = 'Event.EventDescriptions.DescriptionsE
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventDescriptions.DescriptionsUx, input]
+ * }
+ * ```
+ */
 export const useEventDescriptionsApi_GetDescriptionsUx = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<MultipleUx, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MultipleUx>) => void
   ): UseQueryResult<MultipleUx, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventDescriptionsApi_GetDescriptionsUx>[1]
@@ -63,13 +73,23 @@ export const useEventDescriptionsApi_GetDescriptionsUx = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventDescriptions.DescriptionsEventId, input]
+ * }
+ * ```
+ */
 export const useEventDescriptionsApi_GetDescriptionsEventId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<MultipleEventId, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MultipleEventId>) => void
   ): UseQueryResult<MultipleEventId, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventDescriptionsApi_GetDescriptionsEventId>[1]
@@ -90,13 +110,23 @@ export const useEventDescriptionsApi_GetDescriptionsEventId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventDescriptions.DescriptionsAgentType, input]
+ * }
+ * ```
+ */
 export const useEventDescriptionsApi_GetDescriptionsAgentType = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<MultipleAgentType, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MultipleAgentType>) => void
   ): UseQueryResult<MultipleAgentType, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventDescriptionsApi_GetDescriptionsAgentType>[1]
@@ -117,13 +147,23 @@ export const useEventDescriptionsApi_GetDescriptionsAgentType = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventDescriptions.DescriptionsEventType, input]
+ * }
+ * ```
+ */
 export const useEventDescriptionsApi_GetDescriptionsEventType = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<MultipleEventType, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MultipleEventType>) => void
   ): UseQueryResult<MultipleEventType, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventDescriptionsApi_GetDescriptionsEventType>[1]
@@ -144,13 +184,23 @@ export const useEventDescriptionsApi_GetDescriptionsEventType = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventDescriptions.DescriptionsEventLevel, input]
+ * }
+ * ```
+ */
 export const useEventDescriptionsApi_GetDescriptionsEventLevel = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<MultipleEventLevel, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MultipleEventLevel>) => void
   ): UseQueryResult<MultipleEventLevel, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventDescriptionsApi_GetDescriptionsEventLevel>[1]
@@ -171,13 +221,23 @@ export const useEventDescriptionsApi_GetDescriptionsEventLevel = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventDescriptions.DescriptionsUxListByUx, input]
+ * }
+ * ```
+ */
 export const useEventDescriptionsApi_GetDescriptionsUxListByUx = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {ux?: string | null} },
     options?: Omit<UseQueryOptions<MultipleUx, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MultipleUx>) => void
   ): UseQueryResult<MultipleUx, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventDescriptionsApi_GetDescriptionsUxListByUx>[1]
@@ -198,13 +258,23 @@ export const useEventDescriptionsApi_GetDescriptionsUxListByUx = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventDescriptions.DescriptionsEventIdListByEventIds, input]
+ * }
+ * ```
+ */
 export const useEventDescriptionsApi_GetDescriptionsEventIdListByEventIds = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {eventIds?: string | null} },
     options?: Omit<UseQueryOptions<MultipleEventId, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MultipleEventId>) => void
   ): UseQueryResult<MultipleEventId, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventDescriptionsApi_GetDescriptionsEventIdListByEventIds>[1]
@@ -225,13 +295,23 @@ export const useEventDescriptionsApi_GetDescriptionsEventIdListByEventIds = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventDescriptions.DescriptionsAgentTypeListByAgentTypes, input]
+ * }
+ * ```
+ */
 export const useEventDescriptionsApi_GetDescriptionsAgentTypeListByAgentTypes = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {agentTypes?: string | null} },
     options?: Omit<UseQueryOptions<MultipleAgentType, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MultipleAgentType>) => void
   ): UseQueryResult<MultipleAgentType, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventDescriptionsApi_GetDescriptionsAgentTypeListByAgentTypes>[1]
@@ -252,13 +332,23 @@ export const useEventDescriptionsApi_GetDescriptionsAgentTypeListByAgentTypes = 
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventDescriptions.DescriptionsEventTypeListByEventTypes, input]
+ * }
+ * ```
+ */
 export const useEventDescriptionsApi_GetDescriptionsEventTypeListByEventTypes = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {eventTypes?: string | null} },
     options?: Omit<UseQueryOptions<MultipleEventType, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MultipleEventType>) => void
   ): UseQueryResult<MultipleEventType, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventDescriptionsApi_GetDescriptionsEventTypeListByEventTypes>[1]
@@ -279,13 +369,23 @@ export const useEventDescriptionsApi_GetDescriptionsEventTypeListByEventTypes = 
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_EventDescriptions.DescriptionsEventLevelListByEventLevels, input]
+ * }
+ * ```
+ */
 export const useEventDescriptionsApi_GetDescriptionsEventLevelListByEventLevels = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {eventLevels?: string | null} },
     options?: Omit<UseQueryOptions<MultipleEventLevel, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MultipleEventLevel>) => void
   ): UseQueryResult<MultipleEventLevel, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEventDescriptionsApi_GetDescriptionsEventLevelListByEventLevels>[1]

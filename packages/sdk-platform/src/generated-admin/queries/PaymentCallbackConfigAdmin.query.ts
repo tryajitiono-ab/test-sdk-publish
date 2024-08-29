@@ -24,13 +24,23 @@ export enum Key_PaymentCallbackConfigAdmin {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PaymentCallbackConfigAdmin.PaymentConfigCallback, input]
+ * }
+ * ```
+ */
 export const usePaymentCallbackConfigAdminApi_GetPaymentConfigCallback = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<PaymentCallbackConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaymentCallbackConfigInfo>) => void
   ): UseQueryResult<PaymentCallbackConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePaymentCallbackConfigAdminApi_GetPaymentConfigCallback>[1]
@@ -56,7 +66,7 @@ export const usePaymentCallbackConfigAdminApi_UpdatePaymentConfigCallback = (
     options?: Omit<UseMutationOptions<PaymentCallbackConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentCallbackConfigUpdate }>, 'mutationKey'>,
     callback?: (data: PaymentCallbackConfigInfo) => void
   ): UseMutationResult<PaymentCallbackConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentCallbackConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PaymentCallbackConfigUpdate }) => {
       const response = 
             (await PaymentCallbackConfigAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

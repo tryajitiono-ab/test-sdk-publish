@@ -30,13 +30,23 @@ LatestPolicy_ByPolicyVersionId = 'Legal.PolicyVersionsWithNamespaceAdmin.LatestP
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PolicyVersionsWithNamespaceAdmin.Versions_ByPolicyId, input]
+ * }
+ * ```
+ */
 export const usePolicyVersionsWithNamespaceAdminApi_GetVersions_ByPolicyId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { policyId:string,  queryParams?: {versionId?: string | null} },
     options?: Omit<UseQueryOptions<RetrievePolicyVersionResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrievePolicyVersionResponseArray>) => void
   ): UseQueryResult<RetrievePolicyVersionResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePolicyVersionsWithNamespaceAdminApi_GetVersions_ByPolicyId>[1]
@@ -62,7 +72,7 @@ export const usePolicyVersionsWithNamespaceAdminApi_CreateVersion_ByPolicyId = (
     options?: Omit<UseMutationOptions<CreatePolicyVersionResponse, AxiosError<ApiError>, SdkSetConfigParam & { policyId:string, data: CreatePolicyVersionRequest }>, 'mutationKey'>,
     callback?: (data: CreatePolicyVersionResponse) => void
   ): UseMutationResult<CreatePolicyVersionResponse, AxiosError<ApiError>, SdkSetConfigParam & { policyId:string, data: CreatePolicyVersionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { policyId:string, data: CreatePolicyVersionRequest }) => {
       const response = 
             (await PolicyVersionsWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -85,7 +95,7 @@ export const usePolicyVersionsWithNamespaceAdminApi_PatchPolicyVersion_ByPolicyV
     options?: Omit<UseMutationOptions<UpdatePolicyVersionResponse, AxiosError<ApiError>, SdkSetConfigParam & { policyVersionId:string, data: UpdatePolicyVersionRequest }>, 'mutationKey'>,
     callback?: (data: UpdatePolicyVersionResponse) => void
   ): UseMutationResult<UpdatePolicyVersionResponse, AxiosError<ApiError>, SdkSetConfigParam & { policyVersionId:string, data: UpdatePolicyVersionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { policyVersionId:string, data: UpdatePolicyVersionRequest }) => {
       const response = 
             (await PolicyVersionsWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -108,7 +118,7 @@ export const usePolicyVersionsWithNamespaceAdminApi_PatchLatestPolicy_ByPolicyVe
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { policyVersionId:string,  queryParams?: {shouldNotify?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { policyVersionId:string,  queryParams?: {shouldNotify?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { policyVersionId:string,  queryParams?: {shouldNotify?: boolean | null} }) => {
       const response = 
             (await PolicyVersionsWithNamespaceAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

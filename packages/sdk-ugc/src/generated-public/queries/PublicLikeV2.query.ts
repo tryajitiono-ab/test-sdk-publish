@@ -25,13 +25,23 @@ export enum Key_PublicLikeV2 {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicLikeV2.Like_ByContentId_v2, input]
+ * }
+ * ```
+ */
 export const usePublicLikeV2Api_GetLike_ByContentId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { contentId:string,  queryParams?: {limit?: number, offset?: number, sortBy?: string | null} },
     options?: Omit<UseQueryOptions<PaginatedContentLikersResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedContentLikersResponse>) => void
   ): UseQueryResult<PaginatedContentLikersResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicLikeV2Api_GetLike_ByContentId_v2>[1]
@@ -57,7 +67,7 @@ export const usePublicLikeV2Api_UpdateLike_ByContentId_v2 = (
     options?: Omit<UseMutationOptions<ContentLikeResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, data: ContentLikeRequest }>, 'mutationKey'>,
     callback?: (data: ContentLikeResponse) => void
   ): UseMutationResult<ContentLikeResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId:string, data: ContentLikeRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { contentId:string, data: ContentLikeRequest }) => {
       const response = 
             (await PublicLikeV2Api(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

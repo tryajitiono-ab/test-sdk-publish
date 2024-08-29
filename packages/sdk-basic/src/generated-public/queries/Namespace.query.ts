@@ -27,13 +27,23 @@ Publisher = 'Basic.Namespace.Publisher',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Namespace.Namespaces, input]
+ * }
+ * ```
+ */
 export const useNamespaceApi_GetNamespaces = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {activeOnly?: boolean | null} },
     options?: Omit<UseQueryOptions<NamespaceInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespaceInfoArray>) => void
   ): UseQueryResult<NamespaceInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNamespaceApi_GetNamespaces>[1]
@@ -54,13 +64,23 @@ export const useNamespaceApi_GetNamespaces = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Namespace.Namespace_ByNamespace, input]
+ * }
+ * ```
+ */
 export const useNamespaceApi_GetNamespace_ByNamespace = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<NamespaceSimpleInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespaceSimpleInfo>) => void
   ): UseQueryResult<NamespaceSimpleInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNamespaceApi_GetNamespace_ByNamespace>[1]
@@ -81,13 +101,23 @@ export const useNamespaceApi_GetNamespace_ByNamespace = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Namespace.Publisher, input]
+ * }
+ * ```
+ */
 export const useNamespaceApi_GetPublisher = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<NamespacePublisherInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespacePublisherInfo>) => void
   ): UseQueryResult<NamespacePublisherInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useNamespaceApi_GetPublisher>[1]

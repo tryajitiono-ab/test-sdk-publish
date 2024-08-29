@@ -23,13 +23,23 @@ export enum Key_Account {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Account.Account, input]
+ * }
+ * ```
+ */
 export const useAccountApi_GetAccount = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<AccountResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<AccountResponse>) => void
   ): UseQueryResult<AccountResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAccountApi_GetAccount>[1]

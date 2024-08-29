@@ -57,13 +57,23 @@ Permission_ByRoleId_ByResource_ByAction_v3 = 'Iam.RolesAdmin.Permission_ByRoleId
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RolesAdmin.Roles_v3, input]
+ * }
+ * ```
+ */
 export const useRolesAdminApi_GetRoles_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {after?: string | null, before?: string | null, isWildcard?: boolean | null, limit?: number} },
     options?: Omit<UseQueryOptions<RoleResponseWithManagersAndPaginationV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleResponseWithManagersAndPaginationV3>) => void
   ): UseQueryResult<RoleResponseWithManagersAndPaginationV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesAdminApi_GetRoles_v3>[1]
@@ -89,7 +99,7 @@ export const useRolesAdminApi_CreateRole_v3 = (
     options?: Omit<UseMutationOptions<RoleV3, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleCreateV3Request }>, 'mutationKey'>,
     callback?: (data: RoleV3) => void
   ): UseMutationResult<RoleV3, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleCreateV3Request }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: RoleCreateV3Request }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -107,13 +117,23 @@ export const useRolesAdminApi_CreateRole_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RolesAdmin.Roles_v4, input]
+ * }
+ * ```
+ */
 export const useRolesAdminApi_GetRoles_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {adminRole?: boolean | null, isWildcard?: boolean | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<ListRoleV4Response, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListRoleV4Response>) => void
   ): UseQueryResult<ListRoleV4Response, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesAdminApi_GetRoles_v4>[1]
@@ -139,7 +159,7 @@ export const useRolesAdminApi_CreateRole_v4 = (
     options?: Omit<UseMutationOptions<RoleV4Response, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleV4Request }>, 'mutationKey'>,
     callback?: (data: RoleV4Response) => void
   ): UseMutationResult<RoleV4Response, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleV4Request }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: RoleV4Request }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -162,7 +182,7 @@ export const useRolesAdminApi_DeleteRole_ByRoleId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -180,13 +200,23 @@ export const useRolesAdminApi_DeleteRole_ByRoleId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RolesAdmin.Role_ByRoleId_v3, input]
+ * }
+ * ```
+ */
 export const useRolesAdminApi_GetRole_ByRoleId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string },
     options?: Omit<UseQueryOptions<RoleResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleResponseV3>) => void
   ): UseQueryResult<RoleResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesAdminApi_GetRole_ByRoleId_v3>[1]
@@ -212,7 +242,7 @@ export const useRolesAdminApi_PatchRole_ByRoleId_v3 = (
     options?: Omit<UseMutationOptions<RoleResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleUpdateRequestV3 }>, 'mutationKey'>,
     callback?: (data: RoleResponseV3) => void
   ): UseMutationResult<RoleResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleUpdateRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: RoleUpdateRequestV3 }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -235,7 +265,7 @@ export const useRolesAdminApi_DeleteRole_ByRoleId_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -253,13 +283,23 @@ export const useRolesAdminApi_DeleteRole_ByRoleId_v4 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RolesAdmin.Role_ByRoleId_v4, input]
+ * }
+ * ```
+ */
 export const useRolesAdminApi_GetRole_ByRoleId_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string },
     options?: Omit<UseQueryOptions<RoleV4Response, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleV4Response>) => void
   ): UseQueryResult<RoleV4Response, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesAdminApi_GetRole_ByRoleId_v4>[1]
@@ -285,7 +325,7 @@ export const useRolesAdminApi_PatchRole_ByRoleId_v4 = (
     options?: Omit<UseMutationOptions<RoleV4Response, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleV4Request }>, 'mutationKey'>,
     callback?: (data: RoleV4Response) => void
   ): UseMutationResult<RoleV4Response, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleV4Request }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: RoleV4Request }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -308,7 +348,7 @@ export const useRolesAdminApi_DeleteAdmin_ByRoleId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -326,13 +366,23 @@ export const useRolesAdminApi_DeleteAdmin_ByRoleId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RolesAdmin.Admin_ByRoleId_v3, input]
+ * }
+ * ```
+ */
 export const useRolesAdminApi_GetAdmin_ByRoleId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string },
     options?: Omit<UseQueryOptions<RoleAdminStatusResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleAdminStatusResponseV3>) => void
   ): UseQueryResult<RoleAdminStatusResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesAdminApi_GetAdmin_ByRoleId_v3>[1]
@@ -358,7 +408,7 @@ export const useRolesAdminApi_UpdateAdmin_ByRoleId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -381,7 +431,7 @@ export const useRolesAdminApi_DeleteUser_ByRoleId_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RevokeUserV4Request }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RevokeUserV4Request }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: RevokeUserV4Request }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -399,13 +449,23 @@ export const useRolesAdminApi_DeleteUser_ByRoleId_v4 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RolesAdmin.Users_ByRoleId_v4, input]
+ * }
+ * ```
+ */
 export const useRolesAdminApi_GetUsers_ByRoleId_v4 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string,  queryParams?: {after?: string | null, before?: string | null, limit?: number} },
     options?: Omit<UseQueryOptions<ListAssignedUsersV4Response, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListAssignedUsersV4Response>) => void
   ): UseQueryResult<ListAssignedUsersV4Response, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesAdminApi_GetUsers_ByRoleId_v4>[1]
@@ -431,7 +491,7 @@ export const useRolesAdminApi_UpdateUser_ByRoleId_v4 = (
     options?: Omit<UseMutationOptions<AssignedUserV4Response, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: AssignUserV4Request }>, 'mutationKey'>,
     callback?: (data: AssignedUserV4Response) => void
   ): UseMutationResult<AssignedUserV4Response, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: AssignUserV4Request }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: AssignUserV4Request }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -454,7 +514,7 @@ export const useRolesAdminApi_DeleteMember_ByRoleId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleMembersRequestV3 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleMembersRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: RoleMembersRequestV3 }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -472,13 +532,23 @@ export const useRolesAdminApi_DeleteMember_ByRoleId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RolesAdmin.Members_ByRoleId_v3, input]
+ * }
+ * ```
+ */
 export const useRolesAdminApi_GetMembers_ByRoleId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string,  queryParams?: {after?: string | null, before?: string | null, limit?: number} },
     options?: Omit<UseQueryOptions<RoleMembersResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleMembersResponseV3>) => void
   ): UseQueryResult<RoleMembersResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesAdminApi_GetMembers_ByRoleId_v3>[1]
@@ -504,7 +574,7 @@ export const useRolesAdminApi_UpdateMember_ByRoleId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleMembersRequestV3 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleMembersRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: RoleMembersRequestV3 }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -527,7 +597,7 @@ export const useRolesAdminApi_DeleteManager_ByRoleId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleManagersRequestV3 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleManagersRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: RoleManagersRequestV3 }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -545,13 +615,23 @@ export const useRolesAdminApi_DeleteManager_ByRoleId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RolesAdmin.Managers_ByRoleId_v3, input]
+ * }
+ * ```
+ */
 export const useRolesAdminApi_GetManagers_ByRoleId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { roleId:string,  queryParams?: {after?: string | null, before?: string | null, limit?: number} },
     options?: Omit<UseQueryOptions<RoleManagersResponsesV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RoleManagersResponsesV3>) => void
   ): UseQueryResult<RoleManagersResponsesV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRolesAdminApi_GetManagers_ByRoleId_v3>[1]
@@ -577,7 +657,7 @@ export const useRolesAdminApi_UpdateManager_ByRoleId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleManagersRequestV3 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: RoleManagersRequestV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: RoleManagersRequestV3 }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -600,7 +680,7 @@ export const useRolesAdminApi_DeletePermission_ByRoleId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: string[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: string[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: string[] }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -623,7 +703,7 @@ export const useRolesAdminApi_UpdatePermission_ByRoleId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: PermissionsV3 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: PermissionsV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: PermissionsV3 }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -646,7 +726,7 @@ export const useRolesAdminApi_UpdatePermission_ByRoleId_admin_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: PermissionsV3 }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: PermissionsV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: PermissionsV3 }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -669,7 +749,7 @@ export const useRolesAdminApi_DeletePermission_ByRoleId_v4 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: string[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: string[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: string[] }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -692,7 +772,7 @@ export const useRolesAdminApi_UpdatePermission_ByRoleId_v4 = (
     options?: Omit<UseMutationOptions<RoleV4Response, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: PermissionsV3 }>, 'mutationKey'>,
     callback?: (data: RoleV4Response) => void
   ): UseMutationResult<RoleV4Response, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: PermissionsV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: PermissionsV3 }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -715,7 +795,7 @@ export const useRolesAdminApi_UpdatePermission_ByRoleId_admin_v4 = (
     options?: Omit<UseMutationOptions<RoleV4Response, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: PermissionsV3 }>, 'mutationKey'>,
     callback?: (data: RoleV4Response) => void
   ): UseMutationResult<RoleV4Response, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, data: PermissionsV3 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, data: PermissionsV3 }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -738,7 +818,7 @@ export const useRolesAdminApi_DeletePermission_ByRoleId_ByResource_ByAction_v3 =
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, resource:string, action:number }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId:string, resource:string, action:number }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { roleId:string, resource:string, action:number }) => {
       const response = 
             (await RolesAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

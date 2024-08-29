@@ -30,13 +30,23 @@ UserPolicyAgreement_ByCountryCode_ByClientId_ByUserId = 'Legal.Agreement.UserPol
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Agreement.AgreementsPolicies, input]
+ * }
+ * ```
+ */
 export const useAgreementApi_GetAgreementsPolicies = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<RetrieveAcceptedAgreementResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveAcceptedAgreementResponseArray>) => void
   ): UseQueryResult<RetrieveAcceptedAgreementResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useAgreementApi_GetAgreementsPolicies>[1]
@@ -62,7 +72,7 @@ export const useAgreementApi_CreateAgreementPolicy = (
     options?: Omit<UseMutationOptions<AcceptAgreementResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AcceptAgreementRequest[] }>, 'mutationKey'>,
     callback?: (data: AcceptAgreementResponse) => void
   ): UseMutationResult<AcceptAgreementResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AcceptAgreementRequest[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: AcceptAgreementRequest[] }) => {
       const response = 
             (await AgreementApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -85,7 +95,7 @@ export const useAgreementApi_CreateAgreementPolicyUser_ByUserId = (
     options?: Omit<UseMutationOptions<AcceptAgreementResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: AcceptAgreementRequest[] }>, 'mutationKey'>,
     callback?: (data: AcceptAgreementResponse) => void
   ): UseMutationResult<AcceptAgreementResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: AcceptAgreementRequest[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: AcceptAgreementRequest[] }) => {
       const response = 
             (await AgreementApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -108,7 +118,7 @@ export const useAgreementApi_PatchAgreementLocalizedPolicyVersionPreference = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: AcceptAgreementRequest[] }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: AcceptAgreementRequest[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: AcceptAgreementRequest[] }) => {
       const response = 
             (await AgreementApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -131,7 +141,7 @@ export const useAgreementApi_CreateAgreementLocalizedPolicyVersion_ByLocalizedPo
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { localizedPolicyVersionId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { localizedPolicyVersionId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { localizedPolicyVersionId:string }) => {
       const response = 
             (await AgreementApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -154,7 +164,7 @@ export const useAgreementApi_CreateUserPolicyAgreement_ByCountryCode_ByClientId_
     options?: Omit<UseMutationOptions<AcceptAgreementResponse, AxiosError<ApiError>, SdkSetConfigParam & { countryCode:string, clientId:string, userId:string, data: AcceptAgreementRequest[] }>, 'mutationKey'>,
     callback?: (data: AcceptAgreementResponse) => void
   ): UseMutationResult<AcceptAgreementResponse, AxiosError<ApiError>, SdkSetConfigParam & { countryCode:string, clientId:string, userId:string, data: AcceptAgreementRequest[] }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { countryCode:string, clientId:string, userId:string, data: AcceptAgreementRequest[] }) => {
       const response = 
             (await AgreementApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

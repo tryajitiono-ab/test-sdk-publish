@@ -28,7 +28,7 @@ export const useSsoSaml20Api_PostAuthenticateSamlSso_ByPlatformId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string,  queryParams: {state: string | null, code?: string | null, error?: string | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platformId:string,  queryParams: {state: string | null, code?: string | null, error?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { platformId:string,  queryParams: {state: string | null, code?: string | null, error?: string | null} }) => {
       const response = 
             (await SsoSaml20Api(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

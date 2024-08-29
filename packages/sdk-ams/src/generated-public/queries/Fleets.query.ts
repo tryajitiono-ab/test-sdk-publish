@@ -31,7 +31,7 @@ export const useFleetsApi_UpdateServerClaim = (
     options?: Omit<UseMutationOptions<FleetClaimResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: FleetClaimByKeysReq }>, 'mutationKey'>,
     callback?: (data: FleetClaimResponse) => void
   ): UseMutationResult<FleetClaimResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: FleetClaimByKeysReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: FleetClaimByKeysReq }) => {
       const response = 
             (await FleetsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -54,7 +54,7 @@ export const useFleetsApi_UpdateClaim_ByFleetId = (
     options?: Omit<UseMutationOptions<FleetClaimResponse, AxiosError<ApiError>, SdkSetConfigParam & { fleetID:string, data: FleetClaimReq }>, 'mutationKey'>,
     callback?: (data: FleetClaimResponse) => void
   ): UseMutationResult<FleetClaimResponse, AxiosError<ApiError>, SdkSetConfigParam & { fleetID:string, data: FleetClaimReq }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { fleetID:string, data: FleetClaimReq }) => {
       const response = 
             (await FleetsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

@@ -32,7 +32,7 @@ export const useThirdPartyAdminApi_DeleteThirdpartyConfigSteam = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await ThirdPartyAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -50,13 +50,23 @@ export const useThirdPartyAdminApi_DeleteThirdpartyConfigSteam = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ThirdPartyAdmin.ThirdpartyConfigSteam, input]
+ * }
+ * ```
+ */
 export const useThirdPartyAdminApi_GetThirdpartyConfigSteam = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<GetConfigResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetConfigResponse>) => void
   ): UseQueryResult<GetConfigResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useThirdPartyAdminApi_GetThirdpartyConfigSteam>[1]
@@ -82,7 +92,7 @@ export const useThirdPartyAdminApi_CreateThirdpartyConfigSteam = (
     options?: Omit<UseMutationOptions<CreateConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateConfigRequest }>, 'mutationKey'>,
     callback?: (data: CreateConfigResponse) => void
   ): UseMutationResult<CreateConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateConfigRequest }) => {
       const response = 
             (await ThirdPartyAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -105,7 +115,7 @@ export const useThirdPartyAdminApi_UpdateThirdpartyConfigSteam = (
     options?: Omit<UseMutationOptions<UpdateConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: UpdateConfigRequest }>, 'mutationKey'>,
     callback?: (data: UpdateConfigResponse) => void
   ): UseMutationResult<UpdateConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: UpdateConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: UpdateConfigRequest }) => {
       const response = 
             (await ThirdPartyAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

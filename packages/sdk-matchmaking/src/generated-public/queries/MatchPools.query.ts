@@ -33,13 +33,23 @@ MetricsPlayer_ByPool = 'Matchmaking.MatchPools.MetricsPlayer_ByPool',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchPools.MatchPools, input]
+ * }
+ * ```
+ */
 export const useMatchPoolsApi_GetMatchPools = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, name?: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<ListMatchPoolsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListMatchPoolsResponse>) => void
   ): UseQueryResult<ListMatchPoolsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchPoolsApi_GetMatchPools>[1]
@@ -65,7 +75,7 @@ export const useMatchPoolsApi_CreateMatchPool = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchPool }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchPool }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: MatchPool }) => {
       const response = 
             (await MatchPoolsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -88,7 +98,7 @@ export const useMatchPoolsApi_DeleteMatchPool_ByPool = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { pool:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { pool:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { pool:string }) => {
       const response = 
             (await MatchPoolsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -106,13 +116,23 @@ export const useMatchPoolsApi_DeleteMatchPool_ByPool = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchPools.MatchPool_ByPool, input]
+ * }
+ * ```
+ */
 export const useMatchPoolsApi_GetMatchPool_ByPool = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { pool:string },
     options?: Omit<UseQueryOptions<MatchPool, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MatchPool>) => void
   ): UseQueryResult<MatchPool, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchPoolsApi_GetMatchPool_ByPool>[1]
@@ -138,7 +158,7 @@ export const useMatchPoolsApi_UpdateMatchPool_ByPool = (
     options?: Omit<UseMutationOptions<MatchPool, AxiosError<ApiError>, SdkSetConfigParam & { pool:string, data: MatchPoolConfig }>, 'mutationKey'>,
     callback?: (data: MatchPool) => void
   ): UseMutationResult<MatchPool, AxiosError<ApiError>, SdkSetConfigParam & { pool:string, data: MatchPoolConfig }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { pool:string, data: MatchPoolConfig }) => {
       const response = 
             (await MatchPoolsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -156,13 +176,23 @@ export const useMatchPoolsApi_UpdateMatchPool_ByPool = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchPools.Metrics_ByPool, input]
+ * }
+ * ```
+ */
 export const useMatchPoolsApi_GetMetrics_ByPool = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { pool:string },
     options?: Omit<UseQueryOptions<TicketMetricResultRecord, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TicketMetricResultRecord>) => void
   ): UseQueryResult<TicketMetricResultRecord, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchPoolsApi_GetMetrics_ByPool>[1]
@@ -183,13 +213,23 @@ export const useMatchPoolsApi_GetMetrics_ByPool = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchPools.Tickets_ByPool, input]
+ * }
+ * ```
+ */
 export const useMatchPoolsApi_GetTickets_ByPool = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { pool:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<ListMatchPoolTicketsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListMatchPoolTicketsResponse>) => void
   ): UseQueryResult<ListMatchPoolTicketsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchPoolsApi_GetTickets_ByPool>[1]
@@ -210,13 +250,23 @@ export const useMatchPoolsApi_GetTickets_ByPool = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchPools.MetricsPlayer_ByPool, input]
+ * }
+ * ```
+ */
 export const useMatchPoolsApi_GetMetricsPlayer_ByPool = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { pool:string },
     options?: Omit<UseQueryOptions<PlayerMetricRecord, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PlayerMetricRecord>) => void
   ): UseQueryResult<PlayerMetricRecord, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchPoolsApi_GetMetricsPlayer_ByPool>[1]

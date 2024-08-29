@@ -26,13 +26,23 @@ StagingContent_ByUserId_ByContentId_v2 = 'Ugc.PublicStagingContent.StagingConten
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicStagingContent.StagingContents_ByUserId_v2, input]
+ * }
+ * ```
+ */
 export const usePublicStagingContentApi_GetStagingContents_ByUserId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number, sortBy?: string | null, status?: string | null} },
     options?: Omit<UseQueryOptions<PaginatedListStagingContentResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedListStagingContentResponse>) => void
   ): UseQueryResult<PaginatedListStagingContentResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicStagingContentApi_GetStagingContents_ByUserId_v2>[1]
@@ -58,7 +68,7 @@ export const usePublicStagingContentApi_DeleteStagingContent_ByUserId_ByContentI
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, contentId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, contentId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, contentId:string }) => {
       const response = 
             (await PublicStagingContentApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -76,13 +86,23 @@ export const usePublicStagingContentApi_DeleteStagingContent_ByUserId_ByContentI
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicStagingContent.StagingContent_ByUserId_ByContentId_v2, input]
+ * }
+ * ```
+ */
 export const usePublicStagingContentApi_GetStagingContent_ByUserId_ByContentId_v2 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, contentId:string },
     options?: Omit<UseQueryOptions<StagingContentResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<StagingContentResponse>) => void
   ): UseQueryResult<StagingContentResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicStagingContentApi_GetStagingContent_ByUserId_ByContentId_v2>[1]
@@ -108,7 +128,7 @@ export const usePublicStagingContentApi_UpdateStagingContent_ByUserId_ByContentI
     options?: Omit<UseMutationOptions<StagingContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, contentId:string, data: UpdateStagingContentRequest }>, 'mutationKey'>,
     callback?: (data: StagingContentResponse) => void
   ): UseMutationResult<StagingContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, contentId:string, data: UpdateStagingContentRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, contentId:string, data: UpdateStagingContentRequest }) => {
       const response = 
             (await PublicStagingContentApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

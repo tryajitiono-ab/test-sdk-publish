@@ -29,13 +29,23 @@ Descendants_ByCategoryPath = 'Platform.Category.Descendants_ByCategoryPath',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Category.Categories, input]
+ * }
+ * ```
+ */
 export const useCategoryApi_GetCategories = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {language?: string | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<CategoryInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CategoryInfoArray>) => void
   ): UseQueryResult<CategoryInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCategoryApi_GetCategories>[1]
@@ -56,13 +66,23 @@ export const useCategoryApi_GetCategories = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Category.CategoriesDownload, input]
+ * }
+ * ```
+ */
 export const useCategoryApi_GetCategoriesDownload = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {language?: string | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<HierarchicalCategoryInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<HierarchicalCategoryInfoArray>) => void
   ): UseQueryResult<HierarchicalCategoryInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCategoryApi_GetCategoriesDownload>[1]
@@ -83,13 +103,23 @@ export const useCategoryApi_GetCategoriesDownload = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Category.Category_ByCategoryPath, input]
+ * }
+ * ```
+ */
 export const useCategoryApi_GetCategory_ByCategoryPath = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { categoryPath:string,  queryParams?: {language?: string | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<CategoryInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CategoryInfo>) => void
   ): UseQueryResult<CategoryInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCategoryApi_GetCategory_ByCategoryPath>[1]
@@ -110,13 +140,23 @@ export const useCategoryApi_GetCategory_ByCategoryPath = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Category.Children_ByCategoryPath, input]
+ * }
+ * ```
+ */
 export const useCategoryApi_GetChildren_ByCategoryPath = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { categoryPath:string,  queryParams?: {language?: string | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<CategoryInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CategoryInfoArray>) => void
   ): UseQueryResult<CategoryInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCategoryApi_GetChildren_ByCategoryPath>[1]
@@ -137,13 +177,23 @@ export const useCategoryApi_GetChildren_ByCategoryPath = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Category.Descendants_ByCategoryPath, input]
+ * }
+ * ```
+ */
 export const useCategoryApi_GetDescendants_ByCategoryPath = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { categoryPath:string,  queryParams?: {language?: string | null, storeId?: string | null} },
     options?: Omit<UseQueryOptions<CategoryInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CategoryInfoArray>) => void
   ): UseQueryResult<CategoryInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCategoryApi_GetDescendants_ByCategoryPath>[1]

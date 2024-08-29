@@ -29,13 +29,23 @@ Cycle_ByLeaderboardCode_ByCycleId_v3 = 'Leaderboard.LeaderboardDataV3.Cycle_ByLe
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardDataV3.Alltime_ByLeaderboardCode_v3, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataV3Api_GetAlltime_ByLeaderboardCode_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetLeaderboardRankingResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetLeaderboardRankingResp>) => void
   ): UseQueryResult<GetLeaderboardRankingResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataV3Api_GetAlltime_ByLeaderboardCode_v3>[1]
@@ -61,7 +71,7 @@ export const useLeaderboardDataV3Api_CreateUserBulk_ByLeaderboardCode_v3 = (
     options?: Omit<UseMutationOptions<BulkUserRankingResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, data: BulkUserIDsRequest }>, 'mutationKey'>,
     callback?: (data: BulkUserRankingResponseV3) => void
   ): UseMutationResult<BulkUserRankingResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode:string, data: BulkUserIDsRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { leaderboardCode:string, data: BulkUserIDsRequest }) => {
       const response = 
             (await LeaderboardDataV3Api(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -79,13 +89,23 @@ export const useLeaderboardDataV3Api_CreateUserBulk_ByLeaderboardCode_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardDataV3.User_ByLeaderboardCode_ByUserId_v3, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataV3Api_GetUser_ByLeaderboardCode_ByUserId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string, userId:string },
     options?: Omit<UseQueryOptions<UserRankingResponseV3, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<UserRankingResponseV3>) => void
   ): UseQueryResult<UserRankingResponseV3, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataV3Api_GetUser_ByLeaderboardCode_ByUserId_v3>[1]
@@ -106,13 +126,23 @@ export const useLeaderboardDataV3Api_GetUser_ByLeaderboardCode_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_LeaderboardDataV3.Cycle_ByLeaderboardCode_ByCycleId_v3, input]
+ * }
+ * ```
+ */
 export const useLeaderboardDataV3Api_GetCycle_ByLeaderboardCode_ByCycleId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { leaderboardCode:string, cycleId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetLeaderboardRankingResp, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetLeaderboardRankingResp>) => void
   ): UseQueryResult<GetLeaderboardRankingResp, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useLeaderboardDataV3Api_GetCycle_ByLeaderboardCode_ByCycleId_v3>[1]

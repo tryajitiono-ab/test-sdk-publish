@@ -35,7 +35,7 @@ export const useConcurrentRecordAdminApi_UpdateConcurrentRecord_ByKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: AdminConcurrentRecordRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: AdminConcurrentRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string, data: AdminConcurrentRecordRequest }) => {
       const response = 
             (await ConcurrentRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -58,7 +58,7 @@ export const useConcurrentRecordAdminApi_UpdateConcurrentAdminrecord_ByKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: AdminGameConcurrentRecordRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: AdminGameConcurrentRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string, data: AdminGameConcurrentRecordRequest }) => {
       const response = 
             (await ConcurrentRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -81,7 +81,7 @@ export const useConcurrentRecordAdminApi_UpdateConcurrentRecord_ByUserId_ByKey =
     options?: Omit<UseMutationOptions<PlayerRecordConcurrentUpdateResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: AdminConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PlayerRecordConcurrentUpdateResponse) => void
   ): UseMutationResult<PlayerRecordConcurrentUpdateResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: AdminConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: AdminConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }) => {
       const response = 
             (await ConcurrentRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -104,7 +104,7 @@ export const useConcurrentRecordAdminApi_UpdateConcurrentAdminrecord_ByUserId_By
     options?: Omit<UseMutationOptions<PlayerRecordConcurrentUpdateResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: AdminPlayerConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PlayerRecordConcurrentUpdateResponse) => void
   ): UseMutationResult<PlayerRecordConcurrentUpdateResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: AdminPlayerConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: AdminPlayerConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }) => {
       const response = 
             (await ConcurrentRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -127,7 +127,7 @@ export const useConcurrentRecordAdminApi_UpdatePublicConcurrent_ByUserId_ByKey =
     options?: Omit<UseMutationOptions<PlayerRecordConcurrentUpdateResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: AdminConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: PlayerRecordConcurrentUpdateResponse) => void
   ): UseMutationResult<PlayerRecordConcurrentUpdateResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, key:string, data: AdminConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, key:string, data: AdminConcurrentRecordRequest, queryParams?: {responseBody?: boolean | null} }) => {
       const response = 
             (await ConcurrentRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

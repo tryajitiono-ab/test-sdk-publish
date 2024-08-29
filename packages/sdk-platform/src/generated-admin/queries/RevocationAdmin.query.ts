@@ -34,7 +34,7 @@ export const useRevocationAdminApi_DeleteRevocationConfig = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await RevocationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -52,13 +52,23 @@ export const useRevocationAdminApi_DeleteRevocationConfig = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RevocationAdmin.RevocationConfig, input]
+ * }
+ * ```
+ */
 export const useRevocationAdminApi_GetRevocationConfig = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<RevocationConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RevocationConfigInfo>) => void
   ): UseQueryResult<RevocationConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRevocationAdminApi_GetRevocationConfig>[1]
@@ -84,7 +94,7 @@ export const useRevocationAdminApi_UpdateRevocationConfig = (
     options?: Omit<UseMutationOptions<RevocationConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: RevocationConfigUpdate }>, 'mutationKey'>,
     callback?: (data: RevocationConfigInfo) => void
   ): UseMutationResult<RevocationConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: RevocationConfigUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: RevocationConfigUpdate }) => {
       const response = 
             (await RevocationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -102,13 +112,23 @@ export const useRevocationAdminApi_UpdateRevocationConfig = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_RevocationAdmin.RevocationHistory, input]
+ * }
+ * ```
+ */
 export const useRevocationAdminApi_GetRevocationHistory = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {endTime?: string | null, limit?: number, offset?: number, source?: 'DLC' | 'IAP' | 'ORDER' | 'OTHER', startTime?: string | null, status?: 'FAIL' | 'SUCCESS', transactionId?: string | null, userId?: string | null} },
     options?: Omit<UseQueryOptions<RevocationHistoryPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RevocationHistoryPagingSlicedResult>) => void
   ): UseQueryResult<RevocationHistoryPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useRevocationAdminApi_GetRevocationHistory>[1]
@@ -134,7 +154,7 @@ export const useRevocationAdminApi_UpdateRevocation_ByUserId = (
     options?: Omit<UseMutationOptions<RevocationResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: RevocationRequest }>, 'mutationKey'>,
     callback?: (data: RevocationResult) => void
   ): UseMutationResult<RevocationResult, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: RevocationRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: RevocationRequest }) => {
       const response = 
             (await RevocationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

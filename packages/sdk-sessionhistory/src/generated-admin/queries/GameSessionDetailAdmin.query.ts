@@ -38,13 +38,23 @@ MatchmakingSession_BySessionId = 'Sessionhistory.GameSessionDetailAdmin.Matchmak
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameSessionDetailAdmin.Parties, input]
+ * }
+ * ```
+ */
 export const useGameSessionDetailAdminApi_GetParties = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, order?: string | null, orderBy?: string | null, partyID?: string | null, userID?: string | null} },
     options?: Omit<UseQueryOptions<PartyDetailQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PartyDetailQueryResponse>) => void
   ): UseQueryResult<PartyDetailQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameSessionDetailAdminApi_GetParties>[1]
@@ -65,13 +75,23 @@ export const useGameSessionDetailAdminApi_GetParties = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameSessionDetailAdmin.Tickets, input]
+ * }
+ * ```
+ */
 export const useGameSessionDetailAdminApi_GetTickets = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {endDate?: string | null, gameMode?: string | null, limit?: number, offset?: number, order?: string | null, partyID?: string | null, region?: string | null, startDate?: string | null, userIDs?: string | null} },
     options?: Omit<UseQueryOptions<TicketDetailQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TicketDetailQueryResponse>) => void
   ): UseQueryResult<TicketDetailQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameSessionDetailAdminApi_GetTickets>[1]
@@ -92,13 +112,23 @@ export const useGameSessionDetailAdminApi_GetTickets = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameSessionDetailAdmin.Matchmaking, input]
+ * }
+ * ```
+ */
 export const useGameSessionDetailAdminApi_GetMatchmaking = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {gameSessionID?: string | null, limit?: number, offset?: number, order?: string | null, orderBy?: string | null, ticketID?: string | null, userID?: string | null} },
     options?: Omit<UseQueryOptions<MatchmakingDetailQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MatchmakingDetailQueryResponse>) => void
   ): UseQueryResult<MatchmakingDetailQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameSessionDetailAdminApi_GetMatchmaking>[1]
@@ -119,13 +149,23 @@ export const useGameSessionDetailAdminApi_GetMatchmaking = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameSessionDetailAdmin.Gamesessions, input]
+ * }
+ * ```
+ */
 export const useGameSessionDetailAdminApi_GetGamesessions = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {endDate?: string | null, gameSessionID?: string | null, limit?: number, offset?: number, order?: string | null, orderBy?: string | null, startDate?: string | null, userID?: string | null} },
     options?: Omit<UseQueryOptions<GameSessionDetailQueryResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GameSessionDetailQueryResponse>) => void
   ): UseQueryResult<GameSessionDetailQueryResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameSessionDetailAdminApi_GetGamesessions>[1]
@@ -146,13 +186,23 @@ export const useGameSessionDetailAdminApi_GetGamesessions = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameSessionDetailAdmin.Ticket_ByTicketId, input]
+ * }
+ * ```
+ */
 export const useGameSessionDetailAdminApi_GetTicket_ByTicketId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { ticketId:string },
     options?: Omit<UseQueryOptions<TicketObservabilityDetail, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TicketObservabilityDetail>) => void
   ): UseQueryResult<TicketObservabilityDetail, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameSessionDetailAdminApi_GetTicket_ByTicketId>[1]
@@ -173,13 +223,23 @@ export const useGameSessionDetailAdminApi_GetTicket_ByTicketId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameSessionDetailAdmin.Party_BySessionId, input]
+ * }
+ * ```
+ */
 export const useGameSessionDetailAdminApi_GetParty_BySessionId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { sessionId:string },
     options?: Omit<UseQueryOptions<PartyDetail, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PartyDetail>) => void
   ): UseQueryResult<PartyDetail, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameSessionDetailAdminApi_GetParty_BySessionId>[1]
@@ -200,13 +260,23 @@ export const useGameSessionDetailAdminApi_GetParty_BySessionId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameSessionDetailAdmin.Gamesession_BySessionId, input]
+ * }
+ * ```
+ */
 export const useGameSessionDetailAdminApi_GetGamesession_BySessionId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { sessionId:string },
     options?: Omit<UseQueryOptions<GameSessionDetail, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GameSessionDetail>) => void
   ): UseQueryResult<GameSessionDetail, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameSessionDetailAdminApi_GetGamesession_BySessionId>[1]
@@ -227,13 +297,23 @@ export const useGameSessionDetailAdminApi_GetGamesession_BySessionId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameSessionDetailAdmin.MatchmakingTicket_ByTicketId, input]
+ * }
+ * ```
+ */
 export const useGameSessionDetailAdminApi_GetMatchmakingTicket_ByTicketId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { ticketId:string },
     options?: Omit<UseQueryOptions<MatchmakingDetail, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MatchmakingDetail>) => void
   ): UseQueryResult<MatchmakingDetail, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameSessionDetailAdminApi_GetMatchmakingTicket_ByTicketId>[1]
@@ -254,13 +334,23 @@ export const useGameSessionDetailAdminApi_GetMatchmakingTicket_ByTicketId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameSessionDetailAdmin.MatchmakingSession_BySessionId, input]
+ * }
+ * ```
+ */
 export const useGameSessionDetailAdminApi_GetMatchmakingSession_BySessionId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { sessionId:string },
     options?: Omit<UseQueryOptions<MatchmakingDetail, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<MatchmakingDetail>) => void
   ): UseQueryResult<MatchmakingDetail, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameSessionDetailAdminApi_GetMatchmakingSession_BySessionId>[1]

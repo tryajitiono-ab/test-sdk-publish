@@ -29,7 +29,7 @@ export const useOAuth20AdminApi_UpdateRevokeOauth_ByUserId_v3 = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string,  queryParams?: {includeGameNamespace?: boolean | null} }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string,  queryParams?: {includeGameNamespace?: boolean | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string,  queryParams?: {includeGameNamespace?: boolean | null} }) => {
       const response = 
             (await OAuth20AdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -47,13 +47,23 @@ export const useOAuth20AdminApi_UpdateRevokeOauth_ByUserId_v3 = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OAuth20Admin.PlatformTokenOauth_ByUserId_ByPlatformId_v3, input]
+ * }
+ * ```
+ */
 export const useOAuth20AdminApi_GetPlatformTokenOauth_ByUserId_ByPlatformId_v3 = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string, platformId:string,  queryParams?: {platformUserId?: string | null} },
     options?: Omit<UseQueryOptions<TokenThirdPartyResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TokenThirdPartyResponse>) => void
   ): UseQueryResult<TokenThirdPartyResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOAuth20AdminApi_GetPlatformTokenOauth_ByUserId_ByPlatformId_v3>[1]

@@ -26,13 +26,23 @@ Record_ByKey = 'Cloudsave.GameRecordAdmin.Record_ByKey',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameRecordAdmin.Records, input]
+ * }
+ * ```
+ */
 export const useGameRecordAdminApi_GetRecords = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {limit: number, offset: number, query?: string | null, tags?: string[]} },
     options?: Omit<UseQueryOptions<ListGameRecordKeysResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListGameRecordKeysResponse>) => void
   ): UseQueryResult<ListGameRecordKeysResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameRecordAdminApi_GetRecords>[1]
@@ -58,7 +68,7 @@ export const useGameRecordAdminApi_DeleteRecord_ByKey = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string }) => {
       const response = 
             (await GameRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -76,13 +86,23 @@ export const useGameRecordAdminApi_DeleteRecord_ByKey = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_GameRecordAdmin.Record_ByKey, input]
+ * }
+ * ```
+ */
 export const useGameRecordAdminApi_GetRecord_ByKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { key:string },
     options?: Omit<UseQueryOptions<GameRecordAdminResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GameRecordAdminResponse>) => void
   ): UseQueryResult<GameRecordAdminResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useGameRecordAdminApi_GetRecord_ByKey>[1]
@@ -108,7 +128,7 @@ export const useGameRecordAdminApi_CreateRecord_ByKey = (
     options?: Omit<UseMutationOptions<GameRecordAdminResponse, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: GameRecordRequest }>, 'mutationKey'>,
     callback?: (data: GameRecordAdminResponse) => void
   ): UseMutationResult<GameRecordAdminResponse, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: GameRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string, data: GameRecordRequest }) => {
       const response = 
             (await GameRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -131,7 +151,7 @@ export const useGameRecordAdminApi_UpdateRecord_ByKey = (
     options?: Omit<UseMutationOptions<GameRecordAdminResponse, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: GameRecordRequest }>, 'mutationKey'>,
     callback?: (data: GameRecordAdminResponse) => void
   ): UseMutationResult<GameRecordAdminResponse, AxiosError<ApiError>, SdkSetConfigParam & { key:string, data: GameRecordRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { key:string, data: GameRecordRequest }) => {
       const response = 
             (await GameRecordAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

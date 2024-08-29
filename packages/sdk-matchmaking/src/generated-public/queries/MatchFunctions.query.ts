@@ -27,13 +27,23 @@ MatchFunction_ByName = 'Matchmaking.MatchFunctions.MatchFunction_ByName',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_MatchFunctions.MatchFunctions, input]
+ * }
+ * ```
+ */
 export const useMatchFunctionsApi_GetMatchFunctions = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<ListMatchFunctionsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListMatchFunctionsResponse>) => void
   ): UseQueryResult<ListMatchFunctionsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useMatchFunctionsApi_GetMatchFunctions>[1]
@@ -59,7 +69,7 @@ export const useMatchFunctionsApi_CreateMatchFunction = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchFunctionRequest }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchFunctionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: MatchFunctionRequest }) => {
       const response = 
             (await MatchFunctionsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -82,7 +92,7 @@ export const useMatchFunctionsApi_DeleteMatchFunction_ByName = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string }) => {
       const response = 
             (await MatchFunctionsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -105,7 +115,7 @@ export const useMatchFunctionsApi_UpdateMatchFunction_ByName = (
     options?: Omit<UseMutationOptions<MatchFunctionConfig, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: MatchFunctionRequest }>, 'mutationKey'>,
     callback?: (data: MatchFunctionConfig) => void
   ): UseMutationResult<MatchFunctionConfig, AxiosError<ApiError>, SdkSetConfigParam & { name:string, data: MatchFunctionRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { name:string, data: MatchFunctionRequest }) => {
       const response = 
             (await MatchFunctionsApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

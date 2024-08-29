@@ -25,13 +25,23 @@ UserEligibility_ByCountryCode_ByClientId_ByUserId = 'Legal.Eligibilities.UserEli
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Eligibilities.Eligibility_ByNamespace, input]
+ * }
+ * ```
+ */
 export const useEligibilitiesApi_GetEligibility_ByNamespace = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<RetrieveUserEligibilitiesResponseArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveUserEligibilitiesResponseArray>) => void
   ): UseQueryResult<RetrieveUserEligibilitiesResponseArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEligibilitiesApi_GetEligibility_ByNamespace>[1]
@@ -52,13 +62,23 @@ export const useEligibilitiesApi_GetEligibility_ByNamespace = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Eligibilities.UserEligibility_ByCountryCode_ByClientId_ByUserId, input]
+ * }
+ * ```
+ */
 export const useEligibilitiesApi_GetUserEligibility_ByCountryCode_ByClientId_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { countryCode:string, clientId:string, userId:string },
     options?: Omit<UseQueryOptions<RetrieveUserEligibilitiesIndirectResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<RetrieveUserEligibilitiesIndirectResponse>) => void
   ): UseQueryResult<RetrieveUserEligibilitiesIndirectResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useEligibilitiesApi_GetUserEligibility_ByCountryCode_ByClientId_ByUserId>[1]

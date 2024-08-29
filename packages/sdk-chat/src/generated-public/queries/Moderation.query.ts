@@ -23,13 +23,23 @@ export enum Key_Moderation {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Moderation.Snapshot_ByTopic_ByChatId, input]
+ * }
+ * ```
+ */
 export const useModerationApi_GetSnapshot_ByTopic_ByChatId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { topic:string, chatId:string },
     options?: Omit<UseQueryOptions<ChatSnapshots, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ChatSnapshots>) => void
   ): UseQueryResult<ChatSnapshots, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useModerationApi_GetSnapshot_ByTopic_ByChatId>[1]

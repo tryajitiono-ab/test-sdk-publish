@@ -24,13 +24,23 @@ Party_ByUserId = 'Lobby.PartyAdmin.Party_ByUserId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PartyAdmin.PartyParty_ByPartyId, input]
+ * }
+ * ```
+ */
 export const usePartyAdminApi_GetPartyParty_ByPartyId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { partyId:string },
     options?: Omit<UseQueryOptions<PartyData, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PartyData>) => void
   ): UseQueryResult<PartyData, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePartyAdminApi_GetPartyParty_ByPartyId>[1]
@@ -51,13 +61,23 @@ export const usePartyAdminApi_GetPartyParty_ByPartyId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PartyAdmin.Party_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePartyAdminApi_GetParty_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string },
     options?: Omit<UseQueryOptions<PartyData, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PartyData>) => void
   ): UseQueryResult<PartyData, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePartyAdminApi_GetParty_ByUserId>[1]

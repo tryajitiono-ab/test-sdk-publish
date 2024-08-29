@@ -23,13 +23,23 @@ export enum Key_OrderDedicatedAdmin {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_OrderDedicatedAdmin.Orders, input]
+ * }
+ * ```
+ */
 export const useOrderDedicatedAdminApi_GetOrders = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams: {end: string | null, start: string | null, nextEvaluatedKey?: string | null} },
     options?: Omit<UseQueryOptions<OrderSyncResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<OrderSyncResult>) => void
   ): UseQueryResult<OrderSyncResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useOrderDedicatedAdminApi_GetOrders>[1]

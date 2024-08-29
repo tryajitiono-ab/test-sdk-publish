@@ -29,7 +29,7 @@ export const useUserAgreementAdminApi_CreateAgreementPolicy_ByUserId = (
     options?: Omit<UseMutationOptions<AcceptAgreementResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: AcceptAgreementRequest[], queryParams: {clientId: string | null, countryCode: string | null, publisherUserId?: string | null} }>, 'mutationKey'>,
     callback?: (data: AcceptAgreementResponse) => void
   ): UseMutationResult<AcceptAgreementResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: AcceptAgreementRequest[], queryParams: {clientId: string | null, countryCode: string | null, publisherUserId?: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: AcceptAgreementRequest[], queryParams: {clientId: string | null, countryCode: string | null, publisherUserId?: string | null} }) => {
       const response = 
             (await UserAgreementAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

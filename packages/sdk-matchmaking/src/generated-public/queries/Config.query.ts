@@ -26,13 +26,23 @@ Config_ByNamespace = 'Matchmaking.Config.Config_ByNamespace',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Config.Config, input]
+ * }
+ * ```
+ */
 export const useConfigApi_GetConfig = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<NamespaceConfigList, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespaceConfigList>) => void
   ): UseQueryResult<NamespaceConfigList, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigApi_GetConfig>[1]
@@ -53,13 +63,23 @@ export const useConfigApi_GetConfig = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Config.Config_ByNamespace, input]
+ * }
+ * ```
+ */
 export const useConfigApi_GetConfig_ByNamespace = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<NamespaceConfig, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<NamespaceConfig>) => void
   ): UseQueryResult<NamespaceConfig, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigApi_GetConfig_ByNamespace>[1]
@@ -85,7 +105,7 @@ export const useConfigApi_PatchConfig_ByNamespace = (
     options?: Omit<UseMutationOptions<NamespaceConfig, AxiosError<ApiError>, SdkSetConfigParam & { data: PatchNamespaceConfigRequest }>, 'mutationKey'>,
     callback?: (data: NamespaceConfig) => void
   ): UseMutationResult<NamespaceConfig, AxiosError<ApiError>, SdkSetConfigParam & { data: PatchNamespaceConfigRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: PatchNamespaceConfigRequest }) => {
       const response = 
             (await ConfigApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

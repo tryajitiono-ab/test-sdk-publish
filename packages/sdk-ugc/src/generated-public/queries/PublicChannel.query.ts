@@ -28,13 +28,23 @@ Channel_ByUserId_ByChannelId = 'Ugc.PublicChannel.Channel_ByUserId_ByChannelId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PublicChannel.Channels_ByUserId, input]
+ * }
+ * ```
+ */
 export const usePublicChannelApi_GetChannels_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, name?: string | null, offset?: number} },
     options?: Omit<UseQueryOptions<PaginatedGetChannelResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<PaginatedGetChannelResponse>) => void
   ): UseQueryResult<PaginatedGetChannelResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof usePublicChannelApi_GetChannels_ByUserId>[1]
@@ -60,7 +70,7 @@ export const usePublicChannelApi_CreateChannel_ByUserId = (
     options?: Omit<UseMutationOptions<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: PublicChannelRequest }>, 'mutationKey'>,
     callback?: (data: ChannelResponse) => void
   ): UseMutationResult<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, data: PublicChannelRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, data: PublicChannelRequest }) => {
       const response = 
             (await PublicChannelApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -83,7 +93,7 @@ export const usePublicChannelApi_DeleteChannel_ByUserId_ByChannelId = (
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string }) => {
       const response = 
             (await PublicChannelApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -106,7 +116,7 @@ export const usePublicChannelApi_UpdateChannel_ByUserId_ByChannelId = (
     options?: Omit<UseMutationOptions<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, data: UpdateChannelRequest }>, 'mutationKey'>,
     callback?: (data: ChannelResponse) => void
   ): UseMutationResult<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId:string, channelId:string, data: UpdateChannelRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { userId:string, channelId:string, data: UpdateChannelRequest }) => {
       const response = 
             (await PublicChannelApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

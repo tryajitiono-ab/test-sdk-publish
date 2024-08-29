@@ -32,13 +32,23 @@ Descendants_ByCategoryPath = 'Platform.CategoryAdmin.Descendants_ByCategoryPath'
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CategoryAdmin.Categories, input]
+ * }
+ * ```
+ */
 export const useCategoryAdminApi_GetCategories = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {storeId?: string | null} },
     options?: Omit<UseQueryOptions<FullCategoryInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullCategoryInfoArray>) => void
   ): UseQueryResult<FullCategoryInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCategoryAdminApi_GetCategories>[1]
@@ -64,7 +74,7 @@ export const useCategoryAdminApi_CreateCategory = (
     options?: Omit<UseMutationOptions<FullCategoryInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CategoryCreate, queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: FullCategoryInfo) => void
   ): UseMutationResult<FullCategoryInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CategoryCreate, queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CategoryCreate, queryParams: {storeId: string | null} }) => {
       const response = 
             (await CategoryAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -82,13 +92,23 @@ export const useCategoryAdminApi_CreateCategory = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CategoryAdmin.CategoriesBasic, input]
+ * }
+ * ```
+ */
 export const useCategoryAdminApi_GetCategoriesBasic = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {storeId?: string | null} },
     options?: Omit<UseQueryOptions<BasicCategoryInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<BasicCategoryInfoArray>) => void
   ): UseQueryResult<BasicCategoryInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCategoryAdminApi_GetCategoriesBasic>[1]
@@ -114,7 +134,7 @@ export const useCategoryAdminApi_DeleteCategory_ByCategoryPath = (
     options?: Omit<UseMutationOptions<FullCategoryInfo, AxiosError<ApiError>, SdkSetConfigParam & { categoryPath:string,  queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: FullCategoryInfo) => void
   ): UseMutationResult<FullCategoryInfo, AxiosError<ApiError>, SdkSetConfigParam & { categoryPath:string,  queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { categoryPath:string,  queryParams: {storeId: string | null} }) => {
       const response = 
             (await CategoryAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -132,13 +152,23 @@ export const useCategoryAdminApi_DeleteCategory_ByCategoryPath = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CategoryAdmin.Category_ByCategoryPath, input]
+ * }
+ * ```
+ */
 export const useCategoryAdminApi_GetCategory_ByCategoryPath = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { categoryPath:string,  queryParams?: {storeId?: string | null} },
     options?: Omit<UseQueryOptions<FullCategoryInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullCategoryInfo>) => void
   ): UseQueryResult<FullCategoryInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCategoryAdminApi_GetCategory_ByCategoryPath>[1]
@@ -164,7 +194,7 @@ export const useCategoryAdminApi_UpdateCategory_ByCategoryPath = (
     options?: Omit<UseMutationOptions<FullCategoryInfo, AxiosError<ApiError>, SdkSetConfigParam & { categoryPath:string, data: CategoryUpdate, queryParams: {storeId: string | null} }>, 'mutationKey'>,
     callback?: (data: FullCategoryInfo) => void
   ): UseMutationResult<FullCategoryInfo, AxiosError<ApiError>, SdkSetConfigParam & { categoryPath:string, data: CategoryUpdate, queryParams: {storeId: string | null} }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { categoryPath:string, data: CategoryUpdate, queryParams: {storeId: string | null} }) => {
       const response = 
             (await CategoryAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -182,13 +212,23 @@ export const useCategoryAdminApi_UpdateCategory_ByCategoryPath = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CategoryAdmin.Children_ByCategoryPath, input]
+ * }
+ * ```
+ */
 export const useCategoryAdminApi_GetChildren_ByCategoryPath = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { categoryPath:string,  queryParams?: {storeId?: string | null} },
     options?: Omit<UseQueryOptions<FullCategoryInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullCategoryInfoArray>) => void
   ): UseQueryResult<FullCategoryInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCategoryAdminApi_GetChildren_ByCategoryPath>[1]
@@ -209,13 +249,23 @@ export const useCategoryAdminApi_GetChildren_ByCategoryPath = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CategoryAdmin.Descendants_ByCategoryPath, input]
+ * }
+ * ```
+ */
 export const useCategoryAdminApi_GetDescendants_ByCategoryPath = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { categoryPath:string,  queryParams?: {storeId?: string | null} },
     options?: Omit<UseQueryOptions<FullCategoryInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FullCategoryInfoArray>) => void
   ): UseQueryResult<FullCategoryInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCategoryAdminApi_GetDescendants_ByCategoryPath>[1]

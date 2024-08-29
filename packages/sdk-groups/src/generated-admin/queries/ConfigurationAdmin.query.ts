@@ -32,13 +32,23 @@ Rule_ByConfigurationCode_ByAllowedAction = 'Groups.ConfigurationAdmin.Rule_ByCon
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigurationAdmin.Configuration, input]
+ * }
+ * ```
+ */
 export const useConfigurationAdminApi_GetConfiguration = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<ListConfigurationResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ListConfigurationResponseV1>) => void
   ): UseQueryResult<ListConfigurationResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigurationAdminApi_GetConfiguration>[1]
@@ -64,7 +74,7 @@ export const useConfigurationAdminApi_CreateConfiguration = (
     options?: Omit<UseMutationOptions<CreateGroupConfigurationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateGroupConfigurationRequestV1 }>, 'mutationKey'>,
     callback?: (data: CreateGroupConfigurationResponseV1) => void
   ): UseMutationResult<CreateGroupConfigurationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateGroupConfigurationRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CreateGroupConfigurationRequestV1 }) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -87,7 +97,7 @@ export const useConfigurationAdminApi_CreateConfigurationInitiate = (
     options?: Omit<UseMutationOptions<CreateGroupConfigurationResponseV1, AxiosError<ApiError>, SdkSetConfigParam >, 'mutationKey'>,
     callback?: (data: CreateGroupConfigurationResponseV1) => void
   ): UseMutationResult<CreateGroupConfigurationResponseV1, AxiosError<ApiError>, SdkSetConfigParam > => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam ) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -110,7 +120,7 @@ export const useConfigurationAdminApi_DeleteConfiguration_ByConfigurationCode = 
     options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { configurationCode:string }>, 'mutationKey'>,
     callback?: (data: unknown) => void
   ): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { configurationCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { configurationCode:string }) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -128,13 +138,23 @@ export const useConfigurationAdminApi_DeleteConfiguration_ByConfigurationCode = 
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ConfigurationAdmin.Configuration_ByConfigurationCode, input]
+ * }
+ * ```
+ */
 export const useConfigurationAdminApi_GetConfiguration_ByConfigurationCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { configurationCode:string },
     options?: Omit<UseQueryOptions<GetGroupConfigurationResponseV1, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetGroupConfigurationResponseV1>) => void
   ): UseQueryResult<GetGroupConfigurationResponseV1, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useConfigurationAdminApi_GetConfiguration_ByConfigurationCode>[1]
@@ -160,7 +180,7 @@ export const useConfigurationAdminApi_PatchConfiguration_ByConfigurationCode = (
     options?: Omit<UseMutationOptions<UpdateGroupConfigurationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { configurationCode:string, data: UpdateGroupConfigurationRequestV1 }>, 'mutationKey'>,
     callback?: (data: UpdateGroupConfigurationResponseV1) => void
   ): UseMutationResult<UpdateGroupConfigurationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { configurationCode:string, data: UpdateGroupConfigurationRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { configurationCode:string, data: UpdateGroupConfigurationRequestV1 }) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -183,7 +203,7 @@ export const useConfigurationAdminApi_DeleteRule_ByConfigurationCode_ByAllowedAc
     options?: Omit<UseMutationOptions<UpdateGroupConfigurationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { configurationCode:string, allowedAction:string }>, 'mutationKey'>,
     callback?: (data: UpdateGroupConfigurationResponseV1) => void
   ): UseMutationResult<UpdateGroupConfigurationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { configurationCode:string, allowedAction:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { configurationCode:string, allowedAction:string }) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -206,7 +226,7 @@ export const useConfigurationAdminApi_UpdateRule_ByConfigurationCode_ByAllowedAc
     options?: Omit<UseMutationOptions<UpdateGroupConfigurationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { configurationCode:string, allowedAction:string, data: UpdateGroupConfigurationGlobalRulesRequestV1 }>, 'mutationKey'>,
     callback?: (data: UpdateGroupConfigurationResponseV1) => void
   ): UseMutationResult<UpdateGroupConfigurationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { configurationCode:string, allowedAction:string, data: UpdateGroupConfigurationGlobalRulesRequestV1 }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { configurationCode:string, allowedAction:string, data: UpdateGroupConfigurationGlobalRulesRequestV1 }) => {
       const response = 
             (await ConfigurationAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).

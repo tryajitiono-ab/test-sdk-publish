@@ -23,13 +23,23 @@ export enum Key_Utility {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Utility.Readiness, input]
+ * }
+ * ```
+ */
 export const useUtilityApi_GetReadiness = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<LegalReadinessStatusResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<LegalReadinessStatusResponse>) => void
   ): UseQueryResult<LegalReadinessStatusResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useUtilityApi_GetReadiness>[1]

@@ -23,13 +23,23 @@ export enum Key_Section {
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Section.Sections_ByUserId, input]
+ * }
+ * ```
+ */
 export const useSectionApi_GetSections_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {autoCalcEstimatedPrice?: boolean | null, language?: string | null, region?: string | null, storeId?: string | null, viewId?: string | null} },
     options?: Omit<UseQueryOptions<SectionInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<SectionInfoArray>) => void
   ): UseQueryResult<SectionInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useSectionApi_GetSections_ByUserId>[1]

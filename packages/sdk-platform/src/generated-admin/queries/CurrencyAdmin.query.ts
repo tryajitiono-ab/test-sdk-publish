@@ -32,13 +32,23 @@ Summary_ByCurrencyCode = 'Platform.CurrencyAdmin.Summary_ByCurrencyCode',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CurrencyAdmin.Currencies, input]
+ * }
+ * ```
+ */
 export const useCurrencyAdminApi_GetCurrencies = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {currencyType?: 'REAL' | 'VIRTUAL'} },
     options?: Omit<UseQueryOptions<CurrencyInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CurrencyInfoArray>) => void
   ): UseQueryResult<CurrencyInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCurrencyAdminApi_GetCurrencies>[1]
@@ -64,7 +74,7 @@ export const useCurrencyAdminApi_CreateCurrency = (
     options?: Omit<UseMutationOptions<CurrencyInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CurrencyCreate }>, 'mutationKey'>,
     callback?: (data: CurrencyInfo) => void
   ): UseMutationResult<CurrencyInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CurrencyCreate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: CurrencyCreate }) => {
       const response = 
             (await CurrencyAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -87,7 +97,7 @@ export const useCurrencyAdminApi_DeleteCurrency_ByCurrencyCode = (
     options?: Omit<UseMutationOptions<CurrencyInfo, AxiosError<ApiError>, SdkSetConfigParam & { currencyCode:string }>, 'mutationKey'>,
     callback?: (data: CurrencyInfo) => void
   ): UseMutationResult<CurrencyInfo, AxiosError<ApiError>, SdkSetConfigParam & { currencyCode:string }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { currencyCode:string }) => {
       const response = 
             (await CurrencyAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -110,7 +120,7 @@ export const useCurrencyAdminApi_UpdateCurrency_ByCurrencyCode = (
     options?: Omit<UseMutationOptions<CurrencyInfo, AxiosError<ApiError>, SdkSetConfigParam & { currencyCode:string, data: CurrencyUpdate }>, 'mutationKey'>,
     callback?: (data: CurrencyInfo) => void
   ): UseMutationResult<CurrencyInfo, AxiosError<ApiError>, SdkSetConfigParam & { currencyCode:string, data: CurrencyUpdate }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { currencyCode:string, data: CurrencyUpdate }) => {
       const response = 
             (await CurrencyAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -128,13 +138,23 @@ export const useCurrencyAdminApi_UpdateCurrency_ByCurrencyCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CurrencyAdmin.Config_ByCurrencyCode, input]
+ * }
+ * ```
+ */
 export const useCurrencyAdminApi_GetConfig_ByCurrencyCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { currencyCode:string },
     options?: Omit<UseQueryOptions<CurrencyConfig, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CurrencyConfig>) => void
   ): UseQueryResult<CurrencyConfig, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCurrencyAdminApi_GetConfig_ByCurrencyCode>[1]
@@ -155,13 +175,23 @@ export const useCurrencyAdminApi_GetConfig_ByCurrencyCode = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CurrencyAdmin.Summary_ByCurrencyCode, input]
+ * }
+ * ```
+ */
 export const useCurrencyAdminApi_GetSummary_ByCurrencyCode = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { currencyCode:string },
     options?: Omit<UseQueryOptions<CurrencySummary, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<CurrencySummary>) => void
   ): UseQueryResult<CurrencySummary, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCurrencyAdminApi_GetSummary_ByCurrencyCode>[1]

@@ -32,7 +32,7 @@ export const useTradeActionAdminApi_CreateTradeCommit = (
     options?: Omit<UseMutationOptions<TradeChainActionHistoryInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: TradeChainedActionCommitRequest }>, 'mutationKey'>,
     callback?: (data: TradeChainActionHistoryInfo) => void
   ): UseMutationResult<TradeChainActionHistoryInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: TradeChainedActionCommitRequest }> => { 
-  //
+  
   const mutationFn = async (input: SdkSetConfigParam & { data: TradeChainedActionCommitRequest }) => {
       const response = 
             (await TradeActionAdminApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).
@@ -50,13 +50,23 @@ export const useTradeActionAdminApi_CreateTradeCommit = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TradeActionAdmin.Trade_ByTransactionId, input]
+ * }
+ * ```
+ */
 export const useTradeActionAdminApi_GetTrade_ByTransactionId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { transactionId:string },
     options?: Omit<UseQueryOptions<TradeChainActionHistoryInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TradeChainActionHistoryInfo>) => void
   ): UseQueryResult<TradeChainActionHistoryInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTradeActionAdminApi_GetTrade_ByTransactionId>[1]
@@ -77,13 +87,23 @@ export const useTradeActionAdminApi_GetTrade_ByTransactionId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_TradeActionAdmin.TradeHistoryByCriteria, input]
+ * }
+ * ```
+ */
 export const useTradeActionAdminApi_GetTradeHistoryByCriteria = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & {  queryParams?: {limit?: number, offset?: number, status?: 'FAILED' | 'INIT' | 'SUCCESS', type?: string | null, userId?: string | null} },
     options?: Omit<UseQueryOptions<TradeActionPagingSlicedResult, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<TradeActionPagingSlicedResult>) => void
   ): UseQueryResult<TradeActionPagingSlicedResult, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useTradeActionAdminApi_GetTradeHistoryByCriteria>[1]

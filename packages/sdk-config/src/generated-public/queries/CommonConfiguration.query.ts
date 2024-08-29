@@ -25,13 +25,23 @@ Config_ByConfigKey = 'Config.CommonConfiguration.Config_ByConfigKey',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CommonConfiguration.Configs, input]
+ * }
+ * ```
+ */
 export const useCommonConfigurationApi_GetConfigs = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam ,
     options?: Omit<UseQueryOptions<ConfigInfoArray, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigInfoArray>) => void
   ): UseQueryResult<ConfigInfoArray, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCommonConfigurationApi_GetConfigs>[1]
@@ -52,13 +62,23 @@ export const useCommonConfigurationApi_GetConfigs = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_CommonConfiguration.Config_ByConfigKey, input]
+ * }
+ * ```
+ */
 export const useCommonConfigurationApi_GetConfig_ByConfigKey = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { configKey:string },
     options?: Omit<UseQueryOptions<ConfigInfo, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<ConfigInfo>) => void
   ): UseQueryResult<ConfigInfo, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useCommonConfigurationApi_GetConfig_ByConfigKey>[1]

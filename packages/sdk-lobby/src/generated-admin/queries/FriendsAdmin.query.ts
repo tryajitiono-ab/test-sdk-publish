@@ -29,13 +29,23 @@ OfFriends_ByUserId = 'Lobby.FriendsAdmin.OfFriends_ByUserId',
 
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_FriendsAdmin.FriendUser_ByUserId, input]
+ * }
+ * ```
+ */
 export const useFriendsAdminApi_GetFriendUser_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {friendId?: string | null, friendIds?: string[], limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<GetFriendsResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<GetFriendsResponse>) => void
   ): UseQueryResult<GetFriendsResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFriendsAdminApi_GetFriendUser_ByUserId>[1]
@@ -56,13 +66,23 @@ export const useFriendsAdminApi_GetFriendUser_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_FriendsAdmin.IncomingFriend_ByUserId, input]
+ * }
+ * ```
+ */
 export const useFriendsAdminApi_GetIncomingFriend_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {friendId?: string | null, limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<LoadIncomingFriendsWithTimeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<LoadIncomingFriendsWithTimeResponse>) => void
   ): UseQueryResult<LoadIncomingFriendsWithTimeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFriendsAdminApi_GetIncomingFriend_ByUserId>[1]
@@ -83,13 +103,23 @@ export const useFriendsAdminApi_GetIncomingFriend_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_FriendsAdmin.OutgoingFriend_ByUserId, input]
+ * }
+ * ```
+ */
 export const useFriendsAdminApi_GetOutgoingFriend_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {limit?: number, offset?: number} },
     options?: Omit<UseQueryOptions<LoadOutgoingFriendsWithTimeResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<LoadOutgoingFriendsWithTimeResponse>) => void
   ): UseQueryResult<LoadOutgoingFriendsWithTimeResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFriendsAdminApi_GetOutgoingFriend_ByUserId>[1]
@@ -110,13 +140,23 @@ export const useFriendsAdminApi_GetOutgoingFriend_ByUserId = (
   
   
 
+/**
+ * ### Default Query Options
+ * 
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_FriendsAdmin.OfFriends_ByUserId, input]
+ * }
+ * ```
+ */
 export const useFriendsAdminApi_GetOfFriends_ByUserId = (
     sdk: AccelByteSDK,
     input: SdkSetConfigParam & { userId:string,  queryParams?: {friendId?: string | null, limit?: number, nopaging?: boolean | null, offset?: number} },
     options?: Omit<UseQueryOptions<FriendshipConnectionResponse, AxiosError<ApiError>>, 'queryKey'>,
     callback?: (data: AxiosResponse<FriendshipConnectionResponse>) => void
   ): UseQueryResult<FriendshipConnectionResponse, AxiosError<ApiError>> => { 
-  //
+  
   const queryFn = (
   sdk: AccelByteSDK, 
   input: Parameters<typeof useFriendsAdminApi_GetOfFriends_ByUserId>[1]
