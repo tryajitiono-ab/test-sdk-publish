@@ -1,5 +1,15 @@
 # @accelbyte/sdk-challenge
 
+## 4.0.9
+
+### Patch Changes
+
+- 2aba58a: stub changeset
+- Updated dependencies [2aba58a]
+- Updated dependencies [2aba58a]
+  - @accelbyte/sdk@3.0.10
+  - @accelbyte/validator@0.2.24
+
 ## 4.0.8
 
 ### Patch Changes
