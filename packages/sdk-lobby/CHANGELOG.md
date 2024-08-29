@@ -1,5 +1,15 @@
 # @accelbyte/sdk-lobby
 
+## 4.0.8
+
+### Patch Changes
+
+- 5628851: stub changeset
+- Updated dependencies [5628851]
+- Updated dependencies [5628851]
+  - @accelbyte/sdk@3.0.9
+  - @accelbyte/validator@0.2.23
+
 ## 4.0.7
 
 ### Patch Changes

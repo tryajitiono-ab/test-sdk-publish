@@ -1,5 +1,11 @@
 # @accelbyte/codegen
 
+## 3.1.2
+
+### Patch Changes
+
+- 5628851: stub changeset
+
 ## 3.1.1
 
 ### Patch Changes
