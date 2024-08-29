@@ -1,29 +1,5 @@
 # @accelbyte/sdk-legal
 
-## 5.0.6
-
-### Patch Changes
-
-- 9000d41: stub changeset
-- Updated dependencies [9000d41]
-- Updated dependencies [9000d41]
-- Updated dependencies [9000d41]
-  - @accelbyte/sdk-iam@5.0.7
-  - @accelbyte/sdk@3.0.11
-  - @accelbyte/validator@0.2.25
-
-## 5.0.5
-
-### Patch Changes
-
-- 2aba58a: stub changeset
-- Updated dependencies [2aba58a]
-- Updated dependencies [2aba58a]
-- Updated dependencies [2aba58a]
-  - @accelbyte/sdk-iam@5.0.6
-  - @accelbyte/sdk@3.0.10
-  - @accelbyte/validator@0.2.24
-
 ## 5.0.4
 
 ### Patch Changes
