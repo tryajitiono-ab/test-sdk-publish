@@ -1,5 +1,15 @@
 # @accelbyte/sdk-iam
 
+## 5.0.4
+
+### Patch Changes
+
+- a89f728: stub changeset
+- Updated dependencies [a89f728]
+- Updated dependencies [a89f728]
+  - @accelbyte/sdk@3.0.8
+  - @accelbyte/validator@0.2.22
+
 ## 5.0.2
 
 ### Patch Changes
@@ -10,7 +20,7 @@
 
 ### Major Changes
 
-- 6ccbd5efc fix(WebSDK): Refresh all sdks adding "_DEPRECATED" suffix for deprecated methods
+- 6ccbd5efc fix(WebSDK): Refresh all sdks adding "\_DEPRECATED" suffix for deprecated methods
 
 ## 4.0.0
 
@@ -19,7 +29,7 @@
 - 8b2ab2a50 chore(validator): add explicit error messages to thrown errors
 - b8a9a9fe8 fix(validator): allow @accelbyte/validator to be able to validate URLs with hash
 - 38b090f1a feat(WebSDK) - Adds localStorage ZodEnabled flag allowing to skip zod validation
-- dbd8ef74d fix(WebSDK): Remove SdkCache and codegenerate all @accelbyte/sdk-* packages
+- dbd8ef74d fix(WebSDK): Remove SdkCache and codegenerate all @accelbyte/sdk-\* packages
 - 8e8b4769f feat(WebSDK) - Codegen is updated to merge Admin Into public WebSDK
 
 ## 3.1.1

@@ -1,5 +1,17 @@
 # @accelbyte/sdk-legal
 
+## 5.0.3
+
+### Patch Changes
+
+- a89f728: stub changeset
+- Updated dependencies [a89f728]
+- Updated dependencies [a89f728]
+- Updated dependencies [a89f728]
+  - @accelbyte/sdk-iam@5.0.4
+  - @accelbyte/sdk@3.0.8
+  - @accelbyte/validator@0.2.22
+
 ## 3.2.0
 
 ### Minor Changes

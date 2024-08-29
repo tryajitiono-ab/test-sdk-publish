@@ -1,5 +1,12 @@
 # @accelbyte/codegen
 
+## 3.1.1
+
+### Patch Changes
+
+- f427156: fix(codegen): fix codegen outputting invalid comments if comments contain end-of-multiline-comment
+- a89f728: stub changeset
+
 ## 3.0.0
 
 ### Major Changes
