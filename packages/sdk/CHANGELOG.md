@@ -1,5 +1,16 @@
 # @accelbyte/sdk
 
+## 3.1.0
+
+### Minor Changes
+
+- 35d21c7: stub changeset
+
+### Patch Changes
+
+- Updated dependencies [35d21c7]
+  - @accelbyte/validator@0.3.0
+
 ## 3.0.9
 
 ### Patch Changes

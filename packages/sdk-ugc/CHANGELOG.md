@@ -1,5 +1,18 @@
 # @accelbyte/sdk-ugc
 
+## 6.0.0
+
+### Minor Changes
+
+- 35d21c7: stub changeset
+
+### Patch Changes
+
+- Updated dependencies [35d21c7]
+- Updated dependencies [35d21c7]
+  - @accelbyte/sdk@3.1.0
+  - @accelbyte/validator@0.3.0
+
 ## 5.0.4
 
 ### Patch Changes
