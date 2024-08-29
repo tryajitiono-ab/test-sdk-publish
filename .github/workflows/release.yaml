@@ -30,7 +30,6 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: echo "no-op"
-          version: changeset version && yarn
           commit: 'chore: version packages'
           title: 'chore: version packages'
         env:
