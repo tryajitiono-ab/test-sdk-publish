@@ -1,5 +1,11 @@
 # @accelbyte/validator
 
+## 0.3.2
+
+### Patch Changes
+
+- 9a0649c: stub changeset
+
 ## 0.3.1
 
 ### Patch Changes
