@@ -24,9 +24,7 @@ jobs:
           node-version: 18
           cache: yarn
 
-      - run: yarn
-
-      - name: Validate API reference
+      - name: Install dependencies and build
         working-directory: ./examples/sdk-vite-example
         env:
           VITE_MODE: ${{ env.VITE_MODE }}
