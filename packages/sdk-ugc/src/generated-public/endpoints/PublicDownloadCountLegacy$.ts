@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -14,17 +14,21 @@ export class PublicDownloadCountLegacy$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * This endpoint can be used to count how many the ugc downloaded 
+   * This endpoint can be used to count how many the ugc downloaded
    */
-  createDownloadcount_ByContentId(contentId:string): Promise<Response<AddDownloadCountResponse>> {
+  createDownloadcount_ByContentId(contentId: string): Promise<Response<AddDownloadCountResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ugc/v1/public/namespaces/{namespace}/contents/{contentId}/downloadcount'.replace('{namespace}', this.namespace).replace('{contentId}', contentId)     
-    const resultPromise = this.axiosInstance.post(url, null, {params})
+    const url = '/ugc/v1/public/namespaces/{namespace}/contents/{contentId}/downloadcount'
+      .replace('{namespace}', this.namespace)
+      .replace('{contentId}', contentId)
+    const resultPromise = this.axiosInstance.post(url, null, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, AddDownloadCountResponse, 'AddDownloadCountResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      AddDownloadCountResponse,
+      'AddDownloadCountResponse'
+    )
   }
-  
 }
-  

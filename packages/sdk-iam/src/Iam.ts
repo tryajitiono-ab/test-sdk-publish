@@ -16,6 +16,7 @@ import { DevicesV4AdminApi } from './generated-admin/DevicesV4AdminApi.js'
 import { InputValidationsAdminApi } from './generated-admin/InputValidationsAdminApi.js'
 import { OAuth20AdminApi } from './generated-admin/OAuth20AdminApi.js'
 import { OverrideRoleConfigV3AdminApi } from './generated-admin/OverrideRoleConfigV3AdminApi.js'
+import { ProfileUpdateStrategyAdminApi } from './generated-admin/ProfileUpdateStrategyAdminApi.js'
 import { RolesAdminApi } from './generated-admin/RolesAdminApi.js'
 import { SsoCredentialAdminApi } from './generated-admin/SsoCredentialAdminApi.js'
 import { ThirdPartyCredentialAdminApi } from './generated-admin/ThirdPartyCredentialAdminApi.js'
@@ -30,6 +31,7 @@ import { OAuth20Api } from './generated-public/OAuth20Api.js'
 import { OAuth20ExtensionApi } from './generated-public/OAuth20ExtensionApi.js'
 import { OAuth20V4Api } from './generated-public/OAuth20V4Api.js'
 import { OAuthApi } from './generated-public/OAuthApi.js'
+import { ProfileUpdateStrategyApi } from './generated-public/ProfileUpdateStrategyApi.js'
 import { RolesApi } from './generated-public/RolesApi.js'
 import { SsoApi } from './generated-public/SsoApi.js'
 import { SsoSaml20Api } from './generated-public/SsoSaml20Api.js'
@@ -51,6 +53,7 @@ const apis = {
   ThirdPartyCredentialAdminApi,
   SsoCredentialAdminApi,
   ConfigAdminApi,
+  ProfileUpdateStrategyAdminApi,
   OAuth20AdminApi,
   BansApi,
   RolesApi,
@@ -66,7 +69,8 @@ const apis = {
   CountryApi,
   SsoSaml20Api,
   ConfigApi,
-  ThirdPartyCredentialApi
+  ThirdPartyCredentialApi,
+  ProfileUpdateStrategyApi
 }
 
 export const Iam = apis

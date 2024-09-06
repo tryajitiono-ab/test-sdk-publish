@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -17,74 +17,98 @@ export class Agreement$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Retrieve accepted Legal Agreements. 
+   * Retrieve accepted Legal Agreements.
    */
   getAgreementsPolicies(): Promise<Response<RetrieveAcceptedAgreementResponseArray>> {
     const params = {} as AxiosRequestConfig
-    const url = '/agreement/public/agreements/policies'     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/agreement/public/agreements/policies'
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, RetrieveAcceptedAgreementResponseArray, 'RetrieveAcceptedAgreementResponseArray')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      RetrieveAcceptedAgreementResponseArray,
+      'RetrieveAcceptedAgreementResponseArray'
+    )
   }
-  
   /**
-   * Accepts many legal policy versions all at once. Supply with localized version policy id to accept an agreement. 
+   * Accepts many legal policy versions all at once. Supply with localized version policy id to accept an agreement.
    */
   createAgreementPolicy(data: AcceptAgreementRequest[]): Promise<Response<AcceptAgreementResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/agreement/public/agreements/policies'     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/agreement/public/agreements/policies'
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, AcceptAgreementResponse, 'AcceptAgreementResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      AcceptAgreementResponse,
+      'AcceptAgreementResponse'
+    )
   }
-  
   /**
    * @deprecated
-   * Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration. 
+   * Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
    */
-  createAgreementPolicyUser_ByUserId(userId:string, data: AcceptAgreementRequest[]): Promise<Response<AcceptAgreementResponse>> {
+  createAgreementPolicyUser_ByUserId(userId: string, data: AcceptAgreementRequest[]): Promise<Response<AcceptAgreementResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/agreement/public/agreements/policies/users/{userId}'.replace('{userId}', userId)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/agreement/public/agreements/policies/users/{userId}'.replace('{userId}', userId)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, AcceptAgreementResponse, 'AcceptAgreementResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      AcceptAgreementResponse,
+      'AcceptAgreementResponse'
+    )
   }
-  
   /**
-   * Change marketing preference consent. 
+   * Change marketing preference consent.
    */
   patchAgreementLocalizedPolicyVersionPreference(data: AcceptAgreementRequest[]): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/agreement/public/agreements/localized-policy-versions/preferences'     
-    const resultPromise = this.axiosInstance.patch(url, data, {params})
+    const url = '/agreement/public/agreements/localized-policy-versions/preferences'
+    const resultPromise = this.axiosInstance.patch(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Accepts a legal policy version. Supply with localized version policy id to accept an agreement 
+   * Accepts a legal policy version. Supply with localized version policy id to accept an agreement
    */
-  createAgreementLocalizedPolicyVersion_ByLocalizedPolicyVersionId(localizedPolicyVersionId:string): Promise<Response<unknown>> {
+  createAgreementLocalizedPolicyVersion_ByLocalizedPolicyVersionId(localizedPolicyVersionId: string): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/agreement/public/agreements/localized-policy-versions/{localizedPolicyVersionId}'.replace('{localizedPolicyVersionId}', localizedPolicyVersionId)     
-    const resultPromise = this.axiosInstance.post(url, null, {params})
+    const url = '/agreement/public/agreements/localized-policy-versions/{localizedPolicyVersionId}'.replace(
+      '{localizedPolicyVersionId}',
+      localizedPolicyVersionId
+    )
+    const resultPromise = this.axiosInstance.post(url, null, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
    * @deprecated
-   * Accepts many legal policy versions all at once. Supply with localized version policy id, version policy id, policy id, userId, namespace, country code and client id to accept an agreement. This endpoint used by APIGateway during new user registration. 
+   * Accepts many legal policy versions all at once. Supply with localized version policy id, version policy id, policy id, userId, namespace, country code and client id to accept an agreement. This endpoint used by APIGateway during new user registration.
    */
-  createUserPolicyAgreement_ByCountryCode_ByClientId_ByUserId(countryCode:string, clientId:string, userId:string, data: AcceptAgreementRequest[]): Promise<Response<AcceptAgreementResponse>> {
+  createUserPolicyAgreement_ByCountryCode_ByClientId_ByUserId(
+    countryCode: string,
+    clientId: string,
+    userId: string,
+    data: AcceptAgreementRequest[]
+  ): Promise<Response<AcceptAgreementResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/agreement/public/agreements/policies/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}'.replace('{namespace}', this.namespace).replace('{countryCode}', countryCode).replace('{clientId}', clientId).replace('{userId}', userId)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/agreement/public/agreements/policies/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}'
+      .replace('{namespace}', this.namespace)
+      .replace('{countryCode}', countryCode)
+      .replace('{clientId}', clientId)
+      .replace('{userId}', userId)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, AcceptAgreementResponse, 'AcceptAgreementResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      AcceptAgreementResponse,
+      'AcceptAgreementResponse'
+    )
   }
-  
 }
-  

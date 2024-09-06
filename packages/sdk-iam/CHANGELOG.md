@@ -1,58 +1,5 @@
 # @accelbyte/sdk-iam
 
-## 6.0.2
-
-### Patch Changes
-
-- 9a0649c: stub changeset
-- Updated dependencies [9a0649c]
-- Updated dependencies [9a0649c]
-  - @accelbyte/sdk@3.1.2
-  - @accelbyte/validator@0.3.2
-
-## 6.0.1
-
-### Patch Changes
-
-- 9b15e9d: stub changeset
-- Updated dependencies [9b15e9d]
-- Updated dependencies [9b15e9d]
-  - @accelbyte/sdk@3.1.1
-  - @accelbyte/validator@0.3.1
-
-## 6.0.0
-
-### Minor Changes
-
-- 81737e0: stub changeset
-
-### Patch Changes
-
-- Updated dependencies [81737e0]
-- Updated dependencies [81737e0]
-  - @accelbyte/sdk@3.1.0
-  - @accelbyte/validator@0.3.0
-
-## 5.0.5
-
-### Patch Changes
-
-- 5628851: stub changeset
-- Updated dependencies [5628851]
-- Updated dependencies [5628851]
-  - @accelbyte/sdk@3.0.9
-  - @accelbyte/validator@0.2.23
-
-## 5.0.4
-
-### Patch Changes
-
-- bb77414: stub changeset
-- Updated dependencies [bb77414]
-- Updated dependencies [bb77414]
-  - @accelbyte/sdk@3.0.8
-  - @accelbyte/validator@0.2.22
-
 ## 5.0.2
 
 ### Patch Changes
@@ -63,7 +10,7 @@
 
 ### Major Changes
 
-- 6ccbd5efc fix(WebSDK): Refresh all sdks adding "\_DEPRECATED" suffix for deprecated methods
+- 6ccbd5efc fix(WebSDK): Refresh all sdks adding "_DEPRECATED" suffix for deprecated methods
 
 ## 4.0.0
 
@@ -72,7 +19,7 @@
 - 8b2ab2a50 chore(validator): add explicit error messages to thrown errors
 - b8a9a9fe8 fix(validator): allow @accelbyte/validator to be able to validate URLs with hash
 - 38b090f1a feat(WebSDK) - Adds localStorage ZodEnabled flag allowing to skip zod validation
-- dbd8ef74d fix(WebSDK): Remove SdkCache and codegenerate all @accelbyte/sdk-\* packages
+- dbd8ef74d fix(WebSDK): Remove SdkCache and codegenerate all @accelbyte/sdk-* packages
 - 8e8b4769f feat(WebSDK) - Codegen is updated to merge Admin Into public WebSDK
 
 ## 3.1.1

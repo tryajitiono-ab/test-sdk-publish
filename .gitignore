@@ -62,6 +62,7 @@ npm-debug.log.*
 
 # Yarn
 .yarn/*
+.yarn/
 # Disable cache, mostly because of CI pushes to the Git and in CI we can't use global cache as it will result in this error:
 # Error: EXDEV: cross-device link not permitted. Further reference: https://accelbyte.atlassian.net/browse/CWA-3499?focusedCommentId=537067.
 .yarn/cache
@@ -76,3 +77,8 @@ metafile-*.json
 # CI artifacts. 
 .variables
 .build_codegen
+
+# yalc
+.yalc
+yalc.lock
+**/yalc.lock

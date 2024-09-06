@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -19,72 +19,77 @@ export class FleetsAdmin$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ] 
+   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
    */
   getFleets(): Promise<Response<FleetListResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ams/v1/admin/namespaces/{namespace}/fleets'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/ams/v1/admin/namespaces/{namespace}/fleets'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, FleetListResponse, 'FleetListResponse')
   }
-  
   /**
-   * Optionally, sampling rules for the fleet can also be specified Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE] 
+   * Optionally, sampling rules for the fleet can also be specified Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
    */
   createFleet(data: FleetParameters): Promise<Response<FleetCreateResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ams/v1/admin/namespaces/{namespace}/fleets'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/ams/v1/admin/namespaces/{namespace}/fleets'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, FleetCreateResponse, 'FleetCreateResponse')
   }
-  
   /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE] 
+   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
    */
-  deleteFleet_ByFleetId(fleetID:string): Promise<Response<unknown>> {
+  deleteFleet_ByFleetId(fleetID: string): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}'.replace('{namespace}', this.namespace).replace('{fleetID}', fleetID)     
-    const resultPromise = this.axiosInstance.delete(url, {params})
+    const url = '/ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}'.replace('{namespace}', this.namespace).replace('{fleetID}', fleetID)
+    const resultPromise = this.axiosInstance.delete(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ] 
+   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
    */
-  getFleet_ByFleetId(fleetID:string): Promise<Response<FleetGetResponse>> {
+  getFleet_ByFleetId(fleetID: string): Promise<Response<FleetGetResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}'.replace('{namespace}', this.namespace).replace('{fleetID}', fleetID)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}'.replace('{namespace}', this.namespace).replace('{fleetID}', fleetID)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, FleetGetResponse, 'FleetGetResponse')
   }
-  
   /**
-   * Optionally, sampling rules for the fleet can also be updated Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE] 
+   * Optionally, sampling rules for the fleet can also be updated Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
    */
-  updateFleet_ByFleetId(fleetID:string, data: FleetParameters): Promise<Response<unknown>> {
+  updateFleet_ByFleetId(fleetID: string, data: FleetParameters): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}'.replace('{namespace}', this.namespace).replace('{fleetID}', fleetID)     
-    const resultPromise = this.axiosInstance.put(url, data, {params})
+    const url = '/ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}'.replace('{namespace}', this.namespace).replace('{fleetID}', fleetID)
+    const resultPromise = this.axiosInstance.put(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ] 
+   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
    */
-  getServers_ByFleetId(fleetID:string,  queryParams?: {count?: string | null, offset?: number}): Promise<Response<FleetServersResponse>> {
-    const params = { ...queryParams} as AxiosRequestConfig
-    const url = '/ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers'.replace('{namespace}', this.namespace).replace('{fleetID}', fleetID)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getServers_ByFleetId(
+    fleetID: string,
+    queryParams?: {
+      count?: number
+      offset?: number
+      region?: string | null
+      serverId?: string | null
+      sortBy?: string | null
+      sortDirection?: 'asc' | 'desc'
+      status?: 'claimed' | 'claiming' | 'crash backoff' | 'creating' | 'draining' | 'ready' | 'unresponsive'
+    }
+  ): Promise<Response<FleetServersResponse>> {
+    const params = { count: 10000, sortBy: 'created_at', sortDirection: 'desc', ...queryParams } as AxiosRequestConfig
+    const url = '/ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers'
+      .replace('{namespace}', this.namespace)
+      .replace('{fleetID}', fleetID)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, FleetServersResponse, 'FleetServersResponse')
   }
-  
 }
-  

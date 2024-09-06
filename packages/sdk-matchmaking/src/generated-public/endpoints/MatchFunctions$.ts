@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -17,50 +17,49 @@ export class MatchFunctions$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * List existing match functions.  
+   * List existing match functions.
    */
-  getMatchFunctions( queryParams?: {limit?: number, offset?: number}): Promise<Response<ListMatchFunctionsResponse>> {
-    const params = {limit: 20, ...queryParams} as AxiosRequestConfig
-    const url = '/match2/v1/namespaces/{namespace}/match-functions'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getMatchFunctions(queryParams?: { limit?: number; offset?: number }): Promise<Response<ListMatchFunctionsResponse>> {
+    const params = { limit: 20, ...queryParams } as AxiosRequestConfig
+    const url = '/match2/v1/namespaces/{namespace}/match-functions'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, ListMatchFunctionsResponse, 'ListMatchFunctionsResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      ListMatchFunctionsResponse,
+      'ListMatchFunctionsResponse'
+    )
   }
-  
   /**
-   * Creates a new matchmaking function.  
+   * Creates a new matchmaking function.
    */
   createMatchFunction(data: MatchFunctionRequest): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/match2/v1/namespaces/{namespace}/match-functions'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/match2/v1/namespaces/{namespace}/match-functions'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Deletes an existing match function.  
+   * Deletes an existing match function.
    */
-  deleteMatchFunction_ByName(name:string): Promise<Response<unknown>> {
+  deleteMatchFunction_ByName(name: string): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/match2/v1/namespaces/{namespace}/match-functions/{name}'.replace('{namespace}', this.namespace).replace('{name}', name)     
-    const resultPromise = this.axiosInstance.delete(url, {params})
+    const url = '/match2/v1/namespaces/{namespace}/match-functions/{name}'.replace('{namespace}', this.namespace).replace('{name}', name)
+    const resultPromise = this.axiosInstance.delete(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Update existing matchmaking function.  
+   * Update existing matchmaking function.
    */
-  updateMatchFunction_ByName(name:string, data: MatchFunctionRequest): Promise<Response<MatchFunctionConfig>> {
+  updateMatchFunction_ByName(name: string, data: MatchFunctionRequest): Promise<Response<MatchFunctionConfig>> {
     const params = {} as AxiosRequestConfig
-    const url = '/match2/v1/namespaces/{namespace}/match-functions/{name}'.replace('{namespace}', this.namespace).replace('{name}', name)     
-    const resultPromise = this.axiosInstance.put(url, data, {params})
+    const url = '/match2/v1/namespaces/{namespace}/match-functions/{name}'.replace('{namespace}', this.namespace).replace('{name}', name)
+    const resultPromise = this.axiosInstance.put(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, MatchFunctionConfig, 'MatchFunctionConfig')
   }
-  
 }
-  

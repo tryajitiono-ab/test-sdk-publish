@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -22,72 +22,114 @@ export class LocalizedPolicyVersionsWithNamespaceAdmin$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Retrieve a version of a particular country-specific policy. 
+   * Retrieve a version of a particular country-specific policy.
    */
-  getLocalizedPolicyVersion_ByLocalizedPolicyVersionId(localizedPolicyVersionId:string): Promise<Response<RetrieveLocalizedPolicyVersionResponse>> {
+  getLocalizedPolicyVersion_ByLocalizedPolicyVersionId(
+    localizedPolicyVersionId: string
+  ): Promise<Response<RetrieveLocalizedPolicyVersionResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}'.replace('{namespace}', this.namespace).replace('{localizedPolicyVersionId}', localizedPolicyVersionId)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}'
+      .replace('{namespace}', this.namespace)
+      .replace('{localizedPolicyVersionId}', localizedPolicyVersionId)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, RetrieveLocalizedPolicyVersionResponse, 'RetrieveLocalizedPolicyVersionResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      RetrieveLocalizedPolicyVersionResponse,
+      'RetrieveLocalizedPolicyVersionResponse'
+    )
   }
-  
   /**
-   * Update a version of a particular country-specific policy. 
+   * Update a version of a particular country-specific policy.
    */
-  updateLocalizedPolicyVersion_ByLocalizedPolicyVersionId(localizedPolicyVersionId:string, data: UpdateLocalizedPolicyVersionRequest): Promise<Response<UpdateLocalizedPolicyVersionResponse>> {
+  updateLocalizedPolicyVersion_ByLocalizedPolicyVersionId(
+    localizedPolicyVersionId: string,
+    data: UpdateLocalizedPolicyVersionRequest
+  ): Promise<Response<UpdateLocalizedPolicyVersionResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}'.replace('{namespace}', this.namespace).replace('{localizedPolicyVersionId}', localizedPolicyVersionId)     
-    const resultPromise = this.axiosInstance.put(url, data, {params})
+    const url = '/agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}'
+      .replace('{namespace}', this.namespace)
+      .replace('{localizedPolicyVersionId}', localizedPolicyVersionId)
+    const resultPromise = this.axiosInstance.put(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, UpdateLocalizedPolicyVersionResponse, 'UpdateLocalizedPolicyVersionResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      UpdateLocalizedPolicyVersionResponse,
+      'UpdateLocalizedPolicyVersionResponse'
+    )
   }
-  
   /**
-   * Retrieve versions of a particular country-specific policy. 
+   * Retrieve versions of a particular country-specific policy.
    */
-  getLocalizedPolicyVersionVersion_ByPolicyVersionId(policyVersionId:string): Promise<Response<RetrieveLocalizedPolicyVersionResponseArray>> {
+  getLocalizedPolicyVersionVersion_ByPolicyVersionId(
+    policyVersionId: string
+  ): Promise<Response<RetrieveLocalizedPolicyVersionResponseArray>> {
     const params = {} as AxiosRequestConfig
-    const url = '/agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{policyVersionId}'.replace('{namespace}', this.namespace).replace('{policyVersionId}', policyVersionId)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{policyVersionId}'
+      .replace('{namespace}', this.namespace)
+      .replace('{policyVersionId}', policyVersionId)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, RetrieveLocalizedPolicyVersionResponseArray, 'RetrieveLocalizedPolicyVersionResponseArray')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      RetrieveLocalizedPolicyVersionResponseArray,
+      'RetrieveLocalizedPolicyVersionResponseArray'
+    )
   }
-  
   /**
-   * Create a version of a particular country-specific policy. 
+   * Create a version of a particular country-specific policy.
    */
-  createLocalizedPolicyVersionVersion_ByPolicyVersionId(policyVersionId:string, data: CreateLocalizedPolicyVersionRequest): Promise<Response<CreateLocalizedPolicyVersionResponse>> {
+  createLocalizedPolicyVersionVersion_ByPolicyVersionId(
+    policyVersionId: string,
+    data: CreateLocalizedPolicyVersionRequest
+  ): Promise<Response<CreateLocalizedPolicyVersionResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{policyVersionId}'.replace('{namespace}', this.namespace).replace('{policyVersionId}', policyVersionId)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{policyVersionId}'
+      .replace('{namespace}', this.namespace)
+      .replace('{policyVersionId}', policyVersionId)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, CreateLocalizedPolicyVersionResponse, 'CreateLocalizedPolicyVersionResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      CreateLocalizedPolicyVersionResponse,
+      'CreateLocalizedPolicyVersionResponse'
+    )
   }
-  
   /**
-   * Update a localized version policy to be the default. 
+   * Update a localized version policy to be the default.
    */
-  patchDefault_ByLocalizedPolicyVersionId(localizedPolicyVersionId:string): Promise<Response<unknown>> {
+  patchDefault_ByLocalizedPolicyVersionId(localizedPolicyVersionId: string): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/default'.replace('{namespace}', this.namespace).replace('{localizedPolicyVersionId}', localizedPolicyVersionId)     
-    const resultPromise = this.axiosInstance.patch(url, null, {params})
+    const url = '/agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/default'
+      .replace('{namespace}', this.namespace)
+      .replace('{localizedPolicyVersionId}', localizedPolicyVersionId)
+    const resultPromise = this.axiosInstance.patch(url, null, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Request presigned URL for upload attachment for a particular localized version of base policy. 
+   * Request presigned URL for upload attachment for a particular localized version of base policy.
    */
-  createAttachment_ByLocalizedPolicyVersionId(localizedPolicyVersionId:string, data: UploadPolicyVersionAttachmentRequest): Promise<Response<UploadLocalizedPolicyVersionAttachmentResponse>> {
+  createAttachment_ByLocalizedPolicyVersionId(
+    localizedPolicyVersionId: string,
+    data: UploadPolicyVersionAttachmentRequest
+  ): Promise<Response<UploadLocalizedPolicyVersionAttachmentResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/attachments'.replace('{namespace}', this.namespace).replace('{localizedPolicyVersionId}', localizedPolicyVersionId)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/attachments'
+      .replace('{namespace}', this.namespace)
+      .replace('{localizedPolicyVersionId}', localizedPolicyVersionId)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, UploadLocalizedPolicyVersionAttachmentResponse, 'UploadLocalizedPolicyVersionAttachmentResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      UploadLocalizedPolicyVersionAttachmentResponse,
+      'UploadLocalizedPolicyVersionAttachmentResponse'
+    )
   }
-  
 }
-  

@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -15,52 +15,52 @@ import { ListUserRewardsResponse } from '../generated-definitions/ListUserReward
 import { UserRewardArray } from '../generated-definitions/UserRewardArray.js'
 import { PlayerReward$ } from './endpoints/PlayerReward$.js'
 
-
 export function PlayerRewardApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]&lt;/li&gt;&lt;/ul&gt; 
+   * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]&lt;/li&gt;&lt;/ul&gt;
    */
-  async function getUsersMeRewards( queryParams?: {limit?: number, offset?: number, sortBy?: string | null, status?: 'CLAIMED' | 'UNCLAIMED'}): Promise<AxiosResponse<ListUserRewardsResponse>> {
+  async function getUsersMeRewards(queryParams?: {
+    limit?: number
+    offset?: number
+    sortBy?: string | null
+    status?: 'CLAIMED' | 'UNCLAIMED'
+  }): Promise<AxiosResponse<ListUserRewardsResponse>> {
     const $ = new PlayerReward$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getUsersMeRewards( queryParams)
+    const resp = await $.getUsersMeRewards(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt; 
+   * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
    */
   async function createUserMeRewardClaim(data: ClaimUserRewardsReq): Promise<AxiosResponse<UserRewardArray>> {
     const $ = new PlayerReward$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createUserMeRewardClaim(data,)
+    const resp = await $.createUserMeRewardClaim(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    getUsersMeRewards,createUserMeRewardClaim,
+    getUsersMeRewards,
+    createUserMeRewardClaim
   }
 }
-  

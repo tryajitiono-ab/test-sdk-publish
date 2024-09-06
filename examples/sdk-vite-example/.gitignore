@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# yalc
+.yalc
+yalc.lock
+
+# yarn
+.yarn/

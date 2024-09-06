@@ -1,48 +1,5 @@
 # @accelbyte/sdk
 
-## 3.1.2
-
-### Patch Changes
-
-- 9a0649c: stub changeset
-- Updated dependencies [9a0649c]
-  - @accelbyte/validator@0.3.2
-
-## 3.1.1
-
-### Patch Changes
-
-- 9b15e9d: stub changeset
-- Updated dependencies [9b15e9d]
-  - @accelbyte/validator@0.3.1
-
-## 3.1.0
-
-### Minor Changes
-
-- 81737e0: stub changeset
-
-### Patch Changes
-
-- Updated dependencies [81737e0]
-  - @accelbyte/validator@0.3.0
-
-## 3.0.9
-
-### Patch Changes
-
-- 5628851: stub changeset
-- Updated dependencies [5628851]
-  - @accelbyte/validator@0.2.23
-
-## 3.0.8
-
-### Patch Changes
-
-- bb77414: stub changeset
-- Updated dependencies [bb77414]
-  - @accelbyte/validator@0.2.22
-
 ## 3.0.7
 
 ### Major Changes
@@ -75,7 +32,7 @@
 
 ### Minor Changes
 
-- CW-3798 Add descriptive log when the other service is down.
+- CW-3798 Add descriptive log when the other service is down. 
 
 ## 2.0.6
 

@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -27,63 +27,68 @@ import { UpdateInboxCategoryRequest } from '../generated-definitions/UpdateInbox
 import { UpdateInboxMessageRequest } from '../generated-definitions/UpdateInboxMessageRequest.js'
 import { InboxAdmin$ } from './endpoints/InboxAdmin$.js'
 
-
 export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * Get inbox stats 
+   * Get inbox stats
    */
-  async function getInboxStats( queryParams?: {messageId?: string[]}): Promise<AxiosResponse<GetInboxStatsResponse>> {
+  async function getInboxStats(queryParams?: { messageId?: string[] }): Promise<AxiosResponse<GetInboxStatsResponse>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getInboxStats( queryParams)
+    const resp = await $.getInboxStats(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get inbox messages 
+   * Get inbox messages
    */
-  async function getInboxMessages( queryParams?: {activeOnly?: boolean | null, endCreatedAt?: number, limit?: number, messageId?: string[], offset?: number, order?: string | null, scope?: 'NAMESPACE' | 'USER', startCreatedAt?: number, status?: 'DRAFT' | 'SENT' | 'UNSENT', transient?: boolean | null}): Promise<AxiosResponse<GetInboxMessagesResponse>> {
+  async function getInboxMessages(queryParams?: {
+    activeOnly?: boolean | null
+    endCreatedAt?: number
+    limit?: number
+    messageId?: string[]
+    offset?: number
+    order?: string | null
+    scope?: 'NAMESPACE' | 'USER'
+    startCreatedAt?: number
+    status?: 'DRAFT' | 'SENT' | 'UNSENT'
+    transient?: boolean | null
+  }): Promise<AxiosResponse<GetInboxMessagesResponse>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getInboxMessages( queryParams)
+    const resp = await $.getInboxMessages(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Save inbox message 
+   * Save inbox message
    */
   async function createInboxMessage(data: SaveInboxMessageRequest): Promise<AxiosResponse<SaveInboxMessageResponse>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createInboxMessage(data,)
+    const resp = await $.createInboxMessage(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get inbox categories 
+   * Get inbox categories
    */
   async function getInboxCategories(): Promise<AxiosResponse<GetInboxCategoriesResponseItemArray>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -91,109 +96,122 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Add inbox category. 
+   * Add inbox category.
    */
   async function createInboxCategory(data: AddInboxCategoryRequest): Promise<AxiosResponse<AddInboxCategoryResponse>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createInboxCategory(data,)
+    const resp = await $.createInboxCategory(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Delete inbox message 
+   * Delete inbox message
    */
-  async function deleteInboxMessage_ByMessageId(messageId:string,  queryParams?: {force?: boolean | null}): Promise<AxiosResponse<unknown>> {
+  async function deleteInboxMessage_ByMessageId(
+    messageId: string,
+    queryParams?: { force?: boolean | null }
+  ): Promise<AxiosResponse<unknown>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteInboxMessage_ByMessageId(messageId,  queryParams)
+    const resp = await $.deleteInboxMessage_ByMessageId(messageId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Update inbox message 
+   * Update inbox message
    */
-  async function patchInboxMessage_ByMessageId(messageId:string, data: UpdateInboxMessageRequest): Promise<AxiosResponse<unknown>> {
+  async function patchInboxMessage_ByMessageId(messageId: string, data: UpdateInboxMessageRequest): Promise<AxiosResponse<unknown>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchInboxMessage_ByMessageId(messageId, data,)
+    const resp = await $.patchInboxMessage_ByMessageId(messageId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Delete inbox category 
+   * Delete inbox category
    */
-  async function deleteInboxCategory_ByCategory(category:string): Promise<AxiosResponse<unknown>> {
+  async function deleteInboxCategory_ByCategory(category: string): Promise<AxiosResponse<unknown>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteInboxCategory_ByCategory(category, )
+    const resp = await $.deleteInboxCategory_ByCategory(category)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Update inbox category 
+   * Update inbox category
    */
-  async function patchInboxCategory_ByCategory(category:string, data: UpdateInboxCategoryRequest): Promise<AxiosResponse<unknown>> {
+  async function patchInboxCategory_ByCategory(category: string, data: UpdateInboxCategoryRequest): Promise<AxiosResponse<unknown>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchInboxCategory_ByCategory(category, data,)
+    const resp = await $.patchInboxCategory_ByCategory(category, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get inbox users 
+   * Get inbox users
    */
-  async function getUsersInbox_ByInbox(inbox:string,  queryParams?: {limit?: number, offset?: number, status?: 'READ' | 'UNREAD', userId?: string | null}): Promise<AxiosResponse<GetInboxUsersResponse>> {
+  async function getUsersInbox_ByInbox(
+    inbox: string,
+    queryParams?: { limit?: number; offset?: number; status?: 'READ' | 'UNREAD'; userId?: string | null }
+  ): Promise<AxiosResponse<GetInboxUsersResponse>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getUsersInbox_ByInbox(inbox,  queryParams)
+    const resp = await $.getUsersInbox_ByInbox(inbox, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Unsend inbox message 
+   * Unsend inbox message
    */
-  async function updateUnsendInbox_ByInbox(inbox:string, data: UnsendInboxMessageRequest): Promise<AxiosResponse<UnsendInboxMessageResponse>> {
+  async function updateUnsendInbox_ByInbox(
+    inbox: string,
+    data: UnsendInboxMessageRequest
+  ): Promise<AxiosResponse<UnsendInboxMessageResponse>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateUnsendInbox_ByInbox(inbox, data,)
+    const resp = await $.updateUnsendInbox_ByInbox(inbox, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Send inbox message 
+   * Send inbox message
    */
-  async function updateSendInbox_ByMessageId(messageId:string, data: SendInboxMessageRequest): Promise<AxiosResponse<SendInboxMessageResponse>> {
+  async function updateSendInbox_ByMessageId(
+    messageId: string,
+    data: SendInboxMessageRequest
+  ): Promise<AxiosResponse<SendInboxMessageResponse>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateSendInbox_ByMessageId(messageId, data,)
+    const resp = await $.updateSendInbox_ByMessageId(messageId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get category schema. 
+   * Get category schema.
    */
-  async function getSchemaJsonInbox_ByCategory(category:string): Promise<AxiosResponse<JsonSchemaType>> {
+  async function getSchemaJsonInbox_ByCategory(category: string): Promise<AxiosResponse<JsonSchemaType>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getSchemaJsonInbox_ByCategory(category, )
+    const resp = await $.getSchemaJsonInbox_ByCategory(category)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    getInboxStats,getInboxMessages,createInboxMessage,getInboxCategories,createInboxCategory,deleteInboxMessage_ByMessageId,patchInboxMessage_ByMessageId,deleteInboxCategory_ByCategory,patchInboxCategory_ByCategory,getUsersInbox_ByInbox,updateUnsendInbox_ByInbox,updateSendInbox_ByMessageId,getSchemaJsonInbox_ByCategory,
+    getInboxStats,
+    getInboxMessages,
+    createInboxMessage,
+    getInboxCategories,
+    createInboxCategory,
+    deleteInboxMessage_ByMessageId,
+    patchInboxMessage_ByMessageId,
+    deleteInboxCategory_ByCategory,
+    patchInboxCategory_ByCategory,
+    getUsersInbox_ByInbox,
+    updateUnsendInbox_ByInbox,
+    updateSendInbox_ByMessageId,
+    getSchemaJsonInbox_ByCategory
   }
 }
-  

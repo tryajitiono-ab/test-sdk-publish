@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -21,72 +21,91 @@ export class PublicItems$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   *  Bulk remove user&#39;s own items.  
+   *  Bulk remove user&#39;s own items.
    */
-  deleteItemMeUser_ByInventoryId(inventoryId:string, data: RemoveInventoryItemReq[]): Promise<Response<UpdateItemRespArray>> {
+  deleteItemMeUser_ByInventoryId(inventoryId: string, data: RemoveInventoryItemReq[]): Promise<Response<UpdateItemRespArray>> {
     const params = {} as AxiosRequestConfig
-    const url = '/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items'.replace('{namespace}', this.namespace).replace('{inventoryId}', inventoryId)     
-    const resultPromise = this.axiosInstance.delete(url, {data, params})
+    const url = '/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items'
+      .replace('{namespace}', this.namespace)
+      .replace('{inventoryId}', inventoryId)
+    const resultPromise = this.axiosInstance.delete(url, { data, params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, UpdateItemRespArray, 'UpdateItemRespArray')
   }
-  
   /**
-   *  Listing all user&#39;s owned items in an inventory. The response body will be in the form of standard pagination.  
+   *  Listing all user&#39;s owned items in an inventory. The response body will be in the form of standard pagination.
    */
-  getItemsMeUsers_ByInventoryId(inventoryId:string,  queryParams?: {limit?: number, offset?: number, sortBy?: 'createdAt' | 'createdAt:asc' | 'createdAt:desc' | 'updatedAt' | 'updatedAt:asc' | 'updatedAt:desc', sourceItemId?: string | null, tags?: string | null}): Promise<Response<ListItemResp>> {
-    const params = {limit: 25,sortBy: 'createdAt', ...queryParams} as AxiosRequestConfig
-    const url = '/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items'.replace('{namespace}', this.namespace).replace('{inventoryId}', inventoryId)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getItemsMeUsers_ByInventoryId(
+    inventoryId: string,
+    queryParams?: {
+      limit?: number
+      offset?: number
+      sortBy?: 'createdAt' | 'createdAt:asc' | 'createdAt:desc' | 'updatedAt' | 'updatedAt:asc' | 'updatedAt:desc'
+      sourceItemId?: string | null
+      tags?: string | null
+    }
+  ): Promise<Response<ListItemResp>> {
+    const params = { limit: 25, sortBy: 'createdAt', ...queryParams } as AxiosRequestConfig
+    const url = '/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items'
+      .replace('{namespace}', this.namespace)
+      .replace('{inventoryId}', inventoryId)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, ListItemResp, 'ListItemResp')
   }
-  
   /**
-   *  Bulk Updating user&#39;s own items.  
+   *  Bulk Updating user&#39;s own items.
    */
-  updateItemMeUser_ByInventoryId(inventoryId:string, data: UpdateItemReq[]): Promise<Response<UpdateItemRespArray>> {
+  updateItemMeUser_ByInventoryId(inventoryId: string, data: UpdateItemReq[]): Promise<Response<UpdateItemRespArray>> {
     const params = {} as AxiosRequestConfig
-    const url = '/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items'.replace('{namespace}', this.namespace).replace('{inventoryId}', inventoryId)     
-    const resultPromise = this.axiosInstance.put(url, data, {params})
+    const url = '/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items'
+      .replace('{namespace}', this.namespace)
+      .replace('{inventoryId}', inventoryId)
+    const resultPromise = this.axiosInstance.put(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, UpdateItemRespArray, 'UpdateItemRespArray')
   }
-  
   /**
-   *  Consume user&#39;s own item.  
+   *  Consume user&#39;s own item.
    */
-  createConsumeUser_ByInventoryId(inventoryId:string, data: ConsumeItemReq): Promise<Response<ItemResp>> {
+  createConsumeUser_ByInventoryId(inventoryId: string, data: ConsumeItemReq): Promise<Response<ItemResp>> {
     const params = {} as AxiosRequestConfig
-    const url = '/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/consume'.replace('{namespace}', this.namespace).replace('{inventoryId}', inventoryId)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/consume'
+      .replace('{namespace}', this.namespace)
+      .replace('{inventoryId}', inventoryId)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, ItemResp, 'ItemResp')
   }
-  
   /**
-   *  Move items between inventories that is owned by the same user. Currently, this endpoint supports transferring items exclusively from source OTHER. Items from source ECOMMERCE are not yet eligible for transfer. We are working on expanding support to include source ECOMMERCE in future updates.  
+   *  Move items between inventories that is owned by the same user. Currently, this endpoint supports transferring items exclusively from source OTHER. Items from source ECOMMERCE are not yet eligible for transfer. We are working on expanding support to include source ECOMMERCE in future updates.
    */
-  createItemMovementUser_ByInventoryId(inventoryId:string, data: MoveItemsReq): Promise<Response<MoveItemsResp>> {
+  createItemMovementUser_ByInventoryId(inventoryId: string, data: MoveItemsReq): Promise<Response<MoveItemsResp>> {
     const params = {} as AxiosRequestConfig
-    const url = '/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items/movement'.replace('{namespace}', this.namespace).replace('{inventoryId}', inventoryId)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items/movement'
+      .replace('{namespace}', this.namespace)
+      .replace('{inventoryId}', inventoryId)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, MoveItemsResp, 'MoveItemsResp')
   }
-  
   /**
-   *  Getting an user&#39;s owned item info.  
+   *  Getting an user&#39;s owned item info.
    */
-  getSourceItemMeUser_ByInventoryId_BySlotId_BySourceItemId(inventoryId:string, slotId:string, sourceItemId:string): Promise<Response<ItemResp>> {
+  getSourceItemMeUser_ByInventoryId_BySlotId_BySourceItemId(
+    inventoryId: string,
+    slotId: string,
+    sourceItemId: string
+  ): Promise<Response<ItemResp>> {
     const params = {} as AxiosRequestConfig
-    const url = '/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId}'.replace('{namespace}', this.namespace).replace('{inventoryId}', inventoryId).replace('{slotId}', slotId).replace('{sourceItemId}', sourceItemId)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId}'
+      .replace('{namespace}', this.namespace)
+      .replace('{inventoryId}', inventoryId)
+      .replace('{slotId}', slotId)
+      .replace('{sourceItemId}', sourceItemId)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, ItemResp, 'ItemResp')
   }
-  
 }
-  

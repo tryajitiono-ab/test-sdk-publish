@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -14,28 +14,24 @@ export class ConfigAdmin$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Get Log Configuration.&lt;br&gt; 
+   * Get Log Configuration.&lt;br&gt;
    */
   getConfigLog(): Promise<Response<Configuration>> {
     const params = {} as AxiosRequestConfig
-    const url = '/sessionhistory/v1/admin/config/log'     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/sessionhistory/v1/admin/config/log'
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, Configuration, 'Configuration')
   }
-  
   /**
-   * Update Log Configuration.&lt;br&gt; 
+   * Update Log Configuration.&lt;br&gt;
    */
   patchConfigLog(data: Configuration): Promise<Response<Configuration>> {
     const params = {} as AxiosRequestConfig
-    const url = '/sessionhistory/v1/admin/config/log'     
-    const resultPromise = this.axiosInstance.patch(url, data, {params})
+    const url = '/sessionhistory/v1/admin/config/log'
+    const resultPromise = this.axiosInstance.patch(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, Configuration, 'Configuration')
   }
-  
 }
-  

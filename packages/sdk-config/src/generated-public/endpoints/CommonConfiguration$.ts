@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -15,28 +15,26 @@ export class CommonConfiguration$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Get all public configs in the namespace 
+   * Get all public configs in the namespace
    */
   getConfigs(): Promise<Response<ConfigInfoArray>> {
     const params = {} as AxiosRequestConfig
-    const url = '/config/v1/public/namespaces/{namespace}/configs'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/config/v1/public/namespaces/{namespace}/configs'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, ConfigInfoArray, 'ConfigInfoArray')
   }
-  
   /**
-   * Get public config by namespace and key 
+   * Get public config by namespace and key
    */
-  getConfig_ByConfigKey(configKey:string): Promise<Response<ConfigInfo>> {
+  getConfig_ByConfigKey(configKey: string): Promise<Response<ConfigInfo>> {
     const params = {} as AxiosRequestConfig
-    const url = '/config/v1/public/namespaces/{namespace}/configs/{configKey}'.replace('{namespace}', this.namespace).replace('{configKey}', configKey)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/config/v1/public/namespaces/{namespace}/configs/{configKey}'
+      .replace('{namespace}', this.namespace)
+      .replace('{configKey}', configKey)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, ConfigInfo, 'ConfigInfo')
   }
-  
 }
-  

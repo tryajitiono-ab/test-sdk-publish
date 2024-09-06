@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -14,41 +14,40 @@ import { AcceptAgreementRequest } from '../generated-definitions/AcceptAgreement
 import { AcceptAgreementResponse } from '../generated-definitions/AcceptAgreementResponse.js'
 import { UserAgreementAdmin$ } from './endpoints/UserAgreementAdmin$.js'
 
-
 export function UserAgreementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. 
+   * Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement.
    */
-  async function createAgreementPolicy_ByUserId(userId:string, data: AcceptAgreementRequest[], queryParams: {clientId: string | null, countryCode: string | null, publisherUserId?: string | null}): Promise<AxiosResponse<AcceptAgreementResponse>> {
+  async function createAgreementPolicy_ByUserId(
+    userId: string,
+    data: AcceptAgreementRequest[],
+    queryParams: { clientId: string | null; countryCode: string | null; publisherUserId?: string | null }
+  ): Promise<AxiosResponse<AcceptAgreementResponse>> {
     const $ = new UserAgreementAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createAgreementPolicy_ByUserId(userId, data, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    createAgreementPolicy_ByUserId,
+    createAgreementPolicy_ByUserId
   }
 }
-  

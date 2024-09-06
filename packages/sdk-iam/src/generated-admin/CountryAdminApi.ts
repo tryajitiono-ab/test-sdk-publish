@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -15,41 +15,37 @@ import { CountryBlacklistResponse } from '../generated-definitions/CountryBlackl
 import { CountryResponseArray } from '../generated-definitions/CountryResponseArray.js'
 import { CountryAdmin$ } from './endpoints/CountryAdmin$.js'
 
-
 export function CountryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * Admin get country list 
+   * Admin get country list
    */
-  async function getCountries_v3( queryParams?: {filterBlacklist?: boolean | null}): Promise<AxiosResponse<CountryResponseArray>> {
+  async function getCountries_v3(queryParams?: { filterBlacklist?: boolean | null }): Promise<AxiosResponse<CountryResponseArray>> {
     const $ = new CountryAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getCountries_v3( queryParams)
+    const resp = await $.getCountries_v3(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Admin get country blacklist 
+   * Admin get country blacklist
    */
   async function getCountriesBlacklist_v3(): Promise<AxiosResponse<CountryBlacklistResponse>> {
     const $ = new CountryAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -57,21 +53,20 @@ export function CountryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Admin update country blacklist 
+   * Admin update country blacklist
    */
   async function updateCountryBlacklist_v3(data: CountryBlacklistRequest): Promise<AxiosResponse<unknown>> {
     const $ = new CountryAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateCountryBlacklist_v3(data,)
+    const resp = await $.updateCountryBlacklist_v3(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    getCountries_v3,getCountriesBlacklist_v3,updateCountryBlacklist_v3,
+    getCountries_v3,
+    getCountriesBlacklist_v3,
+    updateCountryBlacklist_v3
   }
 }
-  

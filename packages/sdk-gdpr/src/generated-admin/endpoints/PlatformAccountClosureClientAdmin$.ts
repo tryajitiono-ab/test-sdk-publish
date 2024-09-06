@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -16,39 +16,45 @@ export class PlatformAccountClosureClientAdmin$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Delete platform account closure client. 
+   * Delete platform account closure client.
    */
-  deleteClosureClient_ByPlatform(platform:string): Promise<Response<unknown>> {
+  deleteClosureClient_ByPlatform(platform: string): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client'.replace('{namespace}', this.namespace).replace('{platform}', platform)     
-    const resultPromise = this.axiosInstance.delete(url, {params})
+    const url = '/gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client'
+      .replace('{namespace}', this.namespace)
+      .replace('{platform}', platform)
+    const resultPromise = this.axiosInstance.delete(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Get platform account closure config. Scope: account 
+   * Get platform account closure config. Scope: account
    */
-  getClosureClient_ByPlatform(platform:string): Promise<Response<PlatformAccountClosureClientResponse>> {
+  getClosureClient_ByPlatform(platform: string): Promise<Response<PlatformAccountClosureClientResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client'.replace('{namespace}', this.namespace).replace('{platform}', platform)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client'
+      .replace('{namespace}', this.namespace)
+      .replace('{platform}', platform)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, PlatformAccountClosureClientResponse, 'PlatformAccountClosureClientResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      PlatformAccountClosureClientResponse,
+      'PlatformAccountClosureClientResponse'
+    )
   }
-  
   /**
-   * Update platform account closure client. Scope: account 
+   * Update platform account closure client. Scope: account
    */
-  updateClosureClient_ByPlatform(platform:string, data: PlatformAccountClosureClientRequest): Promise<Response<unknown>> {
+  updateClosureClient_ByPlatform(platform: string, data: PlatformAccountClosureClientRequest): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client'.replace('{namespace}', this.namespace).replace('{platform}', platform)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client'
+      .replace('{namespace}', this.namespace)
+      .replace('{platform}', platform)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
 }
-  

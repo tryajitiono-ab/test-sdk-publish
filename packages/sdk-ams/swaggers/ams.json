@@ -3,7 +3,7 @@
   "info": {
     "description": "Manage AMS Fleets",
     "title": "fleet-commander",
-    "version": "1.23.1-dev"
+    "version": "1.24.2-dev"
   },
   "schemes": ["https"],
   "externalDocs": {
@@ -1428,16 +1428,52 @@
             "type": "string"
           },
           {
+            "default": 10000,
             "description": "the data limit",
             "in": "query",
             "name": "count",
-            "type": "string"
+            "type": "integer"
           },
           {
+            "default": 0,
             "description": "the data offset",
             "in": "query",
             "name": "offset",
             "type": "integer"
+          },
+          {
+            "description": "the servers region",
+            "in": "query",
+            "name": "region",
+            "type": "string"
+          },
+          {
+            "description": "the id of the server",
+            "in": "query",
+            "name": "serverId",
+            "type": "string"
+          },
+          {
+            "default": "created_at",
+            "description": "the field by which to order the data",
+            "in": "query",
+            "name": "sortBy",
+            "type": "string"
+          },
+          {
+            "default": "desc",
+            "description": "the data ordering direction",
+            "enum": ["asc", "desc"],
+            "in": "query",
+            "name": "sortDirection",
+            "type": "string"
+          },
+          {
+            "description": "the servers status",
+            "enum": ["claimed", "claiming", "crash backoff", "creating", "draining", "ready", "unresponsive"],
+            "in": "query",
+            "name": "status",
+            "type": "string"
           }
         ],
         "produces": ["application/json"],
@@ -2580,7 +2616,7 @@
     "/ams/v1/namespaces/{namespace}/servers/claim": {
       "put": {
         "consumes": ["application/json"],
-        "description": "Claim a dedicated server from fleets with matching claim keys\n\nRequired Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]",
+        "description": "Claim a dedicated server from fleets with matching claim keys.\nIf the claim key is for a regular fleet (non development), the request will instantly fail if there are no DS available (HTTP 404).\nIf the claim key is for a development fleet and there are no DS available, a new DS will be launched and the request might take up to 8 seconds to return (depending on the environment configuration). If it\u0026#39;s not ready after that duration the request will still return HTTP 404. In either case, the call to this endpoint may be retried at any time to check if a DS has become available.\n\nRequired Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]",
         "operationId": "FleetClaimByKeys",
         "parameters": [
           {
@@ -3969,10 +4005,10 @@
     "path": "/ams/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2024-08-23T19:30:13+00:00",
-    "gitHash": "217fc86de8c2dc21235ff69eb98945b499d883bf",
+    "buildDate": "2024-09-02T04:02:09+00:00",
+    "gitHash": "68a177c352330ce0986e62c9b7cd2e378e0cedf5",
     "name": "fleet-commander",
-    "version": "1.23.1-dev",
+    "version": "1.24.2-dev",
     "version-roles-seeding": "1.2.40"
   }
 }

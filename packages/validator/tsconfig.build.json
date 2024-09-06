@@ -16,5 +16,5 @@
     }
   },
   "include": ["src"],
-  "exclude": ["scripts", "test", "node_modules", "dist", "vitest.config.ts"]
+  "exclude": ["scripts", "test", "node_modules", "dist", "vitest.config.ts", "*.test.ts"]
 }

@@ -49,6 +49,12 @@
       "name": "IAP"
     },
     {
+      "name": "IAP(Notification)"
+    },
+    {
+      "name": "IAP(Subscription)"
+    },
+    {
       "name": "Invoice"
     },
     {
@@ -3730,6 +3736,46 @@
         }
       }
     },
+    "/platform/admin/namespaces/{namespace}/iap/config/apple/cert": {
+      "put": {
+        "consumes": ["multipart/form-data"],
+        "description": "Upload Apple Store p8 file.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: updated apple iap config\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "updateAppleP8File",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "file",
+            "required": false,
+            "type": "file"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AppleIAPConfigInfo"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Upload Apple Store p8 file",
+        "tags": ["IAP"],
+        "x-security": {
+          "userPermissions": "ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]"
+        }
+      }
+    },
     "/platform/admin/namespaces/{namespace}/iap/config/epicgames": {
       "delete": {
         "description": "Delete epic games iap config.",
@@ -4738,6 +4784,176 @@
         "tags": ["IAP"],
         "x-security": {
           "userPermissions": "ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/iap/notifications": {
+      "get": {
+        "description": "Query third party notifications.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: Third Party Platform notifications\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "queryThirdPartyNotifications",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "allowed format: \\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z",
+            "in": "query",
+            "name": "endDate",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "externalId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 0,
+            "format": "int32",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "enum": ["APPLE", "EPICGAMES", "GOOGLE", "OCULUS", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],
+            "in": "query",
+            "name": "source",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "allowed format: \\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z",
+            "in": "query",
+            "name": "startDate",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "enum": ["ERROR", "IGNORED", "PROCESSED", "WARN"],
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/NotificationPagingSlicedResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Query third party notifications",
+        "tags": ["IAP(Notification)"],
+        "x-security": {
+          "userPermissions": "ADMIN:NAMESPACE:{namespace}:IAP:NOTIFICATION [READ]"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/iap/subscriptions": {
+      "get": {
+        "description": "Query subscriptions, default sort by updatedAt Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: \u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "queryThirdPartySubscription",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "activeOnly",
+            "required": false,
+            "type": "boolean",
+            "x-omitempty": false
+          },
+          {
+            "in": "query",
+            "name": "groupId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 0,
+            "format": "int32",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "enum": ["APPLE", "EPICGAMES", "GOOGLE", "OCULUS", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],
+            "in": "query",
+            "name": "platform",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "productId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "userId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ThirdPartyUserSubscriptionPagingSlicedResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Query subscriptions.",
+        "tags": ["IAP(Subscription)"],
+        "x-security": {
+          "userPermissions": "NAMESPACE:{namespace}:USER:{userId}:IAP [READ]"
         }
       }
     },
@@ -14817,6 +15033,549 @@
         }
       }
     },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/iap/subscriptions": {
+      "get": {
+        "description": "Query user subscription, default sort by updatedAtOther detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: \u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "queryUserThirdPartySubscription",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "activeOnly",
+            "required": false,
+            "type": "boolean",
+            "x-omitempty": false
+          },
+          {
+            "in": "query",
+            "name": "groupId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 0,
+            "format": "int32",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "enum": ["APPLE", "EPICGAMES", "GOOGLE", "OCULUS", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],
+            "in": "query",
+            "name": "platform",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "productId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ThirdPartyUserSubscriptionPagingSlicedResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Query user subscription.",
+        "tags": ["IAP(Subscription)"],
+        "x-security": {
+          "userPermissions": "NAMESPACE:{namespace}:USER:{userId}:IAP [READ]"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/iap/subscriptions/platforms/{platform}/ownership/byGroupId": {
+      "get": {
+        "description": "Get user third party subscription by subscription group id.",
+        "operationId": "getThirdPartyPlatformSubscriptionOwnershipByGroupId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "enum": ["APPLE", "EPICGAMES", "GOOGLE", "OCULUS", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],
+            "in": "path",
+            "name": "platform",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "groupId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ThirdPartySubscriptionOwnership"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Get user third party platform subscription ownership by subscription group id",
+        "tags": ["IAP(Subscription)"],
+        "x-security": {
+          "userPermissions": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP[READ]"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/iap/subscriptions/platforms/{platform}/ownership/byProductId": {
+      "get": {
+        "description": "Get user third party subscription by subscription product id.",
+        "operationId": "getThirdPartyPlatformSubscriptionOwnershipByProductId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "enum": ["APPLE", "EPICGAMES", "GOOGLE", "OCULUS", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],
+            "in": "path",
+            "name": "platform",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "productId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ThirdPartySubscriptionOwnership"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Get user third party platform subscription ownership by subscription product id",
+        "tags": ["IAP(Subscription)"],
+        "x-security": {
+          "userPermissions": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP[READ]"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/iap/subscriptions/transactions": {
+      "get": {
+        "description": "Admin query user subscription transactions, default sort by startAt timeOther detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: \u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "queryUserThirdPartySubscriptionTransactions",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "activeOnly",
+            "required": false,
+            "type": "boolean",
+            "x-omitempty": false
+          },
+          {
+            "in": "query",
+            "name": "groupId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 0,
+            "format": "int32",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "enum": ["APPLE", "EPICGAMES", "GOOGLE", "OCULUS", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],
+            "in": "query",
+            "name": "platform",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "productId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ThirdPartySubscriptionTransactionPagingSlicedResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Admin query user subscription transactions.",
+        "tags": ["IAP(Subscription)"],
+        "x-security": {
+          "userPermissions": "NAMESPACE:{namespace}:USER:{userId}:IAP [READ]"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/iap/subscriptions/transactions/{id}": {
+      "get": {
+        "description": "Admin get user subscription details.Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: \u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "getThirdPartySubscriptionDetails",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ThirdPartySubscriptionTransactionInfo"
+            }
+          },
+          "404": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39149\u003c/td\u003e\u003ctd\u003eThird Party Subscription [{id}] not found for user [{userId}] in the namespace [{namespace}].\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Admin get user subscription transaction details.",
+        "tags": ["IAP(Subscription)"],
+        "x-security": {
+          "userPermissions": "NAMESPACE:{namespace}:USER:{userId}:IAP [READ]"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/iap/subscriptions/transactions/{id}/histories": {
+      "get": {
+        "description": "Get Subscription Transaction Update History",
+        "operationId": "getSubscriptionHistory",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 0,
+            "format": "int32",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ThirdPartySubscriptionTransactionHistoryPagingSlicedResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Get User Subscription Transaction Update History",
+        "tags": ["IAP(Subscription)"],
+        "x-security": {
+          "userPermissions": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP[READ]"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/iap/subscriptions/transactions/{id}/sync": {
+      "put": {
+        "description": "Sync Subscription Status",
+        "operationId": "syncSubscriptionTransaction",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ThirdPartySubscriptionTransactionInfo"
+            }
+          },
+          "400": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39131\u003c/td\u003e\u003ctd\u003eInvalid Apple IAP config under namespace [{namespace}]: [{message}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39136\u003c/td\u003e\u003ctd\u003eRequest Apple API failed with status code [{statusCode}] and error message [{message}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39137\u003c/td\u003e\u003ctd\u003eVerify Apple transaction failed with status [{status}] and error message [{message}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "404": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39149\u003c/td\u003e\u003ctd\u003eThird Party Subscription Transaction [{id}] not found for user [{userId}] in the namespace [{namespace}].\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Sync Subscription transaction",
+        "tags": ["IAP(Subscription)"],
+        "x-security": {
+          "userPermissions": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP[UPDATE]"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/iap/subscriptions/{id}": {
+      "get": {
+        "description": "Admin get user subscription details.Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: \u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "getThirdPartyUserSubscriptionDetails",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ThirdPartyUserSubscriptionInfo"
+            }
+          },
+          "404": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39149\u003c/td\u003e\u003ctd\u003eThird Party User Subscription [{id}] not found for user [{userId}] in the namespace [{namespace}].\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Admin get user subscription details.",
+        "tags": ["IAP(Subscription)"],
+        "x-security": {
+          "userPermissions": "NAMESPACE:{namespace}:USER:{userId}:IAP [READ]"
+        }
+      }
+    },
+    "/platform/admin/namespaces/{namespace}/users/{userId}/iap/subscriptions/{id}/sync": {
+      "put": {
+        "description": "Sync Subscription Status",
+        "operationId": "syncSubscription",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ThirdPartyUserSubscriptionInfo"
+            }
+          },
+          "400": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39131\u003c/td\u003e\u003ctd\u003eInvalid Apple IAP config under namespace [{namespace}]: [{message}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39136\u003c/td\u003e\u003ctd\u003eRequest Apple API failed with status code [{statusCode}] and error message [{message}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39137\u003c/td\u003e\u003ctd\u003eVerify Apple transaction failed with status [{status}] and error message [{message}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "404": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39149\u003c/td\u003e\u003ctd\u003eThird Party Subscription Transaction [{id}] not found for user [{userId}] in the namespace [{namespace}].\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39150\u003c/td\u003e\u003ctd\u003eThird Party User Subscription [{id}] not found for user [{userId}] in the namespace [{namespace}]..\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Sync Subscription Status",
+        "tags": ["IAP(Subscription)"],
+        "x-security": {
+          "userPermissions": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP[UPDATE]"
+        }
+      }
+    },
     "/platform/admin/namespaces/{namespace}/users/{userId}/orders": {
       "get": {
         "consumes": ["application/json"],
@@ -22253,14 +23012,6 @@
         "operationId": "syncXboxDLC",
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/XblDLCSyncRequest"
-            }
-          },
-          {
             "in": "path",
             "name": "namespace",
             "required": true,
@@ -22271,6 +23022,14 @@
             "name": "userId",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/XblDLCSyncRequest"
+            }
           }
         ],
         "produces": ["application/json"],
@@ -23434,7 +24193,7 @@
     "/platform/public/namespaces/{namespace}/users/{userId}/iap/apple/receipt": {
       "put": {
         "consumes": ["application/json"],
-        "description": "Verify apple iap receipt and fulfill item.Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: \u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "description": "Verify apple iap receipt and fulfill item. don\u0026#39;t support subscriptionOther detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: \u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
         "operationId": "publicFulfillAppleIAPItem",
         "parameters": [
           {
@@ -23464,7 +24223,7 @@
             "description": "Fulfill item successfully"
           },
           "400": {
-            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39121\u003c/td\u003e\u003ctd\u003eApple iap receipt verify failed with status code [{statusCode}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e35123\u003c/td\u003e\u003ctd\u003eWallet [{walletId}] is inactive\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e38121\u003c/td\u003e\u003ctd\u003eDuplicate permanent item exists\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e38122\u003c/td\u003e\u003ctd\u003eSubscription endDate required\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39131\u003c/td\u003e\u003ctd\u003eInvalid Apple IAP config under namespace [{namespace}]: [{message}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39121\u003c/td\u003e\u003ctd\u003eApple iap receipt verify failed with status code [{statusCode}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e35123\u003c/td\u003e\u003ctd\u003eWallet [{walletId}] is inactive\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e38121\u003c/td\u003e\u003ctd\u003eDuplicate permanent item exists\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39131\u003c/td\u003e\u003ctd\u003eInvalid Apple IAP config under namespace [{namespace}]: [{message}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39138\u003c/td\u003e\u003ctd\u003eApple IAP version mismatch detected: The current configuration is set to  [{configVersion}], but the API version is [{apiVersion}]. Please ensure that both the configuration and API versions are aligned\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
             "schema": {
               "$ref": "#/definitions/ErrorEntity"
             }
@@ -23501,14 +24260,6 @@
         "operationId": "syncEpicGamesInventory",
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/EpicGamesReconcileRequest"
-            }
-          },
-          {
             "in": "path",
             "name": "namespace",
             "required": true,
@@ -23519,6 +24270,14 @@
             "name": "userId",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/EpicGamesReconcileRequest"
+            }
           }
         ],
         "produces": ["application/json"],
@@ -23860,6 +24619,87 @@
         }
       }
     },
+    "/platform/public/namespaces/{namespace}/users/{userId}/iap/subscriptions/platforms/{platform}": {
+      "get": {
+        "description": "Query user subscription, default sort by updatedAtOther detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: \u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "publicQueryUserThirdPartySubscription",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "enum": ["APPLE", "EPICGAMES", "GOOGLE", "OCULUS", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],
+            "in": "path",
+            "name": "platform",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "activeOnly",
+            "required": false,
+            "type": "boolean",
+            "x-omitempty": false
+          },
+          {
+            "in": "query",
+            "name": "groupId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 0,
+            "format": "int32",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "productId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ThirdPartyUserSubscriptionPagingSlicedResult"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Query user subscription.",
+        "tags": ["IAP(Subscription)"],
+        "x-security": {
+          "userPermissions": "NAMESPACE:{namespace}:USER:{userId}:IAP [READ]"
+        }
+      }
+    },
     "/platform/public/namespaces/{namespace}/users/{userId}/iap/twitch/sync": {
       "put": {
         "consumes": ["application/json"],
@@ -23918,14 +24758,6 @@
         "operationId": "syncXboxInventory",
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/XblReconcileRequest"
-            }
-          },
-          {
             "in": "path",
             "name": "namespace",
             "required": true,
@@ -23936,6 +24768,14 @@
             "name": "userId",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/XblReconcileRequest"
+            }
           }
         ],
         "produces": ["application/json"],
@@ -25275,7 +26115,7 @@
     },
     "/platform/v2/admin/namespaces/{namespace}/fulfillments": {
       "get": {
-        "description": "\u0026lt;b\u0026gt;[Not supported yet in AGS Shared Cloud]\u0026lt;/b\u0026gt; Query fulfillments in a namespace.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: list of fulfillment info, storeId field can be ignored.\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "description": "\u0026lt;b\u0026gt;[Not supported yet in AGS Shared Cloud]\u0026lt;/b\u0026gt; Query fulfillments in a namespace.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: list of fulfillment info:\u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;storeId in items can be ignored\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;error in successList will always be null\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
         "operationId": "queryFulfillments",
         "parameters": [
           {
@@ -25339,7 +26179,7 @@
           "200": {
             "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/FulfillmentHistoryPagingSlicedResult"
+              "$ref": "#/definitions/FulfillmentPagingSlicedResult"
             }
           }
         },
@@ -25828,6 +26668,63 @@
         }
       }
     },
+    "/platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/retry": {
+      "put": {
+        "description": "\u0026lt;b\u0026gt;[Not supported yet in AGS Shared Cloud]\u0026lt;/b\u0026gt; Retry fulfill items by transactionId without sending the original payload.\u0026lt;br\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: fulfillment v2 result, storeId field can be ignored.\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "retryFulfillItems",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "transactionId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FulfillmentV2Result"
+            }
+          },
+          "404": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e38145\u003c/td\u003e\u003ctd\u003eFulfillment with transactionId [{transactionId}] does not exist\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "409": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/FulfillmentV2Result"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Retry fulfill items by transactionId",
+        "tags": ["Fulfillment"],
+        "x-security": {
+          "userPermissions": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT [UPDATE]"
+        }
+      }
+    },
     "/platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/revoke": {
       "put": {
         "consumes": ["application/json"],
@@ -25883,6 +26780,69 @@
         "tags": ["Fulfillment"],
         "x-security": {
           "userPermissions": "ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT [UPDATE]"
+        }
+      }
+    },
+    "/platform/v2/public/namespaces/{namespace}/users/{userId}/iap/apple/receipt": {
+      "put": {
+        "consumes": ["application/json"],
+        "description": "Verify apple iap transaction and fulfill item, support subscriptionOther detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: \u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "V2PublicFulfillAppleIAPItem",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/AppleIAPRequest"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "204": {
+            "description": "Fulfill successfully"
+          },
+          "400": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e35123\u003c/td\u003e\u003ctd\u003eWallet [{walletId}] is inactive\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e38121\u003c/td\u003e\u003ctd\u003eDuplicate permanent item exists\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39131\u003c/td\u003e\u003ctd\u003eInvalid Apple IAP config under namespace [{namespace}]: [{message}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39136\u003c/td\u003e\u003ctd\u003eRequest Apple API failed with status code [{statusCode}] and error message [{message}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39137\u003c/td\u003e\u003ctd\u003eVerify Apple transaction failed with status [{status}] and error message [{message}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39138\u003c/td\u003e\u003ctd\u003eApple IAP version mismatch detected: The current configuration is set to  [{configVersion}], but the API version is [{apiVersion}]. Please ensure that both the configuration and API versions are aligned\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "404": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e30341\u003c/td\u003e\u003ctd\u003eItem [{itemId}] does not exist in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39142\u003c/td\u003e\u003ctd\u003eApple IAP config not found in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "409": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eErrorCode\u003c/td\u003e\u003ctd\u003eErrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39171\u003c/td\u003e\u003ctd\u003eThe bundle id in namespace [{namespace}] expect [{expected}] but was [{actual}]\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20006\u003c/td\u003e\u003ctd\u003eoptimistic lock\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Fulfill apple iap item V2.",
+        "tags": ["IAP"],
+        "x-security": {
+          "userPermissions": "NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]"
         }
       }
     }
@@ -26543,8 +27503,25 @@
     },
     "AppleIAPConfigInfo": {
       "properties": {
+        "appleAppId": {
+          "description": "Apple App Id",
+          "format": "int64",
+          "type": "integer"
+        },
+        "authKeyFileName": {
+          "description": "auth key file name",
+          "type": "string"
+        },
         "bundleId": {
           "description": "bundleId",
+          "type": "string"
+        },
+        "issuerId": {
+          "description": "Apple issuer id",
+          "type": "string"
+        },
+        "keyId": {
+          "description": "Apple key id",
           "type": "string"
         },
         "namespace": {
@@ -26554,6 +27531,11 @@
         "password": {
           "description": "password",
           "type": "string"
+        },
+        "version": {
+          "description": "Apple in app purchase version. v1 don't support subscription.",
+          "enum": ["V1", "V2"],
+          "type": "string"
         }
       },
       "required": ["namespace"],
@@ -26561,12 +27543,30 @@
     },
     "AppleIAPConfigRequest": {
       "properties": {
+        "appleAppId": {
+          "description": "appleAppId",
+          "format": "int64",
+          "type": "integer"
+        },
         "bundleId": {
           "description": "bundleId",
           "type": "string"
         },
+        "issuerId": {
+          "description": "issuerId",
+          "type": "string"
+        },
+        "keyId": {
+          "description": "keyId",
+          "type": "string"
+        },
         "password": {
           "description": "password",
+          "type": "string"
+        },
+        "version": {
+          "description": "version",
+          "enum": ["V1", "V2"],
           "type": "string"
         }
       },
@@ -26590,7 +27590,7 @@
           "type": "string"
         },
         "receiptData": {
-          "description": "The base64 encoded receipt data.",
+          "description": "The base64 encoded receipt data",
           "type": "string"
         },
         "region": {
@@ -26603,6 +27603,16 @@
         }
       },
       "required": ["productId", "receiptData", "transactionId"],
+      "type": "object"
+    },
+    "AppleIAPRequest": {
+      "properties": {
+        "transactionId": {
+          "description": "The transaction identifier of the item that was purchased.",
+          "type": "string"
+        }
+      },
+      "required": ["transactionId"],
       "type": "object"
     },
     "AvailableComparison": {
@@ -30814,6 +31824,30 @@
       },
       "type": "object"
     },
+    "FulfillmentActionHistory": {
+      "properties": {
+        "action": {
+          "enum": ["FULFILLMENT", "REVOKE_FULFILLMENT"],
+          "type": "string"
+        },
+        "createdAt": {
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "fulfillmentHistoryId": {
+          "type": "string"
+        },
+        "revocationHistoryId": {
+          "type": "string"
+        },
+        "state": {
+          "enum": ["FULFILLED", "FULFILL_FAILED", "REVOKED", "REVOKE_FAILED"],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "FulfillmentError": {
       "properties": {
         "code": {
@@ -30936,6 +31970,63 @@
       "required": ["data"],
       "type": "object"
     },
+    "FulfillmentInfo": {
+      "properties": {
+        "actions": {
+          "description": "actions history",
+          "items": {
+            "$ref": "#/definitions/FulfillmentActionHistory"
+          },
+          "type": "array"
+        },
+        "createdAt": {
+          "description": "created at",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": false
+        },
+        "id": {
+          "description": "id",
+          "type": "string"
+        },
+        "items": {
+          "description": "items should do fulfillment",
+          "items": {
+            "$ref": "#/definitions/FulfillmentItem"
+          },
+          "type": "array"
+        },
+        "namespace": {
+          "description": "namespace",
+          "type": "string"
+        },
+        "state": {
+          "description": "state",
+          "enum": ["FULFILLED", "FULFILL_FAILED", "REVOKED", "REVOKE_FAILED"],
+          "type": "string"
+        },
+        "stateInfo": {
+          "$ref": "#/definitions/FulfillmentStateInfo",
+          "description": "state info"
+        },
+        "transactionId": {
+          "description": "transactionId",
+          "type": "string"
+        },
+        "updatedAt": {
+          "description": "updated at",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": false
+        },
+        "userId": {
+          "description": "userId",
+          "type": "string"
+        }
+      },
+      "required": ["createdAt", "id", "namespace", "updatedAt", "userId"],
+      "type": "object"
+    },
     "FulfillmentItem": {
       "properties": {
         "extraSubscriptionDays": {
@@ -30971,6 +32062,22 @@
         }
       },
       "required": ["quantity"],
+      "type": "object"
+    },
+    "FulfillmentPagingSlicedResult": {
+      "properties": {
+        "data": {
+          "description": "data",
+          "items": {
+            "$ref": "#/definitions/FulfillmentInfo"
+          },
+          "type": "array"
+        },
+        "paging": {
+          "$ref": "#/definitions/Paging"
+        }
+      },
+      "required": ["data"],
       "type": "object"
     },
     "FulfillmentRequest": {
@@ -31925,6 +33032,14 @@
           "description": "namespace",
           "type": "string"
         },
+        "notificationTokenAudience": {
+          "description": "notificationTokenAudience, it's used to verify the aud in the notification jwt token, empty will skip to validate aud",
+          "type": "string"
+        },
+        "notificationTokenEmail": {
+          "description": "notificationTokenEmail, it's used to verify the email in the notification jwt token,empty will skip to validate email",
+          "type": "string"
+        },
         "p12FileName": {
           "description": "p12 file",
           "type": "string"
@@ -31943,6 +33058,14 @@
           "description": "applicationName",
           "type": "string"
         },
+        "notificationTokenAudience": {
+          "description": "notificationTokenAudience, it's used to verify the aud in the notification jwt token, empty will skip to validate aud",
+          "type": "string"
+        },
+        "notificationTokenEmail": {
+          "description": "notificationTokenEmail, it's used to verify the email in the notification jwt token,empty will skip to validate email",
+          "type": "string"
+        },
         "serviceAccountId": {
           "description": "serviceAccountId",
           "type": "string"
@@ -31954,7 +33077,12 @@
     "GoogleIAPReceipt": {
       "properties": {
         "autoAck": {
-          "description": "If invoke Google play's Acknowledge after sync \u0026 fulfill item",
+          "description": "If invoke Google play's Acknowledge after sync \u0026 fulfill item, default: false.",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "autoConsume": {
+          "description": "If invoke Google play's Consume after sync \u0026 fulfill item, default: false.",
           "type": "boolean",
           "x-omitempty": false
         },
@@ -31972,11 +33100,11 @@
           "type": "string"
         },
         "productId": {
-          "description": "Product id (SKU)",
+          "description": "Product id (SKU), required when purchase in-app product, subscription product is optional",
           "type": "string"
         },
         "purchaseTime": {
-          "description": "Purchase time returned from google play",
+          "description": "Purchase time returned from google play, required when purchase in-app product, subscription product is optional",
           "format": "int64",
           "type": "integer"
         },
@@ -31987,9 +33115,14 @@
         "region": {
           "description": "country value from ISO countries",
           "type": "string"
+        },
+        "subscriptionPurchase": {
+          "description": "is subscription product",
+          "type": "boolean",
+          "x-omitempty": false
         }
       },
-      "required": ["orderId", "packageName", "productId", "purchaseTime", "purchaseToken"],
+      "required": ["orderId", "packageName", "purchaseToken"],
       "type": "object"
     },
     "GoogleReceiptResolveResult": {
@@ -34338,6 +35471,9 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "NotificationPagingSlicedResult": {
       "type": "object"
     },
     "NotificationProcessResult": {
@@ -40571,6 +41707,316 @@
       "required": ["success"],
       "type": "object"
     },
+    "ThirdPartySubscriptionOwnership": {
+      "properties": {
+        "owned": {
+          "description": "ownership",
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      },
+      "required": ["owned"],
+      "type": "object"
+    },
+    "ThirdPartySubscriptionTransactionHistoryInfo": {
+      "properties": {
+        "createdAt": {
+          "description": "created time",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "expiredAt": {
+          "description": "subscription current expired time",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "id": {
+          "description": "Unique Id",
+          "type": "string"
+        },
+        "lastTransactionId": {
+          "description": "The userId of the third party subscription",
+          "type": "string"
+        },
+        "namespace": {
+          "description": "The namespace of the third party subscription",
+          "type": "string"
+        },
+        "operator": {
+          "description": "operator",
+          "type": "string"
+        },
+        "reason": {
+          "description": "reason",
+          "type": "string"
+        },
+        "status": {
+          "description": "status",
+          "enum": [
+            "ACTIVE",
+            "BILLING_RETRY_PERIOD",
+            "CANCELED",
+            "EXPIRED",
+            "IN_GRACE_PERIOD",
+            "ON_HOLD",
+            "PAUSED",
+            "PENDING",
+            "REVOKED",
+            "UNKNOWN"
+          ],
+          "type": "string"
+        },
+        "subscriptionProductId": {
+          "description": "subscription product id",
+          "type": "string"
+        },
+        "thirdPartySubscriptionId": {
+          "description": "third party subscription Id",
+          "type": "string"
+        },
+        "updatedAt": {
+          "description": "updated time",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "userId": {
+          "description": "The userId of the third party subscription",
+          "type": "string"
+        }
+      },
+      "required": ["id", "namespace", "status", "thirdPartySubscriptionId", "userId"],
+      "type": "object"
+    },
+    "ThirdPartySubscriptionTransactionHistoryPagingSlicedResult": {
+      "properties": {
+        "data": {
+          "description": "data",
+          "items": {
+            "$ref": "#/definitions/ThirdPartySubscriptionTransactionHistoryInfo"
+          },
+          "type": "array"
+        },
+        "paging": {
+          "$ref": "#/definitions/Paging"
+        }
+      },
+      "required": ["data"],
+      "type": "object"
+    },
+    "ThirdPartySubscriptionTransactionInfo": {
+      "properties": {
+        "active": {
+          "description": "Subscription whether active",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "createdAt": {
+          "description": "Created Time",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "expiredAt": {
+          "description": "Third Party Subscription expired date",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": false
+        },
+        "id": {
+          "description": "Unique Id",
+          "type": "string"
+        },
+        "lastTransactionId": {
+          "description": "Last Transaction Id",
+          "type": "string"
+        },
+        "namespace": {
+          "description": "Third Party Subscription namespace",
+          "type": "string"
+        },
+        "originalTransactionId": {
+          "description": "Third Party Subscription original transaction id",
+          "type": "string"
+        },
+        "platform": {
+          "description": "Third Party Subscription platform",
+          "enum": ["APPLE", "EPICGAMES", "GOOGLE", "OCULUS", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],
+          "type": "string"
+        },
+        "purchaseToken": {
+          "description": "Purchase Token",
+          "type": "string"
+        },
+        "startAt": {
+          "description": "Third Party Subscription expired date",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": false
+        },
+        "status": {
+          "description": "Third Party  Subscription status",
+          "enum": [
+            "ACTIVE",
+            "BILLING_RETRY_PERIOD",
+            "CANCELED",
+            "EXPIRED",
+            "IN_GRACE_PERIOD",
+            "ON_HOLD",
+            "PAUSED",
+            "PENDING",
+            "REVOKED",
+            "UNKNOWN"
+          ],
+          "type": "string"
+        },
+        "subscriptionGroupId": {
+          "description": "Third Party Subscription group id",
+          "type": "string"
+        },
+        "subscriptionProductId": {
+          "description": "Third Party Subscription product id",
+          "type": "string"
+        },
+        "updatedAt": {
+          "description": "Updated Time",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "userId": {
+          "description": "Third Party Subscription user",
+          "type": "string"
+        }
+      },
+      "required": [
+        "active",
+        "expiredAt",
+        "id",
+        "namespace",
+        "originalTransactionId",
+        "platform",
+        "startAt",
+        "status",
+        "subscriptionProductId",
+        "userId"
+      ],
+      "type": "object"
+    },
+    "ThirdPartySubscriptionTransactionPagingSlicedResult": {
+      "properties": {
+        "data": {
+          "description": "data",
+          "items": {
+            "$ref": "#/definitions/ThirdPartySubscriptionTransactionInfo"
+          },
+          "type": "array"
+        },
+        "paging": {
+          "$ref": "#/definitions/Paging"
+        }
+      },
+      "required": ["data"],
+      "type": "object"
+    },
+    "ThirdPartyUserSubscriptionInfo": {
+      "properties": {
+        "active": {
+          "description": "user subscription whether active",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "createdAt": {
+          "description": "Created Time",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "expiredAt": {
+          "description": "Current Third Party Subscription expired date",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": false
+        },
+        "id": {
+          "description": "Unique Id",
+          "type": "string"
+        },
+        "lastTransactionId": {
+          "description": "Last AGS Third Party Subscription id",
+          "type": "string"
+        },
+        "namespace": {
+          "description": "Third Party user subscription namespace",
+          "type": "string"
+        },
+        "platform": {
+          "description": "Third Party user subscription platform",
+          "enum": ["APPLE", "EPICGAMES", "GOOGLE", "OCULUS", "PLAYSTATION", "STADIA", "STEAM", "TWITCH", "XBOX"],
+          "type": "string"
+        },
+        "startAt": {
+          "description": "Current Third Party Subscription start at",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "status": {
+          "description": "Current Third Party user Subscription status",
+          "enum": [
+            "ACTIVE",
+            "BILLING_RETRY_PERIOD",
+            "CANCELED",
+            "EXPIRED",
+            "IN_GRACE_PERIOD",
+            "ON_HOLD",
+            "PAUSED",
+            "PENDING",
+            "REVOKED",
+            "UNKNOWN"
+          ],
+          "type": "string"
+        },
+        "subscriptionGroupId": {
+          "description": "Current Third Party Subscription group id",
+          "type": "string"
+        },
+        "subscriptionProductId": {
+          "description": "Current Third Party Subscription product id",
+          "type": "string"
+        },
+        "updatedAt": {
+          "description": "Updated Time",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "userId": {
+          "description": "Third Party user subscription user",
+          "type": "string"
+        }
+      },
+      "required": ["active", "expiredAt", "id", "namespace", "platform", "status", "subscriptionProductId", "userId"],
+      "type": "object"
+    },
+    "ThirdPartyUserSubscriptionPagingSlicedResult": {
+      "properties": {
+        "data": {
+          "description": "data",
+          "items": {
+            "$ref": "#/definitions/ThirdPartySubscriptionTransactionInfo"
+          },
+          "type": "array"
+        },
+        "paging": {
+          "$ref": "#/definitions/Paging"
+        }
+      },
+      "required": ["data"],
+      "type": "object"
+    },
     "TicketAcquireRequest": {
       "properties": {
         "count": {
@@ -41958,12 +43404,12 @@
   },
   "x-version": {
     "buildBy": "Gradle 6.9.1",
-    "buildDate": "2024-08-23T09:44:12+00:00",
+    "buildDate": "2024-09-02T08:55:54+00:00",
     "buildID": "4.55.3",
     "buildJDK": "1.8.0_232 (Eclipse OpenJ9 openj9-0.17.0)",
-    "buildOS": "Linux amd64 5.10.223-211.872.amzn2.x86_64",
+    "buildOS": "Linux amd64 5.10.223-212.873.amzn2.x86_64",
     "gitBranchName": "master",
-    "gitHash": "89508a9d7d",
+    "gitHash": "920be9961a",
     "gitTag": "3.31.0",
     "name": "justice-platform-service",
     "realm": "dev",

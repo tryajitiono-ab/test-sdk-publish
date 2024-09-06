@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -18,39 +18,51 @@ export class PlayerRewardAdmin$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt; 
+   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
    */
   createUserRewardClaim(data: ClaimUsersRewardsRequest[]): Promise<Response<ClaimUsersRewardsResponseArray>> {
     const params = {} as AxiosRequestConfig
-    const url = '/challenge/v1/admin/namespaces/{namespace}/users/rewards/claim'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/challenge/v1/admin/namespaces/{namespace}/users/rewards/claim'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, ClaimUsersRewardsResponseArray, 'ClaimUsersRewardsResponseArray')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      ClaimUsersRewardsResponseArray,
+      'ClaimUsersRewardsResponseArray'
+    )
   }
-  
   /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]&lt;/li&gt;&lt;/ul&gt; 
+   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]&lt;/li&gt;&lt;/ul&gt;
    */
-  getRewards_ByUserId(userId:string,  queryParams?: {limit?: number, offset?: number, sortBy?: string | null, status?: 'CLAIMED' | 'UNCLAIMED'}): Promise<Response<ListUserRewardsResponse>> {
-    const params = {limit: 20, ...queryParams} as AxiosRequestConfig
-    const url = '/challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards'.replace('{namespace}', this.namespace).replace('{userId}', userId)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getRewards_ByUserId(
+    userId: string,
+    queryParams?: { limit?: number; offset?: number; sortBy?: string | null; status?: 'CLAIMED' | 'UNCLAIMED' }
+  ): Promise<Response<ListUserRewardsResponse>> {
+    const params = { limit: 20, ...queryParams } as AxiosRequestConfig
+    const url = '/challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, ListUserRewardsResponse, 'ListUserRewardsResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      ListUserRewardsResponse,
+      'ListUserRewardsResponse'
+    )
   }
-  
   /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt; 
+   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
    */
-  createRewardClaim_ByUserId(userId:string, data: ClaimUserRewardsReq): Promise<Response<UserRewardArray>> {
+  createRewardClaim_ByUserId(userId: string, data: ClaimUserRewardsReq): Promise<Response<UserRewardArray>> {
     const params = {} as AxiosRequestConfig
-    const url = '/challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards/claim'.replace('{namespace}', this.namespace).replace('{userId}', userId)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards/claim'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, UserRewardArray, 'UserRewardArray')
   }
-  
 }
-  

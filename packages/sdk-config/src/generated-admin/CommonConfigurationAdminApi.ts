@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -16,97 +16,95 @@ import { CreateConfig } from '../generated-definitions/CreateConfig.js'
 import { UpdateConfig } from '../generated-definitions/UpdateConfig.js'
 import { CommonConfigurationAdmin$ } from './endpoints/CommonConfigurationAdmin$.js'
 
-
 export function CommonConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * Get all configs in the namespace 
+   * Get all configs in the namespace
    */
-  async function getConfigs( queryParams?: {limit?: string | null, offset?: string | null}): Promise<AxiosResponse<ConfigsWithPagination>> {
+  async function getConfigs(queryParams?: {
+    limit?: string | null
+    offset?: string | null
+  }): Promise<AxiosResponse<ConfigsWithPagination>> {
     const $ = new CommonConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getConfigs( queryParams)
+    const resp = await $.getConfigs(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Create a config in the namespace with the given key 
+   * Create a config in the namespace with the given key
    */
   async function createConfig(data: CreateConfig): Promise<AxiosResponse<ConfigInfo>> {
     const $ = new CommonConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createConfig(data,)
+    const resp = await $.createConfig(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get a config by namespace and key 
+   * Get a config by namespace and key
    */
-  async function getConfig_ByConfigKey(configKey:string): Promise<AxiosResponse<ConfigInfo>> {
+  async function getConfig_ByConfigKey(configKey: string): Promise<AxiosResponse<ConfigInfo>> {
     const $ = new CommonConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getConfig_ByConfigKey(configKey, )
+    const resp = await $.getConfig_ByConfigKey(configKey)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Delete a config by namespace and key. 
+   * Delete a config by namespace and key.
    */
-  async function deleteConfig_ByConfigKey(configKey:string): Promise<AxiosResponse<unknown>> {
+  async function deleteConfig_ByConfigKey(configKey: string): Promise<AxiosResponse<unknown>> {
     const $ = new CommonConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteConfig_ByConfigKey(configKey, )
+    const resp = await $.deleteConfig_ByConfigKey(configKey)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Update a config by namespace and key 
+   * Update a config by namespace and key
    */
-  async function patchConfig_ByConfigKey(configKey:string, data: UpdateConfig): Promise<AxiosResponse<ConfigInfo>> {
+  async function patchConfig_ByConfigKey(configKey: string, data: UpdateConfig): Promise<AxiosResponse<ConfigInfo>> {
     const $ = new CommonConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchConfig_ByConfigKey(configKey, data,)
+    const resp = await $.patchConfig_ByConfigKey(configKey, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * It will return a publisher namespace config of the given namespace and key. 
+   * It will return a publisher namespace config of the given namespace and key.
    */
-  async function getPublisherConfig_ByConfigKey(configKey:string): Promise<AxiosResponse<ConfigInfo>> {
+  async function getPublisherConfig_ByConfigKey(configKey: string): Promise<AxiosResponse<ConfigInfo>> {
     const $ = new CommonConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getPublisherConfig_ByConfigKey(configKey, )
+    const resp = await $.getPublisherConfig_ByConfigKey(configKey)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    getConfigs,createConfig,getConfig_ByConfigKey,deleteConfig_ByConfigKey,patchConfig_ByConfigKey,getPublisherConfig_ByConfigKey,
+    getConfigs,
+    createConfig,
+    getConfig_ByConfigKey,
+    deleteConfig_ByConfigKey,
+    patchConfig_ByConfigKey,
+    getPublisherConfig_ByConfigKey
   }
 }
-  
