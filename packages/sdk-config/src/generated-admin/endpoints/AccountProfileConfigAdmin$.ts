@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -16,39 +16,38 @@ export class AccountProfileConfigAdmin$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Created account profile related config values. **Supported Config Key:** * uniqueDisplayNameEnabled * usernameDisabled  
+   * Created account profile related config values. **Supported Config Key:** * uniqueDisplayNameEnabled * usernameDisabled
    */
   createConfigAccount(data: CreateConfig): Promise<Response<ConfigInfo>> {
     const params = {} as AxiosRequestConfig
-    const url = '/config/v1/admin/namespaces/{namespace}/configs/account'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/config/v1/admin/namespaces/{namespace}/configs/account'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, ConfigInfo, 'ConfigInfo')
   }
-  
   /**
-   * Get account profile related config values. **Supported Config Key:** * uniqueDisplayNameEnabled * usernameDisabled  
+   * Get account profile related config values. **Supported Config Key:** * uniqueDisplayNameEnabled * usernameDisabled
    */
-  getConfigAccount_ByConfigKey(configKey:string): Promise<Response<ConfigInfo>> {
+  getConfigAccount_ByConfigKey(configKey: string): Promise<Response<ConfigInfo>> {
     const params = {} as AxiosRequestConfig
-    const url = '/config/v1/admin/namespaces/{namespace}/configs/account/{configKey}'.replace('{namespace}', this.namespace).replace('{configKey}', configKey)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/config/v1/admin/namespaces/{namespace}/configs/account/{configKey}'
+      .replace('{namespace}', this.namespace)
+      .replace('{configKey}', configKey)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, ConfigInfo, 'ConfigInfo')
   }
-  
   /**
-   * Update account profile related config values. **Supported Config Key:** * uniqueDisplayNameEnabled * usernameDisabled  
+   * Update account profile related config values. **Supported Config Key:** * uniqueDisplayNameEnabled * usernameDisabled
    */
-  updateConfigAccount_ByConfigKey(configKey:string, data: UpdateConfig): Promise<Response<ConfigInfo>> {
+  updateConfigAccount_ByConfigKey(configKey: string, data: UpdateConfig): Promise<Response<ConfigInfo>> {
     const params = {} as AxiosRequestConfig
-    const url = '/config/v1/admin/namespaces/{namespace}/configs/account/{configKey}'.replace('{namespace}', this.namespace).replace('{configKey}', configKey)     
-    const resultPromise = this.axiosInstance.put(url, data, {params})
+    const url = '/config/v1/admin/namespaces/{namespace}/configs/account/{configKey}'
+      .replace('{namespace}', this.namespace)
+      .replace('{configKey}', configKey)
+    const resultPromise = this.axiosInstance.put(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, ConfigInfo, 'ConfigInfo')
   }
-  
 }
-  

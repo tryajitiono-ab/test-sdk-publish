@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -14,17 +14,19 @@ export class LobbyOperations$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * get the list of messages. 
+   * get the list of messages.
    */
   getMessages(): Promise<Response<AppMessageDeclarationArray>> {
     const params = {} as AxiosRequestConfig
-    const url = '/lobby/v1/messages'     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/lobby/v1/messages'
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, AppMessageDeclarationArray, 'AppMessageDeclarationArray')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      AppMessageDeclarationArray,
+      'AppMessageDeclarationArray'
+    )
   }
-  
 }
-  

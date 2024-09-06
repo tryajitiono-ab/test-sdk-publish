@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -15,28 +15,37 @@ export class InputValidations$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * No role required This endpoint is to get list of input validation configuration. &lt;code&gt;regex&lt;/code&gt; parameter will be returned if &lt;code&gt;isCustomRegex&lt;/code&gt; is true. Otherwise, it will be empty. 
+   * No role required This endpoint is to get list of input validation configuration. &lt;code&gt;regex&lt;/code&gt; parameter will be returned if &lt;code&gt;isCustomRegex&lt;/code&gt; is true. Otherwise, it will be empty.
    */
-  getInputValidations_v3( queryParams?: {defaultOnEmpty?: boolean | null, languageCode?: string | null}): Promise<Response<InputValidationsPublicResponse>> {
-    const params = {defaultOnEmpty: true, ...queryParams} as AxiosRequestConfig
-    const url = '/iam/v3/public/inputValidations'     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getInputValidations_v3(queryParams?: {
+    defaultOnEmpty?: boolean | null
+    languageCode?: string | null
+  }): Promise<Response<InputValidationsPublicResponse>> {
+    const params = { defaultOnEmpty: true, ...queryParams } as AxiosRequestConfig
+    const url = '/iam/v3/public/inputValidations'
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, InputValidationsPublicResponse, 'InputValidationsPublicResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      InputValidationsPublicResponse,
+      'InputValidationsPublicResponse'
+    )
   }
-  
   /**
-   * This endpoint is to get input validation configuration by field. 
+   * This endpoint is to get input validation configuration by field.
    */
-  getInputValidation_ByField_v3(field:string): Promise<Response<InputValidationConfigVersion>> {
+  getInputValidation_ByField_v3(field: string): Promise<Response<InputValidationConfigVersion>> {
     const params = {} as AxiosRequestConfig
-    const url = '/iam/v3/public/inputValidations/{field}'.replace('{field}', field)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/iam/v3/public/inputValidations/{field}'.replace('{field}', field)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, InputValidationConfigVersion, 'InputValidationConfigVersion')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      InputValidationConfigVersion,
+      'InputValidationConfigVersion'
+    )
   }
-  
 }
-  

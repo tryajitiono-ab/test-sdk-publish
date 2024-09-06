@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -29,149 +29,194 @@ export class InboxAdmin$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Get inbox stats 
+   * Get inbox stats
    */
-  getInboxStats( queryParams?: {messageId?: string[]}): Promise<Response<GetInboxStatsResponse>> {
-    const params = { ...queryParams} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/stats'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getInboxStats(queryParams?: { messageId?: string[] }): Promise<Response<GetInboxStatsResponse>> {
+    const params = { ...queryParams } as AxiosRequestConfig
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/stats'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, GetInboxStatsResponse, 'GetInboxStatsResponse')
   }
-  
   /**
-   * Get inbox messages 
+   * Get inbox messages
    */
-  getInboxMessages( queryParams?: {activeOnly?: boolean | null, endCreatedAt?: number, limit?: number, messageId?: string[], offset?: number, order?: string | null, scope?: 'NAMESPACE' | 'USER', startCreatedAt?: number, status?: 'DRAFT' | 'SENT' | 'UNSENT', transient?: boolean | null}): Promise<Response<GetInboxMessagesResponse>> {
-    const params = { ...queryParams} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/messages'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getInboxMessages(queryParams?: {
+    activeOnly?: boolean | null
+    endCreatedAt?: number
+    limit?: number
+    messageId?: string[]
+    offset?: number
+    order?: string | null
+    scope?: 'NAMESPACE' | 'USER'
+    startCreatedAt?: number
+    status?: 'DRAFT' | 'SENT' | 'UNSENT'
+    transient?: boolean | null
+  }): Promise<Response<GetInboxMessagesResponse>> {
+    const params = { ...queryParams } as AxiosRequestConfig
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/messages'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, GetInboxMessagesResponse, 'GetInboxMessagesResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      GetInboxMessagesResponse,
+      'GetInboxMessagesResponse'
+    )
   }
-  
   /**
-   * Save inbox message 
+   * Save inbox message
    */
   createInboxMessage(data: SaveInboxMessageRequest): Promise<Response<SaveInboxMessageResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/messages'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/messages'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, SaveInboxMessageResponse, 'SaveInboxMessageResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      SaveInboxMessageResponse,
+      'SaveInboxMessageResponse'
+    )
   }
-  
   /**
-   * Get inbox categories 
+   * Get inbox categories
    */
   getInboxCategories(): Promise<Response<GetInboxCategoriesResponseItemArray>> {
     const params = {} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/categories'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/categories'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, GetInboxCategoriesResponseItemArray, 'GetInboxCategoriesResponseItemArray')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      GetInboxCategoriesResponseItemArray,
+      'GetInboxCategoriesResponseItemArray'
+    )
   }
-  
   /**
-   * Add inbox category. 
+   * Add inbox category.
    */
   createInboxCategory(data: AddInboxCategoryRequest): Promise<Response<AddInboxCategoryResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/categories'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/categories'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, AddInboxCategoryResponse, 'AddInboxCategoryResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      AddInboxCategoryResponse,
+      'AddInboxCategoryResponse'
+    )
   }
-  
   /**
-   * Delete inbox message 
+   * Delete inbox message
    */
-  deleteInboxMessage_ByMessageId(messageId:string,  queryParams?: {force?: boolean | null}): Promise<Response<unknown>> {
-    const params = { ...queryParams} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/message/{messageId}'.replace('{namespace}', this.namespace).replace('{messageId}', messageId)     
-    const resultPromise = this.axiosInstance.delete(url, {params})
+  deleteInboxMessage_ByMessageId(messageId: string, queryParams?: { force?: boolean | null }): Promise<Response<unknown>> {
+    const params = { ...queryParams } as AxiosRequestConfig
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/message/{messageId}'
+      .replace('{namespace}', this.namespace)
+      .replace('{messageId}', messageId)
+    const resultPromise = this.axiosInstance.delete(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Update inbox message 
+   * Update inbox message
    */
-  patchInboxMessage_ByMessageId(messageId:string, data: UpdateInboxMessageRequest): Promise<Response<unknown>> {
+  patchInboxMessage_ByMessageId(messageId: string, data: UpdateInboxMessageRequest): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/messages/{messageId}'.replace('{namespace}', this.namespace).replace('{messageId}', messageId)     
-    const resultPromise = this.axiosInstance.patch(url, data, {params})
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/messages/{messageId}'
+      .replace('{namespace}', this.namespace)
+      .replace('{messageId}', messageId)
+    const resultPromise = this.axiosInstance.patch(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Delete inbox category 
+   * Delete inbox category
    */
-  deleteInboxCategory_ByCategory(category:string): Promise<Response<unknown>> {
+  deleteInboxCategory_ByCategory(category: string): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/categories/{category}'.replace('{namespace}', this.namespace).replace('{category}', category)     
-    const resultPromise = this.axiosInstance.delete(url, {params})
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/categories/{category}'
+      .replace('{namespace}', this.namespace)
+      .replace('{category}', category)
+    const resultPromise = this.axiosInstance.delete(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Update inbox category 
+   * Update inbox category
    */
-  patchInboxCategory_ByCategory(category:string, data: UpdateInboxCategoryRequest): Promise<Response<unknown>> {
+  patchInboxCategory_ByCategory(category: string, data: UpdateInboxCategoryRequest): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/categories/{category}'.replace('{namespace}', this.namespace).replace('{category}', category)     
-    const resultPromise = this.axiosInstance.patch(url, data, {params})
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/categories/{category}'
+      .replace('{namespace}', this.namespace)
+      .replace('{category}', category)
+    const resultPromise = this.axiosInstance.patch(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Get inbox users 
+   * Get inbox users
    */
-  getUsersInbox_ByInbox(inbox:string,  queryParams?: {limit?: number, offset?: number, status?: 'READ' | 'UNREAD', userId?: string | null}): Promise<Response<GetInboxUsersResponse>> {
-    const params = { ...queryParams} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/messages/{inbox}/users'.replace('{namespace}', this.namespace).replace('{inbox}', inbox)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getUsersInbox_ByInbox(
+    inbox: string,
+    queryParams?: { limit?: number; offset?: number; status?: 'READ' | 'UNREAD'; userId?: string | null }
+  ): Promise<Response<GetInboxUsersResponse>> {
+    const params = { ...queryParams } as AxiosRequestConfig
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/messages/{inbox}/users'
+      .replace('{namespace}', this.namespace)
+      .replace('{inbox}', inbox)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, GetInboxUsersResponse, 'GetInboxUsersResponse')
   }
-  
   /**
-   * Unsend inbox message 
+   * Unsend inbox message
    */
-  updateUnsendInbox_ByInbox(inbox:string, data: UnsendInboxMessageRequest): Promise<Response<UnsendInboxMessageResponse>> {
+  updateUnsendInbox_ByInbox(inbox: string, data: UnsendInboxMessageRequest): Promise<Response<UnsendInboxMessageResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/messages/{inbox}/unsend'.replace('{namespace}', this.namespace).replace('{inbox}', inbox)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/messages/{inbox}/unsend'
+      .replace('{namespace}', this.namespace)
+      .replace('{inbox}', inbox)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, UnsendInboxMessageResponse, 'UnsendInboxMessageResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      UnsendInboxMessageResponse,
+      'UnsendInboxMessageResponse'
+    )
   }
-  
   /**
-   * Send inbox message 
+   * Send inbox message
    */
-  updateSendInbox_ByMessageId(messageId:string, data: SendInboxMessageRequest): Promise<Response<SendInboxMessageResponse>> {
+  updateSendInbox_ByMessageId(messageId: string, data: SendInboxMessageRequest): Promise<Response<SendInboxMessageResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/messages/{messageId}/send'.replace('{namespace}', this.namespace).replace('{messageId}', messageId)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/messages/{messageId}/send'
+      .replace('{namespace}', this.namespace)
+      .replace('{messageId}', messageId)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, SendInboxMessageResponse, 'SendInboxMessageResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      SendInboxMessageResponse,
+      'SendInboxMessageResponse'
+    )
   }
-  
   /**
-   * Get category schema. 
+   * Get category schema.
    */
-  getSchemaJsonInbox_ByCategory(category:string): Promise<Response<JsonSchemaType>> {
+  getSchemaJsonInbox_ByCategory(category: string): Promise<Response<JsonSchemaType>> {
     const params = {} as AxiosRequestConfig
-    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/categories/{category}/schema.json'.replace('{namespace}', this.namespace).replace('{category}', category)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/chat/v1/admin/inbox/namespaces/{namespace}/categories/{category}/schema.json'
+      .replace('{namespace}', this.namespace)
+      .replace('{category}', category)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, JsonSchemaType, 'JsonSchemaType')
   }
-  
 }
-  

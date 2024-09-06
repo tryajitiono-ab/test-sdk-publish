@@ -7,7 +7,6 @@
     "clean": "rimraf ./node_modules && yarn workspaces run clean",
     "format:all": "prettier --write .",
     "lint": "eslint . --fix --quiet",
-    "pre-commit": "node scripts/pre-commit",
     "prepare": "husky install",
     "changeset:version": "changeset version && yarn install --mode=update-lockfile"
   },

@@ -3,7 +3,7 @@
   "info": {
     "description": "Justice Session Service",
     "title": "justice-session-service",
-    "version": "3.16.19"
+    "version": "3.17.1"
   },
   "schemes": ["https"],
   "externalDocs": {
@@ -6504,6 +6504,9 @@
           },
           "type": "array"
         },
+        "grpcSessionConfig": {
+          "$ref": "#/definitions/models.ExtendConfiguration"
+        },
         "immutableStorage": {
           "type": "boolean",
           "x-omitempty": false
@@ -6669,6 +6672,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "grpcSessionConfig": {
+          "$ref": "#/definitions/models.ExtendConfiguration"
         },
         "immutableStorage": {
           "type": "boolean",
@@ -7443,6 +7449,9 @@
           },
           "type": "array"
         },
+        "grpcSessionConfig": {
+          "$ref": "#/definitions/models.ExtendConfiguration"
+        },
         "immutableStorage": {
           "type": "boolean",
           "x-omitempty": false
@@ -7707,6 +7716,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "grpcSessionConfig": {
+          "$ref": "#/definitions/models.ExtendConfiguration"
         },
         "immutableStorage": {
           "type": "boolean",
@@ -8070,6 +8082,21 @@
       },
       "required": ["claim_timeout", "creation_timeout"]
     },
+    "models.ExtendConfiguration": {
+      "properties": {
+        "appName": {
+          "type": "string"
+        },
+        "customURL": {
+          "type": "string"
+        },
+        "functionFlag": {
+          "format": "int32",
+          "type": "integer",
+          "x-nullable": true
+        }
+      }
+    },
     "models.GameServer": {
       "properties": {
         "alternate_ips": {
@@ -8259,8 +8286,7 @@
           },
           "type": "array"
         }
-      },
-      "required": ["partyID", "userIDs"]
+      }
     },
     "models.PlatformCredentials": {
       "properties": {
@@ -8305,15 +8331,15 @@
     },
     "models.Team": {
       "properties": {
-        "UserIDs": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
         "parties": {
           "items": {
             "$ref": "#/definitions/models.PartyMembers"
+          },
+          "type": "array"
+        },
+        "userIDs": {
+          "items": {
+            "type": "string"
           },
           "type": "array"
         }
@@ -8385,9 +8411,9 @@
     "path": "/session/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2024-08-23T15:27:07+00:00",
-    "gitHash": "b3da8297217e6a8b8bc4450f02ed48cf9ebbb1bc",
-    "version": "3.16.19",
+    "buildDate": "2024-08-30T06:49:34+00:00",
+    "gitHash": "17b264a7884d0bed6bc0324041a39d31e17f4d98",
+    "version": "3.17.1",
     "version-roles-seeding": "1.2.37"
   }
 }

@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -14,52 +14,66 @@ import { PublicAchievementResponse } from '../generated-definitions/PublicAchiev
 import { PublicAchievementsResponse } from '../generated-definitions/PublicAchievementsResponse.js'
 import { Achievements$ } from './endpoints/Achievements$.js'
 
-
 export function AchievementsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * &lt;p&gt;Required permission &lt;code&gt;NAMESPACE:{namespace}:ACHIEVEMENT [READ]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt; 
+   * &lt;p&gt;Required permission &lt;code&gt;NAMESPACE:{namespace}:ACHIEVEMENT [READ]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt;
    */
-  async function getAchievements( queryParams: {language: string | null, global?: boolean | null, limit?: number, offset?: number, sortBy?: 'listOrder' | 'listOrder:asc' | 'listOrder:desc' | 'createdAt' | 'createdAt:asc' | 'createdAt:desc' | 'updatedAt' | 'updatedAt:asc' | 'updatedAt:desc', tags?: string[]}): Promise<AxiosResponse<PublicAchievementsResponse>> {
+  async function getAchievements(queryParams: {
+    language: string | null
+    global?: boolean | null
+    limit?: number
+    offset?: number
+    sortBy?:
+      | 'listOrder'
+      | 'listOrder:asc'
+      | 'listOrder:desc'
+      | 'createdAt'
+      | 'createdAt:asc'
+      | 'createdAt:desc'
+      | 'updatedAt'
+      | 'updatedAt:asc'
+      | 'updatedAt:desc'
+    tags?: string[]
+  }): Promise<AxiosResponse<PublicAchievementsResponse>> {
     const $ = new Achievements$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getAchievements( queryParams)
+    const resp = await $.getAchievements(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * &lt;p&gt;Required permission &lt;code&gt;NAMESPACE:{namespace}:ACHIEVEMENT [READ]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt; 
+   * &lt;p&gt;Required permission &lt;code&gt;NAMESPACE:{namespace}:ACHIEVEMENT [READ]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt;
    */
-  async function getAchievement_ByAchievementCode(achievementCode:string,  queryParams: {language: string | null}): Promise<AxiosResponse<PublicAchievementResponse>> {
+  async function getAchievement_ByAchievementCode(
+    achievementCode: string,
+    queryParams: { language: string | null }
+  ): Promise<AxiosResponse<PublicAchievementResponse>> {
     const $ = new Achievements$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getAchievement_ByAchievementCode(achievementCode,  queryParams)
+    const resp = await $.getAchievement_ByAchievementCode(achievementCode, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    getAchievements,getAchievement_ByAchievementCode,
+    getAchievements,
+    getAchievement_ByAchievementCode
   }
 }
-  

@@ -12,7 +12,8 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "~/iam-definitions/*": ["../sdk-iam/src/generated-definitions/*"]
+      "~/iam-definitions/*": ["../sdk-iam/src/generated-definitions/*"],
+      "@accelbyte/sdk-iam": ["../sdk-iam/src"],
     }
   },
   "include": ["src", "test"],

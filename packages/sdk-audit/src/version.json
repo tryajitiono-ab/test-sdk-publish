@@ -1,8 +1,8 @@
 {
-  "buildDate": "2024-08-14T02:38:26+00:00",
-  "gitHash": "9b9228e85453d2ebc5596cba1f1e47a7a73ee59a",
+  "buildDate": "2024-08-28T01:57:35+00:00",
+  "gitHash": "c1fbdb1ad28616f06018e8d9799813c3a7197908",
   "name": "justice-audit-log-service",
   "realm": "dev",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "version-roles-seeding": "0.0.15"
 }

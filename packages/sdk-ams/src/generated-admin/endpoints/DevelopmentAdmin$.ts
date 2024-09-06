@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -18,50 +18,70 @@ export class DevelopmentAdmin$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ] 
+   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
    */
-  getDevelopmentServerConfigurations( queryParams?: {count?: number, offset?: number}): Promise<Response<DevelopmentServerConfigurationListResponse>> {
-    const params = {count: 100, ...queryParams} as AxiosRequestConfig
-    const url = '/ams/v1/admin/namespaces/{namespace}/development/server-configurations'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getDevelopmentServerConfigurations(queryParams?: {
+    count?: number
+    offset?: number
+  }): Promise<Response<DevelopmentServerConfigurationListResponse>> {
+    const params = { count: 100, ...queryParams } as AxiosRequestConfig
+    const url = '/ams/v1/admin/namespaces/{namespace}/development/server-configurations'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, DevelopmentServerConfigurationListResponse, 'DevelopmentServerConfigurationListResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      DevelopmentServerConfigurationListResponse,
+      'DevelopmentServerConfigurationListResponse'
+    )
   }
-  
   /**
-   * Configuration name can be up to 128 characters and must conform to ^[.a-zA-Z0-9_-]+$ Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE] 
+   * Configuration name can be up to 128 characters and must conform to ^[.a-zA-Z0-9_-]+$ Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
    */
-  createDevelopmentServerConfiguration(data: DevelopmentServerConfigurationCreateRequest): Promise<Response<DevelopmentServerConfigurationCreateResponse>> {
+  createDevelopmentServerConfiguration(
+    data: DevelopmentServerConfigurationCreateRequest
+  ): Promise<Response<DevelopmentServerConfigurationCreateResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ams/v1/admin/namespaces/{namespace}/development/server-configurations'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/ams/v1/admin/namespaces/{namespace}/development/server-configurations'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, DevelopmentServerConfigurationCreateResponse, 'DevelopmentServerConfigurationCreateResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      DevelopmentServerConfigurationCreateResponse,
+      'DevelopmentServerConfigurationCreateResponse'
+    )
   }
-  
   /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE] 
+   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
    */
-  deleteDevelopmentServerConfiguration_ByDevelopmentServerConfigId(developmentServerConfigID:string): Promise<Response<unknown>> {
+  deleteDevelopmentServerConfiguration_ByDevelopmentServerConfigId(developmentServerConfigID: string): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}'.replace('{namespace}', this.namespace).replace('{developmentServerConfigID}', developmentServerConfigID)     
-    const resultPromise = this.axiosInstance.delete(url, {params})
+    const url = '/ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}'
+      .replace('{namespace}', this.namespace)
+      .replace('{developmentServerConfigID}', developmentServerConfigID)
+    const resultPromise = this.axiosInstance.delete(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ] 
+   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
    */
-  getDevelopmentServerConfiguration_ByDevelopmentServerConfigId(developmentServerConfigID:string): Promise<Response<DevelopmentServerConfigurationGetResponse>> {
+  getDevelopmentServerConfiguration_ByDevelopmentServerConfigId(
+    developmentServerConfigID: string
+  ): Promise<Response<DevelopmentServerConfigurationGetResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}'.replace('{namespace}', this.namespace).replace('{developmentServerConfigID}', developmentServerConfigID)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}'
+      .replace('{namespace}', this.namespace)
+      .replace('{developmentServerConfigID}', developmentServerConfigID)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, DevelopmentServerConfigurationGetResponse, 'DevelopmentServerConfigurationGetResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      DevelopmentServerConfigurationGetResponse,
+      'DevelopmentServerConfigurationGetResponse'
+    )
   }
-  
 }
-  

@@ -19,8 +19,8 @@ export class IamUserClient {
    * @internal
    */
   constructor(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
-    const { coreConfig, axiosConfig } = sdk.assembly()
-    this.conf = ApiUtils.mergeAxiosConfigs(axiosConfig.request, args?.axiosConfig?.request)
+    const { coreConfig, axiosInstance } = sdk.assembly()
+    this.conf = ApiUtils.mergeAxiosConfigs(axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
     this.namespace = args?.coreConfig?.namespace ? args?.coreConfig?.namespace : coreConfig.namespace
   }
 

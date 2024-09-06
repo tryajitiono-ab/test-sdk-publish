@@ -5,7 +5,7 @@
  */
 
 import { AxiosInstance } from 'axios'
-import { AxiosConfig, CoreConfig, Interceptor, SdkConstructorParam, SdkSetConfigParam } from './Types'
+import { AxiosConfig, CoreConfig, Interceptor, SdkConstructorParam, SdkSetConfigParam, TokenConfig } from './Types'
 import { Network } from './utils/Network'
 import { MakeRequired } from './utils/Type'
 
@@ -19,6 +19,7 @@ export class AccelByteSDK {
   private coreConfig: CoreConfig
   private axiosConfig: AxiosConfig
   private axiosInstance: AxiosInstance
+  private token: TokenConfig
 
   constructor({ coreConfig, axiosConfig }: SdkConstructorParam) {
     this.coreConfig = {
@@ -44,6 +45,7 @@ export class AccelByteSDK {
       }
     }
     this.axiosInstance = Network.create({ baseURL: coreConfig.baseURL, ...this.axiosConfig.request })
+    this.token = {}
   }
 
   assembly() {
@@ -103,5 +105,20 @@ export class AccelByteSDK {
     }
 
     return this
+  }
+
+  setToken(token: TokenConfig) {
+    this.token = {
+      ...this.token,
+      ...token
+    }
+  }
+
+  removeToken() {
+    this.token = {}
+  }
+
+  getToken() {
+    return this.token
   }
 }

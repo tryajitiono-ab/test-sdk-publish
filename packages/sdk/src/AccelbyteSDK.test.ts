@@ -4,50 +4,17 @@
  * and restrictions contact your company contract manager.
  */
 
-import { AxiosError } from 'axios'
 import { describe, expect, test } from 'vitest'
 import { AccelByte } from './AccelByteSDK'
 import { Interceptor } from './Types'
-
-const coreConfig = { baseURL: 'http://localhost:3000', clientId: '1234', namespace: 'sdk', redirectURI: 'http://localhost:3000' }
-const coreConfigWithDefault = { ...coreConfig, useSchemaValidation: true }
-const defaultAxiosConfig = {
-  timeout: 60000,
-  withCredentials: true,
-  headers: {
-    'Content-Type': 'application/json'
-  }
-}
-
-const responseInterceptor: Interceptor = {
-  type: 'response',
-  name: 'session-expired',
-  onError: () => {},
-  onSuccess: config => config
-}
-
-const requestInterceptor: Interceptor = {
-  type: 'request',
-  name: 'get-session',
-  onError: () => {},
-  onRequest: config => config
-}
-
-const tooManyRequestInterceptor: Interceptor = {
-  type: 'response',
-  name: 'too-many-request',
-  onError: e => {
-    const error = e as AxiosError<any>
-    if (error.response) {
-      const { response } = error
-      if (response?.status === 429 /* TooManyRequests */) {
-        // onTooManyRequest(error)
-      }
-    }
-
-    return Promise.reject(error)
-  }
-}
+import {
+  coreConfig,
+  coreConfigWithDefault,
+  defaultAxiosConfig,
+  requestInterceptor,
+  responseInterceptor,
+  tooManyRequestInterceptor
+} from './test/constants'
 
 const interceptors: Array<Interceptor> = [responseInterceptor, requestInterceptor]
 
@@ -155,5 +122,56 @@ describe('AccelByteSDK', () => {
     const newSdk = newSdkInstance.assembly()
 
     expect(newSdk.axiosConfig.interceptors).toBeUndefined()
+  })
+
+  test('should save token when set accessToken and refresToken', () => {
+    const sdkInstance = AccelByte.SDK({ coreConfig })
+
+    expect(sdkInstance.getToken()).toEqual({})
+
+    const token = {
+      accessToken: '1234',
+      refreshToken: '1234'
+    }
+    sdkInstance.setToken(token)
+
+    expect(sdkInstance.getToken()).toStrictEqual(token)
+  })
+
+  test('should retain existing refreshToken when set accessToken afteward', () => {
+    const sdkInstance = AccelByte.SDK({ coreConfig })
+
+    expect(sdkInstance.getToken()).toEqual({})
+
+    const token = {
+      accessToken: '1234'
+    }
+    sdkInstance.setToken(token)
+
+    expect(sdkInstance.getToken()).toStrictEqual(token)
+
+    const newToken = {
+      refreshToken: '12345'
+    }
+    sdkInstance.setToken(newToken)
+
+    expect(sdkInstance.getToken()).toStrictEqual({ ...token, ...newToken })
+  })
+
+  test('should remove token when call removeToken', () => {
+    const sdkInstance = AccelByte.SDK({ coreConfig })
+
+    expect(sdkInstance.getToken()).toEqual({})
+
+    const token = {
+      accessToken: '1234',
+      refreshToken: '1234'
+    }
+    sdkInstance.setToken(token)
+
+    expect(sdkInstance.getToken()).toStrictEqual(token)
+    sdkInstance.removeToken()
+
+    expect(sdkInstance.getToken()).toEqual({})
   })
 })

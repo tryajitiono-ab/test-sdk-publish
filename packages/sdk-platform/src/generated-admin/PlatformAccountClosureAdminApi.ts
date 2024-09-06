@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -13,41 +13,36 @@ import { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { PlatformAccountClosureHistoryInfoArray } from '../generated-definitions/PlatformAccountClosureHistoryInfoArray.js'
 import { PlatformAccountClosureAdmin$ } from './endpoints/PlatformAccountClosureAdmin$.js'
 
-
 export function PlatformAccountClosureAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * Get user platform account closure history.&lt;br&gt; 
+   * Get user platform account closure history.&lt;br&gt;
    */
-  async function getPlatformClosureHistory_ByUserId(userId:string): Promise<AxiosResponse<PlatformAccountClosureHistoryInfoArray>> {
+  async function getPlatformClosureHistory_ByUserId(userId: string): Promise<AxiosResponse<PlatformAccountClosureHistoryInfoArray>> {
     const $ = new PlatformAccountClosureAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getPlatformClosureHistory_ByUserId(userId, )
+    const resp = await $.getPlatformClosureHistory_ByUserId(userId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    getPlatformClosureHistory_ByUserId,
+    getPlatformClosureHistory_ByUserId
   }
 }
-  

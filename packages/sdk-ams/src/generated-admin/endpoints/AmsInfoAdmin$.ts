@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -15,28 +15,29 @@ export class AmsInfoAdmin$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ] 
+   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
    */
   getRegions(): Promise<Response<AmsRegionsResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ams/v1/admin/namespaces/{namespace}/regions'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/ams/v1/admin/namespaces/{namespace}/regions'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, AmsRegionsResponse, 'AmsRegionsResponse')
   }
-  
   /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ] 
+   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
    */
   getSupportedInstances(): Promise<Response<AvailableInstanceTypesResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ams/v1/admin/namespaces/{namespace}/supported-instances'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/ams/v1/admin/namespaces/{namespace}/supported-instances'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, AvailableInstanceTypesResponse, 'AvailableInstanceTypesResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      AvailableInstanceTypesResponse,
+      'AvailableInstanceTypesResponse'
+    )
   }
-  
 }
-  

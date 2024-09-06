@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -15,28 +15,40 @@ export class Presence$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Query users presence with given namespace and userIds. 
+   * Query users presence with given namespace and userIds.
    */
-  getPresenceUsersPresence( queryParams: {userIds: string | null, countOnly?: boolean | null}): Promise<Response<GetUsersPresenceResponse>> {
-    const params = { ...queryParams} as AxiosRequestConfig
-    const url = '/lobby/v1/public/presence/namespaces/{namespace}/users/presence'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getPresenceUsersPresence(queryParams: {
+    userIds: string | null
+    countOnly?: boolean | null
+  }): Promise<Response<GetUsersPresenceResponse>> {
+    const params = { ...queryParams } as AxiosRequestConfig
+    const url = '/lobby/v1/public/presence/namespaces/{namespace}/users/presence'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, GetUsersPresenceResponse, 'GetUsersPresenceResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      GetUsersPresenceResponse,
+      'GetUsersPresenceResponse'
+    )
   }
-  
   /**
-   * Query users presence with given namespace and userIds. 
+   * Query users presence with given namespace and userIds.
    */
-  createPresenceUserPresence(data: RequestUserPresence, queryParams?: {countOnly?: boolean | null}): Promise<Response<GetUsersPresenceResponse>> {
-    const params = { ...queryParams} as AxiosRequestConfig
-    const url = '/lobby/v1/public/presence/namespaces/{namespace}/users/presence'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+  createPresenceUserPresence(
+    data: RequestUserPresence,
+    queryParams?: { countOnly?: boolean | null }
+  ): Promise<Response<GetUsersPresenceResponse>> {
+    const params = { ...queryParams } as AxiosRequestConfig
+    const url = '/lobby/v1/public/presence/namespaces/{namespace}/users/presence'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, GetUsersPresenceResponse, 'GetUsersPresenceResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      GetUsersPresenceResponse,
+      'GetUsersPresenceResponse'
+    )
   }
-  
 }
-  

@@ -3,7 +3,7 @@
   "info": {
     "description": "Justice Matchmaking Service",
     "title": "Justice Match Service v2",
-    "version": "2.25.6"
+    "version": "2.26.1"
   },
   "schemes": ["https"],
   "externalDocs": {
@@ -1848,6 +1848,12 @@
               "$ref": "#/definitions/response.Error"
             }
           },
+          "406": {
+            "description": "Not Acceptable",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -3456,9 +3462,9 @@
     "path": "/match2/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2024-08-23T14:36:38+00:00",
-    "gitHash": "ca61d97a9d6e722b2d43676e3e1ac34a7035c442",
-    "version": "2.25.6",
+    "buildDate": "2024-09-02T04:21:48+00:00",
+    "gitHash": "c6c5b327a5f2224ac3b17cda643d2428fffc3ab1",
+    "version": "2.26.1",
     "version-roles-seeding": "1.2.36"
   }
 }

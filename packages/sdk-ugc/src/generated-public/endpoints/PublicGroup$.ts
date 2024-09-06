@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -19,83 +19,116 @@ export class PublicGroup$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Get user groups paginated 
+   * Get user groups paginated
    */
-  getGroups_ByUserId(userId:string,  queryParams?: {limit?: number, offset?: number}): Promise<Response<PaginatedGroupResponse>> {
-    const params = {limit: 20, ...queryParams} as AxiosRequestConfig
-    const url = '/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups'.replace('{namespace}', this.namespace).replace('{userId}', userId)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getGroups_ByUserId(userId: string, queryParams?: { limit?: number; offset?: number }): Promise<Response<PaginatedGroupResponse>> {
+    const params = { limit: 20, ...queryParams } as AxiosRequestConfig
+    const url = '/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, PaginatedGroupResponse, 'PaginatedGroupResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      PaginatedGroupResponse,
+      'PaginatedGroupResponse'
+    )
   }
-  
   /**
-   * Create group 
+   * Create group
    */
-  createGroup_ByUserId(userId:string, data: CreateGroupRequest): Promise<Response<CreateGroupResponse>> {
+  createGroup_ByUserId(userId: string, data: CreateGroupRequest): Promise<Response<CreateGroupResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups'.replace('{namespace}', this.namespace).replace('{userId}', userId)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, CreateGroupResponse, 'CreateGroupResponse')
   }
-  
   /**
-   * Delete user group by group ID 
+   * Delete user group by group ID
    */
-  deleteGroup_ByUserId_ByGroupId(userId:string, groupId:string): Promise<Response<unknown>> {
+  deleteGroup_ByUserId_ByGroupId(userId: string, groupId: string): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}'.replace('{namespace}', this.namespace).replace('{userId}', userId).replace('{groupId}', groupId)     
-    const resultPromise = this.axiosInstance.delete(url, {params})
+    const url = '/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+      .replace('{groupId}', groupId)
+    const resultPromise = this.axiosInstance.delete(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Get user groups by group ID 
+   * Get user groups by group ID
    */
-  getGroup_ByUserId_ByGroupId(userId:string, groupId:string): Promise<Response<CreateGroupResponse>> {
+  getGroup_ByUserId_ByGroupId(userId: string, groupId: string): Promise<Response<CreateGroupResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}'.replace('{namespace}', this.namespace).replace('{userId}', userId).replace('{groupId}', groupId)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+      .replace('{groupId}', groupId)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, CreateGroupResponse, 'CreateGroupResponse')
   }
-  
   /**
-   * Replace group name and contents with new ones 
+   * Replace group name and contents with new ones
    */
-  updateGroup_ByUserId_ByGroupId(userId:string, groupId:string, data: CreateGroupRequest): Promise<Response<CreateGroupResponse>> {
+  updateGroup_ByUserId_ByGroupId(userId: string, groupId: string, data: CreateGroupRequest): Promise<Response<CreateGroupResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}'.replace('{namespace}', this.namespace).replace('{userId}', userId).replace('{groupId}', groupId)     
-    const resultPromise = this.axiosInstance.put(url, data, {params})
+    const url = '/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+      .replace('{groupId}', groupId)
+    const resultPromise = this.axiosInstance.put(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, CreateGroupResponse, 'CreateGroupResponse')
   }
-  
   /**
-   * Get content that belong to a group 
+   * Get content that belong to a group
    */
-  getContents_ByUserId_ByGroupId(userId:string, groupId:string,  queryParams?: {limit?: number, offset?: number}): Promise<Response<PaginatedContentDownloadResponse>> {
-    const params = {limit: 20, ...queryParams} as AxiosRequestConfig
-    const url = '/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents'.replace('{namespace}', this.namespace).replace('{userId}', userId).replace('{groupId}', groupId)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getContents_ByUserId_ByGroupId(
+    userId: string,
+    groupId: string,
+    queryParams?: { limit?: number; offset?: number }
+  ): Promise<Response<PaginatedContentDownloadResponse>> {
+    const params = { limit: 20, ...queryParams } as AxiosRequestConfig
+    const url = '/ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+      .replace('{groupId}', groupId)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, PaginatedContentDownloadResponse, 'PaginatedContentDownloadResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      PaginatedContentDownloadResponse,
+      'PaginatedContentDownloadResponse'
+    )
   }
-  
   /**
-   * Get content belong to a group 
+   * Get content belong to a group
    */
-  getContents_ByUserId_ByGroupId_v2(userId:string, groupId:string,  queryParams?: {limit?: number, offset?: number}): Promise<Response<PaginatedContentDownloadResponseV2>> {
-    const params = {limit: 20, ...queryParams} as AxiosRequestConfig
-    const url = '/ugc/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents'.replace('{namespace}', this.namespace).replace('{userId}', userId).replace('{groupId}', groupId)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getContents_ByUserId_ByGroupId_v2(
+    userId: string,
+    groupId: string,
+    queryParams?: { limit?: number; offset?: number }
+  ): Promise<Response<PaginatedContentDownloadResponseV2>> {
+    const params = { limit: 20, ...queryParams } as AxiosRequestConfig
+    const url = '/ugc/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+      .replace('{groupId}', groupId)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, PaginatedContentDownloadResponseV2, 'PaginatedContentDownloadResponseV2')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      PaginatedContentDownloadResponseV2,
+      'PaginatedContentDownloadResponseV2'
+    )
   }
-  
 }
-  

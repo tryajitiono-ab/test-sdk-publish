@@ -66,3 +66,4 @@ export type ApiError = {
   errorCode: number | string
   errorMessage: string
 }
+export type TokenConfig = { accessToken?: string; refreshToken?: string }

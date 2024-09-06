@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -20,96 +20,98 @@ import { DictionaryQueryResult } from '../generated-definitions/DictionaryQueryR
 import { DictionaryUpdateRequest } from '../generated-definitions/DictionaryUpdateRequest.js'
 import { ProfanityAdmin$ } from './endpoints/ProfanityAdmin$.js'
 
-
 export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * Query all profanity words. 
+   * Query all profanity words.
    */
-  async function getProfanityDictionary( queryParams?: {filterMask?: string | null, includeChildren?: boolean | null, limit?: number, offset?: number, parentId?: string | null, startWith?: string | null, wordType?: string | null}): Promise<AxiosResponse<DictionaryQueryResult>> {
+  async function getProfanityDictionary(queryParams?: {
+    filterMask?: string | null
+    includeChildren?: boolean | null
+    limit?: number
+    offset?: number
+    parentId?: string | null
+    startWith?: string | null
+    wordType?: string | null
+  }): Promise<AxiosResponse<DictionaryQueryResult>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getProfanityDictionary( queryParams)
+    const resp = await $.getProfanityDictionary(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Insert new word for profanity censor 
+   * Insert new word for profanity censor
    */
   async function createProfanityDictionary(data: DictionaryInsertRequest): Promise<AxiosResponse<Dictionary>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createProfanityDictionary(data,)
+    const resp = await $.createProfanityDictionary(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Delete profanity words. 
+   * Delete profanity words.
    */
-  async function deleteProfanityDictionary_ById(id:string): Promise<AxiosResponse<unknown>> {
+  async function deleteProfanityDictionary_ById(id: string): Promise<AxiosResponse<unknown>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteProfanityDictionary_ById(id, )
+    const resp = await $.deleteProfanityDictionary_ById(id)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Update profanity word 
+   * Update profanity word
    */
-  async function updateProfanityDictionary_ById(id:string, data: DictionaryUpdateRequest): Promise<AxiosResponse<Dictionary>> {
+  async function updateProfanityDictionary_ById(id: string, data: DictionaryUpdateRequest): Promise<AxiosResponse<Dictionary>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateProfanityDictionary_ById(id, data,)
+    const resp = await $.updateProfanityDictionary_ById(id, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Bulk insert new word for profanity censor 
+   * Bulk insert new word for profanity censor
    */
   async function createProfanityDictionaryBulk(data: DictionaryInsertBulkRequest): Promise<AxiosResponse<Dictionary>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createProfanityDictionaryBulk(data,)
+    const resp = await $.createProfanityDictionaryBulk(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get profanity words group. 
+   * Get profanity words group.
    */
-  async function getProfanityDictionaryGroup( queryParams?: {limit?: number, offset?: number}): Promise<AxiosResponse<DictionaryGroupArray>> {
+  async function getProfanityDictionaryGroup(queryParams?: {
+    limit?: number
+    offset?: number
+  }): Promise<AxiosResponse<DictionaryGroupArray>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getProfanityDictionaryGroup( queryParams)
+    const resp = await $.getProfanityDictionaryGroup(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Export profanity words 
+   * Export profanity words
    */
   async function getProfanityDictionaryExport(): Promise<AxiosResponse<DictionaryExport>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -117,21 +119,28 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Import profanity words 
+   * Import profanity words
    */
-  async function createProfanityDictionaryImport(data: {file: File}, queryParams?: {action?: 'FULLREPLACE' | 'LEAVEOUT' | 'REPLACE', showResult?: boolean | null}): Promise<AxiosResponse<DictionaryImportResult>> {
+  async function createProfanityDictionaryImport(
+    data: { file: File },
+    queryParams?: { action?: 'FULLREPLACE' | 'LEAVEOUT' | 'REPLACE'; showResult?: boolean | null }
+  ): Promise<AxiosResponse<DictionaryImportResult>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createProfanityDictionaryImport(data, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    getProfanityDictionary,createProfanityDictionary,deleteProfanityDictionary_ById,updateProfanityDictionary_ById,createProfanityDictionaryBulk,getProfanityDictionaryGroup,getProfanityDictionaryExport,createProfanityDictionaryImport,
+    getProfanityDictionary,
+    createProfanityDictionary,
+    deleteProfanityDictionary_ById,
+    updateProfanityDictionary_ById,
+    createProfanityDictionaryBulk,
+    getProfanityDictionaryGroup,
+    getProfanityDictionaryExport,
+    createProfanityDictionaryImport
   }
 }
-  

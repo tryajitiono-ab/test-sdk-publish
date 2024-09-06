@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -15,25 +15,27 @@ export class MatchmakingOperations$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
+
   getVersion(): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/matchmaking/version'     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/matchmaking/version'
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * get the list of messages. 
+   * get the list of messages.
    */
   getMessages(): Promise<Response<AppMessageDeclarationArray>> {
     const params = {} as AxiosRequestConfig
-    const url = '/matchmaking/v1/messages'     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/matchmaking/v1/messages'
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, AppMessageDeclarationArray, 'AppMessageDeclarationArray')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      AppMessageDeclarationArray,
+      'AppMessageDeclarationArray'
+    )
   }
-  
 }
-  

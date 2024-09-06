@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -13,30 +13,27 @@ import { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { DefaultDsmcConfig } from '../generated-definitions/DefaultDsmcConfig.js'
 import { DsmcDefaultConfigurationAdmin$ } from './endpoints/DsmcDefaultConfigurationAdmin$.js'
 
-
 export function DsmcDefaultConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * Get dsmc default configuration. 
+   * Get dsmc default configuration.
    */
   async function getDsconfigsDefault(): Promise<AxiosResponse<DefaultDsmcConfig>> {
     const $ = new DsmcDefaultConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -44,10 +41,8 @@ export function DsmcDefaultConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSe
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    getDsconfigsDefault,
+    getDsconfigsDefault
   }
 }
-  

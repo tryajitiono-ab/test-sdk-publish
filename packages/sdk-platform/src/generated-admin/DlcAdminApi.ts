@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -18,30 +18,27 @@ import { UserDlc } from '../generated-definitions/UserDlc.js'
 import { UserDlcRecordArray } from '../generated-definitions/UserDlcRecordArray.js'
 import { DlcAdmin$ } from './endpoints/DlcAdmin$.js'
 
-
 export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * delete a DLC item config. 
+   * delete a DLC item config.
    */
   async function deleteDlcConfigItem(): Promise<AxiosResponse<unknown>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -49,10 +46,9 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get DLC item config. 
+   * Get DLC item config.
    */
   async function getDlcConfigItem(): Promise<AxiosResponse<DlcItemConfigInfo>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -60,32 +56,32 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Update DLC item config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated DLC item config&lt;/li&gt;&lt;/ul&gt; 
+   * Update DLC item config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated DLC item config&lt;/li&gt;&lt;/ul&gt;
    */
   async function updateDlcConfigItem(data: DlcItemConfigUpdate): Promise<AxiosResponse<DlcItemConfigInfo>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateDlcConfigItem(data,)
+    const resp = await $.updateDlcConfigItem(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get user dlc by platform.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user dlc&lt;/li&gt;&lt;/ul&gt; 
+   * Get user dlc by platform.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user dlc&lt;/li&gt;&lt;/ul&gt;
    */
-  async function getDlc_ByUserId(userId:string,  queryParams: {type: 'EPICGAMES' | 'OCULUS' | 'PSN' | 'STEAM' | 'XBOX'}): Promise<AxiosResponse<UserDlc>> {
+  async function getDlc_ByUserId(
+    userId: string,
+    queryParams: { type: 'EPICGAMES' | 'OCULUS' | 'PSN' | 'STEAM' | 'XBOX' }
+  ): Promise<AxiosResponse<UserDlc>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getDlc_ByUserId(userId,  queryParams)
+    const resp = await $.getDlc_ByUserId(userId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * delete a Platform DLC config. 
+   * delete a Platform DLC config.
    */
   async function deleteDlcConfigPlatformMap(): Promise<AxiosResponse<unknown>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -93,10 +89,9 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get Platform DLC config. 
+   * Get Platform DLC config.
    */
   async function getDlcConfigPlatformMap(): Promise<AxiosResponse<PlatformDlcConfigInfo>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -104,32 +99,42 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Update Platform DLC config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated Platform DLC config&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Restrictions for platform dlc map&lt;/h2&gt; 1. Cannot use &lt;b&gt;&#34;.&#34;&lt;/b&gt; as the key name - &lt;pre&gt;{ &#34;data.2&#34;: &#34;value&#34; }&lt;/pre&gt; 2. Cannot use &lt;b&gt;&#34;$&#34;&lt;/b&gt; as the prefix in key names - &lt;pre&gt;{ &#34;$data&#34;: &#34;value&#34; }&lt;/pre&gt; 
+   * Update Platform DLC config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated Platform DLC config&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Restrictions for platform dlc map&lt;/h2&gt; 1. Cannot use &lt;b&gt;&#34;.&#34;&lt;/b&gt; as the key name - &lt;pre&gt;{ &#34;data.2&#34;: &#34;value&#34; }&lt;/pre&gt; 2. Cannot use &lt;b&gt;&#34;$&#34;&lt;/b&gt; as the prefix in key names - &lt;pre&gt;{ &#34;$data&#34;: &#34;value&#34; }&lt;/pre&gt;
    */
   async function updateDlcConfigPlatformMap(data: PlatformDlcConfigUpdate): Promise<AxiosResponse<PlatformDlcConfigInfo>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateDlcConfigPlatformMap(data,)
+    const resp = await $.updateDlcConfigPlatformMap(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get user dlc records.&lt;br&gt;Note: includeAllNamespaces means this endpoint will return user dlcs from all namespace, example scenario isadmin may need to check the user dlcs before unlink a 3rd party account, so the user dlcs should be from all namespaces because unlinking is a platform level action &lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user dlc&lt;/li&gt;&lt;/ul&gt; 
+   * Get user dlc records.&lt;br&gt;Note: includeAllNamespaces means this endpoint will return user dlcs from all namespace, example scenario isadmin may need to check the user dlcs before unlink a 3rd party account, so the user dlcs should be from all namespaces because unlinking is a platform level action &lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user dlc&lt;/li&gt;&lt;/ul&gt;
    */
-  async function getDlcRecords_ByUserId(userId:string,  queryParams?: {includeAllNamespaces?: boolean | null, status?: 'FULFILLED' | 'REVOKED' | 'REVOKE_FAILED', type?: 'EPICGAMES' | 'OCULUS' | 'PSN' | 'STEAM' | 'XBOX'}): Promise<AxiosResponse<UserDlcRecordArray>> {
+  async function getDlcRecords_ByUserId(
+    userId: string,
+    queryParams?: {
+      includeAllNamespaces?: boolean | null
+      status?: 'FULFILLED' | 'REVOKED' | 'REVOKE_FAILED'
+      type?: 'EPICGAMES' | 'OCULUS' | 'PSN' | 'STEAM' | 'XBOX'
+    }
+  ): Promise<AxiosResponse<UserDlcRecordArray>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getDlcRecords_ByUserId(userId,  queryParams)
+    const resp = await $.getDlcRecords_ByUserId(userId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    deleteDlcConfigItem,getDlcConfigItem,updateDlcConfigItem,getDlc_ByUserId,deleteDlcConfigPlatformMap,getDlcConfigPlatformMap,updateDlcConfigPlatformMap,getDlcRecords_ByUserId,
+    deleteDlcConfigItem,
+    getDlcConfigItem,
+    updateDlcConfigItem,
+    getDlc_ByUserId,
+    deleteDlcConfigPlatformMap,
+    getDlcConfigPlatformMap,
+    updateDlcConfigPlatformMap,
+    getDlcRecords_ByUserId
   }
 }
-  

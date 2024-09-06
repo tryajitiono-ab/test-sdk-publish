@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -19,50 +19,44 @@ export class ThirdPartyAdmin$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Required permission : &lt;code&gt;ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]&lt;/code&gt; with scope &lt;code&gt;social&lt;/code&gt; &lt;br&gt;delete third party config in a namespace. 
+   * Required permission : &lt;code&gt;ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]&lt;/code&gt; with scope &lt;code&gt;social&lt;/code&gt; &lt;br&gt;delete third party config in a namespace.
    */
   deleteThirdpartyConfigSteam(): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.delete(url, {params})
+    const url = '/lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.delete(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Get third party config for specified namespace. 
+   * Get third party config for specified namespace.
    */
   getThirdpartyConfigSteam(): Promise<Response<GetConfigResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, GetConfigResponse, 'GetConfigResponse')
   }
-  
   /**
-   * Create third party config in a namespace. 
+   * Create third party config in a namespace.
    */
   createThirdpartyConfigSteam(data: CreateConfigRequest): Promise<Response<CreateConfigResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, CreateConfigResponse, 'CreateConfigResponse')
   }
-  
   /**
-   * Update third party config in a namespace. 
+   * Update third party config in a namespace.
    */
   updateThirdpartyConfigSteam(data: UpdateConfigRequest): Promise<Response<UpdateConfigResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.put(url, data, {params})
+    const url = '/lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.put(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, UpdateConfigResponse, 'UpdateConfigResponse')
   }
-  
 }
-  

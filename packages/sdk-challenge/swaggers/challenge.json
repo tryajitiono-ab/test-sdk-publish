@@ -1029,6 +1029,86 @@
         }
       }
     },
+    "/challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/tied/schedule": {
+      "put": {
+        "consumes": ["application/json"],
+        "description": "\u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;\u0026lt;p\u0026gt;Request body:\u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;action: Update the challenge schedule. The available options are:\u0026lt;/li\u0026gt;\u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;STOP: Ends the challenge, changing its status to RETIRED. This option supports all types of challenges.\u0026lt;/li\u0026gt;\u0026lt;li\u0026gt;ACCELERATE: Speeds up the challenge\u0026#39;s end time. Note that this option does not apply to challenges with an \u0026#39;endAfter\u0026#39; value.\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;\u0026lt;li\u0026gt;endDate: The timestamp specifying when the challenge should end (required if the action is ACCELERATE).\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
+        "operationId": "adminUpdateTiedChallengeSchedule",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/model.UpdateChallengeScheduleRequest"
+            }
+          },
+          {
+            "description": "the code of the challenge data to be updated",
+            "in": "path",
+            "name": "challengeCode",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "namespace of the game",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/model.ChallengeResponse"
+            }
+          },
+          "400": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20018\u003c/td\u003e\u003ctd\u003ebad request: {{message}}\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/response.Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Update Tied Challenge Schedule",
+        "tags": ["Challenge Configuration"],
+        "x-errorCodes": {
+          "20018": "bad request: {{message}}"
+        }
+      }
+    },
     "/challenge/v1/admin/namespaces/{namespace}/plugins/assignment": {
       "delete": {
         "description": "\u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [DELETE]\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
@@ -2961,6 +3041,20 @@
         }
       }
     },
+    "model.UpdateChallengeScheduleRequest": {
+      "properties": {
+        "action": {
+          "enum": ["ACCELERATE", "STOP"],
+          "type": "string"
+        },
+        "endDate": {
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "required": ["action"]
+    },
     "model.UpdateGoalRequest": {
       "properties": {
         "description": {
@@ -3143,11 +3237,11 @@
     "path": "/challenge/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2024-08-23T08:48:40+00:00",
-    "gitHash": "7b664316becfdde1fc81943224a3524d97138e51",
+    "buildDate": "2024-08-30T03:04:23+00:00",
+    "gitHash": "558b357e395904a265e99a7cac82493794a966e5",
     "name": "justice-challenge-service",
     "realm": "DEV",
-    "version": "1.8.2",
+    "version": "1.9.0",
     "version-roles-seeding": "1.2.62"
   }
 }

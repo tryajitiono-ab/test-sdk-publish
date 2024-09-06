@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -16,72 +16,79 @@ export class DataDeletion$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Cancel my account deletion request Requires valid user access token 
+   * Cancel my account deletion request Requires valid user access token
    */
   deleteUserMeDeletion(): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/gdpr/public/users/me/deletions'     
-    const resultPromise = this.axiosInstance.delete(url, {params})
+    const url = '/gdpr/public/users/me/deletions'
+    const resultPromise = this.axiosInstance.delete(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Submit my account deletion requests. Requires valid user access token This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest) ### Request Header: - **Content-Type: application/x-www-form-urlencoded**  
+   * Submit my account deletion requests. Requires valid user access token This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest) ### Request Header: - **Content-Type: application/x-www-form-urlencoded**
    */
-  postUserMeDeletion(data: {platformId: string | null,platformToken: string | null}): Promise<Response<RequestDeleteResponse>> {
+  postUserMeDeletion(data: { platformId: string | null; platformToken: string | null }): Promise<Response<RequestDeleteResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/gdpr/public/users/me/deletions'     
-    const resultPromise = this.axiosInstance.post(url, CodeGenUtil.getFormUrlEncodedData(data), { ...params, headers: { ...params.headers, 'content-type': 'application/x-www-form-urlencoded' } })
+    const url = '/gdpr/public/users/me/deletions'
+    const resultPromise = this.axiosInstance.post(url, CodeGenUtil.getFormUrlEncodedData(data), {
+      ...params,
+      headers: { ...params.headers, 'content-type': 'application/x-www-form-urlencoded' }
+    })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, RequestDeleteResponse, 'RequestDeleteResponse')
   }
-  
   /**
-   * Retrieve my account deletion status Requires valid user access token 
+   * Retrieve my account deletion status Requires valid user access token
    */
   getUsersMeDeletionsStatus(): Promise<Response<DeletionStatus>> {
     const params = {} as AxiosRequestConfig
-    const url = '/gdpr/public/users/me/deletions/status'     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/gdpr/public/users/me/deletions/status'
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, DeletionStatus, 'DeletionStatus')
   }
-  
   /**
-   * Cancel user&#39;s account deletion request Requires valid user access token Scope: account 
+   * Cancel user&#39;s account deletion request Requires valid user access token Scope: account
    */
-  deleteDeletion_ByUserId(userId:string): Promise<Response<unknown>> {
+  deleteDeletion_ByUserId(userId: string): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/gdpr/public/namespaces/{namespace}/users/{userId}/deletions'.replace('{namespace}', this.namespace).replace('{userId}', userId)     
-    const resultPromise = this.axiosInstance.delete(url, {params})
+    const url = '/gdpr/public/namespaces/{namespace}/users/{userId}/deletions'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+    const resultPromise = this.axiosInstance.delete(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Submit user&#39;s account deletion request. Requires valid user access token and password Scope: account ### Request Header: - **Content-Type: application/x-www-form-urlencoded**  
+   * Submit user&#39;s account deletion request. Requires valid user access token and password Scope: account ### Request Header: - **Content-Type: application/x-www-form-urlencoded**
    */
-  postDeletion_ByUserId(userId:string, data: {password: string | null,languageTag?: string | null}): Promise<Response<RequestDeleteResponse>> {
+  postDeletion_ByUserId(
+    userId: string,
+    data: { password: string | null; languageTag?: string | null }
+  ): Promise<Response<RequestDeleteResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/gdpr/public/namespaces/{namespace}/users/{userId}/deletions'.replace('{namespace}', this.namespace).replace('{userId}', userId)     
-    const resultPromise = this.axiosInstance.post(url, CodeGenUtil.getFormUrlEncodedData(data), { ...params, headers: { ...params.headers, 'content-type': 'application/x-www-form-urlencoded' } })
+    const url = '/gdpr/public/namespaces/{namespace}/users/{userId}/deletions'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+    const resultPromise = this.axiosInstance.post(url, CodeGenUtil.getFormUrlEncodedData(data), {
+      ...params,
+      headers: { ...params.headers, 'content-type': 'application/x-www-form-urlencoded' }
+    })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, RequestDeleteResponse, 'RequestDeleteResponse')
   }
-  
   /**
-   * Retrieve specific user&#39;s account deletion status Requires valid user access token Scope: account 
+   * Retrieve specific user&#39;s account deletion status Requires valid user access token Scope: account
    */
-  getDeletionsStatus_ByUserId(userId:string): Promise<Response<DeletionStatus>> {
+  getDeletionsStatus_ByUserId(userId: string): Promise<Response<DeletionStatus>> {
     const params = {} as AxiosRequestConfig
-    const url = '/gdpr/public/namespaces/{namespace}/users/{userId}/deletions/status'.replace('{namespace}', this.namespace).replace('{userId}', userId)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/gdpr/public/namespaces/{namespace}/users/{userId}/deletions/status'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, DeletionStatus, 'DeletionStatus')
   }
-  
 }
-  

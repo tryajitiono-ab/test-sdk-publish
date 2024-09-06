@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -17,30 +17,27 @@ import { RevocationRequest } from '../generated-definitions/RevocationRequest.js
 import { RevocationResult } from '../generated-definitions/RevocationResult.js'
 import { RevocationAdmin$ } from './endpoints/RevocationAdmin$.js'
 
-
 export function RevocationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * Delete revocation config. 
+   * Delete revocation config.
    */
   async function deleteRevocationConfig(): Promise<AxiosResponse<unknown>> {
     const $ = new RevocationAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -48,10 +45,9 @@ export function RevocationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get revocation configuration.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Revocation config&lt;/li&gt;&lt;/ul&gt; 
+   * Get revocation configuration.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Revocation config&lt;/li&gt;&lt;/ul&gt;
    */
   async function getRevocationConfig(): Promise<AxiosResponse<RevocationConfigInfo>> {
     const $ = new RevocationAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -59,43 +55,51 @@ export function RevocationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Update revocation configuration.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Revocation config&lt;/li&gt;&lt;/ul&gt; 
+   * Update revocation configuration.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Revocation config&lt;/li&gt;&lt;/ul&gt;
    */
   async function updateRevocationConfig(data: RevocationConfigUpdate): Promise<AxiosResponse<RevocationConfigInfo>> {
     const $ = new RevocationAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateRevocationConfig(data,)
+    const resp = await $.updateRevocationConfig(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Query revocation histories in a namespace.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: query revocation history&lt;/li&gt;&lt;/ul&gt; 
+   * Query revocation histories in a namespace.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: query revocation history&lt;/li&gt;&lt;/ul&gt;
    */
-  async function getRevocationHistory( queryParams?: {endTime?: string | null, limit?: number, offset?: number, source?: 'DLC' | 'IAP' | 'ORDER' | 'OTHER', startTime?: string | null, status?: 'FAIL' | 'SUCCESS', transactionId?: string | null, userId?: string | null}): Promise<AxiosResponse<RevocationHistoryPagingSlicedResult>> {
+  async function getRevocationHistory(queryParams?: {
+    endTime?: string | null
+    limit?: number
+    offset?: number
+    source?: 'DLC' | 'IAP' | 'ORDER' | 'OTHER'
+    startTime?: string | null
+    status?: 'FAIL' | 'SUCCESS'
+    transactionId?: string | null
+    userId?: string | null
+  }): Promise<AxiosResponse<RevocationHistoryPagingSlicedResult>> {
     const $ = new RevocationAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getRevocationHistory( queryParams)
+    const resp = await $.getRevocationHistory(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Do revocation.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revocation results&lt;/li&gt;&lt;/ul&gt; 
+   * Do revocation.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revocation results&lt;/li&gt;&lt;/ul&gt;
    */
-  async function updateRevocation_ByUserId(userId:string, data: RevocationRequest): Promise<AxiosResponse<RevocationResult>> {
+  async function updateRevocation_ByUserId(userId: string, data: RevocationRequest): Promise<AxiosResponse<RevocationResult>> {
     const $ = new RevocationAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateRevocation_ByUserId(userId, data,)
+    const resp = await $.updateRevocation_ByUserId(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    deleteRevocationConfig,getRevocationConfig,updateRevocationConfig,getRevocationHistory,updateRevocation_ByUserId,
+    deleteRevocationConfig,
+    getRevocationConfig,
+    updateRevocationConfig,
+    getRevocationHistory,
+    updateRevocation_ByUserId
   }
 }
-  

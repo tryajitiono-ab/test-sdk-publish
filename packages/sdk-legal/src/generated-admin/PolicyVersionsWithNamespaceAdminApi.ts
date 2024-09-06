@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -17,74 +17,81 @@ import { UpdatePolicyVersionRequest } from '../generated-definitions/UpdatePolic
 import { UpdatePolicyVersionResponse } from '../generated-definitions/UpdatePolicyVersionResponse.js'
 import { PolicyVersionsWithNamespaceAdmin$ } from './endpoints/PolicyVersionsWithNamespaceAdmin$.js'
 
-
 export function PolicyVersionsWithNamespaceAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy. 
+   * Retrieve a version of a particular country specific policy. If version is not provided, the Legal Service will assume caller requesting all versions from country-specific policy.
    */
-  async function getVersions_ByPolicyId(policyId:string,  queryParams?: {versionId?: string | null}): Promise<AxiosResponse<RetrievePolicyVersionResponseArray>> {
+  async function getVersions_ByPolicyId(
+    policyId: string,
+    queryParams?: { versionId?: string | null }
+  ): Promise<AxiosResponse<RetrievePolicyVersionResponseArray>> {
     const $ = new PolicyVersionsWithNamespaceAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getVersions_ByPolicyId(policyId,  queryParams)
+    const resp = await $.getVersions_ByPolicyId(policyId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Create a version of a particular country-specific policy. 
+   * Create a version of a particular country-specific policy.
    */
-  async function createVersion_ByPolicyId(policyId:string, data: CreatePolicyVersionRequest): Promise<AxiosResponse<CreatePolicyVersionResponse>> {
+  async function createVersion_ByPolicyId(
+    policyId: string,
+    data: CreatePolicyVersionRequest
+  ): Promise<AxiosResponse<CreatePolicyVersionResponse>> {
     const $ = new PolicyVersionsWithNamespaceAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createVersion_ByPolicyId(policyId, data,)
+    const resp = await $.createVersion_ByPolicyId(policyId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Update a particular policy version. 
+   * Update a particular policy version.
    */
-  async function patchPolicyVersion_ByPolicyVersionId(policyVersionId:string, data: UpdatePolicyVersionRequest): Promise<AxiosResponse<UpdatePolicyVersionResponse>> {
+  async function patchPolicyVersion_ByPolicyVersionId(
+    policyVersionId: string,
+    data: UpdatePolicyVersionRequest
+  ): Promise<AxiosResponse<UpdatePolicyVersionResponse>> {
     const $ = new PolicyVersionsWithNamespaceAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchPolicyVersion_ByPolicyVersionId(policyVersionId, data,)
+    const resp = await $.patchPolicyVersion_ByPolicyVersionId(policyVersionId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Manually publish a version of a particular country-specific policy. 
+   * Manually publish a version of a particular country-specific policy.
    */
-  async function patchLatestPolicy_ByPolicyVersionId(policyVersionId:string,  queryParams?: {shouldNotify?: boolean | null}): Promise<AxiosResponse<unknown>> {
+  async function patchLatestPolicy_ByPolicyVersionId(
+    policyVersionId: string,
+    queryParams?: { shouldNotify?: boolean | null }
+  ): Promise<AxiosResponse<unknown>> {
     const $ = new PolicyVersionsWithNamespaceAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchLatestPolicy_ByPolicyVersionId(policyVersionId,  queryParams)
+    const resp = await $.patchLatestPolicy_ByPolicyVersionId(policyVersionId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    getVersions_ByPolicyId,createVersion_ByPolicyId,patchPolicyVersion_ByPolicyVersionId,patchLatestPolicy_ByPolicyVersionId,
+    getVersions_ByPolicyId,
+    createVersion_ByPolicyId,
+    patchPolicyVersion_ByPolicyVersionId,
+    patchLatestPolicy_ByPolicyVersionId
   }
 }
-  

@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -21,76 +21,69 @@ import { BuildManifest } from '../generated-definitions/BuildManifest.js'
 import { UploadSummary } from '../generated-definitions/UploadSummary.js'
 import { UploaderV1Admin$ } from './endpoints/UploaderV1Admin$.js'
 
-
 export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * This API is used to get basic build manifests. Only committed build will be retrieved. 
+   * This API is used to get basic build manifests. Only committed build will be retrieved.
    */
-  async function getBuildsByAppId( queryParams: {appId: string | null}): Promise<AxiosResponse<BuildIdVersionArray>> {
+  async function getBuildsByAppId(queryParams: { appId: string | null }): Promise<AxiosResponse<BuildIdVersionArray>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getBuildsByAppId( queryParams)
+    const resp = await $.getBuildsByAppId(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * This API is used to delete build manifest. 
+   * This API is used to delete build manifest.
    */
-  async function deleteBuild_ByBuildId(buildId:string): Promise<AxiosResponse<unknown>> {
+  async function deleteBuild_ByBuildId(buildId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteBuild_ByBuildId(buildId, )
+    const resp = await $.deleteBuild_ByBuildId(buildId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This API is used to get build manifest. 
+   * This API is used to get build manifest.
    */
-  async function getBuild_ByBuildId(buildId:string): Promise<AxiosResponse<BuildManifest>> {
+  async function getBuild_ByBuildId(buildId: string): Promise<AxiosResponse<BuildManifest>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getBuild_ByBuildId(buildId, )
+    const resp = await $.getBuild_ByBuildId(buildId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * This API is used to start chunk upload and retrieve upload url. 
+   * This API is used to start chunk upload and retrieve upload url.
    */
   async function createStartchunkupload(data: BinaryUpload): Promise<AxiosResponse<UploadSummary>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createStartchunkupload(data,)
+    const resp = await $.createStartchunkupload(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This API is used to get basic build manifests. Only committed build will be retrieved. 
+   * This API is used to get basic build manifests. Only committed build will be retrieved.
    */
   async function getBuildsByNamespace(): Promise<AxiosResponse<BasicBuildManifestArray>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
@@ -98,125 +91,139 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * This API is used to commit build manifest. 
+   * This API is used to commit build manifest.
    */
   async function createCommitbuildmanifest(data: BuildManifest): Promise<AxiosResponse<unknown>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createCommitbuildmanifest(data,)
+    const resp = await $.createCommitbuildmanifest(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This API is used to get build deletion. Only deleted build will be retrieved. 
+   * This API is used to get build deletion. Only deleted build will be retrieved.
    */
-  async function getBuildsdeletionByAppId( queryParams: {appId: string | null, deletionStatus?: number, platformId?: string | null}): Promise<AxiosResponse<BuildDeletionDataArray>> {
+  async function getBuildsdeletionByAppId(queryParams: {
+    appId: string | null
+    deletionStatus?: number
+    platformId?: string | null
+  }): Promise<AxiosResponse<BuildDeletionDataArray>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getBuildsdeletionByAppId( queryParams)
+    const resp = await $.getBuildsdeletionByAppId(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This API is used to set current build as release version. 
+   * This API is used to set current build as release version.
    */
-  async function updateSetcurrentbuild_ByBuildId(buildId:string,  queryParams?: {sendNotification?: boolean | null}): Promise<AxiosResponse<unknown>> {
+  async function updateSetcurrentbuild_ByBuildId(
+    buildId: string,
+    queryParams?: { sendNotification?: boolean | null }
+  ): Promise<AxiosResponse<unknown>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateSetcurrentbuild_ByBuildId(buildId,  queryParams)
+    const resp = await $.updateSetcurrentbuild_ByBuildId(buildId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This API is used to retrieve chunk by hash. 
+   * This API is used to retrieve chunk by hash.
    */
-  async function getRetrievechunkbyhash_ByHash(hash:string): Promise<AxiosResponse<BlockData>> {
+  async function getRetrievechunkbyhash_ByHash(hash: string): Promise<AxiosResponse<BlockData>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getRetrievechunkbyhash_ByHash(hash, )
+    const resp = await $.getRetrievechunkbyhash_ByHash(hash)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This API is used to retry build deletion. 
+   * This API is used to retry build deletion.
    */
-  async function updateRetry_ByBuildId(buildId:string): Promise<AxiosResponse<unknown>> {
+  async function updateRetry_ByBuildId(buildId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateRetry_ByBuildId(buildId, )
+    const resp = await $.updateRetry_ByBuildId(buildId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This API is used to cancel build deletion.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Required permission&lt;/i&gt;: resource=&#34;ADMIN:NAMESPACE:{namespace}:BUILDINFO&#34;, action=8 (DELETE)&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: none&lt;/li&gt;&lt;/ul&gt; 
+   * This API is used to cancel build deletion.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Required permission&lt;/i&gt;: resource=&#34;ADMIN:NAMESPACE:{namespace}:BUILDINFO&#34;, action=8 (DELETE)&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: none&lt;/li&gt;&lt;/ul&gt;
    */
-  async function deleteCancel_ByBuildId(buildId:string): Promise<AxiosResponse<unknown>> {
+  async function deleteCancel_ByBuildId(buildId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteCancel_ByBuildId(buildId, )
+    const resp = await $.deleteCancel_ByBuildId(buildId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
-  /**
-   * @deprecated
-   * This API is used to set current build as release version. 
-   */
-  async function updateSetcurrentbuild_ByAppId_ByVersion(appId:string, version:string): Promise<AxiosResponse<unknown>> {
-    const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateSetcurrentbuild_ByAppId_ByVersion(appId, version, )
-    if (resp.error) throw resp.error
-    return resp.response
-  }
-  
-  
+
   /**
    * @deprecated
-   * This API is used to start build upload. 
+   * This API is used to set current build as release version.
    */
-  async function createStartbuildupload_ByAppId_ByVersion(appId:string, version:string): Promise<AxiosResponse<BuildIdManifest>> {
+  async function updateSetcurrentbuild_ByAppId_ByVersion(appId: string, version: string): Promise<AxiosResponse<unknown>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createStartbuildupload_ByAppId_ByVersion(appId, version, )
+    const resp = await $.updateSetcurrentbuild_ByAppId_ByVersion(appId, version)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * This API is used to commit chunk that has been uploaded. 
+   * This API is used to start build upload.
    */
-  async function createUuid_ByHash_ByUuid_ByOffset(hash:string, uuid:string, offset:number): Promise<AxiosResponse<BlockManifest>> {
+  async function createStartbuildupload_ByAppId_ByVersion(appId: string, version: string): Promise<AxiosResponse<BuildIdManifest>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createUuid_ByHash_ByUuid_ByOffset(hash, uuid, offset, )
+    const resp = await $.createStartbuildupload_ByAppId_ByVersion(appId, version)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * This API is used to commit chunk that has been uploaded. 
+   * This API is used to commit chunk that has been uploaded.
    */
-  async function createOffset_ByHash_ByUuid_ByOffset_ByBlockSize(hash:string, uuid:string, offset:number, blockSize:number): Promise<AxiosResponse<BlockManifest>> {
+  async function createUuid_ByHash_ByUuid_ByOffset(hash: string, uuid: string, offset: number): Promise<AxiosResponse<BlockManifest>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createOffset_ByHash_ByUuid_ByOffset_ByBlockSize(hash, uuid, offset, blockSize, )
+    const resp = await $.createUuid_ByHash_ByUuid_ByOffset(hash, uuid, offset)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
+  /**
+   * @deprecated
+   * This API is used to commit chunk that has been uploaded.
+   */
+  async function createOffset_ByHash_ByUuid_ByOffset_ByBlockSize(
+    hash: string,
+    uuid: string,
+    offset: number,
+    blockSize: number
+  ): Promise<AxiosResponse<BlockManifest>> {
+    const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.createOffset_ByHash_ByUuid_ByOffset_ByBlockSize(hash, uuid, offset, blockSize)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
   return {
-    getBuildsByAppId,deleteBuild_ByBuildId,getBuild_ByBuildId,createStartchunkupload,getBuildsByNamespace,createCommitbuildmanifest,getBuildsdeletionByAppId,updateSetcurrentbuild_ByBuildId,getRetrievechunkbyhash_ByHash,updateRetry_ByBuildId,deleteCancel_ByBuildId,updateSetcurrentbuild_ByAppId_ByVersion,createStartbuildupload_ByAppId_ByVersion,createUuid_ByHash_ByUuid_ByOffset,createOffset_ByHash_ByUuid_ByOffset_ByBlockSize,
+    getBuildsByAppId,
+    deleteBuild_ByBuildId,
+    getBuild_ByBuildId,
+    createStartchunkupload,
+    getBuildsByNamespace,
+    createCommitbuildmanifest,
+    getBuildsdeletionByAppId,
+    updateSetcurrentbuild_ByBuildId,
+    getRetrievechunkbyhash_ByHash,
+    updateRetry_ByBuildId,
+    deleteCancel_ByBuildId,
+    updateSetcurrentbuild_ByAppId_ByVersion,
+    createStartbuildupload_ByAppId_ByVersion,
+    createUuid_ByHash_ByUuid_ByOffset,
+    createOffset_ByHash_ByUuid_ByOffset_ByBlockSize
   }
 }
-  

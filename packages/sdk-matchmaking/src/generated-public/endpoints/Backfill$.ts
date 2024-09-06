@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -21,72 +21,82 @@ export class Backfill$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * Create backfill ticket.  
+   * Create backfill ticket.
    */
   createBackfill(data: BackFillCreateRequest): Promise<Response<BackfillCreateResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/match2/v1/namespaces/{namespace}/backfill'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.post(url, data, {params})
+    const url = '/match2/v1/namespaces/{namespace}/backfill'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, BackfillCreateResponse, 'BackfillCreateResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      BackfillCreateResponse,
+      'BackfillCreateResponse'
+    )
   }
-  
   /**
-   * Get backfill proposal  
+   * Get backfill proposal
    */
-  getBackfillProposal( queryParams: {sessionID: string | null}): Promise<Response<BackfillProposalResponse>> {
-    const params = { ...queryParams} as AxiosRequestConfig
-    const url = '/match2/v1/namespaces/{namespace}/backfill/proposal'.replace('{namespace}', this.namespace)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+  getBackfillProposal(queryParams: { sessionID: string | null }): Promise<Response<BackfillProposalResponse>> {
+    const params = { ...queryParams } as AxiosRequestConfig
+    const url = '/match2/v1/namespaces/{namespace}/backfill/proposal'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, BackfillProposalResponse, 'BackfillProposalResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      BackfillProposalResponse,
+      'BackfillProposalResponse'
+    )
   }
-  
   /**
-   * Delete backfill ticket.  
+   * Delete backfill ticket.
    */
-  deleteBackfill_ByBackfillId(backfillID:string): Promise<Response<unknown>> {
+  deleteBackfill_ByBackfillId(backfillID: string): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/match2/v1/namespaces/{namespace}/backfill/{backfillID}'.replace('{namespace}', this.namespace).replace('{backfillID}', backfillID)     
-    const resultPromise = this.axiosInstance.delete(url, {params})
+    const url = '/match2/v1/namespaces/{namespace}/backfill/{backfillID}'
+      .replace('{namespace}', this.namespace)
+      .replace('{backfillID}', backfillID)
+    const resultPromise = this.axiosInstance.delete(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
   /**
-   * Get backfill ticket by ID  
+   * Get backfill ticket by ID
    */
-  getBackfill_ByBackfillId(backfillID:string): Promise<Response<BackfillGetResponse>> {
+  getBackfill_ByBackfillId(backfillID: string): Promise<Response<BackfillGetResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/match2/v1/namespaces/{namespace}/backfill/{backfillID}'.replace('{namespace}', this.namespace).replace('{backfillID}', backfillID)     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/match2/v1/namespaces/{namespace}/backfill/{backfillID}'
+      .replace('{namespace}', this.namespace)
+      .replace('{backfillID}', backfillID)
+    const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, BackfillGetResponse, 'BackfillGetResponse')
   }
-  
   /**
-   * Accept backfill proposal.  
+   * Accept backfill proposal.
    */
-  updateProposalAccept_ByBackfillId(backfillID:string, data: BackFillAcceptRequest): Promise<Response<GameSession>> {
+  updateProposalAccept_ByBackfillId(backfillID: string, data: BackFillAcceptRequest): Promise<Response<GameSession>> {
     const params = {} as AxiosRequestConfig
-    const url = '/match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/accept'.replace('{namespace}', this.namespace).replace('{backfillID}', backfillID)     
-    const resultPromise = this.axiosInstance.put(url, data, {params})
+    const url = '/match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/accept'
+      .replace('{namespace}', this.namespace)
+      .replace('{backfillID}', backfillID)
+    const resultPromise = this.axiosInstance.put(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, GameSession, 'GameSession')
   }
-  
   /**
-   * Reject backfill proposal  
+   * Reject backfill proposal
    */
-  updateProposalReject_ByBackfillId(backfillID:string, data: BackFillRejectRequest): Promise<Response<unknown>> {
+  updateProposalReject_ByBackfillId(backfillID: string, data: BackFillRejectRequest): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
-    const url = '/match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/reject'.replace('{namespace}', this.namespace).replace('{backfillID}', backfillID)     
-    const resultPromise = this.axiosInstance.put(url, data, {params})
+    const url = '/match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/reject'
+      .replace('{namespace}', this.namespace)
+      .replace('{backfillID}', backfillID)
+    const resultPromise = this.axiosInstance.put(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
   }
-  
 }
-  

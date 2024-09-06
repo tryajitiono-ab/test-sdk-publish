@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -14,17 +14,19 @@ export class EnvironmentVariables$ {
   // @ts-ignore
   // prettier-ignore
   constructor(private axiosInstance: AxiosInstance, private namespace: string, private useSchemaValidation = true) {}
-  
   /**
-   * List environment variables.  
+   * List environment variables.
    */
   getEnvironmentVariables(): Promise<Response<ListEnvironmentVariablesResponse>> {
     const params = {} as AxiosRequestConfig
-    const url = '/match2/v1/environment-variables'     
-    const resultPromise = this.axiosInstance.get(url, {params})
+    const url = '/match2/v1/environment-variables'
+    const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, ListEnvironmentVariablesResponse, 'ListEnvironmentVariablesResponse')
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      ListEnvironmentVariablesResponse,
+      'ListEnvironmentVariablesResponse'
+    )
   }
-  
 }
-  

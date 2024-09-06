@@ -4,36 +4,25 @@
  * and restrictions contact your company contract manager.
  */
 
-import { Accelbyte, Network } from '@accelbyte/sdk'
-import { Platform } from '@accelbyte/sdk-platform'
-import { Iam, IamUserAuthorizationClient } from '@accelbyte/sdk-iam'
+import { AccelByte, Network } from '@accelbyte/sdk'
+import { Iam, IamUserAuthorizationClient, UsersAdminApi, UsersApi } from '@accelbyte/sdk-iam'
+import { CurrencyApi, ItemApi, Platform } from '@accelbyte/sdk-platform'
 
-const sdk = Accelbyte.SDK({
-  options: {
-    baseURL: 'http://localhost:3030/api',
-    clientId: '77f88506b6174c3ea4d925f5b4096ce8',
+const sdk = AccelByte.SDK({
+  coreConfig: {
+    baseURL: 'https://development.accelbyte.io',
+    clientId: 'b79e5acbea254163bc0644a6ca210a29',
     namespace: 'accelbyte',
-    redirectURI: 'http://localhost:3030'
-  },
-  onEvents: {
-    onGetUserSession: (accessToken, refreshToken) => {
-      console.log('SDK Event: onGetUserSession', { accessToken, refreshToken })
-    },
-    onSessionExpired: () => {
-      console.log('SDK Event: onSessionExpired')
-    },
-    onError: error => {
-      console.error('SDK Event: onError', error.response)
-    }
+    redirectURI: 'http://localhost:3000'
   }
 })
 
 export async function getSdkTestValues() {
   const [currentUser, listOfCurrencies, listOfItems, currentUserCustomCall] = await Promise.all([
-    Iam.UsersApi(sdk).getUsersMe(),
-    Platform.CurrencyApi(sdk).getCurrencies(),
-    Platform.ItemApi(sdk).getItemsByCriteria({}),
-    usingCustomNetworkCall()
+    UsersApi(sdk).getUsersMe_v3(),
+    CurrencyApi(sdk).getCurrencies(),
+    ItemApi(sdk).getItemsByCriteria({}),
+    customNetworkCall()
   ])
 
   return {
@@ -68,10 +57,11 @@ export async function exchangeAuthorizationCode() {
 }
 
 // Below example can be used when we want to create a call into admin endpoint using Web SDK
-async function usingCustomNetworkCall() {
+async function customNetworkCall() {
   try {
+    const config = sdk.assembly()
     const adminEndpoint = '/iam/v3/public/users/me'
-    const network = Network.create(sdk.assembly())
+    const network = Network.create({ baseURL: config.coreConfig.baseURL, ...sdk.assembly().axiosConfig.request })
 
     return await network.get(adminEndpoint)
   } catch (err) {

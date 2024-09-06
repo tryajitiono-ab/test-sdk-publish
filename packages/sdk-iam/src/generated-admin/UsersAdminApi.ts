@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -74,30 +74,27 @@ import { UsersUpdateRequestV3 } from '../generated-definitions/UsersUpdateReques
 import { VerificationCodeResponse } from '../generated-definitions/VerificationCodeResponse.js'
 import { UsersAdmin$ } from './endpoints/UsersAdmin$.js'
 
-
 export function UsersAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * Get my user data action code : 10147 
+   * Get my user data action code : 10147
    */
   async function getUsersMe_v3(): Promise<AxiosResponse<UserResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -105,146 +102,167 @@ export function UsersAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/search [GET]_** 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/search [GET]_**
    */
-  async function getUsers_v2( queryParams: {platformId: string | null, after?: string | null, before?: string | null, displayName?: string | null, limit?: number, loginId?: string | null, platformUserId?: string | null, roleId?: string | null, userId?: string | null}): Promise<AxiosResponse<SearchUsersByPlatformIdResponse>> {
+  async function getUsers_v2(queryParams: {
+    platformId: string | null
+    after?: string | null
+    before?: string | null
+    displayName?: string | null
+    limit?: number
+    loginId?: string | null
+    platformUserId?: string | null
+    roleId?: string | null
+    userId?: string | null
+  }): Promise<AxiosResponse<SearchUsersByPlatformIdResponse>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getUsers_v2( queryParams)
+    const resp = await $.getUsers_v2(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint search user who owns the given email address action code : 10132 
+   * This endpoint search user who owns the given email address action code : 10132
    */
-  async function getUsers_v3( queryParams?: {emailAddress?: string | null}): Promise<AxiosResponse<UserResponseV3>> {
+  async function getUsers_v3(queryParams?: { emailAddress?: string | null }): Promise<AxiosResponse<UserResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getUsers_v3( queryParams)
+    const resp = await $.getUsers_v3(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint support to bulk update users based on given data. ------ Supported fields: * skipLoginQueue  
+   * This endpoint support to bulk update users based on given data. ------ Supported fields: * skipLoginQueue
    */
   async function updateUser_v3(data: UsersUpdateRequestV3): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateUser_v3(data,)
+    const resp = await $.updateUser_v3(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * List all users that has admin role (role that has admin_role attribute set to true). Endpoint behavior : - if query parameter is defined, endpoint will search users whose email address and display name match with the query - if roleId parameter is defined, endpoint will search users that have the defined roleId - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range - if startDate parameter is defined, endpoint will search users that created start from the defined date - if endDate parameter is defined, endpoint will search users that created until the defined date In multi tenant mode : - if super admin search in super admin namespace, the result will be all admin users - if super admin search in game studio namespace, the result will be all admin users under the game studio namespace - if studio admin search in their studio namespace, the result will be all admin user in the game studio namespace The endpoint will return all admin from all namespace when called from publisher namespace. When not called from publisher namespace, the endpoint will return all admin from the path namespace. 
+   * List all users that has admin role (role that has admin_role attribute set to true). Endpoint behavior : - if query parameter is defined, endpoint will search users whose email address and display name match with the query - if roleId parameter is defined, endpoint will search users that have the defined roleId - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range - if startDate parameter is defined, endpoint will search users that created start from the defined date - if endDate parameter is defined, endpoint will search users that created until the defined date In multi tenant mode : - if super admin search in super admin namespace, the result will be all admin users - if super admin search in game studio namespace, the result will be all admin users under the game studio namespace - if studio admin search in their studio namespace, the result will be all admin user in the game studio namespace The endpoint will return all admin from all namespace when called from publisher namespace. When not called from publisher namespace, the endpoint will return all admin from the path namespace.
    */
-  async function getAdmins_v3( queryParams?: {after?: string | null, before?: string | null, endDate?: string | null, limit?: number, query?: string | null, roleId?: string | null, startDate?: string | null}): Promise<AxiosResponse<GetUsersResponseWithPaginationV3>> {
+  async function getAdmins_v3(queryParams?: {
+    after?: string | null
+    before?: string | null
+    endDate?: string | null
+    limit?: number
+    query?: string | null
+    roleId?: string | null
+    startDate?: string | null
+  }): Promise<AxiosResponse<GetUsersResponseWithPaginationV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getAdmins_v3( queryParams)
+    const resp = await $.getAdmins_v3(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint returns user bans of userIDs specified in the payload action code : 10127 
+   * This endpoint returns user bans of userIDs specified in the payload action code : 10127
    */
-  async function fetchUserBan_v3(data: GetBulkUserBansRequest, queryParams?: {activeOnly?: boolean | null, banType?: string | null}): Promise<AxiosResponse<GetUserBanV3Response>> {
+  async function fetchUserBan_v3(
+    data: GetBulkUserBansRequest,
+    queryParams?: { activeOnly?: boolean | null; banType?: string | null }
+  ): Promise<AxiosResponse<GetUserBanV3Response>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.fetchUserBan_v3(data, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * List User By User ID This endpoint intended to list user information from the given list of userID and namespace 
+   * List User By User ID This endpoint intended to list user information from the given list of userID and namespace
    */
   async function createUserBulk_v3(data: UserIDsRequest): Promise<AxiosResponse<ListUserInformationResult>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createUserBulk_v3(data,)
+    const resp = await $.createUserBulk_v3(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace based on the **{namespace}** value in path parameter. An admin user can only assign role to namespaces that the admin user has the required permission. Role is optional, if not specified then it will only assign User role The invited admin will also assigned with &#34;User&#34; role by default. 
+   * Use this endpoint to invite admin or non-admin user and assign role to them. The role must be scoped to namespace based on the **{namespace}** value in path parameter. An admin user can only assign role to namespaces that the admin user has the required permission. Role is optional, if not specified then it will only assign User role The invited admin will also assigned with &#34;User&#34; role by default.
    */
   async function createUserInvite_v3(data: InviteUserRequestV3): Promise<AxiosResponse<InviteUserResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createUserInvite_v3(data,)
+    const resp = await $.createUserInvite_v3(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Endpoint behavior : - by default this endpoint searches all users on the specified namespace - if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range - if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range - if startDate parameter is defined, endpoint will search users that created start from the defined date - if endDate parameter is defined, endpoint will search users that created until the defined date - if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to - if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName - if limit is not defined, The default limit is 100 In multi tenant mode : - if super admin search in super admin namespace, the result will be all game admin user - if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace - if super admin search in game namespace, the result will be all game admin users and players under the game namespace - if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace - if game admin search in their game namespace, the result will be all player in the game namespace action code : 10133 
+   * Endpoint behavior : - by default this endpoint searches all users on the specified namespace - if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range - if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range - if startDate parameter is defined, endpoint will search users that created start from the defined date - if endDate parameter is defined, endpoint will search users that created until the defined date - if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to - if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName - if limit is not defined, The default limit is 100 In multi tenant mode : - if super admin search in super admin namespace, the result will be all game admin user - if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace - if super admin search in game namespace, the result will be all game admin users and players under the game namespace - if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace - if game admin search in their game namespace, the result will be all player in the game namespace action code : 10133
    */
-  async function getUsersSearch_v3( queryParams?: {by?: string | null, endDate?: string | null, includeTotal?: boolean | null, limit?: number, offset?: number, platformBy?: string | null, platformId?: string | null, query?: string | null, roleIds?: string | null, skipLoginQueue?: boolean | null, startDate?: string | null, testAccount?: boolean | null}): Promise<AxiosResponse<SearchUsersResponseWithPaginationV3>> {
+  async function getUsersSearch_v3(queryParams?: {
+    by?: string | null
+    endDate?: string | null
+    includeTotal?: boolean | null
+    limit?: number
+    offset?: number
+    platformBy?: string | null
+    platformId?: string | null
+    query?: string | null
+    roleIds?: string | null
+    skipLoginQueue?: boolean | null
+    startDate?: string | null
+    testAccount?: boolean | null
+  }): Promise<AxiosResponse<SearchUsersResponseWithPaginationV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getUsersSearch_v3( queryParams)
+    const resp = await $.getUsersSearch_v3(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_** 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [GET]_**
    */
-  async function getUser_ByUserId_v2(userId:string): Promise<AxiosResponse<UserResponse>> {
+  async function getUser_ByUserId_v2(userId: string): Promise<AxiosResponse<UserResponse>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getUser_ByUserId_v2(userId, )
+    const resp = await $.getUser_ByUserId_v2(userId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]_** This Endpoint support update user based on given data. **Single request can update single field or multi fields.** Supported field {Country, DisplayName, LanguageTag} Country use ISO3166-1 alpha-2 two letter, e.g. US. **Several case of updating email address** - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address. - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address. - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address. 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId} [PATCH]_** This Endpoint support update user based on given data. **Single request can update single field or multi fields.** Supported field {Country, DisplayName, LanguageTag} Country use ISO3166-1 alpha-2 two letter, e.g. US. **Several case of updating email address** - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address. - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address. - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address.
    */
-  async function patchUser_ByUserId_v2(userId:string, data: UserUpdateRequest): Promise<AxiosResponse<UserResponse>> {
+  async function patchUser_ByUserId_v2(userId: string, data: UserUpdateRequest): Promise<AxiosResponse<UserResponse>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchUser_ByUserId_v2(userId, data,)
+    const resp = await $.patchUser_ByUserId_v2(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Admin Get User By User Id 
+   * Admin Get User By User Id
    */
-  async function getUser_ByUserId_v3(userId:string): Promise<AxiosResponse<UserResponseV3>> {
+  async function getUser_ByUserId_v3(userId: string): Promise<AxiosResponse<UserResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getUser_ByUserId_v3(userId, )
+    const resp = await $.getUser_ByUserId_v3(userId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This Endpoint support update user based on given data. **Single request can update single field or multi fields.** Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName} Country use ISO3166-1 alpha-2 two letter, e.g. US. Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29. **Response body logic when user updating email address:** - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address. - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address. - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address. action code : 10103  
+   * This Endpoint support update user based on given data. **Single request can update single field or multi fields.** Supported field {country, displayName, languageTag, dateOfBirth, avatarUrl, userName} Country use ISO3166-1 alpha-2 two letter, e.g. US. Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29. **Response body logic when user updating email address:** - User want to update email address of which have been verified, NewEmailAddress response field will be filled with new email address. - User want to update email address of which have not been verified, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with new email address. - User want to update email address of which have been verified and updated before, {LoginId, OldEmailAddress, EmailAddress} response field will be filled with verified email before. NewEmailAddress response field will be filled with newest email address. action code : 10103
    */
-  async function patchUser_ByUserId_v3(userId:string, data: UserUpdateRequestV3): Promise<AxiosResponse<UserResponseV3>> {
+  async function patchUser_ByUserId_v3(userId: string, data: UserUpdateRequestV3): Promise<AxiosResponse<UserResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchUser_ByUserId_v3(userId, data,)
+    const resp = await $.patchUser_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [GET]_** - **Note:** difference in V3 response, format difference: Pascal case =&gt; Camel case 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [GET]_** - **Note:** difference in V3 response, format difference: Pascal case =&gt; Camel case
    */
   async function getAgerestrictions_v2(): Promise<AxiosResponse<AgeRestrictionResponse>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -252,22 +270,20 @@ export function UsersAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [PATCH]_** 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions [PATCH]_**
    */
   async function patchAgerestriction_v2(data: AgeRestrictionRequest): Promise<AxiosResponse<AgeRestrictionResponse>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchAgerestriction_v2(data,)
+    const resp = await $.patchAgerestriction_v2(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * action code: 10138 
+   * action code: 10138
    */
   async function getAgerestrictions_v3(): Promise<AxiosResponse<AgeRestrictionResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -275,272 +291,274 @@ export function UsersAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * action code: 10122 
+   * action code: 10122
    */
   async function patchAgerestriction_v3(data: AgeRestrictionRequestV3): Promise<AxiosResponse<AgeRestrictionResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchAgerestriction_v3(data,)
+    const resp = await $.patchAgerestriction_v3(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint search user by the list of email addresses action code : 10132 
+   * This endpoint search user by the list of email addresses action code : 10132
    */
   async function fetchUserSearchBulk_v3(data: ListEmailAddressRequest): Promise<AxiosResponse<ListUserResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.fetchUserSearchBulk_v3(data,)
+    const resp = await $.fetchUserSearchBulk_v3(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]_** 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [POST]_**
    */
-  async function createBan_ByUserId_v2(userId:string, data: BanCreateRequest): Promise<AxiosResponse<UserBanResponse>> {
+  async function createBan_ByUserId_v2(userId: string, data: BanCreateRequest): Promise<AxiosResponse<UserBanResponse>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createBan_ByUserId_v2(userId, data,)
+    const resp = await $.createBan_ByUserId_v2(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]_** 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/bans [GET]_**
    */
-  async function getBans_ByUserId_v2(userId:string,  queryParams?: {activeOnly?: boolean | null}): Promise<AxiosResponse<UserBanResponseArray>> {
+  async function getBans_ByUserId_v2(
+    userId: string,
+    queryParams?: { activeOnly?: boolean | null }
+  ): Promise<AxiosResponse<UserBanResponseArray>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getBans_ByUserId_v2(userId,  queryParams)
+    const resp = await $.getBans_ByUserId_v2(userId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint retrieve the first page of the data if after and before parameters is empty action code : 10126 
+   * This endpoint retrieve the first page of the data if after and before parameters is empty action code : 10126
    */
-  async function getBans_ByUserId_v3(userId:string,  queryParams?: {activeOnly?: boolean | null, after?: string | null, before?: string | null, limit?: number}): Promise<AxiosResponse<GetUserBanV3Response>> {
+  async function getBans_ByUserId_v3(
+    userId: string,
+    queryParams?: { activeOnly?: boolean | null; after?: string | null; before?: string | null; limit?: number }
+  ): Promise<AxiosResponse<GetUserBanV3Response>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getBans_ByUserId_v3(userId,  queryParams)
+    const resp = await $.getBans_ByUserId_v3(userId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Bans a user with specific type of ban. Ban types and reason can be queried. action code : 10141 
+   * Bans a user with specific type of ban. Ban types and reason can be queried. action code : 10141
    */
-  async function createBan_ByUserId_v3(userId:string, data: BanCreateRequest): Promise<AxiosResponse<UserBanResponseV3>> {
+  async function createBan_ByUserId_v3(userId: string, data: BanCreateRequest): Promise<AxiosResponse<UserBanResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createBan_ByUserId_v3(userId, data,)
+    const resp = await $.createBan_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * if limit is not defined, The default limit is 100 
+   * if limit is not defined, The default limit is 100
    */
-  async function getUsersLinkhistories_v3( queryParams: {platformId: string | null, limit?: number, offset?: number, platformUserId?: string | null}): Promise<AxiosResponse<LinkingHistoryResponseWithPaginationV3>> {
+  async function getUsersLinkhistories_v3(queryParams: {
+    platformId: string | null
+    limit?: number
+    offset?: number
+    platformUserId?: string | null
+  }): Promise<AxiosResponse<LinkingHistoryResponseWithPaginationV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getUsersLinkhistories_v3( queryParams)
+    const resp = await $.getUsersLinkhistories_v3(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_** 
-   */
-  async function updateRole_ByUserId_v2(userId:string, data: string[]): Promise<AxiosResponse<unknown>> {
-    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateRole_ByUserId_v2(userId, data,)
-    if (resp.error) throw resp.error
-    return resp.response
-  }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_** 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
    */
-  async function updateRole_ByUserId_ByNS_v2(userId:string, data: string[]): Promise<AxiosResponse<unknown>> {
+  async function updateRole_ByUserId_v2(userId: string, data: string[]): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateRole_ByUserId_ByNS_v2(userId, data,)
+    const resp = await $.updateRole_ByUserId_v2(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint search admin users which have the roleId Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members. Use endpoint [GET] /roles/{roleId}/admin to check the role status action code : 10140 
+   * @deprecated
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/roles [PATCH]_**
    */
-  async function getUsers_ByRoleId_v3(roleId:string,  queryParams?: {after?: number, before?: number, limit?: number}): Promise<AxiosResponse<GetUsersResponseWithPaginationV3>> {
+  async function updateRole_ByUserId_ByNS_v2(userId: string, data: string[]): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getUsers_ByRoleId_v3(roleId,  queryParams)
+    const resp = await $.updateRole_ByUserId_ByNS_v2(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * **[WARNING] This endpoint is only for testing purpose.** This endpoint get active user verification code. There are some scenarios of getting verification codes, all of them will be returned on this endpoint: - After account registration - After reset password request - After headless account upgrade - After update email request This API only accept publisher/studio namespace and userId. Action code: 10146 
+   * This endpoint search admin users which have the roleId Notes : this endpoint only accept admin role. Admin Role is role which have admin status and members. Use endpoint [GET] /roles/{roleId}/admin to check the role status action code : 10140
    */
-  async function getCodes_ByUserId_v3(userId:string): Promise<AxiosResponse<VerificationCodeResponse>> {
+  async function getUsers_ByRoleId_v3(
+    roleId: string,
+    queryParams?: { after?: number; before?: number; limit?: number }
+  ): Promise<AxiosResponse<GetUsersResponseWithPaginationV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getCodes_ByUserId_v3(userId, )
+    const resp = await $.getUsers_ByRoleId_v3(roleId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Delete User Roles 
+   * **[WARNING] This endpoint is only for testing purpose.** This endpoint get active user verification code. There are some scenarios of getting verification codes, all of them will be returned on this endpoint: - After account registration - After reset password request - After headless account upgrade - After update email request This API only accept publisher/studio namespace and userId. Action code: 10146
    */
-  async function deleteRole_ByUserId_v3(userId:string, data: string[]): Promise<AxiosResponse<unknown>> {
+  async function getCodes_ByUserId_v3(userId: string): Promise<AxiosResponse<VerificationCodeResponse>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteRole_ByUserId_v3(userId, data,)
+    const resp = await $.getCodes_ByUserId_v3(userId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * User&#39;s roles will be replaced with roles from request body. An admin user can only assign role with **namespace** (in request body) if the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4]. 
+   * Delete User Roles
    */
-  async function patchRole_ByUserId_v3(userId:string, data: NamespaceRoleRequest[]): Promise<AxiosResponse<unknown>> {
+  async function deleteRole_ByUserId_v3(userId: string, data: string[]): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchRole_ByUserId_v3(userId, data,)
+    const resp = await $.deleteRole_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Notes: - This endpoint bulk get users&#39; basic info by userId, max allowed 100 at a time - If namespace is game, will search by game user Id, other wise will search by publisher namespace  
+   * User&#39;s roles will be replaced with roles from request body. An admin user can only assign role with **namespace** (in request body) if the admin user has required permission which is same as the required permission of endpoint: [AdminAddUserRoleV4].
+   */
+  async function patchRole_ByUserId_v3(userId: string, data: NamespaceRoleRequest[]): Promise<AxiosResponse<unknown>> {
+    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.patchRole_ByUserId_v3(userId, data)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
+  /**
+   * Notes: - This endpoint bulk get users&#39; basic info by userId, max allowed 100 at a time - If namespace is game, will search by game user Id, other wise will search by publisher namespace
    */
   async function fetchUserBulkPlatform_v3(data: UserIDsRequest): Promise<AxiosResponse<ListBulkUserPlatformsResponse>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.fetchUserBulkPlatform_v3(data,)
+    const resp = await $.fetchUserBulkPlatform_v3(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_** 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_**
    */
-  async function updateEnable_ByUserId_v2(userId:string): Promise<AxiosResponse<unknown>> {
+  async function updateEnable_ByUserId_v2(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateEnable_ByUserId_v2(userId, )
+    const resp = await $.updateEnable_ByUserId_v2(userId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint disable or enable user account. Set the enable status on the request body to true to enable user account or set to false to disable it. Disable user for **Account Disable** purpose fill the reason with: - **AdminDeactivateAccount** : if your disable account request comes from admin Enable user ignore field &#39;reason&#39; in the request body. action code : 10143 
+   * This endpoint disable or enable user account. Set the enable status on the request body to true to enable user account or set to false to disable it. Disable user for **Account Disable** purpose fill the reason with: - **AdminDeactivateAccount** : if your disable account request comes from admin Enable user ignore field &#39;reason&#39; in the request body. action code : 10143
    */
-  async function patchStatus_ByUserId_v3(userId:string, data: UpdateUserStatusRequest): Promise<AxiosResponse<unknown>> {
+  async function patchStatus_ByUserId_v3(userId: string, data: UpdateUserStatusRequest): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchStatus_ByUserId_v3(userId, data,)
+    const resp = await $.patchStatus_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint force verify user Note: - namespace: only accept publisher/studio namespace - userId: only accept publisher/studio userId action code: 10118 
+   * This endpoint force verify user Note: - namespace: only accept publisher/studio namespace - userId: only accept publisher/studio userId action code: 10118
    */
-  async function updateVerify_ByUserId_v3(userId:string): Promise<AxiosResponse<unknown>> {
+  async function updateVerify_ByUserId_v3(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateVerify_ByUserId_v3(userId, )
+    const resp = await $.updateVerify_ByUserId_v3(userId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_** For **Deletion Account** purpose fill the reason with: - **DeactivateAccount** : if your deletion request comes from user - **AdminDeactivateAccount** : if your deletion request comes from admin 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/status [PATCH]_** For **Deletion Account** purpose fill the reason with: - **DeactivateAccount** : if your deletion request comes from user - **AdminDeactivateAccount** : if your deletion request comes from admin
    */
-  async function updateDisable_ByUserId_v2(userId:string, data: DisableUserRequest): Promise<AxiosResponse<unknown>> {
+  async function updateDisable_ByUserId_v2(userId: string, data: DisableUserRequest): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateDisable_ByUserId_v2(userId, data,)
+    const resp = await $.updateDisable_ByUserId_v2(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]_** 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries/{countryCode} [PATCH]_**
    */
-  async function patchCountry_ByCountryCode_v2(countryCode:string, data: CountryAgeRestrictionRequest): Promise<AxiosResponse<Country>> {
+  async function patchCountry_ByCountryCode_v2(countryCode: string, data: CountryAgeRestrictionRequest): Promise<AxiosResponse<Country>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchCountry_ByCountryCode_v2(countryCode, data,)
+    const resp = await $.patchCountry_ByCountryCode_v2(countryCode, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/password [PUT]_** 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/password [PUT]_**
    */
-  async function updatePassword_ByUserId_v2(userId:string, data: UserPasswordUpdateRequest): Promise<AxiosResponse<unknown>> {
+  async function updatePassword_ByUserId_v2(userId: string, data: UserPasswordUpdateRequest): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updatePassword_ByUserId_v2(userId, data,)
+    const resp = await $.updatePassword_ByUserId_v2(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Update User Password 
+   * Update User Password
    */
-  async function updatePassword_ByUserId_v3(userId:string, data: UserPasswordUpdateV3Request): Promise<AxiosResponse<unknown>> {
+  async function updatePassword_ByUserId_v3(userId: string, data: UserPasswordUpdateV3Request): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updatePassword_ByUserId_v3(userId, data,)
+    const resp = await $.updatePassword_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * **This endpoint requires publisher namespace.** Returns list of users ID and namespace with their Justice platform account, under a namespace. If user doesn&#39;t have Justice platform account, the linkedPlatforms will be empty array.&#39; 
+   * **This endpoint requires publisher namespace.** Returns list of users ID and namespace with their Justice platform account, under a namespace. If user doesn&#39;t have Justice platform account, the linkedPlatforms will be empty array.&#39;
    */
-  async function getUsersPlatformsJustice_v3( queryParams?: {limit?: number, offset?: number}): Promise<AxiosResponse<ListUsersWithPlatformAccountsResponse>> {
+  async function getUsersPlatformsJustice_v3(queryParams?: {
+    limit?: number
+    offset?: number
+  }): Promise<AxiosResponse<ListUsersWithPlatformAccountsResponse>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getUsersPlatformsJustice_v3( queryParams)
+    const resp = await $.getUsersPlatformsJustice_v3(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Gets platform accounts that are already linked with user account. Action code : 10128 **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1 ## Justice Platform Account The permission ’ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}’ [READ] is required in order to read the UserID who linked with the user.  
+   * Gets platform accounts that are already linked with user account. Action code : 10128 **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1 ## Justice Platform Account The permission ’ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}’ [READ] is required in order to read the UserID who linked with the user.
    */
-  async function getPlatforms_ByUserId_v3(userId:string,  queryParams?: {after?: string | null, before?: string | null, limit?: number, platformId?: string | null, targetNamespace?: string | null}): Promise<AxiosResponse<UserLinkedPlatformsResponseV3>> {
+  async function getPlatforms_ByUserId_v3(
+    userId: string,
+    queryParams?: {
+      after?: string | null
+      before?: string | null
+      limit?: number
+      platformId?: string | null
+      targetNamespace?: string | null
+    }
+  ): Promise<AxiosResponse<UserLinkedPlatformsResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getPlatforms_ByUserId_v3(userId,  queryParams)
+    const resp = await $.getPlatforms_ByUserId_v3(userId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries [GET]_** 
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/agerestrictions/countries [GET]_**
    */
   async function getCountriesAgerestrictions_v2(): Promise<AxiosResponse<CountryAgeRestrictionArray>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -548,10 +566,9 @@ export function UsersAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * action code : 10139 
+   * action code : 10139
    */
   async function getAgerestrictionsCountries_v3(): Promise<AxiosResponse<CountryV3ResponseArray>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
@@ -559,387 +576,485 @@ export function UsersAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Will verify account and consume code if validateOnly is set false in request body Redeems a verification code sent to a user to verify the user&#39;s contact address is correct Available ContactType : **email** or **phone**  
+   * Will verify account and consume code if validateOnly is set false in request body Redeems a verification code sent to a user to verify the user&#39;s contact address is correct Available ContactType : **email** or **phone**
    */
-  async function updateCodeVerify_ByUserId_v3(userId:string, data: UserVerificationRequest): Promise<AxiosResponse<unknown>> {
+  async function updateCodeVerify_ByUserId_v3(userId: string, data: UserVerificationRequest): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateCodeVerify_ByUserId_v3(userId, data,)
+    const resp = await $.updateCodeVerify_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow 
+   * [WARNING] This endpoint is deleting user data from database directly by skipping GDPR flow
    */
-  async function deleteInformation_ByUserId_v3(userId:string): Promise<AxiosResponse<unknown>> {
+  async function deleteInformation_ByUserId_v3(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteInformation_ByUserId_v3(userId, )
+    const resp = await $.deleteInformation_ByUserId_v3(userId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Delete User Permission 
+   * Delete User Permission
    */
-  async function deletePermission_ByUserId_v3(userId:string, data: PermissionDeleteRequest[]): Promise<AxiosResponse<unknown>> {
+  async function deletePermission_ByUserId_v3(userId: string, data: PermissionDeleteRequest[]): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deletePermission_ByUserId_v3(userId, data,)
+    const resp = await $.deletePermission_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint will APPEND user&#39;s permissions with the ones defined in body Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect. Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *. In ranged schedule, first element will be start date, and second one will be end date If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive Syntax reference Fields: 1. Seconds: 0-59 * / , - 1. Minutes: 0-59 * / , - 1. Hours: 0-23 * / , - 1. Day of month: 1-31 * / , - L W 1. Month: 1-12 JAN-DEC * / , - 1. Day of week: 0-6 SUN-SAT * / , - L # 1. Year: 1970-2099 * / , - Special characters: 1. *: all values in the fields, e.g. * in seconds fields indicates every second 1. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter 1. ,: separate items of a list, e.g. MON,WED,FRI in day of week 1. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive 1. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as &#34;the last Friday&#34; (5L) of a given month. In the day-of-month field, it specifies the last day of the month. 1. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: &#34;the nearest business day to the 15th of the month.&#34; 1. #: must be followed by a number between one and five. It allows you to specify constructs such as &#34;the second Friday&#34; of a given month. 
+   * This endpoint will APPEND user&#39;s permissions with the ones defined in body Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect. Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *. In ranged schedule, first element will be start date, and second one will be end date If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive Syntax reference Fields: 1. Seconds: 0-59 * / , - 1. Minutes: 0-59 * / , - 1. Hours: 0-23 * / , - 1. Day of month: 1-31 * / , - L W 1. Month: 1-12 JAN-DEC * / , - 1. Day of week: 0-6 SUN-SAT * / , - L # 1. Year: 1970-2099 * / , - Special characters: 1. *: all values in the fields, e.g. * in seconds fields indicates every second 1. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter 1. ,: separate items of a list, e.g. MON,WED,FRI in day of week 1. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive 1. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as &#34;the last Friday&#34; (5L) of a given month. In the day-of-month field, it specifies the last day of the month. 1. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: &#34;the nearest business day to the 15th of the month.&#34; 1. #: must be followed by a number between one and five. It allows you to specify constructs such as &#34;the second Friday&#34; of a given month.
    */
-  async function createPermission_ByUserId_v3(userId:string, data: Permissions): Promise<AxiosResponse<unknown>> {
+  async function createPermission_ByUserId_v3(userId: string, data: Permissions): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createPermission_ByUserId_v3(userId, data,)
+    const resp = await $.createPermission_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint will REPLACE user&#39;s permissions with the ones defined in body Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect. Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *. In ranged schedule, first element will be start date, and second one will be end date If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive Syntax reference Fields: 1. Seconds: 0-59 * / , - 2. Minutes: 0-59 * / , - 3. Hours: 0-23 * / , - 4. Day of month: 1-31 * / , - L W 5. Month: 1-12 JAN-DEC * / , - 6. Day of week: 0-6 SUN-SAT * / , - L # 7. Year: 1970-2099 * / , - Special characters: 1. *: all values in the fields, e.g. * in seconds fields indicates every second 2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter 3. ,: separate items of a list, e.g. MON,WED,FRI in day of week 4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive 5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as &#34;the last Friday&#34; (5L) of a given month. In the day-of-month field, it specifies the last day of the month. 6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: &#34;the nearest business day to the 15th of the month.&#34; 7. #: must be followed by a number between one and five. It allows you to specify constructs such as &#34;the second Friday&#34; of a given month. 
+   * This endpoint will REPLACE user&#39;s permissions with the ones defined in body Schedule contains cron string or date range (both are UTC, also in cron syntax) to indicate when a permission and action are in effect. Both schedule types accepts quartz compatible cron syntax e.g. * * * * * * *. In ranged schedule, first element will be start date, and second one will be end date If schedule is set, the scheduled action must be valid too, that is between 1 to 15, inclusive Syntax reference Fields: 1. Seconds: 0-59 * / , - 2. Minutes: 0-59 * / , - 3. Hours: 0-23 * / , - 4. Day of month: 1-31 * / , - L W 5. Month: 1-12 JAN-DEC * / , - 6. Day of week: 0-6 SUN-SAT * / , - L # 7. Year: 1970-2099 * / , - Special characters: 1. *: all values in the fields, e.g. * in seconds fields indicates every second 2. /: increments of ranges, e.g. 3-59/15 in the minute field indicate the third minute of the hour and every 15 minutes thereafter 3. ,: separate items of a list, e.g. MON,WED,FRI in day of week 4. -: range, e.g. 2010-2018 indicates every year between 2010 and 2018, inclusive 5. L: last, e.g. When used in the day-of-week field, it allows you to specify constructs such as &#34;the last Friday&#34; (5L) of a given month. In the day-of-month field, it specifies the last day of the month. 6. W: business day, e.g. if you were to specify 15W as the value for the day-of-month field, the meaning is: &#34;the nearest business day to the 15th of the month.&#34; 7. #: must be followed by a number between one and five. It allows you to specify constructs such as &#34;the second Friday&#34; of a given month.
    */
-  async function updatePermission_ByUserId_v3(userId:string, data: Permissions): Promise<AxiosResponse<unknown>> {
+  async function updatePermission_ByUserId_v3(userId: string, data: Permissions): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updatePermission_ByUserId_v3(userId, data,)
+    const resp = await $.updatePermission_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Set ban status for a single user for a specific ban. Retrieve user ban and choose the ban ID. Set the form parameter to true/false to enable or disable the ban. action code : 10142&#39; 
+   * Set ban status for a single user for a specific ban. Retrieve user ban and choose the ban ID. Set the form parameter to true/false to enable or disable the ban. action code : 10142&#39;
    */
-  async function patchBan_ByUserId_ByBanId_v3(userId:string, banId:string, data: BanUpdateRequest): Promise<AxiosResponse<UserBanResponseV3>> {
+  async function patchBan_ByUserId_ByBanId_v3(
+    userId: string,
+    banId: string,
+    data: BanUpdateRequest
+  ): Promise<AxiosResponse<UserBanResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchBan_ByUserId_ByBanId_v3(userId, banId, data,)
+    const resp = await $.patchBan_ByUserId_ByBanId_v3(userId, banId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint get user&#39;s bans summary&#39; 
+   * This endpoint get user&#39;s bans summary&#39;
    */
-  async function getBansSummary_ByUserId_v3(userId:string): Promise<AxiosResponse<GetUserBanSummaryV3>> {
+  async function getBansSummary_ByUserId_v3(userId: string): Promise<AxiosResponse<GetUserBanSummaryV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getBansSummary_ByUserId_v3(userId, )
+    const resp = await $.getBansSummary_ByUserId_v3(userId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * The verification code is sent to email address. Available contexts for use : - **UserAccountRegistration** a context type used for verifying email address in user account registration. It returns 409 if the email address already verified. **_It is the default context if the Context field is empty_** - **UpdateEmailAddress** a context type used for verify user before updating email address.(Without email address verified checking) - **upgradeHeadlessAccount** The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account. If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409. action code: 10116 
+   * The verification code is sent to email address. Available contexts for use : - **UserAccountRegistration** a context type used for verifying email address in user account registration. It returns 409 if the email address already verified. **_It is the default context if the Context field is empty_** - **UpdateEmailAddress** a context type used for verify user before updating email address.(Without email address verified checking) - **upgradeHeadlessAccount** The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account. If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409. action code: 10116
    */
-  async function updateCodeRequest_ByUserId_v3(userId:string, data: SendVerificationCodeRequestV3): Promise<AxiosResponse<unknown>> {
+  async function updateCodeRequest_ByUserId_v3(userId: string, data: SendVerificationCodeRequestV3): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateCodeRequest_ByUserId_v3(userId, data,)
+    const resp = await $.updateCodeRequest_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Admin List User ID By Platform User ID This endpoint intended to list game user ID from the given namespace This endpoint return list of user ID by given platform ID and list of platform user ID Supported platform: - steam - steamopenid - ps4web - ps4 - ps5 - live - xblweb - oculus - oculusweb - facebook - google - googleplaygames - twitch - discord - android - ios - apple - device - justice - epicgames - nintendo - awscognito - netflix - snapchat - oidc platform id Note: **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1 
+   * Admin List User ID By Platform User ID This endpoint intended to list game user ID from the given namespace This endpoint return list of user ID by given platform ID and list of platform user ID Supported platform: - steam - steamopenid - ps4web - ps4 - ps5 - live - xblweb - oculus - oculusweb - facebook - google - googleplaygames - twitch - discord - android - ios - apple - device - justice - epicgames - nintendo - awscognito - netflix - snapchat - oidc platform id Note: **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
    */
-  async function fetchUser_ByPlatformId_v3(platformId:string, data: PlatformUserIdRequest, queryParams?: {rawPID?: boolean | null, rawPUID?: boolean | null}): Promise<AxiosResponse<UserPlatforms>> {
+  async function fetchUser_ByPlatformId_v3(
+    platformId: string,
+    data: PlatformUserIdRequest,
+    queryParams?: { rawPID?: boolean | null; rawPUID?: boolean | null }
+  ): Promise<AxiosResponse<UserPlatforms>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.fetchUser_ByPlatformId_v3(platformId, data, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Force linking platform account to user User Account. This endpoint intended for admin to forcefully link account to user. By default, these cases are not allowed - The platform account current is linked by another account - The target account ever linked this platform&#39;s another account  
+   * Force linking platform account to user User Account. This endpoint intended for admin to forcefully link account to user. By default, these cases are not allowed - The platform account current is linked by another account - The target account ever linked this platform&#39;s another account
    */
-  async function updatePlatformLink_ByUserId_v3(userId:string, data: LinkPlatformAccountRequest, queryParams?: {skipConflict?: boolean | null}): Promise<AxiosResponse<unknown>> {
+  async function updatePlatformLink_ByUserId_v3(
+    userId: string,
+    data: LinkPlatformAccountRequest,
+    queryParams?: { skipConflict?: boolean | null }
+  ): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updatePlatformLink_ByUserId_v3(userId, data, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint removes role from user action code: 10110 
+   * This endpoint removes role from user action code: 10110
    */
-  async function deleteRole_ByUserId_ByRoleId_v3(userId:string, roleId:string): Promise<AxiosResponse<unknown>> {
+  async function deleteRole_ByUserId_ByRoleId_v3(userId: string, roleId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteRole_ByUserId_ByRoleId_v3(userId, roleId, )
+    const resp = await $.deleteRole_ByUserId_ByRoleId_v3(userId, roleId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * action code: 10109 
+   * action code: 10109
    */
-  async function updateRole_ByUserId_ByRoleId_v3(userId:string, roleId:string): Promise<AxiosResponse<unknown>> {
+  async function updateRole_ByUserId_ByRoleId_v3(userId: string, roleId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateRole_ByUserId_ByRoleId_v3(userId, roleId, )
+    const resp = await $.updateRole_ByUserId_ByRoleId_v3(userId, roleId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * action code : 10145 
+   * action code : 10145
    */
-  async function getDeletionStatus_ByUserId_v3(userId:string): Promise<AxiosResponse<UserDeletionStatusResponse>> {
+  async function getDeletionStatus_ByUserId_v3(userId: string): Promise<AxiosResponse<UserDeletionStatusResponse>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getDeletionStatus_ByUserId_v3(userId, )
+    const resp = await $.getDeletionStatus_ByUserId_v3(userId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * action code : 10144 
+   * action code : 10144
    */
-  async function patchDeletionStatus_ByUserId_v3(userId:string, data: UpdateUserDeletionStatusRequest): Promise<AxiosResponse<unknown>> {
+  async function patchDeletionStatus_ByUserId_v3(userId: string, data: UpdateUserDeletionStatusRequest): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchDeletionStatus_ByUserId_v3(userId, data,)
+    const resp = await $.patchDeletionStatus_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Notes for this endpoint: This endpoint retrieve the first page of the data if &lt;code&gt;after&lt;/code&gt; and &lt;code&gt;before&lt;/code&gt; parameters is empty. - The maximum value of the limit is 100 and the minimum value of the limit is 1. - This endpoint retrieve the next page of the data if we provide &lt;code&gt;after&lt;/code&gt; parameters with valid Unix timestamp. - This endpoint retrieve the previous page of the data if we provide &lt;code&gt;before&lt;/code&gt; parameter with valid data Unix timestamp.&#34; 
+   * Notes for this endpoint: This endpoint retrieve the first page of the data if &lt;code&gt;after&lt;/code&gt; and &lt;code&gt;before&lt;/code&gt; parameters is empty. - The maximum value of the limit is 100 and the minimum value of the limit is 1. - This endpoint retrieve the next page of the data if we provide &lt;code&gt;after&lt;/code&gt; parameters with valid Unix timestamp. - This endpoint retrieve the previous page of the data if we provide &lt;code&gt;before&lt;/code&gt; parameter with valid data Unix timestamp.&#34;
    */
-  async function getLoginsHistories_ByUserId_v3(userId:string,  queryParams?: {after?: number, before?: number, limit?: number}): Promise<AxiosResponse<LoginHistoriesResponse>> {
+  async function getLoginsHistories_ByUserId_v3(
+    userId: string,
+    queryParams?: { after?: number; before?: number; limit?: number }
+  ): Promise<AxiosResponse<LoginHistoriesResponse>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getLoginsHistories_ByUserId_v3(userId,  queryParams)
+    const resp = await $.getLoginsHistories_ByUserId_v3(userId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint ONLY accept **Client Token** This endpoint is utilized for specific scenarios where **email notifications are disabled** The user&#39;s email will be marked as verified Note: - emailAddress or password field are optional - request body can&#39;t be empty action code : 10103  
+   * This endpoint ONLY accept **Client Token** This endpoint is utilized for specific scenarios where **email notifications are disabled** The user&#39;s email will be marked as verified Note: - emailAddress or password field are optional - request body can&#39;t be empty action code : 10103
    */
-  async function patchTrustlyIdentity_ByUserId_v3(userId:string, data: UserIdentityUpdateRequestV3): Promise<AxiosResponse<unknown>> {
+  async function patchTrustlyIdentity_ByUserId_v3(userId: string, data: UserIdentityUpdateRequestV3): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchTrustlyIdentity_ByUserId_v3(userId, data,)
+    const resp = await $.patchTrustlyIdentity_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint retrieves platform accounts linked to user. It will query all linked platform accounts and result will be distinct &amp; grouped, same platform we will pick oldest linked one. 
+   * This endpoint retrieves platform accounts linked to user. It will query all linked platform accounts and result will be distinct &amp; grouped, same platform we will pick oldest linked one.
    */
-  async function getDistinctPlatforms_ByUserId_v3(userId:string): Promise<AxiosResponse<DistinctPlatformResponseV3>> {
+  async function getDistinctPlatforms_ByUserId_v3(userId: string): Promise<AxiosResponse<DistinctPlatformResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getDistinctPlatforms_ByUserId_v3(userId, )
+    const resp = await $.getDistinctPlatforms_ByUserId_v3(userId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint gets list justice platform account by providing publisher namespace and publisher userID 
+   * This endpoint gets list justice platform account by providing publisher namespace and publisher userID
    */
-  async function getPlatformsJustice_ByUserId_v3(userId:string): Promise<AxiosResponse<GetUserMappingArray>> {
+  async function getPlatformsJustice_ByUserId_v3(userId: string): Promise<AxiosResponse<GetUserMappingArray>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getPlatformsJustice_ByUserId_v3(userId, )
+    const resp = await $.getPlatformsJustice_ByUserId_v3(userId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This endpoint only retrieves 3rd party platform accounts linked to user. It will query platform accounts and result will be distinct &amp; grouped, same platform we will pick oldest linked one. ------ Supported status: - LINKED - RESTRICTIVELY_UNLINKED - UNLINKED - ALL  
+   * This endpoint only retrieves 3rd party platform accounts linked to user. It will query platform accounts and result will be distinct &amp; grouped, same platform we will pick oldest linked one. ------ Supported status: - LINKED - RESTRICTIVELY_UNLINKED - UNLINKED - ALL
    */
-  async function getPlatformsDistinct_ByUserId_v3(userId:string,  queryParams?: {status?: string | null}): Promise<AxiosResponse<DistinctPlatformResponseV3>> {
+  async function getPlatformsDistinct_ByUserId_v3(
+    userId: string,
+    queryParams?: { status?: string | null }
+  ): Promise<AxiosResponse<DistinctPlatformResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getPlatformsDistinct_ByUserId_v3(userId,  queryParams)
+    const resp = await $.getPlatformsDistinct_ByUserId_v3(userId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * If validateOnly is set false, will upgrade headless account with verification code The endpoint upgrades a headless account by linking the headless account with the email address and the password. By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM. The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call. In order to get a verification code for the endpoint, please check the send verification code endpoint. This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done. Supported user data fields : - displayName - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29 - country : format ISO3166-1 alpha-2 two letter, e.g. US action code : 10124 
+   * If validateOnly is set false, will upgrade headless account with verification code The endpoint upgrades a headless account by linking the headless account with the email address and the password. By upgrading the headless account into a full account, the user could use the email address and password for using Justice IAM. The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call. In order to get a verification code for the endpoint, please check the send verification code endpoint. This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done. Supported user data fields : - displayName - dateOfBirth : format YYYY-MM-DD, e.g. 2019-04-29 - country : format ISO3166-1 alpha-2 two letter, e.g. US action code : 10124
    */
-  async function updateHeadlesCodeVerify_ByUserId_v3(userId:string, data: UpgradeHeadlessAccountWithVerificationCodeRequestV3): Promise<AxiosResponse<UserResponseV3>> {
+  async function updateHeadlesCodeVerify_ByUserId_v3(
+    userId: string,
+    data: UpgradeHeadlessAccountWithVerificationCodeRequestV3
+  ): Promise<AxiosResponse<UserResponseV3>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateHeadlesCodeVerify_ByUserId_v3(userId, data,)
+    const resp = await $.updateHeadlesCodeVerify_ByUserId_v3(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
    * @deprecated
-   * ## Supported platforms: - **steam** - **steamopenid** - **facebook** - **google** - **googleplaygames** - **oculus** - **twitch** - **android** - **ios** - **apple** - **device** - **discord** - **awscognito** - **epicgames** - **nintendo** - **snapchat** Unlink user&#39;s account from a specific platform. &#39;justice&#39; platform might have multiple accounts from different namespaces linked. _platformNamespace_ need to be specified when the platform ID is &#39;justice&#39;. Unlink user&#39;s account from justice platform will enable password token grant and password update. If you want to unlink user&#39;s account in a game namespace, you have to specify _platformNamespace_ to that game namespace. action code : 10121  
+   * ## Supported platforms: - **steam** - **steamopenid** - **facebook** - **google** - **googleplaygames** - **oculus** - **twitch** - **android** - **ios** - **apple** - **device** - **discord** - **awscognito** - **epicgames** - **nintendo** - **snapchat** Unlink user&#39;s account from a specific platform. &#39;justice&#39; platform might have multiple accounts from different namespaces linked. _platformNamespace_ need to be specified when the platform ID is &#39;justice&#39;. Unlink user&#39;s account from justice platform will enable password token grant and password update. If you want to unlink user&#39;s account in a game namespace, you have to specify _platformNamespace_ to that game namespace. action code : 10121
    */
-  async function deletePlatform_ByUserId_ByPlatformId_v3(userId:string, platformId:string, data: UnlinkUserPlatformRequest): Promise<AxiosResponse<unknown>> {
+  async function deletePlatform_ByUserId_ByPlatformId_v3(
+    userId: string,
+    platformId: string,
+    data: UnlinkUserPlatformRequest
+  ): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deletePlatform_ByUserId_ByPlatformId_v3(userId, platformId, data,)
+    const resp = await $.deletePlatform_ByUserId_ByPlatformId_v3(userId, platformId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * action code: 10123 
+   * action code: 10123
    */
-  async function patchAgerestrictionCountry_ByCountryCode_v3(countryCode:string, data: CountryAgeRestrictionV3Request): Promise<AxiosResponse<CountryV3Response>> {
+  async function patchAgerestrictionCountry_ByCountryCode_v3(
+    countryCode: string,
+    data: CountryAgeRestrictionV3Request
+  ): Promise<AxiosResponse<CountryV3Response>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.patchAgerestrictionCountry_ByCountryCode_v3(countryCode, data,)
+    const resp = await $.patchAgerestrictionCountry_ByCountryCode_v3(countryCode, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This API is for admin to get user&#39;s link history. **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1 
+   * This API is for admin to get user&#39;s link history. **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
    */
-  async function getPlatformsLinkHistories_ByUserId_v3(userId:string,  queryParams: {platformId: string | null}): Promise<AxiosResponse<UserPlatformLinkHistories>> {
+  async function getPlatformsLinkHistories_ByUserId_v3(
+    userId: string,
+    queryParams: { platformId: string | null }
+  ): Promise<AxiosResponse<UserPlatformLinkHistories>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getPlatformsLinkHistories_ByUserId_v3(userId,  queryParams)
+    const resp = await $.getPlatformsLinkHistories_ByUserId_v3(userId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Unlink user&#39;s account from third platform in all namespaces. Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter. example: to unlink steam third party account, you can use steamnetwork / steam / steamopenid as platformId path parameter. **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1 Unlink platform account associated with a group: If user unlink platform account associated with a group, the API logic will unlink all of platform account under that group as well. example: if user unlink from ps4, the API logic will unlink ps5 and ps4web as well 
+   * Unlink user&#39;s account from third platform in all namespaces. Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter. example: to unlink steam third party account, you can use steamnetwork / steam / steamopenid as platformId path parameter. **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1 Unlink platform account associated with a group: If user unlink platform account associated with a group, the API logic will unlink all of platform account under that group as well. example: if user unlink from ps4, the API logic will unlink ps5 and ps4web as well
    */
-  async function deleteAll_ByUserId_ByPlatformId_v3(userId:string, platformId:string): Promise<AxiosResponse<unknown>> {
+  async function deleteAll_ByUserId_ByPlatformId_v3(userId: string, platformId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteAll_ByUserId_ByPlatformId_v3(userId, platformId, )
+    const resp = await $.deleteAll_ByUserId_ByPlatformId_v3(userId, platformId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]_** ## Supported platforms: - **steam** - **steamopenid** - **facebook** - **google** - **oculus** - **twitch** - **android** - **ios** - **device** - **discord** Delete link of user&#39;s account with platform. &#39;justice&#39; platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is &#39;justice&#39;. Delete link of justice platform will enable password token grant and password update. 
-   */
-  async function deleteLink_ByUserId_ByPlatformId_v2(userId:string, platformId:string, data: {platform_namespace?: string | null}): Promise<AxiosResponse<unknown>> {
-    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteLink_ByUserId_ByPlatformId_v2(userId, platformId, data,)
-    if (resp.error) throw resp.error
-    return resp.response
-  }
-  
-  
-  /**
-   * **Prerequisite:** Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables). ## Supported platforms: - **steam**: The ticket’s value is the authentication code returned by Steam. - **steamopenid**: Steam&#39;s user authentication method using OpenID 2.0. The ticket&#39;s value is URL generated by Steam on web authentication - **facebook**: The ticket’s value is the authorization code returned by Facebook OAuth - **google**: The ticket’s value is the authorization code returned by Google OAuth - **googleplaygames**: The ticket’s value is the authorization code returned by Google play games OAuth - **oculus**: The ticket’s value is a string composed of Oculus&#39;s user ID and the nonce separated by a colon (:). - **twitch**: The ticket’s value is the authorization code returned by Twitch OAuth. - **android**: The ticket&#39;s value is the Android’s device ID - **ios**: The ticket&#39;s value is the iOS’s device ID. - **apple**: The ticket’s value is the authorization code returned by Apple OAuth. - **device**: Every device that does’nt run Android and iOS is categorized as a device platform. The ticket&#39;s value is the device’s ID. - **discord**: The ticket’s value is the authorization code returned by Discord OAuth. - **awscognito**: The ticket’s value is the aws cognito access token (JWT). - **epicgames**: The ticket’s value is an access-token obtained from Epicgames EOS Account Service. - **nintendo**: The ticket’s value is the authorization code(id_token) returned by Nintendo OAuth. 
-   */
-  async function postLink_ByUserId_ByPlatformId_v3(userId:string, platformId:string, data: {ticket: string | null}): Promise<AxiosResponse<unknown>> {
-    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.postLink_ByUserId_ByPlatformId_v3(userId, platformId, data,)
-    if (resp.error) throw resp.error
-    return resp.response
-  }
-  
-  
-  /**
-   * Get User By Platform User ID This endpoint return user information by given platform ID and platform user ID. Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter. example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter. **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1 
-   */
-  async function getUser_ByPlatformId_ByPlatformUserId_v3(platformId:string, platformUserId:string): Promise<AxiosResponse<UserResponseV3>> {
-    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getUser_ByPlatformId_ByPlatformUserId_v3(platformId, platformUserId, )
-    if (resp.error) throw resp.error
-    return resp.response
-  }
-  
-  
-  /**
-   * Delete User Permission 
-   */
-  async function deletePermission_ByUserId_ByResource_ByAction_v3(userId:string, resource:string, action:number): Promise<AxiosResponse<unknown>> {
-    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deletePermission_ByUserId_ByResource_ByAction_v3(userId, resource, action, )
-    if (resp.error) throw resp.error
-    return resp.response
-  }
-  
-  
-  /**
-   * This endpoint gets user single platform account metadata. **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1 
-   */
-  async function getMetadata_ByUserId_ByPlatformId_v3(userId:string, platformId:string,  queryParams?: {crossNamespace?: boolean | null}): Promise<AxiosResponse<UserPlatformMetadata>> {
-    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getMetadata_ByUserId_ByPlatformId_v3(userId, platformId,  queryParams)
-    if (resp.error) throw resp.error
-    return resp.response
-  }
-  
-  
-  /**
-   * Admin get the link status of the third party platform token with user id. This endpoint is used for checking whether the third party user represented by third party token is linked with the corresponding user id. ## Supported platforms: - **steam**: The platform_token’s value is the authentication code returned by Steam. - **steamopenid**: Steam&#39;s user authentication method using OpenID 2.0. The platform_token&#39;s value is URL generated by Steam on web authentication - **facebook**: The platform_token’s value is the authorization code returned by Facebook OAuth - **google**: The platform_token’s value is the authorization code returned by Google OAuth - **googleplaygames**: The platform_token’s value is the authorization code returned by Google play games OAuth - **oculus**: The platform_token’s value is a string composed of Oculus&#39;s user ID and the nonce separated by a colon (:). - **twitch**: The platform_token’s value is the authorization code returned by Twitch OAuth. - **discord**: The platform_token’s value is the authorization code returned by Discord OAuth - **android**: The device_id is the Android’s device ID - **ios**: The device_id is the iOS’s device ID. - **apple**: The platform_token’s value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token) - **device**: Every device that does’nt run Android and iOS is categorized as a device. The device_id is the device’s ID. - **justice**: The platform_token’s value is the designated user’s access token. - **epicgames**: The platform_token’s value is an access-token obtained from Epicgames EOS Account Service. - **ps4**: The platform_token’s value is the authorization code returned by Sony OAuth. - **ps5**: The platform_token’s value is the authorization code returned by Sony OAuth. - **nintendo**: The platform_token’s value is the authorization code(id_token) returned by Nintendo OAuth. - **awscognito**: The platform_token’s value is the aws cognito access token or id token (JWT). - **live**: The platform_token’s value is xbox XSTS token - **xblweb**: The platform_token’s value is code returned by xbox after login - **netflix**: The platform_token’s value is GAT (Gamer Access Token) returned by Netflix backend - **snapchat**: The platform_token’s value is the authorization code returned by Snapchat OAuth.  
-   */
-  async function postLinkStatu_ByUserId_ByPlatformId_v3(userId:string, platformId:string, data: {platformToken: string | null}): Promise<AxiosResponse<TokenThirdPartyLinkStatusResponse>> {
-    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.postLinkStatu_ByUserId_ByPlatformId_v3(userId, platformId, data,)
-    if (resp.error) throw resp.error
-    return resp.response
-  }
-  
-  
-  /**
-   * This endpoint will support publisher access to game and game access to publisher If targetNamespace filled with publisher namespace then this endpoint will return its publisher user id and publisher namespace. If targetNamespace filled with game namespace then this endpoint will return its game user id and game namespace. 
-   */
-  async function getPlatformJustice_ByUserId_ByTargetNamespace_v3(userId:string, targetNamespace:string): Promise<AxiosResponse<GetUserMappingV3>> {
-    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getPlatformJustice_ByUserId_ByTargetNamespace_v3(userId, targetNamespace, )
-    if (resp.error) throw resp.error
-    return resp.response
-  }
-  
-  
-  /**
-   * Create Justice User from Publisher User information. It will check first if Justice User on target namespace already exist. 
-   */
-  async function createPlatformJustice_ByUserId_ByTargetNamespace_v3(userId:string, targetNamespace:string): Promise<AxiosResponse<CreateJusticeUserResponse>> {
-    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createPlatformJustice_ByUserId_ByTargetNamespace_v3(userId, targetNamespace, )
-    if (resp.error) throw resp.error
-    return resp.response
-  }
-  
-  
+
   /**
    * @deprecated
-   * This API is for admin to delete user&#39;s linking history with target platform id. **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1 ---- **Substitute endpoint**: /v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link/restrictions  
+   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId} [DELETE]_** ## Supported platforms: - **steam** - **steamopenid** - **facebook** - **google** - **oculus** - **twitch** - **android** - **ios** - **device** - **discord** Delete link of user&#39;s account with platform. &#39;justice&#39; platform might have multiple accounts from different namespaces linked. platform_namespace need to be specified when the platform ID is &#39;justice&#39;. Delete link of justice platform will enable password token grant and password update.
    */
-  async function deleteLinkHistory_ByUserId_ByPlatformId_v3(userId:string, platformId:string): Promise<AxiosResponse<unknown>> {
+  async function deleteLink_ByUserId_ByPlatformId_v2(
+    userId: string,
+    platformId: string,
+    data: { platform_namespace?: string | null }
+  ): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteLinkHistory_ByUserId_ByPlatformId_v3(userId, platformId, )
+    const resp = await $.deleteLink_ByUserId_ByPlatformId_v2(userId, platformId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * This API is for admin to delete user&#39;s linking restriction with target platform id. **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1 
+   * **Prerequisite:** Platform client configuration need to be added to database for specific platformId. Namespace service URL need to be specified (refer to required environment variables). ## Supported platforms: - **steam**: The ticket’s value is the authentication code returned by Steam. - **steamopenid**: Steam&#39;s user authentication method using OpenID 2.0. The ticket&#39;s value is URL generated by Steam on web authentication - **facebook**: The ticket’s value is the authorization code returned by Facebook OAuth - **google**: The ticket’s value is the authorization code returned by Google OAuth - **googleplaygames**: The ticket’s value is the authorization code returned by Google play games OAuth - **oculus**: The ticket’s value is a string composed of Oculus&#39;s user ID and the nonce separated by a colon (:). - **twitch**: The ticket’s value is the authorization code returned by Twitch OAuth. - **android**: The ticket&#39;s value is the Android’s device ID - **ios**: The ticket&#39;s value is the iOS’s device ID. - **apple**: The ticket’s value is the authorization code returned by Apple OAuth. - **device**: Every device that does’nt run Android and iOS is categorized as a device platform. The ticket&#39;s value is the device’s ID. - **discord**: The ticket’s value is the authorization code returned by Discord OAuth. - **awscognito**: The ticket’s value is the aws cognito access token (JWT). - **epicgames**: The ticket’s value is an access-token obtained from Epicgames EOS Account Service. - **nintendo**: The ticket’s value is the authorization code(id_token) returned by Nintendo OAuth.
    */
-  async function deleteLinkRestriction_ByUserId_ByPlatformId_v3(userId:string, platformId:string): Promise<AxiosResponse<unknown>> {
+  async function postLink_ByUserId_ByPlatformId_v3(
+    userId: string,
+    platformId: string,
+    data: { ticket: string | null }
+  ): Promise<AxiosResponse<unknown>> {
     const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteLinkRestriction_ByUserId_ByPlatformId_v3(userId, platformId, )
+    const resp = await $.postLink_ByUserId_ByPlatformId_v3(userId, platformId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
+  /**
+   * Get User By Platform User ID This endpoint return user information by given platform ID and platform user ID. Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter. example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter. **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+   */
+  async function getUser_ByPlatformId_ByPlatformUserId_v3(
+    platformId: string,
+    platformUserId: string
+  ): Promise<AxiosResponse<UserResponseV3>> {
+    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.getUser_ByPlatformId_ByPlatformUserId_v3(platformId, platformUserId)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
+  /**
+   * Delete User Permission
+   */
+  async function deletePermission_ByUserId_ByResource_ByAction_v3(
+    userId: string,
+    resource: string,
+    action: number
+  ): Promise<AxiosResponse<unknown>> {
+    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.deletePermission_ByUserId_ByResource_ByAction_v3(userId, resource, action)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
+  /**
+   * This endpoint gets user single platform account metadata. **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+   */
+  async function getMetadata_ByUserId_ByPlatformId_v3(
+    userId: string,
+    platformId: string,
+    queryParams?: { crossNamespace?: boolean | null }
+  ): Promise<AxiosResponse<UserPlatformMetadata>> {
+    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.getMetadata_ByUserId_ByPlatformId_v3(userId, platformId, queryParams)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
+  /**
+   * Admin get the link status of the third party platform token with user id. This endpoint is used for checking whether the third party user represented by third party token is linked with the corresponding user id. ## Supported platforms: - **steam**: The platform_token’s value is the authentication code returned by Steam. - **steamopenid**: Steam&#39;s user authentication method using OpenID 2.0. The platform_token&#39;s value is URL generated by Steam on web authentication - **facebook**: The platform_token’s value is the authorization code returned by Facebook OAuth - **google**: The platform_token’s value is the authorization code returned by Google OAuth - **googleplaygames**: The platform_token’s value is the authorization code returned by Google play games OAuth - **oculus**: The platform_token’s value is a string composed of Oculus&#39;s user ID and the nonce separated by a colon (:). - **twitch**: The platform_token’s value is the authorization code returned by Twitch OAuth. - **discord**: The platform_token’s value is the authorization code returned by Discord OAuth - **android**: The device_id is the Android’s device ID - **ios**: The device_id is the iOS’s device ID. - **apple**: The platform_token’s value is the authorization code returned by Apple OAuth.(We will use this code to generate APP token) - **device**: Every device that does’nt run Android and iOS is categorized as a device. The device_id is the device’s ID. - **justice**: The platform_token’s value is the designated user’s access token. - **epicgames**: The platform_token’s value is an access-token obtained from Epicgames EOS Account Service. - **ps4**: The platform_token’s value is the authorization code returned by Sony OAuth. - **ps5**: The platform_token’s value is the authorization code returned by Sony OAuth. - **nintendo**: The platform_token’s value is the authorization code(id_token) returned by Nintendo OAuth. - **awscognito**: The platform_token’s value is the aws cognito access token or id token (JWT). - **live**: The platform_token’s value is xbox XSTS token - **xblweb**: The platform_token’s value is code returned by xbox after login - **netflix**: The platform_token’s value is GAT (Gamer Access Token) returned by Netflix backend - **snapchat**: The platform_token’s value is the authorization code returned by Snapchat OAuth.
+   */
+  async function postLinkStatu_ByUserId_ByPlatformId_v3(
+    userId: string,
+    platformId: string,
+    data: { platformToken: string | null }
+  ): Promise<AxiosResponse<TokenThirdPartyLinkStatusResponse>> {
+    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.postLinkStatu_ByUserId_ByPlatformId_v3(userId, platformId, data)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
+  /**
+   * This endpoint will support publisher access to game and game access to publisher If targetNamespace filled with publisher namespace then this endpoint will return its publisher user id and publisher namespace. If targetNamespace filled with game namespace then this endpoint will return its game user id and game namespace.
+   */
+  async function getPlatformJustice_ByUserId_ByTargetNamespace_v3(
+    userId: string,
+    targetNamespace: string
+  ): Promise<AxiosResponse<GetUserMappingV3>> {
+    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.getPlatformJustice_ByUserId_ByTargetNamespace_v3(userId, targetNamespace)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
+  /**
+   * Create Justice User from Publisher User information. It will check first if Justice User on target namespace already exist.
+   */
+  async function createPlatformJustice_ByUserId_ByTargetNamespace_v3(
+    userId: string,
+    targetNamespace: string
+  ): Promise<AxiosResponse<CreateJusticeUserResponse>> {
+    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.createPlatformJustice_ByUserId_ByTargetNamespace_v3(userId, targetNamespace)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
+  /**
+   * @deprecated
+   * This API is for admin to delete user&#39;s linking history with target platform id. **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1 ---- **Substitute endpoint**: /v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link/restrictions
+   */
+  async function deleteLinkHistory_ByUserId_ByPlatformId_v3(userId: string, platformId: string): Promise<AxiosResponse<unknown>> {
+    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.deleteLinkHistory_ByUserId_ByPlatformId_v3(userId, platformId)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
+  /**
+   * This API is for admin to delete user&#39;s linking restriction with target platform id. **Supported Platforms:** - Steam group (steamnetwork): - steam - steamopenid - PSN group (psn): - ps4web - ps4 - ps5 - XBOX group(xbox): - live - xblweb - Oculus group (oculusgroup): - oculus - oculusweb - Google group (google): - google - googleplaygames: - epicgames - facebook - twitch - discord - android - ios - apple - device - nintendo - awscognito - amazon - netflix - snapchat - _oidc platform id_ Note: - You can use either platform id or platform group as **platformId** parameter. - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+   */
+  async function deleteLinkRestriction_ByUserId_ByPlatformId_v3(userId: string, platformId: string): Promise<AxiosResponse<unknown>> {
+    const $ = new UsersAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.deleteLinkRestriction_ByUserId_ByPlatformId_v3(userId, platformId)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
   return {
-    getUsersMe_v3,getUsers_v2,getUsers_v3,updateUser_v3,getAdmins_v3,fetchUserBan_v3,createUserBulk_v3,createUserInvite_v3,getUsersSearch_v3,getUser_ByUserId_v2,patchUser_ByUserId_v2,getUser_ByUserId_v3,patchUser_ByUserId_v3,getAgerestrictions_v2,patchAgerestriction_v2,getAgerestrictions_v3,patchAgerestriction_v3,fetchUserSearchBulk_v3,createBan_ByUserId_v2,getBans_ByUserId_v2,getBans_ByUserId_v3,createBan_ByUserId_v3,getUsersLinkhistories_v3,updateRole_ByUserId_v2,updateRole_ByUserId_ByNS_v2,getUsers_ByRoleId_v3,getCodes_ByUserId_v3,deleteRole_ByUserId_v3,patchRole_ByUserId_v3,fetchUserBulkPlatform_v3,updateEnable_ByUserId_v2,patchStatus_ByUserId_v3,updateVerify_ByUserId_v3,updateDisable_ByUserId_v2,patchCountry_ByCountryCode_v2,updatePassword_ByUserId_v2,updatePassword_ByUserId_v3,getUsersPlatformsJustice_v3,getPlatforms_ByUserId_v3,getCountriesAgerestrictions_v2,getAgerestrictionsCountries_v3,updateCodeVerify_ByUserId_v3,deleteInformation_ByUserId_v3,deletePermission_ByUserId_v3,createPermission_ByUserId_v3,updatePermission_ByUserId_v3,patchBan_ByUserId_ByBanId_v3,getBansSummary_ByUserId_v3,updateCodeRequest_ByUserId_v3,fetchUser_ByPlatformId_v3,updatePlatformLink_ByUserId_v3,deleteRole_ByUserId_ByRoleId_v3,updateRole_ByUserId_ByRoleId_v3,getDeletionStatus_ByUserId_v3,patchDeletionStatus_ByUserId_v3,getLoginsHistories_ByUserId_v3,patchTrustlyIdentity_ByUserId_v3,getDistinctPlatforms_ByUserId_v3,getPlatformsJustice_ByUserId_v3,getPlatformsDistinct_ByUserId_v3,updateHeadlesCodeVerify_ByUserId_v3,deletePlatform_ByUserId_ByPlatformId_v3,patchAgerestrictionCountry_ByCountryCode_v3,getPlatformsLinkHistories_ByUserId_v3,deleteAll_ByUserId_ByPlatformId_v3,deleteLink_ByUserId_ByPlatformId_v2,postLink_ByUserId_ByPlatformId_v3,getUser_ByPlatformId_ByPlatformUserId_v3,deletePermission_ByUserId_ByResource_ByAction_v3,getMetadata_ByUserId_ByPlatformId_v3,postLinkStatu_ByUserId_ByPlatformId_v3,getPlatformJustice_ByUserId_ByTargetNamespace_v3,createPlatformJustice_ByUserId_ByTargetNamespace_v3,deleteLinkHistory_ByUserId_ByPlatformId_v3,deleteLinkRestriction_ByUserId_ByPlatformId_v3,
+    getUsersMe_v3,
+    getUsers_v2,
+    getUsers_v3,
+    updateUser_v3,
+    getAdmins_v3,
+    fetchUserBan_v3,
+    createUserBulk_v3,
+    createUserInvite_v3,
+    getUsersSearch_v3,
+    getUser_ByUserId_v2,
+    patchUser_ByUserId_v2,
+    getUser_ByUserId_v3,
+    patchUser_ByUserId_v3,
+    getAgerestrictions_v2,
+    patchAgerestriction_v2,
+    getAgerestrictions_v3,
+    patchAgerestriction_v3,
+    fetchUserSearchBulk_v3,
+    createBan_ByUserId_v2,
+    getBans_ByUserId_v2,
+    getBans_ByUserId_v3,
+    createBan_ByUserId_v3,
+    getUsersLinkhistories_v3,
+    updateRole_ByUserId_v2,
+    updateRole_ByUserId_ByNS_v2,
+    getUsers_ByRoleId_v3,
+    getCodes_ByUserId_v3,
+    deleteRole_ByUserId_v3,
+    patchRole_ByUserId_v3,
+    fetchUserBulkPlatform_v3,
+    updateEnable_ByUserId_v2,
+    patchStatus_ByUserId_v3,
+    updateVerify_ByUserId_v3,
+    updateDisable_ByUserId_v2,
+    patchCountry_ByCountryCode_v2,
+    updatePassword_ByUserId_v2,
+    updatePassword_ByUserId_v3,
+    getUsersPlatformsJustice_v3,
+    getPlatforms_ByUserId_v3,
+    getCountriesAgerestrictions_v2,
+    getAgerestrictionsCountries_v3,
+    updateCodeVerify_ByUserId_v3,
+    deleteInformation_ByUserId_v3,
+    deletePermission_ByUserId_v3,
+    createPermission_ByUserId_v3,
+    updatePermission_ByUserId_v3,
+    patchBan_ByUserId_ByBanId_v3,
+    getBansSummary_ByUserId_v3,
+    updateCodeRequest_ByUserId_v3,
+    fetchUser_ByPlatformId_v3,
+    updatePlatformLink_ByUserId_v3,
+    deleteRole_ByUserId_ByRoleId_v3,
+    updateRole_ByUserId_ByRoleId_v3,
+    getDeletionStatus_ByUserId_v3,
+    patchDeletionStatus_ByUserId_v3,
+    getLoginsHistories_ByUserId_v3,
+    patchTrustlyIdentity_ByUserId_v3,
+    getDistinctPlatforms_ByUserId_v3,
+    getPlatformsJustice_ByUserId_v3,
+    getPlatformsDistinct_ByUserId_v3,
+    updateHeadlesCodeVerify_ByUserId_v3,
+    deletePlatform_ByUserId_ByPlatformId_v3,
+    patchAgerestrictionCountry_ByCountryCode_v3,
+    getPlatformsLinkHistories_ByUserId_v3,
+    deleteAll_ByUserId_ByPlatformId_v3,
+    deleteLink_ByUserId_ByPlatformId_v2,
+    postLink_ByUserId_ByPlatformId_v3,
+    getUser_ByPlatformId_ByPlatformUserId_v3,
+    deletePermission_ByUserId_ByResource_ByAction_v3,
+    getMetadata_ByUserId_ByPlatformId_v3,
+    postLinkStatu_ByUserId_ByPlatformId_v3,
+    getPlatformJustice_ByUserId_ByTargetNamespace_v3,
+    createPlatformJustice_ByUserId_ByTargetNamespace_v3,
+    deleteLinkHistory_ByUserId_ByPlatformId_v3,
+    deleteLinkRestriction_ByUserId_ByPlatformId_v3
   }
 }
-  

@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -22,162 +22,206 @@ import { SubscriptionPagingSlicedResult } from '../generated-definitions/Subscri
 import { TradeNotification } from '../generated-definitions/TradeNotification.js'
 import { SubscriptionAdmin$ } from './endpoints/SubscriptionAdmin$.js'
 
-
 export function SubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * Query subscriptions.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: paginated subscriptions&lt;/li&gt;&lt;/ul&gt; 
+   * Query subscriptions.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: paginated subscriptions&lt;/li&gt;&lt;/ul&gt;
    */
-  async function getSubscriptions( queryParams?: {chargeStatus?: 'CHARGED' | 'CHARGE_FAILED' | 'NEVER' | 'RECURRING_CHARGING' | 'SETUP', itemId?: string | null, limit?: number, offset?: number, sku?: string | null, status?: 'ACTIVE' | 'CANCELLED' | 'EXPIRED' | 'INIT', subscribedBy?: 'PLATFORM' | 'USER', userId?: string | null}): Promise<AxiosResponse<SubscriptionPagingSlicedResult>> {
+  async function getSubscriptions(queryParams?: {
+    chargeStatus?: 'CHARGED' | 'CHARGE_FAILED' | 'NEVER' | 'RECURRING_CHARGING' | 'SETUP'
+    itemId?: string | null
+    limit?: number
+    offset?: number
+    sku?: string | null
+    status?: 'ACTIVE' | 'CANCELLED' | 'EXPIRED' | 'INIT'
+    subscribedBy?: 'PLATFORM' | 'USER'
+    userId?: string | null
+  }): Promise<AxiosResponse<SubscriptionPagingSlicedResult>> {
     const $ = new SubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getSubscriptions( queryParams)
+    const resp = await $.getSubscriptions(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Query user subscriptions.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: paginated subscription&lt;/li&gt;&lt;/ul&gt; 
+   * Query user subscriptions.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: paginated subscription&lt;/li&gt;&lt;/ul&gt;
    */
-  async function getSubscriptions_ByUserId(userId:string,  queryParams?: {chargeStatus?: 'CHARGED' | 'CHARGE_FAILED' | 'NEVER' | 'RECURRING_CHARGING' | 'SETUP', itemId?: string | null, limit?: number, offset?: number, sku?: string | null, status?: 'ACTIVE' | 'CANCELLED' | 'EXPIRED' | 'INIT', subscribedBy?: 'PLATFORM' | 'USER'}): Promise<AxiosResponse<SubscriptionPagingSlicedResult>> {
+  async function getSubscriptions_ByUserId(
+    userId: string,
+    queryParams?: {
+      chargeStatus?: 'CHARGED' | 'CHARGE_FAILED' | 'NEVER' | 'RECURRING_CHARGING' | 'SETUP'
+      itemId?: string | null
+      limit?: number
+      offset?: number
+      sku?: string | null
+      status?: 'ACTIVE' | 'CANCELLED' | 'EXPIRED' | 'INIT'
+      subscribedBy?: 'PLATFORM' | 'USER'
+    }
+  ): Promise<AxiosResponse<SubscriptionPagingSlicedResult>> {
     const $ = new SubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getSubscriptions_ByUserId(userId,  queryParams)
+    const resp = await $.getSubscriptions_ByUserId(userId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get user subscription activity.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: paginated subscription activity&lt;/li&gt;&lt;/ul&gt; 
+   * Get user subscription activity.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: paginated subscription activity&lt;/li&gt;&lt;/ul&gt;
    */
-  async function getSubscriptionsActivities_ByUserId(userId:string,  queryParams?: {excludeSystem?: boolean | null, limit?: number, offset?: number, subscriptionId?: string | null}): Promise<AxiosResponse<SubscriptionActivityPagingSlicedResult>> {
+  async function getSubscriptionsActivities_ByUserId(
+    userId: string,
+    queryParams?: { excludeSystem?: boolean | null; limit?: number; offset?: number; subscriptionId?: string | null }
+  ): Promise<AxiosResponse<SubscriptionActivityPagingSlicedResult>> {
     const $ = new SubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getSubscriptionsActivities_ByUserId(userId,  queryParams)
+    const resp = await $.getSubscriptionsActivities_ByUserId(userId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * &lt;b&gt;[TEST FACILITY ONLY] Forbidden in live environment. &lt;/b&gt; Recurring charge subscription, it will trigger recurring charge if the USER subscription status is ACTIVE, nextBillingDate is before now and no fail recurring charge within X(default 12) hours.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: recurring charge result&lt;/li&gt;&lt;/ul&gt; 
+   * &lt;b&gt;[TEST FACILITY ONLY] Forbidden in live environment. &lt;/b&gt; Recurring charge subscription, it will trigger recurring charge if the USER subscription status is ACTIVE, nextBillingDate is before now and no fail recurring charge within X(default 12) hours.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: recurring charge result&lt;/li&gt;&lt;/ul&gt;
    */
-  async function updateRecurring_BySubscriptionId(subscriptionId:string): Promise<AxiosResponse<RecurringChargeResult>> {
+  async function updateRecurring_BySubscriptionId(subscriptionId: string): Promise<AxiosResponse<RecurringChargeResult>> {
     const $ = new SubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateRecurring_BySubscriptionId(subscriptionId, )
+    const resp = await $.updateRecurring_BySubscriptionId(subscriptionId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * &lt;b&gt;[TEST FACILITY ONLY] Forbidden in live environment. &lt;/b&gt; Delete user subscription. 
+   * &lt;b&gt;[TEST FACILITY ONLY] Forbidden in live environment. &lt;/b&gt; Delete user subscription.
    */
-  async function deleteSubscription_ByUserId_BySubscriptionId(userId:string, subscriptionId:string): Promise<AxiosResponse<unknown>> {
+  async function deleteSubscription_ByUserId_BySubscriptionId(userId: string, subscriptionId: string): Promise<AxiosResponse<unknown>> {
     const $ = new SubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteSubscription_ByUserId_BySubscriptionId(userId, subscriptionId, )
+    const resp = await $.deleteSubscription_ByUserId_BySubscriptionId(userId, subscriptionId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get user subscription.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: subscription&lt;/li&gt;&lt;/ul&gt; 
+   * Get user subscription.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: subscription&lt;/li&gt;&lt;/ul&gt;
    */
-  async function getSubscription_ByUserId_BySubscriptionId(userId:string, subscriptionId:string): Promise<AxiosResponse<SubscriptionInfo>> {
+  async function getSubscription_ByUserId_BySubscriptionId(
+    userId: string,
+    subscriptionId: string
+  ): Promise<AxiosResponse<SubscriptionInfo>> {
     const $ = new SubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getSubscription_ByUserId_BySubscriptionId(userId, subscriptionId, )
+    const resp = await $.getSubscription_ByUserId_BySubscriptionId(userId, subscriptionId)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Free subscribe by platform, can used by other justice service to redeem/reward the subscription.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: result subscription&lt;/li&gt;&lt;/ul&gt; 
+   * Free subscribe by platform, can used by other justice service to redeem/reward the subscription.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: result subscription&lt;/li&gt;&lt;/ul&gt;
    */
-  async function createSubscriptionPlatformSubscribe_ByUserId(userId:string, data: PlatformSubscribeRequest): Promise<AxiosResponse<SubscriptionInfo>> {
+  async function createSubscriptionPlatformSubscribe_ByUserId(
+    userId: string,
+    data: PlatformSubscribeRequest
+  ): Promise<AxiosResponse<SubscriptionInfo>> {
     const $ = new SubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createSubscriptionPlatformSubscribe_ByUserId(userId, data,)
+    const resp = await $.createSubscriptionPlatformSubscribe_ByUserId(userId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Check user subscription subscribable by itemId, ACTIVE USER subscription can&#39;t do subscribe again.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: subscribable info&lt;/li&gt;&lt;/ul&gt; 
+   * Check user subscription subscribable by itemId, ACTIVE USER subscription can&#39;t do subscribe again.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: subscribable info&lt;/li&gt;&lt;/ul&gt;
    */
-  async function getSubscriptionsSubscribableByItemId_ByUserId(userId:string,  queryParams: {itemId: string | null}): Promise<AxiosResponse<Subscribable>> {
+  async function getSubscriptionsSubscribableByItemId_ByUserId(
+    userId: string,
+    queryParams: { itemId: string | null }
+  ): Promise<AxiosResponse<Subscribable>> {
     const $ = new SubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getSubscriptionsSubscribableByItemId_ByUserId(userId,  queryParams)
+    const resp = await $.getSubscriptionsSubscribableByItemId_ByUserId(userId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Grant days to a subscription, if grantDays is positive, it will add free days and push the next billing date by the amount of day.&lt;br&gt;if the grantDays is negative or zero, it only apply to active/cancelled subscription, remove days will decrease current period end, and move the next billing date closer.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated subscription&lt;/li&gt;&lt;/ul&gt; 
+   * Grant days to a subscription, if grantDays is positive, it will add free days and push the next billing date by the amount of day.&lt;br&gt;if the grantDays is negative or zero, it only apply to active/cancelled subscription, remove days will decrease current period end, and move the next billing date closer.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated subscription&lt;/li&gt;&lt;/ul&gt;
    */
-  async function updateGrant_ByUserId_BySubscriptionId(userId:string, subscriptionId:string, data: GrantSubscriptionDaysRequest): Promise<AxiosResponse<SubscriptionInfo>> {
+  async function updateGrant_ByUserId_BySubscriptionId(
+    userId: string,
+    subscriptionId: string,
+    data: GrantSubscriptionDaysRequest
+  ): Promise<AxiosResponse<SubscriptionInfo>> {
     const $ = new SubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateGrant_ByUserId_BySubscriptionId(userId, subscriptionId, data,)
+    const resp = await $.updateGrant_ByUserId_BySubscriptionId(userId, subscriptionId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Cancel a subscription, only ACTIVE subscription can be cancelled. &lt;b&gt;Ensure successfully cancel, recommend at least 1 day before current period ends, otherwise it may be charging or charged.&lt;/b&gt;&lt;br&gt;Set immediate true, the subscription will be terminated immediately, otherwise till the end of current billing cycle.&lt;br&gt;Set force true, will ignore the error if subscription is during recurring charging.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: cancelled subscription&lt;/li&gt;&lt;/ul&gt; 
+   * Cancel a subscription, only ACTIVE subscription can be cancelled. &lt;b&gt;Ensure successfully cancel, recommend at least 1 day before current period ends, otherwise it may be charging or charged.&lt;/b&gt;&lt;br&gt;Set immediate true, the subscription will be terminated immediately, otherwise till the end of current billing cycle.&lt;br&gt;Set force true, will ignore the error if subscription is during recurring charging.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: cancelled subscription&lt;/li&gt;&lt;/ul&gt;
    */
-  async function updateCancel_ByUserId_BySubscriptionId(userId:string, subscriptionId:string, data: CancelRequest, queryParams?: {force?: boolean | null}): Promise<AxiosResponse<SubscriptionInfo>> {
+  async function updateCancel_ByUserId_BySubscriptionId(
+    userId: string,
+    subscriptionId: string,
+    data: CancelRequest,
+    queryParams?: { force?: boolean | null }
+  ): Promise<AxiosResponse<SubscriptionInfo>> {
     const $ = new SubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateCancel_ByUserId_BySubscriptionId(userId, subscriptionId, data, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get user subscription billing histories.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: paginated subscription billing history&lt;/li&gt;&lt;/ul&gt; 
+   * Get user subscription billing histories.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: paginated subscription billing history&lt;/li&gt;&lt;/ul&gt;
    */
-  async function getHistory_ByUserId_BySubscriptionId(userId:string, subscriptionId:string,  queryParams?: {excludeFree?: boolean | null, limit?: number, offset?: number}): Promise<AxiosResponse<BillingHistoryPagingSlicedResult>> {
+  async function getHistory_ByUserId_BySubscriptionId(
+    userId: string,
+    subscriptionId: string,
+    queryParams?: { excludeFree?: boolean | null; limit?: number; offset?: number }
+  ): Promise<AxiosResponse<BillingHistoryPagingSlicedResult>> {
     const $ = new SubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getHistory_ByUserId_BySubscriptionId(userId, subscriptionId,  queryParams)
+    const resp = await $.getHistory_ByUserId_BySubscriptionId(userId, subscriptionId, queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; This API is used as a web hook for payment notification from justice payment service.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Process result&lt;/li&gt;&lt;/ul&gt; 
+   * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; This API is used as a web hook for payment notification from justice payment service.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Process result&lt;/li&gt;&lt;/ul&gt;
    */
-  async function createNotification_ByUserId_BySubscriptionId(userId:string, subscriptionId:string, data: TradeNotification): Promise<AxiosResponse<unknown>> {
+  async function createNotification_ByUserId_BySubscriptionId(
+    userId: string,
+    subscriptionId: string,
+    data: TradeNotification
+  ): Promise<AxiosResponse<unknown>> {
     const $ = new SubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createNotification_ByUserId_BySubscriptionId(userId, subscriptionId, data,)
+    const resp = await $.createNotification_ByUserId_BySubscriptionId(userId, subscriptionId, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    getSubscriptions,getSubscriptions_ByUserId,getSubscriptionsActivities_ByUserId,updateRecurring_BySubscriptionId,deleteSubscription_ByUserId_BySubscriptionId,getSubscription_ByUserId_BySubscriptionId,createSubscriptionPlatformSubscribe_ByUserId,getSubscriptionsSubscribableByItemId_ByUserId,updateGrant_ByUserId_BySubscriptionId,updateCancel_ByUserId_BySubscriptionId,getHistory_ByUserId_BySubscriptionId,createNotification_ByUserId_BySubscriptionId,
+    getSubscriptions,
+    getSubscriptions_ByUserId,
+    getSubscriptionsActivities_ByUserId,
+    updateRecurring_BySubscriptionId,
+    deleteSubscription_ByUserId_BySubscriptionId,
+    getSubscription_ByUserId_BySubscriptionId,
+    createSubscriptionPlatformSubscribe_ByUserId,
+    getSubscriptionsSubscribableByItemId_ByUserId,
+    updateGrant_ByUserId_BySubscriptionId,
+    updateCancel_ByUserId_BySubscriptionId,
+    getHistory_ByUserId_BySubscriptionId,
+    createNotification_ByUserId_BySubscriptionId
   }
 }
-  

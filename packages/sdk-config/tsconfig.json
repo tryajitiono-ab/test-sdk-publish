@@ -10,9 +10,7 @@
     "jsx": "react",
     "outDir": "dist/es",
     "sourceMap": false,
-    "baseUrl": ".",
-    "paths": {
-    }
+    "baseUrl": "."
   },
   "include": ["src", "test"],
   "exclude": ["scripts", "node_modules", "dist"]

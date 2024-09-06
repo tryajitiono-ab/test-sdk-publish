@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2022-2024 AccelByte Inc. All Rights Reserved
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
@@ -20,107 +20,107 @@ import { UploadBinaryRecordRequest } from '../generated-definitions/UploadBinary
 import { UploadBinaryRecordResponse } from '../generated-definitions/UploadBinaryRecordResponse.js'
 import { PublicGameBinaryRecord$ } from './endpoints/PublicGameBinaryRecord$.js'
 
-
 export function PublicGameBinaryRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
-  
+
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
   const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
   const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
-  
+
   for (const interceptor of interceptors) {
-    if(interceptor.type === 'request') {
+    if (interceptor.type === 'request') {
       axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
     }
 
-    if(interceptor.type === 'response') {
+    if (interceptor.type === 'response') {
       axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
     }
   }
 
-  
-  
   /**
-   * Retrieve list of binary records by namespace. 
+   * Retrieve list of binary records by namespace.
    */
-  async function getBinaries( queryParams?: {limit?: number, offset?: number, query?: string | null, tags?: string[]}): Promise<AxiosResponse<ListGameBinaryRecordsResponse>> {
+  async function getBinaries(queryParams?: {
+    limit?: number
+    offset?: number
+    query?: string | null
+    tags?: string[]
+  }): Promise<AxiosResponse<ListGameBinaryRecordsResponse>> {
     const $ = new PublicGameBinaryRecord$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getBinaries( queryParams)
+    const resp = await $.getBinaries(queryParams)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Create a game binary record. Other detail info: `key` should follow these rules: 1. support uppercase and lowercase letters, numbers, and separators **&#34;-&#34;**, **&#34;_&#34;**, **&#34;.&#34;** are allowed 2. begin and end with letters or numbers 3. spaces are not allowed 4. separators must not appears twice in a row Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.  
+   * Create a game binary record. Other detail info: `key` should follow these rules: 1. support uppercase and lowercase letters, numbers, and separators **&#34;-&#34;**, **&#34;_&#34;**, **&#34;.&#34;** are allowed 2. begin and end with letters or numbers 3. spaces are not allowed 4. separators must not appears twice in a row Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
    */
   async function createBinary(data: PublicGameBinaryRecordCreate): Promise<AxiosResponse<UploadBinaryRecordResponse>> {
     const $ = new PublicGameBinaryRecord$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createBinary(data,)
+    const resp = await $.createBinary(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Bulk get game binary records. Maximum key per request 20. 
+   * Bulk get game binary records. Maximum key per request 20.
    */
   async function createBinaryBulk(data: BulkGetGameRecordRequest): Promise<AxiosResponse<BulkGetGameBinaryRecordResponse>> {
     const $ = new PublicGameBinaryRecord$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createBinaryBulk(data,)
+    const resp = await $.createBinaryBulk(data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Delete a game binary record. 
+   * Delete a game binary record.
    */
-  async function deleteBinary_ByKey(key:string): Promise<AxiosResponse<unknown>> {
+  async function deleteBinary_ByKey(key: string): Promise<AxiosResponse<unknown>> {
     const $ = new PublicGameBinaryRecord$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.deleteBinary_ByKey(key, )
+    const resp = await $.deleteBinary_ByKey(key)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Get a game binary record by its key. 
+   * Get a game binary record by its key.
    */
-  async function getBinary_ByKey(key:string): Promise<AxiosResponse<GameBinaryRecordResponse>> {
+  async function getBinary_ByKey(key: string): Promise<AxiosResponse<GameBinaryRecordResponse>> {
     const $ = new PublicGameBinaryRecord$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.getBinary_ByKey(key, )
+    const resp = await $.getBinary_ByKey(key)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Update a game binary record file by its key 
+   * Update a game binary record file by its key
    */
-  async function updateBinary_ByKey(key:string, data: BinaryRecordRequest): Promise<AxiosResponse<GameBinaryRecordResponse>> {
+  async function updateBinary_ByKey(key: string, data: BinaryRecordRequest): Promise<AxiosResponse<GameBinaryRecordResponse>> {
     const $ = new PublicGameBinaryRecord$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.updateBinary_ByKey(key, data,)
+    const resp = await $.updateBinary_ByKey(key, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   /**
-   * Request presigned URL to upload the binary record to s3. Other detail info: Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.  
+   * Request presigned URL to upload the binary record to s3. Other detail info: Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
    */
-  async function createPresigned_ByKey(key:string, data: UploadBinaryRecordRequest): Promise<AxiosResponse<UploadBinaryRecordResponse>> {
+  async function createPresigned_ByKey(key: string, data: UploadBinaryRecordRequest): Promise<AxiosResponse<UploadBinaryRecordResponse>> {
     const $ = new PublicGameBinaryRecord$(axiosInstance, namespace, useSchemaValidation)
-    const resp = await $.createPresigned_ByKey(key, data,)
+    const resp = await $.createPresigned_ByKey(key, data)
     if (resp.error) throw resp.error
     return resp.response
   }
-  
-  
+
   return {
-    getBinaries,createBinary,createBinaryBulk,deleteBinary_ByKey,getBinary_ByKey,updateBinary_ByKey,createPresigned_ByKey,
+    getBinaries,
+    createBinary,
+    createBinaryBulk,
+    deleteBinary_ByKey,
+    getBinary_ByKey,
+    updateBinary_ByKey,
+    createPresigned_ByKey
   }
 }
-  

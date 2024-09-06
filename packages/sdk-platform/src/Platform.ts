@@ -19,6 +19,8 @@ import { EntitlementAdminApi } from './generated-admin/EntitlementAdminApi.js'
 import { FulfillmentAdminApi } from './generated-admin/FulfillmentAdminApi.js'
 import { FulfillmentScriptAdminApi } from './generated-admin/FulfillmentScriptAdminApi.js'
 import { IapAdminApi } from './generated-admin/IapAdminApi.js'
+import { IapNotificationAdminApi } from './generated-admin/IapNotificationAdminApi.js'
+import { IapSubscriptionAdminApi } from './generated-admin/IapSubscriptionAdminApi.js'
 import { InvoiceAdminApi } from './generated-admin/InvoiceAdminApi.js'
 import { ItemAdminApi } from './generated-admin/ItemAdminApi.js'
 import { KeyGroupAdminApi } from './generated-admin/KeyGroupAdminApi.js'
@@ -47,6 +49,7 @@ import { DlcApi } from './generated-public/DlcApi.js'
 import { EntitlementApi } from './generated-public/EntitlementApi.js'
 import { FulfillmentApi } from './generated-public/FulfillmentApi.js'
 import { IapApi } from './generated-public/IapApi.js'
+import { IapSubscriptionApi } from './generated-public/IapSubscriptionApi.js'
 import { ItemApi } from './generated-public/ItemApi.js'
 import { OrderApi } from './generated-public/OrderApi.js'
 import { PaymentAccountApi } from './generated-public/PaymentAccountApi.js'
@@ -82,6 +85,8 @@ const apis = {
   DlcAdminApi,
   InvoiceAdminApi,
   FulfillmentAdminApi,
+  IapNotificationAdminApi,
+  IapSubscriptionAdminApi,
   RevocationAdminApi,
   TicketAdminApi,
   ServicePluginConfigAdminApi,
@@ -108,7 +113,8 @@ const apis = {
   SubscriptionApi,
   FulfillmentApi,
   PaymentAccountApi,
-  WalletApi
+  WalletApi,
+  IapSubscriptionApi
 }
 
 export const Platform = apis
