@@ -34,7 +34,6 @@ jobs:
           VITE_NAMESPACE: ${{ secrets.VITE_NAMESPACE }}
           VITE_REDIRECT_URI: ${{ secrets.VITE_REDIRECT_URI }}
         run: |
-          printenv
           yarn
           yarn build
 
