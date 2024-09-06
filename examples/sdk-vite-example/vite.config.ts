@@ -6,15 +6,15 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig, loadEnv } from 'vite'
 
-const SHARED_CLOUD_PROD_URL = '.gamingservices.accelbyte.io'
+const SHARED_CLOUD_URL = '.gamingservices.accelbyte.io'
 const PORT = 3000
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const target = env.AGS_BASE_URL.endsWith(SHARED_CLOUD_PROD_URL)
-    ? `https://${env.VITE_NAMESPACE}.${new URL(env.AGS_BASE_URL).hostname}`
-    : env.AGS_BASE_URL
+  const agsBaseUrl = env.AGS_BASE_URL ?? ''
+
+  const target = agsBaseUrl.endsWith(SHARED_CLOUD_URL) ? `https://${env.VITE_NAMESPACE}.${new URL(agsBaseUrl).hostname}` : agsBaseUrl
 
   return {
     plugins: [react()],
