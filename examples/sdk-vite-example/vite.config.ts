@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    base: env.BASE_PATH ? env.BASE_PATH : undefined,
     server: {
       port: PORT,
       proxy: {
