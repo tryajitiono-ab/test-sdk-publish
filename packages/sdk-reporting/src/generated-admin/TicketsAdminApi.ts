@@ -21,9 +21,12 @@ export function TicketsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -36,9 +39,6 @@ export function TicketsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Tickets list can be ordered by: - createdAt - reportsCount - status (currently there are OPEN, AUTO_MODERATED and CLOSED statuses, desc order will put ticket with CLOSED status at the top)
-   */
   async function getTickets(queryParams?: {
     category?: string | null
     extensionCategory?: string | null
@@ -55,9 +55,6 @@ export function TicketsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Ticket statistic can be filtered by: - category - extension category
-   */
   async function getTicketsStatistic(queryParams: {
     category: string | null
     extensionCategory?: string | null
@@ -68,9 +65,6 @@ export function TicketsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This endpoint will delete ticket and all its reports.
-   */
   async function deleteTicket_ByTicketId(ticketId: string): Promise<AxiosResponse<unknown>> {
     const $ = new TicketsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteTicket_ByTicketId(ticketId)
@@ -78,9 +72,6 @@ export function TicketsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This endpoint will return ticket detail with ticket id.
-   */
   async function getTicket_ByTicketId(ticketId: string): Promise<AxiosResponse<TicketResponse>> {
     const $ = new TicketsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getTicket_ByTicketId(ticketId)
@@ -88,9 +79,6 @@ export function TicketsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * List reports ordered by createdAt in descending order.
-   */
   async function getReports_ByTicketId(
     ticketId: string,
     queryParams?: { limit?: number; offset?: number }
@@ -101,9 +89,6 @@ export function TicketsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update ticket resolution status to either OPEN or CLOSED. It is mandatory to provide notes
-   */
   async function updateResolution_ByTicketId(
     ticketId: string,
     data: UpdateTicketResolutionsRequest
@@ -115,11 +100,29 @@ export function TicketsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Tickets list can be ordered by: - createdAt - reportsCount - status (currently there are OPEN, AUTO_MODERATED and CLOSED statuses, desc order will put ticket with CLOSED status at the top)
+     */
     getTickets,
+    /**
+     * Ticket statistic can be filtered by: - category - extension category
+     */
     getTicketsStatistic,
+    /**
+     * This endpoint will delete ticket and all its reports.
+     */
     deleteTicket_ByTicketId,
+    /**
+     * This endpoint will return ticket detail with ticket id.
+     */
     getTicket_ByTicketId,
+    /**
+     * List reports ordered by createdAt in descending order.
+     */
     getReports_ByTicketId,
+    /**
+     * Update ticket resolution status to either OPEN or CLOSED. It is mandatory to provide notes
+     */
     updateResolution_ByTicketId
   }
 }

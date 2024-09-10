@@ -25,9 +25,12 @@ export function PaymentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -40,9 +43,6 @@ export function PaymentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Query payment orders.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: query payment orders&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getPaymentOrders(queryParams?: {
     channel?: 'EXTERNAL' | 'INTERNAL'
     extTxId?: string | null
@@ -69,9 +69,6 @@ export function PaymentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Query payment notifications.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Payment notifications&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getPaymentNotifications(queryParams?: {
     endDate?: string | null
     externalId?: string | null
@@ -89,9 +86,6 @@ export function PaymentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;List external order No by external transaction id.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: payment orders&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getPaymentOrdersByExtTxId(queryParams: { extTxId: string | null }): Promise<AxiosResponse<unknown>> {
     const $ = new PaymentAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPaymentOrdersByExtTxId(queryParams)
@@ -99,9 +93,6 @@ export function PaymentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;&lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; This API is used to create payment order from justice service. The result contains the payment station url.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created order&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Restrictions for custom parameters and meta data&lt;/h2&gt; 1. Cannot use &lt;b&gt;&#34;.&#34;&lt;/b&gt; as the key name - &lt;pre&gt;{ &#34;data.2&#34;: &#34;value&#34; }&lt;/pre&gt; 2. Cannot use &lt;b&gt;&#34;$&#34;&lt;/b&gt; as the prefix in key names - &lt;pre&gt;{ &#34;$data&#34;: &#34;value&#34; }&lt;/pre&gt;
-   */
   async function createPaymentOrder_ByUserId(userId: string, data: PaymentOrderCreate): Promise<AxiosResponse<PaymentOrderInfo>> {
     const $ = new PaymentAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createPaymentOrder_ByUserId(userId, data)
@@ -109,9 +100,6 @@ export function PaymentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Get payment order by paymentOrderNo.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: payment order instance&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getPaymentOrder_ByPaymentOrderNo(paymentOrderNo: string): Promise<AxiosResponse<PaymentOrderInfo>> {
     const $ = new PaymentAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPaymentOrder_ByPaymentOrderNo(paymentOrderNo)
@@ -119,9 +107,6 @@ export function PaymentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;&lt;b&gt;[TEST FACILITY ONLY] Forbidden in live environment. &lt;/b&gt; Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: payment order instance&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updatePaymentOrder_ByPaymentOrderNo(
     paymentOrderNo: string,
     data: PaymentOrderChargeRequest
@@ -132,9 +117,6 @@ export function PaymentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Get payment order charge status.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: payment order charge status&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getStatusPayment_ByPaymentOrderNo(paymentOrderNo: string): Promise<AxiosResponse<PaymentOrderChargeStatus>> {
     const $ = new PaymentAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getStatusPayment_ByPaymentOrderNo(paymentOrderNo)
@@ -142,9 +124,6 @@ export function PaymentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;&lt;b&gt;[TEST FACILITY ONLY] Forbidden in live environment. &lt;/b&gt; Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: notification process result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateSimulateNotificationPayment_ByPaymentOrderNo(
     paymentOrderNo: string,
     data: PaymentOrderNotifySimulation
@@ -155,9 +134,6 @@ export function PaymentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;&lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; This API is used to refund order by paymentOrderNo from justice service.
-   */
   async function updateRefundPayment_ByUserId_ByPaymentOrderNo(
     userId: string,
     paymentOrderNo: string,
@@ -170,14 +146,41 @@ export function PaymentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Query payment orders.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: query payment orders&lt;/li&gt;&lt;/ul&gt;
+     */
     getPaymentOrders,
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Query payment notifications.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Payment notifications&lt;/li&gt;&lt;/ul&gt;
+     */
     getPaymentNotifications,
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;List external order No by external transaction id.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: payment orders&lt;/li&gt;&lt;/ul&gt;
+     */
     getPaymentOrdersByExtTxId,
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;&lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; This API is used to create payment order from justice service. The result contains the payment station url.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created order&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Restrictions for custom parameters and meta data&lt;/h2&gt; 1. Cannot use &lt;b&gt;&#34;.&#34;&lt;/b&gt; as the key name - &lt;pre&gt;{ &#34;data.2&#34;: &#34;value&#34; }&lt;/pre&gt; 2. Cannot use &lt;b&gt;&#34;$&#34;&lt;/b&gt; as the prefix in key names - &lt;pre&gt;{ &#34;$data&#34;: &#34;value&#34; }&lt;/pre&gt;
+     */
     createPaymentOrder_ByUserId,
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Get payment order by paymentOrderNo.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: payment order instance&lt;/li&gt;&lt;/ul&gt;
+     */
     getPaymentOrder_ByPaymentOrderNo,
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;&lt;b&gt;[TEST FACILITY ONLY] Forbidden in live environment. &lt;/b&gt; Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: payment order instance&lt;/li&gt;&lt;/ul&gt;
+     */
     updatePaymentOrder_ByPaymentOrderNo,
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Get payment order charge status.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: payment order charge status&lt;/li&gt;&lt;/ul&gt;
+     */
     getStatusPayment_ByPaymentOrderNo,
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;&lt;b&gt;[TEST FACILITY ONLY] Forbidden in live environment. &lt;/b&gt; Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: notification process result&lt;/li&gt;&lt;/ul&gt;
+     */
     updateSimulateNotificationPayment_ByPaymentOrderNo,
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;&lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; This API is used to refund order by paymentOrderNo from justice service.
+     */
     updateRefundPayment_ByUserId_ByPaymentOrderNo
   }
 }

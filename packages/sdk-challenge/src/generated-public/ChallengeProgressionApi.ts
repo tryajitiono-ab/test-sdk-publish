@@ -17,9 +17,12 @@ export function ChallengeProgressionApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function ChallengeProgressionApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     }
   }
 
-  /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createUserMeProgresEvaluate(): Promise<AxiosResponse<unknown>> {
     const $ = new ChallengeProgression$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createUserMeProgresEvaluate()
@@ -42,9 +42,6 @@ export function ChallengeProgressionApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getUserMeProgres_ByChallengeCode(
     challengeCode: string,
     queryParams?: { dateTime?: string | null; goalCode?: string | null; limit?: number; offset?: number; tags?: string[] }
@@ -55,9 +52,6 @@ export function ChallengeProgressionApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getIndexMeUser_ByChallengeCode_ByIndex(
     challengeCode: string,
     index: number,
@@ -70,8 +64,17 @@ export function ChallengeProgressionApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   }
 
   return {
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]&lt;/li&gt;&lt;/ul&gt;
+     */
     createUserMeProgresEvaluate,
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]&lt;/li&gt;&lt;/ul&gt;
+     */
     getUserMeProgres_ByChallengeCode,
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]&lt;/li&gt;&lt;/ul&gt;
+     */
     getIndexMeUser_ByChallengeCode_ByIndex
   }
 }

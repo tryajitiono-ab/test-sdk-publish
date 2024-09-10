@@ -23,9 +23,12 @@ export function SessionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -38,9 +41,6 @@ export function SessionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Query to available game session
-   */
   async function getGamesession(queryParams: {
     session_type: string | null
     game_mode?: string | null
@@ -59,9 +59,6 @@ export function SessionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Admin delete the session by session ID
-   */
   async function deleteGamesession_BySessionId(sessionID: string): Promise<AxiosResponse<AdminSessionResponse>> {
     const $ = new SessionAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteGamesession_BySessionId(sessionID)
@@ -69,9 +66,6 @@ export function SessionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get the session by session ID for admin user
-   */
   async function getGamesession_BySessionId(sessionID: string): Promise<AxiosResponse<AdminSessionResponse>> {
     const $ = new SessionAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getGamesession_BySessionId(sessionID)
@@ -79,9 +73,6 @@ export function SessionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Search sessions. Optimize the query by differentiating query with filter namespace only and filter with namespace &amp; other filter (partyID, userID, matchID). Query with filter namespace only will not group whole session data while query with filter namespace &amp; other filter will include session data.
-   */
   async function getSessionsHistorySearch(queryParams: {
     limit: number
     offset: number
@@ -99,9 +90,6 @@ export function SessionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get all active session
-   */
   async function getGamesessionActiveCount(queryParams?: {
     session_type?: string | null
   }): Promise<AxiosResponse<CountActiveSessionResponse>> {
@@ -111,9 +99,6 @@ export function SessionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get all active session for custom game, this return only dedicated session type
-   */
   async function getGamesessionActiveCustomGame(queryParams?: {
     limit?: number
     offset?: number
@@ -126,9 +111,6 @@ export function SessionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get all active session for matchmaking game, this return only dedicated session type
-   */
   async function getGamesessionActiveMatchmakingGame(queryParams?: {
     limit?: number
     match_id?: string | null
@@ -142,9 +124,6 @@ export function SessionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get session history detailed. if party_id value empty/null, field will not show in response body.
-   */
   async function getHistoryDetailed_ByMatchId(matchID: string): Promise<AxiosResponse<GetSessionHistoryDetailedResponseItemArray>> {
     const $ = new SessionAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getHistoryDetailed_ByMatchId(matchID)
@@ -153,13 +132,37 @@ export function SessionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Query to available game session
+     */
     getGamesession,
+    /**
+     * Admin delete the session by session ID
+     */
     deleteGamesession_BySessionId,
+    /**
+     * Get the session by session ID for admin user
+     */
     getGamesession_BySessionId,
+    /**
+     * Search sessions. Optimize the query by differentiating query with filter namespace only and filter with namespace &amp; other filter (partyID, userID, matchID). Query with filter namespace only will not group whole session data while query with filter namespace &amp; other filter will include session data.
+     */
     getSessionsHistorySearch,
+    /**
+     * Get all active session
+     */
     getGamesessionActiveCount,
+    /**
+     * Get all active session for custom game, this return only dedicated session type
+     */
     getGamesessionActiveCustomGame,
+    /**
+     * Get all active session for matchmaking game, this return only dedicated session type
+     */
     getGamesessionActiveMatchmakingGame,
+    /**
+     * Get session history detailed. if party_id value empty/null, field will not show in response body.
+     */
     getHistoryDetailed_ByMatchId
   }
 }

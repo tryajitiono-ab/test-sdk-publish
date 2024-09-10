@@ -5,10 +5,10 @@
  */
 import { z } from 'zod'
 import { Paging } from './Paging.js'
-import { ThirdPartySubscriptionTransactionInfo } from './ThirdPartySubscriptionTransactionInfo.js'
+import { ThirdPartyUserSubscriptionInfo } from './ThirdPartyUserSubscriptionInfo.js'
 
 export const ThirdPartyUserSubscriptionPagingSlicedResult = z.object({
-  data: z.array(ThirdPartySubscriptionTransactionInfo),
+  data: z.array(ThirdPartyUserSubscriptionInfo),
   paging: Paging.nullish()
 })
 

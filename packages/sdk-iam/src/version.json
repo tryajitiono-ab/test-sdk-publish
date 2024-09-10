@@ -1,6 +1,6 @@
 {
-  "buildDate": "2024-09-02T12:41:45+00:00",
-  "gitHash": "76d738ca5509ebeabedeaa36706de30994c1f127",
+  "buildDate": "2024-09-09T02:26:18+00:00",
+  "gitHash": "1f3b0c99c4c81c1170ca0ac6441d734b5149f88e",
   "name": "justice-iam-service",
   "realm": "dev",
   "version": "7.21.1",

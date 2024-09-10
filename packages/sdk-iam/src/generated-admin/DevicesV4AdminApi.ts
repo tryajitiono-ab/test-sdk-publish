@@ -25,9 +25,12 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -40,9 +43,6 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * This is the endpoint for an admin to get devices a user ever used to login
-   */
   async function getDevices_v4(queryParams?: { userId?: string | null }): Promise<AxiosResponse<DevicesResponseV4>> {
     const $ = new DevicesV4Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getDevices_v4(queryParams)
@@ -50,9 +50,6 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This is the endpoint for an admin to get device bans of user
-   */
   async function getDevicesBans_v4(queryParams: { userId: string | null }): Promise<AxiosResponse<DeviceBansResponseV4>> {
     const $ = new DevicesV4Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getDevicesBans_v4(queryParams)
@@ -60,9 +57,6 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This is the endpoint for an admin to ban a device
-   */
   async function createDeviceBan_v4(data: DeviceBanRequestV4): Promise<AxiosResponse<unknown>> {
     const $ = new DevicesV4Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createDeviceBan_v4(data)
@@ -70,9 +64,6 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This is the endpoint for an admin to get device types
-   */
   async function getDevicesTypes_v4(): Promise<AxiosResponse<DeviceTypesResponseV4>> {
     const $ = new DevicesV4Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getDevicesTypes_v4()
@@ -80,9 +71,6 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This is the endpoint for an admin to get banned devices
-   */
   async function getDevicesBanned_v4(queryParams?: {
     deviceType?: string | null
     endDate?: string | null
@@ -96,9 +84,6 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This is the endpoint for an admin to generate device report
-   */
   async function getDevicesReport_v4(queryParams: {
     deviceType: string | null
     endDate?: string | null
@@ -110,9 +95,6 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This is the endpoint for an admin to get device ban config
-   */
   async function getDeviceBan_ByBanId_v4(banId: string): Promise<AxiosResponse<DeviceBanResponseV4>> {
     const $ = new DevicesV4Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getDeviceBan_ByBanId_v4(banId)
@@ -120,9 +102,6 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This is the endpoint for an admin to update a device ban config
-   */
   async function updateDeviceBan_ByBanId_v4(banId: string, data: DeviceBanUpdateRequestV4): Promise<AxiosResponse<unknown>> {
     const $ = new DevicesV4Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDeviceBan_ByBanId_v4(banId, data)
@@ -130,9 +109,6 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This is the endpoint for an admin to get device ban list
-   */
   async function getBans_ByDeviceId_v4(deviceId: string): Promise<AxiosResponse<DeviceBansResponseV4>> {
     const $ = new DevicesV4Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBans_ByDeviceId_v4(deviceId)
@@ -140,9 +116,6 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This is the endpoint for an admin to unban device
-   */
   async function updateUnban_ByDeviceId_v4(deviceId: string): Promise<AxiosResponse<unknown>> {
     const $ = new DevicesV4Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateUnban_ByDeviceId_v4(deviceId)
@@ -150,9 +123,6 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This is the endpoint for an admin to get users that ever login on the device
-   */
   async function getUsers_ByDeviceId_v4(deviceId: string): Promise<AxiosResponse<DeviceUsersResponseV4>> {
     const $ = new DevicesV4Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getUsers_ByDeviceId_v4(deviceId)
@@ -160,9 +130,6 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This is the endpoint for an admin to decrypt device id
-   */
   async function getDecrypt_ByDeviceId_v4(deviceId: string): Promise<AxiosResponse<DeviceIdDecryptResponseV4>> {
     const $ = new DevicesV4Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getDecrypt_ByDeviceId_v4(deviceId)
@@ -171,17 +138,54 @@ export function DevicesV4AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * This is the endpoint for an admin to get devices a user ever used to login
+     */
     getDevices_v4,
+    /**
+     * This is the endpoint for an admin to get device bans of user
+     */
     getDevicesBans_v4,
+    /**
+     * This is the endpoint for an admin to ban a device
+     */
     createDeviceBan_v4,
+    /**
+     * This is the endpoint for an admin to get device types
+     */
     getDevicesTypes_v4,
+    /**
+     * This is the endpoint for an admin to get banned devices
+     */
     getDevicesBanned_v4,
+    /**
+     * This is the endpoint for an admin to generate device report
+     */
     getDevicesReport_v4,
+    /**
+     * This is the endpoint for an admin to get device ban config
+     */
     getDeviceBan_ByBanId_v4,
+    /**
+     * This is the endpoint for an admin to update a device ban config
+     */
     updateDeviceBan_ByBanId_v4,
+    /**
+     * This is the endpoint for an admin to get device ban list
+     */
     getBans_ByDeviceId_v4,
+    /**
+     * This is the endpoint for an admin to unban device
+     */
     updateUnban_ByDeviceId_v4,
+    /**
+     * This is the endpoint for an admin to get users that ever login on the device
+     */
     getUsers_ByDeviceId_v4,
+    /**
+     * @deprecated
+     * This is the endpoint for an admin to decrypt device id
+     */
     getDecrypt_ByDeviceId_v4
   }
 }

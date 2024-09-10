@@ -3052,11 +3052,14 @@
         "serverId": {
           "type": "string"
         },
+        "sessionId": {
+          "type": "string"
+        },
         "status": {
           "type": "string"
         }
       },
-      "required": ["createdAt", "exitCode", "ipAddress", "reason", "region", "serverId", "status"]
+      "required": ["createdAt", "exitCode", "ipAddress", "reason", "region", "serverId", "sessionId", "status"]
     },
     "api.DSHistoryList": {
       "properties": {
@@ -4005,8 +4008,8 @@
     "path": "/ams/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2024-09-02T04:02:09+00:00",
-    "gitHash": "68a177c352330ce0986e62c9b7cd2e378e0cedf5",
+    "buildDate": "2024-09-09T08:12:04+00:00",
+    "gitHash": "90507e2933aae3e0640f76d1b448b68ff74efb69",
     "name": "fleet-commander",
     "version": "1.24.2-dev",
     "version-roles-seeding": "1.2.40"

@@ -9216,6 +9216,147 @@
         ]
       }
     },
+    "/iam/v3/admin/namespaces/{namespace}/loginAllowlist": {
+      "get": {
+        "description": "This endpoint return login allowlist configuration from specific namespace.",
+        "operationId": "AdminGetLoginAllowlistV3",
+        "parameters": [
+          {
+            "description": "Namespace, only accept alphabet and numeric",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/model.LoginAllowlistResponse"
+            }
+          },
+          "401": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20001\u003c/td\u003e\u003ctd\u003eunauthorized access\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/rest.ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20013\u003c/td\u003e\u003ctd\u003einsufficient permissions\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/rest.ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20000\u003c/td\u003e\u003ctd\u003einternal server error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/rest.ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Admin get login allowlist",
+        "tags": ["Login Allowlist"],
+        "x-errorCodes": {
+          "20000": "internal server error",
+          "20001": "unauthorized access",
+          "20013": "insufficient permissions"
+        },
+        "x-security": [
+          {
+            "userPermissions": ["ADMIN:NAMESPACE:{namespace}:LOGINALLOWLIST [READ]"]
+          }
+        ]
+      },
+      "put": {
+        "consumes": ["application/json"],
+        "description": "This endpoint update login allowlist configuration from specific game namespace.\nroleIds: are list of role that allowed to login\nNote: only accept game namespace\n",
+        "operationId": "AdminUpdateLoginAllowlistV3",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/model.LoginAllowlistRequest"
+            }
+          },
+          {
+            "description": "Namespace, only accept alphabet and numeric",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "204": {
+            "description": "Operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/model.LoginAllowlistResponse"
+            }
+          },
+          "400": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20019\u003c/td\u003e\u003ctd\u003eunable to parse request body\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e10240\u003c/td\u003e\u003ctd\u003enamespace is not game namespace\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e10470\u003c/td\u003e\u003ctd\u003erole is empty\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/rest.ErrorResponse"
+            }
+          },
+          "401": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20001\u003c/td\u003e\u003ctd\u003eunauthorized access\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/rest.ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20013\u003c/td\u003e\u003ctd\u003einsufficient permissions\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/rest.ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e10456\u003c/td\u003e\u003ctd\u003erole not found\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/rest.ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e20000\u003c/td\u003e\u003ctd\u003einternal server error\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/rest.ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Admin update login allowlist",
+        "tags": ["Login Allowlist"],
+        "x-errorCodes": {
+          "10240": "namespace is not game namespace",
+          "10456": "role not found",
+          "10470": "role is empty",
+          "20000": "internal server error",
+          "20001": "unauthorized access",
+          "20013": "insufficient permissions",
+          "20019": "unable to parse request body"
+        },
+        "x-security": [
+          {
+            "userPermissions": ["ADMIN:NAMESPACE:{namespace}:LOGINALLOWLIST [UPDATE]"]
+          }
+        ]
+      }
+    },
     "/iam/v3/admin/namespaces/{namespace}/platforms/all/clients": {
       "get": {
         "description": "This is the API to Get All Active 3rd Platform Credential.",
@@ -23656,6 +23797,7 @@
     "/iam/v4/admin/namespaces/{namespace}/devices/{deviceId}/decrypt": {
       "get": {
         "consumes": ["application/json"],
+        "deprecated": true,
         "description": "This is the endpoint for an admin to decrypt device id",
         "operationId": "AdminDecryptDeviceV4",
         "parameters": [
@@ -33940,6 +34082,39 @@
       },
       "required": ["data"]
     },
+    "model.LoginAllowlistRequest": {
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "roleIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": ["active", "roleIds"]
+    },
+    "model.LoginAllowlistResponse": {
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "roleIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": ["active", "namespace", "roleIds"]
+    },
     "model.LoginHistoriesResponse": {
       "properties": {
         "Data": {
@@ -37747,8 +37922,8 @@
     "path": "/iam/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2024-09-02T12:41:45+00:00",
-    "gitHash": "76d738ca5509ebeabedeaa36706de30994c1f127",
+    "buildDate": "2024-09-09T02:26:18+00:00",
+    "gitHash": "1f3b0c99c4c81c1170ca0ac6441d734b5149f88e",
     "name": "justice-iam-service",
     "realm": "dev",
     "version": "7.21.1",

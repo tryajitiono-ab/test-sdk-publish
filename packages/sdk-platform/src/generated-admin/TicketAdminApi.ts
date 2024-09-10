@@ -23,9 +23,12 @@ export function TicketAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -38,9 +41,6 @@ export function TicketAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; Get ticket(code/key) dynamic based on booth name.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: ticket dynamic&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getTicket_ByBoothName(boothName: string): Promise<AxiosResponse<TicketDynamicInfo>> {
     const $ = new TicketAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getTicket_ByBoothName(boothName)
@@ -48,9 +48,6 @@ export function TicketAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get ticket(code/key) booth ID.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: ticket booth id&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getId_ByBoothName(boothName: string): Promise<AxiosResponse<TicketBoothId>> {
     const $ = new TicketAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getId_ByBoothName(boothName)
@@ -58,9 +55,6 @@ export function TicketAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; Decrease ticket(code/key) sale if requested orderNo is already increased.
-   */
   async function updateDecrement_ByBoothName(boothName: string, data: TicketSaleDecrementRequest): Promise<AxiosResponse<unknown>> {
     const $ = new TicketAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDecrement_ByBoothName(boothName, data)
@@ -68,9 +62,6 @@ export function TicketAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; increase ticket(code/key) sale.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Ticket sale increment result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateIncrement_ByBoothName(
     boothName: string,
     data: TicketSaleIncrementRequest
@@ -81,9 +72,6 @@ export function TicketAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; Acquire ticket(code/key) based on booth name.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: acquire result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createTicket_ByUserId_ByBoothName(
     userId: string,
     boothName: string,
@@ -96,10 +84,25 @@ export function TicketAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; Get ticket(code/key) dynamic based on booth name.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: ticket dynamic&lt;/li&gt;&lt;/ul&gt;
+     */
     getTicket_ByBoothName,
+    /**
+     * Get ticket(code/key) booth ID.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: ticket booth id&lt;/li&gt;&lt;/ul&gt;
+     */
     getId_ByBoothName,
+    /**
+     * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; Decrease ticket(code/key) sale if requested orderNo is already increased.
+     */
     updateDecrement_ByBoothName,
+    /**
+     * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; increase ticket(code/key) sale.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Ticket sale increment result&lt;/li&gt;&lt;/ul&gt;
+     */
     updateIncrement_ByBoothName,
+    /**
+     * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; Acquire ticket(code/key) based on booth name.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: acquire result&lt;/li&gt;&lt;/ul&gt;
+     */
     createTicket_ByUserId_ByBoothName
   }
 }

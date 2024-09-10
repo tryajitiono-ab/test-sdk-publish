@@ -23,9 +23,12 @@ export function BackfillApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -38,9 +41,6 @@ export function BackfillApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Create backfill ticket.
-   */
   async function createBackfill(data: BackFillCreateRequest): Promise<AxiosResponse<BackfillCreateResponse>> {
     const $ = new Backfill$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createBackfill(data)
@@ -48,9 +48,6 @@ export function BackfillApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get backfill proposal
-   */
   async function getBackfillProposal(queryParams: { sessionID: string | null }): Promise<AxiosResponse<BackfillProposalResponse>> {
     const $ = new Backfill$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBackfillProposal(queryParams)
@@ -58,9 +55,6 @@ export function BackfillApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete backfill ticket.
-   */
   async function deleteBackfill_ByBackfillId(backfillID: string): Promise<AxiosResponse<unknown>> {
     const $ = new Backfill$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteBackfill_ByBackfillId(backfillID)
@@ -68,9 +62,6 @@ export function BackfillApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get backfill ticket by ID
-   */
   async function getBackfill_ByBackfillId(backfillID: string): Promise<AxiosResponse<BackfillGetResponse>> {
     const $ = new Backfill$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBackfill_ByBackfillId(backfillID)
@@ -78,9 +69,6 @@ export function BackfillApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Accept backfill proposal.
-   */
   async function updateProposalAccept_ByBackfillId(backfillID: string, data: BackFillAcceptRequest): Promise<AxiosResponse<GameSession>> {
     const $ = new Backfill$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateProposalAccept_ByBackfillId(backfillID, data)
@@ -88,9 +76,6 @@ export function BackfillApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Reject backfill proposal
-   */
   async function updateProposalReject_ByBackfillId(backfillID: string, data: BackFillRejectRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Backfill$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateProposalReject_ByBackfillId(backfillID, data)
@@ -99,11 +84,29 @@ export function BackfillApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Create backfill ticket.
+     */
     createBackfill,
+    /**
+     * Get backfill proposal
+     */
     getBackfillProposal,
+    /**
+     * Delete backfill ticket.
+     */
     deleteBackfill_ByBackfillId,
+    /**
+     * Get backfill ticket by ID
+     */
     getBackfill_ByBackfillId,
+    /**
+     * Accept backfill proposal.
+     */
     updateProposalAccept_ByBackfillId,
+    /**
+     * Reject backfill proposal
+     */
     updateProposalReject_ByBackfillId
   }
 }

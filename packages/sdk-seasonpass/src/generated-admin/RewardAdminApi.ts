@@ -20,9 +20,12 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * This API is used to query rewards for a season.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: the list of rewards&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getRewards_BySeasonId(seasonId: string, queryParams?: { q?: string | null }): Promise<AxiosResponse<RewardInfoArray>> {
     const $ = new RewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getRewards_BySeasonId(seasonId, queryParams)
@@ -45,9 +45,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to create a reward for a draft season.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created reward&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createReward_BySeasonId(seasonId: string, data: RewardCreate): Promise<AxiosResponse<RewardInfo>> {
     const $ = new RewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createReward_BySeasonId(seasonId, data)
@@ -55,9 +52,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to delete a reward permanently, only draft season reward can be deleted. &lt;p&gt;Other detail info: &lt;ul&gt;&lt;/ul&gt;
-   */
   async function deleteReward_BySeasonId_ByCode(seasonId: string, code: string): Promise<AxiosResponse<unknown>> {
     const $ = new RewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteReward_BySeasonId_ByCode(seasonId, code)
@@ -65,9 +59,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to get a reward for a season.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: reward data&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getReward_BySeasonId_ByCode(seasonId: string, code: string): Promise<AxiosResponse<RewardInfo>> {
     const $ = new RewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getReward_BySeasonId_ByCode(seasonId, code)
@@ -75,9 +66,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to update a reward. Only draft season reward can be updated.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated reward&lt;/li&gt;&lt;/ul&gt;
-   */
   async function patchReward_BySeasonId_ByCode(seasonId: string, code: string, data: RewardUpdate): Promise<AxiosResponse<RewardInfo>> {
     const $ = new RewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchReward_BySeasonId_ByCode(seasonId, code, data)
@@ -86,10 +74,25 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * This API is used to query rewards for a season.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: the list of rewards&lt;/li&gt;&lt;/ul&gt;
+     */
     getRewards_BySeasonId,
+    /**
+     * This API is used to create a reward for a draft season.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created reward&lt;/li&gt;&lt;/ul&gt;
+     */
     createReward_BySeasonId,
+    /**
+     * This API is used to delete a reward permanently, only draft season reward can be deleted. &lt;p&gt;Other detail info: &lt;ul&gt;&lt;/ul&gt;
+     */
     deleteReward_BySeasonId_ByCode,
+    /**
+     * This API is used to get a reward for a season.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: reward data&lt;/li&gt;&lt;/ul&gt;
+     */
     getReward_BySeasonId_ByCode,
+    /**
+     * This API is used to update a reward. Only draft season reward can be updated.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated reward&lt;/li&gt;&lt;/ul&gt;
+     */
     patchReward_BySeasonId_ByCode
   }
 }

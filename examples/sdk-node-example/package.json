@@ -1,20 +1,21 @@
 {
-  "name": "sdk-demo-node",
+  "name": "sdk-node-example",
   "version": "1.0.3",
   "author": "AccelByte Inc",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "scripts": {
-    "example:public": "node --es-module-specifier-resolution=node examplePublic.mjs",
-    "example:admin": "node --es-module-specifier-resolution=node exampleAdmin.mjs"
+    "example:public": "node --es-module-specifier-resolution=node public.mjs",
+    "example:admin": "node --es-module-specifier-resolution=node admin.mjs",
+    "example:legal": "node --es-module-specifier-resolution=node legal.mjs"
   },
   "dependencies": {
-    "@accelbyte/sdk": "2.4.1",
-    "@accelbyte/sdk-basic": "4.0.0",
-    "@accelbyte/sdk-iam": "4.0.0",
-    "@accelbyte/sdk-legal": "4.0.0",
-    "@accelbyte/sdk-platform": "4.0.0",
-    "@accelbyte/sdk-cloudsave": "4.0.0",
+    "@accelbyte/sdk": "0.0.0-dev-20240904033042",
+    "@accelbyte/sdk-basic": "0.0.0-dev-20240904033042",
+    "@accelbyte/sdk-cloudsave": "0.0.0-dev-20240904033042",
+    "@accelbyte/sdk-iam": "0.0.0-dev-20240904033042",
+    "@accelbyte/sdk-legal": "0.0.0-dev-20240904033042",
+    "@accelbyte/sdk-platform": "0.0.0-dev-20240904033042",
     "dotenv": "16.0.3"
   }
 }

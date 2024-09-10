@@ -18,9 +18,12 @@ export function PoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function PoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Update country-specific policy.
-   */
   async function patchPolicy_ByPolicyId(policyId: string, data: UpdatePolicyRequest): Promise<AxiosResponse<unknown>> {
     const $ = new PoliciesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchPolicy_ByPolicyId(policyId, data)
@@ -43,9 +43,6 @@ export function PoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update a policy to be the default.
-   */
   async function patchDefault_ByPolicyId(policyId: string): Promise<AxiosResponse<unknown>> {
     const $ = new PoliciesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchDefault_ByPolicyId(policyId)
@@ -53,9 +50,6 @@ export function PoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Retrieve all active policies based on a country.
-   */
   async function getPolicyCountry_ByCountryCode(countryCode: string): Promise<AxiosResponse<RetrievePolicyResponseArray>> {
     const $ = new PoliciesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPolicyCountry_ByCountryCode(countryCode)
@@ -64,8 +58,17 @@ export function PoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Update country-specific policy.
+     */
     patchPolicy_ByPolicyId,
+    /**
+     * Update a policy to be the default.
+     */
     patchDefault_ByPolicyId,
+    /**
+     * Retrieve all active policies based on a country.
+     */
     getPolicyCountry_ByCountryCode
   }
 }

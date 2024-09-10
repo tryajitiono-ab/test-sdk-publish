@@ -25,9 +25,12 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -40,10 +43,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     }
   }
 
-  /**
-   * @deprecated
-   * Delete service plugin config
-   */
   async function deleteConfigServicePlugin(): Promise<AxiosResponse<unknown>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteConfigServicePlugin()
@@ -51,10 +50,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Get service plugin config
-   */
   async function getConfigsServicePlugin(): Promise<AxiosResponse<ServicePluginConfigInfo>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getConfigsServicePlugin()
@@ -62,10 +57,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Update catalog config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateConfigServicePlugin(data: ServicePluginConfigUpdate): Promise<AxiosResponse<ServicePluginConfigInfo>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateConfigServicePlugin(data)
@@ -73,9 +64,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Delete service plugin config.
-   */
   async function deleteCatalogPluginLootbox(): Promise<AxiosResponse<unknown>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteCatalogPluginLootbox()
@@ -83,9 +71,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Get lootbox plugin config.
-   */
   async function getCatalogPluginsLootbox(): Promise<AxiosResponse<LootBoxPluginConfigInfo>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getCatalogPluginsLootbox()
@@ -93,9 +78,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Update lootbox plugin config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateCatalogPluginLootbox(data: LootBoxPluginConfigUpdate): Promise<AxiosResponse<LootBoxPluginConfigInfo>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateCatalogPluginLootbox(data)
@@ -103,9 +85,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Delete section plugin config.
-   */
   async function deleteCatalogPluginSection(): Promise<AxiosResponse<unknown>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteCatalogPluginSection()
@@ -113,9 +92,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Get section plugin config.
-   */
   async function getCatalogPluginsSection(): Promise<AxiosResponse<SectionPluginConfigInfo>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getCatalogPluginsSection()
@@ -123,9 +99,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Update section config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateCatalogPluginSection(data: SectionPluginConfigUpdate): Promise<AxiosResponse<SectionPluginConfigInfo>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateCatalogPluginSection(data)
@@ -133,9 +106,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Delete service plugin config.
-   */
   async function deleteRevocationPluginRevocation(): Promise<AxiosResponse<unknown>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteRevocationPluginRevocation()
@@ -143,9 +113,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Get revocation plugin config.
-   */
   async function getRevocationPluginsRevocation(): Promise<AxiosResponse<RevocationPluginConfigInfo>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getRevocationPluginsRevocation()
@@ -153,9 +120,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Update revocation plugin config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateRevocationPluginRevocation(data: RevocationPluginConfigUpdate): Promise<AxiosResponse<RevocationPluginConfigInfo>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateRevocationPluginRevocation(data)
@@ -163,9 +127,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Get lootbox plugin gRPC info.
-   */
   async function getCatalogPluginsLootboxGrpcInfo(queryParams?: { force?: boolean | null }): Promise<AxiosResponse<GrpcServerInfo>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getCatalogPluginsLootboxGrpcInfo(queryParams)
@@ -173,9 +134,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Upload lootbox plugin custom config tls cert.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateCatalogPluginLootboxCustomConfigCert(data: { file?: File }): Promise<AxiosResponse<LootBoxPluginConfigInfo>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateCatalogPluginLootboxCustomConfigCert(data)
@@ -183,9 +141,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Upload section plugin custom config tls cert.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateCatalogPluginSectionCustomConfigCert(data: { file?: File }): Promise<AxiosResponse<SectionPluginConfigInfo>> {
     const $ = new ServicePluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateCatalogPluginSectionCustomConfigCert(data)
@@ -193,9 +148,6 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Upload revocation plugin custom config tls cert.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateRevocationPluginRevocationRevocationCustomConfigCert(data: {
     file?: File
   }): Promise<AxiosResponse<RevocationPluginConfigInfo>> {
@@ -206,21 +158,72 @@ export function ServicePluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
   }
 
   return {
+    /**
+     * @deprecated
+     * Delete service plugin config
+     */
     deleteConfigServicePlugin,
+    /**
+     * @deprecated
+     * Get service plugin config
+     */
     getConfigsServicePlugin,
+    /**
+     * @deprecated
+     * Update catalog config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateConfigServicePlugin,
+    /**
+     * Delete service plugin config.
+     */
     deleteCatalogPluginLootbox,
+    /**
+     * Get lootbox plugin config.
+     */
     getCatalogPluginsLootbox,
+    /**
+     * Update lootbox plugin config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateCatalogPluginLootbox,
+    /**
+     * Delete section plugin config.
+     */
     deleteCatalogPluginSection,
+    /**
+     * Get section plugin config.
+     */
     getCatalogPluginsSection,
+    /**
+     * Update section config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateCatalogPluginSection,
+    /**
+     * Delete service plugin config.
+     */
     deleteRevocationPluginRevocation,
+    /**
+     * Get revocation plugin config.
+     */
     getRevocationPluginsRevocation,
+    /**
+     * Update revocation plugin config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateRevocationPluginRevocation,
+    /**
+     * Get lootbox plugin gRPC info.
+     */
     getCatalogPluginsLootboxGrpcInfo,
+    /**
+     * Upload lootbox plugin custom config tls cert.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateCatalogPluginLootboxCustomConfigCert,
+    /**
+     * Upload section plugin custom config tls cert.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateCatalogPluginSectionCustomConfigCert,
+    /**
+     * Upload revocation plugin custom config tls cert.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated service plugin config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateRevocationPluginRevocationRevocationCustomConfigCert
   }
 }

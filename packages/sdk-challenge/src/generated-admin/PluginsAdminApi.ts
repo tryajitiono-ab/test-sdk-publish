@@ -18,9 +18,12 @@ export function PluginsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function PluginsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [DELETE]&lt;/li&gt;&lt;/ul&gt;
-   */
   async function deletePluginAssignment(): Promise<AxiosResponse<unknown>> {
     const $ = new PluginsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deletePluginAssignment()
@@ -43,9 +43,6 @@ export function PluginsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [READ]&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getPluginsAssignment(): Promise<AxiosResponse<PluginAssignmentResponse>> {
     const $ = new PluginsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPluginsAssignment()
@@ -53,9 +50,6 @@ export function PluginsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [CREATE]&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createPluginAssignment(data: PluginAssignmentRequest): Promise<AxiosResponse<PluginAssignmentResponse>> {
     const $ = new PluginsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createPluginAssignment(data)
@@ -63,9 +57,6 @@ export function PluginsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [UPDATE]&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updatePluginAssignment(data: PluginAssignmentRequest): Promise<AxiosResponse<PluginAssignmentResponse>> {
     const $ = new PluginsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updatePluginAssignment(data)
@@ -74,9 +65,21 @@ export function PluginsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [DELETE]&lt;/li&gt;&lt;/ul&gt;
+     */
     deletePluginAssignment,
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [READ]&lt;/li&gt;&lt;/ul&gt;
+     */
     getPluginsAssignment,
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [CREATE]&lt;/li&gt;&lt;/ul&gt;
+     */
     createPluginAssignment,
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [UPDATE]&lt;/li&gt;&lt;/ul&gt;
+     */
     updatePluginAssignment
   }
 }

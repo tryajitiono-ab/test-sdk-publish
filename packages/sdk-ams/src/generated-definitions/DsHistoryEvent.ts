@@ -13,6 +13,7 @@ export const DsHistoryEvent = z.object({
   reason: z.string(),
   region: z.string(),
   serverId: z.string(),
+  sessionId: z.string(),
   status: z.string()
 })
 

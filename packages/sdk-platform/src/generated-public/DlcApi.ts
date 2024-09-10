@@ -23,9 +23,12 @@ export function DlcApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -38,9 +41,6 @@ export function DlcApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get user dlc reward contents. If includeAllNamespaces is false, will only return the dlc synced from the current namespace&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user dlc&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getUsersMeDlcContent(queryParams: {
     type: 'EPICGAMES' | 'OCULUS' | 'PSN' | 'STEAM' | 'XBOX'
     includeAllNamespaces?: boolean | null
@@ -51,9 +51,6 @@ export function DlcApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get dlc reward simple map, only return the sku of durable item reward.
-   */
   async function getDlcRewardsDurableMap(queryParams: {
     dlcType: 'EPICGAMES' | 'OCULUS' | 'PSN' | 'STEAM' | 'XBOX'
   }): Promise<AxiosResponse<DlcConfigRewardShortInfo>> {
@@ -63,9 +60,6 @@ export function DlcApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Synchronize with dlc entitlements in PSN Store.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: result of synchronization&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateDlcPsnSync_ByUserId(userId: string, data: PlayStationDlcSyncRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Dlc$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDlcPsnSync_ByUserId(userId, data)
@@ -73,9 +67,6 @@ export function DlcApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sync Xbox inventory&#39;s dlc items
-   */
   async function updateDlcXblSync_ByUserId(userId: string, data: XblDlcSyncRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Dlc$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDlcXblSync_ByUserId(userId, data)
@@ -83,9 +74,6 @@ export function DlcApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sync steam dlc
-   */
   async function updateDlcSteamSync_ByUserId(userId: string, data: SteamDlcSyncRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Dlc$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDlcSteamSync_ByUserId(userId, data)
@@ -93,9 +81,6 @@ export function DlcApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sync oculus dlc
-   */
   async function updateDlcOculuSync_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new Dlc$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDlcOculuSync_ByUserId(userId)
@@ -103,9 +88,6 @@ export function DlcApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sync epic games dlc items
-   */
   async function updateDlcEpicgameSync_ByUserId(userId: string, data: EpicGamesDlcSyncRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Dlc$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDlcEpicgameSync_ByUserId(userId, data)
@@ -113,9 +95,6 @@ export function DlcApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Synchronize with dlc entitlements in PSN Store with multiple service labels.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: result of synchronization&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateDlcPsnSyncMultiServiceLabel_ByUserId(
     userId: string,
     data: PlayStationDlcSyncMultiServiceLabelsRequest
@@ -127,13 +106,37 @@ export function DlcApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get user dlc reward contents. If includeAllNamespaces is false, will only return the dlc synced from the current namespace&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user dlc&lt;/li&gt;&lt;/ul&gt;
+     */
     getUsersMeDlcContent,
+    /**
+     * Get dlc reward simple map, only return the sku of durable item reward.
+     */
     getDlcRewardsDurableMap,
+    /**
+     * Synchronize with dlc entitlements in PSN Store.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: result of synchronization&lt;/li&gt;&lt;/ul&gt;
+     */
     updateDlcPsnSync_ByUserId,
+    /**
+     * Sync Xbox inventory&#39;s dlc items
+     */
     updateDlcXblSync_ByUserId,
+    /**
+     * Sync steam dlc
+     */
     updateDlcSteamSync_ByUserId,
+    /**
+     * Sync oculus dlc
+     */
     updateDlcOculuSync_ByUserId,
+    /**
+     * Sync epic games dlc items
+     */
     updateDlcEpicgameSync_ByUserId,
+    /**
+     * Synchronize with dlc entitlements in PSN Store with multiple service labels.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: result of synchronization&lt;/li&gt;&lt;/ul&gt;
+     */
     updateDlcPsnSyncMultiServiceLabel_ByUserId
   }
 }

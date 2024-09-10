@@ -6,3 +6,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+code {
+  @apply text-red-500;
+}
+
+code::before, code::after {
+  content: "`";
+}

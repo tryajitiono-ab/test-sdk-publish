@@ -82,7 +82,7 @@ export class GlobalAchievements$ {
   /**
    * &lt;p&gt;Required permission &lt;code&gt;NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Note:&lt;/p&gt; &lt;p&gt; Global achievement should be unlocked to claim the reward. Only contributor of global achievement are eligible for rewards
    */
-  fetchClaimGlobal_ByUserId_ByAchievementCode(userId: string, achievementCode: string): Promise<Response<unknown>> {
+  updateClaimGlobal_ByUserId_ByAchievementCode(userId: string, achievementCode: string): Promise<Response<unknown>> {
     const params = {} as AxiosRequestConfig
     const url = '/achievement/v1/public/namespaces/{namespace}/users/{userId}/global/achievements/{achievementCode}/claim'
       .replace('{namespace}', this.namespace)

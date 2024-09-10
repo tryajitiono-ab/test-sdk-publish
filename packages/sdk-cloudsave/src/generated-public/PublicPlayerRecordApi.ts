@@ -22,9 +22,12 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     }
   }
 
-  /**
-   * Retrieve list of player records key under given namespace.
-   */
   async function getUsersMeRecords(queryParams?: {
     limit?: number
     offset?: number
@@ -51,9 +51,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Retrieve player record key and payload in bulk under given namespace. Maximum bulk key limit per request 20
-   */
   async function createUserMeRecordBulk(data: BulkGetPlayerRecordsRequest): Promise<AxiosResponse<BulkGetPlayerRecordResponse>> {
     const $ = new PublicPlayerRecord$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createUserMeRecordBulk(data)
@@ -61,9 +58,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Delete player record by its key. Only user that own the player record could delete it.
-   */
   async function deleteRecord_ByUserId_ByKey(userId: string, key: string): Promise<AxiosResponse<unknown>> {
     const $ = new PublicPlayerRecord$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteRecord_ByUserId_ByKey(userId, key)
@@ -71,9 +65,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Get player record by its key. **Private Record**: Only user that own the player record could retrieve it.
-   */
   async function getRecord_ByUserId_ByKey(userId: string, key: string): Promise<AxiosResponse<PlayerRecordResponse>> {
     const $ = new PublicPlayerRecord$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getRecord_ByUserId_ByKey(userId, key)
@@ -81,9 +72,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * ## Description This endpoints will create new player record or append the existing player record. Only user that own the existing player record could modify. **Append example:** Example 1 - Existing JSON: `{ &#34;data1&#34;: &#34;value&#34; }` - New JSON: `{ &#34;data2&#34;: &#34;new value&#34; }` - Result: `{ &#34;data1&#34;: &#34;value&#34;, &#34;data2&#34;: &#34;new value&#34; }` Example 2 - Existing JSON: `{ &#34;data1&#34;: { &#34;data2&#34;: &#34;value&#34; }` - New JSON: `{ &#34;data1&#34;: { &#34;data3&#34;: &#34;new value&#34; }` - Result: `{ &#34;data1&#34;: { &#34;data2&#34;: &#34;value&#34;, &#34;data3&#34;: &#34;new value&#34; }` ## Restriction This is the restriction of Key Naming for the record: 1. Cannot use **&#34;.&#34;** as the key name - `{ &#34;data.2&#34;: &#34;value&#34; }` 2. Cannot use **&#34;$&#34;** as the prefix in key names - `{ &#34;$data&#34;: &#34;value&#34; }` 3. Cannot use empty string in key names - `{ &#34;&#34;: &#34;value&#34; }` ## Record Metadata Metadata allows user to define the behaviour of the record. Metadata can be defined in request body with field name **__META**. When creating record, if **__META** field is not defined, the metadata value will use the default value. When updating record, if **__META** field is not defined, the existing metadata value will stay as is. **Metadata List:** 1. is_public (default: false, type: bool) Indicate whether the player record is a public record or not. **Request Body Example:** ``` { &#34;__META&#34;: { &#34;is_public&#34;: true } ... } ```
-   */
   async function createRecord_ByUserId_ByKey(
     userId: string,
     key: string,
@@ -95,9 +83,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * ## Description This endpoints will create new player record or replace the existing player record. Only user that own the existing player record could modify it. **Replace behaviour:** The existing value will be replaced completely with the new value. Example - Existing JSON: `{ &#34;data1&#34;: &#34;value&#34; }` - New JSON: `{ &#34;data2&#34;: &#34;new value&#34; }` - Result: `{ &#34;data2&#34;: &#34;new value&#34; }` ## Restriction This is the restriction of Key Naming for the record: 1. Cannot use **&#34;.&#34;** as the key name - `{ &#34;data.2&#34;: &#34;value&#34; }` 2. Cannot use **&#34;$&#34;** as the prefix in key names - `{ &#34;$data&#34;: &#34;value&#34; }` 3. Cannot use empty string in key names - `{ &#34;&#34;: &#34;value&#34; }` ## Record Metadata Metadata allows user to define the behaviour of the record. Metadata can be defined in request body with field name **__META**. When creating record, if **__META** field is not defined, the metadata value will use the default value. When updating record, if **__META** field is not defined, the existing metadata value will stay as is. **Metadata List:** 1. is_public (default: false, type: bool) Indicate whether the player record is a public record or not. **Request Body Example:** ``` { &#34;__META&#34;: { &#34;is_public&#34;: true } ... } ```
-   */
   async function updateRecord_ByUserId_ByKey(
     userId: string,
     key: string,
@@ -109,9 +94,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Retrieve list of other public player records key under given namespace.
-   */
   async function getRecordsPublic_ByUserId(
     userId: string,
     queryParams?: { limit?: number; offset?: number; tags?: string[] }
@@ -122,9 +104,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Delete player public record. ## Warning: This endpoint is going to deprecate This endpoint is going to deprecate in the future please don&#39;t use it. For alternative, please use these endpoints: - **POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality - **PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality - **DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}**
-   */
   async function deletePublicMeUser_ByKey(key: string): Promise<AxiosResponse<unknown>> {
     const $ = new PublicPlayerRecord$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deletePublicMeUser_ByKey(key)
@@ -132,9 +111,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk get other player&#39;s record that is public by userIds, max allowed 20 at a time. Only record with `isPublic=true` that can be retrieved using this endpoint.
-   */
   async function fetchPublicBulkUser_ByKey(key: string, data: BulkUserIDsRequest): Promise<AxiosResponse<BulkGetPlayerRecordResponse>> {
     const $ = new PublicPlayerRecord$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.fetchPublicBulkUser_ByKey(key, data)
@@ -142,9 +118,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Retrieve other player public record key and payload in bulk under given namespace. Maximum bulk key limit per request 20
-   */
   async function fetchRecordBulk_ByUserId(
     userId: string,
     data: BulkGetPlayerRecordsRequest
@@ -155,9 +128,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Get other player&#39;s record that is public. Only record with `isPublic=true` that can be retrieved using this endpoint.
-   */
   async function getPublic_ByUserId_ByKey(userId: string, key: string): Promise<AxiosResponse<PlayerRecordResponse>> {
     const $ = new PublicPlayerRecord$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPublic_ByUserId_ByKey(userId, key)
@@ -165,9 +135,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * ## Description This endpoints will create new player public record or append the existing player public record. **Append example:** Example 1 - Existing JSON: `{ &#34;data1&#34;: &#34;value&#34; }` - New JSON: `{ &#34;data2&#34;: &#34;new value&#34; }` - Result: `{ &#34;data1&#34;: &#34;value&#34;, &#34;data2&#34;: &#34;new value&#34; }` Example 2 - Existing JSON: `{ &#34;data1&#34;: { &#34;data2&#34;: &#34;value&#34; }` - New JSON: `{ &#34;data1&#34;: { &#34;data3&#34;: &#34;new value&#34; }` - Result: `{ &#34;data1&#34;: { &#34;data2&#34;: &#34;value&#34;, &#34;data3&#34;: &#34;new value&#34; }` ## Restriction This is the restriction of Key Naming for the record: 1. Cannot use **&#34;.&#34;** as the key name - `{ &#34;data.2&#34;: &#34;value&#34; }` 2. Cannot use **&#34;$&#34;** as the prefix in key names - `{ &#34;$data&#34;: &#34;value&#34; }` 3. Cannot use empty string in key names - `{ &#34;&#34;: &#34;value&#34; }` ## Reserved Word Reserved Word List: **__META** The reserved word cannot be used as a field in record value, If still defining the field when creating or updating the record, it will be ignored. ## Warning: This endpoint is going to deprecate This endpoint is going to deprecate in the future please don&#39;t use it. For alternative, please use these endpoints: - **POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality - **PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality - **DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}**
-   */
   async function createPublic_ByUserId_ByKey(
     userId: string,
     key: string,
@@ -179,9 +146,6 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * ## Description This endpoints will create new player public record or replace the existing player public record. **Replace behaviour:** The existing value will be replaced completely with the new value. Example - Existing JSON: `{ &#34;data1&#34;: &#34;value&#34; }` - New JSON: `{ &#34;data2&#34;: &#34;new value&#34; }` - Result: `{ &#34;data2&#34;: &#34;new value&#34; }` ## Restriction This is the restriction of Key Naming for the record: 1. Cannot use **&#34;.&#34;** as the key name - `{ &#34;data.2&#34;: &#34;value&#34; }` 2. Cannot use **&#34;$&#34;** as the prefix in key names - `{ &#34;$data&#34;: &#34;value&#34; }` 3. Cannot use empty string in key names - `{ &#34;&#34;: &#34;value&#34; }` ## Reserved Word Reserved Word List: **__META** The reserved word cannot be used as a field in record value, If still defining the field when creating or updating the record, it will be ignored. ## Warning: This endpoint is going to deprecate This endpoint is going to deprecate in the future please don&#39;t use it. For alternative, please use these endpoints: - **POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality - **PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality - **DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}**
-   */
   async function updatePublic_ByUserId_ByKey(
     userId: string,
     key: string,
@@ -194,18 +158,57 @@ export function PublicPlayerRecordApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
   }
 
   return {
+    /**
+     * Retrieve list of player records key under given namespace.
+     */
     getUsersMeRecords,
+    /**
+     * Retrieve player record key and payload in bulk under given namespace. Maximum bulk key limit per request 20
+     */
     createUserMeRecordBulk,
+    /**
+     * Delete player record by its key. Only user that own the player record could delete it.
+     */
     deleteRecord_ByUserId_ByKey,
+    /**
+     * Get player record by its key. **Private Record**: Only user that own the player record could retrieve it.
+     */
     getRecord_ByUserId_ByKey,
+    /**
+     * ## Description This endpoints will create new player record or append the existing player record. Only user that own the existing player record could modify. **Append example:** Example 1 - Existing JSON: `{ &#34;data1&#34;: &#34;value&#34; }` - New JSON: `{ &#34;data2&#34;: &#34;new value&#34; }` - Result: `{ &#34;data1&#34;: &#34;value&#34;, &#34;data2&#34;: &#34;new value&#34; }` Example 2 - Existing JSON: `{ &#34;data1&#34;: { &#34;data2&#34;: &#34;value&#34; }` - New JSON: `{ &#34;data1&#34;: { &#34;data3&#34;: &#34;new value&#34; }` - Result: `{ &#34;data1&#34;: { &#34;data2&#34;: &#34;value&#34;, &#34;data3&#34;: &#34;new value&#34; }` ## Restriction This is the restriction of Key Naming for the record: 1. Cannot use **&#34;.&#34;** as the key name - `{ &#34;data.2&#34;: &#34;value&#34; }` 2. Cannot use **&#34;$&#34;** as the prefix in key names - `{ &#34;$data&#34;: &#34;value&#34; }` 3. Cannot use empty string in key names - `{ &#34;&#34;: &#34;value&#34; }` ## Record Metadata Metadata allows user to define the behaviour of the record. Metadata can be defined in request body with field name **__META**. When creating record, if **__META** field is not defined, the metadata value will use the default value. When updating record, if **__META** field is not defined, the existing metadata value will stay as is. **Metadata List:** 1. is_public (default: false, type: bool) Indicate whether the player record is a public record or not. **Request Body Example:** ``` { &#34;__META&#34;: { &#34;is_public&#34;: true } ... } ```
+     */
     createRecord_ByUserId_ByKey,
+    /**
+     * ## Description This endpoints will create new player record or replace the existing player record. Only user that own the existing player record could modify it. **Replace behaviour:** The existing value will be replaced completely with the new value. Example - Existing JSON: `{ &#34;data1&#34;: &#34;value&#34; }` - New JSON: `{ &#34;data2&#34;: &#34;new value&#34; }` - Result: `{ &#34;data2&#34;: &#34;new value&#34; }` ## Restriction This is the restriction of Key Naming for the record: 1. Cannot use **&#34;.&#34;** as the key name - `{ &#34;data.2&#34;: &#34;value&#34; }` 2. Cannot use **&#34;$&#34;** as the prefix in key names - `{ &#34;$data&#34;: &#34;value&#34; }` 3. Cannot use empty string in key names - `{ &#34;&#34;: &#34;value&#34; }` ## Record Metadata Metadata allows user to define the behaviour of the record. Metadata can be defined in request body with field name **__META**. When creating record, if **__META** field is not defined, the metadata value will use the default value. When updating record, if **__META** field is not defined, the existing metadata value will stay as is. **Metadata List:** 1. is_public (default: false, type: bool) Indicate whether the player record is a public record or not. **Request Body Example:** ``` { &#34;__META&#34;: { &#34;is_public&#34;: true } ... } ```
+     */
     updateRecord_ByUserId_ByKey,
+    /**
+     * Retrieve list of other public player records key under given namespace.
+     */
     getRecordsPublic_ByUserId,
+    /**
+     * Delete player public record. ## Warning: This endpoint is going to deprecate This endpoint is going to deprecate in the future please don&#39;t use it. For alternative, please use these endpoints: - **POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality - **PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality - **DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}**
+     */
     deletePublicMeUser_ByKey,
+    /**
+     * Bulk get other player&#39;s record that is public by userIds, max allowed 20 at a time. Only record with `isPublic=true` that can be retrieved using this endpoint.
+     */
     fetchPublicBulkUser_ByKey,
+    /**
+     * Retrieve other player public record key and payload in bulk under given namespace. Maximum bulk key limit per request 20
+     */
     fetchRecordBulk_ByUserId,
+    /**
+     * Get other player&#39;s record that is public. Only record with `isPublic=true` that can be retrieved using this endpoint.
+     */
     getPublic_ByUserId_ByKey,
+    /**
+     * ## Description This endpoints will create new player public record or append the existing player public record. **Append example:** Example 1 - Existing JSON: `{ &#34;data1&#34;: &#34;value&#34; }` - New JSON: `{ &#34;data2&#34;: &#34;new value&#34; }` - Result: `{ &#34;data1&#34;: &#34;value&#34;, &#34;data2&#34;: &#34;new value&#34; }` Example 2 - Existing JSON: `{ &#34;data1&#34;: { &#34;data2&#34;: &#34;value&#34; }` - New JSON: `{ &#34;data1&#34;: { &#34;data3&#34;: &#34;new value&#34; }` - Result: `{ &#34;data1&#34;: { &#34;data2&#34;: &#34;value&#34;, &#34;data3&#34;: &#34;new value&#34; }` ## Restriction This is the restriction of Key Naming for the record: 1. Cannot use **&#34;.&#34;** as the key name - `{ &#34;data.2&#34;: &#34;value&#34; }` 2. Cannot use **&#34;$&#34;** as the prefix in key names - `{ &#34;$data&#34;: &#34;value&#34; }` 3. Cannot use empty string in key names - `{ &#34;&#34;: &#34;value&#34; }` ## Reserved Word Reserved Word List: **__META** The reserved word cannot be used as a field in record value, If still defining the field when creating or updating the record, it will be ignored. ## Warning: This endpoint is going to deprecate This endpoint is going to deprecate in the future please don&#39;t use it. For alternative, please use these endpoints: - **POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality - **PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality - **DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}**
+     */
     createPublic_ByUserId_ByKey,
+    /**
+     * ## Description This endpoints will create new player public record or replace the existing player public record. **Replace behaviour:** The existing value will be replaced completely with the new value. Example - Existing JSON: `{ &#34;data1&#34;: &#34;value&#34; }` - New JSON: `{ &#34;data2&#34;: &#34;new value&#34; }` - Result: `{ &#34;data2&#34;: &#34;new value&#34; }` ## Restriction This is the restriction of Key Naming for the record: 1. Cannot use **&#34;.&#34;** as the key name - `{ &#34;data.2&#34;: &#34;value&#34; }` 2. Cannot use **&#34;$&#34;** as the prefix in key names - `{ &#34;$data&#34;: &#34;value&#34; }` 3. Cannot use empty string in key names - `{ &#34;&#34;: &#34;value&#34; }` ## Reserved Word Reserved Word List: **__META** The reserved word cannot be used as a field in record value, If still defining the field when creating or updating the record, it will be ignored. ## Warning: This endpoint is going to deprecate This endpoint is going to deprecate in the future please don&#39;t use it. For alternative, please use these endpoints: - **POST /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality - **PUT /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality - **DELETE /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}**
+     */
     updatePublic_ByUserId_ByKey
   }
 }

@@ -24,9 +24,12 @@ export function TopicApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -39,9 +42,6 @@ export function TopicApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * get chat muted topics in a namespace.
-   */
   async function getMuted(): Promise<AxiosResponse<MutedTopicResponseArray>> {
     const $ = new Topic$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMuted()
@@ -49,9 +49,6 @@ export function TopicApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * get chat list of topic in a namespace.
-   */
   async function getTopic(queryParams?: {
     limit?: number
     offset?: number
@@ -63,9 +60,6 @@ export function TopicApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Mute user.
-   */
   async function updateMute_ByTopic(topic: string, data: MuteUserRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Topic$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateMute_ByTopic(topic, data)
@@ -73,9 +67,6 @@ export function TopicApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * get chat history in a namespace.
-   */
   async function getChats_ByTopic(
     topic: string,
     queryParams?: { limit?: number; order?: string | null; startCreatedAt?: number }
@@ -86,9 +77,6 @@ export function TopicApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Unmute user.
-   */
   async function updateUnmute_ByTopic(topic: string, data: UnmuteUserRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Topic$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateUnmute_ByTopic(topic, data)
@@ -96,9 +84,6 @@ export function TopicApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Ban topic members in a group topic.
-   */
   async function updateBanMember_ByTopic(
     topic: string,
     data: PublicBanTopicMembersRequest
@@ -109,9 +94,6 @@ export function TopicApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Unban topic members in a group topic.
-   */
   async function updateUnbanMember_ByTopic(
     topic: string,
     data: PublicUnbanTopicMembersRequest
@@ -122,9 +104,6 @@ export function TopicApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete chat.
-   */
   async function deleteChat_ByTopic_ByChatId(topic: string, chatId: string): Promise<AxiosResponse<unknown>> {
     const $ = new Topic$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteChat_ByTopic_ByChatId(topic, chatId)
@@ -133,13 +112,37 @@ export function TopicApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * get chat muted topics in a namespace.
+     */
     getMuted,
+    /**
+     * get chat list of topic in a namespace.
+     */
     getTopic,
+    /**
+     * Mute user.
+     */
     updateMute_ByTopic,
+    /**
+     * get chat history in a namespace.
+     */
     getChats_ByTopic,
+    /**
+     * Unmute user.
+     */
     updateUnmute_ByTopic,
+    /**
+     * Ban topic members in a group topic.
+     */
     updateBanMember_ByTopic,
+    /**
+     * Unban topic members in a group topic.
+     */
     updateUnbanMember_ByTopic,
+    /**
+     * Delete chat.
+     */
     deleteChat_ByTopic_ByChatId
   }
 }

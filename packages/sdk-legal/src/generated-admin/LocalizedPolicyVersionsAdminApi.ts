@@ -24,9 +24,12 @@ export function LocalizedPolicyVersionsAdminApi(sdk: AccelByteSDK, args?: SdkSet
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -39,9 +42,6 @@ export function LocalizedPolicyVersionsAdminApi(sdk: AccelByteSDK, args?: SdkSet
     }
   }
 
-  /**
-   * Retrieve a version of a particular country-specific policy.
-   */
   async function getLocalizedPolicyVersion_ByLocalizedPolicyVersionId(
     localizedPolicyVersionId: string
   ): Promise<AxiosResponse<RetrieveLocalizedPolicyVersionResponse>> {
@@ -51,9 +51,6 @@ export function LocalizedPolicyVersionsAdminApi(sdk: AccelByteSDK, args?: SdkSet
     return resp.response
   }
 
-  /**
-   * Update a version of a particular country-specific policy.
-   */
   async function updateLocalizedPolicyVersion_ByLocalizedPolicyVersionId(
     localizedPolicyVersionId: string,
     data: UpdateLocalizedPolicyVersionRequest
@@ -64,9 +61,6 @@ export function LocalizedPolicyVersionsAdminApi(sdk: AccelByteSDK, args?: SdkSet
     return resp.response
   }
 
-  /**
-   * Retrieve versions of a particular country-specific policy.
-   */
   async function getLocalizedPolicyVersionVersion_ByPolicyVersionId(
     policyVersionId: string
   ): Promise<AxiosResponse<RetrieveLocalizedPolicyVersionResponseArray>> {
@@ -76,9 +70,6 @@ export function LocalizedPolicyVersionsAdminApi(sdk: AccelByteSDK, args?: SdkSet
     return resp.response
   }
 
-  /**
-   * Create a version of a particular country-specific policy.
-   */
   async function createLocalizedPolicyVersionVersion_ByPolicyVersionId(
     policyVersionId: string,
     data: CreateLocalizedPolicyVersionRequest
@@ -89,9 +80,6 @@ export function LocalizedPolicyVersionsAdminApi(sdk: AccelByteSDK, args?: SdkSet
     return resp.response
   }
 
-  /**
-   * Update a localized version policy to be the default.
-   */
   async function patchDefault_ByLocalizedPolicyVersionId(localizedPolicyVersionId: string): Promise<AxiosResponse<unknown>> {
     const $ = new LocalizedPolicyVersionsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchDefault_ByLocalizedPolicyVersionId(localizedPolicyVersionId)
@@ -99,9 +87,6 @@ export function LocalizedPolicyVersionsAdminApi(sdk: AccelByteSDK, args?: SdkSet
     return resp.response
   }
 
-  /**
-   * Request presigned URL for upload attachment for a particular localized version of base policy.
-   */
   async function createAttachment_ByLocalizedPolicyVersionId(
     localizedPolicyVersionId: string,
     data: UploadPolicyVersionAttachmentRequest
@@ -113,11 +98,29 @@ export function LocalizedPolicyVersionsAdminApi(sdk: AccelByteSDK, args?: SdkSet
   }
 
   return {
+    /**
+     * Retrieve a version of a particular country-specific policy.
+     */
     getLocalizedPolicyVersion_ByLocalizedPolicyVersionId,
+    /**
+     * Update a version of a particular country-specific policy.
+     */
     updateLocalizedPolicyVersion_ByLocalizedPolicyVersionId,
+    /**
+     * Retrieve versions of a particular country-specific policy.
+     */
     getLocalizedPolicyVersionVersion_ByPolicyVersionId,
+    /**
+     * Create a version of a particular country-specific policy.
+     */
     createLocalizedPolicyVersionVersion_ByPolicyVersionId,
+    /**
+     * Update a localized version policy to be the default.
+     */
     patchDefault_ByLocalizedPolicyVersionId,
+    /**
+     * Request presigned URL for upload attachment for a particular localized version of base policy.
+     */
     createAttachment_ByLocalizedPolicyVersionId
   }
 }

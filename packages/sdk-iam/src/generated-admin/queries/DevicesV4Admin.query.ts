@@ -392,6 +392,7 @@ export const useDevicesV4AdminApi_GetUsers_ByDeviceId_v4 = (
 }
 
 /**
+ * @deprecated
  * This is the endpoint for an admin to decrypt device id
  *
  * #### Default Query Options

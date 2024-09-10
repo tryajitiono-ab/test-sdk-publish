@@ -20,9 +20,12 @@ export function InventoryConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkSet
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function InventoryConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkSet
     }
   }
 
-  /**
-   *  Listing all inventory configurations in a namespace. The response body will be in the form of standard pagination. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
-   */
   async function getInventoryConfigurations(queryParams?: {
     code?: string | null
     limit?: number
@@ -59,9 +59,6 @@ export function InventoryConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkSet
     return resp.response
   }
 
-  /**
-   *  Creating inventory configuration. There cannot be one inventory configuration duplicate code per namespace. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [CREATE]
-   */
   async function createInventoryConfiguration(data: CreateInventoryConfigurationReq): Promise<AxiosResponse<InventoryConfigurationResp>> {
     const $ = new InventoryConfigurationsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createInventoryConfiguration(data)
@@ -69,9 +66,6 @@ export function InventoryConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkSet
     return resp.response
   }
 
-  /**
-   *  Deleting an inventory configuration. If an inventory already reference this type (i.e. STATUS is &#34;TIED&#34;), then the type cannot be deleted anymore. ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [DELETE]
-   */
   async function deleteInventoryConfiguration_ByInventoryConfigurationId(
     inventoryConfigurationId: string
   ): Promise<AxiosResponse<unknown>> {
@@ -81,9 +75,6 @@ export function InventoryConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkSet
     return resp.response
   }
 
-  /**
-   *  Getting an inventory configuration info. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
-   */
   async function getInventoryConfiguration_ByInventoryConfigurationId(
     inventoryConfigurationId: string
   ): Promise<AxiosResponse<InventoryConfigurationResp>> {
@@ -93,9 +84,6 @@ export function InventoryConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkSet
     return resp.response
   }
 
-  /**
-   *  Updating inventory configuration. There cannot be duplicate code per namespace. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [UPDATE]
-   */
   async function updateInventoryConfiguration_ByInventoryConfigurationId(
     inventoryConfigurationId: string,
     data: InventoryConfigurationReq
@@ -107,10 +95,25 @@ export function InventoryConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkSet
   }
 
   return {
+    /**
+     *  Listing all inventory configurations in a namespace. The response body will be in the form of standard pagination. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
+     */
     getInventoryConfigurations,
+    /**
+     *  Creating inventory configuration. There cannot be one inventory configuration duplicate code per namespace. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [CREATE]
+     */
     createInventoryConfiguration,
+    /**
+     *  Deleting an inventory configuration. If an inventory already reference this type (i.e. STATUS is &#34;TIED&#34;), then the type cannot be deleted anymore. ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [DELETE]
+     */
     deleteInventoryConfiguration_ByInventoryConfigurationId,
+    /**
+     *  Getting an inventory configuration info. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
+     */
     getInventoryConfiguration_ByInventoryConfigurationId,
+    /**
+     *  Updating inventory configuration. There cannot be duplicate code per namespace. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [UPDATE]
+     */
     updateInventoryConfiguration_ByInventoryConfigurationId
   }
 }

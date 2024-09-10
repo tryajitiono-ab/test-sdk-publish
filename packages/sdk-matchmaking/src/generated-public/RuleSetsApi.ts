@@ -18,9 +18,12 @@ export function RuleSetsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function RuleSetsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * List rule sets.
-   */
   async function getRulesets(queryParams?: {
     limit?: number
     name?: string | null
@@ -47,9 +47,6 @@ export function RuleSetsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Creates a new rules set. A rule set has a name and contains arbitrary data which is meaningful to some particular match function(s) The name is used for a match pool to select the ruleset data that should be sent to the match function when matchmaking in that pool. To use custom rules set please set enable_custom_match_function=true. Default (false). When custom enable_custom_match_function=true, the ruleset will only validate if the rule is valid json.
-   */
   async function createRuleset(data: RuleSetPayload): Promise<AxiosResponse<unknown>> {
     const $ = new RuleSets$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createRuleset(data)
@@ -57,9 +54,6 @@ export function RuleSetsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Deletes an existing rule set.
-   */
   async function deleteRuleset_ByRuleset(ruleset: string): Promise<AxiosResponse<unknown>> {
     const $ = new RuleSets$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteRuleset_ByRuleset(ruleset)
@@ -67,9 +61,6 @@ export function RuleSetsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get details for a specific rule set
-   */
   async function getRuleset_ByRuleset(ruleset: string): Promise<AxiosResponse<RuleSetPayload>> {
     const $ = new RuleSets$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getRuleset_ByRuleset(ruleset)
@@ -77,9 +68,6 @@ export function RuleSetsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Updates an existing matchmaking rule set. To use custom rules set please set enable_custom_match_function=true. Default (false). When custom enable_custom_match_function=true, the ruleset will only validate if the rule is valid json.
-   */
   async function updateRuleset_ByRuleset(ruleset: string, data: RuleSetPayload): Promise<AxiosResponse<RuleSetPayload>> {
     const $ = new RuleSets$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateRuleset_ByRuleset(ruleset, data)
@@ -88,10 +76,25 @@ export function RuleSetsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * List rule sets.
+     */
     getRulesets,
+    /**
+     * Creates a new rules set. A rule set has a name and contains arbitrary data which is meaningful to some particular match function(s) The name is used for a match pool to select the ruleset data that should be sent to the match function when matchmaking in that pool. To use custom rules set please set enable_custom_match_function=true. Default (false). When custom enable_custom_match_function=true, the ruleset will only validate if the rule is valid json.
+     */
     createRuleset,
+    /**
+     * Deletes an existing rule set.
+     */
     deleteRuleset_ByRuleset,
+    /**
+     * Get details for a specific rule set
+     */
     getRuleset_ByRuleset,
+    /**
+     * Updates an existing matchmaking rule set. To use custom rules set please set enable_custom_match_function=true. Default (false). When custom enable_custom_match_function=true, the ruleset will only validate if the rule is valid json.
+     */
     updateRuleset_ByRuleset
   }
 }

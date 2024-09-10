@@ -1,12 +1,12 @@
-import { Accelbyte } from '@accelbyte/sdk'
-import { Legal, LegalHelper } from '@accelbyte/sdk-legal'
+import { AccelByte } from '@accelbyte/sdk'
+import { EligibilitiesApi, Legal, LegalHelper } from '@accelbyte/sdk-legal'
 
-const sdk = Accelbyte.SDK({
-  options: {
-    baseURL: 'https://demo.accelbyte.io',
-    clientId: '77f88506b6174c3ea4d925f5b4096ce8',
-    namespace: 'accelbyte',
-    redirectURI: 'http://localhost:3030'
+const sdk = AccelByte.SDK({
+  coreConfig: {
+    baseURL: 'https://prod.gamingservices.accelbyte.io',
+    clientId: '5b5c6809088b4b039d499a23429f2ba8',
+    namespace: 'foundations',
+    redirectURI: 'http://localhost:3000'
   }
 })
 
@@ -21,14 +21,17 @@ async function main() {
   let userEligibilities
   let unsignedPolicies
   try {
-    userEligibilities = await Legal.EligibilitiesApi(sdk, {
-      config: {
-        headers: {
-          Authorization: `Bearer ${accessToken}`
+    const result = await EligibilitiesApi(sdk, {
+      axiosConfig: {
+        request: {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
         }
       },
-      namespace: 'accelbyte'
+      coreConfig: {namespace: 'accelbyte'}
     }).getEligibility_ByNamespace()
+    userEligibilities = result.data
     console.log('\n userEligibilities:', userEligibilities)
 
     unsignedPolicies = LegalHelper.getUnsignedPolicies(userEligibilities)
@@ -54,14 +57,11 @@ async function main() {
     // --- Create Legal URL
     const LEGAL_WEB_URL = 'http://localhost:8080'
     const localizedPolicyVersionId = '<localizedPolicyVersionId>'
-    const legalURL = LegalHelper.createLegalURL(LEGAL_WEB_URL, localizedPolicyVersionId)
+    const legalURL = LegalHelper.createLegalURL({legalBaseUrl: LEGAL_WEB_URL, policyId: localizedPolicyVersionId})
     console.log('\n legalURL:', legalURL)
   } catch (err) {
     handleError(err)
   }
-
-  // const policiesByCountry = await this.legalState.getPoliciesList(countryCode)
-  // const displayedPolicies = LegalHelper.convertPoliciesToDisplayedPolicies(policiesByCountry.response.data, Env.NAMESPACE)
 }
 
 function handleError(err) {

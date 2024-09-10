@@ -19,9 +19,12 @@ export function PartyApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function PartyApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Required valid user authorization &lt;br/&gt; &lt;br&gt;load personal party data in a namespace based on Party ID &lt;br/&gt; Action Code: 50101
-   */
   async function getPartyParty_ByPartyId(partyId: string): Promise<AxiosResponse<PartyData>> {
     const $ = new Party$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPartyParty_ByPartyId(partyId)
@@ -44,9 +44,6 @@ export function PartyApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required valid user authorization &lt;br/&gt; &lt;br&gt;Set party limit, only party leader can call this endpoint.
-   */
   async function updateLimitParty_ByPartyId(partyId: string, data: PartyPutLimitSizeRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Party$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateLimitParty_ByPartyId(partyId, data)
@@ -54,9 +51,6 @@ export function PartyApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required valid user authorization &lt;br/&gt; &lt;br&gt;update party attributes in a namespace.
-   */
   async function updateAttributeParty_ByPartyId(partyId: string, data: PartyPutCustomAttributesRequest): Promise<AxiosResponse<PartyData>> {
     const $ = new Party$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateAttributeParty_ByPartyId(partyId, data)
@@ -65,8 +59,17 @@ export function PartyApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Required valid user authorization &lt;br/&gt; &lt;br&gt;load personal party data in a namespace based on Party ID &lt;br/&gt; Action Code: 50101
+     */
     getPartyParty_ByPartyId,
+    /**
+     * Required valid user authorization &lt;br/&gt; &lt;br&gt;Set party limit, only party leader can call this endpoint.
+     */
     updateLimitParty_ByPartyId,
+    /**
+     * Required valid user authorization &lt;br/&gt; &lt;br&gt;update party attributes in a namespace.
+     */
     updateAttributeParty_ByPartyId
   }
 }

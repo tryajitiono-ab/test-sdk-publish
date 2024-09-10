@@ -23,9 +23,12 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -38,10 +41,6 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [GET]_**
-   */
   async function getClients(): Promise<AxiosResponse<ClientResponseArray>> {
     const $ = new Clients$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getClients()
@@ -49,10 +48,6 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [POST]_**
-   */
   async function createClient(data: ClientCreateRequest): Promise<AxiosResponse<ClientCreationResponse>> {
     const $ = new Clients$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createClient(data)
@@ -60,10 +55,6 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [DELETE]_**
-   */
   async function deleteClient_ByClientId(clientId: string): Promise<AxiosResponse<unknown>> {
     const $ = new Clients$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteClient_ByClientId(clientId)
@@ -71,10 +62,6 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [GET]_**
-   */
   async function getClient_ByClientId(clientId: string): Promise<AxiosResponse<ClientResponse>> {
     const $ = new Clients$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getClient_ByClientId(clientId)
@@ -82,10 +69,6 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [PATCH]_**
-   */
   async function updateClient_ByClientId(clientId: string, data: ClientUpdateRequest): Promise<AxiosResponse<ClientResponse>> {
     const $ = new Clients$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateClient_ByClientId(clientId, data)
@@ -93,10 +76,6 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/{clientId}/secret [PUT]_**
-   */
   async function updateSecret_ByClientId(clientId: string, data: ClientUpdateSecretRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Clients$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateSecret_ByClientId(clientId, data)
@@ -104,10 +83,6 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [GET]_**
-   */
   async function getClients_ByNS(): Promise<AxiosResponse<ClientResponseArray>> {
     const $ = new Clients$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getClients_ByNS()
@@ -115,10 +90,6 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/v3/admin/namespaces/{namespace}/clients [POST]_**
-   */
   async function createClient_ByNS(data: ClientCreateRequest): Promise<AxiosResponse<ClientCreationResponse>> {
     const $ = new Clients$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createClient_ByNS(data)
@@ -126,10 +97,6 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions [PUT]_**
-   */
   async function updateClientpermission_ByClientId(clientId: string, data: ClientPermissions): Promise<AxiosResponse<unknown>> {
     const $ = new Clients$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateClientpermission_ByClientId(clientId, data)
@@ -137,10 +104,6 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [DELETE]_**
-   */
   async function deleteClient_ByClientId_ByNS(clientId: string): Promise<AxiosResponse<unknown>> {
     const $ = new Clients$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteClient_ByClientId_ByNS(clientId)
@@ -148,10 +111,6 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions/{resource}/{action} [DELETE]_**
-   */
   async function deleteClientpermission_ByClientId_ByResource_ByAction(
     clientId: string,
     resource: string,
@@ -163,10 +122,6 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions [POST]_**
-   */
   async function updateClientpermission_ByClientId_ByResource_ByAction(
     clientId: string,
     resource: string,
@@ -179,17 +134,65 @@ export function ClientsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * @deprecated
+     * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [GET]_**
+     */
     getClients,
+    /**
+     * @deprecated
+     * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [POST]_**
+     */
     createClient,
+    /**
+     * @deprecated
+     * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [DELETE]_**
+     */
     deleteClient_ByClientId,
+    /**
+     * @deprecated
+     * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [GET]_**
+     */
     getClient_ByClientId,
+    /**
+     * @deprecated
+     * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [PATCH]_**
+     */
     updateClient_ByClientId,
+    /**
+     * @deprecated
+     * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/{clientId}/secret [PUT]_**
+     */
     updateSecret_ByClientId,
+    /**
+     * @deprecated
+     * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients [GET]_**
+     */
     getClients_ByNS,
+    /**
+     * @deprecated
+     * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/v3/admin/namespaces/{namespace}/clients [POST]_**
+     */
     createClient_ByNS,
+    /**
+     * @deprecated
+     * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions [PUT]_**
+     */
     updateClientpermission_ByClientId,
+    /**
+     * @deprecated
+     * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId} [DELETE]_**
+     */
     deleteClient_ByClientId_ByNS,
+    /**
+     * @deprecated
+     * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions/{resource}/{action} [DELETE]_**
+     */
     deleteClientpermission_ByClientId_ByResource_ByAction,
+    /**
+     * @deprecated
+     * ## The endpoint is going to be deprecated **Endpoint migration guide** - **Substitute endpoint: _/iam/v3/admin/namespaces/{namespace}/clients/{clientId}/permissions [POST]_**
+     */
     updateClientpermission_ByClientId_ByResource_ByAction
   }
 }

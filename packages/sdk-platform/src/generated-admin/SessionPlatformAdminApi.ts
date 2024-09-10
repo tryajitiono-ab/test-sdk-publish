@@ -17,9 +17,12 @@ export function SessionPlatformAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function SessionPlatformAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     }
   }
 
-  /**
-   * This API is used to register/update a session on xbox.
-   */
   async function updateSessionXbl_ByUserId(userId: string, data: XblUserSessionRequest): Promise<AxiosResponse<unknown>> {
     const $ = new SessionPlatformAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateSessionXbl_ByUserId(userId, data)
@@ -43,6 +43,9 @@ export function SessionPlatformAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   }
 
   return {
+    /**
+     * This API is used to register/update a session on xbox.
+     */
     updateSessionXbl_ByUserId
   }
 }

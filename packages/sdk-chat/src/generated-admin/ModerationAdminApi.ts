@@ -17,9 +17,12 @@ export function ModerationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function ModerationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     }
   }
 
-  /**
-   * Delete the chat snapshot
-   */
   async function deleteSnapshot_ByChatId(chatId: string): Promise<AxiosResponse<unknown>> {
     const $ = new ModerationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteSnapshot_ByChatId(chatId)
@@ -42,9 +42,6 @@ export function ModerationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Get the chat snapshot
-   */
   async function getSnapshot_ByChatId(chatId: string): Promise<AxiosResponse<ChatSnapshots>> {
     const $ = new ModerationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getSnapshot_ByChatId(chatId)
@@ -53,7 +50,13 @@ export function ModerationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   }
 
   return {
+    /**
+     * Delete the chat snapshot
+     */
     deleteSnapshot_ByChatId,
+    /**
+     * Get the chat snapshot
+     */
     getSnapshot_ByChatId
   }
 }

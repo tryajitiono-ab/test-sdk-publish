@@ -22,9 +22,12 @@ export function MatchPoolsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function MatchPoolsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * List matchmaking pools.
-   */
   async function getMatchPools(queryParams?: {
     limit?: number
     name?: string | null
@@ -51,9 +51,6 @@ export function MatchPoolsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Creates a new matchmaking pool. A pool is isolated from other pools (i.e. tickets may be matched with other tickets in the same pool, but not with tickets in other pools). Each pool has its own matchmaking rules and/or logic. ticket_expiration_seconds and backfill_ticket_expiration_seconds will be set to 300 seconds (5 minutes) by default if not filled. Match Function holds information about the name of the match logic server that matchmaking can refers to. By default we provide (&#34;default&#34; and &#34;basic&#34;). Match Function will be used as reference value for Match Function Overrides if not set. In case Customer would like to use matchmaking service default match logic, then specify it in &#34;match_function_overrides&#34;. This sample configuration will let matchmaking service will use &#34;default&#34; match logic for make matches, while validation will hit both &#34;default&#34; and &#34;custom&#34; match logics. e.g. { &#34;match_function&#34;: &#34;custom&#34;, &#34;match_function_overrides&#34;: { &#34;validation&#34;: []{&#34;default&#34;,&#34;custom&#34;}, &#34;make_matches&#34;: &#34;default&#34;, } }
-   */
   async function createMatchPool(data: MatchPool): Promise<AxiosResponse<unknown>> {
     const $ = new MatchPools$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createMatchPool(data)
@@ -61,9 +58,6 @@ export function MatchPoolsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Deletes an existing matchmaking pool.
-   */
   async function deleteMatchPool_ByPool(pool: string): Promise<AxiosResponse<unknown>> {
     const $ = new MatchPools$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteMatchPool_ByPool(pool)
@@ -71,9 +65,6 @@ export function MatchPoolsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get details for a specific match pool
-   */
   async function getMatchPool_ByPool(pool: string): Promise<AxiosResponse<MatchPool>> {
     const $ = new MatchPools$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMatchPool_ByPool(pool)
@@ -81,9 +72,6 @@ export function MatchPoolsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Updates an existing matchmaking pool. ticket_expiration_seconds and backfill_ticket_expiration_seconds will be set to 300 seconds (5 minutes) by default if not filled. Match Function holds information about the name of the match logic server that matchmaking can refers to. By default we provide (&#34;default&#34; and &#34;basic&#34;). Match Function will be used as reference value for Match Function Overrides if not set. In case Customer would like to use matchmaking service default match logic, then specify it in &#34;match_function_overrides&#34;. This sample configuration will let matchmaking service will use &#34;default&#34; match logic for make matches, while validation will hit both &#34;default&#34; and &#34;custom&#34; match logics. e.g. { &#34;match_function&#34;: &#34;custom&#34;, &#34;match_function_overrides&#34;: { &#34;validation&#34;: []{&#34;default&#34;,&#34;custom&#34;}, &#34;make_matches&#34;: &#34;default&#34;, } }
-   */
   async function updateMatchPool_ByPool(pool: string, data: MatchPoolConfig): Promise<AxiosResponse<MatchPool>> {
     const $ = new MatchPools$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateMatchPool_ByPool(pool, data)
@@ -91,9 +79,6 @@ export function MatchPoolsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get metric for a specific match pool Result: queueTime in seconds
-   */
   async function getMetrics_ByPool(pool: string): Promise<AxiosResponse<TicketMetricResultRecord>> {
     const $ = new MatchPools$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMetrics_ByPool(pool)
@@ -101,9 +86,6 @@ export function MatchPoolsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get tickets in queue for a specific match pool Result: number of tickets and list of ticket detail in a match pool.
-   */
   async function getTickets_ByPool(
     pool: string,
     queryParams?: { limit?: number; offset?: number }
@@ -114,9 +96,6 @@ export function MatchPoolsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get player metric for a specific match pool
-   */
   async function getMetricsPlayer_ByPool(pool: string): Promise<AxiosResponse<PlayerMetricRecord>> {
     const $ = new MatchPools$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMetricsPlayer_ByPool(pool)
@@ -125,13 +104,37 @@ export function MatchPoolsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * List matchmaking pools.
+     */
     getMatchPools,
+    /**
+     * Creates a new matchmaking pool. A pool is isolated from other pools (i.e. tickets may be matched with other tickets in the same pool, but not with tickets in other pools). Each pool has its own matchmaking rules and/or logic. ticket_expiration_seconds and backfill_ticket_expiration_seconds will be set to 300 seconds (5 minutes) by default if not filled. Match Function holds information about the name of the match logic server that matchmaking can refers to. By default we provide (&#34;default&#34; and &#34;basic&#34;). Match Function will be used as reference value for Match Function Overrides if not set. In case Customer would like to use matchmaking service default match logic, then specify it in &#34;match_function_overrides&#34;. This sample configuration will let matchmaking service will use &#34;default&#34; match logic for make matches, while validation will hit both &#34;default&#34; and &#34;custom&#34; match logics. e.g. { &#34;match_function&#34;: &#34;custom&#34;, &#34;match_function_overrides&#34;: { &#34;validation&#34;: []{&#34;default&#34;,&#34;custom&#34;}, &#34;make_matches&#34;: &#34;default&#34;, } }
+     */
     createMatchPool,
+    /**
+     * Deletes an existing matchmaking pool.
+     */
     deleteMatchPool_ByPool,
+    /**
+     * Get details for a specific match pool
+     */
     getMatchPool_ByPool,
+    /**
+     * Updates an existing matchmaking pool. ticket_expiration_seconds and backfill_ticket_expiration_seconds will be set to 300 seconds (5 minutes) by default if not filled. Match Function holds information about the name of the match logic server that matchmaking can refers to. By default we provide (&#34;default&#34; and &#34;basic&#34;). Match Function will be used as reference value for Match Function Overrides if not set. In case Customer would like to use matchmaking service default match logic, then specify it in &#34;match_function_overrides&#34;. This sample configuration will let matchmaking service will use &#34;default&#34; match logic for make matches, while validation will hit both &#34;default&#34; and &#34;custom&#34; match logics. e.g. { &#34;match_function&#34;: &#34;custom&#34;, &#34;match_function_overrides&#34;: { &#34;validation&#34;: []{&#34;default&#34;,&#34;custom&#34;}, &#34;make_matches&#34;: &#34;default&#34;, } }
+     */
     updateMatchPool_ByPool,
+    /**
+     * Get metric for a specific match pool Result: queueTime in seconds
+     */
     getMetrics_ByPool,
+    /**
+     * Get tickets in queue for a specific match pool Result: number of tickets and list of ticket detail in a match pool.
+     */
     getTickets_ByPool,
+    /**
+     * Get player metric for a specific match pool
+     */
     getMetricsPlayer_ByPool
   }
 }

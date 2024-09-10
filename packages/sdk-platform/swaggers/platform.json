@@ -3052,7 +3052,7 @@
     "/platform/admin/namespaces/{namespace}/entitlements": {
       "get": {
         "description": "Query entitlements.\u0026lt;p\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: entitlement list\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
-        "operationId": "queryEntitlements",
+        "operationId": "queryEntitlements_1",
         "parameters": [
           {
             "in": "path",
@@ -3152,7 +3152,7 @@
     "/platform/admin/namespaces/{namespace}/entitlements/byItemIds": {
       "get": {
         "description": "Query entitlements by Item Ids.\u0026lt;p\u0026gt;Other detail info: \u0026lt;ul\u0026gt;\u0026lt;li\u0026gt;\u0026lt;i\u0026gt;Returns\u0026lt;/i\u0026gt;: entitlement list\u0026lt;/li\u0026gt;\u0026lt;/ul\u0026gt;",
-        "operationId": "queryEntitlements_1",
+        "operationId": "queryEntitlements",
         "parameters": [
           {
             "in": "path",
@@ -20804,6 +20804,41 @@
         }
       }
     },
+    "/platform/public/namespaces/{namespace}/iap/apple/config/version": {
+      "get": {
+        "description": "Get apple config version.",
+        "operationId": "getAppleConfigVersion",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AppleIAPConfigVersionInfo"
+            }
+          },
+          "404": {
+            "description": "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eerrorCode\u003c/td\u003e\u003ctd\u003eerrorMessage\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e39142\u003c/td\u003e\u003ctd\u003eApple IAP config not found in namespace [{namespace}]\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Get apple config version",
+        "tags": ["IAP"]
+      }
+    },
     "/platform/public/namespaces/{namespace}/iap/item/mapping": {
       "get": {
         "description": "Get iap item mapping.",
@@ -21987,8 +22022,7 @@
           "200": {
             "description": "Successful operation",
             "schema": {
-              "format": "binary",
-              "type": "string"
+              "$ref": "#/definitions/BinarySchema"
             }
           }
         },
@@ -27503,7 +27537,7 @@
     },
     "AppleIAPConfigInfo": {
       "properties": {
-        "appleAppId": {
+        "appAppleId": {
           "description": "Apple App Id",
           "format": "int64",
           "type": "integer"
@@ -27543,8 +27577,8 @@
     },
     "AppleIAPConfigRequest": {
       "properties": {
-        "appleAppId": {
-          "description": "appleAppId",
+        "appAppleId": {
+          "description": "app apple id",
           "format": "int64",
           "type": "integer"
         },
@@ -27571,6 +27605,16 @@
         }
       },
       "required": ["bundleId"],
+      "type": "object"
+    },
+    "AppleIAPConfigVersionInfo": {
+      "properties": {
+        "version": {
+          "description": "Apple in app purchase version. v1 don't support subscription.",
+          "enum": ["V1", "V2"],
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "AppleIAPReceipt": {
@@ -28020,6 +28064,9 @@
         }
       },
       "required": ["data"],
+      "type": "object"
+    },
+    "BinarySchema": {
       "type": "object"
     },
     "BoxItem": {
@@ -29671,7 +29718,7 @@
       "description": "A DTO for creating currency",
       "properties": {
         "currencyCode": {
-          "description": "currency code, accept alphabet uppercase and number, must start with alphabet uppercase",
+          "description": "currency code, accept alphabet uppercase, number, underscore and dash, must starts with alphabet uppercase and end with alphabet uppercase or numeric",
           "type": "string"
         },
         "currencySymbol": {
@@ -42006,7 +42053,7 @@
         "data": {
           "description": "data",
           "items": {
-            "$ref": "#/definitions/ThirdPartySubscriptionTransactionInfo"
+            "$ref": "#/definitions/ThirdPartyUserSubscriptionInfo"
           },
           "type": "array"
         },
@@ -43403,13 +43450,13 @@
     "path": "/platform/swagger.json"
   },
   "x-version": {
-    "buildBy": "Gradle 6.9.1",
-    "buildDate": "2024-09-02T08:55:54+00:00",
+    "buildBy": "Gradle 8.5",
+    "buildDate": "2024-09-09T12:17:52+00:00",
     "buildID": "4.55.3",
-    "buildJDK": "1.8.0_232 (Eclipse OpenJ9 openj9-0.17.0)",
+    "buildJDK": "21.0.4 (Amazon.com Inc. 21.0.4+7-LTS)",
     "buildOS": "Linux amd64 5.10.223-212.873.amzn2.x86_64",
-    "gitBranchName": "master",
-    "gitHash": "920be9961a",
+    "gitBranchName": "upgrade-java",
+    "gitHash": "9488bfca62",
     "gitTag": "3.31.0",
     "name": "justice-platform-service",
     "realm": "dev",

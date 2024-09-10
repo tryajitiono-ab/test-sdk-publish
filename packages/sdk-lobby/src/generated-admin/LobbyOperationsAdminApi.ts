@@ -18,9 +18,12 @@ export function LobbyOperationsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function LobbyOperationsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     }
   }
 
-  /**
-   * Update party attributes in a namespace.
-   */
   async function updateAttributeParty_ByPartyId(partyId: string, data: PartyPutCustomAttributesRequest): Promise<AxiosResponse<PartyData>> {
     const $ = new LobbyOperationsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateAttributeParty_ByPartyId(partyId, data)
@@ -43,9 +43,6 @@ export function LobbyOperationsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * Admin join a player into a party.
-   */
   async function updateJoinParty_ByPartyId_ByUserId(partyId: string, userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new LobbyOperationsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateJoinParty_ByPartyId_ByUserId(partyId, userId)
@@ -54,7 +51,13 @@ export function LobbyOperationsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   }
 
   return {
+    /**
+     * Update party attributes in a namespace.
+     */
     updateAttributeParty_ByPartyId,
+    /**
+     * Admin join a player into a party.
+     */
     updateJoinParty_ByPartyId_ByUserId
   }
 }

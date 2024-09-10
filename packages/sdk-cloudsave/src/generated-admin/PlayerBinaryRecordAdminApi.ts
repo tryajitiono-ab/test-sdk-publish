@@ -23,9 +23,12 @@ export function PlayerBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfi
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -38,9 +41,6 @@ export function PlayerBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfi
     }
   }
 
-  /**
-   * Retrieve list of player binary records by namespace.
-   */
   async function getBinaries_ByUserId(
     userId: string,
     queryParams?: { limit?: number; offset?: number; query?: string | null; tags?: string[] }
@@ -51,9 +51,6 @@ export function PlayerBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfi
     return resp.response
   }
 
-  /**
-   * Create a player binary record. Other detail info: `key` should follow these rules: 1. support uppercase and lowercase letters, numbers, and separators **&#34;-&#34;**, **&#34;_&#34;**, **&#34;.&#34;** are allowed 2. begin and end with letters or numbers 3. spaces are not allowed 4. separators must not appears twice in a row Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-   */
   async function createBinary_ByUserId(userId: string, data: PlayerBinaryRecordCreate): Promise<AxiosResponse<UploadBinaryRecordResponse>> {
     const $ = new PlayerBinaryRecordAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createBinary_ByUserId(userId, data)
@@ -61,9 +58,6 @@ export function PlayerBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfi
     return resp.response
   }
 
-  /**
-   * Delete a player binary record.
-   */
   async function deleteBinary_ByUserId_ByKey(userId: string, key: string): Promise<AxiosResponse<unknown>> {
     const $ = new PlayerBinaryRecordAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteBinary_ByUserId_ByKey(userId, key)
@@ -71,9 +65,6 @@ export function PlayerBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfi
     return resp.response
   }
 
-  /**
-   * Get a player binary record by its key.
-   */
   async function getBinary_ByUserId_ByKey(userId: string, key: string): Promise<AxiosResponse<PlayerBinaryRecordResponse>> {
     const $ = new PlayerBinaryRecordAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBinary_ByUserId_ByKey(userId, key)
@@ -81,9 +72,6 @@ export function PlayerBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfi
     return resp.response
   }
 
-  /**
-   * Update a player binary record file by its key
-   */
   async function updateBinary_ByUserId_ByKey(
     userId: string,
     key: string,
@@ -95,9 +83,6 @@ export function PlayerBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfi
     return resp.response
   }
 
-  /**
-   * Update a player binary record metadata by its key
-   */
   async function updateMetadata_ByUserId_ByKey(
     userId: string,
     key: string,
@@ -109,9 +94,6 @@ export function PlayerBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfi
     return resp.response
   }
 
-  /**
-   * Request presigned URL to upload the binary record to s3. Other detail info: Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-   */
   async function createPresigned_ByUserId_ByKey(
     userId: string,
     key: string,
@@ -124,12 +106,33 @@ export function PlayerBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfi
   }
 
   return {
+    /**
+     * Retrieve list of player binary records by namespace.
+     */
     getBinaries_ByUserId,
+    /**
+     * Create a player binary record. Other detail info: `key` should follow these rules: 1. support uppercase and lowercase letters, numbers, and separators **&#34;-&#34;**, **&#34;_&#34;**, **&#34;.&#34;** are allowed 2. begin and end with letters or numbers 3. spaces are not allowed 4. separators must not appears twice in a row Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
+     */
     createBinary_ByUserId,
+    /**
+     * Delete a player binary record.
+     */
     deleteBinary_ByUserId_ByKey,
+    /**
+     * Get a player binary record by its key.
+     */
     getBinary_ByUserId_ByKey,
+    /**
+     * Update a player binary record file by its key
+     */
     updateBinary_ByUserId_ByKey,
+    /**
+     * Update a player binary record metadata by its key
+     */
     updateMetadata_ByUserId_ByKey,
+    /**
+     * Request presigned URL to upload the binary record to s3. Other detail info: Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
+     */
     createPresigned_ByUserId_ByKey
   }
 }

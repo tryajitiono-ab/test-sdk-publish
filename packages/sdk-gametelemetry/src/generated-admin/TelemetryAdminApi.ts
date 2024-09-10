@@ -18,9 +18,12 @@ export function TelemetryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function TelemetryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * This endpoint requires valid JWT token and telemetry permission This endpoint retrieves namespace list
-   */
   async function getNamespaces(): Promise<AxiosResponse<ListBaseResponseStr>> {
     const $ = new TelemetryAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getNamespaces()
@@ -43,9 +43,6 @@ export function TelemetryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This endpoint requires valid JWT token and telemetry permission This endpoint retrieves event list
-   */
   async function getEvents(queryParams?: {
     startTime?: string | null
     endTime?: string | null
@@ -65,7 +62,13 @@ export function TelemetryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * This endpoint requires valid JWT token and telemetry permission This endpoint retrieves namespace list
+     */
     getNamespaces,
+    /**
+     * This endpoint requires valid JWT token and telemetry permission This endpoint retrieves event list
+     */
     getEvents
   }
 }

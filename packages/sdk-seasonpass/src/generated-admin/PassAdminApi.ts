@@ -22,9 +22,12 @@ export function PassAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function PassAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * This API is used to query all passes for a season.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: the list of passes&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getPasses_BySeasonId(seasonId: string): Promise<AxiosResponse<PassInfoArray>> {
     const $ = new PassAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPasses_BySeasonId(seasonId)
@@ -47,9 +47,6 @@ export function PassAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to create a pass for a draft season.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created pass&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createPasse_BySeasonId(seasonId: string, data: PassCreate): Promise<AxiosResponse<PassInfo>> {
     const $ = new PassAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createPasse_BySeasonId(seasonId, data)
@@ -57,9 +54,6 @@ export function PassAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to delete a pass permanently, only draft season pass can be deleted. &lt;p&gt;
-   */
   async function deletePasse_BySeasonId_ByCode(seasonId: string, code: string): Promise<AxiosResponse<unknown>> {
     const $ = new PassAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deletePasse_BySeasonId_ByCode(seasonId, code)
@@ -67,9 +61,6 @@ export function PassAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to get a pass for a season.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: pass data&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getPasse_BySeasonId_ByCode(seasonId: string, code: string): Promise<AxiosResponse<PassInfo>> {
     const $ = new PassAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPasse_BySeasonId_ByCode(seasonId, code)
@@ -77,9 +68,6 @@ export function PassAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to update a pass. Only draft season pass can be updated.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated pass&lt;/li&gt;&lt;/ul&gt;
-   */
   async function patchPasse_BySeasonId_ByCode(seasonId: string, code: string, data: PassUpdate): Promise<AxiosResponse<PassInfo>> {
     const $ = new PassAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchPasse_BySeasonId_ByCode(seasonId, code, data)
@@ -87,9 +75,6 @@ export function PassAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to grant pass to user, it will auto enroll if there&#39;s no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user season data&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createSeasonCurrentPasse_ByUserId(userId: string, data: UserPassGrant): Promise<AxiosResponse<UserSeasonSummary>> {
     const $ = new PassAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createSeasonCurrentPasse_ByUserId(userId, data)
@@ -98,11 +83,29 @@ export function PassAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * This API is used to query all passes for a season.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: the list of passes&lt;/li&gt;&lt;/ul&gt;
+     */
     getPasses_BySeasonId,
+    /**
+     * This API is used to create a pass for a draft season.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created pass&lt;/li&gt;&lt;/ul&gt;
+     */
     createPasse_BySeasonId,
+    /**
+     * This API is used to delete a pass permanently, only draft season pass can be deleted. &lt;p&gt;
+     */
     deletePasse_BySeasonId_ByCode,
+    /**
+     * This API is used to get a pass for a season.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: pass data&lt;/li&gt;&lt;/ul&gt;
+     */
     getPasse_BySeasonId_ByCode,
+    /**
+     * This API is used to update a pass. Only draft season pass can be updated.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated pass&lt;/li&gt;&lt;/ul&gt;
+     */
     patchPasse_BySeasonId_ByCode,
+    /**
+     * This API is used to grant pass to user, it will auto enroll if there&#39;s no user season but active published season exist, season only located in non-publisher namespace, otherwise ignore.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user season data&lt;/li&gt;&lt;/ul&gt;
+     */
     createSeasonCurrentPasse_ByUserId
   }
 }

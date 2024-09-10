@@ -18,9 +18,12 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * ``` Required permission: ADMIN:QOS:SERVER [DELETE] Required scope: social This endpoint delete a registered QoS service record. ```
-   */
   async function deleteServer_ByRegion(region: string): Promise<AxiosResponse<unknown>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteServer_ByRegion(region)
@@ -43,9 +43,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * ``` Required permission: ADMIN:QOS:SERVER [UDPATE] Required scope: social This endpoint modifies a registered QoS service&#39;s region alias. ```
-   */
   async function createAlia_ByRegion(region: string, data: SetAliasRequest): Promise<AxiosResponse<unknown>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createAlia_ByRegion(region, data)
@@ -53,9 +50,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * ``` Required permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE] Required scope: social This endpoint updates the registered QoS service&#39;s configurable configuration&#39;. ```
-   */
   async function patchServer_ByRegion(region: string, data: UpdateServerRequest): Promise<AxiosResponse<unknown>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchServer_ByRegion(region, data)
@@ -64,8 +58,17 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * ``` Required permission: ADMIN:QOS:SERVER [DELETE] Required scope: social This endpoint delete a registered QoS service record. ```
+     */
     deleteServer_ByRegion,
+    /**
+     * ``` Required permission: ADMIN:QOS:SERVER [UDPATE] Required scope: social This endpoint modifies a registered QoS service&#39;s region alias. ```
+     */
     createAlia_ByRegion,
+    /**
+     * ``` Required permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE] Required scope: social This endpoint updates the registered QoS service&#39;s configurable configuration&#39;. ```
+     */
     patchServer_ByRegion
   }
 }

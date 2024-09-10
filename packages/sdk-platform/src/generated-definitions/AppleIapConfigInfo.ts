@@ -6,7 +6,7 @@
 import { z } from 'zod'
 
 export const AppleIapConfigInfo = z.object({
-  appleAppId: z.number().int().nullish(),
+  appAppleId: z.number().int().nullish(),
   authKeyFileName: z.string().nullish(),
   bundleId: z.string().nullish(),
   issuerId: z.string().nullish(),

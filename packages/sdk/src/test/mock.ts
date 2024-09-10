@@ -8,3 +8,8 @@ import { iamHandlers } from './iamHandlers'
 
 export const server = setupServer(...iamHandlers)
 export const emptyServer = setupServer()
+
+// uncomment this for debug outgoing request
+// emptyServer.events.on('request:start', ({ request }) => {
+//   console.log('Outgoing:', request.method, request.url)
+// })

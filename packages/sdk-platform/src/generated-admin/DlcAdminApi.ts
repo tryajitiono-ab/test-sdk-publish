@@ -22,9 +22,12 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * delete a DLC item config.
-   */
   async function deleteDlcConfigItem(): Promise<AxiosResponse<unknown>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteDlcConfigItem()
@@ -47,9 +47,6 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get DLC item config.
-   */
   async function getDlcConfigItem(): Promise<AxiosResponse<DlcItemConfigInfo>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getDlcConfigItem()
@@ -57,9 +54,6 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update DLC item config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated DLC item config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateDlcConfigItem(data: DlcItemConfigUpdate): Promise<AxiosResponse<DlcItemConfigInfo>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDlcConfigItem(data)
@@ -67,9 +61,6 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get user dlc by platform.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user dlc&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getDlc_ByUserId(
     userId: string,
     queryParams: { type: 'EPICGAMES' | 'OCULUS' | 'PSN' | 'STEAM' | 'XBOX' }
@@ -80,9 +71,6 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * delete a Platform DLC config.
-   */
   async function deleteDlcConfigPlatformMap(): Promise<AxiosResponse<unknown>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteDlcConfigPlatformMap()
@@ -90,9 +78,6 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get Platform DLC config.
-   */
   async function getDlcConfigPlatformMap(): Promise<AxiosResponse<PlatformDlcConfigInfo>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getDlcConfigPlatformMap()
@@ -100,9 +85,6 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update Platform DLC config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated Platform DLC config&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Restrictions for platform dlc map&lt;/h2&gt; 1. Cannot use &lt;b&gt;&#34;.&#34;&lt;/b&gt; as the key name - &lt;pre&gt;{ &#34;data.2&#34;: &#34;value&#34; }&lt;/pre&gt; 2. Cannot use &lt;b&gt;&#34;$&#34;&lt;/b&gt; as the prefix in key names - &lt;pre&gt;{ &#34;$data&#34;: &#34;value&#34; }&lt;/pre&gt;
-   */
   async function updateDlcConfigPlatformMap(data: PlatformDlcConfigUpdate): Promise<AxiosResponse<PlatformDlcConfigInfo>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDlcConfigPlatformMap(data)
@@ -110,9 +92,6 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get user dlc records.&lt;br&gt;Note: includeAllNamespaces means this endpoint will return user dlcs from all namespace, example scenario isadmin may need to check the user dlcs before unlink a 3rd party account, so the user dlcs should be from all namespaces because unlinking is a platform level action &lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user dlc&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getDlcRecords_ByUserId(
     userId: string,
     queryParams?: {
@@ -128,13 +107,37 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * delete a DLC item config.
+     */
     deleteDlcConfigItem,
+    /**
+     * Get DLC item config.
+     */
     getDlcConfigItem,
+    /**
+     * Update DLC item config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated DLC item config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateDlcConfigItem,
+    /**
+     * Get user dlc by platform.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user dlc&lt;/li&gt;&lt;/ul&gt;
+     */
     getDlc_ByUserId,
+    /**
+     * delete a Platform DLC config.
+     */
     deleteDlcConfigPlatformMap,
+    /**
+     * Get Platform DLC config.
+     */
     getDlcConfigPlatformMap,
+    /**
+     * Update Platform DLC config. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated Platform DLC config&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Restrictions for platform dlc map&lt;/h2&gt; 1. Cannot use &lt;b&gt;&#34;.&#34;&lt;/b&gt; as the key name - &lt;pre&gt;{ &#34;data.2&#34;: &#34;value&#34; }&lt;/pre&gt; 2. Cannot use &lt;b&gt;&#34;$&#34;&lt;/b&gt; as the prefix in key names - &lt;pre&gt;{ &#34;$data&#34;: &#34;value&#34; }&lt;/pre&gt;
+     */
     updateDlcConfigPlatformMap,
+    /**
+     * Get user dlc records.&lt;br&gt;Note: includeAllNamespaces means this endpoint will return user dlcs from all namespace, example scenario isadmin may need to check the user dlcs before unlink a 3rd party account, so the user dlcs should be from all namespaces because unlinking is a platform level action &lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: user dlc&lt;/li&gt;&lt;/ul&gt;
+     */
     getDlcRecords_ByUserId
   }
 }

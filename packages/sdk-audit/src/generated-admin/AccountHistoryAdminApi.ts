@@ -17,9 +17,12 @@ export function AccountHistoryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function AccountHistoryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     }
   }
 
-  /**
-   * This API is used to query admin own account histories. ------- Supported **property**: - display_name - unique_display_name - username - country - date_of_birth - email - password
-   */
   async function getUsersMeAccountHistories(queryParams?: {
     endDate?: number
     limit?: number
@@ -48,12 +48,23 @@ export function AccountHistoryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * This API is used to query user account histories. **Note**: the namespace should be the publisher namespace and the user id should be publisher user id ------- Supported **property**: - display_name - unique_display_name - username - country - date_of_birth - email - password
-   */
+  async function deleteAccountHistory_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
+    const $ = new AccountHistoryAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.deleteAccountHistory_ByUserId(userId)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
   async function getAccountHistories_ByUserId(
     userId: string,
-    queryParams?: { endDate?: number; limit?: number; offset?: number; property?: string | null; startDate?: number }
+    queryParams?: {
+      endDate?: number
+      limit?: number
+      offset?: number
+      property?: string | null
+      propertyType?: string | null
+      startDate?: number
+    }
   ): Promise<AxiosResponse<PaginatedAccountHistoryResponse>> {
     const $ = new AccountHistoryAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getAccountHistories_ByUserId(userId, queryParams)
@@ -62,7 +73,17 @@ export function AccountHistoryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   }
 
   return {
+    /**
+     * This API is used to query admin own account histories. ------- Supported **property**: - display_name - unique_display_name - username - country - date_of_birth - email - password
+     */
     getUsersMeAccountHistories,
+    /**
+     * This API is used to delete user account histories. For example: for GDPR account deletion
+     */
+    deleteAccountHistory_ByUserId,
+    /**
+     * This API is used to query user account histories. **Note**: the namespace should be the publisher namespace and the user id should be publisher user id ------- - Supported **propertyType**: - profile: this is the default value - properties of **profile**: - display_name - unique_display_name - username - country - date_of_birth - email - password - mfa - properties of **mfa**: - mfa_authenticator - mfa_email - mfa_backup_code - all
+     */
     getAccountHistories_ByUserId
   }
 }

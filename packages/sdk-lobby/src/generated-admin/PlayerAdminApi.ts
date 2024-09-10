@@ -26,9 +26,12 @@ export function PlayerAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -41,9 +44,6 @@ export function PlayerAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get the number of players connected to the Lobby in the given namespace.
-   */
   async function getPlayerCcu(): Promise<AxiosResponse<GetLobbyCcuResponse>> {
     const $ = new PlayerAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPlayerCcu()
@@ -51,9 +51,6 @@ export function PlayerAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get blocked players data by bulk user ids in a namespace.
-   */
   async function fetchPlayerUserBulkBlocked(
     data: GetBulkAllPlayerBlockedUsersRequest
   ): Promise<AxiosResponse<GetBulkAllPlayerBlockedUsersResponse>> {
@@ -63,9 +60,6 @@ export function PlayerAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get blocked players data by user id in a namespace.
-   */
   async function getBlockedPlayer_ByUserId(userId: string): Promise<AxiosResponse<GetAllPlayerBlockedUsersResponse>> {
     const $ = new PlayerAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBlockedPlayer_ByUserId(userId)
@@ -73,9 +67,6 @@ export function PlayerAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get all player&#39;s session attribute by user id in a namespace.
-   */
   async function getAttributesPlayer_ByUserId(userId: string): Promise<AxiosResponse<GetAllPlayerSessionAttributeResponse>> {
     const $ = new PlayerAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getAttributesPlayer_ByUserId(userId)
@@ -83,9 +74,6 @@ export function PlayerAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Set player&#39;s session attribute by user id in a namespace.
-   */
   async function updateAttributePlayer_ByUserId(userId: string, data: SetPlayerSessionAttributeRequest): Promise<AxiosResponse<unknown>> {
     const $ = new PlayerAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateAttributePlayer_ByUserId(userId, data)
@@ -93,9 +81,6 @@ export function PlayerAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Load get players who blocked this player in a namespace based on user id
-   */
   async function getBlockedByPlayer_ByUserId(userId: string): Promise<AxiosResponse<GetAllPlayerBlockedByUsersResponse>> {
     const $ = new PlayerAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBlockedByPlayer_ByUserId(userId)
@@ -103,9 +88,6 @@ export function PlayerAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Bulk block player in a namespace by list of user id
-   */
   async function createBulkBlockPlayer_ByUserId(userId: string, data: ListBlockedPlayerRequest): Promise<AxiosResponse<unknown>> {
     const $ = new PlayerAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createBulkBlockPlayer_ByUserId(userId, data)
@@ -113,9 +95,6 @@ export function PlayerAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Bulk unblock player in a namespace by list of user id
-   */
   async function deleteBulkUnblockPlayer_ByUserId(userId: string, data: ListUnblockPlayerRequest): Promise<AxiosResponse<unknown>> {
     const $ = new PlayerAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteBulkUnblockPlayer_ByUserId(userId, data)
@@ -123,9 +102,6 @@ export function PlayerAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get player&#39;s specific session attribute by user id in a namespace.
-   */
   async function getAttributePlayer_ByUserId_ByAttribute(
     userId: string,
     attribute: string
@@ -137,14 +113,41 @@ export function PlayerAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get the number of players connected to the Lobby in the given namespace.
+     */
     getPlayerCcu,
+    /**
+     * Get blocked players data by bulk user ids in a namespace.
+     */
     fetchPlayerUserBulkBlocked,
+    /**
+     * Get blocked players data by user id in a namespace.
+     */
     getBlockedPlayer_ByUserId,
+    /**
+     * Get all player&#39;s session attribute by user id in a namespace.
+     */
     getAttributesPlayer_ByUserId,
+    /**
+     * Set player&#39;s session attribute by user id in a namespace.
+     */
     updateAttributePlayer_ByUserId,
+    /**
+     * Load get players who blocked this player in a namespace based on user id
+     */
     getBlockedByPlayer_ByUserId,
+    /**
+     * Bulk block player in a namespace by list of user id
+     */
     createBulkBlockPlayer_ByUserId,
+    /**
+     * Bulk unblock player in a namespace by list of user id
+     */
     deleteBulkUnblockPlayer_ByUserId,
+    /**
+     * Get player&#39;s specific session attribute by user id in a namespace.
+     */
     getAttributePlayer_ByUserId_ByAttribute
   }
 }

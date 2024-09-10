@@ -38,9 +38,12 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -53,9 +56,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Create ticket observability request Request body details (all attributes are optional): Timestamp : timestamp when calling this endpoint Action : support one of the following value: 1. &#34;matchFound&#34; 2. &#34;matchNotFound&#34; 3. &#34;flexed&#34; PartyID : ticket Party ID MatchID : match ID will be filled only when match found Namespace : ticket current namespace GameMode : ticket current matchpool ActiveAllianceRule : current active alliance ruleset ActiveMatchingRule : current active matching ruleset Function : name of the function that called the endpoint Iteration : total iteration before match found TimeToMatchSec : time to match (in seconds) will be filled only when match found UnmatchReason : reason when unable to find match RemainingTickets : remaining ticket when unable to find match RemainingPlayersPerTicket : remaining players when unable to find match UnbackfillReason : reason when unable to backfill IsBackfillMatch : flag to distinguish between new match and backfill match IsRuleSetFlexed : flag if ruleset is getting flexed TickID : tick id for the matchmaking tick SessionTickID : session tick id for differentiate session when doing matches
-   */
   async function createXrayTicket_v2(data: XRayTicketObservabilityRequest): Promise<AxiosResponse<XRayTicketObservabilityResponse>> {
     const $ = new XRayAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createXrayTicket_v2(data)
@@ -63,9 +63,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Create bulk ticket observability request Request body details (all attributes are optional): Timestamp : timestamp when calling this endpoint Action : support one of the following value: 1. &#34;matchFound&#34; 2. &#34;matchNotFound&#34; 3. &#34;flexed&#34; PartyID : ticket Party ID MatchID : match ID will be filled only when match found Namespace : ticket current namespace GameMode : ticket current matchpool ActiveAllianceRule : current active alliance ruleset ActiveMatchingRule : current active matching ruleset Function : name of the function that called the endpoint Iteration : total iteration before match found TimeToMatchSec : time to match (in seconds) will be filled only when match found UnmatchReason : reason when unable to find match RemainingTickets : remaining ticket when unable to find match RemainingPlayersPerTicket : remaining players when unable to find match UnbackfillReason : reason when unable to backfill IsBackfillMatch : flag to distinguish between new match and backfill match IsRuleSetFlexed : flag if ruleset is getting flexed TickID : tick id for the matchmaking tick SessionTickID : session tick id for differentiate session when doing matches
-   */
   async function createXrayTicketBulk_v2(
     data: XRayBulkTicketObservabilityRequest
   ): Promise<AxiosResponse<XRayBulkTicketObservabilityResponse>> {
@@ -75,9 +72,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query xray timeline by ticketID
-   */
   async function getXrayTicket_ByTicketId_v2(
     ticketId: string,
     queryParams: { endDate: string | null; startDate: string | null; limit?: number; offset?: number }
@@ -88,9 +82,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query total match.
-   */
   async function getXrayMetricsTotalMatch_v2(queryParams: {
     endDate: string | null
     startDate: string | null
@@ -102,9 +93,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query total success and failed claim DS.
-   */
   async function getXrayMetricsAcquiringDs_v2(queryParams: {
     endDate: string | null
     startDate: string | null
@@ -116,9 +104,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query xray match pool. query can using matchpool array with separate &#34;,&#34;
-   */
   async function getXrayMatchPool_ByPoolName_v2(
     poolName: string[],
     queryParams: { endDate: string | null; startDate: string | null }
@@ -129,9 +114,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query xray timeline by userID or ticketID
-   */
   async function getTicketsXray_ByUserId_v2(
     userId: string,
     queryParams: { endDate: string | null; startDate: string | null; limit?: number; offset?: number }
@@ -142,9 +124,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query xray timeline by matchID.
-   */
   async function getTicketsXray_ByMatchId_v2(matchId: string): Promise<AxiosResponse<XRayMatchesQueryResponse>> {
     const $ = new XRayAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getTicketsXray_ByMatchId_v2(matchId)
@@ -152,9 +131,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query total ticket match.
-   */
   async function getXrayMetricsTotalTicketMatch_v2(queryParams: {
     endDate: string | null
     startDate: string | null
@@ -166,9 +142,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query xray match histories.
-   */
   async function getHistoriesXray_ByMatchId_v2(
     matchId: string,
     queryParams?: { limit?: number; offset?: number }
@@ -179,9 +152,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query total active session.
-   */
   async function getXrayMetricsTotalActiveSession_v2(queryParams: {
     endDate: string | null
     startDate: string | null
@@ -194,9 +164,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query total ticket created.
-   */
   async function getXrayMetricsTotalTicketCreated_v2(queryParams: {
     endDate: string | null
     startDate: string | null
@@ -208,9 +175,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query total ticket expired.
-   */
   async function getXrayMetricsTotalTicketExpired_v2(queryParams: {
     endDate: string | null
     startDate: string | null
@@ -222,9 +186,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query total ticket canceled.
-   */
   async function getXrayMetricsTotalTicketCanceled_v2(queryParams: {
     endDate: string | null
     startDate: string | null
@@ -236,9 +197,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query match length duration avg. time in seconds
-   */
   async function getXrayMetricsMatchLengthDurationAvg_v2(queryParams: {
     endDate: string | null
     startDate: string | null
@@ -250,9 +208,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query match length duration p99. time in seconds
-   */
   async function getXrayMetricsMatchLengthDurationP99_v2(queryParams: {
     endDate: string | null
     startDate: string | null
@@ -264,9 +219,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query xray match ticket histories.
-   */
   async function getTicketHistoriesXray_ByMatchId_v2(matchId: string): Promise<AxiosResponse<XRayMatchTicketHistoryQueryResponse>> {
     const $ = new XRayAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getTicketHistoriesXray_ByMatchId_v2(matchId)
@@ -274,9 +226,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query acquiring ds wait time average. time in seconds
-   */
   async function getXrayMetricsAcquiringDsWaitTimeAvg_v2(queryParams: {
     endDate: string | null
     startDate: string | null
@@ -288,9 +237,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query total player persession average.
-   */
   async function getXrayMetricsTotalPlayerPersessionAvg_v2(queryParams: {
     endDate: string | null
     startDate: string | null
@@ -302,9 +248,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query xray match pool ticks.
-   */
   async function getTicksXray_ByPoolName_ByPodName_v2(
     poolName: string,
     podName: string,
@@ -316,9 +259,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query xray match pool tick matches by tick id.
-   */
   async function getMatchesXray_ByPoolName_ByPodName_ByTickId_v2(
     poolName: string,
     podName: string,
@@ -330,9 +270,6 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query xray match pool tick tickets detail by tick id.
-   */
   async function getTicketsXray_ByPoolName_ByPodName_ByTickId_v2(
     poolName: string,
     podName: string,
@@ -345,27 +282,93 @@ export function XRayAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Create ticket observability request Request body details (all attributes are optional): Timestamp : timestamp when calling this endpoint Action : support one of the following value: 1. &#34;matchFound&#34; 2. &#34;matchNotFound&#34; 3. &#34;flexed&#34; PartyID : ticket Party ID MatchID : match ID will be filled only when match found Namespace : ticket current namespace GameMode : ticket current matchpool ActiveAllianceRule : current active alliance ruleset ActiveMatchingRule : current active matching ruleset Function : name of the function that called the endpoint Iteration : total iteration before match found TimeToMatchSec : time to match (in seconds) will be filled only when match found UnmatchReason : reason when unable to find match RemainingTickets : remaining ticket when unable to find match RemainingPlayersPerTicket : remaining players when unable to find match UnbackfillReason : reason when unable to backfill IsBackfillMatch : flag to distinguish between new match and backfill match IsRuleSetFlexed : flag if ruleset is getting flexed TickID : tick id for the matchmaking tick SessionTickID : session tick id for differentiate session when doing matches
+     */
     createXrayTicket_v2,
+    /**
+     * Create bulk ticket observability request Request body details (all attributes are optional): Timestamp : timestamp when calling this endpoint Action : support one of the following value: 1. &#34;matchFound&#34; 2. &#34;matchNotFound&#34; 3. &#34;flexed&#34; PartyID : ticket Party ID MatchID : match ID will be filled only when match found Namespace : ticket current namespace GameMode : ticket current matchpool ActiveAllianceRule : current active alliance ruleset ActiveMatchingRule : current active matching ruleset Function : name of the function that called the endpoint Iteration : total iteration before match found TimeToMatchSec : time to match (in seconds) will be filled only when match found UnmatchReason : reason when unable to find match RemainingTickets : remaining ticket when unable to find match RemainingPlayersPerTicket : remaining players when unable to find match UnbackfillReason : reason when unable to backfill IsBackfillMatch : flag to distinguish between new match and backfill match IsRuleSetFlexed : flag if ruleset is getting flexed TickID : tick id for the matchmaking tick SessionTickID : session tick id for differentiate session when doing matches
+     */
     createXrayTicketBulk_v2,
+    /**
+     * Query xray timeline by ticketID
+     */
     getXrayTicket_ByTicketId_v2,
+    /**
+     * Query total match.
+     */
     getXrayMetricsTotalMatch_v2,
+    /**
+     * Query total success and failed claim DS.
+     */
     getXrayMetricsAcquiringDs_v2,
+    /**
+     * Query xray match pool. query can using matchpool array with separate &#34;,&#34;
+     */
     getXrayMatchPool_ByPoolName_v2,
+    /**
+     * Query xray timeline by userID or ticketID
+     */
     getTicketsXray_ByUserId_v2,
+    /**
+     * Query xray timeline by matchID.
+     */
     getTicketsXray_ByMatchId_v2,
+    /**
+     * Query total ticket match.
+     */
     getXrayMetricsTotalTicketMatch_v2,
+    /**
+     * Query xray match histories.
+     */
     getHistoriesXray_ByMatchId_v2,
+    /**
+     * Query total active session.
+     */
     getXrayMetricsTotalActiveSession_v2,
+    /**
+     * Query total ticket created.
+     */
     getXrayMetricsTotalTicketCreated_v2,
+    /**
+     * Query total ticket expired.
+     */
     getXrayMetricsTotalTicketExpired_v2,
+    /**
+     * Query total ticket canceled.
+     */
     getXrayMetricsTotalTicketCanceled_v2,
+    /**
+     * Query match length duration avg. time in seconds
+     */
     getXrayMetricsMatchLengthDurationAvg_v2,
+    /**
+     * Query match length duration p99. time in seconds
+     */
     getXrayMetricsMatchLengthDurationP99_v2,
+    /**
+     * Query xray match ticket histories.
+     */
     getTicketHistoriesXray_ByMatchId_v2,
+    /**
+     * Query acquiring ds wait time average. time in seconds
+     */
     getXrayMetricsAcquiringDsWaitTimeAvg_v2,
+    /**
+     * Query total player persession average.
+     */
     getXrayMetricsTotalPlayerPersessionAvg_v2,
+    /**
+     * Query xray match pool ticks.
+     */
     getTicksXray_ByPoolName_ByPodName_v2,
+    /**
+     * Query xray match pool tick matches by tick id.
+     */
     getMatchesXray_ByPoolName_ByPodName_ByTickId_v2,
+    /**
+     * Query xray match pool tick tickets detail by tick id.
+     */
     getTicketsXray_ByPoolName_ByPodName_ByTickId_v2
   }
 }

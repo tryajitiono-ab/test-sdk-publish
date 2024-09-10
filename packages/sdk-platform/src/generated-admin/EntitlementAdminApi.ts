@@ -43,9 +43,12 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -58,9 +61,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     }
   }
 
-  /**
-   * Query entitlements.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement list&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getEntitlements(queryParams?: {
     activeOnly?: boolean | null
     appType?: 'DEMO' | 'DLC' | 'GAME' | 'SOFTWARE'
@@ -78,9 +78,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Grant entitlements to multiple users, skipped granting will be treated as fail.&lt;br&gt;&lt;br&gt;Notes: &lt;br&gt;&lt;br&gt;Support Item Types:&lt;ul&gt;&lt;li&gt;&lt;i&gt;APP&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;INGAMEITEM&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;CODE&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;SUBSCRIPTION&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;MEDIA&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;OPTIONBOX&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;LOOTBOX&lt;/i&gt;&lt;/li&gt;&lt;/ul&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk grant entitlements result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createEntitlementGrant(data: BulkEntitlementGrantRequest): Promise<AxiosResponse<BulkEntitlementGrantResult>> {
     const $ = new EntitlementAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createEntitlementGrant(data)
@@ -88,9 +85,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Revoke entitlements, skipped revocation will be treated as fail.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk revoke entitlements result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createEntitlementRevoke(data: string[]): Promise<AxiosResponse<BulkEntitlementRevokeResult>> {
     const $ = new EntitlementAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createEntitlementRevoke(data)
@@ -98,9 +92,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Query entitlements by Item Ids.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement list&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getEntitlementsByItemIds(queryParams?: {
     activeOnly?: boolean | null
     itemIds?: string[]
@@ -113,9 +104,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get entitlement config info.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getEntitlementsConfigInfo(queryParams?: { withoutCache?: boolean | null }): Promise<AxiosResponse<EntitlementConfigInfo>> {
     const $ = new EntitlementAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getEntitlementsConfigInfo(queryParams)
@@ -123,9 +111,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Query entitlements for a specific user.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement list&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getEntitlements_ByUserId(
     userId: string,
     queryParams?: {
@@ -148,9 +133,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Grant user entitlement.&lt;br&gt;&lt;br&gt;Notes: &lt;br&gt;&lt;br&gt;will skip un-supported item if input un-supported item types, please use /admin/namespaces/{namespace}/users/{userId}/fulfillment endpoint if want to fulfill other item type, like coin item&lt;br&gt;&lt;br&gt;Support Item Types:&lt;ul&gt;&lt;li&gt;&lt;i&gt;APP&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;INGAMEITEM&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;CODE&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;SUBSCRIPTION&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;MEDIA&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;OPTIONBOX&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;LOOTBOX&lt;/i&gt;&lt;/li&gt;&lt;/ul&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: granted entitlement&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createEntitlement_ByUserId(
     userId: string,
     data: EntitlementGrant[]
@@ -161,9 +143,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get entitlement.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getEntitlement_ByEntitlementId(entitlementId: string): Promise<AxiosResponse<EntitlementInfo>> {
     const $ = new EntitlementAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getEntitlement_ByEntitlementId(entitlementId)
@@ -171,9 +150,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get user entitlement by sku.
-   */
   async function getEntitlementsBySku_ByUserId(
     userId: string,
     queryParams: {
@@ -189,9 +165,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Revoke all entitlements of a user (This API is for testing purpose only)&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revoked entitlements count&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateEntitlementRevoke_ByUserId(userId: string): Promise<AxiosResponse<BulkOperationResult>> {
     const $ = new EntitlementAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateEntitlementRevoke_ByUserId(userId)
@@ -199,9 +172,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get user app entitlement by appId.
-   */
   async function getEntitlementsByAppId_ByUserId(
     userId: string,
     queryParams: { appId: string | null; activeOnly?: boolean | null }
@@ -212,9 +182,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get user entitlement by itemId.
-   */
   async function getEntitlementsByItemId_ByUserId(
     userId: string,
     queryParams: {
@@ -230,9 +197,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Query app entitlements by appType.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: app entitlement pagination&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getEntitlementsByAppType_ByUserId(
     userId: string,
     queryParams: { appType: 'DEMO' | 'DLC' | 'GAME' | 'SOFTWARE'; activeOnly?: boolean | null; limit?: number; offset?: number }
@@ -243,9 +207,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get user entitlements by itemIds.
-   */
   async function getEntitlementsByItemIds_ByUserId(
     userId: string,
     queryParams?: { ids?: string[]; platform?: string | null }
@@ -256,9 +217,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get platform entitlement config list.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getEntitlementConfig_ByPlatform(platform: string): Promise<AxiosResponse<EntitlementPlatformConfigInfo>> {
     const $ = new EntitlementAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getEntitlementConfig_ByPlatform(platform)
@@ -266,9 +224,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Update platform entitlement config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: platform entitlement config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateEntitlementConfig_ByPlatform(
     platform: string,
     data: EntitlementPlatformConfigUpdate
@@ -279,9 +234,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Revoke user&#39;s entitlements by ids.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revoke entitlements count&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateEntitlementRevokeById_ByUserId(
     userId: string,
     queryParams: { entitlementIds: string | null }
@@ -292,9 +244,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Exists any user active entitlement of specified itemIds, skus and appIds
-   */
   async function getEntitlementsOwnershipAny_ByUserId(
     userId: string,
     queryParams?: { appIds?: string[]; itemIds?: string[]; platform?: string | null; skus?: string[] }
@@ -305,9 +254,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get user entitlement.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getEntitlement_ByUserId_ByEntitlementId(userId: string, entitlementId: string): Promise<AxiosResponse<EntitlementInfo>> {
     const $ = new EntitlementAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getEntitlement_ByUserId_ByEntitlementId(userId, entitlementId)
@@ -315,9 +261,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Update user entitlement. If update CONSUMABLE entitlement useCount to 0, the status will be CONSUMED.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated entitlement&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateEntitlement_ByUserId_ByEntitlementId(
     userId: string,
     entitlementId: string,
@@ -329,9 +272,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Exists any user active entitlement of specified items.
-   */
   async function getEntitlementsOwnershipAnyOf_ByUserId(
     userId: string,
     queryParams: { itemIds: string[]; platform?: string | null }
@@ -342,9 +282,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get user entitlement ownership by sku.
-   */
   async function getEntitlementsOwnershipBySku_ByUserId(
     userId: string,
     queryParams: {
@@ -359,9 +296,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Enable Entitlement origin feature.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateEntitlementConfigEntitlementOriginEnable(): Promise<AxiosResponse<EntitlementConfigInfo>> {
     const $ = new EntitlementAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateEntitlementConfigEntitlementOriginEnable()
@@ -369,9 +303,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get user app entitlement ownership by appId.
-   */
   async function getEntitlementsOwnershipByAppId_ByUserId(
     userId: string,
     queryParams: { appId: string | null }
@@ -382,9 +313,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get user entitlement ownership by itemId.
-   */
   async function getEntitlementsOwnershipByItemId_ByUserId(
     userId: string,
     queryParams: {
@@ -399,9 +327,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get user entitlement ownership by itemIds.
-   */
   async function getEntitlementsOwnershipByItemIds_ByUserId(
     userId: string,
     queryParams?: { ids?: string[]; platform?: string | null }
@@ -412,9 +337,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Sell user entitlement. If the entitlement is consumable, useCount is 0, the status will be CONSUMED. If the entitlement is durable, the status will be SOLD. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateSell_ByUserId_ByEntitlementId(
     userId: string,
     entitlementId: string,
@@ -426,9 +348,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Enable user entitlement.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: enable entitlement&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateEnable_ByUserId_ByEntitlementId(userId: string, entitlementId: string): Promise<AxiosResponse<EntitlementInfo>> {
     const $ = new EntitlementAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateEnable_ByUserId_ByEntitlementId(userId, entitlementId)
@@ -436,9 +355,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Revoke user entitlement.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revoke entitlement&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateRevoke_ByUserId_ByEntitlementId(
     userId: string,
     entitlementId: string,
@@ -450,9 +366,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Disable user entitlement if entitlement, only active entitlement can be disable, disabled entitlement can&#39;t consume.&lt;br&gt;&lt;b&gt;Like revoke, it will lose the entitlement ownership, except disabled entitlement can enable.&lt;/b&gt;&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: disable entitlement&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateDisable_ByUserId_ByEntitlementId(userId: string, entitlementId: string): Promise<AxiosResponse<EntitlementInfo>> {
     const $ = new EntitlementAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDisable_ByUserId_ByEntitlementId(userId, entitlementId)
@@ -460,9 +373,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get user entitlement histories.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of entitlement history&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getHistory_ByUserId_ByEntitlementId(
     userId: string,
     entitlementId: string
@@ -473,9 +383,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Consume user entitlement. If the entitlement useCount is 0, the status will be CONSUMED.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: consumed entitlement&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateDecrement_ByUserId_ByEntitlementId(
     userId: string,
     entitlementId: string,
@@ -487,10 +394,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Revoke specified use count of user entitlement. please use /{entitlementId}/revoke/byUseCount endpoint instead of this endpoint&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revoke entitlement&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateRevokeByUseCount_ByUserId_ByEntitlementId(
     userId: string,
     entitlementId: string,
@@ -502,9 +405,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Revoke specified count of user entitlement.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: The revoked entitlement&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createRevokeByUseCount_ByUserId_ByEntitlementId(
     userId: string,
     entitlementId: string,
@@ -516,9 +416,6 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Checks if specified use count of user entitlement can be revoked without actually revoking it.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: true if revokable, false otherwise&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getRevokeByUseCountPreCheck_ByUserId_ByEntitlementId(
     userId: string,
     entitlementId: string,
@@ -531,40 +428,146 @@ export function EntitlementAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   }
 
   return {
+    /**
+     * Query entitlements.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement list&lt;/li&gt;&lt;/ul&gt;
+     */
     getEntitlements,
+    /**
+     * Grant entitlements to multiple users, skipped granting will be treated as fail.&lt;br&gt;&lt;br&gt;Notes: &lt;br&gt;&lt;br&gt;Support Item Types:&lt;ul&gt;&lt;li&gt;&lt;i&gt;APP&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;INGAMEITEM&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;CODE&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;SUBSCRIPTION&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;MEDIA&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;OPTIONBOX&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;LOOTBOX&lt;/i&gt;&lt;/li&gt;&lt;/ul&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk grant entitlements result&lt;/li&gt;&lt;/ul&gt;
+     */
     createEntitlementGrant,
+    /**
+     * Revoke entitlements, skipped revocation will be treated as fail.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk revoke entitlements result&lt;/li&gt;&lt;/ul&gt;
+     */
     createEntitlementRevoke,
+    /**
+     * Query entitlements by Item Ids.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement list&lt;/li&gt;&lt;/ul&gt;
+     */
     getEntitlementsByItemIds,
+    /**
+     * Get entitlement config info.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement info&lt;/li&gt;&lt;/ul&gt;
+     */
     getEntitlementsConfigInfo,
+    /**
+     * Query entitlements for a specific user.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement list&lt;/li&gt;&lt;/ul&gt;
+     */
     getEntitlements_ByUserId,
+    /**
+     * Grant user entitlement.&lt;br&gt;&lt;br&gt;Notes: &lt;br&gt;&lt;br&gt;will skip un-supported item if input un-supported item types, please use /admin/namespaces/{namespace}/users/{userId}/fulfillment endpoint if want to fulfill other item type, like coin item&lt;br&gt;&lt;br&gt;Support Item Types:&lt;ul&gt;&lt;li&gt;&lt;i&gt;APP&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;INGAMEITEM&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;CODE&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;SUBSCRIPTION&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;MEDIA&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;OPTIONBOX&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;LOOTBOX&lt;/i&gt;&lt;/li&gt;&lt;/ul&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: granted entitlement&lt;/li&gt;&lt;/ul&gt;
+     */
     createEntitlement_ByUserId,
+    /**
+     * Get entitlement.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement&lt;/li&gt;&lt;/ul&gt;
+     */
     getEntitlement_ByEntitlementId,
+    /**
+     * Get user entitlement by sku.
+     */
     getEntitlementsBySku_ByUserId,
+    /**
+     * Revoke all entitlements of a user (This API is for testing purpose only)&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revoked entitlements count&lt;/li&gt;&lt;/ul&gt;
+     */
     updateEntitlementRevoke_ByUserId,
+    /**
+     * Get user app entitlement by appId.
+     */
     getEntitlementsByAppId_ByUserId,
+    /**
+     * Get user entitlement by itemId.
+     */
     getEntitlementsByItemId_ByUserId,
+    /**
+     * Query app entitlements by appType.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: app entitlement pagination&lt;/li&gt;&lt;/ul&gt;
+     */
     getEntitlementsByAppType_ByUserId,
+    /**
+     * Get user entitlements by itemIds.
+     */
     getEntitlementsByItemIds_ByUserId,
+    /**
+     * Get platform entitlement config list.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement info&lt;/li&gt;&lt;/ul&gt;
+     */
     getEntitlementConfig_ByPlatform,
+    /**
+     * Update platform entitlement config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: platform entitlement config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateEntitlementConfig_ByPlatform,
+    /**
+     * Revoke user&#39;s entitlements by ids.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revoke entitlements count&lt;/li&gt;&lt;/ul&gt;
+     */
     updateEntitlementRevokeById_ByUserId,
+    /**
+     * Exists any user active entitlement of specified itemIds, skus and appIds
+     */
     getEntitlementsOwnershipAny_ByUserId,
+    /**
+     * Get user entitlement.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement&lt;/li&gt;&lt;/ul&gt;
+     */
     getEntitlement_ByUserId_ByEntitlementId,
+    /**
+     * Update user entitlement. If update CONSUMABLE entitlement useCount to 0, the status will be CONSUMED.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated entitlement&lt;/li&gt;&lt;/ul&gt;
+     */
     updateEntitlement_ByUserId_ByEntitlementId,
+    /**
+     * Exists any user active entitlement of specified items.
+     */
     getEntitlementsOwnershipAnyOf_ByUserId,
+    /**
+     * Get user entitlement ownership by sku.
+     */
     getEntitlementsOwnershipBySku_ByUserId,
+    /**
+     * Enable Entitlement origin feature.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement info&lt;/li&gt;&lt;/ul&gt;
+     */
     updateEntitlementConfigEntitlementOriginEnable,
+    /**
+     * Get user app entitlement ownership by appId.
+     */
     getEntitlementsOwnershipByAppId_ByUserId,
+    /**
+     * Get user entitlement ownership by itemId.
+     */
     getEntitlementsOwnershipByItemId_ByUserId,
+    /**
+     * Get user entitlement ownership by itemIds.
+     */
     getEntitlementsOwnershipByItemIds_ByUserId,
+    /**
+     * Sell user entitlement. If the entitlement is consumable, useCount is 0, the status will be CONSUMED. If the entitlement is durable, the status will be SOLD. Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: entitlement&lt;/li&gt;&lt;/ul&gt;
+     */
     updateSell_ByUserId_ByEntitlementId,
+    /**
+     * Enable user entitlement.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: enable entitlement&lt;/li&gt;&lt;/ul&gt;
+     */
     updateEnable_ByUserId_ByEntitlementId,
+    /**
+     * Revoke user entitlement.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revoke entitlement&lt;/li&gt;&lt;/ul&gt;
+     */
     updateRevoke_ByUserId_ByEntitlementId,
+    /**
+     * Disable user entitlement if entitlement, only active entitlement can be disable, disabled entitlement can&#39;t consume.&lt;br&gt;&lt;b&gt;Like revoke, it will lose the entitlement ownership, except disabled entitlement can enable.&lt;/b&gt;&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: disable entitlement&lt;/li&gt;&lt;/ul&gt;
+     */
     updateDisable_ByUserId_ByEntitlementId,
+    /**
+     * Get user entitlement histories.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of entitlement history&lt;/li&gt;&lt;/ul&gt;
+     */
     getHistory_ByUserId_ByEntitlementId,
+    /**
+     * Consume user entitlement. If the entitlement useCount is 0, the status will be CONSUMED.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: consumed entitlement&lt;/li&gt;&lt;/ul&gt;
+     */
     updateDecrement_ByUserId_ByEntitlementId,
+    /**
+     * @deprecated
+     * Revoke specified use count of user entitlement. please use /{entitlementId}/revoke/byUseCount endpoint instead of this endpoint&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revoke entitlement&lt;/li&gt;&lt;/ul&gt;
+     */
     updateRevokeByUseCount_ByUserId_ByEntitlementId,
+    /**
+     * Revoke specified count of user entitlement.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: The revoked entitlement&lt;/li&gt;&lt;/ul&gt;
+     */
     createRevokeByUseCount_ByUserId_ByEntitlementId,
+    /**
+     * Checks if specified use count of user entitlement can be revoked without actually revoking it.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: true if revokable, false otherwise&lt;/li&gt;&lt;/ul&gt;
+     */
     getRevokeByUseCountPreCheck_ByUserId_ByEntitlementId
   }
 }

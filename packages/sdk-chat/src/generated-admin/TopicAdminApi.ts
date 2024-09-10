@@ -39,9 +39,12 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -54,9 +57,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get chat history in a namespace.
-   */
   async function getChats(queryParams?: {
     chatId?: string[]
     endCreatedAt?: number
@@ -76,9 +76,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get chat list of topic in a namespace.
-   */
   async function getTopic(queryParams?: {
     limit?: number
     offset?: number
@@ -90,9 +87,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Create new group topic in a namespace.
-   */
   async function createTopic(data: CreateTopicParams): Promise<AxiosResponse<CreateTopicResponse>> {
     const $ = new TopicAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createTopic(data)
@@ -100,9 +94,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get topics in a namespace.
-   */
   async function getTopics(queryParams?: {
     includeMembers?: boolean | null
     includePastMembers?: boolean | null
@@ -120,9 +111,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get chat log of topic in a namespace.
-   */
   async function getTopicLog(queryParams?: {
     endCreatedAt?: number
     limit?: number
@@ -139,9 +127,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * For testing purpose, doesn&#39;t send any message to the topic. Always do filter regardless of enableProfanityFilter configuration.
-   */
   async function fetchChatFilter(
     data: MessageRequest,
     queryParams?: { detail?: boolean | null }
@@ -152,9 +137,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete topic in a namespace.
-   */
   async function deleteTopic_ByTopic(topic: string): Promise<AxiosResponse<ActionDeleteTopicResult>> {
     const $ = new TopicAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteTopic_ByTopic(topic)
@@ -162,9 +144,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update group topic in a namespace.
-   */
   async function updateTopic_ByTopic(topic: string, data: UpdateTopicParams): Promise<AxiosResponse<CreateTopicResponse>> {
     const $ = new TopicAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateTopic_ByTopic(topic, data)
@@ -172,9 +151,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get channel chat list of topic in a namespace.
-   */
   async function getTopicChannel(queryParams?: {
     limit?: number
     offset?: number
@@ -186,9 +162,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Create new namespace group topic in a namespace.
-   */
   async function createNamespaceTopic(data: CreateNamespaceTopicParams): Promise<AxiosResponse<CreateTopicResponse>> {
     const $ = new TopicAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createNamespaceTopic(data)
@@ -196,10 +169,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Get chat history in a namespace.
-   */
   async function getChats_ByTopic(
     topic: string,
     queryParams?: {
@@ -220,9 +189,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Send message to chat topic as system.
-   */
   async function updateChat_ByTopic(topic: string, data: SendChatParams): Promise<AxiosResponse<ChatMessageResponseArray>> {
     const $ = new TopicAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateChat_ByTopic(topic, data)
@@ -230,9 +196,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get shard list from topic.
-   */
   async function getShards_ByTopic(topic: string): Promise<AxiosResponse<unknown>> {
     const $ = new TopicAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getShards_ByTopic(topic)
@@ -240,9 +203,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get chat list of topic in a namespace.
-   */
   async function getChannel_ByTopic(topic: string): Promise<AxiosResponse<ChannelTopicResponse>> {
     const $ = new TopicAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getChannel_ByTopic(topic)
@@ -250,9 +210,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get topic members.
-   */
   async function getMembers_ByTopic(
     topic: string,
     queryParams?: { isBanned?: boolean | null; isModerator?: boolean | null; limit?: number; offset?: number; shardId?: string | null }
@@ -263,9 +220,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get chat list of topic in a namespace.
-   */
   async function getTopicChannelSummary(): Promise<AxiosResponse<ChannelTopicSummaryResponse>> {
     const $ = new TopicAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getTopicChannelSummary()
@@ -273,9 +227,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get user&#39;s topics in a namespace.
-   */
   async function getTopics_ByUserId(
     userId: string,
     queryParams?: {
@@ -292,9 +243,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Ban users in some topic. banned user not assigned to shard for channel topic, and cannot send and query chat.
-   */
   async function updateBanMember_ByTopic(topic: string, data: BanTopicMemberParam): Promise<AxiosResponse<BanTopicMemberResult>> {
     const $ = new TopicAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateBanMember_ByTopic(topic, data)
@@ -302,9 +250,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Unban users in some topic.
-   */
   async function updateUnbanMember_ByTopic(topic: string, data: UnbanTopicMemberParam): Promise<AxiosResponse<UnbanTopicMemberResult>> {
     const $ = new TopicAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateUnbanMember_ByTopic(topic, data)
@@ -312,9 +257,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Remove member from topic in a namespace.
-   */
   async function deleteUser_ByTopic_ByUserId(topic: string, userId: string): Promise<AxiosResponse<ActionAddUserToTopicResult>> {
     const $ = new TopicAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteUser_ByTopic_ByUserId(topic, userId)
@@ -322,9 +264,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Add new member for topic in a namespace.
-   */
   async function updateUser_ByTopic_ByUserId(
     topic: string,
     userId: string,
@@ -336,9 +275,6 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete chat.
-   */
   async function deleteChat_ByTopic_ByChatId(topic: string, chatId: string): Promise<AxiosResponse<unknown>> {
     const $ = new TopicAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteChat_ByTopic_ByChatId(topic, chatId)
@@ -347,27 +283,94 @@ export function TopicAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get chat history in a namespace.
+     */
     getChats,
+    /**
+     * Get chat list of topic in a namespace.
+     */
     getTopic,
+    /**
+     * Create new group topic in a namespace.
+     */
     createTopic,
+    /**
+     * Get topics in a namespace.
+     */
     getTopics,
+    /**
+     * Get chat log of topic in a namespace.
+     */
     getTopicLog,
+    /**
+     * For testing purpose, doesn&#39;t send any message to the topic. Always do filter regardless of enableProfanityFilter configuration.
+     */
     fetchChatFilter,
+    /**
+     * Delete topic in a namespace.
+     */
     deleteTopic_ByTopic,
+    /**
+     * Update group topic in a namespace.
+     */
     updateTopic_ByTopic,
+    /**
+     * Get channel chat list of topic in a namespace.
+     */
     getTopicChannel,
+    /**
+     * Create new namespace group topic in a namespace.
+     */
     createNamespaceTopic,
+    /**
+     * @deprecated
+     * Get chat history in a namespace.
+     */
     getChats_ByTopic,
+    /**
+     * Send message to chat topic as system.
+     */
     updateChat_ByTopic,
+    /**
+     * Get shard list from topic.
+     */
     getShards_ByTopic,
+    /**
+     * Get chat list of topic in a namespace.
+     */
     getChannel_ByTopic,
+    /**
+     * Get topic members.
+     */
     getMembers_ByTopic,
+    /**
+     * Get chat list of topic in a namespace.
+     */
     getTopicChannelSummary,
+    /**
+     * Get user&#39;s topics in a namespace.
+     */
     getTopics_ByUserId,
+    /**
+     * Ban users in some topic. banned user not assigned to shard for channel topic, and cannot send and query chat.
+     */
     updateBanMember_ByTopic,
+    /**
+     * Unban users in some topic.
+     */
     updateUnbanMember_ByTopic,
+    /**
+     * Remove member from topic in a namespace.
+     */
     deleteUser_ByTopic_ByUserId,
+    /**
+     * Add new member for topic in a namespace.
+     */
     updateUser_ByTopic_ByUserId,
+    /**
+     * Delete chat.
+     */
     deleteChat_ByTopic_ByChatId
   }
 }

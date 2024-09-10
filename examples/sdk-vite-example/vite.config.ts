@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => {
           cookieDomainRewrite: 'localhost',
           configure(proxy) {
             proxy.on('proxyReq', req => {
-              req.setHeader('Referer', target)
+              req.setHeader('Referer', `http://${env.VITE_NAMESPACE}.localhost:${PORT}`)
             })
           },
           rewrite: path => {

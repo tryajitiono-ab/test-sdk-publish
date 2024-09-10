@@ -19,9 +19,12 @@ export function ConfigApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function ConfigApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get matchmaking config of all namespaces. Will only return namespace configs than have been updated.
-   */
   async function getConfig(): Promise<AxiosResponse<NamespaceConfigList>> {
     const $ = new Config$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getConfig()
@@ -44,9 +44,6 @@ export function ConfigApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get matchmaking config of a namespaces.
-   */
   async function getConfig_ByNamespace(): Promise<AxiosResponse<NamespaceConfig>> {
     const $ = new Config$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getConfig_ByNamespace()
@@ -54,9 +51,6 @@ export function ConfigApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Patch update matchmaking config of a namespaces. Partially update matchmaking config, will only update value that defined on the request.
-   */
   async function patchConfig_ByNamespace(data: PatchNamespaceConfigRequest): Promise<AxiosResponse<NamespaceConfig>> {
     const $ = new Config$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchConfig_ByNamespace(data)
@@ -65,8 +59,17 @@ export function ConfigApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get matchmaking config of all namespaces. Will only return namespace configs than have been updated.
+     */
     getConfig,
+    /**
+     * Get matchmaking config of a namespaces.
+     */
     getConfig_ByNamespace,
+    /**
+     * Patch update matchmaking config of a namespaces. Partially update matchmaking config, will only update value that defined on the request.
+     */
     patchConfig_ByNamespace
   }
 }

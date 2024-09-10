@@ -18,9 +18,12 @@ export function ConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function ConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     }
   }
 
-  /**
-   * TimeInterval is in nanoseconds. When there&#39;s no configuration set, the response is the default value (configurable through envar).
-   */
   async function getConfigurations(queryParams?: { category?: 'all' | 'extension' }): Promise<AxiosResponse<ConfigResponse>> {
     const $ = new ConfigurationsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getConfigurations(queryParams)
@@ -43,9 +43,6 @@ export function ConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * The behaviour of this endpoint is upsert based on the namespace. So, you can use this for both creating &amp; updating the configuration. TimeInterval is in nanoseconds.
-   */
   async function createConfiguration(data: ReportingLimit): Promise<AxiosResponse<ConfigResponse>> {
     const $ = new ConfigurationsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createConfiguration(data)
@@ -54,7 +51,13 @@ export function ConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   }
 
   return {
+    /**
+     * TimeInterval is in nanoseconds. When there&#39;s no configuration set, the response is the default value (configurable through envar).
+     */
     getConfigurations,
+    /**
+     * The behaviour of this endpoint is upsert based on the namespace. So, you can use this for both creating &amp; updating the configuration. TimeInterval is in nanoseconds.
+     */
     createConfiguration
   }
 }

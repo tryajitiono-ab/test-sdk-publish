@@ -13,6 +13,7 @@ import { AxiosError, AxiosResponse } from 'axios'
 import { useMutation, UseMutationOptions, UseMutationResult, useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query'
 import { PaymentStationApi } from '../PaymentStationApi.js'
 
+import { BinarySchema } from '../../generated-definitions/BinarySchema.js'
 import { Customization } from '../../generated-definitions/Customization.js'
 import { PaymentMethodArray } from '../../generated-definitions/PaymentMethodArray.js'
 import { PaymentOrderDetails } from '../../generated-definitions/PaymentOrderDetails.js'
@@ -119,9 +120,9 @@ export const usePaymentStationApi_CreatePaymentLink = (
 export const usePaymentStationApi_GetPaymentQrcode = (
   sdk: AccelByteSDK,
   input: SdkSetConfigParam & { queryParams: { code: string | null } },
-  options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
-  callback?: (data: AxiosResponse<unknown>) => void
-): UseQueryResult<unknown, AxiosError<ApiError>> => {
+  options?: Omit<UseQueryOptions<BinarySchema, AxiosError<ApiError>>, 'queryKey'>,
+  callback?: (data: AxiosResponse<BinarySchema>) => void
+): UseQueryResult<BinarySchema, AxiosError<ApiError>> => {
   const queryFn = (sdk: AccelByteSDK, input: Parameters<typeof usePaymentStationApi_GetPaymentQrcode>[1]) => async () => {
     const response = await PaymentStationApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).getPaymentQrcode(
       input.queryParams
@@ -130,7 +131,7 @@ export const usePaymentStationApi_GetPaymentQrcode = (
     return response.data
   }
 
-  return useQuery<unknown, AxiosError<ApiError>>({
+  return useQuery<BinarySchema, AxiosError<ApiError>>({
     queryKey: [Key_PaymentStation.PaymentQrcode, input],
     queryFn: queryFn(sdk, input),
     ...options

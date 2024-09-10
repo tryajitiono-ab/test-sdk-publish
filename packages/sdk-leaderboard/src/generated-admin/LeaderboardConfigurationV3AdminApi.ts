@@ -22,9 +22,12 @@ export function LeaderboardConfigurationV3AdminApi(sdk: AccelByteSDK, args?: Sdk
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function LeaderboardConfigurationV3AdminApi(sdk: AccelByteSDK, args?: Sdk
     }
   }
 
-  /**
-   * &lt;p&gt;This endpoint return all leaderboard configurations&lt;/p&gt;
-   */
   async function getLeaderboards_v3(queryParams?: {
     isDeleted?: boolean | null
     limit?: number
@@ -51,9 +51,6 @@ export function LeaderboardConfigurationV3AdminApi(sdk: AccelByteSDK, args?: Sdk
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;&lt;b&gt;Fields :&lt;/b&gt;&lt;/p&gt; &lt;ul&gt;&lt;li&gt;leaderboardCode: unique leaderboard config code must be lowercase and maximum length is 48 characters. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;name: leaderboard name, maximum length for leaderboard name is 128 characters. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;description: leaderboard description, maximum length for leaderboard description is 2048 characters. &lt;b&gt;(optional)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;iconURL: leaderboard icon image url. &lt;b&gt;(optional)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;allTime: if true, all time leaderboard will be created. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;descending: leaderboard order. If true, the points will be sorted in descending order. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;statCode: Stat Code is related with statistic code in statistic service. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;cycleIds: Statistic cycle ids that will be tracked in the leaderboard. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;/ul&gt;
-   */
   async function createLeaderboard_v3(data: LeaderboardConfigReqV3): Promise<AxiosResponse<GetLeaderboardConfigRespV3>> {
     const $ = new LeaderboardConfigurationV3Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createLeaderboard_v3(data)
@@ -61,9 +58,6 @@ export function LeaderboardConfigurationV3AdminApi(sdk: AccelByteSDK, args?: Sdk
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;This endpoint delete multiple leaderboards configuration in one request&lt;/p&gt;
-   */
   async function createLeaderboardDelete_v3(data: DeleteBulkLeaderboardsReq): Promise<AxiosResponse<DeleteBulkLeaderboardsResp>> {
     const $ = new LeaderboardConfigurationV3Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createLeaderboardDelete_v3(data)
@@ -71,9 +65,6 @@ export function LeaderboardConfigurationV3AdminApi(sdk: AccelByteSDK, args?: Sdk
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;This endpoint delete a leaderboard configuration&lt;/p&gt;
-   */
   async function deleteLeaderboard_ByLeaderboardCode_v3(leaderboardCode: string): Promise<AxiosResponse<unknown>> {
     const $ = new LeaderboardConfigurationV3Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteLeaderboard_ByLeaderboardCode_v3(leaderboardCode)
@@ -81,9 +72,6 @@ export function LeaderboardConfigurationV3AdminApi(sdk: AccelByteSDK, args?: Sdk
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;This endpoint returns a leaderboard configuration&lt;/p&gt;
-   */
   async function getLeaderboard_ByLeaderboardCode_v3(leaderboardCode: string): Promise<AxiosResponse<GetLeaderboardConfigRespV3>> {
     const $ = new LeaderboardConfigurationV3Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getLeaderboard_ByLeaderboardCode_v3(leaderboardCode)
@@ -91,9 +79,6 @@ export function LeaderboardConfigurationV3AdminApi(sdk: AccelByteSDK, args?: Sdk
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;&lt;b&gt;Fields :&lt;/b&gt;&lt;/p&gt; &lt;ul&gt;&lt;li&gt;leaderboardCode: unique leaderboard config code must be lowercase and maximum length is 48 characters. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;name: leaderboard name, maximum length for leaderboard name is 128 characters. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;description: leaderboard description, maximum length for leaderboard description is 2048 characters. &lt;b&gt;(optional)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;iconURL: leaderboard icon image url. &lt;b&gt;(optional)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;allTime: if true, all time leaderboard will be created. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;descending: leaderboard order. If true, the points will be sorted in descending order. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;statCode: Stat Code is related with statistic code in statistic service. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;cycleIds: Statistic cycle ids that will be tracked in the leaderboard. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;/ul&gt;
-   */
   async function updateLeaderboard_ByLeaderboardCode_v3(
     leaderboardCode: string,
     data: UpdateLeaderboardConfigReqV3
@@ -104,9 +89,6 @@ export function LeaderboardConfigurationV3AdminApi(sdk: AccelByteSDK, args?: Sdk
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;&lt;b&gt;[Test Facility Only]&lt;/b&gt;&lt;/p&gt; &lt;p&gt;Required permission &#39;ADMIN:NAMESPACE:{namespace}:LEADERBOARD:HARDDELETE [DELETE]&#39;&lt;/p&gt; &lt;p&gt;This endpoint will delete leaderboard configuration and its data&lt;/p&gt; &lt;p&gt;Note: this endpoint only works on development environment, you might want to use &lt;b&gt;archive endpoint&lt;/b&gt; instead hard delete.&lt;/p&gt;
-   */
   async function deleteHard_ByLeaderboardCode_v3(leaderboardCode: string): Promise<AxiosResponse<unknown>> {
     const $ = new LeaderboardConfigurationV3Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteHard_ByLeaderboardCode_v3(leaderboardCode)
@@ -115,12 +97,33 @@ export function LeaderboardConfigurationV3AdminApi(sdk: AccelByteSDK, args?: Sdk
   }
 
   return {
+    /**
+     * &lt;p&gt;This endpoint return all leaderboard configurations&lt;/p&gt;
+     */
     getLeaderboards_v3,
+    /**
+     * &lt;p&gt;&lt;b&gt;Fields :&lt;/b&gt;&lt;/p&gt; &lt;ul&gt;&lt;li&gt;leaderboardCode: unique leaderboard config code must be lowercase and maximum length is 48 characters. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;name: leaderboard name, maximum length for leaderboard name is 128 characters. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;description: leaderboard description, maximum length for leaderboard description is 2048 characters. &lt;b&gt;(optional)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;iconURL: leaderboard icon image url. &lt;b&gt;(optional)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;allTime: if true, all time leaderboard will be created. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;descending: leaderboard order. If true, the points will be sorted in descending order. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;statCode: Stat Code is related with statistic code in statistic service. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;cycleIds: Statistic cycle ids that will be tracked in the leaderboard. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;/ul&gt;
+     */
     createLeaderboard_v3,
+    /**
+     * &lt;p&gt;This endpoint delete multiple leaderboards configuration in one request&lt;/p&gt;
+     */
     createLeaderboardDelete_v3,
+    /**
+     * &lt;p&gt;This endpoint delete a leaderboard configuration&lt;/p&gt;
+     */
     deleteLeaderboard_ByLeaderboardCode_v3,
+    /**
+     * &lt;p&gt;This endpoint returns a leaderboard configuration&lt;/p&gt;
+     */
     getLeaderboard_ByLeaderboardCode_v3,
+    /**
+     * &lt;p&gt;&lt;b&gt;Fields :&lt;/b&gt;&lt;/p&gt; &lt;ul&gt;&lt;li&gt;leaderboardCode: unique leaderboard config code must be lowercase and maximum length is 48 characters. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;name: leaderboard name, maximum length for leaderboard name is 128 characters. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;description: leaderboard description, maximum length for leaderboard description is 2048 characters. &lt;b&gt;(optional)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;iconURL: leaderboard icon image url. &lt;b&gt;(optional)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;allTime: if true, all time leaderboard will be created. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;descending: leaderboard order. If true, the points will be sorted in descending order. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;statCode: Stat Code is related with statistic code in statistic service. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;li&gt;cycleIds: Statistic cycle ids that will be tracked in the leaderboard. &lt;b&gt;(required)&lt;/b&gt;.&lt;/li&gt; &lt;/ul&gt;
+     */
     updateLeaderboard_ByLeaderboardCode_v3,
+    /**
+     * &lt;p&gt;&lt;b&gt;[Test Facility Only]&lt;/b&gt;&lt;/p&gt; &lt;p&gt;Required permission &#39;ADMIN:NAMESPACE:{namespace}:LEADERBOARD:HARDDELETE [DELETE]&#39;&lt;/p&gt; &lt;p&gt;This endpoint will delete leaderboard configuration and its data&lt;/p&gt; &lt;p&gt;Note: this endpoint only works on development environment, you might want to use &lt;b&gt;archive endpoint&lt;/b&gt; instead hard delete.&lt;/p&gt;
+     */
     deleteHard_ByLeaderboardCode_v3
   }
 }

@@ -13,13 +13,15 @@ import { AxiosError, AxiosResponse } from 'axios'
 import { useMutation, UseMutationOptions, UseMutationResult, useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query'
 import { PlayerRewardApi } from '../PlayerRewardApi.js'
 
+import { ClaimUserRewardsByGoalCodeRequest } from '../../generated-definitions/ClaimUserRewardsByGoalCodeRequest.js'
 import { ClaimUserRewardsReq } from '../../generated-definitions/ClaimUserRewardsReq.js'
 import { ListUserRewardsResponse } from '../../generated-definitions/ListUserRewardsResponse.js'
 import { UserRewardArray } from '../../generated-definitions/UserRewardArray.js'
 
 export enum Key_PlayerReward {
   UsersMeRewards = 'Challenge.PlayerReward.UsersMeRewards',
-  UserMeRewardClaim = 'Challenge.PlayerReward.UserMeRewardClaim'
+  UserMeRewardClaim = 'Challenge.PlayerReward.UserMeRewardClaim',
+  RewardClaimMeUser_ByChallengeCode = 'Challenge.PlayerReward.RewardClaimMeUser_ByChallengeCode'
 }
 
 /**
@@ -85,6 +87,49 @@ export const usePlayerRewardApi_CreateUserMeRewardClaim = (
 
   return useMutation({
     mutationKey: [Key_PlayerReward.UserMeRewardClaim],
+    mutationFn,
+    ...options
+  })
+}
+
+/**
+ * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
+ *
+ * #### Default Query Options
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerReward.RewardClaimMeUser_ByChallengeCode, input]
+ * }
+ * ```
+ */
+export const usePlayerRewardApi_CreateRewardClaimMeUser_ByChallengeCode = (
+  sdk: AccelByteSDK,
+  options?: Omit<
+    UseMutationOptions<
+      UserRewardArray,
+      AxiosError<ApiError>,
+      SdkSetConfigParam & { challengeCode: string; data: ClaimUserRewardsByGoalCodeRequest }
+    >,
+    'mutationKey'
+  >,
+  callback?: (data: UserRewardArray) => void
+): UseMutationResult<
+  UserRewardArray,
+  AxiosError<ApiError>,
+  SdkSetConfigParam & { challengeCode: string; data: ClaimUserRewardsByGoalCodeRequest }
+> => {
+  const mutationFn = async (input: SdkSetConfigParam & { challengeCode: string; data: ClaimUserRewardsByGoalCodeRequest }) => {
+    const response = await PlayerRewardApi(sdk, {
+      coreConfig: input.coreConfig,
+      axiosConfig: input.axiosConfig
+    }).createRewardClaimMeUser_ByChallengeCode(input.challengeCode, input.data)
+    callback && callback(response.data)
+    return response.data
+  }
+
+  return useMutation({
+    mutationKey: [Key_PlayerReward.RewardClaimMeUser_ByChallengeCode],
     mutationFn,
     ...options
   })

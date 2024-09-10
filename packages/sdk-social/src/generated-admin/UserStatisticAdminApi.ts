@@ -34,9 +34,12 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -49,9 +52,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     }
   }
 
-  /**
-   * Bulk fetch multiple user&#39;s statitem value for a given namespace and statCode. Other detail info: + *Returns*: list of user&#39;s statItem
-   */
   async function getStatitemsBulk(queryParams: {
     statCode: string | null
     userIds: string | null
@@ -62,9 +62,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk update multiple user&#39;s statitems value.&lt;br&gt;
-   */
   async function patchStatitemValueBulk(data: BulkUserStatItemInc[]): Promise<AxiosResponse<BulkStatOperationResultArray>> {
     const $ = new UserStatisticAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchStatitemValueBulk(data)
@@ -72,9 +69,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk update multiple user&#39;s statitems value.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk updated result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateStatitemValueBulk(data: BulkUserStatItemInc[]): Promise<AxiosResponse<BulkStatOperationResultArray>> {
     const $ = new UserStatisticAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateStatitemValueBulk(data)
@@ -82,9 +76,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk update multiple user&#39;s statitems value with specific update strategy. There are four supported update strategies: + *OVERRIDE*: update user statitem with the new value + *INCREMENT*: increment user statitem with the specified value + *MAX*: update user statitem with the specified value if it&#39;s larger than the existing value + *MIN*: update user statitem with the specified value if it&#39;s lower than the existing value Other detail info: + *Returns*: bulk updated result
-   */
   async function updateStatitemValueBulk_v2(data: BulkUserStatItemUpdate[]): Promise<AxiosResponse<BulkStatOperationResultArray>> {
     const $ = new UserStatisticAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateStatitemValueBulk_v2(data)
@@ -92,9 +83,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * List user&#39;s statItems.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat items&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getStatitems_ByUserId(
     userId: string,
     queryParams?: {
@@ -112,9 +100,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk reset multiple user&#39;s statitems value. User&#39;s statitem value will be reset to the default value defined in the statistic configuration. Other detail info: + *Returns*: bulk updated result
-   */
   async function updateStatitemValueResetBulk(data: BulkUserStatItemReset[]): Promise<AxiosResponse<BulkStatOperationResultArray>> {
     const $ = new UserStatisticAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateStatitemValueResetBulk(data)
@@ -122,9 +107,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Get users&#39; stat item values for a given namespace and statCode. Other info: + *Returns*: list of users&#39; stat item values
-   */
   async function getStatitems_ByStatCode(
     statCode: string,
     queryParams?: { limit?: number; offset?: number; sortBy?: string | null }
@@ -135,9 +117,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk create user&#39;s statItems.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk created result&lt;/li&gt;
-   */
   async function createStatitemBulk_ByUserId(
     userId: string,
     data: BulkStatItemCreate[]
@@ -148,9 +127,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk fetch multiple user&#39;s stat item values for a given namespace and statCode. NOTE: If stat item does not exist, will return default value. Other detail info: + *Returns*: list of user&#39;s stat item values
-   */
   async function getStatitemsValueBulkGetOrDefault(queryParams: {
     statCode: string | null
     userIds: string[]
@@ -161,9 +137,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk fetch multiple user&#39;s stat item values for a given namespace and statCode. NOTE: If stat item does not exist, will return default value. Other detail info: + *Returns*: list of user&#39;s stat item values
-   */
   async function getStatitemsValueBulkGetOrDefault_v2(queryParams: {
     statCode: string | null
     userIds: string[]
@@ -175,9 +148,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk update user&#39;s statitems value.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk updated result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function patchStatitemValueBulk_ByUserId(
     userId: string,
     data: BulkStatItemInc[]
@@ -188,9 +158,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk update user&#39;s statitems value.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk updated result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateStatitemValueBulk_ByUserId(
     userId: string,
     data: BulkStatItemInc[]
@@ -201,9 +168,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Admin list all statItems of user&lt;br&gt;NOTE: &lt;b&gt;Legacy endpoint&lt;/b&gt;, please use POST /v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk/getOrDefault&lt;ul&gt;&lt;li&gt;If stat code does not exist, will ignore this stat code.&lt;/li&gt;&lt;li&gt;If stat item does not exist, will return default value&lt;/li&gt;&lt;/ul&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat items&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getStatitemsValueBulk_ByUserId_v2(
     userId: string,
     queryParams?: { additionalKey?: string | null; statCodes?: string[]; tags?: string[] }
@@ -214,9 +178,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk update user&#39;s statitems value for given namespace and user with specific update strategy. There are four supported update strategies: + *OVERRIDE*: update user statitem with the new value + *INCREMENT*: increment user statitem with the specified value + *MAX*: update user statitem with the specified value if it&#39;s larger than the existing value + *MIN*: update user statitem with the specified value if it&#39;s lower than the existing value The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user&#39;s statitems, such as character&#39;s statitems. If provided, user&#39;s statitems will be saved with key: *userId_additionalKey* Other detail info: + *Returns*: bulk updated result
-   */
   async function updateStatitemValueBulk_ByUserId_v2(
     userId: string,
     data: BulkStatItemUpdate[],
@@ -228,9 +189,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk reset user&#39;s statitems value for given namespace and user. Other detail info: + *Returns*: bulk updated result
-   */
   async function updateStatitemValueResetBulk_ByUserId(
     userId: string,
     data: BulkStatItemReset[]
@@ -241,9 +199,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * This endpoint is for testing purpose. Use this endpoint for cleaning up after testing.&lt;br&gt;Delete user&#39;s statItems given stat code.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: no content&lt;/li&gt;&lt;/li&gt;
-   */
   async function deleteStatitem_ByUserId_ByStatCode(userId: string, statCode: string): Promise<AxiosResponse<unknown>> {
     const $ = new UserStatisticAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteStatitem_ByUserId_ByStatCode(userId, statCode)
@@ -251,9 +206,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Create statItem for a user.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created user&#39;s statItem&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createStatitem_ByUserId_ByStatCode(userId: string, statCode: string): Promise<AxiosResponse<unknown>> {
     const $ = new UserStatisticAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createStatitem_ByUserId_ByStatCode(userId, statCode)
@@ -261,9 +213,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk reset user&#39;s statitem values for given namespace and user. Other detail info: + *Returns*: bulk updated result
-   */
   async function updateStatitemValueResetBulk_ByUserId_v2(
     userId: string,
     data: ADtoObjectForResettingUserStatItems[],
@@ -275,9 +224,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Delete user&#39;s stat items for given namespace, statCode, and user Id. If query param *additionalKey* is provided, it will delete user stat items of specific key (i.e. characterName). Otherwise, it will delete all stat items related to the user Id. &lt;br&gt;Delete user&#39;s statItems given stat code.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: no content&lt;/li&gt;&lt;/li&gt;
-   */
   async function deleteStatitem_ByUserId_ByStatCode_v2(
     userId: string,
     statCode: string,
@@ -289,9 +235,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Update user&#39;s statitem value.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated user&#39;s statItem&lt;/li&gt;&lt;/ul&gt;
-   */
   async function patchStatitemValue_ByUserId_ByStatCode(
     userId: string,
     statCode: string,
@@ -303,9 +246,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Update user&#39;s statitem value for a given namespace and user with a certain update strategy. There are four supported update strategies: + *OVERRIDE*: update user statitem with the new value + *INCREMENT*: increment user statitem with the specified value + *MAX*: update user statitem with the specified value if it&#39;s larger than the existing value + *MIN*: update user statitem with the specified value if it&#39;s lower than the existing value The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user&#39;s statitems, such as character&#39;s statitems. If provided, user&#39;s statitems will be saved with key: *userId_additionalKey* Other detail info: + *Returns*: updated user&#39;s statItem
-   */
   async function updateStatitemValue_ByUserId_ByStatCode_v2(
     userId: string,
     statCode: string,
@@ -318,9 +258,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Bulk get user&#39;s statitems value for given namespace and user by multiple stat codes. Will return default value if player doesn&#39;t have the stat. Other detail info: + *Required permission*: resource=&#34;ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM&#34;, action=2 (READ) + *Max stat codes*: 20 + *Returns*: list of user&#39;s stat item values
-   */
   async function createStatitemValueBulkGetOrDefault_ByUserId_v2(
     userId: string,
     data: BulkUserStatItemByStatCodes,
@@ -332,9 +269,6 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Reset user&#39;s statitem value for a given namespace and user. User&#39;s statitem value will be reset to the default value defined in the statistic configuration. Other detail info: + *Returns*: updated user&#39;s statItem
-   */
   async function updateStatitemValueReset_ByUserId_ByStatCode(
     userId: string,
     statCode: string,
@@ -348,28 +282,97 @@ export function UserStatisticAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
   }
 
   return {
+    /**
+     * Bulk fetch multiple user&#39;s statitem value for a given namespace and statCode. Other detail info: + *Returns*: list of user&#39;s statItem
+     */
     getStatitemsBulk,
+    /**
+     * Bulk update multiple user&#39;s statitems value.&lt;br&gt;
+     */
     patchStatitemValueBulk,
+    /**
+     * Bulk update multiple user&#39;s statitems value.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk updated result&lt;/li&gt;&lt;/ul&gt;
+     */
     updateStatitemValueBulk,
+    /**
+     * Bulk update multiple user&#39;s statitems value with specific update strategy. There are four supported update strategies: + *OVERRIDE*: update user statitem with the new value + *INCREMENT*: increment user statitem with the specified value + *MAX*: update user statitem with the specified value if it&#39;s larger than the existing value + *MIN*: update user statitem with the specified value if it&#39;s lower than the existing value Other detail info: + *Returns*: bulk updated result
+     */
     updateStatitemValueBulk_v2,
+    /**
+     * List user&#39;s statItems.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat items&lt;/li&gt;&lt;/ul&gt;
+     */
     getStatitems_ByUserId,
+    /**
+     * Bulk reset multiple user&#39;s statitems value. User&#39;s statitem value will be reset to the default value defined in the statistic configuration. Other detail info: + *Returns*: bulk updated result
+     */
     updateStatitemValueResetBulk,
+    /**
+     * Get users&#39; stat item values for a given namespace and statCode. Other info: + *Returns*: list of users&#39; stat item values
+     */
     getStatitems_ByStatCode,
+    /**
+     * Bulk create user&#39;s statItems.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk created result&lt;/li&gt;
+     */
     createStatitemBulk_ByUserId,
+    /**
+     * Bulk fetch multiple user&#39;s stat item values for a given namespace and statCode. NOTE: If stat item does not exist, will return default value. Other detail info: + *Returns*: list of user&#39;s stat item values
+     */
     getStatitemsValueBulkGetOrDefault,
+    /**
+     * Bulk fetch multiple user&#39;s stat item values for a given namespace and statCode. NOTE: If stat item does not exist, will return default value. Other detail info: + *Returns*: list of user&#39;s stat item values
+     */
     getStatitemsValueBulkGetOrDefault_v2,
+    /**
+     * Bulk update user&#39;s statitems value.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk updated result&lt;/li&gt;&lt;/ul&gt;
+     */
     patchStatitemValueBulk_ByUserId,
+    /**
+     * Bulk update user&#39;s statitems value.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk updated result&lt;/li&gt;&lt;/ul&gt;
+     */
     updateStatitemValueBulk_ByUserId,
+    /**
+     * Admin list all statItems of user&lt;br&gt;NOTE: &lt;b&gt;Legacy endpoint&lt;/b&gt;, please use POST /v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk/getOrDefault&lt;ul&gt;&lt;li&gt;If stat code does not exist, will ignore this stat code.&lt;/li&gt;&lt;li&gt;If stat item does not exist, will return default value&lt;/li&gt;&lt;/ul&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat items&lt;/li&gt;&lt;/ul&gt;
+     */
     getStatitemsValueBulk_ByUserId_v2,
+    /**
+     * Bulk update user&#39;s statitems value for given namespace and user with specific update strategy. There are four supported update strategies: + *OVERRIDE*: update user statitem with the new value + *INCREMENT*: increment user statitem with the specified value + *MAX*: update user statitem with the specified value if it&#39;s larger than the existing value + *MIN*: update user statitem with the specified value if it&#39;s lower than the existing value The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user&#39;s statitems, such as character&#39;s statitems. If provided, user&#39;s statitems will be saved with key: *userId_additionalKey* Other detail info: + *Returns*: bulk updated result
+     */
     updateStatitemValueBulk_ByUserId_v2,
+    /**
+     * Bulk reset user&#39;s statitems value for given namespace and user. Other detail info: + *Returns*: bulk updated result
+     */
     updateStatitemValueResetBulk_ByUserId,
+    /**
+     * This endpoint is for testing purpose. Use this endpoint for cleaning up after testing.&lt;br&gt;Delete user&#39;s statItems given stat code.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: no content&lt;/li&gt;&lt;/li&gt;
+     */
     deleteStatitem_ByUserId_ByStatCode,
+    /**
+     * Create statItem for a user.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created user&#39;s statItem&lt;/li&gt;&lt;/ul&gt;
+     */
     createStatitem_ByUserId_ByStatCode,
+    /**
+     * Bulk reset user&#39;s statitem values for given namespace and user. Other detail info: + *Returns*: bulk updated result
+     */
     updateStatitemValueResetBulk_ByUserId_v2,
+    /**
+     * Delete user&#39;s stat items for given namespace, statCode, and user Id. If query param *additionalKey* is provided, it will delete user stat items of specific key (i.e. characterName). Otherwise, it will delete all stat items related to the user Id. &lt;br&gt;Delete user&#39;s statItems given stat code.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: no content&lt;/li&gt;&lt;/li&gt;
+     */
     deleteStatitem_ByUserId_ByStatCode_v2,
+    /**
+     * Update user&#39;s statitem value.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated user&#39;s statItem&lt;/li&gt;&lt;/ul&gt;
+     */
     patchStatitemValue_ByUserId_ByStatCode,
+    /**
+     * Update user&#39;s statitem value for a given namespace and user with a certain update strategy. There are four supported update strategies: + *OVERRIDE*: update user statitem with the new value + *INCREMENT*: increment user statitem with the specified value + *MAX*: update user statitem with the specified value if it&#39;s larger than the existing value + *MIN*: update user statitem with the specified value if it&#39;s lower than the existing value The *additionalKey* parameter will be suffixed to *userId* and is used to support multi level user&#39;s statitems, such as character&#39;s statitems. If provided, user&#39;s statitems will be saved with key: *userId_additionalKey* Other detail info: + *Returns*: updated user&#39;s statItem
+     */
     updateStatitemValue_ByUserId_ByStatCode_v2,
+    /**
+     * Bulk get user&#39;s statitems value for given namespace and user by multiple stat codes. Will return default value if player doesn&#39;t have the stat. Other detail info: + *Required permission*: resource=&#34;ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM&#34;, action=2 (READ) + *Max stat codes*: 20 + *Returns*: list of user&#39;s stat item values
+     */
     createStatitemValueBulkGetOrDefault_ByUserId_v2,
+    /**
+     * Reset user&#39;s statitem value for a given namespace and user. User&#39;s statitem value will be reset to the default value defined in the statistic configuration. Other detail info: + *Returns*: updated user&#39;s statItem
+     */
     updateStatitemValueReset_ByUserId_ByStatCode
   }
 }

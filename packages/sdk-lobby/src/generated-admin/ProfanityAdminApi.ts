@@ -29,9 +29,12 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -44,9 +47,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get current profanity rule
-   */
   async function getProfanityRule(): Promise<AxiosResponse<ProfanityRule>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getProfanityRule()
@@ -54,9 +54,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Set current profanity rule
-   */
   async function updateProfanityRule(data: AdminSetProfanityRuleForNamespaceRequest): Promise<AxiosResponse<unknown>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateProfanityRule(data)
@@ -64,9 +61,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get lists
-   */
   async function getProfanityLists(): Promise<AxiosResponse<AdminGetProfanityListsListResponseArray>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getProfanityLists()
@@ -74,9 +68,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Create a new list
-   */
   async function createProfanityList(data: AdminCreateProfanityListRequest): Promise<AxiosResponse<unknown>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createProfanityList(data)
@@ -84,9 +75,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Verify a message directly from the UI or other services
-   */
   async function fetchProfanityVerify(
     data: AdminVerifyMessageProfanityRequest
   ): Promise<AxiosResponse<AdminVerifyMessageProfanityResponse>> {
@@ -96,9 +84,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete a list include all filters inside of it
-   */
   async function deleteProfanityList_ByList(list: string): Promise<AxiosResponse<unknown>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteProfanityList_ByList(list)
@@ -106,9 +91,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update the list
-   */
   async function updateProfanityList_ByList(list: string, data: AdminUpdateProfanityList): Promise<AxiosResponse<unknown>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateProfanityList_ByList(list, data)
@@ -116,9 +98,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get the list of filters that would modify the phrase
-   */
   async function fetchProfanityFilterDebug(data: DebugProfanityFilterRequest): Promise<AxiosResponse<ProfanityFilterArray>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.fetchProfanityFilterDebug(data)
@@ -126,9 +105,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get the list of filters inside the list.
-   */
   async function getFiltersProfanity_ByList(list: string): Promise<AxiosResponse<AdminGetProfanityListFiltersV1Response>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getFiltersProfanity_ByList(list)
@@ -136,9 +112,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Add a single filter into the list
-   */
   async function createFilterProfanity_ByList(list: string, data: AdminAddProfanityFilterIntoListRequest): Promise<AxiosResponse<unknown>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createFilterProfanity_ByList(list, data)
@@ -146,9 +119,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Add multiple filters into the list
-   */
   async function createFilterBulkProfanity_ByList(list: string, data: AdminAddProfanityFiltersRequest): Promise<AxiosResponse<unknown>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createFilterBulkProfanity_ByList(list, data)
@@ -156,9 +126,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete the filter from the list
-   */
   async function createFilterDeleteProfanity_ByList(
     list: string,
     data: AdminDeleteProfanityFilterRequest
@@ -169,9 +136,6 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Import a file with filters
-   */
   async function createFilterBulkFileProfanity_ByList(list: string, data: number[]): Promise<AxiosResponse<unknown>> {
     const $ = new ProfanityAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createFilterBulkFileProfanity_ByList(list, data)
@@ -180,18 +144,57 @@ export function ProfanityAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get current profanity rule
+     */
     getProfanityRule,
+    /**
+     * Set current profanity rule
+     */
     updateProfanityRule,
+    /**
+     * Get lists
+     */
     getProfanityLists,
+    /**
+     * Create a new list
+     */
     createProfanityList,
+    /**
+     * Verify a message directly from the UI or other services
+     */
     fetchProfanityVerify,
+    /**
+     * Delete a list include all filters inside of it
+     */
     deleteProfanityList_ByList,
+    /**
+     * Update the list
+     */
     updateProfanityList_ByList,
+    /**
+     * Get the list of filters that would modify the phrase
+     */
     fetchProfanityFilterDebug,
+    /**
+     * Get the list of filters inside the list.
+     */
     getFiltersProfanity_ByList,
+    /**
+     * Add a single filter into the list
+     */
     createFilterProfanity_ByList,
+    /**
+     * Add multiple filters into the list
+     */
     createFilterBulkProfanity_ByList,
+    /**
+     * Delete the filter from the list
+     */
     createFilterDeleteProfanity_ByList,
+    /**
+     * Import a file with filters
+     */
     createFilterBulkFileProfanity_ByList
   }
 }

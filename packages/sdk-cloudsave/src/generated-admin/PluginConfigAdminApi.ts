@@ -18,9 +18,12 @@ export function PluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function PluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     }
   }
 
-  /**
-   * ## Description This endpoints will delete grpc plugins configuration
-   */
   async function deletePlugin(): Promise<AxiosResponse<unknown>> {
     const $ = new PluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deletePlugin()
@@ -43,9 +43,6 @@ export function PluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * ## Description This endpoints will get grpc plugins configuration
-   */
   async function getPlugins(): Promise<AxiosResponse<PluginResponse>> {
     const $ = new PluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPlugins()
@@ -53,9 +50,6 @@ export function PluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * ## Description This endpoints will update grpc plugins configuration
-   */
   async function patchPlugin(data: PluginRequest): Promise<AxiosResponse<PluginResponse>> {
     const $ = new PluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchPlugin(data)
@@ -63,9 +57,6 @@ export function PluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * ## Description This endpoints will create new grpc plugins configuration per namespace
-   */
   async function createPlugin(data: PluginRequest): Promise<AxiosResponse<PluginResponse>> {
     const $ = new PluginConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createPlugin(data)
@@ -74,9 +65,21 @@ export function PluginConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
   }
 
   return {
+    /**
+     * ## Description This endpoints will delete grpc plugins configuration
+     */
     deletePlugin,
+    /**
+     * ## Description This endpoints will get grpc plugins configuration
+     */
     getPlugins,
+    /**
+     * ## Description This endpoints will update grpc plugins configuration
+     */
     patchPlugin,
+    /**
+     * ## Description This endpoints will create new grpc plugins configuration per namespace
+     */
     createPlugin
   }
 }

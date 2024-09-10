@@ -3139,8 +3139,8 @@
     "path": "/gdpr/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2024-08-29T10:06:45+00:00",
-    "gitHash": "38bae271ae689c4a368976c82b338af2b937e041",
+    "buildDate": "2024-09-09T02:42:44+00:00",
+    "gitHash": "ad695c68aba6118c1be5b096e30c425ed2813be3",
     "name": "justice-gdpr-service",
     "realm": "dev",
     "version": "2.13.0",

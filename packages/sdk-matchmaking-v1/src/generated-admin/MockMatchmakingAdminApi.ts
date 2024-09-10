@@ -22,9 +22,12 @@ export function MockMatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function MockMatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     }
   }
 
-  /**
-   *  Delete all mock tickets and matches in a channel. &#39;
-   */
   async function deleteMock_ByChannelName(channelName: string): Promise<AxiosResponse<unknown>> {
     const $ = new MockMatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteMock_ByChannelName(channelName)
@@ -47,9 +47,6 @@ export function MockMatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   *  Read all mock matches in a channel resulted from matching mock tickets. &#39;
-   */
   async function getMocksMatches_ByChannelName(channelName: string): Promise<AxiosResponse<GetMockMatchesResponse>> {
     const $ = new MockMatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMocksMatches_ByChannelName(channelName)
@@ -57,9 +54,6 @@ export function MockMatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   *  Read mock matches that has timestamp older than specified timestamp in a channel resulted from matching mock tickets. &#39;
-   */
   async function fetchMockMatche_ByChannelName(channelName: string, data: QueryMockBy): Promise<AxiosResponse<GetMockMatchesResponse>> {
     const $ = new MockMatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.fetchMockMatche_ByChannelName(channelName, data)
@@ -67,9 +61,6 @@ export function MockMatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   *  Read all mock tickets in a channel. &#39;
-   */
   async function getMocksTickets_ByChannelName(channelName: string): Promise<AxiosResponse<GetMockTicketsResponse>> {
     const $ = new MockMatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMocksTickets_ByChannelName(channelName)
@@ -77,9 +68,6 @@ export function MockMatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   *  Create and queue mock tickets into specified game mode&#39;s pool. Ticket&#39;s MMRs will be randomized using Normal distribution according to the input mean and standard deviation. All mock tickets and matches will be cleaned up automatically after 1 day. &#39;
-   */
   async function createMockTicket_ByChannelName(channelName: string, data: CreateMockTicket): Promise<AxiosResponse<MockTicketArray>> {
     const $ = new MockMatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createMockTicket_ByChannelName(channelName, data)
@@ -87,9 +75,6 @@ export function MockMatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   *  Create and queue mock tickets into specified game mode&#39;s pool. The tickets input will be used as is. &#39;
-   */
   async function createMockTicketBulk_ByChannelName(channelName: string, data: MatchingParty[]): Promise<AxiosResponse<unknown>> {
     const $ = new MockMatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createMockTicketBulk_ByChannelName(channelName, data)
@@ -97,9 +82,6 @@ export function MockMatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   *  Read mock tickets after the specified timestamp in a channel. &#39;
-   */
   async function fetchMockTicketQuery_ByChannelName(
     channelName: string,
     data: QueryMockBy
@@ -111,12 +93,33 @@ export function MockMatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   }
 
   return {
+    /**
+     *  Delete all mock tickets and matches in a channel. &#39;
+     */
     deleteMock_ByChannelName,
+    /**
+     *  Read all mock matches in a channel resulted from matching mock tickets. &#39;
+     */
     getMocksMatches_ByChannelName,
+    /**
+     *  Read mock matches that has timestamp older than specified timestamp in a channel resulted from matching mock tickets. &#39;
+     */
     fetchMockMatche_ByChannelName,
+    /**
+     *  Read all mock tickets in a channel. &#39;
+     */
     getMocksTickets_ByChannelName,
+    /**
+     *  Create and queue mock tickets into specified game mode&#39;s pool. Ticket&#39;s MMRs will be randomized using Normal distribution according to the input mean and standard deviation. All mock tickets and matches will be cleaned up automatically after 1 day. &#39;
+     */
     createMockTicket_ByChannelName,
+    /**
+     *  Create and queue mock tickets into specified game mode&#39;s pool. The tickets input will be used as is. &#39;
+     */
     createMockTicketBulk_ByChannelName,
+    /**
+     *  Read mock tickets after the specified timestamp in a channel. &#39;
+     */
     fetchMockTicketQuery_ByChannelName
   }
 }

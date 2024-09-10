@@ -18,9 +18,12 @@ export function GlobalStatisticApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function GlobalStatisticApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     }
   }
 
-  /**
-   * List global statItems by pagination.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat items&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getGlobalstatitems(queryParams?: {
     limit?: number
     offset?: number
@@ -47,9 +47,6 @@ export function GlobalStatisticApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Get global statItem by stat code.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: global stat item&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getGlobalstatitem_ByStatCode(statCode: string): Promise<AxiosResponse<GlobalStatItemInfo>> {
     const $ = new GlobalStatistic$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getGlobalstatitem_ByStatCode(statCode)
@@ -58,7 +55,13 @@ export function GlobalStatisticApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   }
 
   return {
+    /**
+     * List global statItems by pagination.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat items&lt;/li&gt;&lt;/ul&gt;
+     */
     getGlobalstatitems,
+    /**
+     * Get global statItem by stat code.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: global stat item&lt;/li&gt;&lt;/ul&gt;
+     */
     getGlobalstatitem_ByStatCode
   }
 }

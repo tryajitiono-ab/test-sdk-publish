@@ -31,9 +31,12 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -46,9 +49,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get inbox stats
-   */
   async function getInboxStats(queryParams?: { messageId?: string[] }): Promise<AxiosResponse<GetInboxStatsResponse>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getInboxStats(queryParams)
@@ -56,9 +56,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get inbox messages
-   */
   async function getInboxMessages(queryParams?: {
     activeOnly?: boolean | null
     endCreatedAt?: number
@@ -77,9 +74,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Save inbox message
-   */
   async function createInboxMessage(data: SaveInboxMessageRequest): Promise<AxiosResponse<SaveInboxMessageResponse>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createInboxMessage(data)
@@ -87,9 +81,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get inbox categories
-   */
   async function getInboxCategories(): Promise<AxiosResponse<GetInboxCategoriesResponseItemArray>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getInboxCategories()
@@ -97,9 +88,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Add inbox category.
-   */
   async function createInboxCategory(data: AddInboxCategoryRequest): Promise<AxiosResponse<AddInboxCategoryResponse>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createInboxCategory(data)
@@ -107,9 +95,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete inbox message
-   */
   async function deleteInboxMessage_ByMessageId(
     messageId: string,
     queryParams?: { force?: boolean | null }
@@ -120,9 +105,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update inbox message
-   */
   async function patchInboxMessage_ByMessageId(messageId: string, data: UpdateInboxMessageRequest): Promise<AxiosResponse<unknown>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchInboxMessage_ByMessageId(messageId, data)
@@ -130,9 +112,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete inbox category
-   */
   async function deleteInboxCategory_ByCategory(category: string): Promise<AxiosResponse<unknown>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteInboxCategory_ByCategory(category)
@@ -140,9 +119,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update inbox category
-   */
   async function patchInboxCategory_ByCategory(category: string, data: UpdateInboxCategoryRequest): Promise<AxiosResponse<unknown>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchInboxCategory_ByCategory(category, data)
@@ -150,9 +126,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get inbox users
-   */
   async function getUsersInbox_ByInbox(
     inbox: string,
     queryParams?: { limit?: number; offset?: number; status?: 'READ' | 'UNREAD'; userId?: string | null }
@@ -163,9 +136,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Unsend inbox message
-   */
   async function updateUnsendInbox_ByInbox(
     inbox: string,
     data: UnsendInboxMessageRequest
@@ -176,9 +146,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Send inbox message
-   */
   async function updateSendInbox_ByMessageId(
     messageId: string,
     data: SendInboxMessageRequest
@@ -189,9 +156,6 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get category schema.
-   */
   async function getSchemaJsonInbox_ByCategory(category: string): Promise<AxiosResponse<JsonSchemaType>> {
     const $ = new InboxAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getSchemaJsonInbox_ByCategory(category)
@@ -200,18 +164,57 @@ export function InboxAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get inbox stats
+     */
     getInboxStats,
+    /**
+     * Get inbox messages
+     */
     getInboxMessages,
+    /**
+     * Save inbox message
+     */
     createInboxMessage,
+    /**
+     * Get inbox categories
+     */
     getInboxCategories,
+    /**
+     * Add inbox category.
+     */
     createInboxCategory,
+    /**
+     * Delete inbox message
+     */
     deleteInboxMessage_ByMessageId,
+    /**
+     * Update inbox message
+     */
     patchInboxMessage_ByMessageId,
+    /**
+     * Delete inbox category
+     */
     deleteInboxCategory_ByCategory,
+    /**
+     * Update inbox category
+     */
     patchInboxCategory_ByCategory,
+    /**
+     * Get inbox users
+     */
     getUsersInbox_ByInbox,
+    /**
+     * Unsend inbox message
+     */
     updateUnsendInbox_ByInbox,
+    /**
+     * Send inbox message
+     */
     updateSendInbox_ByMessageId,
+    /**
+     * Get category schema.
+     */
     getSchemaJsonInbox_ByCategory
   }
 }

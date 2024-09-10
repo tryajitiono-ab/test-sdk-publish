@@ -17,9 +17,12 @@ export function TtlConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function TtlConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * ## Description This endpoints will delete the ttl config of the game record
-   */
   async function deleteTtl_ByKey(key: string): Promise<AxiosResponse<unknown>> {
     const $ = new TtlConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteTtl_ByKey(key)
@@ -42,9 +42,6 @@ export function TtlConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * ## Description This endpoints will delete the ttl config of the game binary record
-   */
   async function deleteTtl_ByKey_ByNS(key: string): Promise<AxiosResponse<unknown>> {
     const $ = new TtlConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteTtl_ByKey_ByNS(key)
@@ -53,7 +50,13 @@ export function TtlConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * ## Description This endpoints will delete the ttl config of the game record
+     */
     deleteTtl_ByKey,
+    /**
+     * ## Description This endpoints will delete the ttl config of the game binary record
+     */
     deleteTtl_ByKey_ByNS
   }
 }

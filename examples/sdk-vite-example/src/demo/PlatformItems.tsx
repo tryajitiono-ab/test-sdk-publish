@@ -1,12 +1,14 @@
-import { AccelByteSDK } from '@accelbyte/sdk'
 import { CurrencyApi, ItemApi } from '@accelbyte/sdk-platform'
 import React, { useState } from 'react'
 import { Heading } from './components/Heading'
 import { Section, SectionContent } from './components/Section'
 import { Snippet } from './components/Snippet'
+import { useGlobal } from './GlobalContext'
 import { handleError } from './helpers'
 
-export function PlatformItems({ sdk }: { sdk: AccelByteSDK }) {
+export function PlatformItems() {
+  const { sdk } = useGlobal()
+
   const [currenciesResponse, setCurrenciesResponse] = useState<any>(null)
   const [platformItemsResponse, setPlatformItemsResponse] = useState<any>(null)
 

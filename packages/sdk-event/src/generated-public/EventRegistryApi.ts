@@ -17,9 +17,12 @@ export function EventRegistryApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,10 +35,6 @@ export function EventRegistryApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:EVENT [READ]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getRegistryEventIds(): Promise<AxiosResponse<EventRegistry>> {
     const $ = new EventRegistry$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getRegistryEventIds()
@@ -43,10 +42,6 @@ export function EventRegistryApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:EVENT [CREATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function createRegistryEventId(data: EventRegistry): Promise<AxiosResponse<unknown>> {
     const $ = new EventRegistry$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createRegistryEventId(data)
@@ -54,10 +49,6 @@ export function EventRegistryApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:EVENT [DELETE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function deleteRegistryEventId_ByEventId(eventId: string): Promise<AxiosResponse<unknown>> {
     const $ = new EventRegistry$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteRegistryEventId_ByEventId(eventId)
@@ -65,10 +56,6 @@ export function EventRegistryApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:EVENT [READ]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getRegistryEventId_ByEventId(eventId: string): Promise<AxiosResponse<EventRegistry>> {
     const $ = new EventRegistry$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getRegistryEventId_ByEventId(eventId)
@@ -76,10 +63,6 @@ export function EventRegistryApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function createRegistryEventId_ByEventId(eventId: string, data: EventRegistry): Promise<AxiosResponse<unknown>> {
     const $ = new EventRegistry$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createRegistryEventId_ByEventId(eventId, data)
@@ -87,10 +70,6 @@ export function EventRegistryApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:EVENT [READ]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getRegistryEventType_ByEventType(eventType: string): Promise<AxiosResponse<EventRegistry>> {
     const $ = new EventRegistry$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getRegistryEventType_ByEventType(eventType)
@@ -99,11 +78,35 @@ export function EventRegistryApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:EVENT [READ]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getRegistryEventIds,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:EVENT [CREATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     createRegistryEventId,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:EVENT [DELETE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     deleteRegistryEventId_ByEventId,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:EVENT [READ]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getRegistryEventId_ByEventId,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     createRegistryEventId_ByEventId,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:EVENT [READ]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getRegistryEventType_ByEventType
   }
 }

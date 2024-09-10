@@ -22,9 +22,12 @@ export function BansAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function BansAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Ban type is the code available for ban assignment. It is applicable globally for any namespace. action code : 10201
-   */
   async function getBans_v3(): Promise<AxiosResponse<BansV3>> {
     const $ = new BansAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBans_v3()
@@ -47,9 +47,6 @@ export function BansAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Ban reasons is the code available to justify ban assignment. It is applicable globally for any namespace. action code : 10202
-   */
   async function getBansReasons_v3(): Promise<AxiosResponse<BanReasonsV3>> {
     const $ = new BansAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBansReasons_v3()
@@ -57,9 +54,6 @@ export function BansAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Ban type is the code available for ban assignment. It is applicable globally for any namespace. action code : 10201
-   */
   async function getBantypes_v3(): Promise<AxiosResponse<BansV3>> {
     const $ = new BansAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBantypes_v3()
@@ -67,9 +61,6 @@ export function BansAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Ban type is the code available for ban assignment. It is applicable globally for any namespace. action code : 10201
-   */
   async function getBansUsers_v3(queryParams?: {
     activeOnly?: boolean | null
     banType?: string | null
@@ -82,9 +73,6 @@ export function BansAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Bulk ban user with specific type of ban. Ban types and reason can be queried. The maximum limit value is 100 userIDs action code : 10141
-   */
   async function createBanUser_v3(data: BulkBanCreateRequestV3): Promise<AxiosResponse<ListBulkUserBanResponseV3>> {
     const $ = new BansAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createBanUser_v3(data)
@@ -92,9 +80,6 @@ export function BansAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * disable bulk ban user. The maximum limit value is 100 action code : 10142
-   */
   async function patchBanUserDisabled_v3(data: BulkUnbanCreateRequestV3): Promise<AxiosResponse<ListBulkUserBanResponseV3>> {
     const $ = new BansAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchBanUserDisabled_v3(data)
@@ -103,11 +88,29 @@ export function BansAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Ban type is the code available for ban assignment. It is applicable globally for any namespace. action code : 10201
+     */
     getBans_v3,
+    /**
+     * Ban reasons is the code available to justify ban assignment. It is applicable globally for any namespace. action code : 10202
+     */
     getBansReasons_v3,
+    /**
+     * Ban type is the code available for ban assignment. It is applicable globally for any namespace. action code : 10201
+     */
     getBantypes_v3,
+    /**
+     * Ban type is the code available for ban assignment. It is applicable globally for any namespace. action code : 10201
+     */
     getBansUsers_v3,
+    /**
+     * Bulk ban user with specific type of ban. Ban types and reason can be queried. The maximum limit value is 100 userIDs action code : 10141
+     */
     createBanUser_v3,
+    /**
+     * disable bulk ban user. The maximum limit value is 100 action code : 10142
+     */
     patchBanUserDisabled_v3
   }
 }

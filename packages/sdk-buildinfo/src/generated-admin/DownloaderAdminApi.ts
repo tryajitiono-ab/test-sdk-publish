@@ -18,9 +18,12 @@ export function DownloaderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function DownloaderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     }
   }
 
-  /**
-   * This API is used to Generate Download URLs for the requested blocks inside the specified buildId.&lt;br/&gt;The download URL generation may returns Signed URL or Public URL, depends on service configurations.
-   */
   async function createBlockUrl_ByBuildId(buildId: string, data: BlockDownloadUrlsRequest): Promise<AxiosResponse<BlockDownloadUrls>> {
     const $ = new DownloaderAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createBlockUrl_ByBuildId(buildId, data)
@@ -44,6 +44,9 @@ export function DownloaderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   }
 
   return {
+    /**
+     * This API is used to Generate Download URLs for the requested blocks inside the specified buildId.&lt;br/&gt;The download URL generation may returns Signed URL or Public URL, depends on service configurations.
+     */
     createBlockUrl_ByBuildId
   }
 }

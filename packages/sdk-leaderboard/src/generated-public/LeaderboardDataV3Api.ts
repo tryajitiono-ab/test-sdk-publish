@@ -20,9 +20,12 @@ export function LeaderboardDataV3Api(sdk: AccelByteSDK, args?: SdkSetConfigParam
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function LeaderboardDataV3Api(sdk: AccelByteSDK, args?: SdkSetConfigParam
     }
   }
 
-  /**
-   * &lt;p&gt;Get rankings in an all time leaderboard.&lt;/p&gt;
-   */
   async function getAlltime_ByLeaderboardCode_v3(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number }
@@ -48,9 +48,6 @@ export function LeaderboardDataV3Api(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Bulk get users ranking in leaderboard, max allowed 20 userIDs at a time.&lt;/p&gt;
-   */
   async function createUserBulk_ByLeaderboardCode_v3(
     leaderboardCode: string,
     data: BulkUserIDsRequest
@@ -61,9 +58,6 @@ export function LeaderboardDataV3Api(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get user ranking in leaderboard&lt;/p&gt;
-   */
   async function getUser_ByLeaderboardCode_ByUserId_v3(
     leaderboardCode: string,
     userId: string
@@ -74,9 +68,6 @@ export function LeaderboardDataV3Api(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get rankings in cycle leaderboard.&lt;/p&gt;
-   */
   async function getCycle_ByLeaderboardCode_ByCycleId_v3(
     leaderboardCode: string,
     cycleId: string,
@@ -89,9 +80,21 @@ export function LeaderboardDataV3Api(sdk: AccelByteSDK, args?: SdkSetConfigParam
   }
 
   return {
+    /**
+     * &lt;p&gt;Get rankings in an all time leaderboard.&lt;/p&gt;
+     */
     getAlltime_ByLeaderboardCode_v3,
+    /**
+     * &lt;p&gt;Bulk get users ranking in leaderboard, max allowed 20 userIDs at a time.&lt;/p&gt;
+     */
     createUserBulk_ByLeaderboardCode_v3,
+    /**
+     * &lt;p&gt;Get user ranking in leaderboard&lt;/p&gt;
+     */
     getUser_ByLeaderboardCode_ByUserId_v3,
+    /**
+     * &lt;p&gt;Get rankings in cycle leaderboard.&lt;/p&gt;
+     */
     getCycle_ByLeaderboardCode_ByCycleId_v3
   }
 }

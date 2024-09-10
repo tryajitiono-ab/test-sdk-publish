@@ -19,9 +19,12 @@ export function PublicLikeLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function PublicLikeLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     }
   }
 
-  /**
-   * For advance tag filtering supports &amp; as AND operator and | as OR operator and parentheses ( ) for priority. e.g: *tags=red* *tags=red&amp;animal* *tags=red|animal* *tags=red&amp;animal|wild* *tags=red&amp;(animal|wild)* The precedence of logical operator is AND &gt; OR, so if no parentheses, AND logical operator will be executed first. Allowed character for operand: alphanumeric, underscore _ and dash - Allowed character for operator: &amp; | ( ) **Please note that value of tags query param should be URL encoded**
-   */
   async function getContentsLiked(queryParams?: {
     isofficial?: boolean | null
     limit?: number
@@ -54,9 +54,6 @@ export function PublicLikeLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * This endpoint will update like/unlike state from a content
-   */
   async function updateLike_ByContentId(contentId: string, data: ContentLikeRequest): Promise<AxiosResponse<ContentLikeResponse>> {
     const $ = new PublicLikeLegacy$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateLike_ByContentId(contentId, data)
@@ -65,7 +62,13 @@ export function PublicLikeLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   }
 
   return {
+    /**
+     * For advance tag filtering supports &amp; as AND operator and | as OR operator and parentheses ( ) for priority. e.g: *tags=red* *tags=red&amp;animal* *tags=red|animal* *tags=red&amp;animal|wild* *tags=red&amp;(animal|wild)* The precedence of logical operator is AND &gt; OR, so if no parentheses, AND logical operator will be executed first. Allowed character for operand: alphanumeric, underscore _ and dash - Allowed character for operator: &amp; | ( ) **Please note that value of tags query param should be URL encoded**
+     */
     getContentsLiked,
+    /**
+     * This endpoint will update like/unlike state from a content
+     */
     updateLike_ByContentId
   }
 }

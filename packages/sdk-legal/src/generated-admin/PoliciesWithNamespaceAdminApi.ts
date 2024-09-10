@@ -17,9 +17,12 @@ export function PoliciesWithNamespaceAdminApi(sdk: AccelByteSDK, args?: SdkSetCo
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function PoliciesWithNamespaceAdminApi(sdk: AccelByteSDK, args?: SdkSetCo
     }
   }
 
-  /**
-   * Update country-specific policy.
-   */
   async function patchPolicy_ByPolicyId(policyId: string, data: UpdatePolicyRequest): Promise<AxiosResponse<unknown>> {
     const $ = new PoliciesWithNamespaceAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchPolicy_ByPolicyId(policyId, data)
@@ -42,9 +42,6 @@ export function PoliciesWithNamespaceAdminApi(sdk: AccelByteSDK, args?: SdkSetCo
     return resp.response
   }
 
-  /**
-   * Update a policy to be the default.
-   */
   async function patchDefault_ByPolicyId(policyId: string): Promise<AxiosResponse<unknown>> {
     const $ = new PoliciesWithNamespaceAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchDefault_ByPolicyId(policyId)
@@ -53,7 +50,13 @@ export function PoliciesWithNamespaceAdminApi(sdk: AccelByteSDK, args?: SdkSetCo
   }
 
   return {
+    /**
+     * Update country-specific policy.
+     */
     patchPolicy_ByPolicyId,
+    /**
+     * Update a policy to be the default.
+     */
     patchDefault_ByPolicyId
   }
 }

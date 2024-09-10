@@ -14,6 +14,7 @@ import { ConfigAdminApi } from './generated-admin/ConfigAdminApi.js'
 import { CountryAdminApi } from './generated-admin/CountryAdminApi.js'
 import { DevicesV4AdminApi } from './generated-admin/DevicesV4AdminApi.js'
 import { InputValidationsAdminApi } from './generated-admin/InputValidationsAdminApi.js'
+import { LoginAllowlistAdminApi } from './generated-admin/LoginAllowlistAdminApi.js'
 import { OAuth20AdminApi } from './generated-admin/OAuth20AdminApi.js'
 import { OverrideRoleConfigV3AdminApi } from './generated-admin/OverrideRoleConfigV3AdminApi.js'
 import { ProfileUpdateStrategyAdminApi } from './generated-admin/ProfileUpdateStrategyAdminApi.js'
@@ -52,6 +53,7 @@ const apis = {
   OverrideRoleConfigV3AdminApi,
   ThirdPartyCredentialAdminApi,
   SsoCredentialAdminApi,
+  LoginAllowlistAdminApi,
   ConfigAdminApi,
   ProfileUpdateStrategyAdminApi,
   OAuth20AdminApi,

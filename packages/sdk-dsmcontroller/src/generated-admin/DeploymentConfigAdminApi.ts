@@ -24,9 +24,12 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -39,9 +42,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     }
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required scope: social This endpoint get a all deployments in a namespace Parameter Offset and Count is Required
-   */
   async function getConfigsDeployments(queryParams: {
     count: number
     offset: number
@@ -53,9 +53,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required scope: social This endpoint delete a dedicated server deployment in a namespace
-   */
   async function deleteConfigDeployment_ByDeployment(deployment: string): Promise<AxiosResponse<unknown>> {
     const $ = new DeploymentConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteConfigDeployment_ByDeployment(deployment)
@@ -63,9 +60,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required scope: social This endpoint get a dedicated server deployment in a namespace
-   */
   async function getConfigDeployment_ByDeployment(deployment: string): Promise<AxiosResponse<DeploymentWithOverride>> {
     const $ = new DeploymentConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getConfigDeployment_ByDeployment(deployment)
@@ -73,9 +67,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required scope: social This endpoint update a dedicated servers deployment in a namespace.
-   */
   async function patchConfigDeployment_ByDeployment(
     deployment: string,
     data: UpdateDeploymentRequest
@@ -86,9 +77,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required scope: social This endpoint create a dedicated servers deployment in a namespace.
-   */
   async function createConfigDeployment_ByDeployment(
     deployment: string,
     data: CreateDeploymentRequest
@@ -99,9 +87,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required scope: social This endpoint deletes the deployment creating server count queue in a namespace in all registered region for the selected version
-   */
   async function deleteQueueConfig_ByDeployment_ByVersion(deployment: string, version: string): Promise<AxiosResponse<unknown>> {
     const $ = new DeploymentConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteQueueConfig_ByDeployment_ByVersion(deployment, version)
@@ -109,9 +94,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required scope: social This endpoint delete a dedicated server deployment override in a namespace in a region for root deployment
-   */
   async function deleteOverrideRegionConfig_ByDeployment_ByRegion(
     deployment: string,
     region: string
@@ -122,9 +104,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required scope: social This endpoint update a dedicated servers deployment override in a namespace in a region for root deployment.
-   */
   async function patchOverrideRegionConfig_ByDeployment_ByRegion(
     deployment: string,
     region: string,
@@ -136,9 +115,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required scope: social This endpoint creates a dedicated servers deployment override in a namespace in a region for root deployment.
-   */
   async function createOverrideRegionConfig_ByDeployment_ByRegion(
     deployment: string,
     region: string,
@@ -150,9 +126,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required scope: social This endpoint create a dedicated servers deployment override in a namespace.
-   */
   async function createOverrideVersionConfig_ByDeployment_ByVersion(
     deployment: string,
     version: string,
@@ -164,9 +137,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required scope: social This endpoint delete a dedicated server deployment override in a namespace
-   */
   async function deleteOverrideVersionConfig_ByDeployment_ByVersion(
     deployment: string,
     version: string
@@ -177,9 +147,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required scope: social This endpoint update a dedicated servers deployment override in a namespace.
-   */
   async function patchOverrideVersionConfig_ByDeployment_ByVersion(
     deployment: string,
     version: string,
@@ -191,9 +158,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required scope: social This endpoint delete a dedicated server deployment override in a namespace in a region for deployment overrides
-   */
   async function deleteRegionOverrideConfig_ByDeployment_ByVersion_ByRegion(
     deployment: string,
     version: string,
@@ -205,9 +169,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required scope: social This endpoint update a dedicated servers deployment override in a namespace in a region for deployment overrides.
-   */
   async function patchRegionOverrideConfig_ByDeployment_ByVersion_ByRegion(
     deployment: string,
     version: string,
@@ -220,9 +181,6 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required scope: social This endpoint creates a dedicated servers deployment override in a namespace in a region for deployment overrides.
-   */
   async function createRegionOverrideConfig_ByDeployment_ByVersion_ByRegion(
     deployment: string,
     version: string,
@@ -236,20 +194,65 @@ export function DeploymentConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
   }
 
   return {
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required scope: social This endpoint get a all deployments in a namespace Parameter Offset and Count is Required
+     */
     getConfigsDeployments,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required scope: social This endpoint delete a dedicated server deployment in a namespace
+     */
     deleteConfigDeployment_ByDeployment,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ] Required scope: social This endpoint get a dedicated server deployment in a namespace
+     */
     getConfigDeployment_ByDeployment,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required scope: social This endpoint update a dedicated servers deployment in a namespace.
+     */
     patchConfigDeployment_ByDeployment,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required scope: social This endpoint create a dedicated servers deployment in a namespace.
+     */
     createConfigDeployment_ByDeployment,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required scope: social This endpoint deletes the deployment creating server count queue in a namespace in all registered region for the selected version
+     */
     deleteQueueConfig_ByDeployment_ByVersion,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required scope: social This endpoint delete a dedicated server deployment override in a namespace in a region for root deployment
+     */
     deleteOverrideRegionConfig_ByDeployment_ByRegion,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required scope: social This endpoint update a dedicated servers deployment override in a namespace in a region for root deployment.
+     */
     patchOverrideRegionConfig_ByDeployment_ByRegion,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required scope: social This endpoint creates a dedicated servers deployment override in a namespace in a region for root deployment.
+     */
     createOverrideRegionConfig_ByDeployment_ByRegion,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required scope: social This endpoint create a dedicated servers deployment override in a namespace.
+     */
     createOverrideVersionConfig_ByDeployment_ByVersion,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required scope: social This endpoint delete a dedicated server deployment override in a namespace
+     */
     deleteOverrideVersionConfig_ByDeployment_ByVersion,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required scope: social This endpoint update a dedicated servers deployment override in a namespace.
+     */
     patchOverrideVersionConfig_ByDeployment_ByVersion,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required scope: social This endpoint delete a dedicated server deployment override in a namespace in a region for deployment overrides
+     */
     deleteRegionOverrideConfig_ByDeployment_ByVersion_ByRegion,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required scope: social This endpoint update a dedicated servers deployment override in a namespace in a region for deployment overrides.
+     */
     patchRegionOverrideConfig_ByDeployment_ByVersion_ByRegion,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required scope: social This endpoint creates a dedicated servers deployment override in a namespace in a region for deployment overrides.
+     */
     createRegionOverrideConfig_ByDeployment_ByVersion_ByRegion
   }
 }

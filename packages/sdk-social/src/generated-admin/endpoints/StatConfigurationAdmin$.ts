@@ -117,7 +117,7 @@ export class StatConfigurationAdmin$ {
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, StatInfo, 'StatInfo')
   }
   /**
-   * Update stat.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated stat&lt;/li&gt;&lt;li&gt;&lt;i&gt;Field globalAggregationMethod will be ignored when the stat is not set as global&lt;/li&gt;&lt;li&gt;&lt;i&gt;Field globalAggregationMethod is not updatable when the stat status is TIED&lt;/li&gt;&lt;/ul&gt;
+   * Update stat.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated stat&lt;/li&gt;&lt;li&gt;&lt;i&gt;Field globalAggregationMethod will be ignored when the stat is not set as global&lt;/li&gt;&lt;li&gt;&lt;i&gt;Field globalAggregationMethod is not updatable when the stat status is TIED&lt;/li&gt;&lt;li&gt;&lt;i&gt;Field visibility is not updatable when the stat status is TIED&lt;/li&gt;&lt;/ul&gt;
    */
   patchStat_ByStatCode(statCode: string, data: StatUpdate): Promise<Response<StatInfo>> {
     const params = {} as AxiosRequestConfig

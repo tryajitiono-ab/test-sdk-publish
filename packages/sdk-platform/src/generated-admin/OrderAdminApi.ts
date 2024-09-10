@@ -27,9 +27,12 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -42,9 +45,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Query orders.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: query orders&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getOrders(queryParams?: {
     endTime?: string | null
     limit?: number
@@ -72,9 +72,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get Order Statistics.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: order statistics&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getOrdersStats(): Promise<AxiosResponse<OrderStatistics>> {
     const $ = new OrderAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getOrdersStats()
@@ -82,9 +79,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get order by orderNo.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: order instance&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getOrder_ByOrderNo(orderNo: string): Promise<AxiosResponse<OrderInfo>> {
     const $ = new OrderAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getOrder_ByOrderNo(orderNo)
@@ -92,9 +86,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query user orders.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: get order&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getOrders_ByUserId(
     userId: string,
     queryParams?: {
@@ -122,9 +113,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Admin Create an order. The result contains the checkout link and payment token. User with permission SANDBOX will create sandbox order that not real paid for xsolla/alipay and not validate price for wxpay.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT&lt;/li&gt;&lt;li&gt;sandbox default value is &lt;b&gt;false&lt;/b&gt;&lt;/li&gt;&lt;li&gt;platform default value is &lt;b&gt;Other&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created order&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Restrictions for ext field&lt;/h2&gt; 1. Cannot use &lt;b&gt;&#34;.&#34;&lt;/b&gt; as the key name - &lt;pre&gt;{ &#34;data.2&#34;: &#34;value&#34; }&lt;/pre&gt; 2. Cannot use &lt;b&gt;&#34;$&#34;&lt;/b&gt; as the prefix in key names - &lt;pre&gt;{ &#34;$data&#34;: &#34;value&#34; }&lt;/pre&gt;
-   */
   async function createOrder_ByUserId(userId: string, data: AdminOrderCreate): Promise<AxiosResponse<OrderInfo>> {
     const $ = new OrderAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createOrder_ByUserId(userId, data)
@@ -132,9 +120,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Refund order by orderNo.
-   */
   async function updateRefund_ByOrderNo(orderNo: string, data: OrderRefundCreate): Promise<AxiosResponse<OrderInfo>> {
     const $ = new OrderAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateRefund_ByOrderNo(orderNo, data)
@@ -142,9 +127,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get an order.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: get order&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getOrder_ByUserId_ByOrderNo(userId: string, orderNo: string): Promise<AxiosResponse<OrderInfo>> {
     const $ = new OrderAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getOrder_ByUserId_ByOrderNo(userId, orderNo)
@@ -152,9 +134,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update order status.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated order&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateOrder_ByUserId_ByOrderNo(userId: string, orderNo: string, data: OrderUpdate): Promise<AxiosResponse<OrderInfo>> {
     const $ = new OrderAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateOrder_ByUserId_ByOrderNo(userId, orderNo, data)
@@ -162,9 +141,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to get the count of purchased item which is the order target.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Item purchased count&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getOrdersCountOfItem_ByUserId(
     userId: string,
     queryParams: { itemId: string | null }
@@ -175,10 +151,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Get user order grant that fulfilled by this order.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: get order grant&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getGrant_ByUserId_ByOrderNo(userId: string, orderNo: string): Promise<AxiosResponse<OrderGrantInfo>> {
     const $ = new OrderAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getGrant_ByUserId_ByOrderNo(userId, orderNo)
@@ -186,9 +158,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Fulfill an order if the order is charged but fulfill failed.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfilled order&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateFulfill_ByUserId_ByOrderNo(userId: string, orderNo: string): Promise<AxiosResponse<OrderInfo>> {
     const $ = new OrderAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateFulfill_ByUserId_ByOrderNo(userId, orderNo)
@@ -196,9 +165,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get user order history.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: get order history&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getHistory_ByUserId_ByOrderNo(userId: string, orderNo: string): Promise<AxiosResponse<OrderHistoryInfoArray>> {
     const $ = new OrderAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getHistory_ByUserId_ByOrderNo(userId, orderNo)
@@ -206,9 +172,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Download user order receipt by orderNo.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: order receipt pdf&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getReceiptPdf_ByUserId_ByOrderNo(userId: string, orderNo: string): Promise<AxiosResponse<unknown>> {
     const $ = new OrderAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getReceiptPdf_ByUserId_ByOrderNo(userId, orderNo)
@@ -216,9 +179,6 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; This API is used as a web hook for payment notification from justice payment service.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Process result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createNotification_ByUserId_ByOrderNo(
     userId: string,
     orderNo: string,
@@ -231,19 +191,62 @@ export function OrderAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Query orders.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: query orders&lt;/li&gt;&lt;/ul&gt;
+     */
     getOrders,
+    /**
+     * Get Order Statistics.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: order statistics&lt;/li&gt;&lt;/ul&gt;
+     */
     getOrdersStats,
+    /**
+     * Get order by orderNo.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: order instance&lt;/li&gt;&lt;/ul&gt;
+     */
     getOrder_ByOrderNo,
+    /**
+     * Query user orders.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: get order&lt;/li&gt;&lt;/ul&gt;
+     */
     getOrders_ByUserId,
+    /**
+     * Admin Create an order. The result contains the checkout link and payment token. User with permission SANDBOX will create sandbox order that not real paid for xsolla/alipay and not validate price for wxpay.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT&lt;/li&gt;&lt;li&gt;sandbox default value is &lt;b&gt;false&lt;/b&gt;&lt;/li&gt;&lt;li&gt;platform default value is &lt;b&gt;Other&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created order&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Restrictions for ext field&lt;/h2&gt; 1. Cannot use &lt;b&gt;&#34;.&#34;&lt;/b&gt; as the key name - &lt;pre&gt;{ &#34;data.2&#34;: &#34;value&#34; }&lt;/pre&gt; 2. Cannot use &lt;b&gt;&#34;$&#34;&lt;/b&gt; as the prefix in key names - &lt;pre&gt;{ &#34;$data&#34;: &#34;value&#34; }&lt;/pre&gt;
+     */
     createOrder_ByUserId,
+    /**
+     * Refund order by orderNo.
+     */
     updateRefund_ByOrderNo,
+    /**
+     * Get an order.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: get order&lt;/li&gt;&lt;/ul&gt;
+     */
     getOrder_ByUserId_ByOrderNo,
+    /**
+     * Update order status.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated order&lt;/li&gt;&lt;/ul&gt;
+     */
     updateOrder_ByUserId_ByOrderNo,
+    /**
+     * This API is used to get the count of purchased item which is the order target.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Item purchased count&lt;/li&gt;&lt;/ul&gt;
+     */
     getOrdersCountOfItem_ByUserId,
+    /**
+     * @deprecated
+     * Get user order grant that fulfilled by this order.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: get order grant&lt;/li&gt;&lt;/ul&gt;
+     */
     getGrant_ByUserId_ByOrderNo,
+    /**
+     * Fulfill an order if the order is charged but fulfill failed.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfilled order&lt;/li&gt;&lt;/ul&gt;
+     */
     updateFulfill_ByUserId_ByOrderNo,
+    /**
+     * Get user order history.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: get order history&lt;/li&gt;&lt;/ul&gt;
+     */
     getHistory_ByUserId_ByOrderNo,
+    /**
+     * Download user order receipt by orderNo.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: order receipt pdf&lt;/li&gt;&lt;/ul&gt;
+     */
     getReceiptPdf_ByUserId_ByOrderNo,
+    /**
+     * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; This API is used as a web hook for payment notification from justice payment service.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Process result&lt;/li&gt;&lt;/ul&gt;
+     */
     createNotification_ByUserId_ByOrderNo
   }
 }

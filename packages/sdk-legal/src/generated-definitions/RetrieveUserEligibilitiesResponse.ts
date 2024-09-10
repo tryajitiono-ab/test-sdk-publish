@@ -11,7 +11,6 @@ export const RetrieveUserEligibilitiesResponse = z.object({
   countryCode: z.string(),
   countryGroupCode: z.string().nullish(),
   description: z.string().nullish(),
-  hiddenPublic: z.boolean().nullish(),
   isAccepted: z.boolean(),
   isHiddenPublic: z.boolean().nullish(),
   isMandatory: z.boolean(),

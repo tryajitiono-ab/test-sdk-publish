@@ -17,9 +17,12 @@ export function AnonymizationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function AnonymizationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Delete all user group
-   */
   async function deleteGroup_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new Anonymization$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteGroup_ByUserId(userId)
@@ -42,9 +42,6 @@ export function AnonymizationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission NAMESPACE:{namespace}:USER:{userId}&#34; [DELETE]
-   */
   async function deleteState_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new Anonymization$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteState_ByUserId(userId)
@@ -52,9 +49,6 @@ export function AnonymizationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete all user channel
-   */
   async function deleteChannel_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new Anonymization$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteChannel_ByUserId(userId)
@@ -62,9 +56,6 @@ export function AnonymizationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]&lt;/b&gt;.
-   */
   async function deleteContent_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new Anonymization$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteContent_ByUserId(userId)
@@ -73,9 +64,21 @@ export function AnonymizationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Delete all user group
+     */
     deleteGroup_ByUserId,
+    /**
+     * Required permission NAMESPACE:{namespace}:USER:{userId}&#34; [DELETE]
+     */
     deleteState_ByUserId,
+    /**
+     * Delete all user channel
+     */
     deleteChannel_ByUserId,
+    /**
+     * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]&lt;/b&gt;.
+     */
     deleteContent_ByUserId
   }
 }

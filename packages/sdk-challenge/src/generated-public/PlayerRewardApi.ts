@@ -10,6 +10,7 @@
 // @ts-ignore -> ts-expect-error TS6133
 import { AccelByteSDK, ApiUtils, Network, SdkSetConfigParam } from '@accelbyte/sdk'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { ClaimUserRewardsByGoalCodeRequest } from '../generated-definitions/ClaimUserRewardsByGoalCodeRequest.js'
 import { ClaimUserRewardsReq } from '../generated-definitions/ClaimUserRewardsReq.js'
 import { ListUserRewardsResponse } from '../generated-definitions/ListUserRewardsResponse.js'
 import { UserRewardArray } from '../generated-definitions/UserRewardArray.js'
@@ -19,9 +20,12 @@ export function PlayerRewardApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +38,6 @@ export function PlayerRewardApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getUsersMeRewards(queryParams?: {
     limit?: number
     offset?: number
@@ -49,9 +50,6 @@ export function PlayerRewardApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createUserMeRewardClaim(data: ClaimUserRewardsReq): Promise<AxiosResponse<UserRewardArray>> {
     const $ = new PlayerReward$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createUserMeRewardClaim(data)
@@ -59,8 +57,28 @@ export function PlayerRewardApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
+  async function createRewardClaimMeUser_ByChallengeCode(
+    challengeCode: string,
+    data: ClaimUserRewardsByGoalCodeRequest
+  ): Promise<AxiosResponse<UserRewardArray>> {
+    const $ = new PlayerReward$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.createRewardClaimMeUser_ByChallengeCode(challengeCode, data)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
   return {
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]&lt;/li&gt;&lt;/ul&gt;
+     */
     getUsersMeRewards,
-    createUserMeRewardClaim
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
+     */
+    createUserMeRewardClaim,
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
+     */
+    createRewardClaimMeUser_ByChallengeCode
   }
 }

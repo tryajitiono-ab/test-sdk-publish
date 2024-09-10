@@ -9,56 +9,70 @@ import { Heading } from './components/Heading'
 import { Section, SectionContent } from './components/Section'
 import { Snippet } from './components/Snippet'
 import { DevTools } from './DevTools'
+import { GlobalContextProvider } from './GlobalContext'
 import { BASE_SDK_CORE_CONFIG, createSdkConfig } from './helpers'
 import { LoginWithDeviceID } from './LoginWithDeviceID'
 import { MyUser } from './MyUser'
 import { PlatformItems } from './PlatformItems'
 import { UpdateMyProfile } from './UpdateMyProfile'
-import { UserContextProvider } from './UserContext'
 
 function App() {
   const [sdk, setSdk] = useState(AccelByte.SDK(createSdkConfig(BASE_SDK_CORE_CONFIG)))
 
   return (
-    <UserContextProvider>
-      <main className="p-4 flex flex-col gap-y-8">
-        <Heading level={1} className="text-2xl">
-          AccelByte SDK Example Using Vite + React
-        </Heading>
+    <GlobalContextProvider sdk={sdk}>
+      <main className="p-4 flex justify-center bg-slate-50">
+        <div className="flex flex-col gap-y-8 lg:max-w-[768px]">
+          <Heading level={1} className="text-2xl">
+            AccelByte TypeScript SDK Demo
+          </Heading>
 
-        <hr />
+          <div className="flex flex-col gap-y-4">
+            <p>
+              Welcome to the AccelByte TypeScript SDK demo. To use this demo, you will need to disable CORS (Cross-Origin Resource Sharing)
+              because our services are same-origin only (by default).
+            </p>
 
-        <TOC />
+            <p>
+              Cookies will only work when the site is in the same origin as the AGS services. So, these examples will not use cookies, but
+              rather <code>access_token</code> field that we can retrieve after logging in.
+            </p>
+          </div>
 
-        <hr />
+          <hr />
 
-        <Section>
-          <Heading level={2}>SDK config</Heading>
+          <TOC />
 
-          <SectionContent>
-            <Snippet>{JSON.stringify(sdk.assembly().coreConfig, null, 2)}</Snippet>
-          </SectionContent>
-        </Section>
+          <hr />
 
-        <hr />
+          <Section>
+            <Heading level={2}>SDK config</Heading>
 
-        <LoginWithDeviceID sdk={sdk} />
+            <SectionContent>
+              <Snippet>{JSON.stringify(sdk.assembly().coreConfig, null, 2)}</Snippet>
+            </SectionContent>
+          </Section>
 
-        <hr />
+          <hr />
 
-        <MyUser sdk={sdk} />
+          <LoginWithDeviceID />
 
-        <hr />
+          <hr />
 
-        <UpdateMyProfile sdk={sdk} />
+          <MyUser />
 
-        <hr />
+          <hr />
 
-        <PlatformItems sdk={sdk} />
+          <UpdateMyProfile />
+
+          <hr />
+
+          <PlatformItems />
+        </div>
       </main>
 
       <DevTools setSdk={setSdk} tier="shared" />
-    </UserContextProvider>
+    </GlobalContextProvider>
   )
 }
 
@@ -84,14 +98,18 @@ function TOC() {
   }, [])
 
   return (
-    <ul className="list-disc pl-4">
-      {h2Tags.map(h2Tag => (
-        <li key={h2Tag.id}>
-          <a className="text-blue-500 hover:text-blue-400" href={`#${h2Tag.id}`}>
-            {h2Tag.title}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <Section>
+      <Heading level={2}>Table of contents</Heading>
+
+      <ul className="list-disc pl-4">
+        {h2Tags.map(h2Tag => (
+          <li key={h2Tag.id}>
+            <a className="text-blue-500 hover:text-blue-400" href={`#${h2Tag.id}`}>
+              {h2Tag.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Section>
   )
 }

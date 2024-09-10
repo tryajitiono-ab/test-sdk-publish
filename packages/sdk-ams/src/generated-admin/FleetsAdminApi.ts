@@ -21,9 +21,12 @@ export function FleetsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -36,9 +39,6 @@ export function FleetsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-   */
   async function getFleets(): Promise<AxiosResponse<FleetListResponse>> {
     const $ = new FleetsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getFleets()
@@ -46,9 +46,6 @@ export function FleetsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Optionally, sampling rules for the fleet can also be specified Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
-   */
   async function createFleet(data: FleetParameters): Promise<AxiosResponse<FleetCreateResponse>> {
     const $ = new FleetsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createFleet(data)
@@ -56,9 +53,6 @@ export function FleetsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
-   */
   async function deleteFleet_ByFleetId(fleetID: string): Promise<AxiosResponse<unknown>> {
     const $ = new FleetsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteFleet_ByFleetId(fleetID)
@@ -66,9 +60,6 @@ export function FleetsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-   */
   async function getFleet_ByFleetId(fleetID: string): Promise<AxiosResponse<FleetGetResponse>> {
     const $ = new FleetsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getFleet_ByFleetId(fleetID)
@@ -76,9 +67,6 @@ export function FleetsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Optionally, sampling rules for the fleet can also be updated Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
-   */
   async function updateFleet_ByFleetId(fleetID: string, data: FleetParameters): Promise<AxiosResponse<unknown>> {
     const $ = new FleetsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateFleet_ByFleetId(fleetID, data)
@@ -86,9 +74,6 @@ export function FleetsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-   */
   async function getServers_ByFleetId(
     fleetID: string,
     queryParams?: {
@@ -108,11 +93,29 @@ export function FleetsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+     */
     getFleets,
+    /**
+     * Optionally, sampling rules for the fleet can also be specified Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
+     */
     createFleet,
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+     */
     deleteFleet_ByFleetId,
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+     */
     getFleet_ByFleetId,
+    /**
+     * Optionally, sampling rules for the fleet can also be updated Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+     */
     updateFleet_ByFleetId,
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+     */
     getServers_ByFleetId
   }
 }

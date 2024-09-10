@@ -19,9 +19,12 @@ export function AgreementApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function AgreementApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Retrieve accepted Legal Agreements.
-   */
   async function getAgreementsPolicies(): Promise<AxiosResponse<RetrieveAcceptedAgreementResponseArray>> {
     const $ = new Agreement$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getAgreementsPolicies()
@@ -44,9 +44,6 @@ export function AgreementApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Accepts many legal policy versions all at once. Supply with localized version policy id to accept an agreement.
-   */
   async function createAgreementPolicy(data: AcceptAgreementRequest[]): Promise<AxiosResponse<AcceptAgreementResponse>> {
     const $ = new Agreement$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createAgreementPolicy(data)
@@ -54,10 +51,6 @@ export function AgreementApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
-   */
   async function createAgreementPolicyUser_ByUserId(
     userId: string,
     data: AcceptAgreementRequest[]
@@ -68,9 +61,6 @@ export function AgreementApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Change marketing preference consent.
-   */
   async function patchAgreementLocalizedPolicyVersionPreference(data: AcceptAgreementRequest[]): Promise<AxiosResponse<unknown>> {
     const $ = new Agreement$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchAgreementLocalizedPolicyVersionPreference(data)
@@ -78,9 +68,6 @@ export function AgreementApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Accepts a legal policy version. Supply with localized version policy id to accept an agreement
-   */
   async function createAgreementLocalizedPolicyVersion_ByLocalizedPolicyVersionId(
     localizedPolicyVersionId: string
   ): Promise<AxiosResponse<unknown>> {
@@ -90,10 +77,6 @@ export function AgreementApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Accepts many legal policy versions all at once. Supply with localized version policy id, version policy id, policy id, userId, namespace, country code and client id to accept an agreement. This endpoint used by APIGateway during new user registration.
-   */
   async function createUserPolicyAgreement_ByCountryCode_ByClientId_ByUserId(
     countryCode: string,
     clientId: string,
@@ -107,11 +90,31 @@ export function AgreementApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Retrieve accepted Legal Agreements.
+     */
     getAgreementsPolicies,
+    /**
+     * Accepts many legal policy versions all at once. Supply with localized version policy id to accept an agreement.
+     */
     createAgreementPolicy,
+    /**
+     * @deprecated
+     * Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
+     */
     createAgreementPolicyUser_ByUserId,
+    /**
+     * Change marketing preference consent.
+     */
     patchAgreementLocalizedPolicyVersionPreference,
+    /**
+     * Accepts a legal policy version. Supply with localized version policy id to accept an agreement
+     */
     createAgreementLocalizedPolicyVersion_ByLocalizedPolicyVersionId,
+    /**
+     * @deprecated
+     * Accepts many legal policy versions all at once. Supply with localized version policy id, version policy id, policy id, userId, namespace, country code and client id to accept an agreement. This endpoint used by APIGateway during new user registration.
+     */
     createUserPolicyAgreement_ByCountryCode_ByClientId_ByUserId
   }
 }

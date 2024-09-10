@@ -1,4 +1,3 @@
-import { AccelByteSDK } from '@accelbyte/sdk'
 import { PublicUserUpdateRequestV3, UsersApi } from '@accelbyte/sdk-iam'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -6,11 +5,11 @@ import { Form, FormItem } from './components/Form'
 import { Heading } from './components/Heading'
 import { Section, SectionContent } from './components/Section'
 import { Snippet } from './components/Snippet'
+import { useGlobal } from './GlobalContext'
 import { handleError } from './helpers'
-import { useUser } from './UserContext'
 
-export function UpdateMyProfile({ sdk }: { sdk: AccelByteSDK }) {
-  const { user, setUser } = useUser()
+export function UpdateMyProfile() {
+  const { user, setUser, sdk } = useGlobal()
   const { register, handleSubmit, reset } = useForm<PublicUserUpdateRequestV3>({
     defaultValues: {
       avatarUrl: user?.avatarUrl ?? '',
@@ -47,19 +46,21 @@ export function UpdateMyProfile({ sdk }: { sdk: AccelByteSDK }) {
 
       <SectionContent>
         <Form onSubmit={updateUserProfile}>
-          <FormItem label="Avatar URL" name="avatarUrl" placeholder="https://example.com" register={register} className="w-[600px]" />
+          <FormItem label="Avatar URL" name="avatarUrl" placeholder="https://example.com" register={register} className="w-full" />
 
-          <FormItem label="Country" name="country" placeholder="USA" register={register} className="w-[250px]" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-4">
+            <FormItem label="Country" name="country" placeholder="USA" register={register} />
 
-          <FormItem label="Date of birth" name="dateOfBirth" placeholder="1970-01-01" register={register} className="w-[250px]" />
+            <FormItem label="Date of birth" name="dateOfBirth" placeholder="1970-01-01" register={register} />
 
-          <FormItem label="Display name" name="displayName" placeholder="Kai Doe" register={register} className="w-[250px]" />
+            <FormItem label="Display name" name="displayName" placeholder="Kai Doe" register={register} />
 
-          <FormItem label="Language tag" name="languageTag" placeholder="en-US" register={register} className="w-[250px]" />
+            <FormItem label="Language tag" name="languageTag" placeholder="en-US" register={register} />
 
-          <FormItem label="Unique display name" name="uniqueDisplayName" placeholder="Kai Doe" register={register} className="w-[250px]" />
+            <FormItem label="Unique display name" name="uniqueDisplayName" placeholder="Kai Doe" register={register} />
 
-          <FormItem label="User name" name="userName" placeholder="Kai Doe" register={register} className="w-[250px]" />
+            <FormItem label="User name" name="userName" placeholder="Kai Doe" register={register} />
+          </div>
 
           <button
             type="submit"

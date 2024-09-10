@@ -22,9 +22,12 @@ export function IapSubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function IapSubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     }
   }
 
-  /**
-   * Query subscriptions, default sort by updatedAt Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function getIapSubscriptions(queryParams?: {
     activeOnly?: boolean | null
     groupId?: string | null
@@ -55,9 +55,6 @@ export function IapSubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * Query user subscription, default sort by updatedAtOther detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function getIapSubscriptions_ByUserId(
     userId: string,
     queryParams?: {
@@ -75,9 +72,6 @@ export function IapSubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * Admin get user subscription details.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function getIapSubscription_ByUserId_ById(userId: string, id: string): Promise<AxiosResponse<ThirdPartyUserSubscriptionInfo>> {
     const $ = new IapSubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getIapSubscription_ByUserId_ById(userId, id)
@@ -85,9 +79,6 @@ export function IapSubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * Sync Subscription Status
-   */
   async function updateSyncIap_ByUserId_ById(userId: string, id: string): Promise<AxiosResponse<ThirdPartyUserSubscriptionInfo>> {
     const $ = new IapSubscriptionAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateSyncIap_ByUserId_ById(userId, id)
@@ -95,9 +86,6 @@ export function IapSubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * Admin query user subscription transactions, default sort by startAt timeOther detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function getIapSubscriptionsTransactions_ByUserId(
     userId: string,
     queryParams?: {
@@ -115,9 +103,6 @@ export function IapSubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * Admin get user subscription details.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function getIapSubscriptionTransaction_ByUserId_ById(
     userId: string,
     id: string
@@ -128,9 +113,6 @@ export function IapSubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * Sync Subscription Status
-   */
   async function updateSyncSubscriptionIap_ByUserId_ById(
     userId: string,
     id: string
@@ -141,9 +123,6 @@ export function IapSubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * Get Subscription Transaction Update History
-   */
   async function getHistoriesSubscriptionsIap_ByUserId_ById(
     userId: string,
     id: string,
@@ -155,9 +134,6 @@ export function IapSubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * Get user third party subscription by subscription group id.
-   */
   async function getOwnershipByGroupIdSubscriptionsIap_ByUserId_ByPlatform(
     userId: string,
     platform: string,
@@ -169,9 +145,6 @@ export function IapSubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * Get user third party subscription by subscription product id.
-   */
   async function getOwnershipByProductIdSubscriptionsIap_ByUserId_ByPlatform(
     userId: string,
     platform: string,
@@ -184,15 +157,45 @@ export function IapSubscriptionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   }
 
   return {
+    /**
+     * Query subscriptions, default sort by updatedAt Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     getIapSubscriptions,
+    /**
+     * Query user subscription, default sort by updatedAtOther detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     getIapSubscriptions_ByUserId,
+    /**
+     * Admin get user subscription details.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     getIapSubscription_ByUserId_ById,
+    /**
+     * Sync Subscription Status
+     */
     updateSyncIap_ByUserId_ById,
+    /**
+     * Admin query user subscription transactions, default sort by startAt timeOther detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     getIapSubscriptionsTransactions_ByUserId,
+    /**
+     * Admin get user subscription details.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     getIapSubscriptionTransaction_ByUserId_ById,
+    /**
+     * Sync Subscription Status
+     */
     updateSyncSubscriptionIap_ByUserId_ById,
+    /**
+     * Get Subscription Transaction Update History
+     */
     getHistoriesSubscriptionsIap_ByUserId_ById,
+    /**
+     * Get user third party subscription by subscription group id.
+     */
     getOwnershipByGroupIdSubscriptionsIap_ByUserId_ByPlatform,
+    /**
+     * Get user third party subscription by subscription product id.
+     */
     getOwnershipByProductIdSubscriptionsIap_ByUserId_ByPlatform
   }
 }

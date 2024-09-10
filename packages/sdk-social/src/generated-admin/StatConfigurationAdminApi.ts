@@ -21,9 +21,12 @@ export function StatConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -36,9 +39,6 @@ export function StatConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     }
   }
 
-  /**
-   * List stats by pagination.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stats&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getStats(queryParams?: {
     cycleIds?: string | null
     isGlobal?: boolean | null
@@ -52,9 +52,6 @@ export function StatConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Create stat.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created stat template&lt;/li&gt;&lt;li&gt;default minimum value is 0&lt;/li&gt;&lt;li&gt;default maximum value is 1.7976931348623157e+308&lt;/li&gt;&lt;li&gt;Field globalAggregationMethod will be ignored when setAsGlobal field is false&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createStat(data: StatCreate): Promise<AxiosResponse<StatInfo>> {
     const $ = new StatConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createStat(data)
@@ -62,9 +59,6 @@ export function StatConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Export all stat configurations for a given namespace into file At current, only JSON file is supported.
-   */
   async function getStatsExport(): Promise<AxiosResponse<unknown>> {
     const $ = new StatConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getStatsExport()
@@ -72,9 +66,6 @@ export function StatConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Import stat configurations for a given namespace from file. At current, only JSON file is supported.
-   */
   async function createStatImport(
     data: { file?: File },
     queryParams?: { replaceExisting?: boolean | null }
@@ -85,9 +76,6 @@ export function StatConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Query stats by keyword.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;i&gt;: stats&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getStatsSearch(queryParams: {
     keyword: string | null
     isGlobal?: boolean | null
@@ -101,9 +89,6 @@ export function StatConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Deletes stat template.&lt;br&gt;
-   */
   async function deleteStat_ByStatCode(statCode: string): Promise<AxiosResponse<unknown>> {
     const $ = new StatConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteStat_ByStatCode(statCode)
@@ -111,9 +96,6 @@ export function StatConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Get stat by statCode.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat info&lt;/ul&gt;
-   */
   async function getStat_ByStatCode(statCode: string): Promise<AxiosResponse<StatInfo>> {
     const $ = new StatConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getStat_ByStatCode(statCode)
@@ -121,9 +103,6 @@ export function StatConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Update stat.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated stat&lt;/li&gt;&lt;li&gt;&lt;i&gt;Field globalAggregationMethod will be ignored when the stat is not set as global&lt;/li&gt;&lt;li&gt;&lt;i&gt;Field globalAggregationMethod is not updatable when the stat status is TIED&lt;/li&gt;&lt;/ul&gt;
-   */
   async function patchStat_ByStatCode(statCode: string, data: StatUpdate): Promise<AxiosResponse<StatInfo>> {
     const $ = new StatConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchStat_ByStatCode(statCode, data)
@@ -131,9 +110,6 @@ export function StatConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Deletes stat template.
-   */
   async function deleteTied_ByStatCode(statCode: string): Promise<AxiosResponse<unknown>> {
     const $ = new StatConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteTied_ByStatCode(statCode)
@@ -142,14 +118,41 @@ export function StatConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
   }
 
   return {
+    /**
+     * List stats by pagination.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stats&lt;/li&gt;&lt;/ul&gt;
+     */
     getStats,
+    /**
+     * Create stat.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created stat template&lt;/li&gt;&lt;li&gt;default minimum value is 0&lt;/li&gt;&lt;li&gt;default maximum value is 1.7976931348623157e+308&lt;/li&gt;&lt;li&gt;Field globalAggregationMethod will be ignored when setAsGlobal field is false&lt;/li&gt;&lt;/ul&gt;
+     */
     createStat,
+    /**
+     * Export all stat configurations for a given namespace into file At current, only JSON file is supported.
+     */
     getStatsExport,
+    /**
+     * Import stat configurations for a given namespace from file. At current, only JSON file is supported.
+     */
     createStatImport,
+    /**
+     * Query stats by keyword.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;i&gt;: stats&lt;/li&gt;&lt;/ul&gt;
+     */
     getStatsSearch,
+    /**
+     * Deletes stat template.&lt;br&gt;
+     */
     deleteStat_ByStatCode,
+    /**
+     * Get stat by statCode.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat info&lt;/ul&gt;
+     */
     getStat_ByStatCode,
+    /**
+     * Update stat.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated stat&lt;/li&gt;&lt;li&gt;&lt;i&gt;Field globalAggregationMethod will be ignored when the stat is not set as global&lt;/li&gt;&lt;li&gt;&lt;i&gt;Field globalAggregationMethod is not updatable when the stat status is TIED&lt;/li&gt;&lt;li&gt;&lt;i&gt;Field visibility is not updatable when the stat status is TIED&lt;/li&gt;&lt;/ul&gt;
+     */
     patchStat_ByStatCode,
+    /**
+     * Deletes stat template.
+     */
     deleteTied_ByStatCode
   }
 }

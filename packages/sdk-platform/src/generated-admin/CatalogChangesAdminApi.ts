@@ -19,9 +19,12 @@ export function CatalogChangesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function CatalogChangesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     }
   }
 
-  /**
-   * Select all changes.
-   */
   async function updateCatalogChangeSelectAll_ByStoreId(storeId: string): Promise<AxiosResponse<unknown>> {
     const $ = new CatalogChangesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateCatalogChangeSelectAll_ByStoreId(storeId)
@@ -44,9 +44,6 @@ export function CatalogChangesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * This API is used to query changes .&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: the pagination of changes&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getCatalogChangesByCriteria_ByStoreId(
     storeId: string,
     queryParams?: {
@@ -81,9 +78,6 @@ export function CatalogChangesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * This API is used to publish all unpublished changes.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: no content&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateCatalogChangePublishAll_ByStoreId(storeId: string): Promise<AxiosResponse<StoreInfo>> {
     const $ = new CatalogChangesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateCatalogChangePublishAll_ByStoreId(storeId)
@@ -91,9 +85,6 @@ export function CatalogChangesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * This API is used to query catalog changes statistics .&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: catalog changes statistics changes&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getCatalogChangesStatistics_ByStoreId(
     storeId: string,
     queryParams?: {
@@ -122,9 +113,6 @@ export function CatalogChangesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Unselect all change.
-   */
   async function updateCatalogChangeUnselectAll_ByStoreId(storeId: string): Promise<AxiosResponse<unknown>> {
     const $ = new CatalogChangesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateCatalogChangeUnselectAll_ByStoreId(storeId)
@@ -132,9 +120,6 @@ export function CatalogChangesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * This API is used to publish selected unpublished changes.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: no content&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateCatalogChangePublishSelected_ByStoreId(storeId: string): Promise<AxiosResponse<StoreInfo>> {
     const $ = new CatalogChangesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateCatalogChangePublishSelected_ByStoreId(storeId)
@@ -142,9 +127,6 @@ export function CatalogChangesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Select a change, it will be included when partial publish.
-   */
   async function updateSelect_ByStoreId_ByChangeId(storeId: string, changeId: string): Promise<AxiosResponse<unknown>> {
     const $ = new CatalogChangesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateSelect_ByStoreId_ByChangeId(storeId, changeId)
@@ -152,9 +134,6 @@ export function CatalogChangesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Unselect a change, it will not be included when partial publish.
-   */
   async function updateUnselect_ByStoreId_ByChangeId(storeId: string, changeId: string): Promise<AxiosResponse<unknown>> {
     const $ = new CatalogChangesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateUnselect_ByStoreId_ByChangeId(storeId, changeId)
@@ -162,9 +141,6 @@ export function CatalogChangesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Select all changes by criteria
-   */
   async function updateCatalogChangeSelectAllByCriteria_ByStoreId(
     storeId: string,
     queryParams?: {
@@ -195,14 +171,41 @@ export function CatalogChangesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   }
 
   return {
+    /**
+     * Select all changes.
+     */
     updateCatalogChangeSelectAll_ByStoreId,
+    /**
+     * This API is used to query changes .&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: the pagination of changes&lt;/li&gt;&lt;/ul&gt;
+     */
     getCatalogChangesByCriteria_ByStoreId,
+    /**
+     * This API is used to publish all unpublished changes.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: no content&lt;/li&gt;&lt;/ul&gt;
+     */
     updateCatalogChangePublishAll_ByStoreId,
+    /**
+     * This API is used to query catalog changes statistics .&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: catalog changes statistics changes&lt;/li&gt;&lt;/ul&gt;
+     */
     getCatalogChangesStatistics_ByStoreId,
+    /**
+     * Unselect all change.
+     */
     updateCatalogChangeUnselectAll_ByStoreId,
+    /**
+     * This API is used to publish selected unpublished changes.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: no content&lt;/li&gt;&lt;/ul&gt;
+     */
     updateCatalogChangePublishSelected_ByStoreId,
+    /**
+     * Select a change, it will be included when partial publish.
+     */
     updateSelect_ByStoreId_ByChangeId,
+    /**
+     * Unselect a change, it will not be included when partial publish.
+     */
     updateUnselect_ByStoreId_ByChangeId,
+    /**
+     * Select all changes by criteria
+     */
     updateCatalogChangeSelectAllByCriteria_ByStoreId
   }
 }

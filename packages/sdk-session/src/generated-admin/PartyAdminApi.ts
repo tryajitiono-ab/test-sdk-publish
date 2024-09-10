@@ -17,9 +17,12 @@ export function PartyAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function PartyAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Query parties.
-   */
   async function getParties(queryParams?: {
     isSoftDeleted?: string | null
     joinability?: string | null
@@ -55,9 +55,6 @@ export function PartyAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Trigger user&#39;s active party session to native platform.
-   */
   async function createNativeSync_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new PartyAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createNativeSync_ByUserId(userId)
@@ -66,7 +63,13 @@ export function PartyAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Query parties.
+     */
     getParties,
+    /**
+     * Trigger user&#39;s active party session to native platform.
+     */
     createNativeSync_ByUserId
   }
 }

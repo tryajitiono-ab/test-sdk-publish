@@ -19,9 +19,12 @@ export function UserVisibilityV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function UserVisibilityV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     }
   }
 
-  /**
-   * User with false visibility status will have &lt;b&gt;hidden&lt;/b&gt; attribute set to true on it&#39;s leaderboard entry
-   */
   async function updateVisibility_ByUserId_v3(
     userId: string,
     data: SetUserVisibilityRequest
@@ -47,9 +47,6 @@ export function UserVisibilityV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Return hidden users on a leaderboard
-   */
   async function getUsersHidden_ByLeaderboardCode_v3(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number }
@@ -60,9 +57,6 @@ export function UserVisibilityV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * User with false visibility status will have &lt;b&gt;hidden&lt;/b&gt; attribute set to true on it&#39;s leaderboard entry
-   */
   async function getVisibility_ByLeaderboardCode_ByUserId_v3(
     leaderboardCode: string,
     userId: string
@@ -73,9 +67,6 @@ export function UserVisibilityV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * User with false visibility status will have &lt;b&gt;hidden&lt;/b&gt; attribute set to true on it&#39;s leaderboard entry
-   */
   async function updateVisibility_ByLeaderboardCode_ByUserId_v3(
     leaderboardCode: string,
     userId: string,
@@ -88,9 +79,21 @@ export function UserVisibilityV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
   }
 
   return {
+    /**
+     * User with false visibility status will have &lt;b&gt;hidden&lt;/b&gt; attribute set to true on it&#39;s leaderboard entry
+     */
     updateVisibility_ByUserId_v3,
+    /**
+     * Return hidden users on a leaderboard
+     */
     getUsersHidden_ByLeaderboardCode_v3,
+    /**
+     * User with false visibility status will have &lt;b&gt;hidden&lt;/b&gt; attribute set to true on it&#39;s leaderboard entry
+     */
     getVisibility_ByLeaderboardCode_ByUserId_v3,
+    /**
+     * User with false visibility status will have &lt;b&gt;hidden&lt;/b&gt; attribute set to true on it&#39;s leaderboard entry
+     */
     updateVisibility_ByLeaderboardCode_ByUserId_v3
   }
 }

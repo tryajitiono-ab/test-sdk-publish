@@ -18,9 +18,12 @@ export function DataDeletionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function DataDeletionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Cancel my account deletion request Requires valid user access token
-   */
   async function deleteUserMeDeletion(): Promise<AxiosResponse<unknown>> {
     const $ = new DataDeletion$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteUserMeDeletion()
@@ -43,9 +43,6 @@ export function DataDeletionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Submit my account deletion requests. Requires valid user access token This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest) ### Request Header: - **Content-Type: application/x-www-form-urlencoded**
-   */
   async function postUserMeDeletion(data: {
     platformId: string | null
     platformToken: string | null
@@ -56,9 +53,6 @@ export function DataDeletionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Retrieve my account deletion status Requires valid user access token
-   */
   async function getUsersMeDeletionsStatus(): Promise<AxiosResponse<DeletionStatus>> {
     const $ = new DataDeletion$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getUsersMeDeletionsStatus()
@@ -66,9 +60,6 @@ export function DataDeletionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Cancel user&#39;s account deletion request Requires valid user access token Scope: account
-   */
   async function deleteDeletion_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new DataDeletion$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteDeletion_ByUserId(userId)
@@ -76,9 +67,6 @@ export function DataDeletionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Submit user&#39;s account deletion request. Requires valid user access token and password Scope: account ### Request Header: - **Content-Type: application/x-www-form-urlencoded**
-   */
   async function postDeletion_ByUserId(
     userId: string,
     data: { password: string | null; languageTag?: string | null }
@@ -89,9 +77,6 @@ export function DataDeletionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Retrieve specific user&#39;s account deletion status Requires valid user access token Scope: account
-   */
   async function getDeletionsStatus_ByUserId(userId: string): Promise<AxiosResponse<DeletionStatus>> {
     const $ = new DataDeletion$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getDeletionsStatus_ByUserId(userId)
@@ -100,11 +85,29 @@ export function DataDeletionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Cancel my account deletion request Requires valid user access token
+     */
     deleteUserMeDeletion,
+    /**
+     * Submit my account deletion requests. Requires valid user access token This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest) ### Request Header: - **Content-Type: application/x-www-form-urlencoded**
+     */
     postUserMeDeletion,
+    /**
+     * Retrieve my account deletion status Requires valid user access token
+     */
     getUsersMeDeletionsStatus,
+    /**
+     * Cancel user&#39;s account deletion request Requires valid user access token Scope: account
+     */
     deleteDeletion_ByUserId,
+    /**
+     * Submit user&#39;s account deletion request. Requires valid user access token and password Scope: account ### Request Header: - **Content-Type: application/x-www-form-urlencoded**
+     */
     postDeletion_ByUserId,
+    /**
+     * Retrieve specific user&#39;s account deletion status Requires valid user access token Scope: account
+     */
     getDeletionsStatus_ByUserId
   }
 }

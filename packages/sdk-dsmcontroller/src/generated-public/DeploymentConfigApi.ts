@@ -19,9 +19,12 @@ export function DeploymentConfigApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function DeploymentConfigApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     }
   }
 
-  /**
-   * Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ] Required scope: social This endpoint get a all deployments in a namespace Parameter Offset and Count is Required
-   */
   async function getConfigsDeployments(queryParams: {
     count: number
     offset: number
@@ -48,9 +48,6 @@ export function DeploymentConfigApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Required permission: NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required scope: social This endpoint delete a dedicated server deployment in a namespace
-   */
   async function deleteConfigDeployment_ByDeployment(deployment: string): Promise<AxiosResponse<unknown>> {
     const $ = new DeploymentConfig$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteConfigDeployment_ByDeployment(deployment)
@@ -58,9 +55,6 @@ export function DeploymentConfigApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ] Required scope: social This endpoint get a dedicated server deployment in a namespace
-   */
   async function getConfigDeployment_ByDeployment(deployment: string): Promise<AxiosResponse<DeploymentWithOverride>> {
     const $ = new DeploymentConfig$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getConfigDeployment_ByDeployment(deployment)
@@ -68,9 +62,6 @@ export function DeploymentConfigApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Required permission: NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required scope: social This endpoint create a dedicated servers deployment in a namespace.
-   */
   async function createConfigDeployment_ByDeployment(
     deployment: string,
     data: CreateDeploymentRequest
@@ -82,9 +73,21 @@ export function DeploymentConfigApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   }
 
   return {
+    /**
+     * Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ] Required scope: social This endpoint get a all deployments in a namespace Parameter Offset and Count is Required
+     */
     getConfigsDeployments,
+    /**
+     * Required permission: NAMESPACE:{namespace}:DSM:CONFIG [DELETE] Required scope: social This endpoint delete a dedicated server deployment in a namespace
+     */
     deleteConfigDeployment_ByDeployment,
+    /**
+     * Required permission: NAMESPACE:{namespace}:DSM:CONFIG [READ] Required scope: social This endpoint get a dedicated server deployment in a namespace
+     */
     getConfigDeployment_ByDeployment,
+    /**
+     * Required permission: NAMESPACE:{namespace}:DSM:CONFIG [CREATE] Required scope: social This endpoint create a dedicated servers deployment in a namespace.
+     */
     createConfigDeployment_ByDeployment
   }
 }

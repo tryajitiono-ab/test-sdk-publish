@@ -17,9 +17,12 @@ export function AnonymizationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function AnonymizationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     }
   }
 
-  /**
-   * Anonymize order. At current it will only anonymize order, order history.
-   */
   async function deleteAnonymizationOrder_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new AnonymizationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteAnonymizationOrder_ByUserId(userId)
@@ -42,9 +42,6 @@ export function AnonymizationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Anonymize payment. At current it will only anonymize payment order, payment order history.
-   */
   async function deleteAnonymizationPayment_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new AnonymizationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteAnonymizationPayment_ByUserId(userId)
@@ -52,9 +49,6 @@ export function AnonymizationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Anonymize wallet. At current it will only anonymize wallet, wallet transaction.
-   */
   async function deleteAnonymizationWallet_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new AnonymizationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteAnonymizationWallet_ByUserId(userId)
@@ -62,9 +56,6 @@ export function AnonymizationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Anonymize campaign. At current it will only anonymize redeem history.
-   */
   async function deleteAnonymizationCampaign_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new AnonymizationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteAnonymizationCampaign_ByUserId(userId)
@@ -72,9 +63,6 @@ export function AnonymizationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Anonymize revocation. At current it will only anonymize revocation history.
-   */
   async function deleteAnonymizationRevocation_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new AnonymizationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteAnonymizationRevocation_ByUserId(userId)
@@ -82,9 +70,6 @@ export function AnonymizationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Anonymize fulfillment. At current it will only anonymize fulfillment history.
-   */
   async function deleteAnonymizationFulfillment_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new AnonymizationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteAnonymizationFulfillment_ByUserId(userId)
@@ -92,9 +77,6 @@ export function AnonymizationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Anonymize entitlement. At current it will only anonymize entitlement, entitlement history.
-   */
   async function deleteAnonymizationEntitlement_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new AnonymizationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteAnonymizationEntitlement_ByUserId(userId)
@@ -102,9 +84,6 @@ export function AnonymizationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Anonymize integrations. At current it will only anonymize iap histories.
-   */
   async function deleteAnonymizationIntegration_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new AnonymizationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteAnonymizationIntegration_ByUserId(userId)
@@ -112,9 +91,6 @@ export function AnonymizationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Anonymize subscription. At current it will anonymize subscription, billing history and subscription activity.
-   */
   async function deleteAnonymizationSubscription_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new AnonymizationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteAnonymizationSubscription_ByUserId(userId)
@@ -123,14 +99,41 @@ export function AnonymizationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
   }
 
   return {
+    /**
+     * Anonymize order. At current it will only anonymize order, order history.
+     */
     deleteAnonymizationOrder_ByUserId,
+    /**
+     * Anonymize payment. At current it will only anonymize payment order, payment order history.
+     */
     deleteAnonymizationPayment_ByUserId,
+    /**
+     * Anonymize wallet. At current it will only anonymize wallet, wallet transaction.
+     */
     deleteAnonymizationWallet_ByUserId,
+    /**
+     * Anonymize campaign. At current it will only anonymize redeem history.
+     */
     deleteAnonymizationCampaign_ByUserId,
+    /**
+     * Anonymize revocation. At current it will only anonymize revocation history.
+     */
     deleteAnonymizationRevocation_ByUserId,
+    /**
+     * Anonymize fulfillment. At current it will only anonymize fulfillment history.
+     */
     deleteAnonymizationFulfillment_ByUserId,
+    /**
+     * Anonymize entitlement. At current it will only anonymize entitlement, entitlement history.
+     */
     deleteAnonymizationEntitlement_ByUserId,
+    /**
+     * Anonymize integrations. At current it will only anonymize iap histories.
+     */
     deleteAnonymizationIntegration_ByUserId,
+    /**
+     * Anonymize subscription. At current it will anonymize subscription, billing history and subscription activity.
+     */
     deleteAnonymizationSubscription_ByUserId
   }
 }

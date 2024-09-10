@@ -21,9 +21,12 @@ export function GameProfileApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -36,9 +39,6 @@ export function GameProfileApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Returns all profiles for specified users.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of profiles&lt;/ul&gt;
-   */
   async function getProfiles(queryParams: { userIds: string[] }): Promise<AxiosResponse<UserGameProfilesArray>> {
     const $ = new GameProfile$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getProfiles(queryParams)
@@ -46,9 +46,6 @@ export function GameProfileApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Returns all profiles&#39; header for a user.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of profiles&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getProfiles_ByUserId(userId: string): Promise<AxiosResponse<GameProfileHeaderArray>> {
     const $ = new GameProfile$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getProfiles_ByUserId(userId)
@@ -56,9 +53,6 @@ export function GameProfileApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Create new profile for user.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/li&gt;: created game profile&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createProfile_ByUserId(userId: string, data: GameProfileRequest): Promise<AxiosResponse<unknown>> {
     const $ = new GameProfile$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createProfile_ByUserId(userId, data)
@@ -66,9 +60,6 @@ export function GameProfileApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Deletes game profile.&lt;br&gt;
-   */
   async function deleteProfile_ByUserId_ByProfileId(userId: string, profileId: string): Promise<AxiosResponse<unknown>> {
     const $ = new GameProfile$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteProfile_ByUserId_ByProfileId(userId, profileId)
@@ -76,9 +67,6 @@ export function GameProfileApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Returns profile for a user.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: game profile info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getProfile_ByUserId_ByProfileId(userId: string, profileId: string): Promise<AxiosResponse<GameProfileInfo>> {
     const $ = new GameProfile$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getProfile_ByUserId_ByProfileId(userId, profileId)
@@ -86,9 +74,6 @@ export function GameProfileApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Updates user game profile, returns updated profile.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated game profile&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateProfile_ByUserId_ByProfileId(
     userId: string,
     profileId: string,
@@ -100,9 +85,6 @@ export function GameProfileApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Returns game profile attribute.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: attribute info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getAttribute_ByUserId_ByProfileId_ByAttributeName(
     userId: string,
     profileId: string,
@@ -114,9 +96,6 @@ export function GameProfileApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Updates game profile attribute, returns updated profile.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated attribute&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateAttribute_ByUserId_ByProfileId_ByAttributeName(
     userId: string,
     profileId: string,
@@ -130,13 +109,37 @@ export function GameProfileApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Returns all profiles for specified users.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of profiles&lt;/ul&gt;
+     */
     getProfiles,
+    /**
+     * Returns all profiles&#39; header for a user.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of profiles&lt;/li&gt;&lt;/ul&gt;
+     */
     getProfiles_ByUserId,
+    /**
+     * Create new profile for user.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/li&gt;: created game profile&lt;/li&gt;&lt;/ul&gt;
+     */
     createProfile_ByUserId,
+    /**
+     * Deletes game profile.&lt;br&gt;
+     */
     deleteProfile_ByUserId_ByProfileId,
+    /**
+     * Returns profile for a user.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: game profile info&lt;/li&gt;&lt;/ul&gt;
+     */
     getProfile_ByUserId_ByProfileId,
+    /**
+     * Updates user game profile, returns updated profile.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated game profile&lt;/li&gt;&lt;/ul&gt;
+     */
     updateProfile_ByUserId_ByProfileId,
+    /**
+     * Returns game profile attribute.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: attribute info&lt;/li&gt;&lt;/ul&gt;
+     */
     getAttribute_ByUserId_ByProfileId_ByAttributeName,
+    /**
+     * Updates game profile attribute, returns updated profile.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated attribute&lt;/li&gt;&lt;/ul&gt;
+     */
     updateAttribute_ByUserId_ByProfileId_ByAttributeName
   }
 }

@@ -334,8 +334,65 @@
       }
     },
     "/audit/v1/admin/namespace/{namespace}/users/{userId}/account/histories": {
+      "delete": {
+        "description": "This API is used to delete user account histories. For example: for GDPR account deletion\n",
+        "operationId": "AdminDeleteUserAccountHistoryV1",
+        "parameters": [
+          {
+            "description": "namespace",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "user id",
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/response.ErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "authorization": []
+          }
+        ],
+        "summary": "Delete User Account History",
+        "tags": ["Account History"],
+        "x-errorCodes": {},
+        "x-security": [
+          {
+            "userPermissions": ["ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]"]
+          }
+        ]
+      },
       "get": {
-        "description": "This API is used to query user account histories. \n**Note**: the namespace should be the publisher namespace and the user id should be publisher user id\n-------\nSupported **property**:\n- display_name\n- unique_display_name\n- username\n- country\n- date_of_birth\n- email\n- password\n",
+        "description": "This API is used to query user account histories. \n**Note**: the namespace should be the publisher namespace and the user id should be publisher user id\n-------\t\n- Supported **propertyType**:\n\t- profile: this is the default value\n\t\t- properties of **profile**:\n\t\t\t- display_name\n\t\t\t- unique_display_name\n\t\t\t- username\n\t\t\t- country\n\t\t\t- date_of_birth\n\t\t\t- email\n\t\t\t- password\n\t- mfa\n\t\t- properties of **mfa**:\n\t\t\t- mfa_authenticator\n\t\t\t- mfa_email\n\t\t\t- mfa_backup_code\n\t- all\n",
         "operationId": "AdminQueryAccountHistoryV1",
         "parameters": [
           {
@@ -374,6 +431,12 @@
             "description": "property of the account",
             "in": "query",
             "name": "property",
+            "type": "string"
+          },
+          {
+            "description": "type of the property, default: profile",
+            "in": "query",
+            "name": "propertyType",
             "type": "string"
           },
           {
@@ -927,8 +990,8 @@
     "path": "/audit/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2024-08-28T01:57:35+00:00",
-    "gitHash": "c1fbdb1ad28616f06018e8d9799813c3a7197908",
+    "buildDate": "2024-09-09T02:42:13+00:00",
+    "gitHash": "daeecab793c17613c17f8ef9b25b5245cf3cafec",
     "name": "justice-audit-log-service",
     "realm": "dev",
     "version": "1.3.0",

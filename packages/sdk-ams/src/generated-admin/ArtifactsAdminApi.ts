@@ -20,9 +20,12 @@ export function ArtifactsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function ArtifactsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
-   */
   async function deleteArtifact(queryParams?: {
     artifactType?: string | null
     fleetId?: string | null
@@ -49,9 +49,6 @@ export function ArtifactsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get all artifacts matching the provided search criteria. When criteria is not specified the data returned won&#39;t have been filtered on those parameters Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-   */
   async function getArtifacts(queryParams?: {
     artifactType?: string | null
     count?: number
@@ -72,9 +69,6 @@ export function ArtifactsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-   */
   async function getArtifactsUsage(): Promise<AxiosResponse<ArtifactUsageResponse>> {
     const $ = new ArtifactsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getArtifactsUsage()
@@ -82,9 +76,6 @@ export function ArtifactsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [DELETE]
-   */
   async function deleteArtifact_ByArtifactId(artifactID: string): Promise<AxiosResponse<unknown>> {
     const $ = new ArtifactsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteArtifact_ByArtifactId(artifactID)
@@ -92,9 +83,6 @@ export function ArtifactsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-   */
   async function getUrl_ByArtifactId(artifactID: string): Promise<AxiosResponse<ArtifactUrlResponse>> {
     const $ = new ArtifactsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getUrl_ByArtifactId(artifactID)
@@ -102,9 +90,6 @@ export function ArtifactsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-   */
   async function getArtifactsSamplingRules_ByFleetId(fleetID: string): Promise<AxiosResponse<FleetArtifactsSampleRules>> {
     const $ = new ArtifactsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getArtifactsSamplingRules_ByFleetId(fleetID)
@@ -112,9 +97,6 @@ export function ArtifactsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [UPDATE]
-   */
   async function updateArtifactsSamplingRule_ByFleetId(
     fleetID: string,
     data: FleetArtifactsSampleRules
@@ -126,12 +108,33 @@ export function ArtifactsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
+     */
     deleteArtifact,
+    /**
+     * Get all artifacts matching the provided search criteria. When criteria is not specified the data returned won&#39;t have been filtered on those parameters Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
+     */
     getArtifacts,
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
+     */
     getArtifactsUsage,
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [DELETE]
+     */
     deleteArtifact_ByArtifactId,
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
+     */
     getUrl_ByArtifactId,
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
+     */
     getArtifactsSamplingRules_ByFleetId,
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [UPDATE]
+     */
     updateArtifactsSamplingRule_ByFleetId
   }
 }

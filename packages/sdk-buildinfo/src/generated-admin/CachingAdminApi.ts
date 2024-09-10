@@ -20,9 +20,12 @@ export function CachingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function CachingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * This API is used to save detailed diff cache. Only used by differ. Not to be used directly.
-   */
   async function createDiffCache(data: CreateDiffCacheRequest): Promise<AxiosResponse<unknown>> {
     const $ = new CachingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createDiffCache(data)
@@ -45,9 +45,6 @@ export function CachingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to mark that the diff caching is complete and diff summary file uploaded to s3. Only used by differ. Not to be used directly.
-   */
   async function updateDiffCache(data: CommitDiffCacheRequest): Promise<AxiosResponse<unknown>> {
     const $ = new CachingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDiffCache(data)
@@ -55,9 +52,6 @@ export function CachingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to dispatch diff caching request.
-   */
   async function createDiffCalculate(data: CalculateDiffCacheRequest): Promise<AxiosResponse<unknown>> {
     const $ = new CachingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createDiffCalculate(data)
@@ -65,9 +59,6 @@ export function CachingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to bulk dispatch diff caching requests to differ instance.&lt;br/&gt;The processing order will follow the order of the array.&lt;br/&gt;The &lt;b&gt;priority&lt;/b&gt; flag means that request will be set as priority inside the queue and always served first even if there’s existing non-priority request(s) beforehand.&lt;br/&gt;&lt;br/&gt;Other detail info: &lt;ul&gt;&lt;li&gt;Request is skipped if the source and destination versions is same&lt;/li&gt;&lt;li&gt;Request is skipped if the source version is not found&lt;/li&gt;&lt;li&gt;Request is skipped if the destination version is not found&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createDiffCalculateBulk(data: BulkCalculateDiffCacheRequest): Promise<AxiosResponse<unknown>> {
     const $ = new CachingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createDiffCalculateBulk(data)
@@ -76,9 +67,21 @@ export function CachingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * This API is used to save detailed diff cache. Only used by differ. Not to be used directly.
+     */
     createDiffCache,
+    /**
+     * This API is used to mark that the diff caching is complete and diff summary file uploaded to s3. Only used by differ. Not to be used directly.
+     */
     updateDiffCache,
+    /**
+     * This API is used to dispatch diff caching request.
+     */
     createDiffCalculate,
+    /**
+     * This API is used to bulk dispatch diff caching requests to differ instance.&lt;br/&gt;The processing order will follow the order of the array.&lt;br/&gt;The &lt;b&gt;priority&lt;/b&gt; flag means that request will be set as priority inside the queue and always served first even if there’s existing non-priority request(s) beforehand.&lt;br/&gt;&lt;br/&gt;Other detail info: &lt;ul&gt;&lt;li&gt;Request is skipped if the source and destination versions is same&lt;/li&gt;&lt;li&gt;Request is skipped if the source version is not found&lt;/li&gt;&lt;li&gt;Request is skipped if the destination version is not found&lt;/li&gt;&lt;/ul&gt;
+     */
     createDiffCalculateBulk
   }
 }

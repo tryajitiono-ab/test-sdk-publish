@@ -20,9 +20,12 @@ export function CommonConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function CommonConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     }
   }
 
-  /**
-   * Get all configs in the namespace
-   */
   async function getConfigs(queryParams?: {
     limit?: string | null
     offset?: string | null
@@ -48,9 +48,6 @@ export function CommonConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Create a config in the namespace with the given key
-   */
   async function createConfig(data: CreateConfig): Promise<AxiosResponse<ConfigInfo>> {
     const $ = new CommonConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createConfig(data)
@@ -58,9 +55,6 @@ export function CommonConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Get a config by namespace and key
-   */
   async function getConfig_ByConfigKey(configKey: string): Promise<AxiosResponse<ConfigInfo>> {
     const $ = new CommonConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getConfig_ByConfigKey(configKey)
@@ -68,9 +62,6 @@ export function CommonConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Delete a config by namespace and key.
-   */
   async function deleteConfig_ByConfigKey(configKey: string): Promise<AxiosResponse<unknown>> {
     const $ = new CommonConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteConfig_ByConfigKey(configKey)
@@ -78,9 +69,6 @@ export function CommonConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Update a config by namespace and key
-   */
   async function patchConfig_ByConfigKey(configKey: string, data: UpdateConfig): Promise<AxiosResponse<ConfigInfo>> {
     const $ = new CommonConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchConfig_ByConfigKey(configKey, data)
@@ -88,10 +76,6 @@ export function CommonConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * It will return a publisher namespace config of the given namespace and key.
-   */
   async function getPublisherConfig_ByConfigKey(configKey: string): Promise<AxiosResponse<ConfigInfo>> {
     const $ = new CommonConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPublisherConfig_ByConfigKey(configKey)
@@ -100,11 +84,30 @@ export function CommonConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
   }
 
   return {
+    /**
+     * Get all configs in the namespace
+     */
     getConfigs,
+    /**
+     * Create a config in the namespace with the given key
+     */
     createConfig,
+    /**
+     * Get a config by namespace and key
+     */
     getConfig_ByConfigKey,
+    /**
+     * Delete a config by namespace and key.
+     */
     deleteConfig_ByConfigKey,
+    /**
+     * Update a config by namespace and key
+     */
     patchConfig_ByConfigKey,
+    /**
+     * @deprecated
+     * It will return a publisher namespace config of the given namespace and key.
+     */
     getPublisherConfig_ByConfigKey
   }
 }

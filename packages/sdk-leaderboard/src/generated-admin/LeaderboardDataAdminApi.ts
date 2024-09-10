@@ -22,9 +22,12 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     }
   }
 
-  /**
-   * Delete user ranking across leaderboard Remove entry with provided userId from leaderboard.
-   */
   async function deleteUser_ByUserId(userId: string, queryParams: { leaderboardCode: string[] }): Promise<AxiosResponse<unknown>> {
     const $ = new LeaderboardDataAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteUser_ByUserId(userId, queryParams)
@@ -47,9 +47,6 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Admin Get signed url in an all time leaderboard that archived. Notes: This will be a bulk endpoint to get sign url&lt;/p&gt;
-   */
   async function getLeaderboardsArchived(queryParams: {
     leaderboardCodes: string | null
     slug?: string | null
@@ -60,9 +57,6 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Archive leaderboard ranking data for specified leaderboard codes. NOTE: This will remove all data of the leaderboard on every slug, remove the leaderboard code on stat mapping, and remove the leaderboard on the queue reset. This will be a bulk endpoint&lt;/p&gt;
-   */
   async function createLeaderboardArchived(data: ArchiveLeaderboardReq): Promise<AxiosResponse<unknown>> {
     const $ = new LeaderboardDataAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createLeaderboardArchived(data)
@@ -70,9 +64,6 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get rankings in current week leaderboard.&lt;/p&gt;
-   */
   async function getWeek_ByLeaderboardCode(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number; previousVersion?: number }
@@ -83,9 +74,6 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get rankings in current month leaderboard.&lt;/p&gt;
-   */
   async function getMonth_ByLeaderboardCode(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number; previousVersion?: number }
@@ -96,9 +84,6 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;This endpoint will delete user ranking by leaderboard code&lt;/p&gt; &lt;p&gt;&lt;b&gt;Warning&lt;/b&gt;: This will permanently delete your data. Make sure to back up anything important before continuing.&lt;/p&gt;
-   */
   async function deleteReset_ByLeaderboardCode(leaderboardCode: string): Promise<AxiosResponse<unknown>> {
     const $ = new LeaderboardDataAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteReset_ByLeaderboardCode(leaderboardCode)
@@ -106,9 +91,6 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get rankings in today leaderboard.&lt;/p&gt;
-   */
   async function getToday_ByLeaderboardCode(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number; previousVersion?: number }
@@ -119,9 +101,6 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get rankings in current season leaderboard.&lt;/p&gt;
-   */
   async function getSeason_ByLeaderboardCode(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number; previousVersion?: number }
@@ -132,9 +111,6 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get rankings in an all time leaderboard.&lt;/p&gt;
-   */
   async function getAlltime_ByLeaderboardCode(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number }
@@ -145,9 +121,6 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * Delete user ranking Remove entry with provided userId from leaderboard. If leaderboard with given leaderboard code not found, it will return http status not found (404). If the leaderboard is found and no entry found in it, it will still return success (204)
-   */
   async function deleteUser_ByLeaderboardCode_ByUserId(leaderboardCode: string, userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new LeaderboardDataAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteUser_ByLeaderboardCode_ByUserId(leaderboardCode, userId)
@@ -155,9 +128,6 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get user ranking in leaderboard&lt;/p&gt;
-   */
   async function getUser_ByLeaderboardCode_ByUserId(
     leaderboardCode: string,
     userId: string,
@@ -169,9 +139,6 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Update user point in a leaderboard. This endpoint uses for test utility only.&lt;/p&gt; &lt;p&gt;Other detail info:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Returns: user ranking&lt;/li&gt; &lt;/ul&gt;
-   */
   async function updateUser_ByLeaderboardCode_ByUserId(
     leaderboardCode: string,
     userId: string,
@@ -184,17 +151,53 @@ export function LeaderboardDataAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   }
 
   return {
+    /**
+     * Delete user ranking across leaderboard Remove entry with provided userId from leaderboard.
+     */
     deleteUser_ByUserId,
+    /**
+     * &lt;p&gt;Admin Get signed url in an all time leaderboard that archived. Notes: This will be a bulk endpoint to get sign url&lt;/p&gt;
+     */
     getLeaderboardsArchived,
+    /**
+     * &lt;p&gt;Archive leaderboard ranking data for specified leaderboard codes. NOTE: This will remove all data of the leaderboard on every slug, remove the leaderboard code on stat mapping, and remove the leaderboard on the queue reset. This will be a bulk endpoint&lt;/p&gt;
+     */
     createLeaderboardArchived,
+    /**
+     * &lt;p&gt;Get rankings in current week leaderboard.&lt;/p&gt;
+     */
     getWeek_ByLeaderboardCode,
+    /**
+     * &lt;p&gt;Get rankings in current month leaderboard.&lt;/p&gt;
+     */
     getMonth_ByLeaderboardCode,
+    /**
+     * &lt;p&gt;This endpoint will delete user ranking by leaderboard code&lt;/p&gt; &lt;p&gt;&lt;b&gt;Warning&lt;/b&gt;: This will permanently delete your data. Make sure to back up anything important before continuing.&lt;/p&gt;
+     */
     deleteReset_ByLeaderboardCode,
+    /**
+     * &lt;p&gt;Get rankings in today leaderboard.&lt;/p&gt;
+     */
     getToday_ByLeaderboardCode,
+    /**
+     * &lt;p&gt;Get rankings in current season leaderboard.&lt;/p&gt;
+     */
     getSeason_ByLeaderboardCode,
+    /**
+     * &lt;p&gt;Get rankings in an all time leaderboard.&lt;/p&gt;
+     */
     getAlltime_ByLeaderboardCode,
+    /**
+     * Delete user ranking Remove entry with provided userId from leaderboard. If leaderboard with given leaderboard code not found, it will return http status not found (404). If the leaderboard is found and no entry found in it, it will still return success (204)
+     */
     deleteUser_ByLeaderboardCode_ByUserId,
+    /**
+     * &lt;p&gt;Get user ranking in leaderboard&lt;/p&gt;
+     */
     getUser_ByLeaderboardCode_ByUserId,
+    /**
+     * &lt;p&gt;Update user point in a leaderboard. This endpoint uses for test utility only.&lt;/p&gt; &lt;p&gt;Other detail info:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Returns: user ranking&lt;/li&gt; &lt;/ul&gt;
+     */
     updateUser_ByLeaderboardCode_ByUserId
   }
 }

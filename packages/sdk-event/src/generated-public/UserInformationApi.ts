@@ -18,9 +18,12 @@ export function UserInformationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,10 +36,6 @@ export function UserInformationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     }
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function deleteActivity_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UserInformation$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteActivity_ByUserId(userId)
@@ -44,10 +43,6 @@ export function UserInformationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getActivities_ByUserId(
     userId: string,
     queryParams: { pageSize: number; offset?: number }
@@ -58,10 +53,6 @@ export function UserInformationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getLastActivityTime_ByUserId(userId: string): Promise<AxiosResponse<UserLastActivity>> {
     const $ = new UserInformation$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getLastActivityTime_ByUserId(userId)
@@ -70,8 +61,20 @@ export function UserInformationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   }
 
   return {
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     deleteActivity_ByUserId,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getActivities_ByUserId,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getLastActivityTime_ByUserId
   }
 }

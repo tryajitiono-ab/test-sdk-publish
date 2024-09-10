@@ -10,7 +10,7 @@
 import { AccelByteSDK, ApiError, SdkSetConfigParam } from '@accelbyte/sdk'
 import { AxiosError, AxiosResponse } from 'axios'
 // @ts-ignore
-import { useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query'
+import { useMutation, UseMutationOptions, UseMutationResult, useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query'
 import { GlobalAchievementsApi } from '../GlobalAchievementsApi.js'
 
 import { PaginatedContributorResponse } from '../../generated-definitions/PaginatedContributorResponse.js'
@@ -147,25 +147,26 @@ export const useGlobalAchievementsApi_GetContributorsGlobal_ByAchievementCode = 
  * }
  * ```
  */
-export const useGlobalAchievementsApi_FetchClaimGlobal_ByUserId_ByAchievementCode = (
+export const useGlobalAchievementsApi_UpdateClaimGlobal_ByUserId_ByAchievementCode = (
   sdk: AccelByteSDK,
-  input: SdkSetConfigParam & { userId: string; achievementCode: string },
-  options?: Omit<UseQueryOptions<unknown, AxiosError<ApiError>>, 'queryKey'>,
-  callback?: (data: AxiosResponse<unknown>) => void
-): UseQueryResult<unknown, AxiosError<ApiError>> => {
-  const queryFn =
-    (sdk: AccelByteSDK, input: Parameters<typeof useGlobalAchievementsApi_FetchClaimGlobal_ByUserId_ByAchievementCode>[1]) => async () => {
-      const response = await GlobalAchievementsApi(sdk, {
-        coreConfig: input.coreConfig,
-        axiosConfig: input.axiosConfig
-      }).fetchClaimGlobal_ByUserId_ByAchievementCode(input.userId, input.achievementCode)
-      callback && callback(response)
-      return response.data
-    }
+  options?: Omit<
+    UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; achievementCode: string }>,
+    'mutationKey'
+  >,
+  callback?: (data: unknown) => void
+): UseMutationResult<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; achievementCode: string }> => {
+  const mutationFn = async (input: SdkSetConfigParam & { userId: string; achievementCode: string }) => {
+    const response = await GlobalAchievementsApi(sdk, {
+      coreConfig: input.coreConfig,
+      axiosConfig: input.axiosConfig
+    }).updateClaimGlobal_ByUserId_ByAchievementCode(input.userId, input.achievementCode)
+    callback && callback(response.data)
+    return response.data
+  }
 
-  return useQuery<unknown, AxiosError<ApiError>>({
-    queryKey: [Key_GlobalAchievements.ClaimGlobal_ByUserId_ByAchievementCode, input],
-    queryFn: queryFn(sdk, input),
+  return useMutation({
+    mutationKey: [Key_GlobalAchievements.ClaimGlobal_ByUserId_ByAchievementCode],
+    mutationFn,
     ...options
   })
 }

@@ -24,9 +24,12 @@ export function GameSessionDetailAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -39,9 +42,6 @@ export function GameSessionDetailAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     }
   }
 
-  /**
-   * Get all parties.
-   */
   async function getParties(queryParams?: {
     limit?: number
     offset?: number
@@ -56,9 +56,6 @@ export function GameSessionDetailAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Get all matchmaking ticket.
-   */
   async function getTickets(queryParams?: {
     endDate?: string | null
     gameMode?: string | null
@@ -76,9 +73,6 @@ export function GameSessionDetailAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Get all matchmaking.
-   */
   async function getMatchmaking(queryParams?: {
     gameSessionID?: string | null
     limit?: number
@@ -94,9 +88,6 @@ export function GameSessionDetailAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Get all game sessions.
-   */
   async function getGamesessions(queryParams?: {
     endDate?: string | null
     gameSessionID?: string | null
@@ -113,9 +104,6 @@ export function GameSessionDetailAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Get detail matchmaking ticket history by ticket ID.
-   */
   async function getTicket_ByTicketId(ticketId: string): Promise<AxiosResponse<TicketObservabilityDetail>> {
     const $ = new GameSessionDetailAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getTicket_ByTicketId(ticketId)
@@ -123,9 +111,6 @@ export function GameSessionDetailAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Get party detail.
-   */
   async function getParty_BySessionId(sessionId: string): Promise<AxiosResponse<PartyDetail>> {
     const $ = new GameSessionDetailAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getParty_BySessionId(sessionId)
@@ -133,9 +118,6 @@ export function GameSessionDetailAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Get game session detail.
-   */
   async function getGamesession_BySessionId(sessionId: string): Promise<AxiosResponse<GameSessionDetail>> {
     const $ = new GameSessionDetailAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getGamesession_BySessionId(sessionId)
@@ -143,9 +125,6 @@ export function GameSessionDetailAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Get detail matchmaking history by ticket ID.
-   */
   async function getMatchmakingTicket_ByTicketId(ticketId: string): Promise<AxiosResponse<MatchmakingDetail>> {
     const $ = new GameSessionDetailAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMatchmakingTicket_ByTicketId(ticketId)
@@ -153,9 +132,6 @@ export function GameSessionDetailAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Get detail matchmaking history by session ID.
-   */
   async function getMatchmakingSession_BySessionId(sessionId: string): Promise<AxiosResponse<MatchmakingDetail>> {
     const $ = new GameSessionDetailAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMatchmakingSession_BySessionId(sessionId)
@@ -164,14 +140,41 @@ export function GameSessionDetailAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
   }
 
   return {
+    /**
+     * Get all parties.
+     */
     getParties,
+    /**
+     * Get all matchmaking ticket.
+     */
     getTickets,
+    /**
+     * Get all matchmaking.
+     */
     getMatchmaking,
+    /**
+     * Get all game sessions.
+     */
     getGamesessions,
+    /**
+     * Get detail matchmaking ticket history by ticket ID.
+     */
     getTicket_ByTicketId,
+    /**
+     * Get party detail.
+     */
     getParty_BySessionId,
+    /**
+     * Get game session detail.
+     */
     getGamesession_BySessionId,
+    /**
+     * Get detail matchmaking history by ticket ID.
+     */
     getMatchmakingTicket_ByTicketId,
+    /**
+     * Get detail matchmaking history by session ID.
+     */
     getMatchmakingSession_BySessionId
   }
 }

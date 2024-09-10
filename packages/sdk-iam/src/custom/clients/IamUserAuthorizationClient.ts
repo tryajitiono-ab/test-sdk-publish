@@ -9,9 +9,8 @@ import {
   ApiUtils,
   BrowserHelper,
   DesktopChecker,
-  doRefreshSession,
   Network,
-  refreshWithLock,
+  RefreshToken,
   SdkDevice,
   SdkSetConfigParam,
   UrlHelper,
@@ -334,12 +333,16 @@ export class IamUserAuthorizationClient {
   /**
    * @internal
    */
-  refreshToken = (refreshToken?: string): Promise<Partial<TokenWithDeviceCookieResponseV3> | false> => {
+  refreshToken = (_refreshToken?: string): Promise<Partial<TokenWithDeviceCookieResponseV3> | false> => {
     const { coreConfig } = this.sdk.assembly()
+    const { refreshToken } = this.sdk.getToken()
+    const refresh = new RefreshToken({
+      config: { axiosConfig: this.conf, clientId: coreConfig.clientId, refreshToken: refreshToken || _refreshToken }
+    })
     if (DesktopChecker.isDesktopApp()) {
-      return Promise.resolve().then(doRefreshSession({ axiosConfig: this.conf, clientId: coreConfig.clientId, refreshToken }))
+      return Promise.resolve().then(() => refresh.run())
     }
-    return refreshWithLock({ axiosConfig: this.conf, clientId: coreConfig.clientId, refreshToken })
+    return refresh.runWithLock()
   }
 
   private getSearchParams = (sentState, challenge): URLSearchParams => {

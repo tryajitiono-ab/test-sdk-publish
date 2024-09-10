@@ -19,9 +19,12 @@ export function SlotConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,10 +37,6 @@ export function SlotConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     }
   }
 
-  /**
-   * @deprecated
-   * &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt;&lt;br&gt;Deletes a namespace slot configuration, the configuration will be default after delete.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;/ul&gt;
-   */
   async function deleteConfig(): Promise<AxiosResponse<unknown>> {
     const $ = new SlotConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteConfig()
@@ -45,10 +44,6 @@ export function SlotConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt;&lt;br&gt;Get slot configuration for a given namespace. In case slot configuration is not set, the default will be returned.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: namespace slot config info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getConfig(): Promise<AxiosResponse<NamespaceSlotConfigInfo>> {
     const $ = new SlotConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getConfig()
@@ -56,10 +51,6 @@ export function SlotConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt;&lt;br&gt;Update a slot namespace configuration.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated namespace slot config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateConfig(data: SlotConfigUpdate): Promise<AxiosResponse<NamespaceSlotConfigInfo>> {
     const $ = new SlotConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateConfig(data)
@@ -67,10 +58,6 @@ export function SlotConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt;&lt;br&gt;Deletes a user slot configuration in given namespace, the namespace slot configuration will be returned after delete.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;/li&gt;
-   */
   async function deleteConfig_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new SlotConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteConfig_ByUserId(userId)
@@ -78,10 +65,6 @@ export function SlotConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt;&lt;br&gt;Get a user slot configuration in given namespace. In case the user slot configuration is not set, the namespace configuration will be returned.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;Returns&lt;/i&gt;: slot config info&lt;/li&gt;
-   */
   async function getConfig_ByUserId(userId: string): Promise<AxiosResponse<UserSlotConfigInfo>> {
     const $ = new SlotConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getConfig_ByUserId(userId)
@@ -89,10 +72,6 @@ export function SlotConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt;&lt;br&gt;Update a user slot configuration in given namespace.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated slot config&lt;/li&gt;
-   */
   async function updateConfig_ByUserId(userId: string, data: SlotConfigUpdate): Promise<AxiosResponse<UserSlotConfigInfo>> {
     const $ = new SlotConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateConfig_ByUserId(userId, data)
@@ -101,11 +80,35 @@ export function SlotConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   }
 
   return {
+    /**
+     * @deprecated
+     * &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt;&lt;br&gt;Deletes a namespace slot configuration, the configuration will be default after delete.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;/ul&gt;
+     */
     deleteConfig,
+    /**
+     * @deprecated
+     * &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt;&lt;br&gt;Get slot configuration for a given namespace. In case slot configuration is not set, the default will be returned.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: namespace slot config info&lt;/li&gt;&lt;/ul&gt;
+     */
     getConfig,
+    /**
+     * @deprecated
+     * &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt;&lt;br&gt;Update a slot namespace configuration.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated namespace slot config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateConfig,
+    /**
+     * @deprecated
+     * &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt;&lt;br&gt;Deletes a user slot configuration in given namespace, the namespace slot configuration will be returned after delete.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;/li&gt;
+     */
     deleteConfig_ByUserId,
+    /**
+     * @deprecated
+     * &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt;&lt;br&gt;Get a user slot configuration in given namespace. In case the user slot configuration is not set, the namespace configuration will be returned.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;Returns&lt;/i&gt;: slot config info&lt;/li&gt;
+     */
     getConfig_ByUserId,
+    /**
+     * @deprecated
+     * &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt;&lt;br&gt;Update a user slot configuration in given namespace.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated slot config&lt;/li&gt;
+     */
     updateConfig_ByUserId
   }
 }

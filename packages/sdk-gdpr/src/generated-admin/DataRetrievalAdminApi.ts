@@ -20,9 +20,12 @@ export function DataRetrievalAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function DataRetrievalAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     }
   }
 
-  /**
-   * Get list personal data requests Scope: account
-   */
   async function getRequests(queryParams?: {
     limit?: number
     offset?: number
@@ -49,9 +49,6 @@ export function DataRetrievalAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Get user&#39;s personal data requests Scope: account
-   */
   async function getRequests_ByUserId(
     userId: string,
     queryParams?: { limit?: number; offset?: number }
@@ -62,9 +59,6 @@ export function DataRetrievalAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Submit user personal data retrieval request. Scope: account ### Request Header: - **Content-Type: application/x-www-form-urlencoded**
-   */
   async function postRequest_ByUserId(userId: string, data: { password?: string | null }): Promise<AxiosResponse<DataRetrievalResponse>> {
     const $ = new DataRetrievalAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.postRequest_ByUserId(userId, data)
@@ -72,9 +66,6 @@ export function DataRetrievalAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Cancel user&#39;s personal data requests Scope: account
-   */
   async function deleteRequest_ByUserId_ByRequestDate(userId: string, requestDate: string): Promise<AxiosResponse<unknown>> {
     const $ = new DataRetrievalAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteRequest_ByUserId_ByRequestDate(userId, requestDate)
@@ -82,9 +73,6 @@ export function DataRetrievalAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Generate personal data download url. Scope: account ### Request Header: - **Content-Type: application/x-www-form-urlencoded**
-   */
   async function postGenerate_ByUserId_ByRequestDate(
     userId: string,
     requestDate: string,
@@ -97,10 +85,25 @@ export function DataRetrievalAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
   }
 
   return {
+    /**
+     * Get list personal data requests Scope: account
+     */
     getRequests,
+    /**
+     * Get user&#39;s personal data requests Scope: account
+     */
     getRequests_ByUserId,
+    /**
+     * Submit user personal data retrieval request. Scope: account ### Request Header: - **Content-Type: application/x-www-form-urlencoded**
+     */
     postRequest_ByUserId,
+    /**
+     * Cancel user&#39;s personal data requests Scope: account
+     */
     deleteRequest_ByUserId_ByRequestDate,
+    /**
+     * Generate personal data download url. Scope: account ### Request Header: - **Content-Type: application/x-www-form-urlencoded**
+     */
     postGenerate_ByUserId_ByRequestDate
   }
 }

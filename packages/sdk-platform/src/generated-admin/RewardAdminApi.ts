@@ -23,9 +23,12 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -38,9 +41,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * This API is used to create a reward.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created reward data&lt;/li&gt;&lt;li&gt;&lt;i&gt;Acceptable values for rewardItem&#39;s identityType are&lt;/i&gt;: ITEM_ID or ITEM_SKU&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createReward(data: RewardCreate): Promise<AxiosResponse<RewardInfo>> {
     const $ = new RewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createReward(data)
@@ -48,9 +48,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Export reward configurations for a given namespace into file. At current, only JSON file is supported.
-   */
   async function getRewardsExport(): Promise<AxiosResponse<unknown>> {
     const $ = new RewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getRewardsExport()
@@ -58,9 +55,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Import reward configurations for a given namespace from file. At current, only JSON file is supported.
-   */
   async function createRewardImport(
     data: { file?: File },
     queryParams: { replaceExisting: boolean | null }
@@ -71,9 +65,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to delete a reward by reward Id. &lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: the deleted reward data&lt;/li&gt;&lt;/ul&gt;
-   */
   async function deleteReward_ByRewardId(rewardId: string): Promise<AxiosResponse<RewardInfo>> {
     const $ = new RewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteReward_ByRewardId(rewardId)
@@ -81,9 +72,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to get reward by reward Id.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: reward instance&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getReward_ByRewardId(rewardId: string): Promise<AxiosResponse<RewardInfo>> {
     const $ = new RewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getReward_ByRewardId(rewardId)
@@ -91,9 +79,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to update a reward.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: reward instance&lt;/li&gt;&lt;li&gt;&lt;i&gt;Acceptable values for rewardItem&#39;s identityType are&lt;/i&gt;: ITEM_ID or ITEM_SKU&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateReward_ByRewardId(rewardId: string, data: RewardUpdate): Promise<AxiosResponse<RewardInfo>> {
     const $ = new RewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateReward_ByRewardId(rewardId, data)
@@ -101,9 +86,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to query rewards by criteria.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: the list of rewards&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getRewardsByCriteria(queryParams?: {
     eventTopic?: string | null
     limit?: number
@@ -116,9 +98,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[TEST FACILITY ONLY] Forbidden in live environment. &lt;/b&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: match result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateMatch_ByRewardId(rewardId: string, data: EventPayload): Promise<AxiosResponse<ConditionMatchResult>> {
     const $ = new RewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateMatch_ByRewardId(rewardId, data)
@@ -126,9 +105,6 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[TEST FACILITY ONLY] Forbidden in live environment. &lt;/b&gt; This API is used to delete a reward condition record by reward Id and condition Name (optional). &lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: 204 No Content &lt;/li&gt;&lt;/ul&gt;
-   */
   async function deleteRecord_ByRewardId(rewardId: string, data: DeleteRewardConditionRequest): Promise<AxiosResponse<unknown>> {
     const $ = new RewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteRecord_ByRewardId(rewardId, data)
@@ -137,14 +113,41 @@ export function RewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * This API is used to create a reward.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created reward data&lt;/li&gt;&lt;li&gt;&lt;i&gt;Acceptable values for rewardItem&#39;s identityType are&lt;/i&gt;: ITEM_ID or ITEM_SKU&lt;/li&gt;&lt;/ul&gt;
+     */
     createReward,
+    /**
+     * Export reward configurations for a given namespace into file. At current, only JSON file is supported.
+     */
     getRewardsExport,
+    /**
+     * Import reward configurations for a given namespace from file. At current, only JSON file is supported.
+     */
     createRewardImport,
+    /**
+     * This API is used to delete a reward by reward Id. &lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: the deleted reward data&lt;/li&gt;&lt;/ul&gt;
+     */
     deleteReward_ByRewardId,
+    /**
+     * This API is used to get reward by reward Id.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: reward instance&lt;/li&gt;&lt;/ul&gt;
+     */
     getReward_ByRewardId,
+    /**
+     * This API is used to update a reward.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: reward instance&lt;/li&gt;&lt;li&gt;&lt;i&gt;Acceptable values for rewardItem&#39;s identityType are&lt;/i&gt;: ITEM_ID or ITEM_SKU&lt;/li&gt;&lt;/ul&gt;
+     */
     updateReward_ByRewardId,
+    /**
+     * This API is used to query rewards by criteria.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: the list of rewards&lt;/li&gt;&lt;/ul&gt;
+     */
     getRewardsByCriteria,
+    /**
+     * &lt;b&gt;[TEST FACILITY ONLY] Forbidden in live environment. &lt;/b&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: match result&lt;/li&gt;&lt;/ul&gt;
+     */
     updateMatch_ByRewardId,
+    /**
+     * &lt;b&gt;[TEST FACILITY ONLY] Forbidden in live environment. &lt;/b&gt; This API is used to delete a reward condition record by reward Id and condition Name (optional). &lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: 204 No Content &lt;/li&gt;&lt;/ul&gt;
+     */
     deleteRecord_ByRewardId
   }
 }

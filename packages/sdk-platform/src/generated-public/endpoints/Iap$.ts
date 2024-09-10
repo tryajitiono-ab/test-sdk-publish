@@ -9,6 +9,7 @@
 import { Response, Validate } from '@accelbyte/sdk'
 import { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { z } from 'zod'
+import { AppleIapConfigVersionInfo } from '../../generated-definitions/AppleIapConfigVersionInfo.js'
 import { AppleIapReceipt } from '../../generated-definitions/AppleIapReceipt.js'
 import { AppleIapRequest } from '../../generated-definitions/AppleIapRequest.js'
 import { EpicGamesReconcileRequest } from '../../generated-definitions/EpicGamesReconcileRequest.js'
@@ -41,6 +42,21 @@ export class Iap$ {
     const resultPromise = this.axiosInstance.get(url, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, IapItemMappingInfo, 'IapItemMappingInfo')
+  }
+  /**
+   * Get apple config version.
+   */
+  getIapAppleConfigVersion(): Promise<Response<AppleIapConfigVersionInfo>> {
+    const params = {} as AxiosRequestConfig
+    const url = '/platform/public/namespaces/{namespace}/iap/apple/config/version'.replace('{namespace}', this.namespace)
+    const resultPromise = this.axiosInstance.get(url, { params })
+
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      AppleIapConfigVersionInfo,
+      'AppleIapConfigVersionInfo'
+    )
   }
   /**
    * Sync my game twitch drops entitlements.

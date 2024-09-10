@@ -8,15 +8,17 @@
  */
 /* eslint-disable camelcase */
 import { AccelByteSDK, ApiError, SdkSetConfigParam } from '@accelbyte/sdk'
-import { AxiosError } from 'axios'
+import { AxiosError, AxiosResponse } from 'axios'
 // @ts-ignore
-import { useMutation, UseMutationOptions, UseMutationResult } from '@tanstack/react-query'
+import { useMutation, UseMutationOptions, UseMutationResult, useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query'
 import { ChallengeProgressionAdminApi } from '../ChallengeProgressionAdminApi.js'
 
 import { EvaluatePlayerProgressionRequest } from '../../generated-definitions/EvaluatePlayerProgressionRequest.js'
+import { UserProgressionResponse } from '../../generated-definitions/UserProgressionResponse.js'
 
 export enum Key_ChallengeProgressionAdmin {
-  ProgresEvaluate = 'Challenge.ChallengeProgressionAdmin.ProgresEvaluate'
+  ProgresEvaluate = 'Challenge.ChallengeProgressionAdmin.ProgresEvaluate',
+  Progres_ByUserId_ByChallengeCode = 'Challenge.ChallengeProgressionAdmin.Progres_ByUserId_ByChallengeCode'
 }
 
 /**
@@ -50,6 +52,44 @@ export const useChallengeProgressionAdminApi_CreateProgresEvaluate = (
   return useMutation({
     mutationKey: [Key_ChallengeProgressionAdmin.ProgresEvaluate],
     mutationFn,
+    ...options
+  })
+}
+
+/**
+ * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]&lt;/li&gt;&lt;/ul&gt;
+ *
+ * #### Default Query Options
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_ChallengeProgressionAdmin.Progres_ByUserId_ByChallengeCode, input]
+ * }
+ * ```
+ */
+export const useChallengeProgressionAdminApi_GetProgres_ByUserId_ByChallengeCode = (
+  sdk: AccelByteSDK,
+  input: SdkSetConfigParam & {
+    userId: string
+    challengeCode: string
+    queryParams?: { dateTime?: string | null; goalCode?: string | null; limit?: number; offset?: number; tags?: string[] }
+  },
+  options?: Omit<UseQueryOptions<UserProgressionResponse, AxiosError<ApiError>>, 'queryKey'>,
+  callback?: (data: AxiosResponse<UserProgressionResponse>) => void
+): UseQueryResult<UserProgressionResponse, AxiosError<ApiError>> => {
+  const queryFn =
+    (sdk: AccelByteSDK, input: Parameters<typeof useChallengeProgressionAdminApi_GetProgres_ByUserId_ByChallengeCode>[1]) => async () => {
+      const response = await ChallengeProgressionAdminApi(sdk, {
+        coreConfig: input.coreConfig,
+        axiosConfig: input.axiosConfig
+      }).getProgres_ByUserId_ByChallengeCode(input.userId, input.challengeCode, input.queryParams)
+      callback && callback(response)
+      return response.data
+    }
+
+  return useQuery<UserProgressionResponse, AxiosError<ApiError>>({
+    queryKey: [Key_ChallengeProgressionAdmin.Progres_ByUserId_ByChallengeCode, input],
+    queryFn: queryFn(sdk, input),
     ...options
   })
 }

@@ -18,9 +18,12 @@ export function LeaderboardDataV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function LeaderboardDataV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     }
   }
 
-  /**
-   * Delete user ranking across leaderboard Remove entry with provided userId from leaderboard.
-   */
   async function deleteUser_ByUserId_v3(userId: string, queryParams: { leaderboardCode: string[] }): Promise<AxiosResponse<unknown>> {
     const $ = new LeaderboardDataV3Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteUser_ByUserId_v3(userId, queryParams)
@@ -43,9 +43,6 @@ export function LeaderboardDataV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;This endpoint will delete user ranking by leaderboard code&lt;/p&gt; &lt;p&gt;&lt;b&gt;Warning&lt;/b&gt;: This will permanently delete your data. Make sure to back up anything important before continuing.&lt;/p&gt;
-   */
   async function deleteReset_ByLeaderboardCode_v3(leaderboardCode: string): Promise<AxiosResponse<unknown>> {
     const $ = new LeaderboardDataV3Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteReset_ByLeaderboardCode_v3(leaderboardCode)
@@ -53,9 +50,6 @@ export function LeaderboardDataV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get rankings in an all time leaderboard.&lt;/p&gt;
-   */
   async function getAlltime_ByLeaderboardCode_v3(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number }
@@ -66,9 +60,6 @@ export function LeaderboardDataV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Delete user ranking Remove entry with provided userId from leaderboard. If leaderboard with given leaderboard code not found, it will return http status not found (404). If the leaderboard is found and no entry found in it, it will still return success (204)
-   */
   async function deleteUser_ByLeaderboardCode_ByUserId_v3(leaderboardCode: string, userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new LeaderboardDataV3Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteUser_ByLeaderboardCode_ByUserId_v3(leaderboardCode, userId)
@@ -76,9 +67,6 @@ export function LeaderboardDataV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get user ranking in leaderboard&lt;/p&gt;
-   */
   async function getUser_ByLeaderboardCode_ByUserId_v3(
     leaderboardCode: string,
     userId: string
@@ -89,9 +77,6 @@ export function LeaderboardDataV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get rankings in cycle leaderboard.&lt;/p&gt;
-   */
   async function getCycle_ByLeaderboardCode_ByCycleId_v3(
     leaderboardCode: string,
     cycleId: string,
@@ -103,9 +88,6 @@ export function LeaderboardDataV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;This endpoint will delete user ranking by cycleId&lt;/p&gt; &lt;p&gt;&lt;b&gt;Warning&lt;/b&gt;: This will permanently delete your data. Make sure to back up anything important before continuing.&lt;/p&gt;
-   */
   async function deleteReset_ByLeaderboardCode_ByCycleId_v3(leaderboardCode: string, cycleId: string): Promise<AxiosResponse<unknown>> {
     const $ = new LeaderboardDataV3Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteReset_ByLeaderboardCode_ByCycleId_v3(leaderboardCode, cycleId)
@@ -113,9 +95,6 @@ export function LeaderboardDataV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Delete user ranking by cycle id Remove entry with provided cycleId and userId from leaderboard. If leaderboard with given leaderboard code not found, it will return http status not found (404). If the leaderboard is found and no entry found in it, it will still return success (204)
-   */
   async function deleteUser_ByLeaderboardCode_ByCycleId_ByUserId_v3(
     leaderboardCode: string,
     cycleId: string,
@@ -128,13 +107,37 @@ export function LeaderboardDataV3AdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
   }
 
   return {
+    /**
+     * Delete user ranking across leaderboard Remove entry with provided userId from leaderboard.
+     */
     deleteUser_ByUserId_v3,
+    /**
+     * &lt;p&gt;This endpoint will delete user ranking by leaderboard code&lt;/p&gt; &lt;p&gt;&lt;b&gt;Warning&lt;/b&gt;: This will permanently delete your data. Make sure to back up anything important before continuing.&lt;/p&gt;
+     */
     deleteReset_ByLeaderboardCode_v3,
+    /**
+     * &lt;p&gt;Get rankings in an all time leaderboard.&lt;/p&gt;
+     */
     getAlltime_ByLeaderboardCode_v3,
+    /**
+     * Delete user ranking Remove entry with provided userId from leaderboard. If leaderboard with given leaderboard code not found, it will return http status not found (404). If the leaderboard is found and no entry found in it, it will still return success (204)
+     */
     deleteUser_ByLeaderboardCode_ByUserId_v3,
+    /**
+     * &lt;p&gt;Get user ranking in leaderboard&lt;/p&gt;
+     */
     getUser_ByLeaderboardCode_ByUserId_v3,
+    /**
+     * &lt;p&gt;Get rankings in cycle leaderboard.&lt;/p&gt;
+     */
     getCycle_ByLeaderboardCode_ByCycleId_v3,
+    /**
+     * &lt;p&gt;This endpoint will delete user ranking by cycleId&lt;/p&gt; &lt;p&gt;&lt;b&gt;Warning&lt;/b&gt;: This will permanently delete your data. Make sure to back up anything important before continuing.&lt;/p&gt;
+     */
     deleteReset_ByLeaderboardCode_ByCycleId_v3,
+    /**
+     * Delete user ranking by cycle id Remove entry with provided cycleId and userId from leaderboard. If leaderboard with given leaderboard code not found, it will return http status not found (404). If the leaderboard is found and no entry found in it, it will still return success (204)
+     */
     deleteUser_ByLeaderboardCode_ByCycleId_ByUserId_v3
   }
 }

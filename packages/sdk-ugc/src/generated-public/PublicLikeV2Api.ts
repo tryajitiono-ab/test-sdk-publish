@@ -19,9 +19,12 @@ export function PublicLikeV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function PublicLikeV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * This endpoint will only display the list of users who performed like from v2 endpoint.
-   */
   async function getLike_ByContentId_v2(
     contentId: string,
     queryParams?: { limit?: number; offset?: number; sortBy?: string | null }
@@ -47,9 +47,6 @@ export function PublicLikeV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This endpoint will update like/unlike state from a content
-   */
   async function updateLike_ByContentId_v2(contentId: string, data: ContentLikeRequest): Promise<AxiosResponse<ContentLikeResponse>> {
     const $ = new PublicLikeV2$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateLike_ByContentId_v2(contentId, data)
@@ -58,7 +55,13 @@ export function PublicLikeV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * This endpoint will only display the list of users who performed like from v2 endpoint.
+     */
     getLike_ByContentId_v2,
+    /**
+     * This endpoint will update like/unlike state from a content
+     */
     updateLike_ByContentId_v2
   }
 }

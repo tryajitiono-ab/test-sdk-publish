@@ -22,9 +22,12 @@ export function ExtensionCategoriesAndAutoModerationActionsAdminApi(sdk: AccelBy
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function ExtensionCategoriesAndAutoModerationActionsAdminApi(sdk: AccelBy
     }
   }
 
-  /**
-   * Get a list of auto moderation actions
-   */
   async function getExtensionActions(): Promise<AxiosResponse<ActionListApiResponse>> {
     const $ = new ExtensionCategoriesAndAutoModerationActionsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getExtensionActions()
@@ -47,9 +47,6 @@ export function ExtensionCategoriesAndAutoModerationActionsAdminApi(sdk: AccelBy
     return resp.response
   }
 
-  /**
-   * Create auto moderation action
-   */
   async function createExtensionAction(data: ActionApiRequest): Promise<AxiosResponse<ActionApiResponse>> {
     const $ = new ExtensionCategoriesAndAutoModerationActionsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createExtensionAction(data)
@@ -57,9 +54,6 @@ export function ExtensionCategoriesAndAutoModerationActionsAdminApi(sdk: AccelBy
     return resp.response
   }
 
-  /**
-   * Get a list of extension category data with the specified name
-   */
   async function getExtensionCategories(queryParams?: {
     order?: 'asc' | 'ascending' | 'desc' | 'descending'
     sortBy?: 'extensionCategory' | 'extensionCategoryName'
@@ -70,9 +64,6 @@ export function ExtensionCategoriesAndAutoModerationActionsAdminApi(sdk: AccelBy
     return resp.response
   }
 
-  /**
-   * Create extension category data
-   */
   async function createExtensionCategory(data: ExtensionCategoryApiRequest): Promise<AxiosResponse<ExtensionCategoryApiResponse>> {
     const $ = new ExtensionCategoriesAndAutoModerationActionsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createExtensionCategory(data)
@@ -81,9 +72,21 @@ export function ExtensionCategoriesAndAutoModerationActionsAdminApi(sdk: AccelBy
   }
 
   return {
+    /**
+     * Get a list of auto moderation actions
+     */
     getExtensionActions,
+    /**
+     * Create auto moderation action
+     */
     createExtensionAction,
+    /**
+     * Get a list of extension category data with the specified name
+     */
     getExtensionCategories,
+    /**
+     * Create extension category data
+     */
     createExtensionCategory
   }
 }

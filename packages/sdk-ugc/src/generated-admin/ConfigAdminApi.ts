@@ -18,9 +18,12 @@ export function ConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function ConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get config paginated
-   */
   async function getConfigs_v2(queryParams?: { limit?: number; offset?: number }): Promise<AxiosResponse<PaginatedGetConfigsResponse>> {
     const $ = new ConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getConfigs_v2(queryParams)
@@ -43,9 +43,6 @@ export function ConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This endpoint will create a new config if the *key* doesn&#39;t exist. Allowed key value: - *contentReview*: *enabled*,*disabled*
-   */
   async function patchConfig_ByKey_v2(key: string, data: UpdateConfigRequest): Promise<AxiosResponse<unknown>> {
     const $ = new ConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchConfig_ByKey_v2(key, data)
@@ -54,7 +51,13 @@ export function ConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get config paginated
+     */
     getConfigs_v2,
+    /**
+     * This endpoint will create a new config if the *key* doesn&#39;t exist. Allowed key value: - *contentReview*: *enabled*,*disabled*
+     */
     patchConfig_ByKey_v2
   }
 }

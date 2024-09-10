@@ -20,9 +20,12 @@ export function PublicChannelApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function PublicChannelApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get user channel paginated
-   */
   async function getChannels_ByUserId(
     userId: string,
     queryParams?: { limit?: number; name?: string | null; offset?: number }
@@ -48,9 +48,6 @@ export function PublicChannelApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Create user channel
-   */
   async function createChannel_ByUserId(userId: string, data: PublicChannelRequest): Promise<AxiosResponse<ChannelResponse>> {
     const $ = new PublicChannel$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createChannel_ByUserId(userId, data)
@@ -58,9 +55,6 @@ export function PublicChannelApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete user channel
-   */
   async function deleteChannel_ByUserId_ByChannelId(userId: string, channelId: string): Promise<AxiosResponse<unknown>> {
     const $ = new PublicChannel$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteChannel_ByUserId_ByChannelId(userId, channelId)
@@ -68,9 +62,6 @@ export function PublicChannelApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update user channel
-   */
   async function updateChannel_ByUserId_ByChannelId(
     userId: string,
     channelId: string,
@@ -83,9 +74,21 @@ export function PublicChannelApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get user channel paginated
+     */
     getChannels_ByUserId,
+    /**
+     * Create user channel
+     */
     createChannel_ByUserId,
+    /**
+     * Delete user channel
+     */
     deleteChannel_ByUserId_ByChannelId,
+    /**
+     * Update user channel
+     */
     updateChannel_ByUserId_ByChannelId
   }
 }

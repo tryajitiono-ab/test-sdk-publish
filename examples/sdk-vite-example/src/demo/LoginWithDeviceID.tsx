@@ -1,29 +1,27 @@
-import { AccelByteSDK } from '@accelbyte/sdk'
-import { OAuth20V4Api, UsersApi } from '@accelbyte/sdk-iam'
+import { OAuth20V4Api, TokenResponseV3, UsersApi } from '@accelbyte/sdk-iam'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Form, FormItem } from './components/Form'
 import { Heading } from './components/Heading'
 import { Section, SectionContent } from './components/Section'
 import { Snippet } from './components/Snippet'
+import { useGlobal } from './GlobalContext'
 import { handleError } from './helpers'
-import { useUser } from './UserContext'
 
-export function LoginWithDeviceID({ sdk }: { sdk: AccelByteSDK }) {
+export function LoginWithDeviceID() {
   const { register, handleSubmit } = useForm({
     defaultValues: {
       deviceId: 'example-device-id'
     }
   })
   const [tokenResponse, setTokenResponse] = useState<any>(null)
-  const { setUser } = useUser()
+  const { setUser, sdk } = useGlobal()
 
   const loginWithDeviceID = handleSubmit(async data => {
     try {
+      sdk.setConfig({ axiosConfig: { request: { headers: { xdd: 'inside' } } } })
+
       const response = await OAuth20V4Api(sdk, {
-        coreConfig: {
-          useSchemaValidation: false
-        },
         axiosConfig: {
           request: {
             headers: {
@@ -35,6 +33,12 @@ export function LoginWithDeviceID({ sdk }: { sdk: AccelByteSDK }) {
         device_id: data.deviceId
       })
       setTokenResponse(response.data)
+
+      if (import.meta.env.PROD) {
+        // Only use token in Prod, because in Prod we don't have proxy.
+        const parsedTokenResponse = TokenResponseV3.parse(response.data)
+        sdk.setToken({ accessToken: parsedTokenResponse.access_token, refreshToken: parsedTokenResponse.refresh_token })
+      }
 
       const userResponse = await UsersApi(sdk).getUsersMe_v3()
       setUser(userResponse.data)

@@ -20,9 +20,12 @@ export function ImagesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function ImagesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Returns images which exist (uploaded, uploading, or building) in the linked account. This route fails if no account is linked Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
-   */
   async function getImages(): Promise<AxiosResponse<ImageList>> {
     const $ = new ImagesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getImages()
@@ -45,9 +45,6 @@ export function ImagesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Returns information regarding the account&#39;s usage for images storage including the free tier quota Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
-   */
   async function getImagesStorage(): Promise<AxiosResponse<ImageStorage>> {
     const $ = new ImagesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getImagesStorage()
@@ -55,9 +52,6 @@ export function ImagesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Marks an image for deletion. The image will stop being available for fleets and will eventually be deleted. Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
-   */
   async function deleteImage_ByImageId(imageID: string): Promise<AxiosResponse<unknown>> {
     const $ = new ImagesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteImage_ByImageId(imageID)
@@ -65,9 +59,6 @@ export function ImagesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
-   */
   async function getImage_ByImageId(imageID: string): Promise<AxiosResponse<ImageDetails>> {
     const $ = new ImagesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getImage_ByImageId(imageID)
@@ -75,9 +66,6 @@ export function ImagesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This allows editing of the image name, toggling `IsProtected`, or adding &amp; removal of tags Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
-   */
   async function patchImage_ByImageId(imageID: string, data: ImageUpdate): Promise<AxiosResponse<ImageDetails>> {
     const $ = new ImagesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchImage_ByImageId(imageID, data)
@@ -85,9 +73,6 @@ export function ImagesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Unmarks an image for deletion. The image will be available for fleets. Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
-   */
   async function createRestore_ByImageId(imageID: string): Promise<AxiosResponse<unknown>> {
     const $ = new ImagesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createRestore_ByImageId(imageID)
@@ -96,11 +81,29 @@ export function ImagesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Returns images which exist (uploaded, uploading, or building) in the linked account. This route fails if no account is linked Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
+     */
     getImages,
+    /**
+     * Returns information regarding the account&#39;s usage for images storage including the free tier quota Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
+     */
     getImagesStorage,
+    /**
+     * Marks an image for deletion. The image will stop being available for fleets and will eventually be deleted. Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
+     */
     deleteImage_ByImageId,
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
+     */
     getImage_ByImageId,
+    /**
+     * This allows editing of the image name, toggling `IsProtected`, or adding &amp; removal of tags Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
+     */
     patchImage_ByImageId,
+    /**
+     * Unmarks an image for deletion. The image will be available for fleets. Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
+     */
     createRestore_ByImageId
   }
 }

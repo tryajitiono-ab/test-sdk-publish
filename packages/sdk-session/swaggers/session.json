@@ -3,7 +3,7 @@
   "info": {
     "description": "Justice Session Service",
     "title": "justice-session-service",
-    "version": "3.17.1"
+    "version": "3.17.2"
   },
   "schemes": ["https"],
   "externalDocs": {
@@ -22,193 +22,6 @@
     "/healthz": {
       "get": {
         "operationId": "GetHealthcheckInfo",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-errorCodes": {}
-      }
-    },
-    "/session/admin/internal/pprof": {
-      "get": {
-        "operationId": "pprofHandler",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-errorCodes": {}
-      }
-    },
-    "/session/admin/internal/pprof/allocs": {
-      "get": {
-        "operationId": "allocsHandler",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-errorCodes": {}
-      }
-    },
-    "/session/admin/internal/pprof/block": {
-      "get": {
-        "operationId": "blockHandler",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-errorCodes": {}
-      }
-    },
-    "/session/admin/internal/pprof/cmdline": {
-      "get": {
-        "operationId": "cmdlineHandler",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-errorCodes": {}
-      }
-    },
-    "/session/admin/internal/pprof/goroutine": {
-      "get": {
-        "operationId": "goroutineHandler",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-errorCodes": {}
-      }
-    },
-    "/session/admin/internal/pprof/heap": {
-      "get": {
-        "operationId": "heapHandler",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-errorCodes": {}
-      }
-    },
-    "/session/admin/internal/pprof/mutex": {
-      "get": {
-        "operationId": "mutexHandler",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-errorCodes": {}
-      }
-    },
-    "/session/admin/internal/pprof/profile": {
-      "get": {
-        "operationId": "profile",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-errorCodes": {}
-      }
-    },
-    "/session/admin/internal/pprof/symbol": {
-      "get": {
-        "operationId": "symbolHandler",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-errorCodes": {}
-      }
-    },
-    "/session/admin/internal/pprof/threadcreate": {
-      "get": {
-        "operationId": "threadcreateHandler",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "authorization": []
-          }
-        ],
-        "x-errorCodes": {}
-      }
-    },
-    "/session/admin/internal/pprof/trace": {
-      "get": {
-        "operationId": "traceHandler",
         "produces": ["application/json"],
         "responses": {
           "200": {
@@ -8411,9 +8224,9 @@
     "path": "/session/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2024-08-30T06:49:34+00:00",
-    "gitHash": "17b264a7884d0bed6bc0324041a39d31e17f4d98",
-    "version": "3.17.1",
+    "buildDate": "2024-09-06T08:46:38+00:00",
+    "gitHash": "45704ae9b32a70e46f4fd44304a2ec157acf06dd",
+    "version": "3.17.2",
     "version-roles-seeding": "1.2.37"
   }
 }

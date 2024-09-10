@@ -17,9 +17,12 @@ export function MatchmakingOperationsApi(sdk: AccelByteSDK, args?: SdkSetConfigP
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -39,9 +42,6 @@ export function MatchmakingOperationsApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * get the list of messages.
-   */
   async function getMessages(): Promise<AxiosResponse<AppMessageDeclarationArray>> {
     const $ = new MatchmakingOperations$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMessages()
@@ -51,6 +51,9 @@ export function MatchmakingOperationsApi(sdk: AccelByteSDK, args?: SdkSetConfigP
 
   return {
     getVersion,
+    /**
+     * get the list of messages.
+     */
     getMessages
   }
 }

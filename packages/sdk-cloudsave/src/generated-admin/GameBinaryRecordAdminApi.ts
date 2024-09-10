@@ -23,9 +23,12 @@ export function GameBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -38,9 +41,6 @@ export function GameBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     }
   }
 
-  /**
-   * Retrieve list of binary records by namespace.
-   */
   async function getBinaries(queryParams?: {
     limit?: number
     offset?: number
@@ -53,9 +53,6 @@ export function GameBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Create a game binary record. Other detail info: `key` should follow these rules: 1. support uppercase and lowercase letters, numbers, and separators **&#34;-&#34;**, **&#34;_&#34;**, **&#34;.&#34;** are allowed 2. begin and end with letters or numbers 3. spaces are not allowed 4. separators must not appears twice in a row Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-   */
   async function createBinary(data: GameBinaryRecordCreate): Promise<AxiosResponse<UploadBinaryRecordResponse>> {
     const $ = new GameBinaryRecordAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createBinary(data)
@@ -63,9 +60,6 @@ export function GameBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Delete a game binary record.
-   */
   async function deleteBinary_ByKey(key: string): Promise<AxiosResponse<unknown>> {
     const $ = new GameBinaryRecordAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteBinary_ByKey(key)
@@ -73,9 +67,6 @@ export function GameBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Get a game binary record by its key.
-   */
   async function getBinary_ByKey(key: string): Promise<AxiosResponse<GameBinaryRecordAdminResponse>> {
     const $ = new GameBinaryRecordAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBinary_ByKey(key)
@@ -83,9 +74,6 @@ export function GameBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Update a game binary record file by its key
-   */
   async function updateBinary_ByKey(key: string, data: BinaryRecordRequest): Promise<AxiosResponse<GameBinaryRecordAdminResponse>> {
     const $ = new GameBinaryRecordAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateBinary_ByKey(key, data)
@@ -93,9 +81,6 @@ export function GameBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Update a game binary record metadata by its key
-   */
   async function updateMetadata_ByKey(
     key: string,
     data: GameBinaryRecordMetadataRequest
@@ -106,9 +91,6 @@ export function GameBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * Request presigned URL to upload the binary record to s3. Other detail info: Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-   */
   async function createPresigned_ByKey(key: string, data: UploadBinaryRecordRequest): Promise<AxiosResponse<UploadBinaryRecordResponse>> {
     const $ = new GameBinaryRecordAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createPresigned_ByKey(key, data)
@@ -117,12 +99,33 @@ export function GameBinaryRecordAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigP
   }
 
   return {
+    /**
+     * Retrieve list of binary records by namespace.
+     */
     getBinaries,
+    /**
+     * Create a game binary record. Other detail info: `key` should follow these rules: 1. support uppercase and lowercase letters, numbers, and separators **&#34;-&#34;**, **&#34;_&#34;**, **&#34;.&#34;** are allowed 2. begin and end with letters or numbers 3. spaces are not allowed 4. separators must not appears twice in a row Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
+     */
     createBinary,
+    /**
+     * Delete a game binary record.
+     */
     deleteBinary_ByKey,
+    /**
+     * Get a game binary record by its key.
+     */
     getBinary_ByKey,
+    /**
+     * Update a game binary record file by its key
+     */
     updateBinary_ByKey,
+    /**
+     * Update a game binary record metadata by its key
+     */
     updateMetadata_ByKey,
+    /**
+     * Request presigned URL to upload the binary record to s3. Other detail info: Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
+     */
     createPresigned_ByKey
   }
 }

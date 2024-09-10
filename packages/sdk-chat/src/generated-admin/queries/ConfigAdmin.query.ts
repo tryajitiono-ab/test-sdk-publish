@@ -58,7 +58,7 @@ export const useConfigAdminApi_GetConfig = (
 }
 
 /**
- * Get Log Configuration.&lt;br&gt;
+ *  Get Log Configuration logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic socketLogEnabled is use for enable socket log logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic slowQueryThreshold use for logging slow threshold in time measure is nano second
  *
  * #### Default Query Options
  * The default options include:
@@ -88,7 +88,7 @@ export const useConfigAdminApi_GetConfigLog = (
 }
 
 /**
- * Update Log Configuration.&lt;br&gt;
+ *  Update Log Configuration logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic socketLogEnabled is use for enable socket log logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic slowQueryThreshold use for logging slow threshold in time measure is nano second
  *
  * #### Default Query Options
  * The default options include:

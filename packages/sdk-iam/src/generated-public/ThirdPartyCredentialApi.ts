@@ -17,9 +17,12 @@ export function ThirdPartyCredentialApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function ThirdPartyCredentialApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     }
   }
 
-  /**
-   * This is the Public API to Get All Active OIDC Platform Credential By Client ID
-   */
   async function getPlatformsClientsOidc_v3(queryParams: {
     clientId: string | null
   }): Promise<AxiosResponse<PublicThirdPartyPlatformInfoArray>> {
@@ -44,9 +44,6 @@ export function ThirdPartyCredentialApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
     return resp.response
   }
 
-  /**
-   * This is the Public API to Get All Active 3rd Platform Credential.
-   */
   async function getPlatformsClientsActive_v3(): Promise<AxiosResponse<PublicThirdPartyPlatformInfoArray>> {
     const $ = new ThirdPartyCredential$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPlatformsClientsActive_v3()
@@ -55,7 +52,13 @@ export function ThirdPartyCredentialApi(sdk: AccelByteSDK, args?: SdkSetConfigPa
   }
 
   return {
+    /**
+     * This is the Public API to Get All Active OIDC Platform Credential By Client ID
+     */
     getPlatformsClientsOidc_v3,
+    /**
+     * This is the Public API to Get All Active 3rd Platform Credential.
+     */
     getPlatformsClientsActive_v3
   }
 }

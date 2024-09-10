@@ -19,9 +19,12 @@ export function CountryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function CountryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Admin get country list
-   */
   async function getCountries_v3(queryParams?: { filterBlacklist?: boolean | null }): Promise<AxiosResponse<CountryResponseArray>> {
     const $ = new CountryAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getCountries_v3(queryParams)
@@ -44,9 +44,6 @@ export function CountryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Admin get country blacklist
-   */
   async function getCountriesBlacklist_v3(): Promise<AxiosResponse<CountryBlacklistResponse>> {
     const $ = new CountryAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getCountriesBlacklist_v3()
@@ -54,9 +51,6 @@ export function CountryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Admin update country blacklist
-   */
   async function updateCountryBlacklist_v3(data: CountryBlacklistRequest): Promise<AxiosResponse<unknown>> {
     const $ = new CountryAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateCountryBlacklist_v3(data)
@@ -65,8 +59,17 @@ export function CountryAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Admin get country list
+     */
     getCountries_v3,
+    /**
+     * Admin get country blacklist
+     */
     getCountriesBlacklist_v3,
+    /**
+     * Admin update country blacklist
+     */
     updateCountryBlacklist_v3
   }
 }

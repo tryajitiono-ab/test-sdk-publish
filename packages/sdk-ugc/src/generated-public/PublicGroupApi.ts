@@ -21,9 +21,12 @@ export function PublicGroupApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -36,9 +39,6 @@ export function PublicGroupApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get user groups paginated
-   */
   async function getGroups_ByUserId(
     userId: string,
     queryParams?: { limit?: number; offset?: number }
@@ -49,9 +49,6 @@ export function PublicGroupApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Create group
-   */
   async function createGroup_ByUserId(userId: string, data: CreateGroupRequest): Promise<AxiosResponse<CreateGroupResponse>> {
     const $ = new PublicGroup$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createGroup_ByUserId(userId, data)
@@ -59,9 +56,6 @@ export function PublicGroupApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete user group by group ID
-   */
   async function deleteGroup_ByUserId_ByGroupId(userId: string, groupId: string): Promise<AxiosResponse<unknown>> {
     const $ = new PublicGroup$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteGroup_ByUserId_ByGroupId(userId, groupId)
@@ -69,9 +63,6 @@ export function PublicGroupApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get user groups by group ID
-   */
   async function getGroup_ByUserId_ByGroupId(userId: string, groupId: string): Promise<AxiosResponse<CreateGroupResponse>> {
     const $ = new PublicGroup$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getGroup_ByUserId_ByGroupId(userId, groupId)
@@ -79,9 +70,6 @@ export function PublicGroupApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Replace group name and contents with new ones
-   */
   async function updateGroup_ByUserId_ByGroupId(
     userId: string,
     groupId: string,
@@ -93,9 +81,6 @@ export function PublicGroupApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get content that belong to a group
-   */
   async function getContents_ByUserId_ByGroupId(
     userId: string,
     groupId: string,
@@ -107,9 +92,6 @@ export function PublicGroupApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get content belong to a group
-   */
   async function getContents_ByUserId_ByGroupId_v2(
     userId: string,
     groupId: string,
@@ -122,12 +104,33 @@ export function PublicGroupApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get user groups paginated
+     */
     getGroups_ByUserId,
+    /**
+     * Create group
+     */
     createGroup_ByUserId,
+    /**
+     * Delete user group by group ID
+     */
     deleteGroup_ByUserId_ByGroupId,
+    /**
+     * Get user groups by group ID
+     */
     getGroup_ByUserId_ByGroupId,
+    /**
+     * Replace group name and contents with new ones
+     */
     updateGroup_ByUserId_ByGroupId,
+    /**
+     * Get content that belong to a group
+     */
     getContents_ByUserId_ByGroupId,
+    /**
+     * Get content belong to a group
+     */
     getContents_ByUserId_ByGroupId_v2
   }
 }

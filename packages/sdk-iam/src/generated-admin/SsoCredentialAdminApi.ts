@@ -19,9 +19,12 @@ export function SsoCredentialAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function SsoCredentialAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     }
   }
 
-  /**
-   * This is the API to Get All Active SSO Platform Credential.
-   */
   async function getPlatformsSso_v3(queryParams?: {
     limit?: number
     offset?: number
@@ -47,9 +47,6 @@ export function SsoCredentialAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * This is the API to Delete SSO Platform Credential.
-   */
   async function deleteSso_ByPlatformId_v3(platformId: string): Promise<AxiosResponse<unknown>> {
     const $ = new SsoCredentialAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteSso_ByPlatformId_v3(platformId)
@@ -57,9 +54,6 @@ export function SsoCredentialAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * This is the API to Get SSO Platform Credential.
-   */
   async function getSso_ByPlatformId_v3(platformId: string): Promise<AxiosResponse<SsoPlatformCredentialResponse>> {
     const $ = new SsoCredentialAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getSso_ByPlatformId_v3(platformId)
@@ -67,9 +61,6 @@ export function SsoCredentialAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * This is the API to Delete SSO Platform Credential.
-   */
   async function patchSso_ByPlatformId_v3(
     platformId: string,
     data: SsoPlatformCredentialRequest
@@ -80,9 +71,6 @@ export function SsoCredentialAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * This is the API to Add SSO Platform Credential. ## Supported platforms: - **discourse** the ssoUrl of the discourse is the discourse forum url. example: https://forum.example.com - **azure with SAML** **appId** is an application identifier in IdP, in azure it&#39;s called EntityID **acsUrl** is an endpoint on the service provider where the identity provider will redirect to with its authentication response. example: /iam/v3/sso/saml/azuresaml/authenticate **federationMetadataUrl** is an endpoint on the Identity Provider(IdP) to get IdP federation metadata for service provider to build trust relationship
-   */
   async function createSso_ByPlatformId_v3(
     platformId: string,
     data: SsoPlatformCredentialRequest
@@ -94,10 +82,25 @@ export function SsoCredentialAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
   }
 
   return {
+    /**
+     * This is the API to Get All Active SSO Platform Credential.
+     */
     getPlatformsSso_v3,
+    /**
+     * This is the API to Delete SSO Platform Credential.
+     */
     deleteSso_ByPlatformId_v3,
+    /**
+     * This is the API to Get SSO Platform Credential.
+     */
     getSso_ByPlatformId_v3,
+    /**
+     * This is the API to Delete SSO Platform Credential.
+     */
     patchSso_ByPlatformId_v3,
+    /**
+     * This is the API to Add SSO Platform Credential. ## Supported platforms: - **discourse** the ssoUrl of the discourse is the discourse forum url. example: https://forum.example.com - **azure with SAML** **appId** is an application identifier in IdP, in azure it&#39;s called EntityID **acsUrl** is an endpoint on the service provider where the identity provider will redirect to with its authentication response. example: /iam/v3/sso/saml/azuresaml/authenticate **federationMetadataUrl** is an endpoint on the Identity Provider(IdP) to get IdP federation metadata for service provider to build trust relationship
+     */
     createSso_ByPlatformId_v3
   }
 }

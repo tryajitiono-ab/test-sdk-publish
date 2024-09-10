@@ -18,9 +18,12 @@ export function InputValidationsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function InputValidationsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     }
   }
 
-  /**
-   * No role required This endpoint is to get list of input validation configuration. &lt;code&gt;regex&lt;/code&gt; parameter will be returned if &lt;code&gt;isCustomRegex&lt;/code&gt; is true. Otherwise, it will be empty.
-   */
   async function getInputValidations_v3(queryParams?: {
     defaultOnEmpty?: boolean | null
     languageCode?: string | null
@@ -46,9 +46,6 @@ export function InputValidationsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * This endpoint is to get input validation configuration by field.
-   */
   async function getInputValidation_ByField_v3(field: string): Promise<AxiosResponse<InputValidationConfigVersion>> {
     const $ = new InputValidations$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getInputValidation_ByField_v3(field)
@@ -57,7 +54,13 @@ export function InputValidationsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   }
 
   return {
+    /**
+     * No role required This endpoint is to get list of input validation configuration. &lt;code&gt;regex&lt;/code&gt; parameter will be returned if &lt;code&gt;isCustomRegex&lt;/code&gt; is true. Otherwise, it will be empty.
+     */
     getInputValidations_v3,
+    /**
+     * This endpoint is to get input validation configuration by field.
+     */
     getInputValidation_ByField_v3
   }
 }

@@ -20,9 +20,12 @@ export function StatCycleConfigurationApi(sdk: AccelByteSDK, args?: SdkSetConfig
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function StatCycleConfigurationApi(sdk: AccelByteSDK, args?: SdkSetConfig
     }
   }
 
-  /**
-   * List stat cycles by pagination.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat cycles&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getStatCycles(queryParams?: {
     cycleType?: 'ANNUALLY' | 'DAILY' | 'MONTHLY' | 'SEASONAL' | 'WEEKLY'
     limit?: number
@@ -52,9 +52,6 @@ export function StatCycleConfigurationApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Bulk get stat cycle.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of stat cycles&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createStatCycleBulk(data: BulkStatCycleRequest): Promise<AxiosResponse<BulkStatCycleResult>> {
     const $ = new StatCycleConfiguration$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createStatCycleBulk(data)
@@ -62,9 +59,6 @@ export function StatCycleConfigurationApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Get stat cycle.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat cycle info&lt;/ul&gt;
-   */
   async function getStatCycle_ByCycleId(cycleId: string): Promise<AxiosResponse<StatCycleInfo>> {
     const $ = new StatCycleConfiguration$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getStatCycle_ByCycleId(cycleId)
@@ -73,8 +67,17 @@ export function StatCycleConfigurationApi(sdk: AccelByteSDK, args?: SdkSetConfig
   }
 
   return {
+    /**
+     * List stat cycles by pagination.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat cycles&lt;/li&gt;&lt;/ul&gt;
+     */
     getStatCycles,
+    /**
+     * Bulk get stat cycle.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of stat cycles&lt;/li&gt;&lt;/ul&gt;
+     */
     createStatCycleBulk,
+    /**
+     * Get stat cycle.&lt;br&gt;Other detail info:&lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: stat cycle info&lt;/ul&gt;
+     */
     getStatCycle_ByCycleId
   }
 }

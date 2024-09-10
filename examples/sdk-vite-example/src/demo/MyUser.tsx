@@ -1,14 +1,13 @@
-import { AccelByteSDK } from '@accelbyte/sdk'
 import { UsersApi } from '@accelbyte/sdk-iam'
 import React, { useState } from 'react'
 import { Heading } from './components/Heading'
 import { Section, SectionContent } from './components/Section'
 import { Snippet } from './components/Snippet'
+import { useGlobal } from './GlobalContext'
 import { handleError } from './helpers'
-import { useUser } from './UserContext'
 
-export function MyUser({ sdk }: { sdk: AccelByteSDK }) {
-  const { setUser } = useUser()
+export function MyUser() {
+  const { setUser, sdk } = useGlobal()
   const [response, setResponse] = useState<any>(null)
 
   async function MyUser() {

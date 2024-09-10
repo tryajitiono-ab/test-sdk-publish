@@ -18,9 +18,12 @@ export function ConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function ConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     }
   }
 
-  /**
-   * Delete a list of admin email addresses to stop receiving personal data request notification. Scope: account
-   */
   async function deleteEmailConfiguration(queryParams: { emails: string[] }): Promise<AxiosResponse<unknown>> {
     const $ = new ConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteEmailConfiguration(queryParams)
@@ -43,9 +43,6 @@ export function ConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Get list of admin email address configuration. Scope: account
-   */
   async function getEmailsConfigurations(): Promise<AxiosResponse<unknown>> {
     const $ = new ConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getEmailsConfigurations()
@@ -53,9 +50,6 @@ export function ConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Add admin email address for receiving personal data request notification. Scope: account
-   */
   async function createEmailConfiguration(data: string[]): Promise<AxiosResponse<unknown>> {
     const $ = new ConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createEmailConfiguration(data)
@@ -63,9 +57,6 @@ export function ConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Update admin email address for receiving personal data request notification. Scope: account
-   */
   async function updateEmailConfiguration(data: string[]): Promise<AxiosResponse<unknown>> {
     const $ = new ConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateEmailConfiguration(data)
@@ -73,9 +64,6 @@ export function ConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Get Registered Services Configuration. Scope: account
-   */
   async function getServicesConfigurations(): Promise<AxiosResponse<ServicesConfigurationResponse>> {
     const $ = new ConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getServicesConfigurations()
@@ -83,9 +71,6 @@ export function ConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Update Registered Services Configuration. Scope: account
-   */
   async function updateServiceConfiguration(
     data: ServiceConfigurationUpdateRequest
   ): Promise<AxiosResponse<ServiceConfigurationUpdateRequest>> {
@@ -95,9 +80,6 @@ export function ConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * **[TEST FACILITY ONLY]** Reset Registered Services Configuration to use the default configuration. Scope: account
-   */
   async function deleteServiceConfigurationReset(): Promise<AxiosResponse<unknown>> {
     const $ = new ConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteServiceConfigurationReset()
@@ -105,9 +87,6 @@ export function ConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * **[TEST FACILITY ONLY]** Reset registered platform account closure services configuration to use the default configuration. Scope: account
-   */
   async function deleteServicePlatformClosureConfig(): Promise<AxiosResponse<unknown>> {
     const $ = new ConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteServicePlatformClosureConfig()
@@ -115,9 +94,6 @@ export function ConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Get registered platform account closure services configuration. Scope: account
-   */
   async function getServicesPlatformsClosureConfig(): Promise<AxiosResponse<ServicesConfigurationResponse>> {
     const $ = new ConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getServicesPlatformsClosureConfig()
@@ -125,9 +101,6 @@ export function ConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
     return resp.response
   }
 
-  /**
-   * Update registered platform account closure services configuration. Scope: account
-   */
   async function updateServicePlatformClosureConfig(
     data: ServiceConfigurationUpdateRequest
   ): Promise<AxiosResponse<ServiceConfigurationUpdateRequest>> {
@@ -138,15 +111,45 @@ export function ConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPara
   }
 
   return {
+    /**
+     * Delete a list of admin email addresses to stop receiving personal data request notification. Scope: account
+     */
     deleteEmailConfiguration,
+    /**
+     * Get list of admin email address configuration. Scope: account
+     */
     getEmailsConfigurations,
+    /**
+     * Add admin email address for receiving personal data request notification. Scope: account
+     */
     createEmailConfiguration,
+    /**
+     * Update admin email address for receiving personal data request notification. Scope: account
+     */
     updateEmailConfiguration,
+    /**
+     * Get Registered Services Configuration. Scope: account
+     */
     getServicesConfigurations,
+    /**
+     * Update Registered Services Configuration. Scope: account
+     */
     updateServiceConfiguration,
+    /**
+     * **[TEST FACILITY ONLY]** Reset Registered Services Configuration to use the default configuration. Scope: account
+     */
     deleteServiceConfigurationReset,
+    /**
+     * **[TEST FACILITY ONLY]** Reset registered platform account closure services configuration to use the default configuration. Scope: account
+     */
     deleteServicePlatformClosureConfig,
+    /**
+     * Get registered platform account closure services configuration. Scope: account
+     */
     getServicesPlatformsClosureConfig,
+    /**
+     * Update registered platform account closure services configuration. Scope: account
+     */
     updateServicePlatformClosureConfig
   }
 }

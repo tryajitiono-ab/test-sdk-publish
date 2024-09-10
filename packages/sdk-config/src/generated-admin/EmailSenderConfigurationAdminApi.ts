@@ -21,9 +21,12 @@ export function EmailSenderConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSe
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -36,9 +39,6 @@ export function EmailSenderConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSe
     }
   }
 
-  /**
-   * Get an email sender for the requested namespace. If email sender in the requested namespace didn't configured yet or not verified yet, and <code>ALLOW_FALLBACK_TO_PUBLISHER_EMAIL_SENDER</code> environment was activated, it will return email sender of the configured publisher namespace.
-   */
   async function getEmailsender(queryParams?: { includeEmailTemplates?: boolean | null }): Promise<AxiosResponse<EmailSenderResponse>> {
     const $ = new EmailSenderConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getEmailsender(queryParams)
@@ -46,9 +46,6 @@ export function EmailSenderConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSe
     return resp.response
   }
 
-  /**
-   * Set an email sender of the namespace and request domain authentication to the email platform (currently only SendGrid supported). **Email Sender API Key Logic:** If there's no Email Sender API Key defined yet in the requested namespace, the API logic will fallback to use Publisher Namespace API Key.
-   */
   async function createEmailsender(data: CreateEmailSenderRequest): Promise<AxiosResponse<EmailSenderDomainResponse>> {
     const $ = new EmailSenderConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createEmailsender(data)
@@ -56,9 +53,6 @@ export function EmailSenderConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSe
     return resp.response
   }
 
-  /**
-   * Delete an email sender.
-   */
   async function deleteEmailsender(): Promise<AxiosResponse<unknown>> {
     const $ = new EmailSenderConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteEmailsender()
@@ -66,9 +60,6 @@ export function EmailSenderConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSe
     return resp.response
   }
 
-  /**
-   * Update email sender of the specified namespace. These attributes can be updated: - fromAddress (the domain name of the email address must be similar with the existing) - fromName
-   */
   async function patchEmailsender(data: UpdateEmailSenderRequest): Promise<AxiosResponse<unknown>> {
     const $ = new EmailSenderConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchEmailsender(data)
@@ -76,9 +67,6 @@ export function EmailSenderConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSe
     return resp.response
   }
 
-  /**
-   * Get email sender domain authentication status.
-   */
   async function getEmailsenderAuthentication(): Promise<AxiosResponse<EmailSenderDomainResponse>> {
     const $ = new EmailSenderConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getEmailsenderAuthentication()
@@ -86,9 +74,6 @@ export function EmailSenderConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSe
     return resp.response
   }
 
-  /**
-   * Verify the authentication of the email sender domain. If verification is failed, it will return 400 error.
-   */
   async function createEmailsenderAuthenticationVerify(): Promise<AxiosResponse<EmailSenderVerifyResponse>> {
     const $ = new EmailSenderConfigurationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createEmailsenderAuthenticationVerify()
@@ -97,11 +82,29 @@ export function EmailSenderConfigurationAdminApi(sdk: AccelByteSDK, args?: SdkSe
   }
 
   return {
+    /**
+     * Get an email sender for the requested namespace. If email sender in the requested namespace didn't configured yet or not verified yet, and <code>ALLOW_FALLBACK_TO_PUBLISHER_EMAIL_SENDER</code> environment was activated, it will return email sender of the configured publisher namespace.
+     */
     getEmailsender,
+    /**
+     * Set an email sender of the namespace and request domain authentication to the email platform (currently only SendGrid supported). **Email Sender API Key Logic:** If there's no Email Sender API Key defined yet in the requested namespace, the API logic will fallback to use Publisher Namespace API Key.
+     */
     createEmailsender,
+    /**
+     * Delete an email sender.
+     */
     deleteEmailsender,
+    /**
+     * Update email sender of the specified namespace. These attributes can be updated: - fromAddress (the domain name of the email address must be similar with the existing) - fromName
+     */
     patchEmailsender,
+    /**
+     * Get email sender domain authentication status.
+     */
     getEmailsenderAuthentication,
+    /**
+     * Verify the authentication of the email sender domain. If verification is failed, it will return 400 error.
+     */
     createEmailsenderAuthenticationVerify
   }
 }

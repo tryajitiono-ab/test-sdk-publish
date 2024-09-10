@@ -20,9 +20,12 @@ export function AuditLogsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function AuditLogsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * This API is used to query audit logs. The **{namespace}** permission value will be pointed to &#34;namespace&#34; query param. **1. If &#34;namespace&#34; query param exist:** The permission validation will validate that single namespace value. **2. If &#34;namespace&#34; query param not exist:** The permission validation will automatically check the users audit permissions (ADMIN:NAMESPACE:{namespace}:AUDIT). The query result can only returns data that matched with the namespace from the users AUDIT permissions e.g: If current user was assign permission with namespaces [game1, game2], then API will query by game1 &amp; game2
-   */
   async function getLogs(queryParams?: {
     action?: string | null
     actor?: string | null
@@ -58,9 +58,6 @@ export function AuditLogsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to query category and related action names.
-   */
   async function getConfigCategories(queryParams?: {
     endDate?: number
     namespace?: string | null
@@ -72,9 +69,6 @@ export function AuditLogsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * We do not support query all time audit log. This API will return the number of days between the earliest day can be query and the current date. eg: if current date is 2023-01-10 and this API return 5, then it mean: API commitment can query to the data of the earliest date is 2023-01-05. The &#39;commitment&#39; means expiration of the log file will be archived but may not be executed immediately.
-   */
   async function getConfigTimeRange(): Promise<AxiosResponse<TimeRangeConfigResponse>> {
     const $ = new AuditLogsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getConfigTimeRange()
@@ -82,9 +76,6 @@ export function AuditLogsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to get audit details.
-   */
   async function getLog_ByLogId(logId: string): Promise<AxiosResponse<AuditLogInfo>> {
     const $ = new AuditLogsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getLog_ByLogId(logId)
@@ -93,9 +84,21 @@ export function AuditLogsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * This API is used to query audit logs. The **{namespace}** permission value will be pointed to &#34;namespace&#34; query param. **1. If &#34;namespace&#34; query param exist:** The permission validation will validate that single namespace value. **2. If &#34;namespace&#34; query param not exist:** The permission validation will automatically check the users audit permissions (ADMIN:NAMESPACE:{namespace}:AUDIT). The query result can only returns data that matched with the namespace from the users AUDIT permissions e.g: If current user was assign permission with namespaces [game1, game2], then API will query by game1 &amp; game2
+     */
     getLogs,
+    /**
+     * This API is used to query category and related action names.
+     */
     getConfigCategories,
+    /**
+     * We do not support query all time audit log. This API will return the number of days between the earliest day can be query and the current date. eg: if current date is 2023-01-10 and this API return 5, then it mean: API commitment can query to the data of the earliest date is 2023-01-05. The &#39;commitment&#39; means expiration of the log file will be archived but may not be executed immediately.
+     */
     getConfigTimeRange,
+    /**
+     * This API is used to get audit details.
+     */
     getLog_ByLogId
   }
 }

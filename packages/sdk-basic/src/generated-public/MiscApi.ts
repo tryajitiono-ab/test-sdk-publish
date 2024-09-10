@@ -18,9 +18,12 @@ export function MiscApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function MiscApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get server time
-   */
   async function getMiscTime(): Promise<AxiosResponse<RetrieveTimeResponse>> {
     const $ = new Misc$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMiscTime()
@@ -43,10 +43,6 @@ export function MiscApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * List countries.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: country code list&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getMiscCountries(queryParams?: { lang?: string | null }): Promise<AxiosResponse<CountryObjectArray>> {
     const $ = new Misc$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMiscCountries(queryParams)
@@ -54,9 +50,6 @@ export function MiscApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * List languages.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: language list&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getMiscLanguages(): Promise<AxiosResponse<unknown>> {
     const $ = new Misc$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMiscLanguages()
@@ -64,9 +57,6 @@ export function MiscApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * List time zones.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: time zones&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getMiscTimezones(): Promise<AxiosResponse<unknown>> {
     const $ = new Misc$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMiscTimezones()
@@ -75,9 +65,22 @@ export function MiscApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get server time
+     */
     getMiscTime,
+    /**
+     * @deprecated
+     * List countries.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: country code list&lt;/li&gt;&lt;/ul&gt;
+     */
     getMiscCountries,
+    /**
+     * List languages.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: language list&lt;/li&gt;&lt;/ul&gt;
+     */
     getMiscLanguages,
+    /**
+     * List time zones.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: time zones&lt;/li&gt;&lt;/ul&gt;
+     */
     getMiscTimezones
   }
 }

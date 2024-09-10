@@ -20,9 +20,12 @@ export function ReleaseNoteAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function ReleaseNoteAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     }
   }
 
-  /**
-   * This API is used to commit release note file that has been uploaded to signal completion.
-   */
   async function patchReleasenoteUploadCommit_ByHash(hash: string): Promise<AxiosResponse<BlockManifest>> {
     const $ = new ReleaseNoteAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchReleasenoteUploadCommit_ByHash(hash)
@@ -45,9 +45,6 @@ export function ReleaseNoteAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * This API is used to start release note upload and get the presigned URL.
-   */
   async function createReleasenoteUploadStart_ByUploaderId(uploaderId: string, data: BinaryUpload): Promise<AxiosResponse<BlockManifest>> {
     const $ = new ReleaseNoteAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createReleasenoteUploadStart_ByUploaderId(uploaderId, data)
@@ -55,9 +52,6 @@ export function ReleaseNoteAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * This API is used to save release note manifest.&lt;p&gt;It will update the existing release note manifest if exist (based on namespace, appId, platformId and version).&lt;br/&gt;Otherwise, it will create a new release note manifest.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Upload Mode for existing release note manifest:&lt;/b&gt;&lt;br/&gt;0 = update, will merge the old localizations with the new localizations.&lt;br/&gt;1 = replace, will replace the old localizations with the new localizations.
-   */
   async function createReleasenoteManifestSave_ByUploadMode(
     uploadMode: string,
     data: ReleaseNoteManifest
@@ -68,9 +62,6 @@ export function ReleaseNoteAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * This API is used to get release note manifest.
-   */
   async function getReleasenoteManifestGet_ByAppId_ByPlatformId(
     appId: string,
     platformId: string,
@@ -83,9 +74,21 @@ export function ReleaseNoteAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   }
 
   return {
+    /**
+     * This API is used to commit release note file that has been uploaded to signal completion.
+     */
     patchReleasenoteUploadCommit_ByHash,
+    /**
+     * This API is used to start release note upload and get the presigned URL.
+     */
     createReleasenoteUploadStart_ByUploaderId,
+    /**
+     * This API is used to save release note manifest.&lt;p&gt;It will update the existing release note manifest if exist (based on namespace, appId, platformId and version).&lt;br/&gt;Otherwise, it will create a new release note manifest.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Upload Mode for existing release note manifest:&lt;/b&gt;&lt;br/&gt;0 = update, will merge the old localizations with the new localizations.&lt;br/&gt;1 = replace, will replace the old localizations with the new localizations.
+     */
     createReleasenoteManifestSave_ByUploadMode,
+    /**
+     * This API is used to get release note manifest.
+     */
     getReleasenoteManifestGet_ByAppId_ByPlatformId
   }
 }

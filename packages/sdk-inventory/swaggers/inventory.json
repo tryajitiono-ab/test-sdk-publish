@@ -2827,7 +2827,7 @@
     "/inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items/movement": {
       "post": {
         "consumes": ["application/json"],
-        "description": "\n\t\t\tMove items between inventories that is owned by the same user.\n\n\t\t\tCurrently, this endpoint supports transferring items exclusively from source OTHER.\n\t\t\tItems from source ECOMMERCE are not yet eligible for transfer.\n\t\t\tWe are working on expanding support to include source ECOMMERCE in future updates.\n\t\t",
+        "description": "\n\t\t\tMove items between inventories that is owned by the same user.\n\t\t",
         "operationId": "PublicMoveMyItems",
         "parameters": [
           {
@@ -4033,8 +4033,8 @@
     "path": "/inventory/apidocs/api.json"
   },
   "x-version": {
-    "buildDate": "2024-08-28T03:58:20+00:00",
-    "gitHash": "108b1455b0caa091daf928045d7f6b68521eb7f4",
+    "buildDate": "2024-09-05T02:23:54+00:00",
+    "gitHash": "298d4b60266fa74573e4339ff65d1f4b62feaeda",
     "name": "justice-inventory-service",
     "realm": "DEV",
     "version": "0.2.2",

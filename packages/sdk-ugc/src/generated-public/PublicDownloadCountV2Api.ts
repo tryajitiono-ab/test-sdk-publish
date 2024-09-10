@@ -18,9 +18,12 @@ export function PublicDownloadCountV2Api(sdk: AccelByteSDK, args?: SdkSetConfigP
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function PublicDownloadCountV2Api(sdk: AccelByteSDK, args?: SdkSetConfigP
     }
   }
 
-  /**
-   * This endpoint will only display the list of users who performed add download count from v2 endpoint.
-   */
   async function getDownloader_ByContentId_v2(
     contentId: string,
     queryParams?: { limit?: number; offset?: number; sortBy?: string | null; userId?: string | null }
@@ -46,9 +46,6 @@ export function PublicDownloadCountV2Api(sdk: AccelByteSDK, args?: SdkSetConfigP
     return resp.response
   }
 
-  /**
-   * This endpoint can be used to count how many the ugc downloaded
-   */
   async function createDownloadcount_ByContentId_v2(contentId: string): Promise<AxiosResponse<AddDownloadCountResponse>> {
     const $ = new PublicDownloadCountV2$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createDownloadcount_ByContentId_v2(contentId)
@@ -57,7 +54,13 @@ export function PublicDownloadCountV2Api(sdk: AccelByteSDK, args?: SdkSetConfigP
   }
 
   return {
+    /**
+     * This endpoint will only display the list of users who performed add download count from v2 endpoint.
+     */
     getDownloader_ByContentId_v2,
+    /**
+     * This endpoint can be used to count how many the ugc downloaded
+     */
     createDownloadcount_ByContentId_v2
   }
 }

@@ -21,9 +21,12 @@ export function RevocationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -36,9 +39,6 @@ export function RevocationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     }
   }
 
-  /**
-   * Delete revocation config.
-   */
   async function deleteRevocationConfig(): Promise<AxiosResponse<unknown>> {
     const $ = new RevocationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteRevocationConfig()
@@ -46,9 +46,6 @@ export function RevocationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Get revocation configuration.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Revocation config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getRevocationConfig(): Promise<AxiosResponse<RevocationConfigInfo>> {
     const $ = new RevocationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getRevocationConfig()
@@ -56,9 +53,6 @@ export function RevocationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Update revocation configuration.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Revocation config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateRevocationConfig(data: RevocationConfigUpdate): Promise<AxiosResponse<RevocationConfigInfo>> {
     const $ = new RevocationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateRevocationConfig(data)
@@ -66,9 +60,6 @@ export function RevocationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Query revocation histories in a namespace.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: query revocation history&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getRevocationHistory(queryParams?: {
     endTime?: string | null
     limit?: number
@@ -85,9 +76,6 @@ export function RevocationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Do revocation.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revocation results&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateRevocation_ByUserId(userId: string, data: RevocationRequest): Promise<AxiosResponse<RevocationResult>> {
     const $ = new RevocationAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateRevocation_ByUserId(userId, data)
@@ -96,10 +84,25 @@ export function RevocationAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   }
 
   return {
+    /**
+     * Delete revocation config.
+     */
     deleteRevocationConfig,
+    /**
+     * Get revocation configuration.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Revocation config&lt;/li&gt;&lt;/ul&gt;
+     */
     getRevocationConfig,
+    /**
+     * Update revocation configuration.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Revocation config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateRevocationConfig,
+    /**
+     * Query revocation histories in a namespace.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: query revocation history&lt;/li&gt;&lt;/ul&gt;
+     */
     getRevocationHistory,
+    /**
+     * Do revocation.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revocation results&lt;/li&gt;&lt;/ul&gt;
+     */
     updateRevocation_ByUserId
   }
 }

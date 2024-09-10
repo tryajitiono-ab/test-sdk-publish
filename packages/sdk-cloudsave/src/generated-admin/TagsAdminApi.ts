@@ -18,9 +18,12 @@ export function TagsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function TagsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * ## Description Retrieve list of available tags by namespace
-   */
   async function getTags(queryParams?: { limit?: number; offset?: number }): Promise<AxiosResponse<ListTagsResponse>> {
     const $ = new TagsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getTags(queryParams)
@@ -43,9 +43,6 @@ export function TagsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * ## Description This endpoint will create new tags
-   */
   async function createTag(data: TagRequest): Promise<AxiosResponse<unknown>> {
     const $ = new TagsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createTag(data)
@@ -53,9 +50,6 @@ export function TagsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * ## Description This endpoint will delete tag by name
-   */
   async function deleteTag_ByTag(tag: string): Promise<AxiosResponse<unknown>> {
     const $ = new TagsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteTag_ByTag(tag)
@@ -64,8 +58,17 @@ export function TagsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * ## Description Retrieve list of available tags by namespace
+     */
     getTags,
+    /**
+     * ## Description This endpoint will create new tags
+     */
     createTag,
+    /**
+     * ## Description This endpoint will delete tag by name
+     */
     deleteTag_ByTag
   }
 }

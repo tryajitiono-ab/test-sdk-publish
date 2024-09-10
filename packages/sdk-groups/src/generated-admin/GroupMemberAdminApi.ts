@@ -18,9 +18,12 @@ export function GroupMemberAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function GroupMemberAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     }
   }
 
-  /**
-   * Required valid user authentication This endpoint is used to get user joined group information. Get user group joined information. If user does not belong to any group, it will return warning to give information about it Group Member Status: * JOINED: status of user already joined to a group
-   */
   async function getGroups_ByUserId_v2(
     userId: string,
     queryParams?: { limit?: number; offset?: number }
@@ -46,9 +46,6 @@ export function GroupMemberAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * This endpoint is used to get list of group members. Action Code: 73410
-   */
   async function getMembers_ByGroupId(
     groupId: string,
     queryParams?: { limit?: number; offset?: number; order?: string | null }
@@ -59,9 +56,6 @@ export function GroupMemberAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * This endpoint is used to get user group status information.
-   */
   async function getStatus_ByUserId_ByGroupId_v2(
     userId: string,
     groupId: string
@@ -73,8 +67,17 @@ export function GroupMemberAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   }
 
   return {
+    /**
+     * Required valid user authentication This endpoint is used to get user joined group information. Get user group joined information. If user does not belong to any group, it will return warning to give information about it Group Member Status: * JOINED: status of user already joined to a group
+     */
     getGroups_ByUserId_v2,
+    /**
+     * This endpoint is used to get list of group members. Action Code: 73410
+     */
     getMembers_ByGroupId,
+    /**
+     * This endpoint is used to get user group status information.
+     */
     getStatus_ByUserId_ByGroupId_v2
   }
 }

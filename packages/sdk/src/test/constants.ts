@@ -45,3 +45,5 @@ export const tooManyRequestInterceptor: Interceptor = {
     return Promise.reject(error)
   }
 }
+
+export const GET_USER_ME_PATH = '/iam/v3/public/users/me'

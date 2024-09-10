@@ -18,9 +18,12 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * This API is used to link DLC version(s) against the game version.&lt;p&gt;
-   */
   async function updateDlcLink(data: CreateDependencyLinkRequest): Promise<AxiosResponse<unknown>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDlcLink(data)
@@ -43,9 +43,6 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to retrieve DLC versions against the game version.
-   */
   async function getLink_ByBuildId(buildId: string): Promise<AxiosResponse<RetrieveDependencyLinkResponse>> {
     const $ = new DlcAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getLink_ByBuildId(buildId)
@@ -54,7 +51,13 @@ export function DlcAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * This API is used to link DLC version(s) against the game version.&lt;p&gt;
+     */
     updateDlcLink,
+    /**
+     * This API is used to retrieve DLC versions against the game version.
+     */
     getLink_ByBuildId
   }
 }

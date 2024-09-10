@@ -17,9 +17,12 @@ export function PublicDownloadCountLegacyApi(sdk: AccelByteSDK, args?: SdkSetCon
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function PublicDownloadCountLegacyApi(sdk: AccelByteSDK, args?: SdkSetCon
     }
   }
 
-  /**
-   * This endpoint can be used to count how many the ugc downloaded
-   */
   async function createDownloadcount_ByContentId(contentId: string): Promise<AxiosResponse<AddDownloadCountResponse>> {
     const $ = new PublicDownloadCountLegacy$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createDownloadcount_ByContentId(contentId)
@@ -43,6 +43,9 @@ export function PublicDownloadCountLegacyApi(sdk: AccelByteSDK, args?: SdkSetCon
   }
 
   return {
+    /**
+     * This endpoint can be used to count how many the ugc downloaded
+     */
     createDownloadcount_ByContentId
   }
 }

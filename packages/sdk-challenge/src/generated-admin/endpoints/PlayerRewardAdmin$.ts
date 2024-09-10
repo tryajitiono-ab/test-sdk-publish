@@ -8,6 +8,7 @@
  */
 import { Response, Validate } from '@accelbyte/sdk'
 import { AxiosInstance, AxiosRequestConfig } from 'axios'
+import { ClaimUserRewardsByGoalCodeRequest } from '../../generated-definitions/ClaimUserRewardsByGoalCodeRequest.js'
 import { ClaimUserRewardsReq } from '../../generated-definitions/ClaimUserRewardsReq.js'
 import { ClaimUsersRewardsRequest } from '../../generated-definitions/ClaimUsersRewardsRequest.js'
 import { ClaimUsersRewardsResponseArray } from '../../generated-definitions/ClaimUsersRewardsResponseArray.js'
@@ -61,6 +62,23 @@ export class PlayerRewardAdmin$ {
     const url = '/challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards/claim'
       .replace('{namespace}', this.namespace)
       .replace('{userId}', userId)
+    const resultPromise = this.axiosInstance.post(url, data, { params })
+
+    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, UserRewardArray, 'UserRewardArray')
+  }
+  /**
+   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
+   */
+  createRewardClaim_ByUserId_ByChallengeCode(
+    userId: string,
+    challengeCode: string,
+    data: ClaimUserRewardsByGoalCodeRequest
+  ): Promise<Response<UserRewardArray>> {
+    const params = {} as AxiosRequestConfig
+    const url = '/challenge/v1/admin/namespaces/{namespace}/users/{userId}/challenges/{challengeCode}/rewards/claim'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+      .replace('{challengeCode}', challengeCode)
     const resultPromise = this.axiosInstance.post(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, UserRewardArray, 'UserRewardArray')

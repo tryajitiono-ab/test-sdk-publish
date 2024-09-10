@@ -18,9 +18,12 @@ export function MaxActiveAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function MaxActiveAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   *  Reconcile Max Active Session.
-   */
   async function updateReconcile_ByName(name: string, data: RequestReconcileMaxActiveSession): Promise<AxiosResponse<unknown>> {
     const $ = new MaxActiveAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateReconcile_ByName(name, data)
@@ -43,9 +43,6 @@ export function MaxActiveAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   *  Get Member Active Session.
-   */
   async function getMemberactivesession_ByName_ByUserId(name: string, userId: string): Promise<AxiosResponse<MemberActiveSession>> {
     const $ = new MaxActiveAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMemberactivesession_ByName_ByUserId(name, userId)
@@ -54,7 +51,13 @@ export function MaxActiveAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     *  Reconcile Max Active Session.
+     */
     updateReconcile_ByName,
+    /**
+     *  Get Member Active Session.
+     */
     getMemberactivesession_ByName_ByUserId
   }
 }

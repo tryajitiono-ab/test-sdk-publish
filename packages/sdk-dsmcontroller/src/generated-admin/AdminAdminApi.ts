@@ -27,9 +27,12 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -42,9 +45,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [READ] Required scope: social This endpoint retrieves a worker configuration to control the worker in the DSMC.
-   */
   async function getWorkers(): Promise<AxiosResponse<WorkerConfig>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getWorkers()
@@ -52,9 +52,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [CREATE] Required scope: social This endpoint creates a worker configuration to control the worker in the DSMC.
-   */
   async function createWorker(data: WorkerConfigRequest): Promise<AxiosResponse<WorkerConfig>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createWorker(data)
@@ -62,9 +59,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [UPDATE] Required scope: social This endpoint updates a worker configuration to control the worker in the DSMC.
-   */
   async function updateWorker(data: WorkerConfigRequest): Promise<AxiosResponse<unknown>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateWorker(data)
@@ -72,9 +66,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required scope: social This endpoint deletes all dedicated servers from DB and terminates the DS pod.
-   */
   async function deleteServer(queryParams: { version: string | null }): Promise<AxiosResponse<unknown>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteServer(queryParams)
@@ -82,9 +73,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required scope: social This endpoint lists all of dedicated servers in a namespace managed by this service. Parameter Offset and Count is Required
-   */
   async function getServers(queryParams: {
     count: number
     offset: number
@@ -96,9 +84,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ] Required scope: social This endpoint lists all of sessions in a namespace managed by this service. Parameter Offset and Count is Required
-   */
   async function getSessions(queryParams: {
     count: number
     offset: number
@@ -111,9 +96,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required scope: social This endpoint counts all of dedicated servers in a namespace managed by this service.
-   */
   async function getServersCount(): Promise<AxiosResponse<CountServerResponse>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getServersCount()
@@ -121,9 +103,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required scope: social This endpoint lists all of local dedicated servers in a namespace managed by this service.
-   */
   async function getServersLocal(): Promise<AxiosResponse<ListServerResponse>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getServersLocal()
@@ -131,9 +110,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required scope: social This endpoint run ghost cleaner once.
-   */
   async function getWorkersGhost(): Promise<AxiosResponse<unknown>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getWorkersGhost()
@@ -141,9 +117,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ] Required scope: social This endpoint count all of sessions in a namespace managed by this service.
-   */
   async function getSessionsCount(queryParams?: { region?: string | null }): Promise<AxiosResponse<CountSessionResponse>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getSessionsCount(queryParams)
@@ -151,9 +124,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * ``` Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required scope: social This endpoint run zombie cleaner once use * as region name to target all regions ```
-   */
   async function createWorkerZombie(data: DeleteZombieRequest): Promise<AxiosResponse<unknown>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createWorkerZombie(data)
@@ -161,9 +131,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * ``` Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required scope: social This endpoint manually adds buffer for selected namespace and deployment x Job will contain y num of allocs. Region can be filled with comma-separated values. use * as region name to deploy to all region specified in the deployment&#39;s region list if JobPriority set to 0, we will use 80 as default value for job priority OverrideVersion will be used as override version for the new allocations. If OverrideVersion is empty, will use version in the deployment. ```
-   */
   async function createManualBufferAdd(data: AddBufferRequest): Promise<AxiosResponse<AddBufferResponse>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createManualBufferAdd(data)
@@ -171,9 +138,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required scope: social This endpoint deletes a specified dedicated server from DB and terminates the DS pod.
-   */
   async function deleteServer_ByPodName(podName: string): Promise<AxiosResponse<unknown>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteServer_ByPodName(podName)
@@ -181,9 +145,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required scope: social This endpoint queries a specified dedicated server from DB.
-   */
   async function getServer_ByPodName(podName: string): Promise<AxiosResponse<ServerDetailsResponse>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getServer_ByPodName(podName)
@@ -191,9 +152,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required scope: social This endpoint deletes a specified local dedicated server from DB. Note that DSM has no ability to shutdown local DS.
-   */
   async function deleteServerLocal_ByName(name: string): Promise<AxiosResponse<unknown>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteServerLocal_ByName(name)
@@ -201,9 +159,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE] Required scope: social This endpoint deletes a specified session and its corresponding match result from DB.
-   */
   async function deleteSession_BySessionId(sessionID: string): Promise<AxiosResponse<unknown>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteSession_BySessionId(sessionID)
@@ -211,9 +166,6 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required scope: social This endpoint counts all of dedicated servers in a region managed by this service.
-   */
   async function getServersCountDetailed(queryParams?: { region?: string | null }): Promise<AxiosResponse<DetailedCountServerResponse>> {
     const $ = new AdminAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getServersCountDetailed(queryParams)
@@ -222,22 +174,73 @@ export function AdminAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [READ] Required scope: social This endpoint retrieves a worker configuration to control the worker in the DSMC.
+     */
     getWorkers,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [CREATE] Required scope: social This endpoint creates a worker configuration to control the worker in the DSMC.
+     */
     createWorker,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [UPDATE] Required scope: social This endpoint updates a worker configuration to control the worker in the DSMC.
+     */
     updateWorker,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required scope: social This endpoint deletes all dedicated servers from DB and terminates the DS pod.
+     */
     deleteServer,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required scope: social This endpoint lists all of dedicated servers in a namespace managed by this service. Parameter Offset and Count is Required
+     */
     getServers,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ] Required scope: social This endpoint lists all of sessions in a namespace managed by this service. Parameter Offset and Count is Required
+     */
     getSessions,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required scope: social This endpoint counts all of dedicated servers in a namespace managed by this service.
+     */
     getServersCount,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required scope: social This endpoint lists all of local dedicated servers in a namespace managed by this service.
+     */
     getServersLocal,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required scope: social This endpoint run ghost cleaner once.
+     */
     getWorkersGhost,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ] Required scope: social This endpoint count all of sessions in a namespace managed by this service.
+     */
     getSessionsCount,
+    /**
+     * ``` Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required scope: social This endpoint run zombie cleaner once use * as region name to target all regions ```
+     */
     createWorkerZombie,
+    /**
+     * ``` Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE] Required scope: social This endpoint manually adds buffer for selected namespace and deployment x Job will contain y num of allocs. Region can be filled with comma-separated values. use * as region name to deploy to all region specified in the deployment&#39;s region list if JobPriority set to 0, we will use 80 as default value for job priority OverrideVersion will be used as override version for the new allocations. If OverrideVersion is empty, will use version in the deployment. ```
+     */
     createManualBufferAdd,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required scope: social This endpoint deletes a specified dedicated server from DB and terminates the DS pod.
+     */
     deleteServer_ByPodName,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required scope: social This endpoint queries a specified dedicated server from DB.
+     */
     getServer_ByPodName,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE] Required scope: social This endpoint deletes a specified local dedicated server from DB. Note that DSM has no ability to shutdown local DS.
+     */
     deleteServerLocal_ByName,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE] Required scope: social This endpoint deletes a specified session and its corresponding match result from DB.
+     */
     deleteSession_BySessionId,
+    /**
+     * Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ] Required scope: social This endpoint counts all of dedicated servers in a region managed by this service.
+     */
     getServersCountDetailed
   }
 }

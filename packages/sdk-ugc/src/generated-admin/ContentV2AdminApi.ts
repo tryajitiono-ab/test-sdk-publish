@@ -36,9 +36,12 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -51,9 +54,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * For advance tag filtering supports &amp; as AND operator and | as OR operator and parentheses ( ) for priority. e.g: *tags=red* *tags=red&amp;animal* *tags=red|animal* *tags=red&amp;animal|wild* *tags=red&amp;(animal|wild)* The precedence of logical operator is AND &gt; OR, so if no parentheses, AND logical operator will be executed first. Allowed character for operand: alphanumeric, underscore _ and dash - Allowed character for operator: &amp; | ( ) **Please note that value of tags query param should be URL encoded**
-   */
   async function getContents_v2(queryParams?: {
     isOfficial?: boolean | null
     limit?: number
@@ -70,9 +70,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Maximum contentId per request 100
-   */
   async function fetchContentBulk_v2(data: AdminGetContentBulkRequest): Promise<AxiosResponse<ContentDownloadResponseV2Array>> {
     const $ = new ContentV2Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.fetchContentBulk_v2(data)
@@ -80,9 +77,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get content by content ID
-   */
   async function getContent_ByContentId_v2(contentId: string): Promise<AxiosResponse<ContentDownloadResponseV2>> {
     const $ = new ContentV2Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getContent_ByContentId_v2(contentId)
@@ -90,9 +84,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get user cotent
-   */
   async function getContents_ByUserId_v2(
     userId: string,
     queryParams?: { limit?: number; offset?: number; sortBy?: string | null }
@@ -103,9 +94,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Maximum sharecodes per request 100
-   */
   async function fetchContentSharecodeBulk_v2(
     data: GetContentBulkByShareCodesRequest
   ): Promise<AxiosResponse<ContentDownloadResponseV2Array>> {
@@ -115,9 +103,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * List content specific to a channel
-   */
   async function getContents_ByChannelId_v2(
     channelId: string,
     queryParams?: { limit?: number; name?: string | null; offset?: number; sortBy?: string | null }
@@ -128,9 +113,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Create official content
-   */
   async function createContent_ByChannelId_v2(
     channelId: string,
     data: AdminContentRequestV2
@@ -141,9 +123,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Content&#39;s payload versions created when UGC is created or updated with &lt;code&gt;updateContentFile&lt;/code&gt; set to true. Only list up to 10 latest versions.
-   */
   async function getVersions_ByContentId_v2(contentId: string): Promise<AxiosResponse<ListContentVersionsResponse>> {
     const $ = new ContentV2Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getVersions_ByContentId_v2(contentId)
@@ -151,9 +130,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get content by share code
-   */
   async function getContentSharecode_ByShareCode_v2(shareCode: string): Promise<AxiosResponse<ContentDownloadResponseV2>> {
     const $ = new ContentV2Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getContentSharecode_ByShareCode_v2(shareCode)
@@ -161,9 +137,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This endpoint used to request upload URL from content&#39;s screenshot. If *contentType* is not specified, it will use *fileExtension* value. Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png. Maximum description length: 1024
-   */
   async function createScreenshot_ByContentId_v2(
     contentId: string,
     data: CreateScreenshotRequest
@@ -174,9 +147,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Maximum description length: 1024
-   */
   async function updateScreenshot_ByContentId_v2(
     contentId: string,
     data: UpdateScreenshotRequest
@@ -187,9 +157,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Hide/Unhide user&#39;s generated contents
-   */
   async function updateHide_ByUserId_ByContentId_v2(
     userId: string,
     contentId: string,
@@ -201,9 +168,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete existing official content
-   */
   async function deleteContent_ByChannelId_ByContentId_v2(channelId: string, contentId: string): Promise<AxiosResponse<unknown>> {
     const $ = new ContentV2Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteContent_ByChannelId_ByContentId_v2(channelId, contentId)
@@ -211,9 +175,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update existing official content
-   */
   async function patchContent_ByChannelId_ByContentId_v2(
     channelId: string,
     contentId: string,
@@ -225,9 +186,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Rollback content&#39;s payload to specified version
-   */
   async function updateRollback_ByContentId_ByVersionId_v2(
     contentId: string,
     versionId: string
@@ -249,9 +207,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete screenshot from a content
-   */
   async function deleteScreenshot_ByContentId_ByScreenshotId_v2(contentId: string, screenshotId: string): Promise<AxiosResponse<unknown>> {
     const $ = new ContentV2Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteScreenshot_ByContentId_ByScreenshotId_v2(contentId, screenshotId)
@@ -259,9 +214,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Generate official content upload URL
-   */
   async function patchUploadUrl_ByChannelId_ByContentId_v2(
     channelId: string,
     contentId: string,
@@ -273,9 +225,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This endpoint should be used after calling generate official content upload url endpoint to commit the changes
-   */
   async function patchFileLocation_ByChannelId_ByContentId_v2(
     channelId: string,
     contentId: string,
@@ -287,9 +236,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete user content by content ID
-   */
   async function deleteContent_ByUserId_ByChannelId_ByContentId_v2(
     userId: string,
     channelId: string,
@@ -301,9 +247,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update existing user content
-   */
   async function patchContent_ByUserId_ByChannelId_ByContentId_v2(
     userId: string,
     channelId: string,
@@ -316,9 +259,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * generate user content upload URL
-   */
   async function patchUploadUrl_ByUserId_ByChannelId_ByContentId_v2(
     userId: string,
     channelId: string,
@@ -331,9 +271,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete content by share code
-   */
   async function deleteContentSharecode_ByUserId_ByChannelId_ByShareCode_v2(
     userId: string,
     channelId: string,
@@ -345,9 +282,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This endpoint should be used after calling generate user content upload url endpoint to commit the changes
-   */
   async function patchFileLocation_ByUserId_ByChannelId_ByContentId_v2(
     userId: string,
     channelId: string,
@@ -360,9 +294,6 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * *shareCode* format should follows: &#34;Max length: 7 &#34;Available characters: abcdefhkpqrstuxyz
-   */
   async function updateContentS3Sharecode_ByUserId_ByChannelId_ByShareCode_v2(
     userId: string,
     channelId: string,
@@ -376,30 +307,103 @@ export function ContentV2AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * For advance tag filtering supports &amp; as AND operator and | as OR operator and parentheses ( ) for priority. e.g: *tags=red* *tags=red&amp;animal* *tags=red|animal* *tags=red&amp;animal|wild* *tags=red&amp;(animal|wild)* The precedence of logical operator is AND &gt; OR, so if no parentheses, AND logical operator will be executed first. Allowed character for operand: alphanumeric, underscore _ and dash - Allowed character for operator: &amp; | ( ) **Please note that value of tags query param should be URL encoded**
+     */
     getContents_v2,
+    /**
+     * Maximum contentId per request 100
+     */
     fetchContentBulk_v2,
+    /**
+     * Get content by content ID
+     */
     getContent_ByContentId_v2,
+    /**
+     * Get user cotent
+     */
     getContents_ByUserId_v2,
+    /**
+     * Maximum sharecodes per request 100
+     */
     fetchContentSharecodeBulk_v2,
+    /**
+     * List content specific to a channel
+     */
     getContents_ByChannelId_v2,
+    /**
+     * Create official content
+     */
     createContent_ByChannelId_v2,
+    /**
+     * Content&#39;s payload versions created when UGC is created or updated with &lt;code&gt;updateContentFile&lt;/code&gt; set to true. Only list up to 10 latest versions.
+     */
     getVersions_ByContentId_v2,
+    /**
+     * Get content by share code
+     */
     getContentSharecode_ByShareCode_v2,
+    /**
+     * This endpoint used to request upload URL from content&#39;s screenshot. If *contentType* is not specified, it will use *fileExtension* value. Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png. Maximum description length: 1024
+     */
     createScreenshot_ByContentId_v2,
+    /**
+     * Maximum description length: 1024
+     */
     updateScreenshot_ByContentId_v2,
+    /**
+     * Hide/Unhide user&#39;s generated contents
+     */
     updateHide_ByUserId_ByContentId_v2,
+    /**
+     * Delete existing official content
+     */
     deleteContent_ByChannelId_ByContentId_v2,
+    /**
+     * Update existing official content
+     */
     patchContent_ByChannelId_ByContentId_v2,
+    /**
+     * Rollback content&#39;s payload to specified version
+     */
     updateRollback_ByContentId_ByVersionId_v2,
+
     createCopy_ByChannelId_ByContentId_v2,
+    /**
+     * Delete screenshot from a content
+     */
     deleteScreenshot_ByContentId_ByScreenshotId_v2,
+    /**
+     * Generate official content upload URL
+     */
     patchUploadUrl_ByChannelId_ByContentId_v2,
+    /**
+     * This endpoint should be used after calling generate official content upload url endpoint to commit the changes
+     */
     patchFileLocation_ByChannelId_ByContentId_v2,
+    /**
+     * Delete user content by content ID
+     */
     deleteContent_ByUserId_ByChannelId_ByContentId_v2,
+    /**
+     * Update existing user content
+     */
     patchContent_ByUserId_ByChannelId_ByContentId_v2,
+    /**
+     * generate user content upload URL
+     */
     patchUploadUrl_ByUserId_ByChannelId_ByContentId_v2,
+    /**
+     * Delete content by share code
+     */
     deleteContentSharecode_ByUserId_ByChannelId_ByShareCode_v2,
+    /**
+     * This endpoint should be used after calling generate user content upload url endpoint to commit the changes
+     */
     patchFileLocation_ByUserId_ByChannelId_ByContentId_v2,
+    /**
+     * *shareCode* format should follows: &#34;Max length: 7 &#34;Available characters: abcdefhkpqrstuxyz
+     */
     updateContentS3Sharecode_ByUserId_ByChannelId_ByShareCode_v2
   }
 }

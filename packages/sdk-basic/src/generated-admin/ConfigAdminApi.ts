@@ -19,9 +19,12 @@ export function ConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function ConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Create a config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createConfig(data: ConfigCreate): Promise<AxiosResponse<ConfigInfo>> {
     const $ = new ConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createConfig(data)
@@ -44,9 +44,6 @@ export function ConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete a config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function deleteConfig_ByConfigKey(configKey: string): Promise<AxiosResponse<unknown>> {
     const $ = new ConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteConfig_ByConfigKey(configKey)
@@ -54,9 +51,6 @@ export function ConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get a config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getConfig_ByConfigKey(configKey: string): Promise<AxiosResponse<ConfigInfo>> {
     const $ = new ConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getConfig_ByConfigKey(configKey)
@@ -64,9 +58,6 @@ export function ConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update a config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function patchConfig_ByConfigKey(configKey: string, data: ConfigUpdate): Promise<AxiosResponse<ConfigInfo>> {
     const $ = new ConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchConfig_ByConfigKey(configKey, data)
@@ -74,9 +65,6 @@ export function ConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get a publisher config.&lt;br&gt;It will return a publisher namespace config of the given namespace and key.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getPublisherConfig_ByConfigKey(configKey: string): Promise<AxiosResponse<ConfigInfo>> {
     const $ = new ConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPublisherConfig_ByConfigKey(configKey)
@@ -85,10 +73,25 @@ export function ConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Create a config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created config&lt;/li&gt;&lt;/ul&gt;
+     */
     createConfig,
+    /**
+     * Delete a config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created config&lt;/li&gt;&lt;/ul&gt;
+     */
     deleteConfig_ByConfigKey,
+    /**
+     * Get a config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: config&lt;/li&gt;&lt;/ul&gt;
+     */
     getConfig_ByConfigKey,
+    /**
+     * Update a config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created config&lt;/li&gt;&lt;/ul&gt;
+     */
     patchConfig_ByConfigKey,
+    /**
+     * Get a publisher config.&lt;br&gt;It will return a publisher namespace config of the given namespace and key.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: config&lt;/li&gt;&lt;/ul&gt;
+     */
     getPublisherConfig_ByConfigKey
   }
 }

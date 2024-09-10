@@ -18,9 +18,12 @@ export function EventApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,10 +36,6 @@ export function EventApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt; and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getNamespace_ByNamespace(queryParams: {
     endDate: string | null
     pageSize: number
@@ -49,10 +48,6 @@ export function EventApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [CREATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function createNamespace_ByNamespace(data: Event): Promise<AxiosResponse<unknown>> {
     const $ = new Event$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createNamespace_ByNamespace(data)
@@ -60,10 +55,6 @@ export function EventApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt; and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getUser_ByUserId(
     userId: string,
     queryParams: { endDate: string | null; pageSize: number; startDate: string | null; offset?: number }
@@ -74,10 +65,6 @@ export function EventApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt; and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getEventId_ByEventId(
     eventId: number,
     queryParams: { endDate: string | null; pageSize: number; startDate: string | null; offset?: number }
@@ -88,10 +75,6 @@ export function EventApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getEventType_ByEventType(
     eventType: number,
     queryParams: { endDate: string | null; pageSize: number; startDate: string | null; offset?: number }
@@ -102,10 +85,6 @@ export function EventApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt; and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getEventId_ByUserId_ByEventId(
     userId: string,
     eventId: number,
@@ -117,10 +96,6 @@ export function EventApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getEventType_ByUserId_ByEventType(
     userId: string,
     eventType: number,
@@ -132,10 +107,6 @@ export function EventApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getEventId_ByEventType_ByEventId(
     eventType: number,
     eventId: number,
@@ -147,10 +118,6 @@ export function EventApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
-   */
   async function getEventId_ByUserId_ByEventType_ByEventId(
     userId: string,
     eventType: number,
@@ -164,14 +131,50 @@ export function EventApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt; and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getNamespace_ByNamespace,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [CREATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     createNamespace_ByNamespace,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt; and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getUser_ByUserId,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt; and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getEventId_ByEventId,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getEventType_ByEventType,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt; and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getEventId_ByUserId_ByEventId,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getEventType_ByUserId_ByEventType,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getEventId_ByEventType_ByEventId,
+    /**
+     * @deprecated
+     * Required permission &lt;code&gt;NAMESPACE:{namespace}:EVENT [UPDATE]&lt;/code&gt;and scope &lt;code&gt;analytics&lt;/code&gt;
+     */
     getEventId_ByUserId_ByEventType_ByEventId
   }
 }

@@ -4,8 +4,9 @@
  * and restrictions contact your company contract manager.
  */
 
-import { AxiosInstance } from 'axios'
+import { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { AxiosConfig, CoreConfig, Interceptor, SdkConstructorParam, SdkSetConfigParam, TokenConfig } from './Types'
+import { ApiUtils } from './utils/ApiUtils'
 import { Network } from './utils/Network'
 import { MakeRequired } from './utils/Type'
 
@@ -44,8 +45,12 @@ export class AccelByteSDK {
         }
       }
     }
-    this.axiosInstance = Network.create({ baseURL: coreConfig.baseURL, ...this.axiosConfig.request })
+    this.axiosInstance = this.createAxiosInstance()
     this.token = {}
+  }
+
+  private createAxiosInstance() {
+    return Network.create({ baseURL: this.coreConfig.baseURL, ...this.axiosConfig.request })
   }
 
   assembly() {
@@ -91,6 +96,7 @@ export class AccelByteSDK {
     }
 
     this.axiosConfig.interceptors = this.axiosConfig.interceptors.filter(filterCallback)
+    this.axiosInstance = this.createAxiosInstance()
     return this
   }
 
@@ -103,6 +109,7 @@ export class AccelByteSDK {
       ...this.axiosConfig,
       ...axiosConfig
     }
+    this.axiosInstance = this.createAxiosInstance()
 
     return this
   }
@@ -112,6 +119,12 @@ export class AccelByteSDK {
       ...this.token,
       ...token
     }
+    const configOverride = { headers: { Authorization: this.token.accessToken ? `Bearer ${this.token.accessToken}` : '' } }
+    this.axiosConfig = {
+      ...this.axiosConfig,
+      request: ApiUtils.mergeAxiosConfigs(this.axiosInstance.defaults as AxiosRequestConfig, configOverride)
+    }
+    this.axiosInstance = this.createAxiosInstance()
   }
 
   removeToken() {

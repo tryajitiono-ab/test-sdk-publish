@@ -23,9 +23,12 @@ export function AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -38,9 +41,6 @@ export function AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Sends notification to all connected users in a namespace.
-   */
   async function createNotificationFreeform(data: FreeFormNotificationRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createNotificationFreeform(data)
@@ -48,9 +48,6 @@ export function AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sends notification to all connected users in a namespace with predefined template. &lt;br&gt;In the request body, specify which template slug (template identifier) to use and the template language. &lt;br&gt;NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content. Template need to be published before it can be use to send notifications
-   */
   async function createNotificationTemplated(data: NotificationWithTemplateRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createNotificationTemplated(data)
@@ -58,9 +55,6 @@ export function AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get all templates in a namespace
-   */
   async function getNotificationTemplates(): Promise<AxiosResponse<TemplateResponseArray>> {
     const $ = new Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getNotificationTemplates()
@@ -68,9 +62,6 @@ export function AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Create new notification template. Include handlebars {{key}} for replaceable contexts. The the key inside handlebars will be the key to be replaced when sending notification. Already existing template with the same slug and language can not be created. &lt;br&gt;Check model description for detailed input restrictions.
-   */
   async function createNotificationTemplate(data: CreateTemplateRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createNotificationTemplate(data)
@@ -78,9 +69,6 @@ export function AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete localization template
-   */
   async function deleteNotificationTemplate_ByTemplateSlug(templateSlug: string): Promise<AxiosResponse<unknown>> {
     const $ = new Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteNotificationTemplate_ByTemplateSlug(templateSlug)
@@ -88,9 +76,6 @@ export function AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get all templates in a namespace
-   */
   async function getNotificationTemplate_ByTemplateSlug(
     templateSlug: string,
     queryParams?: { after?: string | null; before?: string | null; limit?: number }
@@ -101,9 +86,6 @@ export function AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete all template in a slug
-   */
   async function deleteLanguageNotification_ByTemplateSlug_ByTemplateLanguage(
     templateSlug: string,
     templateLanguage: string
@@ -114,9 +96,6 @@ export function AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get a template localization
-   */
   async function getLanguageNotification_ByTemplateSlug_ByTemplateLanguage(
     templateSlug: string,
     templateLanguage: string
@@ -127,9 +106,6 @@ export function AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Modify draft template
-   */
   async function updateLanguageNotification_ByTemplateSlug_ByTemplateLanguage(
     templateSlug: string,
     templateLanguage: string,
@@ -141,9 +117,6 @@ export function AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Publish notification template draft. Empty draft can not be published.
-   */
   async function createPublishNotification_ByTemplateSlug_ByTemplateLanguage(
     templateSlug: string,
     templateLanguage: string
@@ -155,15 +128,45 @@ export function AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Sends notification to all connected users in a namespace.
+     */
     createNotificationFreeform,
+    /**
+     * Sends notification to all connected users in a namespace with predefined template. &lt;br&gt;In the request body, specify which template slug (template identifier) to use and the template language. &lt;br&gt;NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content. Template need to be published before it can be use to send notifications
+     */
     createNotificationTemplated,
+    /**
+     * Get all templates in a namespace
+     */
     getNotificationTemplates,
+    /**
+     * Create new notification template. Include handlebars {{key}} for replaceable contexts. The the key inside handlebars will be the key to be replaced when sending notification. Already existing template with the same slug and language can not be created. &lt;br&gt;Check model description for detailed input restrictions.
+     */
     createNotificationTemplate,
+    /**
+     * Delete localization template
+     */
     deleteNotificationTemplate_ByTemplateSlug,
+    /**
+     * Get all templates in a namespace
+     */
     getNotificationTemplate_ByTemplateSlug,
+    /**
+     * Delete all template in a slug
+     */
     deleteLanguageNotification_ByTemplateSlug_ByTemplateLanguage,
+    /**
+     * Get a template localization
+     */
     getLanguageNotification_ByTemplateSlug_ByTemplateLanguage,
+    /**
+     * Modify draft template
+     */
     updateLanguageNotification_ByTemplateSlug_ByTemplateLanguage,
+    /**
+     * Publish notification template draft. Empty draft can not be published.
+     */
     createPublishNotification_ByTemplateSlug_ByTemplateLanguage
   }
 }

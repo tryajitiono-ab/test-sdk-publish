@@ -10,6 +10,7 @@
 // @ts-ignore -> ts-expect-error TS6133
 import { AccelByteSDK, ApiUtils, Network, SdkSetConfigParam } from '@accelbyte/sdk'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { AppleIapConfigVersionInfo } from '../generated-definitions/AppleIapConfigVersionInfo.js'
 import { AppleIapReceipt } from '../generated-definitions/AppleIapReceipt.js'
 import { AppleIapRequest } from '../generated-definitions/AppleIapRequest.js'
 import { EpicGamesReconcileRequest } from '../generated-definitions/EpicGamesReconcileRequest.js'
@@ -32,9 +33,12 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -47,9 +51,6 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get iap item mapping.
-   */
   async function getIapItemMapping(queryParams?: {
     platform?: 'APPLE' | 'EPICGAMES' | 'GOOGLE' | 'OCULUS' | 'PLAYSTATION' | 'STADIA' | 'STEAM' | 'TWITCH' | 'XBOX'
   }): Promise<AxiosResponse<IapItemMappingInfo>> {
@@ -59,9 +60,13 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sync my game twitch drops entitlements.
-   */
+  async function getIapAppleConfigVersion(): Promise<AxiosResponse<AppleIapConfigVersionInfo>> {
+    const $ = new Iap$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.getIapAppleConfigVersion()
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
   async function updateUserMeIapTwitchSync(data: TwitchSyncRequest): Promise<AxiosResponse<TwitchSyncResultArray>> {
     const $ = new Iap$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateUserMeIapTwitchSync(data)
@@ -69,9 +74,6 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Synchronize with entitlements in PSN Store.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: result of synchronization&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateIapPsnSync_ByUserId(
     userId: string,
     data: PlayStationReconcileRequest
@@ -82,9 +84,6 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sync Xbox inventory&#39;s items.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateIapXblSync_ByUserId(userId: string, data: XblReconcileRequest): Promise<AxiosResponse<XblReconcileResultArray>> {
     const $ = new Iap$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateIapXblSync_ByUserId(userId, data)
@@ -92,9 +91,6 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sync steam inventory&#39;s items.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateIapSteamSync_ByUserId(userId: string, data: SteamSyncRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Iap$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateIapSteamSync_ByUserId(userId, data)
@@ -102,9 +98,6 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sync Oculus entitlements.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateIapOculuSync_ByUserId(userId: string): Promise<AxiosResponse<OculusReconcileResultArray>> {
     const $ = new Iap$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateIapOculuSync_ByUserId(userId)
@@ -112,9 +105,6 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sync twitch drops entitlements.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateIapTwitchSync_ByUserId(userId: string, data: TwitchSyncRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Iap$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateIapTwitchSync_ByUserId(userId, data)
@@ -122,9 +112,6 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Verify apple iap receipt and fulfill item. don&#39;t support subscriptionOther detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateIapAppleReceipt_ByUserId(userId: string, data: AppleIapReceipt): Promise<AxiosResponse<unknown>> {
     const $ = new Iap$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateIapAppleReceipt_ByUserId(userId, data)
@@ -132,9 +119,6 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sync epic games inventory&#39;s items.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateIapEpicgameSync_ByUserId(
     userId: string,
     data: EpicGamesReconcileRequest
@@ -145,9 +129,6 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Verify google iap receipt and fulfill item.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateIapGoogleReceipt_ByUserId(
     userId: string,
     data: GoogleIapReceipt
@@ -158,9 +139,6 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Verify apple iap transaction and fulfill item, support subscriptionOther detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateIapAppleReceipt_ByUserId_v2(userId: string, data: AppleIapRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Iap$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateIapAppleReceipt_ByUserId_v2(userId, data)
@@ -168,9 +146,6 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Synchronize with entitlements in PSN Store with multiple service labels.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: result of synchronization&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateIapPsnSyncMultiServiceLabel_ByUserId(
     userId: string,
     data: PlayStationMultiServiceLabelsReconcileRequest
@@ -182,17 +157,57 @@ export function IapApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get iap item mapping.
+     */
     getIapItemMapping,
+    /**
+     * Get apple config version.
+     */
+    getIapAppleConfigVersion,
+    /**
+     * Sync my game twitch drops entitlements.
+     */
     updateUserMeIapTwitchSync,
+    /**
+     * Synchronize with entitlements in PSN Store.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: result of synchronization&lt;/li&gt;&lt;/ul&gt;
+     */
     updateIapPsnSync_ByUserId,
+    /**
+     * Sync Xbox inventory&#39;s items.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     updateIapXblSync_ByUserId,
+    /**
+     * Sync steam inventory&#39;s items.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     updateIapSteamSync_ByUserId,
+    /**
+     * Sync Oculus entitlements.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     updateIapOculuSync_ByUserId,
+    /**
+     * Sync twitch drops entitlements.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     updateIapTwitchSync_ByUserId,
+    /**
+     * Verify apple iap receipt and fulfill item. don&#39;t support subscriptionOther detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     updateIapAppleReceipt_ByUserId,
+    /**
+     * Sync epic games inventory&#39;s items.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     updateIapEpicgameSync_ByUserId,
+    /**
+     * Verify google iap receipt and fulfill item.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     updateIapGoogleReceipt_ByUserId,
+    /**
+     * Verify apple iap transaction and fulfill item, support subscriptionOther detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: &lt;/li&gt;&lt;/ul&gt;
+     */
     updateIapAppleReceipt_ByUserId_v2,
+    /**
+     * Synchronize with entitlements in PSN Store with multiple service labels.Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: result of synchronization&lt;/li&gt;&lt;/ul&gt;
+     */
     updateIapPsnSyncMultiServiceLabel_ByUserId
   }
 }

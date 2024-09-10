@@ -23,9 +23,12 @@ export function KeyGroupAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -38,9 +41,6 @@ export function KeyGroupAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Query key groups, if name is presented, it&#39;s fuzzy match.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: slice of key group&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getKeygroups(queryParams?: {
     limit?: number
     name?: string | null
@@ -53,9 +53,6 @@ export function KeyGroupAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Create key group.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created key group&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createKeygroup(data: KeyGroupCreate): Promise<AxiosResponse<KeyGroupInfo>> {
     const $ = new KeyGroupAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createKeygroup(data)
@@ -63,10 +60,6 @@ export function KeyGroupAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Get key group.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: key group info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getKeygroupsByBoothName(queryParams: { boothName: string | null }): Promise<AxiosResponse<KeyGroupInfo>> {
     const $ = new KeyGroupAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getKeygroupsByBoothName(queryParams)
@@ -74,9 +67,6 @@ export function KeyGroupAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get key group.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: key group info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getKeygroup_ByKeyGroupId(keyGroupId: string): Promise<AxiosResponse<KeyGroupInfo>> {
     const $ = new KeyGroupAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getKeygroup_ByKeyGroupId(keyGroupId)
@@ -84,9 +74,6 @@ export function KeyGroupAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update key group.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated key group&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateKeygroup_ByKeyGroupId(keyGroupId: string, data: KeyGroupUpdate): Promise<AxiosResponse<KeyGroupInfo>> {
     const $ = new KeyGroupAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateKeygroup_ByKeyGroupId(keyGroupId, data)
@@ -94,9 +81,6 @@ export function KeyGroupAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to list keys of a key group.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: keys&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getKeys_ByKeyGroupId(
     keyGroupId: string,
     queryParams?: { limit?: number; offset?: number; status?: 'ACQUIRED' | 'ACTIVE' }
@@ -107,9 +91,6 @@ export function KeyGroupAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This API is used to upload keys with csv format to a key group.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: item data&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createKey_ByKeyGroupId(keyGroupId: string, data: { file?: File }): Promise<AxiosResponse<BulkOperationResult>> {
     const $ = new KeyGroupAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createKey_ByKeyGroupId(keyGroupId, data)
@@ -117,9 +98,6 @@ export function KeyGroupAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get key group dynamic.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: key group info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getDynamic_ByKeyGroupId(keyGroupId: string): Promise<AxiosResponse<KeyGroupDynamicInfo>> {
     const $ = new KeyGroupAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getDynamic_ByKeyGroupId(keyGroupId)
@@ -128,13 +106,38 @@ export function KeyGroupAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Query key groups, if name is presented, it&#39;s fuzzy match.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: slice of key group&lt;/li&gt;&lt;/ul&gt;
+     */
     getKeygroups,
+    /**
+     * Create key group.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: created key group&lt;/li&gt;&lt;/ul&gt;
+     */
     createKeygroup,
+    /**
+     * @deprecated
+     * Get key group.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: key group info&lt;/li&gt;&lt;/ul&gt;
+     */
     getKeygroupsByBoothName,
+    /**
+     * Get key group.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: key group info&lt;/li&gt;&lt;/ul&gt;
+     */
     getKeygroup_ByKeyGroupId,
+    /**
+     * Update key group.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: updated key group&lt;/li&gt;&lt;/ul&gt;
+     */
     updateKeygroup_ByKeyGroupId,
+    /**
+     * This API is used to list keys of a key group.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: keys&lt;/li&gt;&lt;/ul&gt;
+     */
     getKeys_ByKeyGroupId,
+    /**
+     * This API is used to upload keys with csv format to a key group.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: item data&lt;/li&gt;&lt;/ul&gt;
+     */
     createKey_ByKeyGroupId,
+    /**
+     * Get key group dynamic.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: key group info&lt;/li&gt;&lt;/ul&gt;
+     */
     getDynamic_ByKeyGroupId
   }
 }

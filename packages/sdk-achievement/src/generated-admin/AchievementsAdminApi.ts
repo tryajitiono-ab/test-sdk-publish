@@ -22,9 +22,12 @@ export function AchievementsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function AchievementsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     }
   }
 
-  /**
-   * &lt;p&gt;Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt;
-   */
   async function getAchievements(queryParams?: {
     global?: boolean | null
     limit?: number
@@ -62,9 +62,6 @@ export function AchievementsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [CREATE]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt; Other detail info: - achievementCode: Human readable unique code to indentify the achievement. Must be lowercase and maximum length is 32 - incremental: If the achievement is not incremental, it does not need to store a goal value of a stat to be unlocked. If the achievement is incremental, it needs to set statCode and goalValue - statCode: Selected statistic code, from the published statistic code event.Human readable unique code to indentify the achievement. Must be lowercase and maximum length is 32 - goalValue: Statistics value required to unlock the achievement. - defaultLanguage: localozation for achievement name and achievement description. Allowed format : en, en-US - slug: specify the image they want to use, it can be file image name or something to define the achievement icon.
-   */
   async function createAchievement(data: AchievementRequest): Promise<AxiosResponse<AchievementResponse>> {
     const $ = new AchievementsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createAchievement(data)
@@ -72,9 +69,6 @@ export function AchievementsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * &lt;p&gt; Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]&lt;/code&gt;&lt;/p&gt;&lt;p&gt;Required Scope: &lt;code&gt;social&lt;/code&gt;&lt;p&gt;Successful response header will contain: &lt;code&gt;content-disposition: attachment; filename=achievement_&lt;namespace&gt;_config.json&lt;/code&gt;&lt;/p&gt;
-   */
   async function getAchievementsExport(queryParams?: { tags?: string[] }): Promise<AxiosResponse<unknown>> {
     const $ = new AchievementsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getAchievementsExport(queryParams)
@@ -82,9 +76,6 @@ export function AchievementsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   *  Required permission ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE] Required Scope: social Import achievement configuration from file. It will merge with existing achievement. Available import strategy: - leaveOut: if achievement with same key exist, the existing will be used and imported one will be ignored (default) - replace: if achievement with same key exist, the imported achievement will be used and existing one will be removed
-   */
   async function updateAchievementImport(data: { file?: File; strategy?: string | null }): Promise<AxiosResponse<ImportConfigResponse>> {
     const $ = new AchievementsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateAchievementImport(data)
@@ -92,9 +83,6 @@ export function AchievementsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt;
-   */
   async function deleteAchievement_ByAchievementCode(achievementCode: string): Promise<AxiosResponse<unknown>> {
     const $ = new AchievementsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteAchievement_ByAchievementCode(achievementCode)
@@ -102,9 +90,6 @@ export function AchievementsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt;
-   */
   async function getAchievement_ByAchievementCode(achievementCode: string): Promise<AxiosResponse<AchievementResponse>> {
     const $ = new AchievementsAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getAchievement_ByAchievementCode(achievementCode)
@@ -112,9 +97,6 @@ export function AchievementsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt;
-   */
   async function patchAchievement_ByAchievementCode(
     achievementCode: string,
     data: AchievementOrderUpdateRequest
@@ -125,9 +107,6 @@ export function AchievementsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt;
-   */
   async function updateAchievement_ByAchievementCode(
     achievementCode: string,
     data: AchievementUpdateRequest
@@ -139,13 +118,37 @@ export function AchievementsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
   }
 
   return {
+    /**
+     * &lt;p&gt;Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt;
+     */
     getAchievements,
+    /**
+     * &lt;p&gt;Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [CREATE]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt; Other detail info: - achievementCode: Human readable unique code to indentify the achievement. Must be lowercase and maximum length is 32 - incremental: If the achievement is not incremental, it does not need to store a goal value of a stat to be unlocked. If the achievement is incremental, it needs to set statCode and goalValue - statCode: Selected statistic code, from the published statistic code event.Human readable unique code to indentify the achievement. Must be lowercase and maximum length is 32 - goalValue: Statistics value required to unlock the achievement. - defaultLanguage: localozation for achievement name and achievement description. Allowed format : en, en-US - slug: specify the image they want to use, it can be file image name or something to define the achievement icon.
+     */
     createAchievement,
+    /**
+     * &lt;p&gt; Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]&lt;/code&gt;&lt;/p&gt;&lt;p&gt;Required Scope: &lt;code&gt;social&lt;/code&gt;&lt;p&gt;Successful response header will contain: &lt;code&gt;content-disposition: attachment; filename=achievement_&lt;namespace&gt;_config.json&lt;/code&gt;&lt;/p&gt;
+     */
     getAchievementsExport,
+    /**
+     *  Required permission ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE] Required Scope: social Import achievement configuration from file. It will merge with existing achievement. Available import strategy: - leaveOut: if achievement with same key exist, the existing will be used and imported one will be ignored (default) - replace: if achievement with same key exist, the imported achievement will be used and existing one will be removed
+     */
     updateAchievementImport,
+    /**
+     * &lt;p&gt;Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt;
+     */
     deleteAchievement_ByAchievementCode,
+    /**
+     * &lt;p&gt;Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt;
+     */
     getAchievement_ByAchievementCode,
+    /**
+     * &lt;p&gt;Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt;
+     */
     patchAchievement_ByAchievementCode,
+    /**
+     * &lt;p&gt;Required permission &lt;code&gt;ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]&lt;/code&gt; and scope &lt;code&gt;social&lt;/code&gt;&lt;/p&gt;
+     */
     updateAchievement_ByAchievementCode
   }
 }

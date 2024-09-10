@@ -20,9 +20,12 @@ export function LeaderboardDataApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function LeaderboardDataApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     }
   }
 
-  /**
-   * &lt;p&gt;Get rankings in current week leaderboard.&lt;/p&gt;
-   */
   async function getWeek_ByLeaderboardCode(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number; previousVersion?: number }
@@ -48,9 +48,6 @@ export function LeaderboardDataApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get rankings in current month leaderboard.&lt;/p&gt;
-   */
   async function getMonth_ByLeaderboardCode(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number; previousVersion?: number }
@@ -61,9 +58,6 @@ export function LeaderboardDataApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get rankings in today leaderboard.&lt;/p&gt;
-   */
   async function getToday_ByLeaderboardCode(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number; previousVersion?: number }
@@ -74,9 +68,6 @@ export function LeaderboardDataApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get rankings in current season leaderboard.&lt;/p&gt;
-   */
   async function getSeason_ByLeaderboardCode(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number; previousVersion?: number }
@@ -87,9 +78,6 @@ export function LeaderboardDataApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Get rankings in an all time leaderboard.
-   */
   async function getAlltime_ByLeaderboardCode(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number }
@@ -100,9 +88,6 @@ export function LeaderboardDataApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Get rankings in an all time leaderboard.
-   */
   async function getAlltime_ByLeaderboardCode_v2(
     leaderboardCode: string,
     queryParams?: { limit?: number; offset?: number }
@@ -113,9 +98,6 @@ export function LeaderboardDataApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Get signed url in an all time leaderboard that archived. NOTE: This will be a bulk endpoint to get sign url
-   */
   async function getArchived_ByLeaderboardCode(
     leaderboardCode: string,
     queryParams: { leaderboardCodes: string | null; slug?: string | null }
@@ -126,9 +108,6 @@ export function LeaderboardDataApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Delete user ranking Remove entry with provided userId from leaderboard. If leaderboard with given leaderboard code not found, it will return http status not found (404). If the leaderboard is found and no entry found in it, it will still return success (204)
-   */
   async function deleteUser_ByLeaderboardCode_ByUserId(leaderboardCode: string, userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new LeaderboardData$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteUser_ByLeaderboardCode_ByUserId(leaderboardCode, userId)
@@ -136,9 +115,6 @@ export function LeaderboardDataApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Get user ranking in leaderboard&lt;/p&gt;
-   */
   async function getUser_ByLeaderboardCode_ByUserId(
     leaderboardCode: string,
     userId: string,
@@ -151,14 +127,41 @@ export function LeaderboardDataApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   }
 
   return {
+    /**
+     * &lt;p&gt;Get rankings in current week leaderboard.&lt;/p&gt;
+     */
     getWeek_ByLeaderboardCode,
+    /**
+     * &lt;p&gt;Get rankings in current month leaderboard.&lt;/p&gt;
+     */
     getMonth_ByLeaderboardCode,
+    /**
+     * &lt;p&gt;Get rankings in today leaderboard.&lt;/p&gt;
+     */
     getToday_ByLeaderboardCode,
+    /**
+     * &lt;p&gt;Get rankings in current season leaderboard.&lt;/p&gt;
+     */
     getSeason_ByLeaderboardCode,
+    /**
+     * Get rankings in an all time leaderboard.
+     */
     getAlltime_ByLeaderboardCode,
+    /**
+     * Get rankings in an all time leaderboard.
+     */
     getAlltime_ByLeaderboardCode_v2,
+    /**
+     * Get signed url in an all time leaderboard that archived. NOTE: This will be a bulk endpoint to get sign url
+     */
     getArchived_ByLeaderboardCode,
+    /**
+     * Delete user ranking Remove entry with provided userId from leaderboard. If leaderboard with given leaderboard code not found, it will return http status not found (404). If the leaderboard is found and no entry found in it, it will still return success (204)
+     */
     deleteUser_ByLeaderboardCode_ByUserId,
+    /**
+     * &lt;p&gt;Get user ranking in leaderboard&lt;/p&gt;
+     */
     getUser_ByLeaderboardCode_ByUserId
   }
 }

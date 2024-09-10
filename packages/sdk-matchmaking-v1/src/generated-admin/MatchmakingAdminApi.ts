@@ -26,9 +26,12 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -41,9 +44,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     }
   }
 
-  /**
-   * Export channels configuration to file. Action Code: 510114
-   */
   async function getChannelsExport(): Promise<AxiosResponse<unknown>> {
     const $ = new MatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getChannelsExport()
@@ -51,9 +51,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Import channels configuration from file. It will merge with existing channels. Available import strategy: - leaveOut: if channel with same key exist, the existing will be used and imported one will be ignored (default) - replace: if channel with same key exist, the imported channel will be used and existing one will be removed Action Code: 510113
-   */
   async function updateChannelImport(data: { file?: File; strategy?: string | null }): Promise<AxiosResponse<ImportConfigResponse>> {
     const $ = new MatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateChannelImport(data)
@@ -61,9 +58,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get all parties queueing in all channels.
-   */
   async function getChannelsAllParties(): Promise<AxiosResponse<unknown>> {
     const $ = new MatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getChannelsAllParties()
@@ -71,9 +65,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Reads single channel based on namespace and channel name Action Code: 510112
-   */
   async function getChannel_ByChannelName(channelName: string): Promise<AxiosResponse<ChannelV1>> {
     const $ = new MatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getChannel_ByChannelName(channelName)
@@ -81,9 +72,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Update channel based on namespace and channel name Action Code: 510111
-   */
   async function patchChannel_ByChannelName(channelName: string, data: UpdateChannelRequest): Promise<AxiosResponse<unknown>> {
     const $ = new MatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchChannel_ByChannelName(channelName, data)
@@ -91,10 +79,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * @deprecated
-   *  &lt;p&gt; &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt; &lt;/br&gt; &lt;strong&gt;Endpoint migration guide&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;b&gt;Substitute endpoint: &lt;i&gt;/sessionbrowser/admin/namespaces/{namespace}/sessions/history/search [GET]&lt;/i&gt;&lt;/b&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/p&gt; Search sessions.
-   */
   async function getSessionsHistorySearch(queryParams: {
     limit: number
     offset: number
@@ -110,10 +94,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * &lt;p&gt; &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt; &lt;/br&gt; &lt;strong&gt;Endpoint migration guide&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;b&gt;Substitute endpoint: &lt;i&gt;/sessionbrowser/admin/namespaces/{namespace}/sessions/history/search [GET]&lt;/i&gt;&lt;/b&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/p&gt; Search sessions. Optimize the query by differentiating query with filter namespace only and filter with namespace &amp; other filter (partyID, userID, matchID). Query with filter namespace only will not group whole session data while query with filter namespace &amp; other filter will include session data.
-   */
   async function getSessionsHistorySearch_v2(queryParams: {
     limit: number
     offset: number
@@ -129,9 +109,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Bulk get sessions.
-   */
   async function getChannelsAllSessionsBulk(queryParams?: { matchIDs?: string | null }): Promise<AxiosResponse<MatchmakingResultArray>> {
     const $ = new MatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getChannelsAllSessionsBulk(queryParams)
@@ -139,9 +116,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   *  Get a channel&#39;s stat data (mean, stddev, min, max) according to the stats collected from statistics service. &#39;
-   */
   async function getStats_ByChannelName(channelName: string): Promise<AxiosResponse<StatResumeResponse>> {
     const $ = new MatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getStats_ByChannelName(channelName)
@@ -149,9 +123,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get all parties queueing in a channel.
-   */
   async function getParties_ByChannelName(channelName: string): Promise<AxiosResponse<MatchingPartyArray>> {
     const $ = new MatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getParties_ByChannelName(channelName)
@@ -159,9 +130,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Get all sessions in a channel. if party_id value empty/null, field will not show in response body.
-   */
   async function getSessions_ByChannelName(channelName: string): Promise<AxiosResponse<MatchmakingResultArray>> {
     const $ = new MatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getSessions_ByChannelName(channelName)
@@ -169,10 +137,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * @deprecated
-   *  &lt;p&gt; &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt; &lt;/br&gt; &lt;strong&gt;Endpoint migration guide&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;b&gt;Substitute endpoint: &lt;i&gt;/sessionbrowser/admin/namespaces/{namespace}/sessions/{sessionId}/history/detailed [GET]&lt;/i&gt;&lt;/b&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/p&gt; Get session history detailed. if party_id value empty/null, field will not show in response body.
-   */
   async function getHistoryDetailed_ByMatchId(matchID: string): Promise<AxiosResponse<GetSessionHistoryDetailedResponseItemArray>> {
     const $ = new MatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getHistoryDetailed_ByMatchId(matchID)
@@ -180,9 +144,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Delete a session in a channel.
-   */
   async function deleteSession_ByChannelName_ByMatchId(channelName: string, matchID: string): Promise<AxiosResponse<unknown>> {
     const $ = new MatchmakingAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteSession_ByChannelName_ByMatchId(channelName, matchID)
@@ -190,9 +151,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Add user into the session in a channel.
-   */
   async function createSession_ByChannelName_ByMatchId(
     channelName: string,
     matchID: string,
@@ -204,9 +162,6 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Delete a user from a session in the channel.
-   */
   async function deleteUser_ByChannelName_ByMatchId_ByUserId(
     channelName: string,
     matchID: string,
@@ -219,20 +174,68 @@ export function MatchmakingAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   }
 
   return {
+    /**
+     * Export channels configuration to file. Action Code: 510114
+     */
     getChannelsExport,
+    /**
+     * Import channels configuration from file. It will merge with existing channels. Available import strategy: - leaveOut: if channel with same key exist, the existing will be used and imported one will be ignored (default) - replace: if channel with same key exist, the imported channel will be used and existing one will be removed Action Code: 510113
+     */
     updateChannelImport,
+    /**
+     * Get all parties queueing in all channels.
+     */
     getChannelsAllParties,
+    /**
+     * Reads single channel based on namespace and channel name Action Code: 510112
+     */
     getChannel_ByChannelName,
+    /**
+     * Update channel based on namespace and channel name Action Code: 510111
+     */
     patchChannel_ByChannelName,
+    /**
+     * @deprecated
+     *  &lt;p&gt; &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt; &lt;/br&gt; &lt;strong&gt;Endpoint migration guide&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;b&gt;Substitute endpoint: &lt;i&gt;/sessionbrowser/admin/namespaces/{namespace}/sessions/history/search [GET]&lt;/i&gt;&lt;/b&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/p&gt; Search sessions.
+     */
     getSessionsHistorySearch,
+    /**
+     * @deprecated
+     * &lt;p&gt; &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt; &lt;/br&gt; &lt;strong&gt;Endpoint migration guide&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;b&gt;Substitute endpoint: &lt;i&gt;/sessionbrowser/admin/namespaces/{namespace}/sessions/history/search [GET]&lt;/i&gt;&lt;/b&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/p&gt; Search sessions. Optimize the query by differentiating query with filter namespace only and filter with namespace &amp; other filter (partyID, userID, matchID). Query with filter namespace only will not group whole session data while query with filter namespace &amp; other filter will include session data.
+     */
     getSessionsHistorySearch_v2,
+    /**
+     * Bulk get sessions.
+     */
     getChannelsAllSessionsBulk,
+    /**
+     *  Get a channel&#39;s stat data (mean, stddev, min, max) according to the stats collected from statistics service. &#39;
+     */
     getStats_ByChannelName,
+    /**
+     * Get all parties queueing in a channel.
+     */
     getParties_ByChannelName,
+    /**
+     * Get all sessions in a channel. if party_id value empty/null, field will not show in response body.
+     */
     getSessions_ByChannelName,
+    /**
+     * @deprecated
+     *  &lt;p&gt; &lt;h2&gt;The endpoint is going to be deprecated&lt;/h2&gt; &lt;/br&gt; &lt;strong&gt;Endpoint migration guide&lt;/strong&gt; &lt;ul&gt; &lt;li&gt;&lt;b&gt;Substitute endpoint: &lt;i&gt;/sessionbrowser/admin/namespaces/{namespace}/sessions/{sessionId}/history/detailed [GET]&lt;/i&gt;&lt;/b&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/p&gt; Get session history detailed. if party_id value empty/null, field will not show in response body.
+     */
     getHistoryDetailed_ByMatchId,
+    /**
+     * Delete a session in a channel.
+     */
     deleteSession_ByChannelName_ByMatchId,
+    /**
+     * Add user into the session in a channel.
+     */
     createSession_ByChannelName_ByMatchId,
+    /**
+     * Delete a user from a session in the channel.
+     */
     deleteUser_ByChannelName_ByMatchId_ByUserId
   }
 }

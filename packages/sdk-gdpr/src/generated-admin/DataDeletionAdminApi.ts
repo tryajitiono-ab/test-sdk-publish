@@ -19,9 +19,12 @@ export function DataDeletionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function DataDeletionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     }
   }
 
-  /**
-   * Retrieve all user&#39;s account deletion requests in specified date Scope: account
-   */
   async function getDeletions(queryParams?: {
     after?: string | null
     before?: string | null
@@ -50,9 +50,6 @@ export function DataDeletionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * Cancel user&#39;s account deletion request Scope: account
-   */
   async function deleteDeletion_ByUserId(userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new DataDeletionAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteDeletion_ByUserId(userId)
@@ -60,9 +57,6 @@ export function DataDeletionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * Retrieve specific user&#39;s account deletion request Scope: account
-   */
   async function getDeletions_ByUserId(userId: string): Promise<AxiosResponse<DeletionData>> {
     const $ = new DataDeletionAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getDeletions_ByUserId(userId)
@@ -70,9 +64,6 @@ export function DataDeletionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * Submit user&#39;s account deletion request. Scope: account
-   */
   async function createDeletion_ByUserId(userId: string): Promise<AxiosResponse<RequestDeleteResponse>> {
     const $ = new DataDeletionAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createDeletion_ByUserId(userId)
@@ -81,9 +72,21 @@ export function DataDeletionAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
   }
 
   return {
+    /**
+     * Retrieve all user&#39;s account deletion requests in specified date Scope: account
+     */
     getDeletions,
+    /**
+     * Cancel user&#39;s account deletion request Scope: account
+     */
     deleteDeletion_ByUserId,
+    /**
+     * Retrieve specific user&#39;s account deletion request Scope: account
+     */
     getDeletions_ByUserId,
+    /**
+     * Submit user&#39;s account deletion request. Scope: account
+     */
     createDeletion_ByUserId
   }
 }

@@ -19,9 +19,12 @@ export function MatchFunctionsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function MatchFunctionsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * List existing match functions.
-   */
   async function getMatchFunctions(queryParams?: { limit?: number; offset?: number }): Promise<AxiosResponse<ListMatchFunctionsResponse>> {
     const $ = new MatchFunctions$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getMatchFunctions(queryParams)
@@ -44,9 +44,6 @@ export function MatchFunctionsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Creates a new matchmaking function.
-   */
   async function createMatchFunction(data: MatchFunctionRequest): Promise<AxiosResponse<unknown>> {
     const $ = new MatchFunctions$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createMatchFunction(data)
@@ -54,9 +51,6 @@ export function MatchFunctionsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Deletes an existing match function.
-   */
   async function deleteMatchFunction_ByName(name: string): Promise<AxiosResponse<unknown>> {
     const $ = new MatchFunctions$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteMatchFunction_ByName(name)
@@ -64,9 +58,6 @@ export function MatchFunctionsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update existing matchmaking function.
-   */
   async function updateMatchFunction_ByName(name: string, data: MatchFunctionRequest): Promise<AxiosResponse<MatchFunctionConfig>> {
     const $ = new MatchFunctions$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateMatchFunction_ByName(name, data)
@@ -75,9 +66,21 @@ export function MatchFunctionsApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * List existing match functions.
+     */
     getMatchFunctions,
+    /**
+     * Creates a new matchmaking function.
+     */
     createMatchFunction,
+    /**
+     * Deletes an existing match function.
+     */
     deleteMatchFunction_ByName,
+    /**
+     * Update existing matchmaking function.
+     */
     updateMatchFunction_ByName
   }
 }

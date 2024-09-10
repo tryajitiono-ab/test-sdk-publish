@@ -18,9 +18,12 @@ export function PaymentCallbackConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetCo
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function PaymentCallbackConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetCo
     }
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Get payment callback configuration.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Payment callback config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getPaymentConfigCallback(): Promise<AxiosResponse<PaymentCallbackConfigInfo>> {
     const $ = new PaymentCallbackConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPaymentConfigCallback()
@@ -43,9 +43,6 @@ export function PaymentCallbackConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetCo
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Update payment callback configuration.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Payment callback config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updatePaymentConfigCallback(data: PaymentCallbackConfigUpdate): Promise<AxiosResponse<PaymentCallbackConfigInfo>> {
     const $ = new PaymentCallbackConfigAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updatePaymentConfigCallback(data)
@@ -54,7 +51,13 @@ export function PaymentCallbackConfigAdminApi(sdk: AccelByteSDK, args?: SdkSetCo
   }
 
   return {
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Get payment callback configuration.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Payment callback config&lt;/li&gt;&lt;/ul&gt;
+     */
     getPaymentConfigCallback,
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Update payment callback configuration.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Payment callback config&lt;/li&gt;&lt;/ul&gt;
+     */
     updatePaymentConfigCallback
   }
 }

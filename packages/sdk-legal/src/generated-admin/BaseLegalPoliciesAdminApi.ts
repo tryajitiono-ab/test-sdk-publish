@@ -24,9 +24,12 @@ export function BaseLegalPoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -39,9 +42,6 @@ export function BaseLegalPoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     }
   }
 
-  /**
-   * Retrieve all supported policy types.
-   */
   async function getPolicyTypes(queryParams: { limit: number; offset?: number }): Promise<AxiosResponse<RetrievePolicyTypeResponseArray>> {
     const $ = new BaseLegalPoliciesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPolicyTypes(queryParams)
@@ -49,9 +49,6 @@ export function BaseLegalPoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Retrieve all base policies.
-   */
   async function getBasePolicies(queryParams?: { visibleOnly?: boolean | null }): Promise<AxiosResponse<RetrieveBasePolicyResponseArray>> {
     const $ = new BaseLegalPoliciesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBasePolicies(queryParams)
@@ -59,9 +56,6 @@ export function BaseLegalPoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Create a legal policy.
-   */
   async function createBasePolicy(data: CreateBasePolicyRequest): Promise<AxiosResponse<CreateBasePolicyResponse>> {
     const $ = new BaseLegalPoliciesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createBasePolicy(data)
@@ -69,9 +63,6 @@ export function BaseLegalPoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Retrieve a base policy.
-   */
   async function getBasePolicy_ByBasePolicyId(basePolicyId: string): Promise<AxiosResponse<RetrieveBasePolicyResponse>> {
     const $ = new BaseLegalPoliciesAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBasePolicy_ByBasePolicyId(basePolicyId)
@@ -79,9 +70,6 @@ export function BaseLegalPoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Update an existing base policy.
-   */
   async function patchBasePolicy_ByBasePolicyId(
     basePolicyId: string,
     data: UpdateBasePolicyRequest
@@ -92,9 +80,6 @@ export function BaseLegalPoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Retrieve a Base Legal Policy based on a Particular Country.
-   */
   async function getCountry_ByBasePolicyId_ByCountryCode(
     basePolicyId: string,
     countryCode: string
@@ -106,11 +91,29 @@ export function BaseLegalPoliciesAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
   }
 
   return {
+    /**
+     * Retrieve all supported policy types.
+     */
     getPolicyTypes,
+    /**
+     * Retrieve all base policies.
+     */
     getBasePolicies,
+    /**
+     * Create a legal policy.
+     */
     createBasePolicy,
+    /**
+     * Retrieve a base policy.
+     */
     getBasePolicy_ByBasePolicyId,
+    /**
+     * Update an existing base policy.
+     */
     patchBasePolicy_ByBasePolicyId,
+    /**
+     * Retrieve a Base Legal Policy based on a Particular Country.
+     */
     getCountry_ByBasePolicyId_ByCountryCode
   }
 }

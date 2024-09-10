@@ -20,9 +20,12 @@ export function ModerationRuleAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function ModerationRuleAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     }
   }
 
-  /**
-   * This endpoint create moderation rule. Supported Category: - UGC - USER - CHAT - EXTENSION Supported Action (GOING TO DEPRECATE, for replacement please use &#34;actions&#34;): * HideContent Supported Actions: * **hideContent**: Hide the content * **banAccount**: Ban the user account * **deleteChat**: Delete chat
-   */
   async function createRule(data: ModerationRuleRequest): Promise<AxiosResponse<unknown>> {
     const $ = new ModerationRuleAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createRule(data)
@@ -45,9 +45,6 @@ export function ModerationRuleAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * This endpoint get moderation rules.
-   */
   async function getRules(queryParams?: {
     category?: string | null
     extensionCategory?: string | null
@@ -60,9 +57,6 @@ export function ModerationRuleAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * This endpoint delete moderation rule.
-   */
   async function deleteRule_ByRuleId(ruleId: string): Promise<AxiosResponse<unknown>> {
     const $ = new ModerationRuleAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteRule_ByRuleId(ruleId)
@@ -70,9 +64,6 @@ export function ModerationRuleAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * This endpoint update moderation rule. Supported Category:- UGC - USER - CHAT - EXTENSION Supported Action (GOING TO DEPRECATE, for replacement please use &#34;actions&#34;): * HideContent Supported Actions: * **hideContent**: Hide the content * **banAccount**: Ban the user account * **deleteChat**: Delete chat
-   */
   async function updateRule_ByRuleId(ruleId: string, data: ModerationRuleRequest): Promise<AxiosResponse<ModerationRuleResponse>> {
     const $ = new ModerationRuleAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateRule_ByRuleId(ruleId, data)
@@ -80,9 +71,6 @@ export function ModerationRuleAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * This endpoint get moderation rule.
-   */
   async function getRule_ByRuleId(ruleId: string): Promise<AxiosResponse<ModerationRuleResponse>> {
     const $ = new ModerationRuleAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getRule_ByRuleId(ruleId)
@@ -90,9 +78,6 @@ export function ModerationRuleAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * This endpoint enable/disable moderation rule status.
-   */
   async function updateStatus_ByRuleId(ruleId: string, data: ModerationRuleActiveRequest): Promise<AxiosResponse<unknown>> {
     const $ = new ModerationRuleAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateStatus_ByRuleId(ruleId, data)
@@ -101,11 +86,29 @@ export function ModerationRuleAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   }
 
   return {
+    /**
+     * This endpoint create moderation rule. Supported Category: - UGC - USER - CHAT - EXTENSION Supported Action (GOING TO DEPRECATE, for replacement please use &#34;actions&#34;): * HideContent Supported Actions: * **hideContent**: Hide the content * **banAccount**: Ban the user account * **deleteChat**: Delete chat
+     */
     createRule,
+    /**
+     * This endpoint get moderation rules.
+     */
     getRules,
+    /**
+     * This endpoint delete moderation rule.
+     */
     deleteRule_ByRuleId,
+    /**
+     * This endpoint update moderation rule. Supported Category:- UGC - USER - CHAT - EXTENSION Supported Action (GOING TO DEPRECATE, for replacement please use &#34;actions&#34;): * HideContent Supported Actions: * **hideContent**: Hide the content * **banAccount**: Ban the user account * **deleteChat**: Delete chat
+     */
     updateRule_ByRuleId,
+    /**
+     * This endpoint get moderation rule.
+     */
     getRule_ByRuleId,
+    /**
+     * This endpoint enable/disable moderation rule status.
+     */
     updateStatus_ByRuleId
   }
 }

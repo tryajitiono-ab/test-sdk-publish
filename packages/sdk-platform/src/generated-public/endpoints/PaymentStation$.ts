@@ -9,6 +9,7 @@
 import { Response, Validate } from '@accelbyte/sdk'
 import { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { z } from 'zod'
+import { BinarySchema } from '../../generated-definitions/BinarySchema.js'
 import { Customization } from '../../generated-definitions/Customization.js'
 import { PaymentMethodArray } from '../../generated-definitions/PaymentMethodArray.js'
 import { PaymentOrderDetails } from '../../generated-definitions/PaymentOrderDetails.js'
@@ -50,12 +51,12 @@ export class PaymentStation$ {
   /**
    * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Get qrcode.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: QRCode image stream&lt;/li&gt;&lt;/ul&gt;
    */
-  getPaymentQrcode(queryParams: { code: string | null }): Promise<Response<unknown>> {
+  getPaymentQrcode(queryParams: { code: string | null }): Promise<Response<BinarySchema>> {
     const params = { ...queryParams } as AxiosRequestConfig
     const url = '/platform/public/namespaces/{namespace}/payment/qrcode'.replace('{namespace}', this.namespace)
     const resultPromise = this.axiosInstance.get(url, { params })
 
-    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
+    return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, BinarySchema, 'BinarySchema')
   }
   /**
    * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt;Get payment methods.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: Payment method list&lt;/li&gt;&lt;/ul&gt;

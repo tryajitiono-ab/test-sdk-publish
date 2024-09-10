@@ -27,9 +27,12 @@ export function FulfillmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -42,9 +45,6 @@ export function FulfillmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     }
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt; Query fulfillments in a namespace.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of fulfillment info:&lt;ul&gt;&lt;li&gt;storeId in items can be ignored&lt;/li&gt;&lt;li&gt;error in successList will always be null&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getFulfillments_v2(queryParams?: {
     endTime?: string | null
     limit?: number
@@ -60,9 +60,6 @@ export function FulfillmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Query fulfillment histories in a namespace.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: query fulfillment history&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getFulfillmentHistory(queryParams?: {
     limit?: number
     offset?: number
@@ -75,9 +72,6 @@ export function FulfillmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Fulfill item.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfillment result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createFulfillment_ByUserId(userId: string, data: FulfillmentRequest): Promise<AxiosResponse<FulfillmentResult>> {
     const $ = new FulfillmentAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createFulfillment_ByUserId(userId, data)
@@ -85,9 +79,6 @@ export function FulfillmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Redeem campaign code.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfillment result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createFulfillmentCode_ByUserId(userId: string, data: FulfillCodeRequest): Promise<AxiosResponse<FulfillmentResult>> {
     const $ = new FulfillmentAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createFulfillmentCode_ByUserId(userId, data)
@@ -95,9 +86,6 @@ export function FulfillmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; Fulfill rewards.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfillment result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createFulfillmentReward_ByUserId(userId: string, data: RewardsRequest): Promise<AxiosResponse<unknown>> {
     const $ = new FulfillmentAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createFulfillmentReward_ByUserId(userId, data)
@@ -105,9 +93,6 @@ export function FulfillmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Retrieve and check fulfillment items based on the provided request.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of fulfillment items&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createFulfillmentPreCheck_ByUserId(
     userId: string,
     data: PreCheckFulfillmentRequest
@@ -118,9 +103,6 @@ export function FulfillmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; Fulfill rewards.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfillment result&lt;/li&gt;&lt;li&gt;&lt;i&gt;rewards Item unsupported Type&lt;/i&gt;: SUBSCRIPTION&lt;/ul&gt;
-   */
   async function createFulfillmentReward_ByUserId_v2(userId: string, data: RewardsRequest): Promise<AxiosResponse<FulfillmentResult>> {
     const $ = new FulfillmentAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createFulfillmentReward_ByUserId_v2(userId, data)
@@ -128,9 +110,6 @@ export function FulfillmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt; Fulfill items by transactionId.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Request body&lt;/i&gt;: storeId, region, language, and entitlementCollectionId can be ignored.&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfillment v2 result, storeId field can be ignored.&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateFulfillment_ByUserId_ByTransactionId_v2(
     userId: string,
     transactionId: string,
@@ -142,9 +121,6 @@ export function FulfillmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt; Retry fulfill items by transactionId without sending the original payload.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfillment v2 result, storeId field can be ignored.&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateRetry_ByUserId_ByTransactionId_v2(
     userId: string,
     transactionId: string
@@ -155,9 +131,6 @@ export function FulfillmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt; Revoke items by transactionId.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revoke fulfillment v2 result, storeId field can be ignored.&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateRevoke_ByUserId_ByTransactionId_v2(
     userId: string,
     transactionId: string
@@ -169,15 +142,45 @@ export function FulfillmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   }
 
   return {
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt; Query fulfillments in a namespace.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of fulfillment info:&lt;ul&gt;&lt;li&gt;storeId in items can be ignored&lt;/li&gt;&lt;li&gt;error in successList will always be null&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
+     */
     getFulfillments_v2,
+    /**
+     * Query fulfillment histories in a namespace.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: query fulfillment history&lt;/li&gt;&lt;/ul&gt;
+     */
     getFulfillmentHistory,
+    /**
+     * Fulfill item.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfillment result&lt;/li&gt;&lt;/ul&gt;
+     */
     createFulfillment_ByUserId,
+    /**
+     * Redeem campaign code.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfillment result&lt;/li&gt;&lt;/ul&gt;
+     */
     createFulfillmentCode_ByUserId,
+    /**
+     * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; Fulfill rewards.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfillment result&lt;/li&gt;&lt;/ul&gt;
+     */
     createFulfillmentReward_ByUserId,
+    /**
+     * Retrieve and check fulfillment items based on the provided request.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: list of fulfillment items&lt;/li&gt;&lt;/ul&gt;
+     */
     createFulfillmentPreCheck_ByUserId,
+    /**
+     * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; Fulfill rewards.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfillment result&lt;/li&gt;&lt;li&gt;&lt;i&gt;rewards Item unsupported Type&lt;/i&gt;: SUBSCRIPTION&lt;/ul&gt;
+     */
     createFulfillmentReward_ByUserId_v2,
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt; Fulfill items by transactionId.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Request body&lt;/i&gt;: storeId, region, language, and entitlementCollectionId can be ignored.&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfillment v2 result, storeId field can be ignored.&lt;/li&gt;&lt;/ul&gt;
+     */
     updateFulfillment_ByUserId_ByTransactionId_v2,
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt; Retry fulfill items by transactionId without sending the original payload.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: fulfillment v2 result, storeId field can be ignored.&lt;/li&gt;&lt;/ul&gt;
+     */
     updateRetry_ByUserId_ByTransactionId_v2,
+    /**
+     * &lt;b&gt;[Not supported yet in AGS Shared Cloud]&lt;/b&gt; Revoke items by transactionId.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: revoke fulfillment v2 result, storeId field can be ignored.&lt;/li&gt;&lt;/ul&gt;
+     */
     updateRevoke_ByUserId_ByTransactionId_v2
   }
 }

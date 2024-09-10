@@ -18,9 +18,12 @@ export function AmsQoSAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function AmsQoSAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * ``` Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ] This endpoint lists all QoS services available in all regions. This endpoint is intended to be called by game client to find out all available regions. After getting a list of QoS on each region, game client is expected to ping each one with UDP connection as described below: 1. Make UDP connection to each QoS&#39;s IP:Port 2. Send string &#34;PING&#34; after connection established 3. Wait for string &#34;PONG&#34; response 4. Note the request-response latency for each QoS in each region The game then can use ping latency information to either: 1. Inform the player on these latencies and let player choose preferred region 2. Send the latency list to Matchmaking Service so that player can be matched with other players in nearby regions
-   */
   async function getQos(queryParams?: { status?: string | null }): Promise<AxiosResponse<QoSEndpointResponse>> {
     const $ = new AmsQoSAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getQos(queryParams)
@@ -43,9 +43,6 @@ export function AmsQoSAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * ``` Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE] This endpoint updates the registered QoS service&#39;s configurable configuration.
-   */
   async function patchQo_ByRegion(region: string, data: UpdateServerRequest): Promise<AxiosResponse<unknown>> {
     const $ = new AmsQoSAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.patchQo_ByRegion(region, data)
@@ -54,7 +51,13 @@ export function AmsQoSAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * ``` Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ] This endpoint lists all QoS services available in all regions. This endpoint is intended to be called by game client to find out all available regions. After getting a list of QoS on each region, game client is expected to ping each one with UDP connection as described below: 1. Make UDP connection to each QoS&#39;s IP:Port 2. Send string &#34;PING&#34; after connection established 3. Wait for string &#34;PONG&#34; response 4. Note the request-response latency for each QoS in each region The game then can use ping latency information to either: 1. Inform the player on these latencies and let player choose preferred region 2. Send the latency list to Matchmaking Service so that player can be matched with other players in nearby regions
+     */
     getQos,
+    /**
+     * ``` Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE] This endpoint updates the registered QoS service&#39;s configurable configuration.
+     */
     patchQo_ByRegion
   }
 }

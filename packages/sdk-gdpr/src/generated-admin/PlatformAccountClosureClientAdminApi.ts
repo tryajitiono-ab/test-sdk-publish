@@ -18,9 +18,12 @@ export function PlatformAccountClosureClientAdminApi(sdk: AccelByteSDK, args?: S
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function PlatformAccountClosureClientAdminApi(sdk: AccelByteSDK, args?: S
     }
   }
 
-  /**
-   * Delete platform account closure client.
-   */
   async function deleteClosureClient_ByPlatform(platform: string): Promise<AxiosResponse<unknown>> {
     const $ = new PlatformAccountClosureClientAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteClosureClient_ByPlatform(platform)
@@ -43,9 +43,6 @@ export function PlatformAccountClosureClientAdminApi(sdk: AccelByteSDK, args?: S
     return resp.response
   }
 
-  /**
-   * Get platform account closure config. Scope: account
-   */
   async function getClosureClient_ByPlatform(platform: string): Promise<AxiosResponse<PlatformAccountClosureClientResponse>> {
     const $ = new PlatformAccountClosureClientAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getClosureClient_ByPlatform(platform)
@@ -53,9 +50,6 @@ export function PlatformAccountClosureClientAdminApi(sdk: AccelByteSDK, args?: S
     return resp.response
   }
 
-  /**
-   * Update platform account closure client. Scope: account
-   */
   async function updateClosureClient_ByPlatform(
     platform: string,
     data: PlatformAccountClosureClientRequest
@@ -67,8 +61,17 @@ export function PlatformAccountClosureClientAdminApi(sdk: AccelByteSDK, args?: S
   }
 
   return {
+    /**
+     * Delete platform account closure client.
+     */
     deleteClosureClient_ByPlatform,
+    /**
+     * Get platform account closure config. Scope: account
+     */
     getClosureClient_ByPlatform,
+    /**
+     * Update platform account closure client. Scope: account
+     */
     updateClosureClient_ByPlatform
   }
 }

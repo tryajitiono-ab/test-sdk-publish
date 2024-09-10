@@ -1,4 +1,4 @@
-import { DecodeError, SdkConstructorParam } from '@accelbyte/sdk'
+import { createAuthInterceptor, DecodeError, SdkConstructorParam } from '@accelbyte/sdk'
 import axios from 'axios'
 
 export const BASE_SDK_CORE_CONFIG = {
@@ -12,16 +12,22 @@ export function createSdkConfig(coreConfig: SdkConstructorParam['coreConfig']): 
   return {
     coreConfig,
     axiosConfig: {
-      request: {
-        headers: {
-          'x-ags-namespace': coreConfig.namespace
-        }
-      }
+      interceptors: [
+        createAuthInterceptor({
+          clientId: BASE_SDK_CORE_CONFIG.clientId,
+          getRefreshToken: () => '',
+          onSessionExpired: () => {
+            console.log('expired')
+          }
+        })
+      ]
     }
   }
 }
 
 export function handleError(error: unknown, handler: (content: any) => void) {
+  console.error(error)
+
   if (axios.isAxiosError(error)) {
     return handler(error.response?.data)
   }

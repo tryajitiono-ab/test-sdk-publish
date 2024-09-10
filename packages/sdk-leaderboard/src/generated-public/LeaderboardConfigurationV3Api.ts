@@ -18,9 +18,12 @@ export function LeaderboardConfigurationV3Api(sdk: AccelByteSDK, args?: SdkSetCo
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function LeaderboardConfigurationV3Api(sdk: AccelByteSDK, args?: SdkSetCo
     }
   }
 
-  /**
-   * &lt;p&gt;This endpoint return all leaderboard configurations&lt;/p&gt;
-   */
   async function getLeaderboards_v3(queryParams?: {
     isDeleted?: boolean | null
     limit?: number
@@ -47,9 +47,6 @@ export function LeaderboardConfigurationV3Api(sdk: AccelByteSDK, args?: SdkSetCo
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;This endpoint returns a leaderboard configuration&lt;/p&gt;
-   */
   async function getLeaderboard_ByLeaderboardCode_v3(leaderboardCode: string): Promise<AxiosResponse<GetLeaderboardConfigPublicRespV3>> {
     const $ = new LeaderboardConfigurationV3$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getLeaderboard_ByLeaderboardCode_v3(leaderboardCode)
@@ -58,7 +55,13 @@ export function LeaderboardConfigurationV3Api(sdk: AccelByteSDK, args?: SdkSetCo
   }
 
   return {
+    /**
+     * &lt;p&gt;This endpoint return all leaderboard configurations&lt;/p&gt;
+     */
     getLeaderboards_v3,
+    /**
+     * &lt;p&gt;This endpoint returns a leaderboard configuration&lt;/p&gt;
+     */
     getLeaderboard_ByLeaderboardCode_v3
   }
 }

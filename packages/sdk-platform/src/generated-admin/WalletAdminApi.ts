@@ -33,9 +33,12 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -48,10 +51,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * @deprecated
-   * Query wallets.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: paginated wallets info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getWallets(queryParams?: {
     currencyCode?: string | null
     limit?: number
@@ -65,9 +64,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Debit different users&#39; wallets.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk credit result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createWalletDebit(data: BulkDebitRequest[]): Promise<AxiosResponse<BulkDebitResult>> {
     const $ = new WalletAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createWalletDebit(data)
@@ -75,9 +71,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Credit different users&#39; wallets.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk credit result&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createWalletCredit(data: BulkCreditRequest[]): Promise<AxiosResponse<BulkCreditResult>> {
     const $ = new WalletAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createWalletCredit(data)
@@ -85,10 +78,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * get a wallet by wallet id.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: wallet info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getWallet_ByWalletId(walletId: string): Promise<AxiosResponse<WalletInfo>> {
     const $ = new WalletAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getWallet_ByWalletId(walletId)
@@ -96,10 +85,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * get a user wallet.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: wallet info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getWallet_ByUserId_ByWalletId(userId: string, walletId: string): Promise<AxiosResponse<WalletInfo>> {
     const $ = new WalletAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getWallet_ByUserId_ByWalletId(userId, walletId)
@@ -107,9 +92,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get platform wallet config list.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: wallet info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getWalletConfig_ByPlatform(platform: string): Promise<AxiosResponse<PlatformWalletConfigInfo>> {
     const $ = new WalletAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getWalletConfig_ByPlatform(platform)
@@ -117,9 +99,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update platform wallet config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: platform wallet config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateWalletConfig_ByPlatform(
     platform: string,
     data: PlatformWalletConfigUpdate
@@ -130,10 +109,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Debit a user wallet.
-   */
   async function updateDebit_ByUserId_ByWalletId(userId: string, walletId: string, data: DebitRequest): Promise<AxiosResponse<WalletInfo>> {
     const $ = new WalletAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDebit_ByUserId_ByWalletId(userId, walletId, data)
@@ -141,9 +116,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Reset platform wallet config to default config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: platform wallet config&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateWalletConfigReset_ByPlatform(platform: string): Promise<AxiosResponse<PlatformWalletConfigInfo>> {
     const $ = new WalletAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateWalletConfigReset_ByPlatform(platform)
@@ -151,10 +123,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * enable a user wallet.
-   */
   async function updateEnable_ByUserId_ByWalletId(userId: string, walletId: string): Promise<AxiosResponse<unknown>> {
     const $ = new WalletAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateEnable_ByUserId_ByWalletId(userId, walletId)
@@ -162,10 +130,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * disable a user wallet.
-   */
   async function updateDisable_ByUserId_ByWalletId(userId: string, walletId: string): Promise<AxiosResponse<unknown>> {
     const $ = new WalletAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateDisable_ByUserId_ByWalletId(userId, walletId)
@@ -173,9 +137,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get user currency wallet summary.&lt;br&gt;Other detail info: &lt;ul&gt;(READ)&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: currency wallet summary&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getWalletsCurrenciesSummary_ByUserId(userId: string): Promise<AxiosResponse<CurrencyWalletArray>> {
     const $ = new WalletAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getWalletsCurrenciesSummary_ByUserId(userId)
@@ -183,10 +144,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; Check wallet by balance origin and currency code whether it&#39;s inactive.
-   */
   async function getCheck_ByUserId_ByCurrencyCode(
     userId: string,
     currencyCode: string,
@@ -200,9 +157,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Credit a user wallet by currency code and balance origin, if wallet not exists, it will create a new wallet.&lt;br&gt;Other detail info: &lt;ul&gt;(UPDATE)&lt;/li&gt;&lt;/ul&gt;
-   */
   async function updateCredit_ByUserId_ByCurrencyCode(
     userId: string,
     currencyCode: string,
@@ -214,9 +168,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Pay with user wallet by currency code and client platform.
-   */
   async function updatePayment_ByUserId_ByCurrencyCode(
     userId: string,
     currencyCode: string,
@@ -228,10 +179,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * List user wallet transactions ordered by create time desc.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: wallet transaction info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getTransactions_ByUserId_ByWalletId(
     userId: string,
     walletId: string,
@@ -243,9 +190,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Checks if the user has enough balance based on the provided criteria.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: boolean value indicating if the user has enough balance&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createBalanceCheck_ByUserId_ByCurrencyCode(
     userId: string,
     currencyCode: string,
@@ -257,9 +201,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Debit a user wallet by currency code, default is debit system wallet.
-   */
   async function updateDebitWallet_ByUserId_ByCurrencyCode(
     userId: string,
     currencyCode: string,
@@ -271,9 +212,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Pay with user wallet by currency code and client platform.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;/ul&gt;&lt;h2&gt;Restrictions for metadata&lt;/h2&gt; 1. Cannot use &lt;b&gt;&#34;.&#34;&lt;/b&gt; as the key name - &lt;pre&gt;{ &#34;data.2&#34;: &#34;value&#34; }&lt;/pre&gt; 2. Cannot use &lt;b&gt;&#34;$&#34;&lt;/b&gt; as the prefix in key names - &lt;pre&gt;{ &#34;$data&#34;: &#34;value&#34; }&lt;/pre&gt;
-   */
   async function updateDebitByWalletPlatform_ByUserId_ByCurrencyCode(
     userId: string,
     currencyCode: string,
@@ -285,9 +223,6 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * List user currency transactions ordered by create time desc.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: currency transaction info&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getTransactionsWallets_ByUserId_ByCurrencyCode(
     userId: string,
     currencyCode: string,
@@ -300,25 +235,93 @@ export function WalletAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * @deprecated
+     * Query wallets.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: paginated wallets info&lt;/li&gt;&lt;/ul&gt;
+     */
     getWallets,
+    /**
+     * Debit different users&#39; wallets.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk credit result&lt;/li&gt;&lt;/ul&gt;
+     */
     createWalletDebit,
+    /**
+     * Credit different users&#39; wallets.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: bulk credit result&lt;/li&gt;&lt;/ul&gt;
+     */
     createWalletCredit,
+    /**
+     * @deprecated
+     * get a wallet by wallet id.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: wallet info&lt;/li&gt;&lt;/ul&gt;
+     */
     getWallet_ByWalletId,
+    /**
+     * @deprecated
+     * get a user wallet.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: wallet info&lt;/li&gt;&lt;/ul&gt;
+     */
     getWallet_ByUserId_ByWalletId,
+    /**
+     * Get platform wallet config list.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: wallet info&lt;/li&gt;&lt;/ul&gt;
+     */
     getWalletConfig_ByPlatform,
+    /**
+     * Update platform wallet config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: platform wallet config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateWalletConfig_ByPlatform,
+    /**
+     * @deprecated
+     * Debit a user wallet.
+     */
     updateDebit_ByUserId_ByWalletId,
+    /**
+     * Reset platform wallet config to default config.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: platform wallet config&lt;/li&gt;&lt;/ul&gt;
+     */
     updateWalletConfigReset_ByPlatform,
+    /**
+     * @deprecated
+     * enable a user wallet.
+     */
     updateEnable_ByUserId_ByWalletId,
+    /**
+     * @deprecated
+     * disable a user wallet.
+     */
     updateDisable_ByUserId_ByWalletId,
+    /**
+     * Get user currency wallet summary.&lt;br&gt;Other detail info: &lt;ul&gt;(READ)&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: currency wallet summary&lt;/li&gt;&lt;/ul&gt;
+     */
     getWalletsCurrenciesSummary_ByUserId,
+    /**
+     * @deprecated
+     * &lt;b&gt;[SERVICE COMMUNICATION ONLY]&lt;/b&gt; Check wallet by balance origin and currency code whether it&#39;s inactive.
+     */
     getCheck_ByUserId_ByCurrencyCode,
+    /**
+     * Credit a user wallet by currency code and balance origin, if wallet not exists, it will create a new wallet.&lt;br&gt;Other detail info: &lt;ul&gt;(UPDATE)&lt;/li&gt;&lt;/ul&gt;
+     */
     updateCredit_ByUserId_ByCurrencyCode,
+    /**
+     * Pay with user wallet by currency code and client platform.
+     */
     updatePayment_ByUserId_ByCurrencyCode,
+    /**
+     * @deprecated
+     * List user wallet transactions ordered by create time desc.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: wallet transaction info&lt;/li&gt;&lt;/ul&gt;
+     */
     getTransactions_ByUserId_ByWalletId,
+    /**
+     * Checks if the user has enough balance based on the provided criteria.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: boolean value indicating if the user has enough balance&lt;/li&gt;&lt;/ul&gt;
+     */
     createBalanceCheck_ByUserId_ByCurrencyCode,
+    /**
+     * Debit a user wallet by currency code, default is debit system wallet.
+     */
     updateDebitWallet_ByUserId_ByCurrencyCode,
+    /**
+     * Pay with user wallet by currency code and client platform.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;/ul&gt;&lt;h2&gt;Restrictions for metadata&lt;/h2&gt; 1. Cannot use &lt;b&gt;&#34;.&#34;&lt;/b&gt; as the key name - &lt;pre&gt;{ &#34;data.2&#34;: &#34;value&#34; }&lt;/pre&gt; 2. Cannot use &lt;b&gt;&#34;$&#34;&lt;/b&gt; as the prefix in key names - &lt;pre&gt;{ &#34;$data&#34;: &#34;value&#34; }&lt;/pre&gt;
+     */
     updateDebitByWalletPlatform_ByUserId_ByCurrencyCode,
+    /**
+     * List user currency transactions ordered by create time desc.&lt;br&gt;Other detail info: &lt;ul&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: currency transaction info&lt;/li&gt;&lt;/ul&gt;
+     */
     getTransactionsWallets_ByUserId_ByCurrencyCode
   }
 }

@@ -17,9 +17,12 @@ export function ProfileUpdateStrategyApi(sdk: AccelByteSDK, args?: SdkSetConfigP
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function ProfileUpdateStrategyApi(sdk: AccelByteSDK, args?: SdkSetConfigP
     }
   }
 
-  /**
-   * This API is for public user to get profile update strategy by namespace and field. Note: If the config is not found, this API will return a config with unlimited.
-   */
   async function getProfileUpdateStrategies_v3(queryParams?: {
     field?: 'country' | 'display_name' | 'dob' | 'username'
   }): Promise<AxiosResponse<GetProfileUpdateStrategyConfigResponse>> {
@@ -45,6 +45,9 @@ export function ProfileUpdateStrategyApi(sdk: AccelByteSDK, args?: SdkSetConfigP
   }
 
   return {
+    /**
+     * This API is for public user to get profile update strategy by namespace and field. Note: If the config is not found, this API will return a config with unlimited.
+     */
     getProfileUpdateStrategies_v3
   }
 }

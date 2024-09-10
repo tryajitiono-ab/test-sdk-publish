@@ -10,6 +10,7 @@
     "build": "yarn build:js && yarn build:types",
     "build:js": "rollup -c rollup.config.mjs",
     "build:types": "tsc --project tsconfig.build.json --emitDeclarationOnly",
+    "test-and-build": "yarn test && yarn build",
     "test": "echo ''",
     "clean": "npx rimraf dist && npx rimraf node_modules"
   },

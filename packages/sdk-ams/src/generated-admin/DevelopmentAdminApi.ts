@@ -20,9 +20,12 @@ export function DevelopmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function DevelopmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     }
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-   */
   async function getDevelopmentServerConfigurations(queryParams?: {
     count?: number
     offset?: number
@@ -48,9 +48,6 @@ export function DevelopmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Configuration name can be up to 128 characters and must conform to ^[.a-zA-Z0-9_-]+$ Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
-   */
   async function createDevelopmentServerConfiguration(
     data: DevelopmentServerConfigurationCreateRequest
   ): Promise<AxiosResponse<DevelopmentServerConfigurationCreateResponse>> {
@@ -60,9 +57,6 @@ export function DevelopmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
-   */
   async function deleteDevelopmentServerConfiguration_ByDevelopmentServerConfigId(
     developmentServerConfigID: string
   ): Promise<AxiosResponse<unknown>> {
@@ -72,9 +66,6 @@ export function DevelopmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
     return resp.response
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-   */
   async function getDevelopmentServerConfiguration_ByDevelopmentServerConfigId(
     developmentServerConfigID: string
   ): Promise<AxiosResponse<DevelopmentServerConfigurationGetResponse>> {
@@ -85,9 +76,21 @@ export function DevelopmentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam)
   }
 
   return {
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+     */
     getDevelopmentServerConfigurations,
+    /**
+     * Configuration name can be up to 128 characters and must conform to ^[.a-zA-Z0-9_-]+$ Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
+     */
     createDevelopmentServerConfiguration,
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
+     */
     deleteDevelopmentServerConfiguration_ByDevelopmentServerConfigId,
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
+     */
     getDevelopmentServerConfiguration_ByDevelopmentServerConfigId
   }
 }

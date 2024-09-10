@@ -10,6 +10,7 @@
 // @ts-ignore -> ts-expect-error TS6133
 import { AccelByteSDK, ApiUtils, Network, SdkSetConfigParam } from '@accelbyte/sdk'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { ClaimUserRewardsByGoalCodeRequest } from '../generated-definitions/ClaimUserRewardsByGoalCodeRequest.js'
 import { ClaimUserRewardsReq } from '../generated-definitions/ClaimUserRewardsReq.js'
 import { ClaimUsersRewardsRequest } from '../generated-definitions/ClaimUsersRewardsRequest.js'
 import { ClaimUsersRewardsResponseArray } from '../generated-definitions/ClaimUsersRewardsResponseArray.js'
@@ -21,9 +22,12 @@ export function PlayerRewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -36,9 +40,6 @@ export function PlayerRewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     }
   }
 
-  /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createUserRewardClaim(data: ClaimUsersRewardsRequest[]): Promise<AxiosResponse<ClaimUsersRewardsResponseArray>> {
     const $ = new PlayerRewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createUserRewardClaim(data)
@@ -46,9 +47,6 @@ export function PlayerRewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]&lt;/li&gt;&lt;/ul&gt;
-   */
   async function getRewards_ByUserId(
     userId: string,
     queryParams?: { limit?: number; offset?: number; sortBy?: string | null; status?: 'CLAIMED' | 'UNCLAIMED' }
@@ -59,9 +57,6 @@ export function PlayerRewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
-  /**
-   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
-   */
   async function createRewardClaim_ByUserId(userId: string, data: ClaimUserRewardsReq): Promise<AxiosResponse<UserRewardArray>> {
     const $ = new PlayerRewardAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createRewardClaim_ByUserId(userId, data)
@@ -69,9 +64,33 @@ export function PlayerRewardAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam
     return resp.response
   }
 
+  async function createRewardClaim_ByUserId_ByChallengeCode(
+    userId: string,
+    challengeCode: string,
+    data: ClaimUserRewardsByGoalCodeRequest
+  ): Promise<AxiosResponse<UserRewardArray>> {
+    const $ = new PlayerRewardAdmin$(axiosInstance, namespace, useSchemaValidation)
+    const resp = await $.createRewardClaim_ByUserId_ByChallengeCode(userId, challengeCode, data)
+    if (resp.error) throw resp.error
+    return resp.response
+  }
+
   return {
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
+     */
     createUserRewardClaim,
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]&lt;/li&gt;&lt;/ul&gt;
+     */
     getRewards_ByUserId,
-    createRewardClaim_ByUserId
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
+     */
+    createRewardClaim_ByUserId,
+    /**
+     * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
+     */
+    createRewardClaim_ByUserId_ByChallengeCode
   }
 }

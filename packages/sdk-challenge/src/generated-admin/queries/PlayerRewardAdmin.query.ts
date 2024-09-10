@@ -13,6 +13,7 @@ import { AxiosError, AxiosResponse } from 'axios'
 import { useMutation, UseMutationOptions, UseMutationResult, useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query'
 import { PlayerRewardAdminApi } from '../PlayerRewardAdminApi.js'
 
+import { ClaimUserRewardsByGoalCodeRequest } from '../../generated-definitions/ClaimUserRewardsByGoalCodeRequest.js'
 import { ClaimUserRewardsReq } from '../../generated-definitions/ClaimUserRewardsReq.js'
 import { ClaimUsersRewardsRequest } from '../../generated-definitions/ClaimUsersRewardsRequest.js'
 import { ClaimUsersRewardsResponseArray } from '../../generated-definitions/ClaimUsersRewardsResponseArray.js'
@@ -22,7 +23,8 @@ import { UserRewardArray } from '../../generated-definitions/UserRewardArray.js'
 export enum Key_PlayerRewardAdmin {
   UserRewardClaim = 'Challenge.PlayerRewardAdmin.UserRewardClaim',
   Rewards_ByUserId = 'Challenge.PlayerRewardAdmin.Rewards_ByUserId',
-  RewardClaim_ByUserId = 'Challenge.PlayerRewardAdmin.RewardClaim_ByUserId'
+  RewardClaim_ByUserId = 'Challenge.PlayerRewardAdmin.RewardClaim_ByUserId',
+  RewardClaim_ByUserId_ByChallengeCode = 'Challenge.PlayerRewardAdmin.RewardClaim_ByUserId_ByChallengeCode'
 }
 
 /**
@@ -126,6 +128,51 @@ export const usePlayerRewardAdminApi_CreateRewardClaim_ByUserId = (
 
   return useMutation({
     mutationKey: [Key_PlayerRewardAdmin.RewardClaim_ByUserId],
+    mutationFn,
+    ...options
+  })
+}
+
+/**
+ * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]&lt;/li&gt;&lt;/ul&gt;
+ *
+ * #### Default Query Options
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_PlayerRewardAdmin.RewardClaim_ByUserId_ByChallengeCode, input]
+ * }
+ * ```
+ */
+export const usePlayerRewardAdminApi_CreateRewardClaim_ByUserId_ByChallengeCode = (
+  sdk: AccelByteSDK,
+  options?: Omit<
+    UseMutationOptions<
+      UserRewardArray,
+      AxiosError<ApiError>,
+      SdkSetConfigParam & { userId: string; challengeCode: string; data: ClaimUserRewardsByGoalCodeRequest }
+    >,
+    'mutationKey'
+  >,
+  callback?: (data: UserRewardArray) => void
+): UseMutationResult<
+  UserRewardArray,
+  AxiosError<ApiError>,
+  SdkSetConfigParam & { userId: string; challengeCode: string; data: ClaimUserRewardsByGoalCodeRequest }
+> => {
+  const mutationFn = async (
+    input: SdkSetConfigParam & { userId: string; challengeCode: string; data: ClaimUserRewardsByGoalCodeRequest }
+  ) => {
+    const response = await PlayerRewardAdminApi(sdk, {
+      coreConfig: input.coreConfig,
+      axiosConfig: input.axiosConfig
+    }).createRewardClaim_ByUserId_ByChallengeCode(input.userId, input.challengeCode, input.data)
+    callback && callback(response.data)
+    return response.data
+  }
+
+  return useMutation({
+    mutationKey: [Key_PlayerRewardAdmin.RewardClaim_ByUserId_ByChallengeCode],
     mutationFn,
     ...options
   })

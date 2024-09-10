@@ -31,9 +31,12 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -46,9 +49,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     }
   }
 
-  /**
-   * Public user can access without token or if token specified, requires valid user token. For advance tag filtering supports &amp; as AND operator and | as OR operator and parentheses () for priority. e.g: &lt;code&gt;tags=red&lt;/code&gt; &lt;code&gt;tags=red&amp;animal&lt;/code&gt; &lt;code&gt;tags=red|animal&lt;/code&gt; &lt;code&gt;tags=red&amp;animal|wild&lt;/code&gt; &lt;code&gt;tags=red&amp;(animal|wild)&lt;/code&gt; The precedence of logical operator is AND &gt; OR, so if no parentheses, AND logical operator will be executed first. Allowed character for operand: alphanumeric, underscore &lt;code&gt;_&lt;/code&gt; and dash &lt;code&gt;-&lt;/code&gt; Allowed character for operator: &lt;code&gt;&amp;&lt;/code&gt; &lt;code&gt;|&lt;/code&gt; &lt;code&gt;(&lt;/code&gt; &lt;code&gt;)&lt;/code&gt; &lt;b&gt;Please note that value of tags query param should be URL encoded&lt;/b&gt;
-   */
   async function getContents(queryParams?: {
     creator?: string | null
     ishidden?: string | null
@@ -69,9 +69,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Maximum requested Ids: 100. Public user can access without token or if token specified, requires valid user token
-   */
   async function createContentBulk(data: PublicGetContentBulkRequest): Promise<AxiosResponse<ContentDownloadResponseArray>> {
     const $ = new PublicContentLegacy$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createContentBulk(data)
@@ -79,9 +76,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Public user can access without token or if token specified, requires valid user token
-   */
   async function getContent_ByContentId(contentId: string): Promise<AxiosResponse<ContentDownloadResponse>> {
     const $ = new PublicContentLegacy$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getContent_ByContentId(contentId)
@@ -89,9 +83,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Public user can access without token or if token specified, required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]&lt;/b&gt;.
-   */
   async function getContents_ByUserId(
     userId: string,
     queryParams?: { limit?: number; offset?: number }
@@ -102,9 +93,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Require valid user token. Maximum sharecodes per request 100
-   */
   async function createContentSharecodeBulk(data: GetContentBulkByShareCodesRequest): Promise<AxiosResponse<ContentDownloadResponseArray>> {
     const $ = new PublicContentLegacy$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createContentSharecodeBulk(data)
@@ -112,9 +100,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * &lt;p&gt;Requires valid user token&lt;/p&gt;&lt;p&gt;&lt;b&gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content&lt;/b&gt;&lt;/p&gt;
-   */
   async function getPreview_ByContentId(contentId: string): Promise<AxiosResponse<GetContentPreviewResponse>> {
     const $ = new PublicContentLegacy$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPreview_ByContentId(contentId)
@@ -122,9 +107,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Requires valid user token. For advance tag filtering supports &amp; as AND operator and | as OR operator and parentheses () for priority. e.g: &lt;code&gt;tags=red&lt;/code&gt; &lt;code&gt;tags=red&amp;animal&lt;/code&gt; &lt;code&gt;tags=red|animal&lt;/code&gt; &lt;code&gt;tags=red&amp;animal|wild&lt;/code&gt; &lt;code&gt;tags=red&amp;(animal|wild)&lt;/code&gt; The precedence of logical operator is AND &gt; OR, so if no parentheses, AND logical operator will be executed first. Allowed character for operand: alphanumeric, underscore &lt;code&gt;_&lt;/code&gt; and dash &lt;code&gt;-&lt;/code&gt; Allowed character for operator: &lt;code&gt;&amp;&lt;/code&gt; &lt;code&gt;|&lt;/code&gt; &lt;code&gt;(&lt;/code&gt; &lt;code&gt;)&lt;/code&gt; &lt;b&gt;Please note that value of tags query param should be URL encoded&lt;/b&gt;
-   */
   async function getContents_ByChannelId(
     channelId: string,
     queryParams?: {
@@ -148,9 +130,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Public user can access without token or if token specified, requires valid user token
-   */
   async function getContentSharecode_ByShareCode(shareCode: string): Promise<AxiosResponse<ContentDownloadResponse>> {
     const $ = new PublicContentLegacy$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getContentSharecode_ByShareCode(shareCode)
@@ -158,10 +137,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]&lt;/b&gt;.\n All request body are required except preview, tags and customAttributes.
-   */
   async function createContent_ByUserId_ByChannelId(
     userId: string,
     channelId: string,
@@ -173,9 +148,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]&lt;/b&gt;.\n All request body are required except payload, preview, tags, contentType and customAttributes. contentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL. If not specified, it will use fileExtension value. &lt;br&gt;&lt;p&gt;&lt;b&gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content&lt;/b&gt;&lt;/p&gt;
-   */
   async function createContentS3_ByUserId_ByChannelId(
     userId: string,
     channelId: string,
@@ -187,9 +159,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * All request body are required except for *contentType* field. *contentType* values is used to enforce the *Content-Type* header needed by the client to upload the content using the presigned URL. If not specified, it will use *fileExtension* value. Supported file extensions: *pjp*, *jpg*, *jpeg*, *jfif*, *bmp*, *png*. Maximum description length: 1024
-   */
   async function createScreenshot_ByUserId_ByContentId(
     userId: string,
     contentId: string,
@@ -201,9 +170,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Maximum description length: 1024
-   */
   async function updateScreenshot_ByUserId_ByContentId(
     userId: string,
     contentId: string,
@@ -215,9 +181,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]&lt;/b&gt;.
-   */
   async function deleteContent_ByUserId_ByChannelId_ByContentId(
     userId: string,
     channelId: string,
@@ -229,10 +192,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]&lt;/b&gt;.\n All request body are required except preview, tags and customAttributes.
-   */
   async function updateContent_ByUserId_ByChannelId_ByContentId(
     userId: string,
     channelId: string,
@@ -245,9 +204,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]&lt;/b&gt;. All request body are required except payload, preview, tags, contentType, updateContentFile and customAttributes. contentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL. If not specified, it will use fileExtension value. To update content&#39;s file, set &lt;code&gt;updateContentFile&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; and upload the file using URL in &lt;code&gt;payloadURL.url&lt;/code&gt; in response body. &lt;br&gt;&lt;p&gt;&lt;b&gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content&lt;/b&gt;&lt;/p&gt;
-   */
   async function updateContentS3_ByUserId_ByChannelId_ByContentId(
     userId: string,
     channelId: string,
@@ -260,9 +216,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Delete existing screenshot from a content
-   */
   async function deleteScreenshot_ByUserId_ByContentId_ByScreenshotId(
     userId: string,
     contentId: string,
@@ -274,9 +227,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE]&lt;/b&gt;.&lt;br&gt; This endpoint is used to modify the shareCode of a content. However, this operation is restricted by default and requires the above permission to be granted to the User role.&lt;br&gt; &lt;code&gt;shareCode&lt;/code&gt; format should follows: Max length: 7 Available characters: abcdefhkpqrstuxyz
-   */
   async function patchSharecode_ByUserId_ByChannelId_ByContentId(
     userId: string,
     channelId: string,
@@ -289,9 +239,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]&lt;/b&gt;.
-   */
   async function deleteContentSharecode_ByUserId_ByChannelId_ByShareCode(
     userId: string,
     channelId: string,
@@ -303,9 +250,6 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]&lt;/b&gt;. All request body are required except &lt;code&gt;payload&lt;/code&gt;, &lt;code&gt;preview&lt;/code&gt;, &lt;code&gt;tags&lt;/code&gt;,&lt;code&gt;contentType&lt;/code&gt;, &lt;code&gt;updateContentFile&lt;/code&gt;, &lt;code&gt;customAttributes&lt;/code&gt; and &lt;code&gt;shareCode&lt;/code&gt;. &lt;code&gt;contentType&lt;/code&gt; values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL. If not specified, it will use &lt;code&gt;fileExtension&lt;/code&gt; value. To update content file, set &lt;code&gt;updateContentFile&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; and upload the file using URL in &lt;code&gt;payloadURL.url&lt;/code&gt; in response body. &lt;br&gt;&lt;p&gt;&lt;b&gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content&lt;/b&gt;&lt;/p&gt;
-   */
   async function updateContentS3Sharecode_ByUserId_ByChannelId_ByShareCode(
     userId: string,
     channelId: string,
@@ -319,24 +263,83 @@ export function PublicContentLegacyApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   }
 
   return {
+    /**
+     * Public user can access without token or if token specified, requires valid user token. For advance tag filtering supports &amp; as AND operator and | as OR operator and parentheses () for priority. e.g: &lt;code&gt;tags=red&lt;/code&gt; &lt;code&gt;tags=red&amp;animal&lt;/code&gt; &lt;code&gt;tags=red|animal&lt;/code&gt; &lt;code&gt;tags=red&amp;animal|wild&lt;/code&gt; &lt;code&gt;tags=red&amp;(animal|wild)&lt;/code&gt; The precedence of logical operator is AND &gt; OR, so if no parentheses, AND logical operator will be executed first. Allowed character for operand: alphanumeric, underscore &lt;code&gt;_&lt;/code&gt; and dash &lt;code&gt;-&lt;/code&gt; Allowed character for operator: &lt;code&gt;&amp;&lt;/code&gt; &lt;code&gt;|&lt;/code&gt; &lt;code&gt;(&lt;/code&gt; &lt;code&gt;)&lt;/code&gt; &lt;b&gt;Please note that value of tags query param should be URL encoded&lt;/b&gt;
+     */
     getContents,
+    /**
+     * Maximum requested Ids: 100. Public user can access without token or if token specified, requires valid user token
+     */
     createContentBulk,
+    /**
+     * Public user can access without token or if token specified, requires valid user token
+     */
     getContent_ByContentId,
+    /**
+     * Public user can access without token or if token specified, required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]&lt;/b&gt;.
+     */
     getContents_ByUserId,
+    /**
+     * Require valid user token. Maximum sharecodes per request 100
+     */
     createContentSharecodeBulk,
+    /**
+     * &lt;p&gt;Requires valid user token&lt;/p&gt;&lt;p&gt;&lt;b&gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content&lt;/b&gt;&lt;/p&gt;
+     */
     getPreview_ByContentId,
+    /**
+     * Requires valid user token. For advance tag filtering supports &amp; as AND operator and | as OR operator and parentheses () for priority. e.g: &lt;code&gt;tags=red&lt;/code&gt; &lt;code&gt;tags=red&amp;animal&lt;/code&gt; &lt;code&gt;tags=red|animal&lt;/code&gt; &lt;code&gt;tags=red&amp;animal|wild&lt;/code&gt; &lt;code&gt;tags=red&amp;(animal|wild)&lt;/code&gt; The precedence of logical operator is AND &gt; OR, so if no parentheses, AND logical operator will be executed first. Allowed character for operand: alphanumeric, underscore &lt;code&gt;_&lt;/code&gt; and dash &lt;code&gt;-&lt;/code&gt; Allowed character for operator: &lt;code&gt;&amp;&lt;/code&gt; &lt;code&gt;|&lt;/code&gt; &lt;code&gt;(&lt;/code&gt; &lt;code&gt;)&lt;/code&gt; &lt;b&gt;Please note that value of tags query param should be URL encoded&lt;/b&gt;
+     */
     getContents_ByChannelId,
+    /**
+     * Public user can access without token or if token specified, requires valid user token
+     */
     getContentSharecode_ByShareCode,
+    /**
+     * @deprecated
+     * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]&lt;/b&gt;.\n All request body are required except preview, tags and customAttributes.
+     */
     createContent_ByUserId_ByChannelId,
+    /**
+     * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]&lt;/b&gt;.\n All request body are required except payload, preview, tags, contentType and customAttributes. contentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL. If not specified, it will use fileExtension value. &lt;br&gt;&lt;p&gt;&lt;b&gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content&lt;/b&gt;&lt;/p&gt;
+     */
     createContentS3_ByUserId_ByChannelId,
+    /**
+     * All request body are required except for *contentType* field. *contentType* values is used to enforce the *Content-Type* header needed by the client to upload the content using the presigned URL. If not specified, it will use *fileExtension* value. Supported file extensions: *pjp*, *jpg*, *jpeg*, *jfif*, *bmp*, *png*. Maximum description length: 1024
+     */
     createScreenshot_ByUserId_ByContentId,
+    /**
+     * Maximum description length: 1024
+     */
     updateScreenshot_ByUserId_ByContentId,
+    /**
+     * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]&lt;/b&gt;.
+     */
     deleteContent_ByUserId_ByChannelId_ByContentId,
+    /**
+     * @deprecated
+     * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]&lt;/b&gt;.\n All request body are required except preview, tags and customAttributes.
+     */
     updateContent_ByUserId_ByChannelId_ByContentId,
+    /**
+     * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]&lt;/b&gt;. All request body are required except payload, preview, tags, contentType, updateContentFile and customAttributes. contentType values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL. If not specified, it will use fileExtension value. To update content&#39;s file, set &lt;code&gt;updateContentFile&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; and upload the file using URL in &lt;code&gt;payloadURL.url&lt;/code&gt; in response body. &lt;br&gt;&lt;p&gt;&lt;b&gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content&lt;/b&gt;&lt;/p&gt;
+     */
     updateContentS3_ByUserId_ByChannelId_ByContentId,
+    /**
+     * Delete existing screenshot from a content
+     */
     deleteScreenshot_ByUserId_ByContentId_ByScreenshotId,
+    /**
+     * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE]&lt;/b&gt;.&lt;br&gt; This endpoint is used to modify the shareCode of a content. However, this operation is restricted by default and requires the above permission to be granted to the User role.&lt;br&gt; &lt;code&gt;shareCode&lt;/code&gt; format should follows: Max length: 7 Available characters: abcdefhkpqrstuxyz
+     */
     patchSharecode_ByUserId_ByChannelId_ByContentId,
+    /**
+     * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]&lt;/b&gt;.
+     */
     deleteContentSharecode_ByUserId_ByChannelId_ByShareCode,
+    /**
+     * Required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]&lt;/b&gt;. All request body are required except &lt;code&gt;payload&lt;/code&gt;, &lt;code&gt;preview&lt;/code&gt;, &lt;code&gt;tags&lt;/code&gt;,&lt;code&gt;contentType&lt;/code&gt;, &lt;code&gt;updateContentFile&lt;/code&gt;, &lt;code&gt;customAttributes&lt;/code&gt; and &lt;code&gt;shareCode&lt;/code&gt;. &lt;code&gt;contentType&lt;/code&gt; values is used to enforce the Content-Type header needed by the client to upload the content using the S3 presigned URL. If not specified, it will use &lt;code&gt;fileExtension&lt;/code&gt; value. To update content file, set &lt;code&gt;updateContentFile&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; and upload the file using URL in &lt;code&gt;payloadURL.url&lt;/code&gt; in response body. &lt;br&gt;&lt;p&gt;&lt;b&gt;NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content&lt;/b&gt;&lt;/p&gt;
+     */
     updateContentS3Sharecode_ByUserId_ByChannelId_ByShareCode
   }
 }

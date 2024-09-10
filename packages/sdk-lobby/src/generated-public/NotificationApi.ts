@@ -23,9 +23,12 @@ export function NotificationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -38,9 +41,6 @@ export function NotificationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get list of notifications in a namespace. The query parameters **startTime** and **endTime** can be filled with the **sequenceID** value in the notification, where the value is an epoch timestamp. Example **sequenceID** or epoch timestamp value: **1706595813**
-   */
   async function getNotificationMe(queryParams?: {
     endTime?: number
     limit?: number
@@ -53,9 +53,6 @@ export function NotificationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * get topic by namespace.
-   */
   async function getNotificationTopics(queryParams?: {
     after?: string | null
     before?: string | null
@@ -67,9 +64,6 @@ export function NotificationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Create new notification topic. &lt;br&gt;topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST. Already existing topic can not be created
-   */
   async function createNotificationTopic(data: CreateTopicRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Notification$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createNotificationTopic(data)
@@ -77,9 +71,6 @@ export function NotificationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * delete topic information by topic name. &lt;br&gt;topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST. Already existing topic can not be created
-   */
   async function deleteNotificationTopic_ByTopic(topic: string): Promise<AxiosResponse<unknown>> {
     const $ = new Notification$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteNotificationTopic_ByTopic(topic)
@@ -87,9 +78,6 @@ export function NotificationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * get topic information by topic name.
-   */
   async function getNotificationTopic_ByTopic(topic: string): Promise<AxiosResponse<NotificationTopicResponse>> {
     const $ = new Notification$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getNotificationTopic_ByTopic(topic)
@@ -97,9 +85,6 @@ export function NotificationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * update topic information by topic name. &lt;br&gt;topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST. Already existing topic can not be created
-   */
   async function updateNotificationTopic_ByTopic(topic: string, data: UpdateTopicRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Notification$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateNotificationTopic_ByTopic(topic, data)
@@ -107,9 +92,6 @@ export function NotificationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sends notification to a user.
-   */
   async function createFreeformNotification_ByUserId(userId: string, data: FreeFormNotificationRequest): Promise<AxiosResponse<unknown>> {
     const $ = new Notification$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createFreeformNotification_ByUserId(userId, data)
@@ -117,9 +99,6 @@ export function NotificationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Sends notification to a user with predefined template. &lt;br&gt;In the request body, specify which template slug (template identifier) to use and the template language. &lt;br&gt;NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content. Template need to be published before it can be use to send notifications
-   */
   async function createTemplatedNotification_ByUserId(
     userId: string,
     data: NotificationWithTemplateRequest
@@ -131,13 +110,37 @@ export function NotificationApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get list of notifications in a namespace. The query parameters **startTime** and **endTime** can be filled with the **sequenceID** value in the notification, where the value is an epoch timestamp. Example **sequenceID** or epoch timestamp value: **1706595813**
+     */
     getNotificationMe,
+    /**
+     * get topic by namespace.
+     */
     getNotificationTopics,
+    /**
+     * Create new notification topic. &lt;br&gt;topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST. Already existing topic can not be created
+     */
     createNotificationTopic,
+    /**
+     * delete topic information by topic name. &lt;br&gt;topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST. Already existing topic can not be created
+     */
     deleteNotificationTopic_ByTopic,
+    /**
+     * get topic information by topic name.
+     */
     getNotificationTopic_ByTopic,
+    /**
+     * update topic information by topic name. &lt;br&gt;topic should be alphabets, no special char except underscore, uppercase and no spacing. for example: TOPIC_TEST. Already existing topic can not be created
+     */
     updateNotificationTopic_ByTopic,
+    /**
+     * Sends notification to a user.
+     */
     createFreeformNotification_ByUserId,
+    /**
+     * Sends notification to a user with predefined template. &lt;br&gt;In the request body, specify which template slug (template identifier) to use and the template language. &lt;br&gt;NotificationTemplate context is the key-value pair defining the value of each handlebar specified in the template content. Template need to be published before it can be use to send notifications
+     */
     createTemplatedNotification_ByUserId
   }
 }

@@ -18,9 +18,12 @@ export function EmailSenderTemplateAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -33,9 +36,6 @@ export function EmailSenderTemplateAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     }
   }
 
-  /**
-   * Get all available API key account names.
-   */
   async function getEmailtemplatesEmailsender_ByAccount(account: string): Promise<AxiosResponse<EmailTemplatePairArray>> {
     const $ = new EmailSenderTemplateAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getEmailtemplatesEmailsender_ByAccount(account)
@@ -43,9 +43,6 @@ export function EmailSenderTemplateAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Create email templates which will be used for email sending. Currently only support SendGrid platform email templates.
-   */
   async function updateEmailtemplateEmailsender_ByAccount(
     account: string,
     data: EmailTemplatePair[]
@@ -56,9 +53,6 @@ export function EmailSenderTemplateAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
     return resp.response
   }
 
-  /**
-   * Delete email templates of an account.
-   */
   async function deleteEmailtemplateEmailsender_ByAccount(account: string): Promise<AxiosResponse<unknown>> {
     const $ = new EmailSenderTemplateAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteEmailtemplateEmailsender_ByAccount(account)
@@ -67,8 +61,17 @@ export function EmailSenderTemplateAdminApi(sdk: AccelByteSDK, args?: SdkSetConf
   }
 
   return {
+    /**
+     * Get all available API key account names.
+     */
     getEmailtemplatesEmailsender_ByAccount,
+    /**
+     * Create email templates which will be used for email sending. Currently only support SendGrid platform email templates.
+     */
     updateEmailtemplateEmailsender_ByAccount,
+    /**
+     * Delete email templates of an account.
+     */
     deleteEmailtemplateEmailsender_ByAccount
   }
 }

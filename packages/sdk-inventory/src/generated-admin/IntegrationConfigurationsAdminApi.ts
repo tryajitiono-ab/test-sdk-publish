@@ -21,9 +21,12 @@ export function IntegrationConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkS
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -36,9 +39,6 @@ export function IntegrationConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkS
     }
   }
 
-  /**
-   *  Listing all integration configurations in a namespace. The response body will be in the form of standard pagination. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [READ]
-   */
   async function getIntegrationConfigurations(queryParams?: {
     limit?: number
     offset?: number
@@ -50,9 +50,6 @@ export function IntegrationConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkS
     return resp.response
   }
 
-  /**
-   *  Creating integration configuration. There cannot be one duplicate serviceName per namespace. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [CREATE]
-   */
   async function createIntegrationConfiguration(
     data: CreateIntegrationConfigurationReq
   ): Promise<AxiosResponse<IntegrationConfigurationResp>> {
@@ -62,9 +59,6 @@ export function IntegrationConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkS
     return resp.response
   }
 
-  /**
-   *  to update integration configuration There cannot be duplicate serviceName per namespace. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
-   */
   async function updateIntegrationConfiguration_ByIntegrationConfigurationId(
     integrationConfigurationId: string,
     data: UpdateIntegrationConfigurationReq
@@ -75,9 +69,6 @@ export function IntegrationConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkS
     return resp.response
   }
 
-  /**
-   *  to update status integration configuration to be Active / Not Active. There cannot be duplicate serviceName per namespace. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
-   */
   async function updateStatus_ByIntegrationConfigurationId(
     integrationConfigurationId: string,
     data: UpdateStatusIntegrationConfigurationReq
@@ -89,9 +80,21 @@ export function IntegrationConfigurationsAdminApi(sdk: AccelByteSDK, args?: SdkS
   }
 
   return {
+    /**
+     *  Listing all integration configurations in a namespace. The response body will be in the form of standard pagination. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [READ]
+     */
     getIntegrationConfigurations,
+    /**
+     *  Creating integration configuration. There cannot be one duplicate serviceName per namespace. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [CREATE]
+     */
     createIntegrationConfiguration,
+    /**
+     *  to update integration configuration There cannot be duplicate serviceName per namespace. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
+     */
     updateIntegrationConfiguration_ByIntegrationConfigurationId,
+    /**
+     *  to update status integration configuration to be Active / Not Active. There cannot be duplicate serviceName per namespace. Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
+     */
     updateStatus_ByIntegrationConfigurationId
   }
 }

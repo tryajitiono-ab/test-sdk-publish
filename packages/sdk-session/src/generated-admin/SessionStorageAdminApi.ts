@@ -17,9 +17,12 @@ export function SessionStorageAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -32,9 +35,6 @@ export function SessionStorageAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     }
   }
 
-  /**
-   *  Delete Session Storage By sessionID Session Storage feature only available for Gamesession
-   */
   async function deleteStorage_BySessionId(sessionId: string): Promise<AxiosResponse<unknown>> {
     const $ = new SessionStorageAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteStorage_BySessionId(sessionId)
@@ -42,9 +42,6 @@ export function SessionStorageAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   *  Read Session Storage by sessionID Session Storage feature only available for Gamesession
-   */
   async function getStorage_BySessionId(sessionId: string): Promise<AxiosResponse<unknown>> {
     const $ = new SessionStorageAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getStorage_BySessionId(sessionId)
@@ -52,9 +49,6 @@ export function SessionStorageAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   *  Read Session Storage by sessionID and userID Session Storage feature only available for Gamesession
-   */
   async function getStorageUser_BySessionId_ByUserId(sessionId: string, userId: string): Promise<AxiosResponse<unknown>> {
     const $ = new SessionStorageAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getStorageUser_BySessionId_ByUserId(sessionId, userId)
@@ -63,8 +57,17 @@ export function SessionStorageAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   }
 
   return {
+    /**
+     *  Delete Session Storage By sessionID Session Storage feature only available for Gamesession
+     */
     deleteStorage_BySessionId,
+    /**
+     *  Read Session Storage by sessionID Session Storage feature only available for Gamesession
+     */
     getStorage_BySessionId,
+    /**
+     *  Read Session Storage by sessionID and userID Session Storage feature only available for Gamesession
+     */
     getStorageUser_BySessionId_ByUserId
   }
 }

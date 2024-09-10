@@ -20,9 +20,12 @@ export function EmailSenderApiKeyAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function EmailSenderApiKeyAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     }
   }
 
-  /**
-   * Get all available API key accounts in the namespace, including the API key and its use count. It will return records from all namespaces if the **namespace** path param equals to configured publisher namespace.
-   */
   async function getEmailsenderApikeysAccounts(): Promise<AxiosResponse<EmailSenderApiKeyResponseArray>> {
     const $ = new EmailSenderApiKeyAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getEmailsenderApikeysAccounts()
@@ -45,9 +45,6 @@ export function EmailSenderApiKeyAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Add an API key account which will be used for email sending. Currently only support SendGrid platform API Key.
-   */
   async function createEmailsenderApikeyAccount(data: CreateEmailSenderApiKeyRequest): Promise<AxiosResponse<EmailSenderApiKeyResponse>> {
     const $ = new EmailSenderApiKeyAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createEmailsenderApikeyAccount(data)
@@ -55,9 +52,6 @@ export function EmailSenderApiKeyAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Delete an API key account.
-   */
   async function deleteEmailsenderApikeyAccount_ByAccount(account: string): Promise<AxiosResponse<unknown>> {
     const $ = new EmailSenderApiKeyAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteEmailsenderApikeyAccount_ByAccount(account)
@@ -65,9 +59,6 @@ export function EmailSenderApiKeyAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
     return resp.response
   }
 
-  /**
-   * Get email senders that linked with API Key account.
-   */
   async function getLinkedsendersApikeysEmailsender_ByAccount(
     account: string,
     queryParams?: { limit?: number; offset?: number }
@@ -79,9 +70,21 @@ export function EmailSenderApiKeyAdminApi(sdk: AccelByteSDK, args?: SdkSetConfig
   }
 
   return {
+    /**
+     * Get all available API key accounts in the namespace, including the API key and its use count. It will return records from all namespaces if the **namespace** path param equals to configured publisher namespace.
+     */
     getEmailsenderApikeysAccounts,
+    /**
+     * Add an API key account which will be used for email sending. Currently only support SendGrid platform API Key.
+     */
     createEmailsenderApikeyAccount,
+    /**
+     * Delete an API key account.
+     */
     deleteEmailsenderApikeyAccount_ByAccount,
+    /**
+     * Get email senders that linked with API Key account.
+     */
     getLinkedsendersApikeysEmailsender_ByAccount
   }
 }

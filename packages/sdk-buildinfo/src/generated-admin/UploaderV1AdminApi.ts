@@ -25,9 +25,12 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -40,9 +43,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     }
   }
 
-  /**
-   * This API is used to get basic build manifests. Only committed build will be retrieved.
-   */
   async function getBuildsByAppId(queryParams: { appId: string | null }): Promise<AxiosResponse<BuildIdVersionArray>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBuildsByAppId(queryParams)
@@ -50,10 +50,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * This API is used to delete build manifest.
-   */
   async function deleteBuild_ByBuildId(buildId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteBuild_ByBuildId(buildId)
@@ -61,9 +57,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * This API is used to get build manifest.
-   */
   async function getBuild_ByBuildId(buildId: string): Promise<AxiosResponse<BuildManifest>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBuild_ByBuildId(buildId)
@@ -71,10 +64,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * This API is used to start chunk upload and retrieve upload url.
-   */
   async function createStartchunkupload(data: BinaryUpload): Promise<AxiosResponse<UploadSummary>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createStartchunkupload(data)
@@ -82,9 +71,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * This API is used to get basic build manifests. Only committed build will be retrieved.
-   */
   async function getBuildsByNamespace(): Promise<AxiosResponse<BasicBuildManifestArray>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getBuildsByNamespace()
@@ -92,10 +78,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * This API is used to commit build manifest.
-   */
   async function createCommitbuildmanifest(data: BuildManifest): Promise<AxiosResponse<unknown>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createCommitbuildmanifest(data)
@@ -103,9 +85,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * This API is used to get build deletion. Only deleted build will be retrieved.
-   */
   async function getBuildsdeletionByAppId(queryParams: {
     appId: string | null
     deletionStatus?: number
@@ -117,9 +96,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * This API is used to set current build as release version.
-   */
   async function updateSetcurrentbuild_ByBuildId(
     buildId: string,
     queryParams?: { sendNotification?: boolean | null }
@@ -130,9 +106,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * This API is used to retrieve chunk by hash.
-   */
   async function getRetrievechunkbyhash_ByHash(hash: string): Promise<AxiosResponse<BlockData>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getRetrievechunkbyhash_ByHash(hash)
@@ -140,9 +113,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * This API is used to retry build deletion.
-   */
   async function updateRetry_ByBuildId(buildId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateRetry_ByBuildId(buildId)
@@ -150,9 +120,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * This API is used to cancel build deletion.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Required permission&lt;/i&gt;: resource=&#34;ADMIN:NAMESPACE:{namespace}:BUILDINFO&#34;, action=8 (DELETE)&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: none&lt;/li&gt;&lt;/ul&gt;
-   */
   async function deleteCancel_ByBuildId(buildId: string): Promise<AxiosResponse<unknown>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteCancel_ByBuildId(buildId)
@@ -160,10 +127,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * This API is used to set current build as release version.
-   */
   async function updateSetcurrentbuild_ByAppId_ByVersion(appId: string, version: string): Promise<AxiosResponse<unknown>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateSetcurrentbuild_ByAppId_ByVersion(appId, version)
@@ -171,10 +134,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * This API is used to start build upload.
-   */
   async function createStartbuildupload_ByAppId_ByVersion(appId: string, version: string): Promise<AxiosResponse<BuildIdManifest>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createStartbuildupload_ByAppId_ByVersion(appId, version)
@@ -182,10 +141,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * This API is used to commit chunk that has been uploaded.
-   */
   async function createUuid_ByHash_ByUuid_ByOffset(hash: string, uuid: string, offset: number): Promise<AxiosResponse<BlockManifest>> {
     const $ = new UploaderV1Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createUuid_ByHash_ByUuid_ByOffset(hash, uuid, offset)
@@ -193,10 +148,6 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * @deprecated
-   * This API is used to commit chunk that has been uploaded.
-   */
   async function createOffset_ByHash_ByUuid_ByOffset_ByBlockSize(
     hash: string,
     uuid: string,
@@ -210,20 +161,72 @@ export function UploaderV1AdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   }
 
   return {
+    /**
+     * This API is used to get basic build manifests. Only committed build will be retrieved.
+     */
     getBuildsByAppId,
+    /**
+     * @deprecated
+     * This API is used to delete build manifest.
+     */
     deleteBuild_ByBuildId,
+    /**
+     * This API is used to get build manifest.
+     */
     getBuild_ByBuildId,
+    /**
+     * @deprecated
+     * This API is used to start chunk upload and retrieve upload url.
+     */
     createStartchunkupload,
+    /**
+     * This API is used to get basic build manifests. Only committed build will be retrieved.
+     */
     getBuildsByNamespace,
+    /**
+     * @deprecated
+     * This API is used to commit build manifest.
+     */
     createCommitbuildmanifest,
+    /**
+     * This API is used to get build deletion. Only deleted build will be retrieved.
+     */
     getBuildsdeletionByAppId,
+    /**
+     * This API is used to set current build as release version.
+     */
     updateSetcurrentbuild_ByBuildId,
+    /**
+     * This API is used to retrieve chunk by hash.
+     */
     getRetrievechunkbyhash_ByHash,
+    /**
+     * This API is used to retry build deletion.
+     */
     updateRetry_ByBuildId,
+    /**
+     * This API is used to cancel build deletion.&lt;p&gt;Other detail info: &lt;ul&gt;&lt;li&gt;&lt;i&gt;Required permission&lt;/i&gt;: resource=&#34;ADMIN:NAMESPACE:{namespace}:BUILDINFO&#34;, action=8 (DELETE)&lt;/li&gt;&lt;li&gt;&lt;i&gt;Returns&lt;/i&gt;: none&lt;/li&gt;&lt;/ul&gt;
+     */
     deleteCancel_ByBuildId,
+    /**
+     * @deprecated
+     * This API is used to set current build as release version.
+     */
     updateSetcurrentbuild_ByAppId_ByVersion,
+    /**
+     * @deprecated
+     * This API is used to start build upload.
+     */
     createStartbuildupload_ByAppId_ByVersion,
+    /**
+     * @deprecated
+     * This API is used to commit chunk that has been uploaded.
+     */
     createUuid_ByHash_ByUuid_ByOffset,
+    /**
+     * @deprecated
+     * This API is used to commit chunk that has been uploaded.
+     */
     createOffset_ByHash_ByUuid_ByOffset_ByBlockSize
   }
 }

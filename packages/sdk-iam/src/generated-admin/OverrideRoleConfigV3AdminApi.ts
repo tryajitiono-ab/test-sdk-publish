@@ -21,9 +21,12 @@ export function OverrideRoleConfigV3AdminApi(sdk: AccelByteSDK, args?: SdkSetCon
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -36,9 +39,6 @@ export function OverrideRoleConfigV3AdminApi(sdk: AccelByteSDK, args?: SdkSetCon
     }
   }
 
-  /**
-   * Get role override config. This API has upsert behavior, if there is no config yet, it will create a new one with inactive status.
-   */
   async function getRoleoverride_v3(queryParams: {
     identity: 'GAME_ADMIN' | 'USER' | 'VIEW_ONLY'
   }): Promise<AxiosResponse<RoleOverrideResponse>> {
@@ -48,9 +48,6 @@ export function OverrideRoleConfigV3AdminApi(sdk: AccelByteSDK, args?: SdkSetCon
     return resp.response
   }
 
-  /**
-   * This API is for updating role override config. Note: This API has upsert behavior, if there is no config yet, it will create a new one first.
-   */
   async function patchRoleoverride_v3(
     data: RoleOverrideUpdateRequest,
     queryParams: { identity: 'GAME_ADMIN' | 'USER' | 'VIEW_ONLY' }
@@ -61,9 +58,6 @@ export function OverrideRoleConfigV3AdminApi(sdk: AccelByteSDK, args?: SdkSetCon
     return resp.response
   }
 
-  /**
-   * Get role source permission set.
-   */
   async function getRoleoverrideSource_v3(queryParams: {
     identity: 'GAME_ADMIN' | 'USER' | 'VIEW_ONLY'
   }): Promise<AxiosResponse<RoleOverrideSourceResponse>> {
@@ -73,9 +67,6 @@ export function OverrideRoleConfigV3AdminApi(sdk: AccelByteSDK, args?: SdkSetCon
     return resp.response
   }
 
-  /**
-   * Enable or disable the target role override feature in path namespace. Note: This API has upsert behavior, if there is no config yet, it will create a new one first.
-   */
   async function patchRoleoverrideStatus_v3(
     data: RoleOverrideStatsUpdateRequest,
     queryParams: { identity: 'GAME_ADMIN' | 'USER' | 'VIEW_ONLY' }
@@ -86,9 +77,6 @@ export function OverrideRoleConfigV3AdminApi(sdk: AccelByteSDK, args?: SdkSetCon
     return resp.response
   }
 
-  /**
-   * Get role namespace permission set.
-   */
   async function getPermissions_ByRoleId_v3(roleId: string): Promise<AxiosResponse<RolePermissionResponseV3>> {
     const $ = new OverrideRoleConfigV3Admin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getPermissions_ByRoleId_v3(roleId)
@@ -97,10 +85,25 @@ export function OverrideRoleConfigV3AdminApi(sdk: AccelByteSDK, args?: SdkSetCon
   }
 
   return {
+    /**
+     * Get role override config. This API has upsert behavior, if there is no config yet, it will create a new one with inactive status.
+     */
     getRoleoverride_v3,
+    /**
+     * This API is for updating role override config. Note: This API has upsert behavior, if there is no config yet, it will create a new one first.
+     */
     patchRoleoverride_v3,
+    /**
+     * Get role source permission set.
+     */
     getRoleoverrideSource_v3,
+    /**
+     * Enable or disable the target role override feature in path namespace. Note: This API has upsert behavior, if there is no config yet, it will create a new one first.
+     */
     patchRoleoverrideStatus_v3,
+    /**
+     * Get role namespace permission set.
+     */
     getPermissions_ByRoleId_v3
   }
 }

@@ -33,9 +33,12 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -48,9 +51,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     }
   }
 
-  /**
-   * For advance tag filtering supports &amp; as AND operator and | as OR operator and parentheses ( ) for priority. e.g: *tags=red* *tags=red&amp;animal* *tags=red|animal* *tags=red&amp;animal|wild* *tags=red&amp;(animal|wild)* The precedence of logical operator is AND &gt; OR, so if no parentheses, AND logical operator will be executed first. Allowed character for operand: alphanumeric, underscore _ and dash - Allowed character for operator: &amp; | ( ) **Please note that value of tags query param should be URL encoded**
-   */
   async function getContents_v2(queryParams?: {
     isOfficial?: boolean | null
     limit?: number
@@ -67,9 +67,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Maximum requested Ids: 100. Public user can access without token or if token specified, requires valid user token
-   */
   async function createContentBulk_v2(data: PublicGetContentBulkRequest): Promise<AxiosResponse<ContentDownloadResponseV2Array>> {
     const $ = new PublicContentV2$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createContentBulk_v2(data)
@@ -77,9 +74,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Public user can access without token or if token specified, requires valid user token
-   */
   async function getContent_ByContentId_v2(contentId: string): Promise<AxiosResponse<ContentDownloadResponseV2>> {
     const $ = new PublicContentV2$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getContent_ByContentId_v2(contentId)
@@ -87,9 +81,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Public user can access without token or if token specified, required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]&lt;/b&gt;.
-   */
   async function getContents_ByUserId_v2(
     userId: string,
     queryParams?: { limit?: number; offset?: number; sortBy?: string | null }
@@ -100,9 +91,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Require valid user token. Maximum sharecodes per request 100
-   */
   async function createContentSharecodeBulk_v2(
     data: GetContentBulkByShareCodesRequest
   ): Promise<AxiosResponse<ContentDownloadResponseV2Array>> {
@@ -112,9 +100,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Public user can access without token or if token specified, requires valid user token
-   */
   async function getContents_ByChannelId_v2(
     channelId: string,
     queryParams?: { limit?: number; name?: string | null; offset?: number; sortBy?: string | null }
@@ -125,9 +110,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Public user can access without token or if token specified, requires valid user token
-   */
   async function getContentSharecode_ByShareCode_v2(shareCode: string): Promise<AxiosResponse<ContentDownloadResponseV2>> {
     const $ = new PublicContentV2$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getContentSharecode_ByShareCode_v2(shareCode)
@@ -135,9 +117,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Create a new content
-   */
   async function createContent_ByUserId_ByChannelId_v2(
     userId: string,
     channelId: string,
@@ -149,9 +128,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * This endpoint used to request upload URL from content&#39;s screenshot. If *contentType* is not specified, it will use *fileExtension* value. Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png. Maximum description length: 1024
-   */
   async function createScreenshot_ByUserId_ByContentId_v2(
     userId: string,
     contentId: string,
@@ -163,9 +139,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Maximum description length: 1024
-   */
   async function updateScreenshot_ByUserId_ByContentId_v2(
     userId: string,
     contentId: string,
@@ -177,9 +150,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Delete existing content
-   */
   async function deleteContent_ByUserId_ByChannelId_ByContentId_v2(
     userId: string,
     channelId: string,
@@ -191,9 +161,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Update existing content
-   */
   async function patchContent_ByUserId_ByChannelId_ByContentId_v2(
     userId: string,
     channelId: string,
@@ -206,9 +173,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Delete screenshot from a content
-   */
   async function deleteScreenshot_ByUserId_ByContentId_ByScreenshotId_v2(
     userId: string,
     contentId: string,
@@ -220,9 +184,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * This endpoint is used to modify the shareCode of a content. However, this operation is restricted by default and requires the above permission to be granted to the User role.&lt;br&gt; &lt;code&gt;shareCode&lt;/code&gt; format should follows: Max length: 7 Available characters: abcdefhkpqrstuxyz
-   */
   async function patchSharecode_ByUserId_ByChannelId_ByContentId_v2(
     userId: string,
     channelId: string,
@@ -235,9 +196,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Generate content upload URL
-   */
   async function patchUploadUrl_ByUserId_ByChannelId_ByContentId_v2(
     userId: string,
     channelId: string,
@@ -250,9 +208,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Delete existing content by share code
-   */
   async function deleteContentSharecode_ByUserId_ByChannelId_ByShareCode_v2(
     userId: string,
     channelId: string,
@@ -264,9 +219,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * This endpoint should be used after calling generate upload url endpoint to commit the changes
-   */
   async function patchFileLocation_ByUserId_ByChannelId_ByContentId_v2(
     userId: string,
     channelId: string,
@@ -279,9 +231,6 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
     return resp.response
   }
 
-  /**
-   * Update content by share code
-   */
   async function updateContentS3Sharecode_ByUserId_ByChannelId_ByShareCode_v2(
     userId: string,
     channelId: string,
@@ -295,23 +244,77 @@ export function PublicContentV2Api(sdk: AccelByteSDK, args?: SdkSetConfigParam) 
   }
 
   return {
+    /**
+     * For advance tag filtering supports &amp; as AND operator and | as OR operator and parentheses ( ) for priority. e.g: *tags=red* *tags=red&amp;animal* *tags=red|animal* *tags=red&amp;animal|wild* *tags=red&amp;(animal|wild)* The precedence of logical operator is AND &gt; OR, so if no parentheses, AND logical operator will be executed first. Allowed character for operand: alphanumeric, underscore _ and dash - Allowed character for operator: &amp; | ( ) **Please note that value of tags query param should be URL encoded**
+     */
     getContents_v2,
+    /**
+     * Maximum requested Ids: 100. Public user can access without token or if token specified, requires valid user token
+     */
     createContentBulk_v2,
+    /**
+     * Public user can access without token or if token specified, requires valid user token
+     */
     getContent_ByContentId_v2,
+    /**
+     * Public user can access without token or if token specified, required permission &lt;b&gt;NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]&lt;/b&gt;.
+     */
     getContents_ByUserId_v2,
+    /**
+     * Require valid user token. Maximum sharecodes per request 100
+     */
     createContentSharecodeBulk_v2,
+    /**
+     * Public user can access without token or if token specified, requires valid user token
+     */
     getContents_ByChannelId_v2,
+    /**
+     * Public user can access without token or if token specified, requires valid user token
+     */
     getContentSharecode_ByShareCode_v2,
+    /**
+     * Create a new content
+     */
     createContent_ByUserId_ByChannelId_v2,
+    /**
+     * This endpoint used to request upload URL from content&#39;s screenshot. If *contentType* is not specified, it will use *fileExtension* value. Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png. Maximum description length: 1024
+     */
     createScreenshot_ByUserId_ByContentId_v2,
+    /**
+     * Maximum description length: 1024
+     */
     updateScreenshot_ByUserId_ByContentId_v2,
+    /**
+     * Delete existing content
+     */
     deleteContent_ByUserId_ByChannelId_ByContentId_v2,
+    /**
+     * Update existing content
+     */
     patchContent_ByUserId_ByChannelId_ByContentId_v2,
+    /**
+     * Delete screenshot from a content
+     */
     deleteScreenshot_ByUserId_ByContentId_ByScreenshotId_v2,
+    /**
+     * This endpoint is used to modify the shareCode of a content. However, this operation is restricted by default and requires the above permission to be granted to the User role.&lt;br&gt; &lt;code&gt;shareCode&lt;/code&gt; format should follows: Max length: 7 Available characters: abcdefhkpqrstuxyz
+     */
     patchSharecode_ByUserId_ByChannelId_ByContentId_v2,
+    /**
+     * Generate content upload URL
+     */
     patchUploadUrl_ByUserId_ByChannelId_ByContentId_v2,
+    /**
+     * Delete existing content by share code
+     */
     deleteContentSharecode_ByUserId_ByChannelId_ByShareCode_v2,
+    /**
+     * This endpoint should be used after calling generate upload url endpoint to commit the changes
+     */
     patchFileLocation_ByUserId_ByChannelId_ByContentId_v2,
+    /**
+     * Update content by share code
+     */
     updateContentS3Sharecode_ByUserId_ByChannelId_ByShareCode_v2
   }
 }

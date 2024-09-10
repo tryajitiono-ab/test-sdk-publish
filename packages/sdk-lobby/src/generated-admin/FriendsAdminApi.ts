@@ -20,9 +20,12 @@ export function FriendsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -35,9 +38,6 @@ export function FriendsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get list of friends in a namespace.
-   */
   async function getFriendUser_ByUserId(
     userId: string,
     queryParams?: { friendId?: string | null; friendIds?: string[]; limit?: number; offset?: number }
@@ -48,9 +48,6 @@ export function FriendsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get list of incoming friend requests.
-   */
   async function getIncomingFriend_ByUserId(
     userId: string,
     queryParams?: { friendId?: string | null; limit?: number; offset?: number }
@@ -61,9 +58,6 @@ export function FriendsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get list of outgoing friend requests in a namespace.
-   */
   async function getOutgoingFriend_ByUserId(
     userId: string,
     queryParams?: { limit?: number; offset?: number }
@@ -74,9 +68,6 @@ export function FriendsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Load list friends and friends of friends in a namespace. Response subjectId will be different with requested userId if the user is not directly friend
-   */
   async function getOfFriends_ByUserId(
     userId: string,
     queryParams?: { friendId?: string | null; limit?: number; nopaging?: boolean | null; offset?: number }
@@ -88,9 +79,21 @@ export function FriendsAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get list of friends in a namespace.
+     */
     getFriendUser_ByUserId,
+    /**
+     * Get list of incoming friend requests.
+     */
     getIncomingFriend_ByUserId,
+    /**
+     * Get list of outgoing friend requests in a namespace.
+     */
     getOutgoingFriend_ByUserId,
+    /**
+     * Load list friends and friends of friends in a namespace. Response subjectId will be different with requested userId if the user is not directly friend
+     */
     getOfFriends_ByUserId
   }
 }

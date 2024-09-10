@@ -26,9 +26,12 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -41,9 +44,6 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Query available game session
-   */
   async function getGamesession(queryParams: {
     session_type: string | null
     game_mode?: string | null
@@ -62,9 +62,6 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This end point intended to be called directly by P2P game client host or by DSMC
-   */
   async function createGamesession(data: CreateSessionRequest): Promise<AxiosResponse<SessionResponse>> {
     const $ = new Session$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createGamesession(data)
@@ -72,9 +69,6 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query game sessions by comma separated user ids
-   */
   async function getGamesessionBulk(queryParams: { user_ids: string | null }): Promise<AxiosResponse<SessionByUserIDsResponse>> {
     const $ = new Session$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getGamesessionBulk(queryParams)
@@ -82,9 +76,6 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Query recent player by user ID
-   */
   async function getRecentplayer_ByUserId(userID: string): Promise<AxiosResponse<RecentPlayerQueryResponse>> {
     const $ = new Session$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getRecentplayer_ByUserId(userID)
@@ -92,9 +83,6 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete the session (p2p) by session ID
-   */
   async function deleteGamesession_BySessionId(sessionID: string): Promise<AxiosResponse<SessionResponse>> {
     const $ = new Session$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteGamesession_BySessionId(sessionID)
@@ -102,9 +90,6 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Get the session by session ID
-   */
   async function getGamesession_BySessionId(sessionID: string): Promise<AxiosResponse<SessionResponse>> {
     const $ = new Session$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getGamesession_BySessionId(sessionID)
@@ -112,9 +97,6 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update game session, used to update the current player
-   */
   async function updateGamesession_BySessionId(sessionID: string, data: UpdateSessionRequest): Promise<AxiosResponse<SessionResponse>> {
     const $ = new Session$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateGamesession_BySessionId(sessionID, data)
@@ -122,9 +104,6 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Join the specified session by session ID. Possible the game required a password to join
-   */
   async function fetchJoin_BySessionId(sessionID: string, data: JoinGameSessionRequest): Promise<AxiosResponse<SessionResponse>> {
     const $ = new Session$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.fetchJoin_BySessionId(sessionID, data)
@@ -132,9 +111,6 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Add player to game session
-   */
   async function updatePlayer_BySessionId(sessionID: string, data: AddPlayerRequest): Promise<AxiosResponse<AddPlayerResponse>> {
     const $ = new Session$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updatePlayer_BySessionId(sessionID, data)
@@ -142,9 +118,6 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Only use for local DS entry, will error when calling non local DS entry
-   */
   async function deleteLocald_BySessionId(sessionID: string): Promise<AxiosResponse<SessionResponse>> {
     const $ = new Session$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteLocald_BySessionId(sessionID)
@@ -152,9 +125,6 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Update game session, used to update OtherSettings
-   */
   async function updateSetting_BySessionId(sessionID: string, data: UpdateSettingsRequest): Promise<AxiosResponse<SessionResponse>> {
     const $ = new Session$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateSetting_BySessionId(sessionID, data)
@@ -162,9 +132,6 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Remove player from game session
-   */
   async function deletePlayer_BySessionId_ByUserId(sessionID: string, userID: string): Promise<AxiosResponse<AddPlayerResponse>> {
     const $ = new Session$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deletePlayer_BySessionId_ByUserId(sessionID, userID)
@@ -173,17 +140,53 @@ export function SessionApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Query available game session
+     */
     getGamesession,
+    /**
+     * This end point intended to be called directly by P2P game client host or by DSMC
+     */
     createGamesession,
+    /**
+     * Query game sessions by comma separated user ids
+     */
     getGamesessionBulk,
+    /**
+     * Query recent player by user ID
+     */
     getRecentplayer_ByUserId,
+    /**
+     * Delete the session (p2p) by session ID
+     */
     deleteGamesession_BySessionId,
+    /**
+     * Get the session by session ID
+     */
     getGamesession_BySessionId,
+    /**
+     * Update game session, used to update the current player
+     */
     updateGamesession_BySessionId,
+    /**
+     * Join the specified session by session ID. Possible the game required a password to join
+     */
     fetchJoin_BySessionId,
+    /**
+     * Add player to game session
+     */
     updatePlayer_BySessionId,
+    /**
+     * Only use for local DS entry, will error when calling non local DS entry
+     */
     deleteLocald_BySessionId,
+    /**
+     * Update game session, used to update OtherSettings
+     */
     updateSetting_BySessionId,
+    /**
+     * Remove player from game session
+     */
     deletePlayer_BySessionId_ByUserId
   }
 }

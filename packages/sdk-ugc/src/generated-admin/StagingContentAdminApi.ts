@@ -19,9 +19,12 @@ export function StagingContentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function StagingContentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     }
   }
 
-  /**
-   * List content that need admin&#39;s approval
-   */
   async function getStagingContents_v2(queryParams?: {
     limit?: number
     offset?: number
@@ -49,9 +49,6 @@ export function StagingContentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Get staging content by ID
-   */
   async function getStagingContent_ByContentId_v2(contentId: string): Promise<AxiosResponse<StagingContentResponse>> {
     const $ = new StagingContentAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getStagingContent_ByContentId_v2(contentId)
@@ -59,9 +56,6 @@ export function StagingContentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * List user content&#39;s that need admin approval
-   */
   async function getStagingContents_ByUserId_v2(
     userId: string,
     queryParams?: { limit?: number; offset?: number; sortBy?: string | null; status?: string | null }
@@ -72,9 +66,6 @@ export function StagingContentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
     return resp.response
   }
 
-  /**
-   * Approved content will shown to public player. Rejected content stays in staging area and couldn&#39;t be seen by other player
-   */
   async function createApprove_ByContentId_v2(
     contentId: string,
     data: ApproveStagingContentRequest
@@ -86,9 +77,21 @@ export function StagingContentAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigPar
   }
 
   return {
+    /**
+     * List content that need admin&#39;s approval
+     */
     getStagingContents_v2,
+    /**
+     * Get staging content by ID
+     */
     getStagingContent_ByContentId_v2,
+    /**
+     * List user content&#39;s that need admin approval
+     */
     getStagingContents_ByUserId_v2,
+    /**
+     * Approved content will shown to public player. Rejected content stays in staging area and couldn&#39;t be seen by other player
+     */
     createApprove_ByContentId_v2
   }
 }

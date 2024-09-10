@@ -2440,7 +2440,7 @@
     },
     "/chat/v1/admin/config/log": {
       "get": {
-        "description": "Get Log Configuration.\u0026lt;br\u0026gt;",
+        "description": "\n\t\t\tGet Log Configuration\n\t\t\tlogLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic\n\t\t\tsocketLogEnabled is use for enable socket log\n\t\t\tlogLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic\n\t\t\tslowQueryThreshold use for logging slow threshold in time measure is nano second\n\t\t\t",
         "operationId": "adminGetLogConfig",
         "produces": ["application/json"],
         "responses": {
@@ -2467,7 +2467,7 @@
       },
       "patch": {
         "consumes": ["application/json"],
-        "description": "Update Log Configuration.\u0026lt;br\u0026gt;",
+        "description": "\n\t\t\t\tUpdate Log Configuration\n\t\t\t\tlogLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic\n\t\t\t\tsocketLogEnabled is use for enable socket log\n\t\t\t\tlogLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic\n\t\t\t\tslowQueryThreshold use for logging slow threshold in time measure is nano second\n\t\t\t",
         "operationId": "adminPatchUpdateLogConfig",
         "parameters": [
           {
@@ -4937,6 +4937,14 @@
         "logLevel": {
           "enum": ["debug", "error", "fatal", "info", "panic", "trace", "warning"],
           "type": "string"
+        },
+        "logLevelDB": {
+          "enum": ["debug", "error", "fatal", "info", "panic", "trace", "warning"],
+          "type": "string"
+        },
+        "slowQueryThreshold": {
+          "format": "int64",
+          "type": "integer"
         },
         "socketLogEnabled": {
           "type": "boolean",
@@ -9074,8 +9082,8 @@
     }
   ],
   "x-version": {
-    "buildDate": "2024-09-02T03:39:14+00:00",
-    "gitHash": "f1567f8fe4db6eae70814f95649d77d22521687c",
+    "buildDate": "2024-09-04T04:56:13+00:00",
+    "gitHash": "0285665ac4207c20445a86a9f0795f6462939506",
     "name": "justice-chat-service",
     "revisionID": "0.4.33",
     "version": "0.4.33",

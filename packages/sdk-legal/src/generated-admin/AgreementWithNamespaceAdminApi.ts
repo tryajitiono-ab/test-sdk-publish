@@ -22,9 +22,12 @@ export function AgreementWithNamespaceAdminApi(sdk: AccelByteSDK, args?: SdkSetC
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function AgreementWithNamespaceAdminApi(sdk: AccelByteSDK, args?: SdkSetC
     }
   }
 
-  /**
-   * This API will return all accepted Legal Agreements for each user, including agreements of game users if publisher user has corresponding game account.
-   */
   async function createAgreement(data: UsersAgreementsRequest): Promise<AxiosResponse<UserAgreementsResponseArray>> {
     const $ = new AgreementWithNamespaceAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createAgreement(data)
@@ -47,9 +47,6 @@ export function AgreementWithNamespaceAdminApi(sdk: AccelByteSDK, args?: SdkSetC
     return resp.response
   }
 
-  /**
-   * This API will return all users who has accepted a specific policy version.
-   */
   async function getAgreementsPolicyVersionsUsers(queryParams: {
     policyVersionId: string | null
     convertGameUserId?: boolean | null
@@ -63,9 +60,6 @@ export function AgreementWithNamespaceAdminApi(sdk: AccelByteSDK, args?: SdkSetC
     return resp.response
   }
 
-  /**
-   * This API will return all accepted Legal Agreements for specified user.
-   */
   async function getAgreementPolicyUser_ByUserId(
     userId: string,
     queryParams?: { excludeOtherNamespacesPolicies?: boolean | null }
@@ -76,9 +70,6 @@ export function AgreementWithNamespaceAdminApi(sdk: AccelByteSDK, args?: SdkSetC
     return resp.response
   }
 
-  /**
-   * This API will check the status of export process.&lt;br&gt;If the export process has been completed, the response body will include the download url.
-   */
   async function getAgreementsPolicyVersionsUsersExportCsvDownload(queryParams: {
     exportId: string | null
   }): Promise<AxiosResponse<DownloadExportedAgreementsInCsvResponse>> {
@@ -88,9 +79,6 @@ export function AgreementWithNamespaceAdminApi(sdk: AccelByteSDK, args?: SdkSetC
     return resp.response
   }
 
-  /**
-   * This API will initiate a worker to export list of users who has accepted a specific policy version into a CSV file.&lt;br&gt;To check the export state after initialize it, use `GET /admin/namespaces/{namespace}/agreements/policy-versions/users/export-csv/download` API.&lt;br/&gt;&lt;br/&gt;This Initiate API is &lt;b&gt;not allow&lt;/b&gt; multiple export worker running for the same namespace, it will return 409 http error if so.&lt;br/&gt;
-   */
   async function createAgreementPolicyVersionUserExportCsvInitiate(queryParams: {
     policyVersionId: string | null
     start: string | null
@@ -103,10 +91,25 @@ export function AgreementWithNamespaceAdminApi(sdk: AccelByteSDK, args?: SdkSetC
   }
 
   return {
+    /**
+     * This API will return all accepted Legal Agreements for each user, including agreements of game users if publisher user has corresponding game account.
+     */
     createAgreement,
+    /**
+     * This API will return all users who has accepted a specific policy version.
+     */
     getAgreementsPolicyVersionsUsers,
+    /**
+     * This API will return all accepted Legal Agreements for specified user.
+     */
     getAgreementPolicyUser_ByUserId,
+    /**
+     * This API will check the status of export process.&lt;br&gt;If the export process has been completed, the response body will include the download url.
+     */
     getAgreementsPolicyVersionsUsersExportCsvDownload,
+    /**
+     * This API will initiate a worker to export list of users who has accepted a specific policy version into a CSV file.&lt;br&gt;To check the export state after initialize it, use `GET /admin/namespaces/{namespace}/agreements/policy-versions/users/export-csv/download` API.&lt;br/&gt;&lt;br/&gt;This Initiate API is &lt;b&gt;not allow&lt;/b&gt; multiple export worker running for the same namespace, it will return 409 http error if so.&lt;br/&gt;
+     */
     createAgreementPolicyVersionUserExportCsvInitiate
   }
 }

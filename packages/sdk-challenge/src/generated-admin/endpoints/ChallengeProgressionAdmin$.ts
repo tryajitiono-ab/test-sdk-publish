@@ -10,6 +10,7 @@ import { Response, Validate } from '@accelbyte/sdk'
 import { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { z } from 'zod'
 import { EvaluatePlayerProgressionRequest } from '../../generated-definitions/EvaluatePlayerProgressionRequest.js'
+import { UserProgressionResponse } from '../../generated-definitions/UserProgressionResponse.js'
 
 export class ChallengeProgressionAdmin$ {
   // @ts-ignore
@@ -24,5 +25,27 @@ export class ChallengeProgressionAdmin$ {
     const resultPromise = this.axiosInstance.post(url, data, { params })
 
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, z.unknown(), 'z.unknown()')
+  }
+  /**
+   * &lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]&lt;/li&gt;&lt;/ul&gt;
+   */
+  getProgres_ByUserId_ByChallengeCode(
+    userId: string,
+    challengeCode: string,
+    queryParams?: { dateTime?: string | null; goalCode?: string | null; limit?: number; offset?: number; tags?: string[] }
+  ): Promise<Response<UserProgressionResponse>> {
+    const params = { limit: 20, ...queryParams } as AxiosRequestConfig
+    const url = '/challenge/v1/admin/namespaces/{namespace}/users/{userId}/progress/{challengeCode}'
+      .replace('{namespace}', this.namespace)
+      .replace('{userId}', userId)
+      .replace('{challengeCode}', challengeCode)
+    const resultPromise = this.axiosInstance.get(url, { params })
+
+    return Validate.validateOrReturnResponse(
+      this.useSchemaValidation,
+      () => resultPromise,
+      UserProgressionResponse,
+      'UserProgressionResponse'
+    )
   }
 }

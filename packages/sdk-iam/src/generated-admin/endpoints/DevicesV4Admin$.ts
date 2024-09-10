@@ -155,6 +155,7 @@ export class DevicesV4Admin$ {
     return Validate.validateOrReturnResponse(this.useSchemaValidation, () => resultPromise, DeviceUsersResponseV4, 'DeviceUsersResponseV4')
   }
   /**
+   * @deprecated
    * This is the endpoint for an admin to decrypt device id
    */
   getDecrypt_ByDeviceId_v4(deviceId: string): Promise<Response<DeviceIdDecryptResponseV4>> {

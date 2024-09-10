@@ -22,9 +22,12 @@ export function AccountAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -37,9 +40,6 @@ export function AccountAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
-   */
   async function getAccount(): Promise<AxiosResponse<AccountResponse>> {
     const $ = new AccountAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getAccount()
@@ -47,9 +47,6 @@ export function AccountAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
-   */
   async function createAccount(data: AccountCreateRequest): Promise<AxiosResponse<AccountCreateResponse>> {
     const $ = new AccountAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createAccount(data)
@@ -57,9 +54,6 @@ export function AccountAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * The link token returned can be used to connect another namespace to the account in which the provided namespace is linked. This route fails if there is no account linked to the specified namespace. Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
-   */
   async function getAccountLink(): Promise<AxiosResponse<AccountLinkTokenResponse>> {
     const $ = new AccountAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getAccountLink()
@@ -67,9 +61,6 @@ export function AccountAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * This route will attempt to register the account to namespace linkage in AMS and requires a valid account link token. This route fails if an account is already linked AdminAccountLink Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
-   */
   async function createAccountLink(data: AccountLinkRequest): Promise<AxiosResponse<AccountLinkResponse>> {
     const $ = new AccountAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createAccountLink(data)
@@ -78,9 +69,21 @@ export function AccountAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+     */
     getAccount,
+    /**
+     * Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
+     */
     createAccount,
+    /**
+     * The link token returned can be used to connect another namespace to the account in which the provided namespace is linked. This route fails if there is no account linked to the specified namespace. Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+     */
     getAccountLink,
+    /**
+     * This route will attempt to register the account to namespace linkage in AMS and requires a valid account link token. This route fails if an account is already linked AdminAccountLink Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
+     */
     createAccountLink
   }
 }

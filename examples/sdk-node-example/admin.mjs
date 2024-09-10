@@ -1,16 +1,14 @@
 // This examples requires valid Access Token with Admin Permission
 
-import { Accelbyte } from '@accelbyte/sdk'
-import { Iam } from '@accelbyte/sdk-iam'
-import { Cloudsave } from '@accelbyte/sdk-cloudsave'
+import { AccelByte } from '@accelbyte/sdk'
+import { Iam, OAuth20Api } from '@accelbyte/sdk-iam'
+import { RecordAdminApi } from '@accelbyte/sdk-cloudsave'
 
 const ACCESS_TOKEN = '<replace with accessToken for given baseURL>'
 const BEARER_AUTH_SDK_ARGS = {
-  config: {
     headers: {
       Authorization: `Bearer ${ACCESS_TOKEN}`
     }
-  }
 }
 
 const CLIENT_ID = '<replace with CLIENT_ID for given baseURL>'
@@ -20,42 +18,18 @@ const CLIENT_SECRET = ''
 
 const BASIC_TOKEN = `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`
 const BASIC_AUTH_SDK_ARGS = {
-  config: {
     headers: {
       Authorization: BASIC_TOKEN
     }
-  }
 }
 
-const sdk = Accelbyte.SDK({
-  options: {
-    baseURL: 'https://demo.accelbyte.io',
+const sdk = AccelByte.SDK({
+  coreConfig: {
+    baseURL: 'https://prod.gamingservices.accelbyte.io',
     clientId: CLIENT_ID,
-    namespace: 'accelbyte',
-    redirectURI: 'http://localhost:3030'
+    namespace: 'foundations',
+    redirectURI: 'http://localhost:3000'
   },
-  onEvents: {
-    // a callback function invoked on session expiry
-    onSessionExpired: () => {
-      console.log('SDK EVENT: USER SESSION EXPIRED')
-    },
-    // a callback function invoked on session retrieval
-    onGetUserSession: (accessToken, refreshToken) => {
-      console.log('SDK EVENT: USER SESSION REFRESHED', { accessToken, refreshToken })
-    },
-    // a callback function invoked on UserEligibilityChange
-    onUserEligibilityChange: () => {
-      console.log('SDK EVENT: USER ELIGIBILITY CHANGE')
-    },
-    // a callback function fired on error
-    onError: error => {
-      console.log('SDK EVENT: ERROR ->', error.response)
-    },
-    // a callback function fired when a request/backend return 429 status
-    onTooManyRequest: error => {
-      console.log('Do something when when request being throttled', error)
-    }
-  }
 })
 
 // Sample SDK calls:
@@ -73,15 +47,15 @@ async function main() {
   // You can also use access_token acquired from this response to call any Admin Endpoint,
   // Make sure the CLIENT_ID in the IAM Client has the appropriate permission to call the Admin Endpoint
   const res = await clientGrantToken()
-  if (res.access_token) await verifyToken(res.access_token)
+  if (res && res.access_token) await verifyToken(res.access_token)
 
-  await testCloudSaveAdmin()
+  await getCloudsaveAdminRecords()
 }
 
-async function testCloudSaveAdmin() {
+async function getCloudsaveAdminRecords() {
   console.log('\n Testing Admin CloudSave... ')
   try {
-    const adminrecords = await Cloudsave.AdminRecordAdminApi(sdk, BEARER_AUTH_SDK_ARGS).getAdminrecords()
+    const adminrecords = await RecordAdminApi(sdk, {axiosConfig: {request: BEARER_AUTH_SDK_ARGS}}).getAdminrecords()
     console.log(`Cloud Save Admin Records:`, adminrecords)
   } catch (ex) {
     console.log(ex)
@@ -92,7 +66,7 @@ async function verifyToken(token) {
   console.log('\n Verifying access token...')
 
   try {
-    const res = await Iam.OAuth20Api(sdk, BASIC_AUTH_SDK_ARGS).postOauthVerify({ token })
+    const res = await OAuth20Api(sdk, {axiosConfig: {request: BASIC_AUTH_SDK_ARGS}}).postOauthVerify_v3({ token })
     console.log('verifyToken', res)
     return true
   } catch (error) {
@@ -106,9 +80,9 @@ async function clientGrantToken() {
   console.log('\n Grant access token for current CLIENT_ID...')
 
   try {
-    const response = await Iam.OAuth20Api(sdk, BASIC_AUTH_SDK_ARGS).postOauthToken({ grant_type: 'client_credentials' })
+    const response = await Iam.OAuth20Api(sdk, {axiosConfig: {request: BASIC_AUTH_SDK_ARGS}}).postOauthToken_v3({ grant_type: 'client_credentials' })
     console.log(`clientGrantToken:`, response)
-    return response
+    return response.data
   } catch (ex) {
     console.log(ex)
   }

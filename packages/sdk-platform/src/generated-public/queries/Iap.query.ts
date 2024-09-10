@@ -13,6 +13,7 @@ import { AxiosError, AxiosResponse } from 'axios'
 import { useMutation, UseMutationOptions, UseMutationResult, useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query'
 import { IapApi } from '../IapApi.js'
 
+import { AppleIapConfigVersionInfo } from '../../generated-definitions/AppleIapConfigVersionInfo.js'
 import { AppleIapReceipt } from '../../generated-definitions/AppleIapReceipt.js'
 import { AppleIapRequest } from '../../generated-definitions/AppleIapRequest.js'
 import { EpicGamesReconcileRequest } from '../../generated-definitions/EpicGamesReconcileRequest.js'
@@ -32,6 +33,7 @@ import { XblReconcileResultArray } from '../../generated-definitions/XblReconcil
 
 export enum Key_Iap {
   IapItemMapping = 'Platform.Iap.IapItemMapping',
+  IapAppleConfigVersion = 'Platform.Iap.IapAppleConfigVersion',
   UserMeIapTwitchSync = 'Platform.Iap.UserMeIapTwitchSync',
   IapPsnSync_ByUserId = 'Platform.Iap.IapPsnSync_ByUserId',
   IapXblSync_ByUserId = 'Platform.Iap.IapXblSync_ByUserId',
@@ -74,6 +76,36 @@ export const useIapApi_GetIapItemMapping = (
 
   return useQuery<IapItemMappingInfo, AxiosError<ApiError>>({
     queryKey: [Key_Iap.IapItemMapping, input],
+    queryFn: queryFn(sdk, input),
+    ...options
+  })
+}
+
+/**
+ * Get apple config version.
+ *
+ * #### Default Query Options
+ * The default options include:
+ * ```
+ * {
+ *    queryKey: [Key_Iap.IapAppleConfigVersion, input]
+ * }
+ * ```
+ */
+export const useIapApi_GetIapAppleConfigVersion = (
+  sdk: AccelByteSDK,
+  input: SdkSetConfigParam,
+  options?: Omit<UseQueryOptions<AppleIapConfigVersionInfo, AxiosError<ApiError>>, 'queryKey'>,
+  callback?: (data: AxiosResponse<AppleIapConfigVersionInfo>) => void
+): UseQueryResult<AppleIapConfigVersionInfo, AxiosError<ApiError>> => {
+  const queryFn = (sdk: AccelByteSDK, input: Parameters<typeof useIapApi_GetIapAppleConfigVersion>[1]) => async () => {
+    const response = await IapApi(sdk, { coreConfig: input.coreConfig, axiosConfig: input.axiosConfig }).getIapAppleConfigVersion()
+    callback && callback(response)
+    return response.data
+  }
+
+  return useQuery<AppleIapConfigVersionInfo, AxiosError<ApiError>>({
+    queryKey: [Key_Iap.IapAppleConfigVersion, input],
     queryFn: queryFn(sdk, input),
     ...options
   })

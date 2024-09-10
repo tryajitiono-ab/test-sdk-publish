@@ -19,9 +19,12 @@ export function TypeAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   const sdkAssembly = sdk.assembly()
 
   const namespace = args?.coreConfig?.namespace ?? sdkAssembly.coreConfig.namespace
-  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+  const requestConfig = ApiUtils.mergeAxiosConfigs(sdkAssembly.axiosInstance.defaults as AxiosRequestConfig, {
+    ...(args?.coreConfig?.baseURL ? { baseURL: args?.coreConfig?.baseURL } : {}),
+    ...args?.axiosConfig?.request
+  })
   const interceptors = args?.axiosConfig?.interceptors ?? sdkAssembly.axiosConfig.interceptors ?? []
-  const useSchemaValidation = sdkAssembly.coreConfig.useSchemaValidation
+  const useSchemaValidation = args?.coreConfig?.useSchemaValidation ?? sdkAssembly.coreConfig.useSchemaValidation
   const axiosInstance = Network.create(requestConfig)
 
   for (const interceptor of interceptors) {
@@ -34,9 +37,6 @@ export function TypeAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     }
   }
 
-  /**
-   * Get available types paginated
-   */
   async function getTypes(queryParams?: { limit?: number; offset?: number }): Promise<AxiosResponse<PaginatedGetTypeResponse>> {
     const $ = new TypeAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.getTypes(queryParams)
@@ -44,9 +44,6 @@ export function TypeAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Creates a new type and subtype
-   */
   async function createType(data: CreateTypeRequest): Promise<AxiosResponse<CreateTypeResponse>> {
     const $ = new TypeAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.createType(data)
@@ -54,9 +51,6 @@ export function TypeAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Delete existing type
-   */
   async function deleteType_ByTypeId(typeId: string): Promise<AxiosResponse<unknown>> {
     const $ = new TypeAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.deleteType_ByTypeId(typeId)
@@ -64,9 +58,6 @@ export function TypeAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
     return resp.response
   }
 
-  /**
-   * Updates a type and subtype
-   */
   async function updateType_ByTypeId(typeId: string, data: CreateTypeRequest): Promise<AxiosResponse<CreateTypeResponse>> {
     const $ = new TypeAdmin$(axiosInstance, namespace, useSchemaValidation)
     const resp = await $.updateType_ByTypeId(typeId, data)
@@ -75,9 +66,21 @@ export function TypeAdminApi(sdk: AccelByteSDK, args?: SdkSetConfigParam) {
   }
 
   return {
+    /**
+     * Get available types paginated
+     */
     getTypes,
+    /**
+     * Creates a new type and subtype
+     */
     createType,
+    /**
+     * Delete existing type
+     */
     deleteType_ByTypeId,
+    /**
+     * Updates a type and subtype
+     */
     updateType_ByTypeId
   }
 }
