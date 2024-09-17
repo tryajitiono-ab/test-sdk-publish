@@ -84,7 +84,7 @@ export const useUploaderV1AdminApi_GetBuildsByAppId = (
  * }
  * ```
  */
-export const useUploaderV1AdminApi_DeleteBuild_ByBuildId = (
+export const useUploaderV1AdminApi_DeleteBuild_ByBuildIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -148,7 +148,7 @@ export const useUploaderV1AdminApi_GetBuild_ByBuildId = (
  * }
  * ```
  */
-export const useUploaderV1AdminApi_CreateStartchunkupload = (
+export const useUploaderV1AdminApi_CreateStartchunkuploadMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { data: BinaryUpload }>, 'mutationKey'>,
   callback?: (data: UploadSummary) => void
@@ -210,7 +210,7 @@ export const useUploaderV1AdminApi_GetBuildsByNamespace = (
  * }
  * ```
  */
-export const useUploaderV1AdminApi_CreateCommitbuildmanifest = (
+export const useUploaderV1AdminApi_CreateCommitbuildmanifestMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BuildManifest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -275,7 +275,7 @@ export const useUploaderV1AdminApi_GetBuildsdeletionByAppId = (
  * }
  * ```
  */
-export const useUploaderV1AdminApi_UpdateSetcurrentbuild_ByBuildId = (
+export const useUploaderV1AdminApi_UpdateSetcurrentbuild_ByBuildIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -351,7 +351,7 @@ export const useUploaderV1AdminApi_GetRetrievechunkbyhash_ByHash = (
  * }
  * ```
  */
-export const useUploaderV1AdminApi_UpdateRetry_ByBuildId = (
+export const useUploaderV1AdminApi_UpdateRetry_ByBuildIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -382,7 +382,7 @@ export const useUploaderV1AdminApi_UpdateRetry_ByBuildId = (
  * }
  * ```
  */
-export const useUploaderV1AdminApi_DeleteCancel_ByBuildId = (
+export const useUploaderV1AdminApi_DeleteCancel_ByBuildIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -414,7 +414,7 @@ export const useUploaderV1AdminApi_DeleteCancel_ByBuildId = (
  * }
  * ```
  */
-export const useUploaderV1AdminApi_UpdateSetcurrentbuild_ByAppId_ByVersion = (
+export const useUploaderV1AdminApi_UpdateSetcurrentbuild_ByAppId_ByVersionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { appId: string; version: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -447,7 +447,7 @@ export const useUploaderV1AdminApi_UpdateSetcurrentbuild_ByAppId_ByVersion = (
  * }
  * ```
  */
-export const useUploaderV1AdminApi_CreateStartbuildupload_ByAppId_ByVersion = (
+export const useUploaderV1AdminApi_CreateStartbuildupload_ByAppId_ByVersionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BuildIdManifest, AxiosError<ApiError>, SdkSetConfigParam & { appId: string; version: string }>,
@@ -483,7 +483,7 @@ export const useUploaderV1AdminApi_CreateStartbuildupload_ByAppId_ByVersion = (
  * }
  * ```
  */
-export const useUploaderV1AdminApi_CreateUuid_ByHash_ByUuid_ByOffset = (
+export const useUploaderV1AdminApi_CreateUuid_ByHash_ByUuid_ByOffsetMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash: string; uuid: string; offset: number }>,
@@ -519,7 +519,7 @@ export const useUploaderV1AdminApi_CreateUuid_ByHash_ByUuid_ByOffset = (
  * }
  * ```
  */
-export const useUploaderV1AdminApi_CreateOffset_ByHash_ByUuid_ByOffset_ByBlockSize = (
+export const useUploaderV1AdminApi_CreateOffset_ByHash_ByUuid_ByOffset_ByBlockSizeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

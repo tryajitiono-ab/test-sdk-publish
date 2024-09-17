@@ -7,14 +7,23 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { AccountHistoryAdminApi } from './generated-admin/AccountHistoryAdminApi.js'
 import { AuditLogsAdminApi } from './generated-admin/AuditLogsAdminApi.js'
 import { AccountHistoryApi } from './generated-public/AccountHistoryApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   AuditLogsAdminApi,
   AccountHistoryAdminApi,
-  AccountHistoryApi
+  AccountHistoryApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Audit = apis

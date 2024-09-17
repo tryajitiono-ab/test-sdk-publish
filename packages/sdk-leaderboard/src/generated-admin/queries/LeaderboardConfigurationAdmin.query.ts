@@ -72,7 +72,7 @@ export const useLeaderboardConfigurationAdminApi_GetLeaderboards = (
  * }
  * ```
  */
-export const useLeaderboardConfigurationAdminApi_CreateLeaderboard = (
+export const useLeaderboardConfigurationAdminApi_CreateLeaderboardMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<LeaderboardConfigReq, AxiosError<ApiError>, SdkSetConfigParam & { data: LeaderboardConfigReq }>,
@@ -107,7 +107,7 @@ export const useLeaderboardConfigurationAdminApi_CreateLeaderboard = (
  * }
  * ```
  */
-export const useLeaderboardConfigurationAdminApi_CreateLeaderboardDelete = (
+export const useLeaderboardConfigurationAdminApi_CreateLeaderboardDeleteMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<DeleteBulkLeaderboardsResp, AxiosError<ApiError>, SdkSetConfigParam & { data: DeleteBulkLeaderboardsReq }>,
@@ -142,7 +142,7 @@ export const useLeaderboardConfigurationAdminApi_CreateLeaderboardDelete = (
  * }
  * ```
  */
-export const useLeaderboardConfigurationAdminApi_DeleteLeaderboard_ByLeaderboardCode = (
+export const useLeaderboardConfigurationAdminApi_DeleteLeaderboard_ByLeaderboardCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -208,7 +208,7 @@ export const useLeaderboardConfigurationAdminApi_GetLeaderboard_ByLeaderboardCod
  * }
  * ```
  */
-export const useLeaderboardConfigurationAdminApi_UpdateLeaderboard_ByLeaderboardCode = (
+export const useLeaderboardConfigurationAdminApi_UpdateLeaderboard_ByLeaderboardCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -251,7 +251,7 @@ export const useLeaderboardConfigurationAdminApi_UpdateLeaderboard_ByLeaderboard
  * }
  * ```
  */
-export const useLeaderboardConfigurationAdminApi_DeleteHard_ByLeaderboardCode = (
+export const useLeaderboardConfigurationAdminApi_DeleteHard_ByLeaderboardCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

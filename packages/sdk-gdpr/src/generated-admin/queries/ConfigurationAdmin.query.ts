@@ -37,7 +37,7 @@ export enum Key_ConfigurationAdmin {
  * }
  * ```
  */
-export const useConfigurationAdminApi_DeleteEmailConfiguration = (
+export const useConfigurationAdminApi_DeleteEmailConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { queryParams: { emails: string[] } }>,
@@ -105,7 +105,7 @@ export const useConfigurationAdminApi_GetEmailsConfigurations = (
  * }
  * ```
  */
-export const useConfigurationAdminApi_CreateEmailConfiguration = (
+export const useConfigurationAdminApi_CreateEmailConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: string[] }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -137,7 +137,7 @@ export const useConfigurationAdminApi_CreateEmailConfiguration = (
  * }
  * ```
  */
-export const useConfigurationAdminApi_UpdateEmailConfiguration = (
+export const useConfigurationAdminApi_UpdateEmailConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: string[] }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -202,7 +202,7 @@ export const useConfigurationAdminApi_GetServicesConfigurations = (
  * }
  * ```
  */
-export const useConfigurationAdminApi_UpdateServiceConfiguration = (
+export const useConfigurationAdminApi_UpdateServiceConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -245,7 +245,7 @@ export const useConfigurationAdminApi_UpdateServiceConfiguration = (
  * }
  * ```
  */
-export const useConfigurationAdminApi_DeleteServiceConfigurationReset = (
+export const useConfigurationAdminApi_DeleteServiceConfigurationResetMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -277,7 +277,7 @@ export const useConfigurationAdminApi_DeleteServiceConfigurationReset = (
  * }
  * ```
  */
-export const useConfigurationAdminApi_DeleteServicePlatformClosureConfig = (
+export const useConfigurationAdminApi_DeleteServicePlatformClosureConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -343,7 +343,7 @@ export const useConfigurationAdminApi_GetServicesPlatformsClosureConfig = (
  * }
  * ```
  */
-export const useConfigurationAdminApi_UpdateServicePlatformClosureConfig = (
+export const useConfigurationAdminApi_UpdateServicePlatformClosureConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

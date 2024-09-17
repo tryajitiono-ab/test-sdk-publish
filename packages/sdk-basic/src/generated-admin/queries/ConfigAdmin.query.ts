@@ -34,7 +34,7 @@ export enum Key_ConfigAdmin {
  * }
  * ```
  */
-export const useConfigAdminApi_CreateConfig = (
+export const useConfigAdminApi_CreateConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigCreate }>, 'mutationKey'>,
   callback?: (data: ConfigInfo) => void
@@ -63,7 +63,7 @@ export const useConfigAdminApi_CreateConfig = (
  * }
  * ```
  */
-export const useConfigAdminApi_DeleteConfig_ByConfigKey = (
+export const useConfigAdminApi_DeleteConfig_ByConfigKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { configKey: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -126,7 +126,7 @@ export const useConfigAdminApi_GetConfig_ByConfigKey = (
  * }
  * ```
  */
-export const useConfigAdminApi_PatchConfig_ByConfigKey = (
+export const useConfigAdminApi_PatchConfig_ByConfigKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { configKey: string; data: ConfigUpdate }>,

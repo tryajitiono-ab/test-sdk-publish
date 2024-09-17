@@ -68,7 +68,7 @@ export const useClientsConfigV3AdminApi_GetClientConfigTemplates_v3 = (
  * }
  * ```
  */
-export const useClientsConfigV3AdminApi_DeleteClientConfigPermission_v3 = (
+export const useClientsConfigV3AdminApi_DeleteClientConfigPermissionMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -147,7 +147,7 @@ export const useClientsConfigV3AdminApi_GetClientConfigPermissions_v3 = (
  * }
  * ```
  */
-export const useClientsConfigV3AdminApi_UpdateClientConfigPermission_v3 = (
+export const useClientsConfigV3AdminApi_UpdateClientConfigPermissionMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

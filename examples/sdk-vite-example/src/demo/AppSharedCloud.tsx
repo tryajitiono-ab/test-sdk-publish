@@ -20,7 +20,7 @@ function App() {
   const [sdk, setSdk] = useState(AccelByte.SDK(createSdkConfig(BASE_SDK_CORE_CONFIG)))
 
   return (
-    <GlobalContextProvider sdk={sdk}>
+    <GlobalContextProvider sdk={sdk} setSdk={setSdk}>
       <main className="p-4 flex justify-center bg-slate-50">
         <div className="flex flex-col gap-y-8 lg:max-w-[768px]">
           <Heading level={1} className="text-2xl">
@@ -49,6 +49,17 @@ function App() {
             <Heading level={2}>SDK config</Heading>
 
             <SectionContent>
+              <p>
+                To configure the SDK, use the "Configure SDK" button on the bottom-right part of the screen. Upon submission, the updated
+                SDK configuration will appear below.
+              </p>
+
+              <p>
+                Adjust the <code>baseURL</code>, <code>clientID</code>, <code>namespace</code>, and <code>redirectURI</code> according to
+                the IAM client that you have created. If you are using AGS Private Cloud, you can use IAM client on the Publisher/Game
+                namespace level, whereas if you are using AGS Shared Cloud, you can only use IAM client on the Game namespace level.
+              </p>
+
               <Snippet>{JSON.stringify(sdk.assembly().coreConfig, null, 2)}</Snippet>
             </SectionContent>
           </Section>

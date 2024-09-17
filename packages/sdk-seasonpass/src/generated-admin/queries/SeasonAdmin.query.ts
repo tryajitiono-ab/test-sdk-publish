@@ -94,7 +94,7 @@ export const useSeasonAdminApi_GetSeasons = (
  * }
  * ```
  */
-export const useSeasonAdminApi_CreateSeason = (
+export const useSeasonAdminApi_CreateSeasonMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: SeasonCreate }>, 'mutationKey'>,
   callback?: (data: SeasonInfo) => void
@@ -153,7 +153,7 @@ export const useSeasonAdminApi_GetSeasonsCurrent = (
  * }
  * ```
  */
-export const useSeasonAdminApi_DeleteSeason_BySeasonId = (
+export const useSeasonAdminApi_DeleteSeason_BySeasonIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -216,7 +216,7 @@ export const useSeasonAdminApi_GetSeason_BySeasonId = (
  * }
  * ```
  */
-export const useSeasonAdminApi_PatchSeason_BySeasonId = (
+export const useSeasonAdminApi_PatchSeason_BySeasonIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string; data: SeasonUpdate }>,
@@ -316,7 +316,7 @@ export const useSeasonAdminApi_GetFull_BySeasonId = (
  * }
  * ```
  */
-export const useSeasonAdminApi_CreateClone_BySeasonId = (
+export const useSeasonAdminApi_CreateClone_BySeasonIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string; data: SeasonCloneRequest }>,
@@ -351,7 +351,7 @@ export const useSeasonAdminApi_CreateClone_BySeasonId = (
  * }
  * ```
  */
-export const useSeasonAdminApi_UpdateRetire_BySeasonId = (
+export const useSeasonAdminApi_UpdateRetire_BySeasonIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -394,7 +394,7 @@ export const useSeasonAdminApi_UpdateRetire_BySeasonId = (
  * }
  * ```
  */
-export const useSeasonAdminApi_UpdatePublish_BySeasonId = (
+export const useSeasonAdminApi_UpdatePublish_BySeasonIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<SeasonInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string }>, 'mutationKey'>,
   callback?: (data: SeasonInfo) => void
@@ -425,7 +425,7 @@ export const useSeasonAdminApi_UpdatePublish_BySeasonId = (
  * }
  * ```
  */
-export const useSeasonAdminApi_UpdateUnpublish_BySeasonId = (
+export const useSeasonAdminApi_UpdateUnpublish_BySeasonIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -512,7 +512,7 @@ export const useSeasonAdminApi_GetSeasonsExpHistory_ByUserId = (
  * }
  * ```
  */
-export const useSeasonAdminApi_DeleteSeasonCurrentReset_ByUserId = (
+export const useSeasonAdminApi_DeleteSeasonCurrentReset_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -544,7 +544,7 @@ export const useSeasonAdminApi_DeleteSeasonCurrentReset_ByUserId = (
  * }
  * ```
  */
-export const useSeasonAdminApi_CreateSeasonCurrentUserBulkProgression = (
+export const useSeasonAdminApi_CreateSeasonCurrentUserBulkProgressionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserSeasonSummaryArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserProgressionRequest }>,
@@ -678,7 +678,7 @@ export const useSeasonAdminApi_GetSeasonsCurrentProgression_ByUserId = (
  * }
  * ```
  */
-export const useSeasonAdminApi_CreateSeasonCurrentPurchasable_ByUserId = (
+export const useSeasonAdminApi_CreateSeasonCurrentPurchasable_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserPurchasable }>,

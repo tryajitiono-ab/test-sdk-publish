@@ -31,7 +31,7 @@ export enum Key_SocialMatchmaking {
  * }
  * ```
  */
-export const useSocialMatchmakingApi_PatchSocialPlaytimeWeight = (
+export const useSocialMatchmakingApi_PatchSocialPlaytimeWeightMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UpdatePlayerPlaytimeWeightResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: UpdatePlayTimeWeightRequest }>,

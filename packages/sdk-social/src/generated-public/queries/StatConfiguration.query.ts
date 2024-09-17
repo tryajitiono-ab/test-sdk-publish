@@ -31,7 +31,7 @@ export enum Key_StatConfiguration {
  * }
  * ```
  */
-export const useStatConfigurationApi_CreateStat = (
+export const useStatConfigurationApi_CreateStatMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<StatInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StatCreate }>, 'mutationKey'>,
   callback?: (data: StatInfo) => void

@@ -35,7 +35,7 @@ export enum Key_CachingAdmin {
  * }
  * ```
  */
-export const useCachingAdminApi_CreateDiffCache = (
+export const useCachingAdminApi_CreateDiffCacheMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateDiffCacheRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -66,7 +66,7 @@ export const useCachingAdminApi_CreateDiffCache = (
  * }
  * ```
  */
-export const useCachingAdminApi_UpdateDiffCache = (
+export const useCachingAdminApi_UpdateDiffCacheMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CommitDiffCacheRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -97,7 +97,7 @@ export const useCachingAdminApi_UpdateDiffCache = (
  * }
  * ```
  */
-export const useCachingAdminApi_CreateDiffCalculate = (
+export const useCachingAdminApi_CreateDiffCalculateMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CalculateDiffCacheRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -128,7 +128,7 @@ export const useCachingAdminApi_CreateDiffCalculate = (
  * }
  * ```
  */
-export const useCachingAdminApi_CreateDiffCalculateBulk = (
+export const useCachingAdminApi_CreateDiffCalculateBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkCalculateDiffCacheRequest }>,

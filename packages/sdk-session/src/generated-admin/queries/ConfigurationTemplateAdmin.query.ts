@@ -75,7 +75,7 @@ export const useConfigurationTemplateAdminApi_GetDsconfigs = (
  * }
  * ```
  */
-export const useConfigurationTemplateAdminApi_CreateConfiguration = (
+export const useConfigurationTemplateAdminApi_CreateConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -186,7 +186,7 @@ export const useConfigurationTemplateAdminApi_GetDsconfigsSync = (
  * }
  * ```
  */
-export const useConfigurationTemplateAdminApi_DeleteAlertsConfiguration = (
+export const useConfigurationTemplateAdminApi_DeleteAlertsConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -251,7 +251,7 @@ export const useConfigurationTemplateAdminApi_GetAlertsConfiguration = (
  * }
  * ```
  */
-export const useConfigurationTemplateAdminApi_UpdateAlertsConfiguration = (
+export const useConfigurationTemplateAdminApi_UpdateAlertsConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ConfigAlertResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigAlertRequestCreate }>,
@@ -286,7 +286,7 @@ export const useConfigurationTemplateAdminApi_UpdateAlertsConfiguration = (
  * }
  * ```
  */
-export const useConfigurationTemplateAdminApi_UpdateAlertsConfiguration_ByNS = (
+export const useConfigurationTemplateAdminApi_UpdateAlertsConfiguration_ByNSMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ConfigAlertResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigAlertRequestCreate }>,
@@ -321,7 +321,7 @@ export const useConfigurationTemplateAdminApi_UpdateAlertsConfiguration_ByNS = (
  * }
  * ```
  */
-export const useConfigurationTemplateAdminApi_DeleteConfiguration_ByName = (
+export const useConfigurationTemplateAdminApi_DeleteConfiguration_ByNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -387,7 +387,7 @@ export const useConfigurationTemplateAdminApi_GetConfiguration_ByName = (
  * }
  * ```
  */
-export const useConfigurationTemplateAdminApi_UpdateConfiguration_ByName = (
+export const useConfigurationTemplateAdminApi_UpdateConfiguration_ByNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

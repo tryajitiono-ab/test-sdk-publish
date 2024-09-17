@@ -105,7 +105,7 @@ export const useWalletAdminApi_GetWallets = (
  * }
  * ```
  */
-export const useWalletAdminApi_CreateWalletDebit = (
+export const useWalletAdminApi_CreateWalletDebitMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkDebitResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkDebitRequest[] }>,
@@ -139,7 +139,7 @@ export const useWalletAdminApi_CreateWalletDebit = (
  * }
  * ```
  */
-export const useWalletAdminApi_CreateWalletCredit = (
+export const useWalletAdminApi_CreateWalletCreditMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkCreditResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkCreditRequest[] }>,
@@ -272,7 +272,7 @@ export const useWalletAdminApi_GetWalletConfig_ByPlatform = (
  * }
  * ```
  */
-export const useWalletAdminApi_UpdateWalletConfig_ByPlatform = (
+export const useWalletAdminApi_UpdateWalletConfig_ByPlatformMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -316,7 +316,7 @@ export const useWalletAdminApi_UpdateWalletConfig_ByPlatform = (
  * }
  * ```
  */
-export const useWalletAdminApi_UpdateDebit_ByUserId_ByWalletId = (
+export const useWalletAdminApi_UpdateDebit_ByUserId_ByWalletIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<WalletInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; walletId: string; data: DebitRequest }>,
@@ -351,7 +351,7 @@ export const useWalletAdminApi_UpdateDebit_ByUserId_ByWalletId = (
  * }
  * ```
  */
-export const useWalletAdminApi_UpdateWalletConfigReset_ByPlatform = (
+export const useWalletAdminApi_UpdateWalletConfigReset_ByPlatformMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PlatformWalletConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { platform: string }>,
@@ -387,7 +387,7 @@ export const useWalletAdminApi_UpdateWalletConfigReset_ByPlatform = (
  * }
  * ```
  */
-export const useWalletAdminApi_UpdateEnable_ByUserId_ByWalletId = (
+export const useWalletAdminApi_UpdateEnable_ByUserId_ByWalletIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; walletId: string }>,
@@ -423,7 +423,7 @@ export const useWalletAdminApi_UpdateEnable_ByUserId_ByWalletId = (
  * }
  * ```
  */
-export const useWalletAdminApi_UpdateDisable_ByUserId_ByWalletId = (
+export const useWalletAdminApi_UpdateDisable_ByUserId_ByWalletIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; walletId: string }>,
@@ -531,7 +531,7 @@ export const useWalletAdminApi_GetCheck_ByUserId_ByCurrencyCode = (
  * }
  * ```
  */
-export const useWalletAdminApi_UpdateCredit_ByUserId_ByCurrencyCode = (
+export const useWalletAdminApi_UpdateCredit_ByUserId_ByCurrencyCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<WalletInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; currencyCode: string; data: CreditRequest }>,
@@ -570,7 +570,7 @@ export const useWalletAdminApi_UpdateCredit_ByUserId_ByCurrencyCode = (
  * }
  * ```
  */
-export const useWalletAdminApi_UpdatePayment_ByUserId_ByCurrencyCode = (
+export const useWalletAdminApi_UpdatePayment_ByUserId_ByCurrencyCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -647,7 +647,7 @@ export const useWalletAdminApi_GetTransactions_ByUserId_ByWalletId = (
  * }
  * ```
  */
-export const useWalletAdminApi_CreateBalanceCheck_ByUserId_ByCurrencyCode = (
+export const useWalletAdminApi_CreateBalanceCheck_ByUserId_ByCurrencyCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -690,7 +690,7 @@ export const useWalletAdminApi_CreateBalanceCheck_ByUserId_ByCurrencyCode = (
  * }
  * ```
  */
-export const useWalletAdminApi_UpdateDebitWallet_ByUserId_ByCurrencyCode = (
+export const useWalletAdminApi_UpdateDebitWallet_ByUserId_ByCurrencyCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -733,7 +733,7 @@ export const useWalletAdminApi_UpdateDebitWallet_ByUserId_ByCurrencyCode = (
  * }
  * ```
  */
-export const useWalletAdminApi_UpdateDebitByWalletPlatform_ByUserId_ByCurrencyCode = (
+export const useWalletAdminApi_UpdateDebitByWalletPlatform_ByUserId_ByCurrencyCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

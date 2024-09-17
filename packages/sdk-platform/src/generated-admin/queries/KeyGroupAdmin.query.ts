@@ -74,7 +74,7 @@ export const useKeyGroupAdminApi_GetKeygroups = (
  * }
  * ```
  */
-export const useKeyGroupAdminApi_CreateKeygroup = (
+export const useKeyGroupAdminApi_CreateKeygroupMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<KeyGroupInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: KeyGroupCreate }>, 'mutationKey'>,
   callback?: (data: KeyGroupInfo) => void
@@ -170,7 +170,7 @@ export const useKeyGroupAdminApi_GetKeygroup_ByKeyGroupId = (
  * }
  * ```
  */
-export const useKeyGroupAdminApi_UpdateKeygroup_ByKeyGroupId = (
+export const useKeyGroupAdminApi_UpdateKeygroup_ByKeyGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<KeyGroupInfo, AxiosError<ApiError>, SdkSetConfigParam & { keyGroupId: string; data: KeyGroupUpdate }>,
@@ -238,7 +238,7 @@ export const useKeyGroupAdminApi_GetKeys_ByKeyGroupId = (
  * }
  * ```
  */
-export const useKeyGroupAdminApi_CreateKey_ByKeyGroupId = (
+export const useKeyGroupAdminApi_CreateKey_ByKeyGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkOperationResult, AxiosError<ApiError>, SdkSetConfigParam & { keyGroupId: string; data: { file?: File } }>,

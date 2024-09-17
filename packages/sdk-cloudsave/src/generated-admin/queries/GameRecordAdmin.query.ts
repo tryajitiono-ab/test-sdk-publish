@@ -65,7 +65,7 @@ export const useGameRecordAdminApi_GetRecords = (
  * }
  * ```
  */
-export const useGameRecordAdminApi_DeleteRecord_ByKey = (
+export const useGameRecordAdminApi_DeleteRecord_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -128,7 +128,7 @@ export const useGameRecordAdminApi_GetRecord_ByKey = (
  * }
  * ```
  */
-export const useGameRecordAdminApi_CreateRecord_ByKey = (
+export const useGameRecordAdminApi_CreateRecord_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GameRecordAdminResponse, AxiosError<ApiError>, SdkSetConfigParam & { key: string; data: GameRecordRequest }>,
@@ -163,7 +163,7 @@ export const useGameRecordAdminApi_CreateRecord_ByKey = (
  * }
  * ```
  */
-export const useGameRecordAdminApi_UpdateRecord_ByKey = (
+export const useGameRecordAdminApi_UpdateRecord_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GameRecordAdminResponse, AxiosError<ApiError>, SdkSetConfigParam & { key: string; data: GameRecordRequest }>,

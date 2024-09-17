@@ -85,7 +85,7 @@ export const useInventoryConfigurationsAdminApi_GetInventoryConfigurations = (
  * }
  * ```
  */
-export const useInventoryConfigurationsAdminApi_CreateInventoryConfiguration = (
+export const useInventoryConfigurationsAdminApi_CreateInventoryConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<InventoryConfigurationResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateInventoryConfigurationReq }>,
@@ -120,7 +120,7 @@ export const useInventoryConfigurationsAdminApi_CreateInventoryConfiguration = (
  * }
  * ```
  */
-export const useInventoryConfigurationsAdminApi_DeleteInventoryConfiguration_ByInventoryConfigurationId = (
+export const useInventoryConfigurationsAdminApi_DeleteInventoryConfiguration_ByInventoryConfigurationIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { inventoryConfigurationId: string }>,
@@ -193,7 +193,7 @@ export const useInventoryConfigurationsAdminApi_GetInventoryConfiguration_ByInve
  * }
  * ```
  */
-export const useInventoryConfigurationsAdminApi_UpdateInventoryConfiguration_ByInventoryConfigurationId = (
+export const useInventoryConfigurationsAdminApi_UpdateInventoryConfiguration_ByInventoryConfigurationIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

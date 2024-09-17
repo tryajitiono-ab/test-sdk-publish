@@ -1,89 +1,66 @@
-// This examples requires valid Access Token with Admin Permission
-
-import { AccelByte } from '@accelbyte/sdk'
-import { Iam, OAuth20Api } from '@accelbyte/sdk-iam'
-import { RecordAdminApi } from '@accelbyte/sdk-cloudsave'
-
-const ACCESS_TOKEN = '<replace with accessToken for given baseURL>'
-const BEARER_AUTH_SDK_ARGS = {
-    headers: {
-      Authorization: `Bearer ${ACCESS_TOKEN}`
-    }
-}
-
-const CLIENT_ID = '<replace with CLIENT_ID for given baseURL>'
-// If you're using Public IAM Client you can leave CLIENT_SECRET as empty string
-// But if you're using Confidential IAM Client you need to provide the CLIENT_SECRET
-const CLIENT_SECRET = ''
-
-const BASIC_TOKEN = `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`
-const BASIC_AUTH_SDK_ARGS = {
-    headers: {
-      Authorization: BASIC_TOKEN
-    }
-}
+import 'dotenv/config'
+import { AccelByte, Network } from '@accelbyte/sdk'
+import { OAuth20Api } from '@accelbyte/sdk-iam'
+import { CurrencyApi, ItemApi } from '@accelbyte/sdk-platform'
 
 const sdk = AccelByte.SDK({
   coreConfig: {
-    baseURL: 'https://prod.gamingservices.accelbyte.io',
-    clientId: CLIENT_ID,
-    namespace: 'foundations',
-    redirectURI: 'http://localhost:3000'
-  },
+    baseURL: process.env.AB_BASE_URL || '',
+    clientId: process.env.AB_CLIENT_ID || '',
+    redirectURI: process.env.AB_REDIRECT_URI || '',
+    namespace: process.env.AB_NAMESPACE || ''
+  }
 })
 
-// Sample SDK calls:
-main()
-
-async function main() {
-  console.info(sdk.assembly())
-  // Below examples require authentication with Admin Permission, ensure that you have logged in (have cookies)
-  // or pass the access token to the `Authorization` header.
-  if (ACCESS_TOKEN.length < 1000) {
-    // min jwt length
-    throw Error('Please provide a valid accessToken')
-  }
-
-  // You can also use access_token acquired from this response to call any Admin Endpoint,
-  // Make sure the CLIENT_ID in the IAM Client has the appropriate permission to call the Admin Endpoint
-  const res = await clientGrantToken()
-  if (res && res.access_token) await verifyToken(res.access_token)
-
-  await getCloudsaveAdminRecords()
-}
-
-async function getCloudsaveAdminRecords() {
-  console.log('\n Testing Admin CloudSave... ')
+const main = async () => {
   try {
-    const adminrecords = await RecordAdminApi(sdk, {axiosConfig: {request: BEARER_AUTH_SDK_ARGS}}).getAdminrecords()
-    console.log(`Cloud Save Admin Records:`, adminrecords)
-  } catch (ex) {
-    console.log(ex)
-  }
-}
+    console.info(sdk.assembly())
+    
+    const tokenResponse = await OAuth20Api(sdk, {
+      axiosConfig: {
+        request: {
+          headers: {
+            // If you're using Public IAM Client you can leave CLIENT_SECRET as empty string
+            // But if you're using Confidential IAM Client you need to provide the CLIENT_SECRET
+            Authorization: `Basic ${Buffer.from(`${process.env.AB_CLIENT_ID}:${process.env.AB_CLIENT_SECRET}`).toString('base64')}`
+          }
+        }
+      }
+    }).postOauthToken_v3({ grant_type: 'client_credentials' })
 
-async function verifyToken(token) {
-  console.log('\n Verifying access token...')
+    if (!tokenResponse.data.access_token) {
+      throw new Error('Login failed')
+    }
+    const { access_token, refresh_token } = tokenResponse.data
 
-  try {
-    const res = await OAuth20Api(sdk, {axiosConfig: {request: BASIC_AUTH_SDK_ARGS}}).postOauthVerify_v3({ token })
-    console.log('verifyToken', res)
-    return true
+    sdk.setToken({ accessToken: access_token, refreshToken: refresh_token })
+
+    const currenciesResponse = await CurrencyApi(sdk).getCurrencies()
+    console.log(currenciesResponse.data)
+
+    const itemResponse = await ItemApi(sdk).getItemsByCriteria()
+    console.log(itemResponse.data)
+    
+    const customResponse = await customNetworkCall()
+    console.log(customResponse.data)
   } catch (error) {
-    return false
+    console.error(error)
   }
 }
 
-async function clientGrantToken() {
-  if (CLIENT_ID === '<replace with CLIENT_ID for given baseURL>') return false
-
-  console.log('\n Grant access token for current CLIENT_ID...')
-
+// Below example can be used when we want to create a call into an endpoint using Web SDK
+async function customNetworkCall() {
   try {
-    const response = await Iam.OAuth20Api(sdk, {axiosConfig: {request: BASIC_AUTH_SDK_ARGS}}).postOauthToken_v3({ grant_type: 'client_credentials' })
-    console.log(`clientGrantToken:`, response)
-    return response.data
-  } catch (ex) {
-    console.log(ex)
+    const config = sdk.assembly()
+    const network = Network.create({
+      baseURL: config.coreConfig.baseURL,
+      headers: { Authorization: config.axiosConfig.request.headers.Authorization }
+    })
+    const currentUser = await network.get('/basic/v1/public/namespaces')
+    return currentUser
+  } catch (err) {
+    console.error(err)
   }
 }
+
+main()

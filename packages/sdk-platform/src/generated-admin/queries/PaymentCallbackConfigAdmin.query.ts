@@ -65,7 +65,7 @@ export const usePaymentCallbackConfigAdminApi_GetPaymentConfigCallback = (
  * }
  * ```
  */
-export const usePaymentCallbackConfigAdminApi_UpdatePaymentConfigCallback = (
+export const usePaymentCallbackConfigAdminApi_UpdatePaymentConfigCallbackMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PaymentCallbackConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentCallbackConfigUpdate }>,

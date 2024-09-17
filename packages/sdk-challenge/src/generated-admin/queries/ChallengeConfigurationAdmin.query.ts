@@ -77,7 +77,7 @@ export const useChallengeConfigurationAdminApi_GetChallenges = (
  * }
  * ```
  */
-export const useChallengeConfigurationAdminApi_CreateChallenge = (
+export const useChallengeConfigurationAdminApi_CreateChallengeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ChallengeResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateChallengeRequest }>,
@@ -112,7 +112,7 @@ export const useChallengeConfigurationAdminApi_CreateChallenge = (
  * }
  * ```
  */
-export const useChallengeConfigurationAdminApi_DeleteChallenge_ByChallengeCode = (
+export const useChallengeConfigurationAdminApi_DeleteChallenge_ByChallengeCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -178,7 +178,7 @@ export const useChallengeConfigurationAdminApi_GetChallenge_ByChallengeCode = (
  * }
  * ```
  */
-export const useChallengeConfigurationAdminApi_UpdateChallenge_ByChallengeCode = (
+export const useChallengeConfigurationAdminApi_UpdateChallenge_ByChallengeCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -221,7 +221,7 @@ export const useChallengeConfigurationAdminApi_UpdateChallenge_ByChallengeCode =
  * }
  * ```
  */
-export const useChallengeConfigurationAdminApi_DeleteTied_ByChallengeCode = (
+export const useChallengeConfigurationAdminApi_DeleteTied_ByChallengeCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -287,7 +287,7 @@ export const useChallengeConfigurationAdminApi_GetPeriods_ByChallengeCode = (
  * }
  * ```
  */
-export const useChallengeConfigurationAdminApi_CreateRandomize_ByChallengeCode = (
+export const useChallengeConfigurationAdminApi_CreateRandomize_ByChallengeCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<ScheduleArray, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode: string }>, 'mutationKey'>,
   callback?: (data: ScheduleArray) => void
@@ -319,7 +319,7 @@ export const useChallengeConfigurationAdminApi_CreateRandomize_ByChallengeCode =
  * }
  * ```
  */
-export const useChallengeConfigurationAdminApi_UpdateTiedSchedule_ByChallengeCode = (
+export const useChallengeConfigurationAdminApi_UpdateTiedSchedule_ByChallengeCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

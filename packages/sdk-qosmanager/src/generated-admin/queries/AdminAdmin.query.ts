@@ -32,7 +32,7 @@ export enum Key_AdminAdmin {
  * }
  * ```
  */
-export const useAdminAdminApi_DeleteServer_ByRegion = (
+export const useAdminAdminApi_DeleteServer_ByRegionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { region: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -63,7 +63,7 @@ export const useAdminAdminApi_DeleteServer_ByRegion = (
  * }
  * ```
  */
-export const useAdminAdminApi_CreateAlia_ByRegion = (
+export const useAdminAdminApi_CreateAlia_ByRegionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { region: string; data: SetAliasRequest }>,
@@ -98,7 +98,7 @@ export const useAdminAdminApi_CreateAlia_ByRegion = (
  * }
  * ```
  */
-export const useAdminAdminApi_PatchServer_ByRegion = (
+export const useAdminAdminApi_PatchServer_ByRegionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { region: string; data: UpdateServerRequest }>,

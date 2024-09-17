@@ -67,7 +67,7 @@ export const useUserAchievementsApi_GetAchievements_ByUserId = (
  * }
  * ```
  */
-export const useUserAchievementsApi_UpdateUnlock_ByUserId_ByAchievementCode = (
+export const useUserAchievementsApi_UpdateUnlock_ByUserId_ByAchievementCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; achievementCode: string }>,

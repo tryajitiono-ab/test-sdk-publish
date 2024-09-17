@@ -66,7 +66,7 @@ export const usePartyApi_GetPartyParty_ByPartyId = (
  * }
  * ```
  */
-export const usePartyApi_UpdateLimitParty_ByPartyId = (
+export const usePartyApi_UpdateLimitParty_ByPartyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string; data: PartyPutLimitSizeRequest }>,
@@ -101,7 +101,7 @@ export const usePartyApi_UpdateLimitParty_ByPartyId = (
  * }
  * ```
  */
-export const usePartyApi_UpdateAttributeParty_ByPartyId = (
+export const usePartyApi_UpdateAttributeParty_ByPartyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PartyData, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string; data: PartyPutCustomAttributesRequest }>,

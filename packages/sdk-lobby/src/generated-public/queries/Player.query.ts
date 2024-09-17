@@ -36,7 +36,7 @@ export enum Key_Player {
  * }
  * ```
  */
-export const usePlayerApi_CreatePlayerUserMeBlock = (
+export const usePlayerApi_CreatePlayerUserMeBlockMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BlockPlayerRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -97,7 +97,7 @@ export const usePlayerApi_GetPlayerUsersMeBlocked = (
  * }
  * ```
  */
-export const usePlayerApi_CreatePlayerUserMeUnblock = (
+export const usePlayerApi_CreatePlayerUserMeUnblockMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UnblockPlayerRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void

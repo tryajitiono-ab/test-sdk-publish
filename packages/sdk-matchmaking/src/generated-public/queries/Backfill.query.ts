@@ -40,7 +40,7 @@ export enum Key_Backfill {
  * }
  * ```
  */
-export const useBackfillApi_CreateBackfill = (
+export const useBackfillApi_CreateBackfillMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BackfillCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: BackFillCreateRequest }>,
@@ -104,7 +104,7 @@ export const useBackfillApi_GetBackfillProposal = (
  * }
  * ```
  */
-export const useBackfillApi_DeleteBackfill_ByBackfillId = (
+export const useBackfillApi_DeleteBackfill_ByBackfillIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { backfillID: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -167,7 +167,7 @@ export const useBackfillApi_GetBackfill_ByBackfillId = (
  * }
  * ```
  */
-export const useBackfillApi_UpdateProposalAccept_ByBackfillId = (
+export const useBackfillApi_UpdateProposalAccept_ByBackfillIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GameSession, AxiosError<ApiError>, SdkSetConfigParam & { backfillID: string; data: BackFillAcceptRequest }>,
@@ -202,7 +202,7 @@ export const useBackfillApi_UpdateProposalAccept_ByBackfillId = (
  * }
  * ```
  */
-export const useBackfillApi_UpdateProposalReject_ByBackfillId = (
+export const useBackfillApi_UpdateProposalReject_ByBackfillIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { backfillID: string; data: BackFillRejectRequest }>,

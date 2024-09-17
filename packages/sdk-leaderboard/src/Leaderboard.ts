@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { AnonymizationAdminApi } from './generated-admin/AnonymizationAdminApi.js'
 import { LeaderboardConfigurationAdminApi } from './generated-admin/LeaderboardConfigurationAdminApi.js'
 import { LeaderboardConfigurationV3AdminApi } from './generated-admin/LeaderboardConfigurationV3AdminApi.js'
@@ -21,6 +22,8 @@ import { LeaderboardConfigurationV3Api } from './generated-public/LeaderboardCon
 import { LeaderboardDataApi } from './generated-public/LeaderboardDataApi.js'
 import { LeaderboardDataV3Api } from './generated-public/LeaderboardDataV3Api.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   LeaderboardConfigurationAdminApi,
   LeaderboardConfigurationV3AdminApi,
@@ -34,7 +37,13 @@ const apis = {
   LeaderboardConfigurationApi,
   LeaderboardConfigurationV3Api,
   LeaderboardDataApi,
-  LeaderboardDataV3Api
+  LeaderboardDataV3Api,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Leaderboard = apis

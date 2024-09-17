@@ -34,7 +34,7 @@ export enum Key_PlatformAdmin {
  * }
  * ```
  */
-export const usePlatformAdminApi_CreateOwnershipXblPlatform_ByProductSku = (
+export const usePlatformAdminApi_CreateOwnershipXblPlatform_ByProductSkuMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -77,7 +77,7 @@ export const usePlatformAdminApi_CreateOwnershipXblPlatform_ByProductSku = (
  * }
  * ```
  */
-export const usePlatformAdminApi_CreateOwnershipPsnPlatform_ByEntitlementLabel = (
+export const usePlatformAdminApi_CreateOwnershipPsnPlatform_ByEntitlementLabelMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

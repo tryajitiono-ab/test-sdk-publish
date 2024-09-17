@@ -34,7 +34,7 @@ export enum Key_TradeActionAdmin {
  * }
  * ```
  */
-export const useTradeActionAdminApi_CreateTradeCommit = (
+export const useTradeActionAdminApi_CreateTradeCommitMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<TradeChainActionHistoryInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: TradeChainedActionCommitRequest }>,

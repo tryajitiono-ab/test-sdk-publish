@@ -55,7 +55,7 @@ export enum Key_GameSession {
  * }
  * ```
  */
-export const useGameSessionApi_CreateGamesession = (
+export const useGameSessionApi_CreateGamesessionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GameSessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateGameSessionRequest }>,
@@ -89,7 +89,7 @@ export const useGameSessionApi_CreateGamesession = (
  * }
  * ```
  */
-export const useGameSessionApi_CreateGamesession_ByNS = (
+export const useGameSessionApi_CreateGamesession_ByNSMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<GameSessionQueryResponse, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: GameSessionQueryResponse) => void
@@ -150,7 +150,7 @@ export const useGameSessionApi_GetUsersMeGamesessions = (
  * }
  * ```
  */
-export const useGameSessionApi_CreateGamesessionJoinCode = (
+export const useGameSessionApi_CreateGamesessionJoinCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GameSessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: JoinByCodeRequest }>,
@@ -184,7 +184,7 @@ export const useGameSessionApi_CreateGamesessionJoinCode = (
  * }
  * ```
  */
-export const useGameSessionApi_DeleteGamesession_BySessionId = (
+export const useGameSessionApi_DeleteGamesession_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -248,7 +248,7 @@ export const useGameSessionApi_GetGamesession_BySessionId = (
  * }
  * ```
  */
-export const useGameSessionApi_PatchGamesession_BySessionId = (
+export const useGameSessionApi_PatchGamesession_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -291,7 +291,7 @@ export const useGameSessionApi_PatchGamesession_BySessionId = (
  * }
  * ```
  */
-export const useGameSessionApi_UpdateGamesession_BySessionId = (
+export const useGameSessionApi_UpdateGamesession_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -334,7 +334,7 @@ export const useGameSessionApi_UpdateGamesession_BySessionId = (
  * }
  * ```
  */
-export const useGameSessionApi_DeleteCode_BySessionId = (
+export const useGameSessionApi_DeleteCode_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -365,7 +365,7 @@ export const useGameSessionApi_DeleteCode_BySessionId = (
  * }
  * ```
  */
-export const useGameSessionApi_UpdateCode_BySessionId = (
+export const useGameSessionApi_UpdateCode_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<GameSessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string }>, 'mutationKey'>,
   callback?: (data: GameSessionResponse) => void
@@ -396,7 +396,7 @@ export const useGameSessionApi_UpdateCode_BySessionId = (
  * }
  * ```
  */
-export const useGameSessionApi_CreateJoin_BySessionId = (
+export const useGameSessionApi_CreateJoin_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<GameSessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string }>, 'mutationKey'>,
   callback?: (data: GameSessionResponse) => void
@@ -427,7 +427,7 @@ export const useGameSessionApi_CreateJoin_BySessionId = (
  * }
  * ```
  */
-export const useGameSessionApi_DeleteLeave_BySessionId = (
+export const useGameSessionApi_DeleteLeave_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -458,7 +458,7 @@ export const useGameSessionApi_DeleteLeave_BySessionId = (
  * }
  * ```
  */
-export const useGameSessionApi_UpdateTeam_BySessionId = (
+export const useGameSessionApi_UpdateTeam_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -534,7 +534,7 @@ export const useGameSessionApi_GetGamesessionServer_ByPodName = (
  * }
  * ```
  */
-export const useGameSessionApi_CreateInvite_BySessionId = (
+export const useGameSessionApi_CreateInvite_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string; data: SessionInviteRequest }>,
@@ -569,7 +569,7 @@ export const useGameSessionApi_CreateInvite_BySessionId = (
  * }
  * ```
  */
-export const useGameSessionApi_UpdateLeader_BySessionId = (
+export const useGameSessionApi_UpdateLeader_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GameSessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string; data: PromoteLeaderRequest }>,
@@ -604,7 +604,7 @@ export const useGameSessionApi_UpdateLeader_BySessionId = (
  * }
  * ```
  */
-export const useGameSessionApi_DeleteReject_BySessionId = (
+export const useGameSessionApi_DeleteReject_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -667,7 +667,7 @@ export const useGameSessionApi_GetSecret_BySessionId = (
  * }
  * ```
  */
-export const useGameSessionApi_UpdateBackfill_BySessionId = (
+export const useGameSessionApi_UpdateBackfill_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -710,7 +710,7 @@ export const useGameSessionApi_UpdateBackfill_BySessionId = (
  * }
  * ```
  */
-export const useGameSessionApi_DeleteCancel_BySessionId_ByUserId = (
+export const useGameSessionApi_DeleteCancel_BySessionId_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string; userId: string }>,
@@ -745,7 +745,7 @@ export const useGameSessionApi_DeleteCancel_BySessionId_ByUserId = (
  * }
  * ```
  */
-export const useGameSessionApi_DeleteKick_BySessionId_ByMemberId = (
+export const useGameSessionApi_DeleteKick_BySessionId_ByMemberIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string; memberId: string }>,

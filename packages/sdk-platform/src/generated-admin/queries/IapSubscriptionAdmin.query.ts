@@ -164,7 +164,7 @@ export const useIapSubscriptionAdminApi_GetIapSubscription_ByUserId_ById = (
  * }
  * ```
  */
-export const useIapSubscriptionAdminApi_UpdateSyncIap_ByUserId_ById = (
+export const useIapSubscriptionAdminApi_UpdateSyncIap_ByUserId_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ThirdPartyUserSubscriptionInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; id: string }>,
@@ -278,7 +278,7 @@ export const useIapSubscriptionAdminApi_GetIapSubscriptionTransaction_ByUserId_B
  * }
  * ```
  */
-export const useIapSubscriptionAdminApi_UpdateSyncSubscriptionIap_ByUserId_ById = (
+export const useIapSubscriptionAdminApi_UpdateSyncSubscriptionIap_ByUserId_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ThirdPartySubscriptionTransactionInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; id: string }>,

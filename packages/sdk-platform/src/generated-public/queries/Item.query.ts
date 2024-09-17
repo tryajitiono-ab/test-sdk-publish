@@ -409,7 +409,7 @@ export const useItemApi_GetAppLocale_ByItemId = (
  * }
  * ```
  */
-export const useItemApi_CreateItemPurchaseConditionValidate = (
+export const useItemApi_CreateItemPurchaseConditionValidateMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

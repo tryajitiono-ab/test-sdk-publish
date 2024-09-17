@@ -113,7 +113,7 @@ export const useTicketsAdminApi_GetTicketsStatistic = (
  * }
  * ```
  */
-export const useTicketsAdminApi_DeleteTicket_ByTicketId = (
+export const useTicketsAdminApi_DeleteTicket_ByTicketIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ticketId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -209,7 +209,7 @@ export const useTicketsAdminApi_GetReports_ByTicketId = (
  * }
  * ```
  */
-export const useTicketsAdminApi_UpdateResolution_ByTicketId = (
+export const useTicketsAdminApi_UpdateResolution_ByTicketIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

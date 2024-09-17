@@ -101,7 +101,7 @@ export const usePublicFollowApi_GetContentsFollowed = (
  * }
  * ```
  */
-export const usePublicFollowApi_UpdateFollow_ByUserId = (
+export const usePublicFollowApi_UpdateFollow_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserFollowResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserFollowRequest }>,

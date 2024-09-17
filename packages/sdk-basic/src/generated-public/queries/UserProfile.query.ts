@@ -86,7 +86,7 @@ export const useUserProfileApi_GetProfilesPublic = (
  * }
  * ```
  */
-export const useUserProfileApi_CreateProfilePublic = (
+export const useUserProfileApi_CreateProfilePublicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserProfilePublicInfoArray, AxiosError<ApiError>, SdkSetConfigParam & { data: UserProfileBulkRequest }>,
@@ -150,7 +150,7 @@ export const useUserProfileApi_GetUsersMeProfiles = (
  * }
  * ```
  */
-export const useUserProfileApi_CreateUserMeProfile = (
+export const useUserProfileApi_CreateUserMeProfileMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserProfilePrivateInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: UserProfilePrivateCreate }>,
@@ -184,7 +184,7 @@ export const useUserProfileApi_CreateUserMeProfile = (
  * }
  * ```
  */
-export const useUserProfileApi_UpdateUserMeProfile = (
+export const useUserProfileApi_UpdateUserMeProfileMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserProfilePrivateInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: UserProfileUpdate }>,
@@ -250,7 +250,7 @@ export const useUserProfileApi_GetProfiles_ByUserId = (
  * }
  * ```
  */
-export const useUserProfileApi_CreateProfile_ByUserId = (
+export const useUserProfileApi_CreateProfile_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserProfileCreate }>,
@@ -285,7 +285,7 @@ export const useUserProfileApi_CreateProfile_ByUserId = (
  * }
  * ```
  */
-export const useUserProfileApi_UpdateProfile_ByUserId = (
+export const useUserProfileApi_UpdateProfile_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserProfileUpdate }>,
@@ -350,7 +350,7 @@ export const useUserProfileApi_GetUsersMeProfilesZipCode = (
  * }
  * ```
  */
-export const useUserProfileApi_PatchUserMeProfileZipCode = (
+export const useUserProfileApi_PatchUserMeProfileZipCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<UserZipCode, AxiosError<ApiError>, SdkSetConfigParam & { data: UserZipCodeUpdate }>, 'mutationKey'>,
   callback?: (data: UserZipCode) => void
@@ -446,7 +446,7 @@ export const useUserProfileApi_GetProfilesPublic_ByUserId = (
  * }
  * ```
  */
-export const useUserProfileApi_PatchProfileStatus_ByUserId = (
+export const useUserProfileApi_PatchProfileStatus_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserProfileInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserProfileStatusUpdate }>,
@@ -514,7 +514,7 @@ export const useUserProfileApi_GetProfilesCustomAttributes_ByUserId = (
  * }
  * ```
  */
-export const useUserProfileApi_UpdateProfileCustomAttribute_ByUserId = (
+export const useUserProfileApi_UpdateProfileCustomAttribute_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: any }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -580,7 +580,7 @@ export const useUserProfileApi_GetUsersMeProfilesPrivateCustomAttributes = (
  * }
  * ```
  */
-export const useUserProfileApi_UpdateUserMeProfilePrivateCustomAttribute = (
+export const useUserProfileApi_UpdateUserMeProfilePrivateCustomAttributeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: any }>, 'mutationKey'>,
   callback?: (data: unknown) => void

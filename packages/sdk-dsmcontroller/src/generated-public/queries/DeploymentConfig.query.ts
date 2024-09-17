@@ -65,7 +65,7 @@ export const useDeploymentConfigApi_GetConfigsDeployments = (
  * }
  * ```
  */
-export const useDeploymentConfigApi_DeleteConfigDeployment_ByDeployment = (
+export const useDeploymentConfigApi_DeleteConfigDeployment_ByDeploymentMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { deployment: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -130,7 +130,7 @@ export const useDeploymentConfigApi_GetConfigDeployment_ByDeployment = (
  * }
  * ```
  */
-export const useDeploymentConfigApi_CreateConfigDeployment_ByDeployment = (
+export const useDeploymentConfigApi_CreateConfigDeployment_ByDeploymentMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

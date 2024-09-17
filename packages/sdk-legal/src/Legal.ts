@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { AgreementAdminApi } from './generated-admin/AgreementAdminApi.js'
 import { AgreementWithNamespaceAdminApi } from './generated-admin/AgreementWithNamespaceAdminApi.js'
 import { AnonymizationAdminApi } from './generated-admin/AnonymizationAdminApi.js'
@@ -28,6 +29,8 @@ import { LocalizedPolicyVersionsWithNamespaceApi } from './generated-public/Loca
 import { PoliciesApi } from './generated-public/PoliciesApi.js'
 import { UtilityApi } from './generated-public/UtilityApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   UserInfoAdminApi,
   BaseLegalPoliciesAdminApi,
@@ -48,7 +51,13 @@ const apis = {
   PoliciesApi,
   EligibilitiesApi,
   LocalizedPolicyVersionsApi,
-  LocalizedPolicyVersionsWithNamespaceApi
+  LocalizedPolicyVersionsWithNamespaceApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Legal = apis

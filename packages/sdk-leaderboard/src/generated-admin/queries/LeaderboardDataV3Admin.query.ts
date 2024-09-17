@@ -37,7 +37,7 @@ export enum Key_LeaderboardDataV3Admin {
  * }
  * ```
  */
-export const useLeaderboardDataV3AdminApi_DeleteUser_ByUserId_v3 = (
+export const useLeaderboardDataV3AdminApi_DeleteUser_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; queryParams: { leaderboardCode: string[] } }>,
@@ -72,7 +72,7 @@ export const useLeaderboardDataV3AdminApi_DeleteUser_ByUserId_v3 = (
  * }
  * ```
  */
-export const useLeaderboardDataV3AdminApi_DeleteReset_ByLeaderboardCode_v3 = (
+export const useLeaderboardDataV3AdminApi_DeleteReset_ByLeaderboardCodeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -138,7 +138,7 @@ export const useLeaderboardDataV3AdminApi_GetAlltime_ByLeaderboardCode_v3 = (
  * }
  * ```
  */
-export const useLeaderboardDataV3AdminApi_DeleteUser_ByLeaderboardCode_ByUserId_v3 = (
+export const useLeaderboardDataV3AdminApi_DeleteUser_ByLeaderboardCode_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode: string; userId: string }>,
@@ -241,7 +241,7 @@ export const useLeaderboardDataV3AdminApi_GetCycle_ByLeaderboardCode_ByCycleId_v
  * }
  * ```
  */
-export const useLeaderboardDataV3AdminApi_DeleteReset_ByLeaderboardCode_ByCycleId_v3 = (
+export const useLeaderboardDataV3AdminApi_DeleteReset_ByLeaderboardCode_ByCycleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode: string; cycleId: string }>,
@@ -276,7 +276,7 @@ export const useLeaderboardDataV3AdminApi_DeleteReset_ByLeaderboardCode_ByCycleI
  * }
  * ```
  */
-export const useLeaderboardDataV3AdminApi_DeleteUser_ByLeaderboardCode_ByCycleId_ByUserId_v3 = (
+export const useLeaderboardDataV3AdminApi_DeleteUser_ByLeaderboardCode_ByCycleId_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode: string; cycleId: string; userId: string }>,

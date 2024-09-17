@@ -34,7 +34,7 @@ export enum Key_SlotConfigAdmin {
  * }
  * ```
  */
-export const useSlotConfigAdminApi_DeleteConfig = (
+export const useSlotConfigAdminApi_DeleteConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -95,7 +95,7 @@ export const useSlotConfigAdminApi_GetConfig = (
  * }
  * ```
  */
-export const useSlotConfigAdminApi_UpdateConfig = (
+export const useSlotConfigAdminApi_UpdateConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<NamespaceSlotConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: SlotConfigUpdate }>,
@@ -130,7 +130,7 @@ export const useSlotConfigAdminApi_UpdateConfig = (
  * }
  * ```
  */
-export const useSlotConfigAdminApi_DeleteConfig_ByUserId = (
+export const useSlotConfigAdminApi_DeleteConfig_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -195,7 +195,7 @@ export const useSlotConfigAdminApi_GetConfig_ByUserId = (
  * }
  * ```
  */
-export const useSlotConfigAdminApi_UpdateConfig_ByUserId = (
+export const useSlotConfigAdminApi_UpdateConfig_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserSlotConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: SlotConfigUpdate }>,

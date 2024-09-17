@@ -30,7 +30,7 @@ export enum Key_SessionPlatformAdmin {
  * }
  * ```
  */
-export const useSessionPlatformAdminApi_UpdateSessionXbl_ByUserId = (
+export const useSessionPlatformAdminApi_UpdateSessionXbl_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: XblUserSessionRequest }>,

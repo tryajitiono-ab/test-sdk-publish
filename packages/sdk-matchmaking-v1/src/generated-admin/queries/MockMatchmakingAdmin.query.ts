@@ -41,7 +41,7 @@ export enum Key_MockMatchmakingAdmin {
  * }
  * ```
  */
-export const useMockMatchmakingAdminApi_DeleteMock_ByChannelName = (
+export const useMockMatchmakingAdminApi_DeleteMock_ByChannelNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -175,7 +175,7 @@ export const useMockMatchmakingAdminApi_GetMocksTickets_ByChannelName = (
  * }
  * ```
  */
-export const useMockMatchmakingAdminApi_CreateMockTicket_ByChannelName = (
+export const useMockMatchmakingAdminApi_CreateMockTicket_ByChannelNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MockTicketArray, AxiosError<ApiError>, SdkSetConfigParam & { channelName: string; data: CreateMockTicket }>,
@@ -210,7 +210,7 @@ export const useMockMatchmakingAdminApi_CreateMockTicket_ByChannelName = (
  * }
  * ```
  */
-export const useMockMatchmakingAdminApi_CreateMockTicketBulk_ByChannelName = (
+export const useMockMatchmakingAdminApi_CreateMockTicketBulk_ByChannelNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName: string; data: MatchingParty[] }>,

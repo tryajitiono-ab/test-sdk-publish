@@ -87,7 +87,7 @@ export const useStatCycleConfigurationAdminApi_GetStatCycles = (
  * }
  * ```
  */
-export const useStatCycleConfigurationAdminApi_CreateStatCycle = (
+export const useStatCycleConfigurationAdminApi_CreateStatCycleMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<StatCycleInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StatCycleCreate }>, 'mutationKey'>,
   callback?: (data: StatCycleInfo) => void
@@ -119,7 +119,7 @@ export const useStatCycleConfigurationAdminApi_CreateStatCycle = (
  * }
  * ```
  */
-export const useStatCycleConfigurationAdminApi_CreateStatCycleBulk = (
+export const useStatCycleConfigurationAdminApi_CreateStatCycleBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkStatCycleResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkStatCycleRequest }>,
@@ -187,7 +187,7 @@ export const useStatCycleConfigurationAdminApi_GetStatCyclesExport = (
  * }
  * ```
  */
-export const useStatCycleConfigurationAdminApi_CreateStatCycleImport = (
+export const useStatCycleConfigurationAdminApi_CreateStatCycleImportMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -230,7 +230,7 @@ export const useStatCycleConfigurationAdminApi_CreateStatCycleImport = (
  * }
  * ```
  */
-export const useStatCycleConfigurationAdminApi_DeleteStatCycle_ByCycleId = (
+export const useStatCycleConfigurationAdminApi_DeleteStatCycle_ByCycleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { cycleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -296,7 +296,7 @@ export const useStatCycleConfigurationAdminApi_GetStatCycle_ByCycleId = (
  * }
  * ```
  */
-export const useStatCycleConfigurationAdminApi_UpdateStatCycle_ByCycleId = (
+export const useStatCycleConfigurationAdminApi_UpdateStatCycle_ByCycleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<StatCycleInfo, AxiosError<ApiError>, SdkSetConfigParam & { cycleId: string; data: StatCycleUpdate }>,
@@ -331,7 +331,7 @@ export const useStatCycleConfigurationAdminApi_UpdateStatCycle_ByCycleId = (
  * }
  * ```
  */
-export const useStatCycleConfigurationAdminApi_UpdateStop_ByCycleId = (
+export const useStatCycleConfigurationAdminApi_UpdateStop_ByCycleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<StatCycleInfo, AxiosError<ApiError>, SdkSetConfigParam & { cycleId: string }>, 'mutationKey'>,
   callback?: (data: StatCycleInfo) => void
@@ -363,7 +363,7 @@ export const useStatCycleConfigurationAdminApi_UpdateStop_ByCycleId = (
  * }
  * ```
  */
-export const useStatCycleConfigurationAdminApi_CreateStatAddBulk_ByCycleId = (
+export const useStatCycleConfigurationAdminApi_CreateStatAddBulk_ByCycleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

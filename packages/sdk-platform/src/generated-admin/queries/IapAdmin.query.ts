@@ -70,7 +70,7 @@ export enum Key_IapAdmin {
  * }
  * ```
  */
-export const useIapAdminApi_DeleteIapConfigXbl = (
+export const useIapAdminApi_DeleteIapConfigXblMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -129,7 +129,7 @@ export const useIapAdminApi_GetIapConfigXbl = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigXbl = (
+export const useIapAdminApi_UpdateIapConfigXblMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<XblIapConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: XblIapConfigRequest }>,
@@ -161,7 +161,7 @@ export const useIapAdminApi_UpdateIapConfigXbl = (
  * }
  * ```
  */
-export const useIapAdminApi_DeleteIapConfigItem = (
+export const useIapAdminApi_DeleteIapConfigItemMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -220,7 +220,7 @@ export const useIapAdminApi_GetIapConfigItem = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigItem = (
+export const useIapAdminApi_UpdateIapConfigItemMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<IapItemConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: IapItemConfigUpdate }>,
@@ -254,7 +254,7 @@ export const useIapAdminApi_UpdateIapConfigItem = (
  * }
  * ```
  */
-export const useIapAdminApi_DeleteIapConfigApple = (
+export const useIapAdminApi_DeleteIapConfigAppleMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -313,7 +313,7 @@ export const useIapAdminApi_GetIapConfigApple = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigApple = (
+export const useIapAdminApi_UpdateIapConfigAppleMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AppleIapConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: AppleIapConfigRequest }>,
@@ -347,7 +347,7 @@ export const useIapAdminApi_UpdateIapConfigApple = (
  * }
  * ```
  */
-export const useIapAdminApi_DeleteIapConfigSteam = (
+export const useIapAdminApi_DeleteIapConfigSteamMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -406,7 +406,7 @@ export const useIapAdminApi_GetIapConfigSteam = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigSteam = (
+export const useIapAdminApi_UpdateIapConfigSteamMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SteamIapConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: SteamIapConfigRequest }>,
@@ -440,7 +440,7 @@ export const useIapAdminApi_UpdateIapConfigSteam = (
  * }
  * ```
  */
-export const useIapAdminApi_DeleteIapConfigGoogle = (
+export const useIapAdminApi_DeleteIapConfigGoogleMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -499,7 +499,7 @@ export const useIapAdminApi_GetIapConfigGoogle = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigGoogle = (
+export const useIapAdminApi_UpdateIapConfigGoogleMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GoogleIapConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: GoogleIapConfigRequest }>,
@@ -533,7 +533,7 @@ export const useIapAdminApi_UpdateIapConfigGoogle = (
  * }
  * ```
  */
-export const useIapAdminApi_DeleteIapConfigOculu = (
+export const useIapAdminApi_DeleteIapConfigOculuMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -592,7 +592,7 @@ export const useIapAdminApi_GetIapConfigOculus = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigOculu = (
+export const useIapAdminApi_UpdateIapConfigOculuMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<OculusIapConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: OculusIapConfigRequest }>,
@@ -626,7 +626,7 @@ export const useIapAdminApi_UpdateIapConfigOculu = (
  * }
  * ```
  */
-export const useIapAdminApi_DeleteIapConfigTwitch = (
+export const useIapAdminApi_DeleteIapConfigTwitchMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -685,7 +685,7 @@ export const useIapAdminApi_GetIapConfigTwitch = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigTwitch = (
+export const useIapAdminApi_UpdateIapConfigTwitchMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<TwitchIapConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: TwitchIapConfigRequest }>,
@@ -763,7 +763,7 @@ export const useIapAdminApi_GetIap_ByUserId = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigXblCert = (
+export const useIapAdminApi_UpdateIapConfigXblCertMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<XblIapConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: { file?: File; password?: string | null } }>,
@@ -797,7 +797,7 @@ export const useIapAdminApi_UpdateIapConfigXblCert = (
  * }
  * ```
  */
-export const useIapAdminApi_DeleteIapConfigEpicgame = (
+export const useIapAdminApi_DeleteIapConfigEpicgameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -856,7 +856,7 @@ export const useIapAdminApi_GetIapConfigEpicgames = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigEpicgame = (
+export const useIapAdminApi_UpdateIapConfigEpicgameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<EpicGamesIapConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: EpicGamesIapConfigRequest }>,
@@ -890,7 +890,7 @@ export const useIapAdminApi_UpdateIapConfigEpicgame = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigAppleCert = (
+export const useIapAdminApi_UpdateIapConfigAppleCertMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AppleIapConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: { file?: File } }>,
@@ -924,7 +924,7 @@ export const useIapAdminApi_UpdateIapConfigAppleCert = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigGoogleCert = (
+export const useIapAdminApi_UpdateIapConfigGoogleCertMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GoogleIapConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: { file?: File } }>,
@@ -958,7 +958,7 @@ export const useIapAdminApi_UpdateIapConfigGoogleCert = (
  * }
  * ```
  */
-export const useIapAdminApi_DeleteIapConfigPlaystation = (
+export const useIapAdminApi_DeleteIapConfigPlaystationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1017,7 +1017,7 @@ export const useIapAdminApi_GetIapConfigPlaystation = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigPlaystation = (
+export const useIapAdminApi_UpdateIapConfigPlaystationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PlayStationIapConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PlaystationIapConfigRequest }>,
@@ -1116,7 +1116,7 @@ export const useIapAdminApi_GetIapConfigPlaystationValidate = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapConfigPlaystationValidate = (
+export const useIapAdminApi_UpdateIapConfigPlaystationValidateMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: PlaystationIapConfigRequest }>,
@@ -1151,7 +1151,7 @@ export const useIapAdminApi_UpdateIapConfigPlaystationValidate = (
  * }
  * ```
  */
-export const useIapAdminApi_UpdateIapMockReceipt_ByUserId = (
+export const useIapAdminApi_UpdateIapMockReceipt_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: MockIapReceipt }>,

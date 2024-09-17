@@ -69,7 +69,7 @@ export const useEmailSenderConfigurationAdminApi_GetEmailsender = (
  * }
  * ```
  */
-export const useEmailSenderConfigurationAdminApi_CreateEmailsender = (
+export const useEmailSenderConfigurationAdminApi_CreateEmailsenderMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<EmailSenderDomainResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateEmailSenderRequest }>,
@@ -104,7 +104,7 @@ export const useEmailSenderConfigurationAdminApi_CreateEmailsender = (
  * }
  * ```
  */
-export const useEmailSenderConfigurationAdminApi_DeleteEmailsender = (
+export const useEmailSenderConfigurationAdminApi_DeleteEmailsenderMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -136,7 +136,7 @@ export const useEmailSenderConfigurationAdminApi_DeleteEmailsender = (
  * }
  * ```
  */
-export const useEmailSenderConfigurationAdminApi_PatchEmailsender = (
+export const useEmailSenderConfigurationAdminApi_PatchEmailsenderMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UpdateEmailSenderRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -202,7 +202,7 @@ export const useEmailSenderConfigurationAdminApi_GetEmailsenderAuthentication = 
  * }
  * ```
  */
-export const useEmailSenderConfigurationAdminApi_CreateEmailsenderAuthenticationVerify = (
+export const useEmailSenderConfigurationAdminApi_CreateEmailsenderAuthenticationVerifyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<EmailSenderVerifyResponse, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: EmailSenderVerifyResponse) => void

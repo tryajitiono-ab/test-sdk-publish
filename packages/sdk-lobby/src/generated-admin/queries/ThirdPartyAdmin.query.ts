@@ -34,7 +34,7 @@ export enum Key_ThirdPartyAdmin {
  * }
  * ```
  */
-export const useThirdPartyAdminApi_DeleteThirdpartyConfigSteam = (
+export const useThirdPartyAdminApi_DeleteThirdpartyConfigSteamMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -99,7 +99,7 @@ export const useThirdPartyAdminApi_GetThirdpartyConfigSteam = (
  * }
  * ```
  */
-export const useThirdPartyAdminApi_CreateThirdpartyConfigSteam = (
+export const useThirdPartyAdminApi_CreateThirdpartyConfigSteamMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateConfigRequest }>,
@@ -134,7 +134,7 @@ export const useThirdPartyAdminApi_CreateThirdpartyConfigSteam = (
  * }
  * ```
  */
-export const useThirdPartyAdminApi_UpdateThirdpartyConfigSteam = (
+export const useThirdPartyAdminApi_UpdateThirdpartyConfigSteamMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UpdateConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: UpdateConfigRequest }>,

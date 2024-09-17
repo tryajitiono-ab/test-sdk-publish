@@ -42,7 +42,7 @@ export enum Key_Admin {
  * }
  * ```
  */
-export const useAdminApi_CreateNotificationFreeform = (
+export const useAdminApi_CreateNotificationFreeformMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: FreeFormNotificationRequest }>,
@@ -76,7 +76,7 @@ export const useAdminApi_CreateNotificationFreeform = (
  * }
  * ```
  */
-export const useAdminApi_CreateNotificationTemplated = (
+export const useAdminApi_CreateNotificationTemplatedMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: NotificationWithTemplateRequest }>,
@@ -140,7 +140,7 @@ export const useAdminApi_GetNotificationTemplates = (
  * }
  * ```
  */
-export const useAdminApi_CreateNotificationTemplate = (
+export const useAdminApi_CreateNotificationTemplateMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTemplateRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -171,7 +171,7 @@ export const useAdminApi_CreateNotificationTemplate = (
  * }
  * ```
  */
-export const useAdminApi_DeleteNotificationTemplate_ByTemplateSlug = (
+export const useAdminApi_DeleteNotificationTemplate_ByTemplateSlugMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -236,7 +236,7 @@ export const useAdminApi_GetNotificationTemplate_ByTemplateSlug = (
  * }
  * ```
  */
-export const useAdminApi_DeleteLanguageNotification_ByTemplateSlug_ByTemplateLanguage = (
+export const useAdminApi_DeleteLanguageNotification_ByTemplateSlug_ByTemplateLanguageMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug: string; templateLanguage: string }>,
@@ -305,7 +305,7 @@ export const useAdminApi_GetLanguageNotification_ByTemplateSlug_ByTemplateLangua
  * }
  * ```
  */
-export const useAdminApi_UpdateLanguageNotification_ByTemplateSlug_ByTemplateLanguage = (
+export const useAdminApi_UpdateLanguageNotification_ByTemplateSlug_ByTemplateLanguageMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -348,7 +348,7 @@ export const useAdminApi_UpdateLanguageNotification_ByTemplateSlug_ByTemplateLan
  * }
  * ```
  */
-export const useAdminApi_CreatePublishNotification_ByTemplateSlug_ByTemplateLanguage = (
+export const useAdminApi_CreatePublishNotification_ByTemplateSlug_ByTemplateLanguageMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { templateSlug: string; templateLanguage: string }>,

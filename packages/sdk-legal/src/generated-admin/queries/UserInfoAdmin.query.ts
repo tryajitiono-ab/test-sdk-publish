@@ -31,7 +31,7 @@ export enum Key_UserInfoAdmin {
  * }
  * ```
  */
-export const useUserInfoAdminApi_DeleteUserInfo = (
+export const useUserInfoAdminApi_DeleteUserInfoMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { queryParams?: { namespace?: string | null } }>,
@@ -98,7 +98,7 @@ export const useUserInfoAdminApi_GetUserInfo = (
  * }
  * ```
  */
-export const useUserInfoAdminApi_UpdateUserInfo = (
+export const useUserInfoAdminApi_UpdateUserInfoMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { queryParams: { namespace: string | null } }>,

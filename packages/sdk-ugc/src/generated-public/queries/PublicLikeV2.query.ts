@@ -65,7 +65,7 @@ export const usePublicLikeV2Api_GetLike_ByContentId_v2 = (
  * }
  * ```
  */
-export const usePublicLikeV2Api_UpdateLike_ByContentId_v2 = (
+export const usePublicLikeV2Api_UpdateLike_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ContentLikeResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId: string; data: ContentLikeRequest }>,

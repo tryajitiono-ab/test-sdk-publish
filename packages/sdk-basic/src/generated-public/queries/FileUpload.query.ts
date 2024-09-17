@@ -31,7 +31,7 @@ export enum Key_FileUpload {
  * }
  * ```
  */
-export const useFileUploadApi_CreateFile_ByUserId = (
+export const useFileUploadApi_CreateFile_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -76,7 +76,7 @@ export const useFileUploadApi_CreateFile_ByUserId = (
  * }
  * ```
  */
-export const useFileUploadApi_CreateFile_ByFolder = (
+export const useFileUploadApi_CreateFile_ByFolderMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

@@ -31,7 +31,7 @@ export enum Key_PlatformAccountClosureClientAdmin {
  * }
  * ```
  */
-export const usePlatformAccountClosureClientAdminApi_DeleteClosureClient_ByPlatform = (
+export const usePlatformAccountClosureClientAdminApi_DeleteClosureClient_ByPlatformMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platform: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -97,7 +97,7 @@ export const usePlatformAccountClosureClientAdminApi_GetClosureClient_ByPlatform
  * }
  * ```
  */
-export const usePlatformAccountClosureClientAdminApi_UpdateClosureClient_ByPlatform = (
+export const usePlatformAccountClosureClientAdminApi_UpdateClosureClient_ByPlatformMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platform: string; data: PlatformAccountClosureClientRequest }>,

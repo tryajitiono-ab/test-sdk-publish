@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { AchievementPlatformAdminApi } from './generated-admin/AchievementPlatformAdminApi.js'
 import { AnonymizationAdminApi } from './generated-admin/AnonymizationAdminApi.js'
 import { CampaignAdminApi } from './generated-admin/CampaignAdminApi.js'
@@ -61,6 +62,8 @@ import { SubscriptionApi } from './generated-public/SubscriptionApi.js'
 import { ViewApi } from './generated-public/ViewApi.js'
 import { WalletApi } from './generated-public/WalletApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   OrderDedicatedAdminApi,
   ItemAdminApi,
@@ -114,7 +117,13 @@ const apis = {
   FulfillmentApi,
   PaymentAccountApi,
   WalletApi,
-  IapSubscriptionApi
+  IapSubscriptionApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Platform = apis

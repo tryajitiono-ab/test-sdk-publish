@@ -98,7 +98,7 @@ export const useUtilityAdminApi_GetConfigurations = (
  * }
  * ```
  */
-export const useUtilityAdminApi_PatchConfiguration = (
+export const useUtilityAdminApi_PatchConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ConfigurationInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigurationUpdate }>,

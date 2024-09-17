@@ -22,7 +22,7 @@ export function MyUser() {
 
   return (
     <Section>
-      <Heading level={2}>Get current user from cookie</Heading>
+      <Heading level={2}>Get current user</Heading>
 
       <SectionContent>
         <button

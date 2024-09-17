@@ -102,7 +102,7 @@ export const useGameProfileApi_GetProfiles_ByUserId = (
  * }
  * ```
  */
-export const useGameProfileApi_CreateProfile_ByUserId = (
+export const useGameProfileApi_CreateProfile_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: GameProfileRequest }>,
@@ -137,7 +137,7 @@ export const useGameProfileApi_CreateProfile_ByUserId = (
  * }
  * ```
  */
-export const useGameProfileApi_DeleteProfile_ByUserId_ByProfileId = (
+export const useGameProfileApi_DeleteProfile_ByUserId_ByProfileIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; profileId: string }>,
@@ -205,7 +205,7 @@ export const useGameProfileApi_GetProfile_ByUserId_ByProfileId = (
  * }
  * ```
  */
-export const useGameProfileApi_UpdateProfile_ByUserId_ByProfileId = (
+export const useGameProfileApi_UpdateProfile_ByUserId_ByProfileIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -282,7 +282,7 @@ export const useGameProfileApi_GetAttribute_ByUserId_ByProfileId_ByAttributeName
  * }
  * ```
  */
-export const useGameProfileApi_UpdateAttribute_ByUserId_ByProfileId_ByAttributeName = (
+export const useGameProfileApi_UpdateAttribute_ByUserId_ByProfileId_ByAttributeNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

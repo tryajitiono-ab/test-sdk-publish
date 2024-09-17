@@ -174,7 +174,7 @@ export const usePlayerAdminApi_GetAttributesPlayer_ByUserId = (
  * }
  * ```
  */
-export const usePlayerAdminApi_UpdateAttributePlayer_ByUserId = (
+export const usePlayerAdminApi_UpdateAttributePlayer_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: SetPlayerSessionAttributeRequest }>,
@@ -242,7 +242,7 @@ export const usePlayerAdminApi_GetBlockedByPlayer_ByUserId = (
  * }
  * ```
  */
-export const usePlayerAdminApi_CreateBulkBlockPlayer_ByUserId = (
+export const usePlayerAdminApi_CreateBulkBlockPlayer_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: ListBlockedPlayerRequest }>,
@@ -277,7 +277,7 @@ export const usePlayerAdminApi_CreateBulkBlockPlayer_ByUserId = (
  * }
  * ```
  */
-export const usePlayerAdminApi_DeleteBulkUnblockPlayer_ByUserId = (
+export const usePlayerAdminApi_DeleteBulkUnblockPlayer_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: ListUnblockPlayerRequest }>,

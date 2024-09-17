@@ -46,7 +46,7 @@ export enum Key_ImageConfigAdmin {
  * }
  * ```
  */
-export const useImageConfigAdminApi_CreateImage = (
+export const useImageConfigAdminApi_CreateImageMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateImageRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -77,7 +77,7 @@ export const useImageConfigAdminApi_CreateImage = (
  * }
  * ```
  */
-export const useImageConfigAdminApi_UpdateImage = (
+export const useImageConfigAdminApi_UpdateImageMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ImageRecordUpdate }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -108,7 +108,7 @@ export const useImageConfigAdminApi_UpdateImage = (
  * }
  * ```
  */
-export const useImageConfigAdminApi_CreateRepository = (
+export const useImageConfigAdminApi_CreateRepositoryMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateRepositoryRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -139,7 +139,7 @@ export const useImageConfigAdminApi_CreateRepository = (
  * }
  * ```
  */
-export const useImageConfigAdminApi_CreateImagePatche = (
+export const useImageConfigAdminApi_CreateImagePatcheMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateImagePatchRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -170,7 +170,7 @@ export const useImageConfigAdminApi_CreateImagePatche = (
  * }
  * ```
  */
-export const useImageConfigAdminApi_DeleteImage = (
+export const useImageConfigAdminApi_DeleteImageMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -312,7 +312,7 @@ export const useImageConfigAdminApi_GetImagesLimit = (
  * }
  * ```
  */
-export const useImageConfigAdminApi_DeleteImagePatche = (
+export const useImageConfigAdminApi_DeleteImagePatcheMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

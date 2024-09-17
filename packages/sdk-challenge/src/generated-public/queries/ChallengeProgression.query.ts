@@ -32,7 +32,7 @@ export enum Key_ChallengeProgression {
  * }
  * ```
  */
-export const useChallengeProgressionApi_CreateUserMeProgresEvaluate = (
+export const useChallengeProgressionApi_CreateUserMeProgresEvaluateMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void

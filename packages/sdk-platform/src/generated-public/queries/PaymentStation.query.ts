@@ -86,7 +86,7 @@ export const usePaymentStationApi_GetPaymentTax = (
  * }
  * ```
  */
-export const usePaymentStationApi_CreatePaymentLink = (
+export const usePaymentStationApi_CreatePaymentLinkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<PaymentUrl, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentUrlCreate }>, 'mutationKey'>,
   callback?: (data: PaymentUrl) => void
@@ -308,7 +308,7 @@ export const usePaymentStationApi_GetPaymentCustomization = (
  * }
  * ```
  */
-export const usePaymentStationApi_CreatePayPayment_ByPaymentOrderNo = (
+export const usePaymentStationApi_CreatePayPayment_ByPaymentOrderNoMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

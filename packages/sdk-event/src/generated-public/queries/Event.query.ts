@@ -72,7 +72,7 @@ export const useEventApi_GetNamespace_ByNamespace = (
  * }
  * ```
  */
-export const useEventApi_CreateNamespace_ByNamespace = (
+export const useEventApi_CreateNamespace_ByNamespaceMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: Event }>, 'mutationKey'>,
   callback?: (data: unknown) => void

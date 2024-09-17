@@ -34,7 +34,7 @@ export enum Key_UserInformation {
  * }
  * ```
  */
-export const useUserInformationApi_DeleteActivity_ByUserId = (
+export const useUserInformationApi_DeleteActivity_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

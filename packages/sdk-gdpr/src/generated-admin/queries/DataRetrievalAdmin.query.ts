@@ -102,7 +102,7 @@ export const useDataRetrievalAdminApi_GetRequests_ByUserId = (
  * }
  * ```
  */
-export const useDataRetrievalAdminApi_PostRequest_ByUserId = (
+export const useDataRetrievalAdminApi_PostRequest_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -145,7 +145,7 @@ export const useDataRetrievalAdminApi_PostRequest_ByUserId = (
  * }
  * ```
  */
-export const useDataRetrievalAdminApi_DeleteRequest_ByUserId_ByRequestDate = (
+export const useDataRetrievalAdminApi_DeleteRequest_ByUserId_ByRequestDateMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; requestDate: string }>,
@@ -180,7 +180,7 @@ export const useDataRetrievalAdminApi_DeleteRequest_ByUserId_ByRequestDate = (
  * }
  * ```
  */
-export const useDataRetrievalAdminApi_PostGenerate_ByUserId_ByRequestDate = (
+export const useDataRetrievalAdminApi_PostGenerate_ByUserId_ByRequestDateMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

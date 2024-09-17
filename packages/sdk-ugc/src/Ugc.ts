@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { AnonymizationAdminApi } from './generated-admin/AnonymizationAdminApi.js'
 import { ChannelAdminApi } from './generated-admin/ChannelAdminApi.js'
 import { ConfigAdminApi } from './generated-admin/ConfigAdminApi.js'
@@ -31,6 +32,8 @@ import { PublicStagingContentApi } from './generated-public/PublicStagingContent
 import { PublicTagApi } from './generated-public/PublicTagApi.js'
 import { PublicTypeApi } from './generated-public/PublicTypeApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   TagAdminApi,
   TypeAdminApi,
@@ -54,7 +57,13 @@ const apis = {
   PublicLikeV2Api,
   PublicDownloadCountV2Api,
   PublicStagingContentApi,
-  PublicDownloadCountLegacyApi
+  PublicDownloadCountLegacyApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Ugc = apis

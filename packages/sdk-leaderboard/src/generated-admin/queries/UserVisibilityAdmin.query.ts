@@ -34,7 +34,7 @@ export enum Key_UserVisibilityAdmin {
  * }
  * ```
  */
-export const useUserVisibilityAdminApi_UpdateVisibility_ByUserId_v2 = (
+export const useUserVisibilityAdminApi_UpdateVisibility_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -145,7 +145,7 @@ export const useUserVisibilityAdminApi_GetVisibility_ByLeaderboardCode_ByUserId_
  * }
  * ```
  */
-export const useUserVisibilityAdminApi_UpdateVisibility_ByLeaderboardCode_ByUserId_v2 = (
+export const useUserVisibilityAdminApi_UpdateVisibility_ByLeaderboardCode_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

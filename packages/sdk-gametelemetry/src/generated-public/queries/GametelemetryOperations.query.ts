@@ -33,7 +33,7 @@ export enum Key_GametelemetryOperations {
  * }
  * ```
  */
-export const useGametelemetryOperationsApi_CreateProtectedEvent = (
+export const useGametelemetryOperationsApi_CreateProtectedEventMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: TelemetryBody[] }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -99,7 +99,7 @@ export const useGametelemetryOperationsApi_GetPlaytimeProtected_BySteamId = (
  * }
  * ```
  */
-export const useGametelemetryOperationsApi_UpdatePlaytimeProtected_BySteamId_ByPlaytime = (
+export const useGametelemetryOperationsApi_UpdatePlaytimeProtected_BySteamId_ByPlaytimeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PlayTimeResponse, AxiosError<ApiError>, SdkSetConfigParam & { steamId: string; playtime: string }>,

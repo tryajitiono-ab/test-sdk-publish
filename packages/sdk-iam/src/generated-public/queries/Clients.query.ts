@@ -76,7 +76,7 @@ export const useClientsApi_GetClients = (
  * }
  * ```
  */
-export const useClientsApi_CreateClient = (
+export const useClientsApi_CreateClientMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ClientCreationResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ClientCreateRequest }>,
@@ -109,7 +109,7 @@ export const useClientsApi_CreateClient = (
  * }
  * ```
  */
-export const useClientsApi_DeleteClient_ByClientId = (
+export const useClientsApi_DeleteClient_ByClientIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -174,7 +174,7 @@ export const useClientsApi_GetClient_ByClientId = (
  * }
  * ```
  */
-export const useClientsApi_UpdateClient_ByClientId = (
+export const useClientsApi_UpdateClient_ByClientIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ClientResponse, AxiosError<ApiError>, SdkSetConfigParam & { clientId: string; data: ClientUpdateRequest }>,
@@ -210,7 +210,7 @@ export const useClientsApi_UpdateClient_ByClientId = (
  * }
  * ```
  */
-export const useClientsApi_UpdateSecret_ByClientId = (
+export const useClientsApi_UpdateSecret_ByClientIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId: string; data: ClientUpdateSecretRequest }>,
@@ -277,7 +277,7 @@ export const useClientsApi_GetClients_ByNS = (
  * }
  * ```
  */
-export const useClientsApi_CreateClient_ByNS = (
+export const useClientsApi_CreateClient_ByNSMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ClientCreationResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ClientCreateRequest }>,
@@ -310,7 +310,7 @@ export const useClientsApi_CreateClient_ByNS = (
  * }
  * ```
  */
-export const useClientsApi_UpdateClientpermission_ByClientId = (
+export const useClientsApi_UpdateClientpermission_ByClientIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId: string; data: ClientPermissions }>,
@@ -346,7 +346,7 @@ export const useClientsApi_UpdateClientpermission_ByClientId = (
  * }
  * ```
  */
-export const useClientsApi_DeleteClient_ByClientId_ByNS = (
+export const useClientsApi_DeleteClient_ByClientId_ByNSMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -378,7 +378,7 @@ export const useClientsApi_DeleteClient_ByClientId_ByNS = (
  * }
  * ```
  */
-export const useClientsApi_DeleteClientpermission_ByClientId_ByResource_ByAction = (
+export const useClientsApi_DeleteClientpermission_ByClientId_ByResource_ByActionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId: string; resource: string; action: number }>,
@@ -414,7 +414,7 @@ export const useClientsApi_DeleteClientpermission_ByClientId_ByResource_ByAction
  * }
  * ```
  */
-export const useClientsApi_UpdateClientpermission_ByClientId_ByResource_ByAction = (
+export const useClientsApi_UpdateClientpermission_ByClientId_ByResource_ByActionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { clientId: string; resource: string; action: number }>,

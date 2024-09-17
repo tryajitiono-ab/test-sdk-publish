@@ -104,7 +104,7 @@ export const usePublicContentV2Api_GetContents_v2 = (
  * }
  * ```
  */
-export const usePublicContentV2Api_CreateContentBulk_v2 = (
+export const usePublicContentV2Api_CreateContentBulkMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ContentDownloadResponseV2Array, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicGetContentBulkRequest }>,
@@ -204,7 +204,7 @@ export const usePublicContentV2Api_GetContents_ByUserId_v2 = (
  * }
  * ```
  */
-export const usePublicContentV2Api_CreateContentSharecodeBulk_v2 = (
+export const usePublicContentV2Api_CreateContentSharecodeBulkMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -317,7 +317,7 @@ export const usePublicContentV2Api_GetContentSharecode_ByShareCode_v2 = (
  * }
  * ```
  */
-export const usePublicContentV2Api_CreateContent_ByUserId_ByChannelId_v2 = (
+export const usePublicContentV2Api_CreateContent_ByUserId_ByChannelIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -360,7 +360,7 @@ export const usePublicContentV2Api_CreateContent_ByUserId_ByChannelId_v2 = (
  * }
  * ```
  */
-export const usePublicContentV2Api_CreateScreenshot_ByUserId_ByContentId_v2 = (
+export const usePublicContentV2Api_CreateScreenshot_ByUserId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -403,7 +403,7 @@ export const usePublicContentV2Api_CreateScreenshot_ByUserId_ByContentId_v2 = (
  * }
  * ```
  */
-export const usePublicContentV2Api_UpdateScreenshot_ByUserId_ByContentId_v2 = (
+export const usePublicContentV2Api_UpdateScreenshot_ByUserId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -446,7 +446,7 @@ export const usePublicContentV2Api_UpdateScreenshot_ByUserId_ByContentId_v2 = (
  * }
  * ```
  */
-export const usePublicContentV2Api_DeleteContent_ByUserId_ByChannelId_ByContentId_v2 = (
+export const usePublicContentV2Api_DeleteContent_ByUserId_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; channelId: string; contentId: string }>,
@@ -481,7 +481,7 @@ export const usePublicContentV2Api_DeleteContent_ByUserId_ByChannelId_ByContentI
  * }
  * ```
  */
-export const usePublicContentV2Api_PatchContent_ByUserId_ByChannelId_ByContentId_v2 = (
+export const usePublicContentV2Api_PatchContent_ByUserId_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -526,7 +526,7 @@ export const usePublicContentV2Api_PatchContent_ByUserId_ByChannelId_ByContentId
  * }
  * ```
  */
-export const usePublicContentV2Api_DeleteScreenshot_ByUserId_ByContentId_ByScreenshotId_v2 = (
+export const usePublicContentV2Api_DeleteScreenshot_ByUserId_ByContentId_ByScreenshotIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; contentId: string; screenshotId: string }>,
@@ -561,7 +561,7 @@ export const usePublicContentV2Api_DeleteScreenshot_ByUserId_ByContentId_ByScree
  * }
  * ```
  */
-export const usePublicContentV2Api_PatchSharecode_ByUserId_ByChannelId_ByContentId_v2 = (
+export const usePublicContentV2Api_PatchSharecode_ByUserId_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -606,7 +606,7 @@ export const usePublicContentV2Api_PatchSharecode_ByUserId_ByChannelId_ByContent
  * }
  * ```
  */
-export const usePublicContentV2Api_PatchUploadUrl_ByUserId_ByChannelId_ByContentId_v2 = (
+export const usePublicContentV2Api_PatchUploadUrl_ByUserId_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -651,7 +651,7 @@ export const usePublicContentV2Api_PatchUploadUrl_ByUserId_ByChannelId_ByContent
  * }
  * ```
  */
-export const usePublicContentV2Api_DeleteContentSharecode_ByUserId_ByChannelId_ByShareCode_v2 = (
+export const usePublicContentV2Api_DeleteContentSharecode_ByUserId_ByChannelId_ByShareCodeMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; channelId: string; shareCode: string }>,
@@ -686,7 +686,7 @@ export const usePublicContentV2Api_DeleteContentSharecode_ByUserId_ByChannelId_B
  * }
  * ```
  */
-export const usePublicContentV2Api_PatchFileLocation_ByUserId_ByChannelId_ByContentId_v2 = (
+export const usePublicContentV2Api_PatchFileLocation_ByUserId_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -731,7 +731,7 @@ export const usePublicContentV2Api_PatchFileLocation_ByUserId_ByChannelId_ByCont
  * }
  * ```
  */
-export const usePublicContentV2Api_UpdateContentS3Sharecode_ByUserId_ByChannelId_ByShareCode_v2 = (
+export const usePublicContentV2Api_UpdateContentS3Sharecode_ByUserId_ByChannelId_ByShareCodeMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

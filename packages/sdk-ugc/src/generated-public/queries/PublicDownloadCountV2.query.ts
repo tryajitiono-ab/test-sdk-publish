@@ -69,7 +69,7 @@ export const usePublicDownloadCountV2Api_GetDownloader_ByContentId_v2 = (
  * }
  * ```
  */
-export const usePublicDownloadCountV2Api_CreateDownloadcount_ByContentId_v2 = (
+export const usePublicDownloadCountV2Api_CreateDownloadcount_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AddDownloadCountResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId: string }>,

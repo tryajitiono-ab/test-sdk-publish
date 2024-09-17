@@ -64,7 +64,7 @@ export const usePresenceApi_GetPresenceUsersPresence = (
  * }
  * ```
  */
-export const usePresenceApi_CreatePresenceUserPresence = (
+export const usePresenceApi_CreatePresenceUserPresenceMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

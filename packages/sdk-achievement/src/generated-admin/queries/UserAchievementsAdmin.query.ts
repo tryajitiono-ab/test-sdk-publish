@@ -68,7 +68,7 @@ export const useUserAchievementsAdminApi_GetAchievements_ByUserId = (
  * }
  * ```
  */
-export const useUserAchievementsAdminApi_DeleteReset_ByUserId_ByAchievementCode = (
+export const useUserAchievementsAdminApi_DeleteReset_ByUserId_ByAchievementCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; achievementCode: string }>,
@@ -103,7 +103,7 @@ export const useUserAchievementsAdminApi_DeleteReset_ByUserId_ByAchievementCode 
  * }
  * ```
  */
-export const useUserAchievementsAdminApi_UpdateUnlock_ByUserId_ByAchievementCode = (
+export const useUserAchievementsAdminApi_UpdateUnlock_ByUserId_ByAchievementCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; achievementCode: string }>,

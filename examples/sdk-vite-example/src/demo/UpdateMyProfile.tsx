@@ -1,4 +1,4 @@
-import { PublicUserUpdateRequestV3, UsersApi } from '@accelbyte/sdk-iam'
+import { PublicUserUpdateRequestV3, UserResponseV3, UsersApi } from '@accelbyte/sdk-iam'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Form, FormItem } from './components/Form'
@@ -11,22 +11,14 @@ import { handleError } from './helpers'
 export function UpdateMyProfile() {
   const { user, setUser, sdk } = useGlobal()
   const { register, handleSubmit, reset } = useForm<PublicUserUpdateRequestV3>({
-    defaultValues: {
-      avatarUrl: user?.avatarUrl ?? '',
-      country: user?.country ?? '',
-      dateOfBirth: user?.dateOfBirth ?? '',
-      displayName: user?.displayName ?? '',
-      uniqueDisplayName: user?.uniqueDisplayName ?? '',
-      languageTag: 'en-US',
-      userName: user?.userName ?? ''
-    }
+    defaultValues: getDefaultValue(user)
   })
   const [updateUserResponse, setUpdateUserResponse] = useState<any>(null)
 
   useEffect(() => {
     if (!user) return
 
-    reset(user)
+    reset(getDefaultValue(user))
   }, [user])
 
   const updateUserProfile = handleSubmit(async data => {
@@ -77,4 +69,21 @@ export function UpdateMyProfile() {
       </Section>
     </Section>
   )
+}
+
+function formatDate(dateString: string | null | undefined) {
+  const date = dateString ? new Date(dateString) : new Date()
+  return `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDate()}`
+}
+
+function getDefaultValue(user: UserResponseV3 | null) {
+  return {
+    avatarUrl: user?.avatarUrl ?? '',
+    country: user?.country ?? '',
+    dateOfBirth: formatDate(user?.dateOfBirth),
+    displayName: user?.displayName ?? '',
+    uniqueDisplayName: user?.uniqueDisplayName ?? '',
+    languageTag: 'en-US',
+    userName: user?.userName ?? ''
+  }
 }

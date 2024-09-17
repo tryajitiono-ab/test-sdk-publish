@@ -98,7 +98,7 @@ export const useGroupRolesApi_GetRoles_v2 = (
  * }
  * ```
  */
-export const useGroupRolesApi_DeleteMember_ByMemberRoleId = (
+export const useGroupRolesApi_DeleteMember_ByMemberRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId: string; data: RemoveRoleFromMemberRequestV1 }>,
@@ -133,7 +133,7 @@ export const useGroupRolesApi_DeleteMember_ByMemberRoleId = (
  * }
  * ```
  */
-export const useGroupRolesApi_CreateMember_ByMemberRoleId = (
+export const useGroupRolesApi_CreateMember_ByMemberRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -176,7 +176,7 @@ export const useGroupRolesApi_CreateMember_ByMemberRoleId = (
  * }
  * ```
  */
-export const useGroupRolesApi_DeleteMember_ByMemberRoleId_ByGroupId_v2 = (
+export const useGroupRolesApi_DeleteMember_ByMemberRoleId_ByGroupIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -219,7 +219,7 @@ export const useGroupRolesApi_DeleteMember_ByMemberRoleId_ByGroupId_v2 = (
  * }
  * ```
  */
-export const useGroupRolesApi_CreateMember_ByMemberRoleId_ByGroupId_v2 = (
+export const useGroupRolesApi_CreateMember_ByMemberRoleId_ByGroupIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

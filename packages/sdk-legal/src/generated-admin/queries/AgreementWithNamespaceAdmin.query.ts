@@ -39,7 +39,7 @@ export enum Key_AgreementWithNamespaceAdmin {
  * }
  * ```
  */
-export const useAgreementWithNamespaceAdminApi_CreateAgreement = (
+export const useAgreementWithNamespaceAdminApi_CreateAgreementMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserAgreementsResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: UsersAgreementsRequest }>,
@@ -185,7 +185,7 @@ export const useAgreementWithNamespaceAdminApi_GetAgreementsPolicyVersionsUsersE
  * }
  * ```
  */
-export const useAgreementWithNamespaceAdminApi_CreateAgreementPolicyVersionUserExportCsvInitiate = (
+export const useAgreementWithNamespaceAdminApi_CreateAgreementPolicyVersionUserExportCsvInitiateMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

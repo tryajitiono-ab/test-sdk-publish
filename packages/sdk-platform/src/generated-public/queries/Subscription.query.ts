@@ -85,7 +85,7 @@ export const useSubscriptionApi_GetSubscriptions_ByUserId = (
  * }
  * ```
  */
-export const useSubscriptionApi_CreateSubscription_ByUserId = (
+export const useSubscriptionApi_CreateSubscription_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: SubscribeRequest }>,
@@ -188,7 +188,7 @@ export const useSubscriptionApi_GetSubscriptionsSubscribableByItemId_ByUserId = 
  * }
  * ```
  */
-export const useSubscriptionApi_UpdateCancel_ByUserId_BySubscriptionId = (
+export const useSubscriptionApi_UpdateCancel_ByUserId_BySubscriptionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -268,7 +268,7 @@ export const useSubscriptionApi_GetHistory_ByUserId_BySubscriptionId = (
  * }
  * ```
  */
-export const useSubscriptionApi_UpdateBillingAccount_ByUserId_BySubscriptionId = (
+export const useSubscriptionApi_UpdateBillingAccount_ByUserId_BySubscriptionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SubscriptionInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; subscriptionId: string }>,

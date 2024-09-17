@@ -69,7 +69,7 @@ export const useDevelopmentAdminApi_GetDevelopmentServerConfigurations = (
  * }
  * ```
  */
-export const useDevelopmentAdminApi_CreateDevelopmentServerConfiguration = (
+export const useDevelopmentAdminApi_CreateDevelopmentServerConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -112,7 +112,7 @@ export const useDevelopmentAdminApi_CreateDevelopmentServerConfiguration = (
  * }
  * ```
  */
-export const useDevelopmentAdminApi_DeleteDevelopmentServerConfiguration_ByDevelopmentServerConfigId = (
+export const useDevelopmentAdminApi_DeleteDevelopmentServerConfiguration_ByDevelopmentServerConfigIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { developmentServerConfigID: string }>,

@@ -70,7 +70,7 @@ export const useEmailSenderApiKeyAdminApi_GetEmailsenderApikeysAccounts = (
  * }
  * ```
  */
-export const useEmailSenderApiKeyAdminApi_CreateEmailsenderApikeyAccount = (
+export const useEmailSenderApiKeyAdminApi_CreateEmailsenderApikeyAccountMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<EmailSenderApiKeyResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateEmailSenderApiKeyRequest }>,
@@ -105,7 +105,7 @@ export const useEmailSenderApiKeyAdminApi_CreateEmailsenderApikeyAccount = (
  * }
  * ```
  */
-export const useEmailSenderApiKeyAdminApi_DeleteEmailsenderApikeyAccount_ByAccount = (
+export const useEmailSenderApiKeyAdminApi_DeleteEmailsenderApikeyAccount_ByAccountMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { account: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

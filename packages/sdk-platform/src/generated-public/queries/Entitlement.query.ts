@@ -728,7 +728,7 @@ export const useEntitlementApi_GetEntitlementsOwnershipByItemIds_ByUserId = (
  * }
  * ```
  */
-export const useEntitlementApi_UpdateSell_ByUserId_ByEntitlementId = (
+export const useEntitlementApi_UpdateSell_ByUserId_ByEntitlementIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -771,7 +771,7 @@ export const useEntitlementApi_UpdateSell_ByUserId_ByEntitlementId = (
  * }
  * ```
  */
-export const useEntitlementApi_UpdateSplit_ByUserId_ByEntitlementId = (
+export const useEntitlementApi_UpdateSplit_ByUserId_ByEntitlementIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -814,7 +814,7 @@ export const useEntitlementApi_UpdateSplit_ByUserId_ByEntitlementId = (
  * }
  * ```
  */
-export const useEntitlementApi_UpdateTransfer_ByUserId_ByEntitlementId = (
+export const useEntitlementApi_UpdateTransfer_ByUserId_ByEntitlementIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -857,7 +857,7 @@ export const useEntitlementApi_UpdateTransfer_ByUserId_ByEntitlementId = (
  * }
  * ```
  */
-export const useEntitlementApi_UpdateDecrement_ByUserId_ByEntitlementId = (
+export const useEntitlementApi_UpdateDecrement_ByUserId_ByEntitlementIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

@@ -89,7 +89,7 @@ export const useInventoriesAdminApi_GetInventories = (
  * }
  * ```
  */
-export const useInventoriesAdminApi_CreateInventory = (
+export const useInventoriesAdminApi_CreateInventoryMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<InventoryResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateInventoryReq }>, 'mutationKey'>,
   callback?: (data: InventoryResp) => void
@@ -120,7 +120,7 @@ export const useInventoriesAdminApi_CreateInventory = (
  * }
  * ```
  */
-export const useInventoriesAdminApi_DeleteInventory_ByInventoryId = (
+export const useInventoriesAdminApi_DeleteInventory_ByInventoryIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId: string; data: DeleteInventoryReq }>,
@@ -188,7 +188,7 @@ export const useInventoriesAdminApi_GetInventory_ByInventoryId = (
  * }
  * ```
  */
-export const useInventoriesAdminApi_UpdateInventory_ByInventoryId = (
+export const useInventoriesAdminApi_UpdateInventory_ByInventoryIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<InventoryResp, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId: string; data: UpdateInventoryReq }>,
@@ -223,7 +223,7 @@ export const useInventoriesAdminApi_UpdateInventory_ByInventoryId = (
  * }
  * ```
  */
-export const useInventoriesAdminApi_CreatePurchaseable_ByUserId = (
+export const useInventoriesAdminApi_CreatePurchaseable_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: PurchaseValidationReq }>,
@@ -258,7 +258,7 @@ export const useInventoriesAdminApi_CreatePurchaseable_ByUserId = (
  * }
  * ```
  */
-export const useInventoriesAdminApi_UpdateInventory_ByUserId_ByInventoryConfigurationCode = (
+export const useInventoriesAdminApi_UpdateInventory_ByUserId_ByInventoryConfigurationCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

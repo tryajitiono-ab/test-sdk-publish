@@ -100,7 +100,7 @@ export const useAgreementAdminApi_GetAgreementPolicyUser_ByUserId = (
  * }
  * ```
  */
-export const useAgreementAdminApi_PatchAgreementLocalizedPolicyVersionPreferenceUserId_ByUserId = (
+export const useAgreementAdminApi_PatchAgreementLocalizedPolicyVersionPreferenceUserId_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: AcceptAgreementRequest[] }>,

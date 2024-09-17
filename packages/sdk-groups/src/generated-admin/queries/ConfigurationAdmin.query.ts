@@ -71,7 +71,7 @@ export const useConfigurationAdminApi_GetConfiguration = (
  * }
  * ```
  */
-export const useConfigurationAdminApi_CreateConfiguration = (
+export const useConfigurationAdminApi_CreateConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -113,7 +113,7 @@ export const useConfigurationAdminApi_CreateConfiguration = (
  * }
  * ```
  */
-export const useConfigurationAdminApi_CreateConfigurationInitiate = (
+export const useConfigurationAdminApi_CreateConfigurationInitiateMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<CreateGroupConfigurationResponseV1, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: CreateGroupConfigurationResponseV1) => void
@@ -145,7 +145,7 @@ export const useConfigurationAdminApi_CreateConfigurationInitiate = (
  * }
  * ```
  */
-export const useConfigurationAdminApi_DeleteConfiguration_ByConfigurationCode = (
+export const useConfigurationAdminApi_DeleteConfiguration_ByConfigurationCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { configurationCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -211,7 +211,7 @@ export const useConfigurationAdminApi_GetConfiguration_ByConfigurationCode = (
  * }
  * ```
  */
-export const useConfigurationAdminApi_PatchConfiguration_ByConfigurationCode = (
+export const useConfigurationAdminApi_PatchConfiguration_ByConfigurationCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -254,7 +254,7 @@ export const useConfigurationAdminApi_PatchConfiguration_ByConfigurationCode = (
  * }
  * ```
  */
-export const useConfigurationAdminApi_DeleteRule_ByConfigurationCode_ByAllowedAction = (
+export const useConfigurationAdminApi_DeleteRule_ByConfigurationCode_ByAllowedActionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -297,7 +297,7 @@ export const useConfigurationAdminApi_DeleteRule_ByConfigurationCode_ByAllowedAc
  * }
  * ```
  */
-export const useConfigurationAdminApi_UpdateRule_ByConfigurationCode_ByAllowedAction = (
+export const useConfigurationAdminApi_UpdateRule_ByConfigurationCode_ByAllowedActionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

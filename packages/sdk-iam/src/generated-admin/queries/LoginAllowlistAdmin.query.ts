@@ -64,7 +64,7 @@ export const useLoginAllowlistAdminApi_GetLoginAllowlist_v3 = (
  * }
  * ```
  */
-export const useLoginAllowlistAdminApi_UpdateLoginAllowlist_v3 = (
+export const useLoginAllowlistAdminApi_UpdateLoginAllowlistMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<LoginAllowlistResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: LoginAllowlistRequest }>,

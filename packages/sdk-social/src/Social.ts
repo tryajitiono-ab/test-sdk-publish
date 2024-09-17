@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { GameProfileAdminApi } from './generated-admin/GameProfileAdminApi.js'
 import { GlobalStatisticAdminApi } from './generated-admin/GlobalStatisticAdminApi.js'
 import { SlotAdminApi } from './generated-admin/SlotAdminApi.js'
@@ -23,6 +24,8 @@ import { StatCycleConfigurationApi } from './generated-public/StatCycleConfigura
 import { UserStatisticApi } from './generated-public/UserStatisticApi.js'
 import { UserStatisticCycleApi } from './generated-public/UserStatisticCycleApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   SlotConfigAdminApi,
   StatConfigurationAdminApi,
@@ -38,7 +41,13 @@ const apis = {
   UserStatisticApi,
   GlobalStatisticApi,
   SlotApi,
-  UserStatisticCycleApi
+  UserStatisticCycleApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Social = apis

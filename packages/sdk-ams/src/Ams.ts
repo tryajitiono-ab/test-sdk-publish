@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { AccountAdminApi } from './generated-admin/AccountAdminApi.js'
 import { AmsInfoAdminApi } from './generated-admin/AmsInfoAdminApi.js'
 import { AmsQoSAdminApi } from './generated-admin/AmsQoSAdminApi.js'
@@ -22,6 +23,8 @@ import { FleetCommanderApi } from './generated-public/FleetCommanderApi.js'
 import { FleetsApi } from './generated-public/FleetsApi.js'
 import { WatchdogsApi } from './generated-public/WatchdogsApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   AmsQoSAdminApi,
   FleetsAdminApi,
@@ -36,7 +39,13 @@ const apis = {
   AmsInfoApi,
   AccountApi,
   FleetsApi,
-  WatchdogsApi
+  WatchdogsApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Ams = apis

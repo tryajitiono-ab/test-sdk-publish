@@ -33,7 +33,7 @@ export enum Key_PoliciesAdmin {
  * }
  * ```
  */
-export const usePoliciesAdminApi_PatchPolicy_ByPolicyId = (
+export const usePoliciesAdminApi_PatchPolicy_ByPolicyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { policyId: string; data: UpdatePolicyRequest }>,
@@ -68,7 +68,7 @@ export const usePoliciesAdminApi_PatchPolicy_ByPolicyId = (
  * }
  * ```
  */
-export const usePoliciesAdminApi_PatchDefault_ByPolicyId = (
+export const usePoliciesAdminApi_PatchDefault_ByPolicyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { policyId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

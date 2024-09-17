@@ -40,7 +40,7 @@ export enum Key_CatalogChangesAdmin {
  * }
  * ```
  */
-export const useCatalogChangesAdminApi_UpdateCatalogChangeSelectAll_ByStoreId = (
+export const useCatalogChangesAdminApi_UpdateCatalogChangeSelectAll_ByStoreIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -133,7 +133,7 @@ export const useCatalogChangesAdminApi_GetCatalogChangesByCriteria_ByStoreId = (
  * }
  * ```
  */
-export const useCatalogChangesAdminApi_UpdateCatalogChangePublishAll_ByStoreId = (
+export const useCatalogChangesAdminApi_UpdateCatalogChangePublishAll_ByStoreIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId: string }>, 'mutationKey'>,
   callback?: (data: StoreInfo) => void
@@ -220,7 +220,7 @@ export const useCatalogChangesAdminApi_GetCatalogChangesStatistics_ByStoreId = (
  * }
  * ```
  */
-export const useCatalogChangesAdminApi_UpdateCatalogChangeUnselectAll_ByStoreId = (
+export const useCatalogChangesAdminApi_UpdateCatalogChangeUnselectAll_ByStoreIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -252,7 +252,7 @@ export const useCatalogChangesAdminApi_UpdateCatalogChangeUnselectAll_ByStoreId 
  * }
  * ```
  */
-export const useCatalogChangesAdminApi_UpdateCatalogChangePublishSelected_ByStoreId = (
+export const useCatalogChangesAdminApi_UpdateCatalogChangePublishSelected_ByStoreIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId: string }>, 'mutationKey'>,
   callback?: (data: StoreInfo) => void
@@ -284,7 +284,7 @@ export const useCatalogChangesAdminApi_UpdateCatalogChangePublishSelected_ByStor
  * }
  * ```
  */
-export const useCatalogChangesAdminApi_UpdateSelect_ByStoreId_ByChangeId = (
+export const useCatalogChangesAdminApi_UpdateSelect_ByStoreId_ByChangeIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId: string; changeId: string }>,
@@ -319,7 +319,7 @@ export const useCatalogChangesAdminApi_UpdateSelect_ByStoreId_ByChangeId = (
  * }
  * ```
  */
-export const useCatalogChangesAdminApi_UpdateUnselect_ByStoreId_ByChangeId = (
+export const useCatalogChangesAdminApi_UpdateUnselect_ByStoreId_ByChangeIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId: string; changeId: string }>,
@@ -354,7 +354,7 @@ export const useCatalogChangesAdminApi_UpdateUnselect_ByStoreId_ByChangeId = (
  * }
  * ```
  */
-export const useCatalogChangesAdminApi_UpdateCatalogChangeSelectAllByCriteria_ByStoreId = (
+export const useCatalogChangesAdminApi_UpdateCatalogChangeSelectAllByCriteria_ByStoreIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

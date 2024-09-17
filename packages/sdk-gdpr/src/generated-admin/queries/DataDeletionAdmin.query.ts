@@ -68,7 +68,7 @@ export const useDataDeletionAdminApi_GetDeletions = (
  * }
  * ```
  */
-export const useDataDeletionAdminApi_DeleteDeletion_ByUserId = (
+export const useDataDeletionAdminApi_DeleteDeletion_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -133,7 +133,7 @@ export const useDataDeletionAdminApi_GetDeletions_ByUserId = (
  * }
  * ```
  */
-export const useDataDeletionAdminApi_CreateDeletion_ByUserId = (
+export const useDataDeletionAdminApi_CreateDeletion_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<RequestDeleteResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: RequestDeleteResponse) => void

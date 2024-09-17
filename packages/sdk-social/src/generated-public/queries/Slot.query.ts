@@ -67,7 +67,7 @@ export const useSlotApi_GetSlots_ByUserId = (
  * }
  * ```
  */
-export const useSlotApi_CreateSlot_ByUserId = (
+export const useSlotApi_CreateSlot_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -126,7 +126,7 @@ export const useSlotApi_CreateSlot_ByUserId = (
  * }
  * ```
  */
-export const useSlotApi_DeleteSlot_ByUserId_BySlotId = (
+export const useSlotApi_DeleteSlot_ByUserId_BySlotIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; slotId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -193,7 +193,7 @@ export const useSlotApi_GetSlot_ByUserId_BySlotId = (
  * }
  * ```
  */
-export const useSlotApi_UpdateSlot_ByUserId_BySlotId = (
+export const useSlotApi_UpdateSlot_ByUserId_BySlotIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -256,7 +256,7 @@ export const useSlotApi_UpdateSlot_ByUserId_BySlotId = (
  * }
  * ```
  */
-export const useSlotApi_UpdateMetadata_ByUserId_BySlotId = (
+export const useSlotApi_UpdateMetadata_ByUserId_BySlotIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SlotInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; slotId: string; data: SlotMetadataUpdate }>,

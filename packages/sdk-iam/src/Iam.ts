@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { BansAdminApi } from './generated-admin/BansAdminApi.js'
 import { ClientsAdminApi } from './generated-admin/ClientsAdminApi.js'
 import { ClientsConfigV3AdminApi } from './generated-admin/ClientsConfigV3AdminApi.js'
@@ -40,6 +41,8 @@ import { ThirdPartyCredentialApi } from './generated-public/ThirdPartyCredential
 import { UsersApi } from './generated-public/UsersApi.js'
 import { UsersV4Api } from './generated-public/UsersV4Api.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   BansAdminApi,
   RolesAdminApi,
@@ -72,7 +75,13 @@ const apis = {
   SsoSaml20Api,
   ConfigApi,
   ThirdPartyCredentialApi,
-  ProfileUpdateStrategyApi
+  ProfileUpdateStrategyApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Iam = apis

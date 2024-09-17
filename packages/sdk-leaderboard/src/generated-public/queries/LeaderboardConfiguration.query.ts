@@ -66,7 +66,7 @@ export const useLeaderboardConfigurationApi_GetLeaderboards = (
  * }
  * ```
  */
-export const useLeaderboardConfigurationApi_CreateLeaderboard = (
+export const useLeaderboardConfigurationApi_CreateLeaderboardMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<LeaderboardConfigReq, AxiosError<ApiError>, SdkSetConfigParam & { data: LeaderboardConfigReq }>,

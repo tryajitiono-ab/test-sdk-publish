@@ -67,7 +67,7 @@ export const useFleetsAdminApi_GetFleets = (
  * }
  * ```
  */
-export const useFleetsAdminApi_CreateFleet = (
+export const useFleetsAdminApi_CreateFleetMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FleetCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: FleetParameters }>,
@@ -99,7 +99,7 @@ export const useFleetsAdminApi_CreateFleet = (
  * }
  * ```
  */
-export const useFleetsAdminApi_DeleteFleet_ByFleetId = (
+export const useFleetsAdminApi_DeleteFleet_ByFleetIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { fleetID: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -162,7 +162,7 @@ export const useFleetsAdminApi_GetFleet_ByFleetId = (
  * }
  * ```
  */
-export const useFleetsAdminApi_UpdateFleet_ByFleetId = (
+export const useFleetsAdminApi_UpdateFleet_ByFleetIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { fleetID: string; data: FleetParameters }>,

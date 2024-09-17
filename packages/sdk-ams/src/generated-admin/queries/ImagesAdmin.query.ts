@@ -96,7 +96,7 @@ export const useImagesAdminApi_GetImagesStorage = (
  * }
  * ```
  */
-export const useImagesAdminApi_DeleteImage_ByImageId = (
+export const useImagesAdminApi_DeleteImage_ByImageIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { imageID: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -159,7 +159,7 @@ export const useImagesAdminApi_GetImage_ByImageId = (
  * }
  * ```
  */
-export const useImagesAdminApi_PatchImage_ByImageId = (
+export const useImagesAdminApi_PatchImage_ByImageIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ImageDetails, AxiosError<ApiError>, SdkSetConfigParam & { imageID: string; data: ImageUpdate }>,
@@ -194,7 +194,7 @@ export const useImagesAdminApi_PatchImage_ByImageId = (
  * }
  * ```
  */
-export const useImagesAdminApi_CreateRestore_ByImageId = (
+export const useImagesAdminApi_CreateRestore_ByImageIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { imageID: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

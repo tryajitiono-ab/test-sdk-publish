@@ -64,7 +64,7 @@ export const useTagAdminApi_GetTags = (
  * }
  * ```
  */
-export const useTagAdminApi_CreateTag = (
+export const useTagAdminApi_CreateTagMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateTagResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTagRequest }>,
@@ -96,7 +96,7 @@ export const useTagAdminApi_CreateTag = (
  * }
  * ```
  */
-export const useTagAdminApi_DeleteTag_ByTagId = (
+export const useTagAdminApi_DeleteTag_ByTagIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { tagId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -125,7 +125,7 @@ export const useTagAdminApi_DeleteTag_ByTagId = (
  * }
  * ```
  */
-export const useTagAdminApi_UpdateTag_ByTagId = (
+export const useTagAdminApi_UpdateTag_ByTagIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateTagResponse, AxiosError<ApiError>, SdkSetConfigParam & { tagId: string; data: CreateTagRequest }>,

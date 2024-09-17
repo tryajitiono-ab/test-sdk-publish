@@ -68,7 +68,7 @@ export const usePublicChannelApi_GetChannels_ByUserId = (
  * }
  * ```
  */
-export const usePublicChannelApi_CreateChannel_ByUserId = (
+export const usePublicChannelApi_CreateChannel_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: PublicChannelRequest }>,
@@ -103,7 +103,7 @@ export const usePublicChannelApi_CreateChannel_ByUserId = (
  * }
  * ```
  */
-export const usePublicChannelApi_DeleteChannel_ByUserId_ByChannelId = (
+export const usePublicChannelApi_DeleteChannel_ByUserId_ByChannelIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; channelId: string }>,
@@ -138,7 +138,7 @@ export const usePublicChannelApi_DeleteChannel_ByUserId_ByChannelId = (
  * }
  * ```
  */
-export const usePublicChannelApi_UpdateChannel_ByUserId_ByChannelId = (
+export const usePublicChannelApi_UpdateChannel_ByUserId_ByChannelIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

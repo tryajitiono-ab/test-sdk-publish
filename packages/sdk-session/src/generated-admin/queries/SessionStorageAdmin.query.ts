@@ -29,7 +29,7 @@ export enum Key_SessionStorageAdmin {
  * }
  * ```
  */
-export const useSessionStorageAdminApi_DeleteStorage_BySessionId = (
+export const useSessionStorageAdminApi_DeleteStorage_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

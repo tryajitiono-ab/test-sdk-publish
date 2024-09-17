@@ -46,7 +46,7 @@ export enum Key_OAuth20Extension {
  * }
  * ```
  */
-export const useOAuth20ExtensionApi_CreateLogout_v3 = (
+export const useOAuth20ExtensionApi_CreateLogoutMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -75,7 +75,7 @@ export const useOAuth20ExtensionApi_CreateLogout_v3 = (
  * }
  * ```
  */
-export const useOAuth20ExtensionApi_PostAuthenticate_v3 = (
+export const useOAuth20ExtensionApi_PostAuthenticateMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -146,7 +146,7 @@ export const useOAuth20ExtensionApi_PostAuthenticate_v3 = (
  * }
  * ```
  */
-export const useOAuth20ExtensionApi_PostHeadlesToken_v3 = (
+export const useOAuth20ExtensionApi_PostHeadlesTokenMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -190,7 +190,7 @@ export const useOAuth20ExtensionApi_PostHeadlesToken_v3 = (
  * }
  * ```
  */
-export const useOAuth20ExtensionApi_PostTokenExchange_v3 = (
+export const useOAuth20ExtensionApi_PostTokenExchangeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -265,7 +265,7 @@ export const useOAuth20ExtensionApi_GetLocationCountry_v3 = (
  * }
  * ```
  */
-export const useOAuth20ExtensionApi_PostLinkCodeRequest_v3 = (
+export const useOAuth20ExtensionApi_PostLinkCodeRequestMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<OneTimeLinkingCodeResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: { platformId: string | null } }>,
@@ -300,7 +300,7 @@ export const useOAuth20ExtensionApi_PostLinkCodeRequest_v3 = (
  * }
  * ```
  */
-export const useOAuth20ExtensionApi_PostLinkCodeValidate_v3 = (
+export const useOAuth20ExtensionApi_PostLinkCodeValidateMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -343,7 +343,7 @@ export const useOAuth20ExtensionApi_PostLinkCodeValidate_v3 = (
  * }
  * ```
  */
-export const useOAuth20ExtensionApi_PostLinkTokenExchange_v3 = (
+export const useOAuth20ExtensionApi_PostLinkTokenExchangeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -394,7 +394,7 @@ export const useOAuth20ExtensionApi_PostLinkTokenExchange_v3 = (
  * }
  * ```
  */
-export const useOAuth20ExtensionApi_PostAuthenticateWithLink_v3 = (
+export const useOAuth20ExtensionApi_PostAuthenticateWithLinkMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -463,7 +463,7 @@ export const useOAuth20ExtensionApi_PostAuthenticateWithLink_v3 = (
  * }
  * ```
  */
-export const useOAuth20ExtensionApi_PostTokenRequest_v3 = (
+export const useOAuth20ExtensionApi_PostTokenRequestMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -567,7 +567,7 @@ export const useOAuth20ExtensionApi_GetAuthenticate_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useOAuth20ExtensionApi_PostTokenVerify_ByPlatformId_v3 = (
+export const useOAuth20ExtensionApi_PostTokenVerify_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

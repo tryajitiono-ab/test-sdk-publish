@@ -70,7 +70,7 @@ export const usePassAdminApi_GetPasses_BySeasonId = (
  * }
  * ```
  */
-export const usePassAdminApi_CreatePasse_BySeasonId = (
+export const usePassAdminApi_CreatePasse_BySeasonIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PassInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string; data: PassCreate }>,
@@ -105,7 +105,7 @@ export const usePassAdminApi_CreatePasse_BySeasonId = (
  * }
  * ```
  */
-export const usePassAdminApi_DeletePasse_BySeasonId_ByCode = (
+export const usePassAdminApi_DeletePasse_BySeasonId_ByCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string; code: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -170,7 +170,7 @@ export const usePassAdminApi_GetPasse_BySeasonId_ByCode = (
  * }
  * ```
  */
-export const usePassAdminApi_PatchPasse_BySeasonId_ByCode = (
+export const usePassAdminApi_PatchPasse_BySeasonId_ByCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PassInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string; code: string; data: PassUpdate }>,
@@ -206,7 +206,7 @@ export const usePassAdminApi_PatchPasse_BySeasonId_ByCode = (
  * }
  * ```
  */
-export const usePassAdminApi_CreateSeasonCurrentPasse_ByUserId = (
+export const usePassAdminApi_CreateSeasonCurrentPasse_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserSeasonSummary, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserPassGrant }>,

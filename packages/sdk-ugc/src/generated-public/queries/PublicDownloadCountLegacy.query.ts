@@ -30,7 +30,7 @@ export enum Key_PublicDownloadCountLegacy {
  * }
  * ```
  */
-export const usePublicDownloadCountLegacyApi_CreateDownloadcount_ByContentId = (
+export const usePublicDownloadCountLegacyApi_CreateDownloadcount_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AddDownloadCountResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId: string }>,

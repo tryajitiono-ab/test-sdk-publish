@@ -67,7 +67,7 @@ export const useReportsAdminApi_GetReports = (
  * }
  * ```
  */
-export const useReportsAdminApi_CreateReport = (
+export const useReportsAdminApi_CreateReportMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SubmitReportResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: SubmitReportRequest }>,

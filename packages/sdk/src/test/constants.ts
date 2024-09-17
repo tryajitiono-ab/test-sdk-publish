@@ -3,6 +3,7 @@
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  */
+import { UserResponseV3 } from '@accelbyte/sdk-iam'
 import { AxiosError } from 'axios'
 import { Interceptor } from '../Types'
 
@@ -47,3 +48,25 @@ export const tooManyRequestInterceptor: Interceptor = {
 }
 
 export const GET_USER_ME_PATH = '/iam/v3/public/users/me'
+
+export const HEADLESS_USER: UserResponseV3 = {
+  authType: 'email',
+  bans: [],
+  country: '',
+  createdAt: '',
+  dateOfBirth: '',
+  deletionStatus: false,
+  displayName: '',
+  emailAddress: '',
+  emailVerified: false,
+  enabled: true,
+  lastDateOfBirthChangedTime: '',
+  lastEnabledChangedTime: '',
+  namespace: coreConfig.namespace,
+  oldEmailAddress: '',
+  permissions: [],
+  phoneVerified: false,
+  roles: [],
+  userId: '',
+  namespaceRoles: []
+}

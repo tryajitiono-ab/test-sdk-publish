@@ -104,7 +104,7 @@ export const useTicketAdminApi_GetId_ByBoothName = (
  * }
  * ```
  */
-export const useTicketAdminApi_UpdateDecrement_ByBoothName = (
+export const useTicketAdminApi_UpdateDecrement_ByBoothNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { boothName: string; data: TicketSaleDecrementRequest }>,
@@ -139,7 +139,7 @@ export const useTicketAdminApi_UpdateDecrement_ByBoothName = (
  * }
  * ```
  */
-export const useTicketAdminApi_UpdateIncrement_ByBoothName = (
+export const useTicketAdminApi_UpdateIncrement_ByBoothNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -182,7 +182,7 @@ export const useTicketAdminApi_UpdateIncrement_ByBoothName = (
  * }
  * ```
  */
-export const useTicketAdminApi_CreateTicket_ByUserId_ByBoothName = (
+export const useTicketAdminApi_CreateTicket_ByUserId_ByBoothNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

@@ -72,7 +72,7 @@ export const useGroupAdminApi_GetGroups = (
  * }
  * ```
  */
-export const useGroupAdminApi_CreateGroup = (
+export const useGroupAdminApi_CreateGroupMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateGroupRequest }>,
@@ -104,7 +104,7 @@ export const useGroupAdminApi_CreateGroup = (
  * }
  * ```
  */
-export const useGroupAdminApi_DeleteGroup_ByGroupId = (
+export const useGroupAdminApi_DeleteGroup_ByGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -167,7 +167,7 @@ export const useGroupAdminApi_GetGroup_ByGroupId = (
  * }
  * ```
  */
-export const useGroupAdminApi_UpdateGroup_ByGroupId = (
+export const useGroupAdminApi_UpdateGroup_ByGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string; data: CreateGroupRequest }>,
@@ -301,7 +301,7 @@ export const useGroupAdminApi_GetContents_ByGroupId_v2 = (
  * }
  * ```
  */
-export const useGroupAdminApi_DeleteGroup_ByUserId_ByGroupId = (
+export const useGroupAdminApi_DeleteGroup_ByUserId_ByGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; groupId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -366,7 +366,7 @@ export const useGroupAdminApi_GetGroup_ByUserId_ByGroupId = (
  * }
  * ```
  */
-export const useGroupAdminApi_UpdateGroup_ByUserId_ByGroupId = (
+export const useGroupAdminApi_UpdateGroup_ByUserId_ByGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

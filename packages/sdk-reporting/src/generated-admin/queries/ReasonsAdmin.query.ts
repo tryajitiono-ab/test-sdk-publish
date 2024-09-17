@@ -77,7 +77,7 @@ export const useReasonsAdminApi_GetReasons = (
  * }
  * ```
  */
-export const useReasonsAdminApi_CreateReason = (
+export const useReasonsAdminApi_CreateReasonMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AdminReasonResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateReasonRequest }>,
@@ -171,7 +171,7 @@ export const useReasonsAdminApi_GetReasonGroups = (
  * }
  * ```
  */
-export const useReasonsAdminApi_CreateReasonGroup = (
+export const useReasonsAdminApi_CreateReasonGroupMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ReasonGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateReasonGroupRequest }>,
@@ -237,7 +237,7 @@ export const useReasonsAdminApi_GetReasonsUnused = (
  * }
  * ```
  */
-export const useReasonsAdminApi_DeleteReason_ByReasonId = (
+export const useReasonsAdminApi_DeleteReason_ByReasonIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { reasonId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -300,7 +300,7 @@ export const useReasonsAdminApi_GetReason_ByReasonId = (
  * }
  * ```
  */
-export const useReasonsAdminApi_PatchReason_ByReasonId = (
+export const useReasonsAdminApi_PatchReason_ByReasonIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AdminReasonResponse, AxiosError<ApiError>, SdkSetConfigParam & { reasonId: string; data: CreateReasonRequest }>,
@@ -335,7 +335,7 @@ export const useReasonsAdminApi_PatchReason_ByReasonId = (
  * }
  * ```
  */
-export const useReasonsAdminApi_DeleteReasonGroup_ByGroupId = (
+export const useReasonsAdminApi_DeleteReasonGroup_ByGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -388,7 +388,7 @@ export const useReasonsAdminApi_GetReasonGroup_ByGroupId = (
  * }
  * ```
  */
-export const useReasonsAdminApi_PatchReasonGroup_ByGroupId = (
+export const useReasonsAdminApi_PatchReasonGroup_ByGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ReasonGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string; data: UpdateReasonGroupRequest }>,

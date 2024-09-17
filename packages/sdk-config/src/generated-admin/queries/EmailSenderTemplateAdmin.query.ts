@@ -66,7 +66,7 @@ export const useEmailSenderTemplateAdminApi_GetEmailtemplatesEmailsender_ByAccou
  * }
  * ```
  */
-export const useEmailSenderTemplateAdminApi_UpdateEmailtemplateEmailsender_ByAccount = (
+export const useEmailSenderTemplateAdminApi_UpdateEmailtemplateEmailsender_ByAccountMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<EmailTemplatePairArray, AxiosError<ApiError>, SdkSetConfigParam & { account: string; data: EmailTemplatePair[] }>,
@@ -101,7 +101,7 @@ export const useEmailSenderTemplateAdminApi_UpdateEmailtemplateEmailsender_ByAcc
  * }
  * ```
  */
-export const useEmailSenderTemplateAdminApi_DeleteEmailtemplateEmailsender_ByAccount = (
+export const useEmailSenderTemplateAdminApi_DeleteEmailtemplateEmailsender_ByAccountMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { account: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

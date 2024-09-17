@@ -71,7 +71,7 @@ export const useCategoryAdminApi_GetCategories = (
  * }
  * ```
  */
-export const useCategoryAdminApi_CreateCategory = (
+export const useCategoryAdminApi_CreateCategoryMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -146,7 +146,7 @@ export const useCategoryAdminApi_GetCategoriesBasic = (
  * }
  * ```
  */
-export const useCategoryAdminApi_DeleteCategory_ByCategoryPath = (
+export const useCategoryAdminApi_DeleteCategory_ByCategoryPathMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -222,7 +222,7 @@ export const useCategoryAdminApi_GetCategory_ByCategoryPath = (
  * }
  * ```
  */
-export const useCategoryAdminApi_UpdateCategory_ByCategoryPath = (
+export const useCategoryAdminApi_UpdateCategory_ByCategoryPathMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

@@ -28,7 +28,7 @@ export enum Key_SsoSaml20 {
  * }
  * ```
  */
-export const useSsoSaml20Api_PostAuthenticateSamlSso_ByPlatformId_v3 = (
+export const useSsoSaml20Api_PostAuthenticateSamlSso_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

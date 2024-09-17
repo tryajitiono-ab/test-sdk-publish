@@ -73,7 +73,7 @@ export const useLeaderboardConfigurationV3AdminApi_GetLeaderboards_v3 = (
  * }
  * ```
  */
-export const useLeaderboardConfigurationV3AdminApi_CreateLeaderboard_v3 = (
+export const useLeaderboardConfigurationV3AdminApi_CreateLeaderboardMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GetLeaderboardConfigRespV3, AxiosError<ApiError>, SdkSetConfigParam & { data: LeaderboardConfigReqV3 }>,
@@ -108,7 +108,7 @@ export const useLeaderboardConfigurationV3AdminApi_CreateLeaderboard_v3 = (
  * }
  * ```
  */
-export const useLeaderboardConfigurationV3AdminApi_CreateLeaderboardDelete_v3 = (
+export const useLeaderboardConfigurationV3AdminApi_CreateLeaderboardDeleteMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<DeleteBulkLeaderboardsResp, AxiosError<ApiError>, SdkSetConfigParam & { data: DeleteBulkLeaderboardsReq }>,
@@ -143,7 +143,7 @@ export const useLeaderboardConfigurationV3AdminApi_CreateLeaderboardDelete_v3 = 
  * }
  * ```
  */
-export const useLeaderboardConfigurationV3AdminApi_DeleteLeaderboard_ByLeaderboardCode_v3 = (
+export const useLeaderboardConfigurationV3AdminApi_DeleteLeaderboard_ByLeaderboardCodeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -210,7 +210,7 @@ export const useLeaderboardConfigurationV3AdminApi_GetLeaderboard_ByLeaderboardC
  * }
  * ```
  */
-export const useLeaderboardConfigurationV3AdminApi_UpdateLeaderboard_ByLeaderboardCode_v3 = (
+export const useLeaderboardConfigurationV3AdminApi_UpdateLeaderboard_ByLeaderboardCodeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -253,7 +253,7 @@ export const useLeaderboardConfigurationV3AdminApi_UpdateLeaderboard_ByLeaderboa
  * }
  * ```
  */
-export const useLeaderboardConfigurationV3AdminApi_DeleteHard_ByLeaderboardCode_v3 = (
+export const useLeaderboardConfigurationV3AdminApi_DeleteHard_ByLeaderboardCodeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

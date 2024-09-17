@@ -32,7 +32,7 @@ export enum Key_PlatformCredentialAdmin {
  * }
  * ```
  */
-export const usePlatformCredentialAdminApi_DeletePlatformCredential = (
+export const usePlatformCredentialAdminApi_DeletePlatformCredentialMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -97,7 +97,7 @@ export const usePlatformCredentialAdminApi_GetPlatformCredentials = (
  * }
  * ```
  */
-export const usePlatformCredentialAdminApi_UpdatePlatformCredential = (
+export const usePlatformCredentialAdminApi_UpdatePlatformCredentialMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PlatformCredentials, AxiosError<ApiError>, SdkSetConfigParam & { data: PutPlatformCredentialsRequest }>,

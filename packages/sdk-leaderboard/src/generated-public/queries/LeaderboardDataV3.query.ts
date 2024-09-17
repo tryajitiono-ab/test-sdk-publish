@@ -69,7 +69,7 @@ export const useLeaderboardDataV3Api_GetAlltime_ByLeaderboardCode_v3 = (
  * }
  * ```
  */
-export const useLeaderboardDataV3Api_CreateUserBulk_ByLeaderboardCode_v3 = (
+export const useLeaderboardDataV3Api_CreateUserBulk_ByLeaderboardCodeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

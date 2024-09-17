@@ -72,7 +72,7 @@ export const useItemTypesAdminApi_GetItemtypes = (
  * }
  * ```
  */
-export const useItemTypesAdminApi_CreateItemtype = (
+export const useItemTypesAdminApi_CreateItemtypeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateItemTypeResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateItemTypeReq }>,
@@ -106,7 +106,7 @@ export const useItemTypesAdminApi_CreateItemtype = (
  * }
  * ```
  */
-export const useItemTypesAdminApi_DeleteItemtype_ByItemTypeName = (
+export const useItemTypesAdminApi_DeleteItemtype_ByItemTypeNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { itemTypeName: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

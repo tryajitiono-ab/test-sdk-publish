@@ -307,7 +307,7 @@ export const useContentAdminApi_GetPreview_ByContentId = (
  * }
  * ```
  */
-export const useContentAdminApi_CreateContent_ByChannelId = (
+export const useContentAdminApi_CreateContent_ByChannelIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateContentResponse, AxiosError<ApiError>, SdkSetConfigParam & { channelId: string; data: CreateContentRequest }>,
@@ -411,7 +411,7 @@ export const useContentAdminApi_GetContentSharecode_ByShareCode = (
  * }
  * ```
  */
-export const useContentAdminApi_CreateContentS3_ByChannelId = (
+export const useContentAdminApi_CreateContentS3_ByChannelIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -454,7 +454,7 @@ export const useContentAdminApi_CreateContentS3_ByChannelId = (
  * }
  * ```
  */
-export const useContentAdminApi_CreateScreenshot_ByContentId = (
+export const useContentAdminApi_CreateScreenshot_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -497,7 +497,7 @@ export const useContentAdminApi_CreateScreenshot_ByContentId = (
  * }
  * ```
  */
-export const useContentAdminApi_UpdateScreenshot_ByContentId = (
+export const useContentAdminApi_UpdateScreenshot_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -589,7 +589,7 @@ export const useContentAdminApi_GetContentsSearch_ByChannelId = (
  * }
  * ```
  */
-export const useContentAdminApi_UpdateHide_ByUserId_ByContentId = (
+export const useContentAdminApi_UpdateHide_ByUserId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -632,7 +632,7 @@ export const useContentAdminApi_UpdateHide_ByUserId_ByContentId = (
  * }
  * ```
  */
-export const useContentAdminApi_DeleteContent_ByChannelId_ByContentId = (
+export const useContentAdminApi_DeleteContent_ByChannelId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelId: string; contentId: string }>,
@@ -668,7 +668,7 @@ export const useContentAdminApi_DeleteContent_ByChannelId_ByContentId = (
  * }
  * ```
  */
-export const useContentAdminApi_UpdateContent_ByChannelId_ByContentId = (
+export const useContentAdminApi_UpdateContent_ByChannelId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -711,7 +711,7 @@ export const useContentAdminApi_UpdateContent_ByChannelId_ByContentId = (
  * }
  * ```
  */
-export const useContentAdminApi_UpdateRollback_ByContentId_ByVersionId = (
+export const useContentAdminApi_UpdateRollback_ByContentId_ByVersionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ContentDownloadResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId: string; versionId: string }>,
@@ -746,7 +746,7 @@ export const useContentAdminApi_UpdateRollback_ByContentId_ByVersionId = (
  * }
  * ```
  */
-export const useContentAdminApi_UpdateContentS3_ByChannelId_ByContentId = (
+export const useContentAdminApi_UpdateContentS3_ByChannelId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -789,7 +789,7 @@ export const useContentAdminApi_UpdateContentS3_ByChannelId_ByContentId = (
  * }
  * ```
  */
-export const useContentAdminApi_DeleteScreenshot_ByContentId_ByScreenshotId = (
+export const useContentAdminApi_DeleteScreenshot_ByContentId_ByScreenshotIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { contentId: string; screenshotId: string }>,
@@ -824,7 +824,7 @@ export const useContentAdminApi_DeleteScreenshot_ByContentId_ByScreenshotId = (
  * }
  * ```
  */
-export const useContentAdminApi_DeleteContent_ByUserId_ByChannelId_ByContentId = (
+export const useContentAdminApi_DeleteContent_ByUserId_ByChannelId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; channelId: string; contentId: string }>,
@@ -860,7 +860,7 @@ export const useContentAdminApi_DeleteContent_ByUserId_ByChannelId_ByContentId =
  * }
  * ```
  */
-export const useContentAdminApi_UpdateContent_ByUserId_ByChannelId_ByContentId = (
+export const useContentAdminApi_UpdateContent_ByUserId_ByChannelId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -905,7 +905,7 @@ export const useContentAdminApi_UpdateContent_ByUserId_ByChannelId_ByContentId =
  * }
  * ```
  */
-export const useContentAdminApi_UpdateContentS3_ByUserId_ByChannelId_ByContentId = (
+export const useContentAdminApi_UpdateContentS3_ByUserId_ByChannelId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -950,7 +950,7 @@ export const useContentAdminApi_UpdateContentS3_ByUserId_ByChannelId_ByContentId
  * }
  * ```
  */
-export const useContentAdminApi_DeleteContentSharecode_ByUserId_ByChannelId_ByShareCode = (
+export const useContentAdminApi_DeleteContentSharecode_ByUserId_ByChannelId_ByShareCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; channelId: string; shareCode: string }>,
@@ -985,7 +985,7 @@ export const useContentAdminApi_DeleteContentSharecode_ByUserId_ByChannelId_BySh
  * }
  * ```
  */
-export const useContentAdminApi_UpdateContentS3Sharecode_ByUserId_ByChannelId_ByShareCode = (
+export const useContentAdminApi_UpdateContentS3Sharecode_ByUserId_ByChannelId_ByShareCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

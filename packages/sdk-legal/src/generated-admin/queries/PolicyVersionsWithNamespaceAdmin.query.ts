@@ -71,7 +71,7 @@ export const usePolicyVersionsWithNamespaceAdminApi_GetVersions_ByPolicyId = (
  * }
  * ```
  */
-export const usePolicyVersionsWithNamespaceAdminApi_CreateVersion_ByPolicyId = (
+export const usePolicyVersionsWithNamespaceAdminApi_CreateVersion_ByPolicyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -114,7 +114,7 @@ export const usePolicyVersionsWithNamespaceAdminApi_CreateVersion_ByPolicyId = (
  * }
  * ```
  */
-export const usePolicyVersionsWithNamespaceAdminApi_PatchPolicyVersion_ByPolicyVersionId = (
+export const usePolicyVersionsWithNamespaceAdminApi_PatchPolicyVersion_ByPolicyVersionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -157,7 +157,7 @@ export const usePolicyVersionsWithNamespaceAdminApi_PatchPolicyVersion_ByPolicyV
  * }
  * ```
  */
-export const usePolicyVersionsWithNamespaceAdminApi_PatchLatestPolicy_ByPolicyVersionId = (
+export const usePolicyVersionsWithNamespaceAdminApi_PatchLatestPolicy_ByPolicyVersionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

@@ -68,7 +68,7 @@ export const useGoalConfigurationAdminApi_GetGoals_ByChallengeCode = (
  * }
  * ```
  */
-export const useGoalConfigurationAdminApi_CreateGoal_ByChallengeCode = (
+export const useGoalConfigurationAdminApi_CreateGoal_ByChallengeCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GoalResponse, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode: string; data: CreateGoalRequest }>,
@@ -103,7 +103,7 @@ export const useGoalConfigurationAdminApi_CreateGoal_ByChallengeCode = (
  * }
  * ```
  */
-export const useGoalConfigurationAdminApi_DeleteGoal_ByChallengeCode_ByCode = (
+export const useGoalConfigurationAdminApi_DeleteGoal_ByChallengeCode_ByCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { challengeCode: string; code: string }>,
@@ -172,7 +172,7 @@ export const useGoalConfigurationAdminApi_GetGoal_ByChallengeCode_ByCode = (
  * }
  * ```
  */
-export const useGoalConfigurationAdminApi_UpdateGoal_ByChallengeCode_ByCode = (
+export const useGoalConfigurationAdminApi_UpdateGoal_ByChallengeCode_ByCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

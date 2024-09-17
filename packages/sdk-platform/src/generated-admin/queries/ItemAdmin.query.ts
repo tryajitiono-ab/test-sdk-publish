@@ -117,7 +117,7 @@ export const useItemAdminApi_GetItemsConfigs = (
  * }
  * ```
  */
-export const useItemAdminApi_CreateItemConfig = (
+export const useItemAdminApi_CreateItemConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ItemTypeConfigCreate }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -146,7 +146,7 @@ export const useItemAdminApi_CreateItemConfig = (
  * }
  * ```
  */
-export const useItemAdminApi_DeleteItemConfig_ById = (
+export const useItemAdminApi_DeleteItemConfig_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { id: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -207,7 +207,7 @@ export const useItemAdminApi_GetItemConfig_ById = (
  * }
  * ```
  */
-export const useItemAdminApi_UpdateItemConfig_ById = (
+export const useItemAdminApi_UpdateItemConfig_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ItemTypeConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id: string; data: ItemTypeConfigUpdate }>,
@@ -290,7 +290,7 @@ export const useItemAdminApi_GetItemsConfigsSearch = (
  * }
  * ```
  */
-export const useItemAdminApi_CreateItem = (
+export const useItemAdminApi_CreateItemMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -333,7 +333,7 @@ export const useItemAdminApi_CreateItem = (
  * }
  * ```
  */
-export const useItemAdminApi_UpdateItem = (
+export const useItemAdminApi_UpdateItemMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -526,7 +526,7 @@ export const useItemAdminApi_GetItemsByAppId = (
  * }
  * ```
  */
-export const useItemAdminApi_DeleteItem_ByItemId = (
+export const useItemAdminApi_DeleteItem_ByItemIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -604,7 +604,7 @@ export const useItemAdminApi_GetItem_ByItemId = (
  * }
  * ```
  */
-export const useItemAdminApi_UpdateItem_ByItemId = (
+export const useItemAdminApi_UpdateItem_ByItemIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -709,7 +709,7 @@ export const useItemAdminApi_GetItemsByCriteria = (
  * }
  * ```
  */
-export const useItemAdminApi_UpdateItemRegiondata = (
+export const useItemAdminApi_UpdateItemRegiondataMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -785,7 +785,7 @@ export const useItemAdminApi_GetApp_ByItemId = (
  * }
  * ```
  */
-export const useItemAdminApi_UpdateApp_ByItemId = (
+export const useItemAdminApi_UpdateApp_ByItemIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1101,7 +1101,7 @@ export const useItemAdminApi_GetItemsEstimatedPrice = (
  * }
  * ```
  */
-export const useItemAdminApi_UpdateEnable_ByItemId = (
+export const useItemAdminApi_UpdateEnable_ByItemIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId: string; queryParams: { storeId: string | null } }>,
@@ -1182,7 +1182,7 @@ export const useItemAdminApi_GetLocale_ByItemId = (
  * }
  * ```
  */
-export const useItemAdminApi_UpdateReturn_ByItemId = (
+export const useItemAdminApi_UpdateReturn_ByItemIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { itemId: string; data: ItemReturnRequest }>,
@@ -1247,7 +1247,7 @@ export const useItemAdminApi_GetItemsPredicateTypes = (
  * }
  * ```
  */
-export const useItemAdminApi_UpdateAcquire_ByItemId = (
+export const useItemAdminApi_UpdateAcquire_ByItemIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ItemAcquireResult, AxiosError<ApiError>, SdkSetConfigParam & { itemId: string; data: ItemAcquireRequest }>,
@@ -1282,7 +1282,7 @@ export const useItemAdminApi_UpdateAcquire_ByItemId = (
  * }
  * ```
  */
-export const useItemAdminApi_UpdateDisable_ByItemId = (
+export const useItemAdminApi_UpdateDisable_ByItemIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FullItemInfo, AxiosError<ApiError>, SdkSetConfigParam & { itemId: string; queryParams: { storeId: string | null } }>,
@@ -1385,7 +1385,7 @@ export const useItemAdminApi_GetItemsByFeaturesBasic = (
  * }
  * ```
  */
-export const useItemAdminApi_DeleteFeature_ByItemId_ByFeature = (
+export const useItemAdminApi_DeleteFeature_ByItemId_ByFeatureMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1428,7 +1428,7 @@ export const useItemAdminApi_DeleteFeature_ByItemId_ByFeature = (
  * }
  * ```
  */
-export const useItemAdminApi_UpdateFeature_ByItemId_ByFeature = (
+export const useItemAdminApi_UpdateFeature_ByItemId_ByFeatureMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1471,7 +1471,7 @@ export const useItemAdminApi_UpdateFeature_ByItemId_ByFeature = (
  * }
  * ```
  */
-export const useItemAdminApi_UpdatePurchaseCondition_ByItemId = (
+export const useItemAdminApi_UpdatePurchaseCondition_ByItemIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1516,7 +1516,7 @@ export const useItemAdminApi_UpdatePurchaseCondition_ByItemId = (
  * }
  * ```
  */
-export const useItemAdminApi_CreateItemPurchaseConditionValidate = (
+export const useItemAdminApi_CreateItemPurchaseConditionValidateMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

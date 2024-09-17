@@ -72,7 +72,7 @@ export const useMatchPoolsApi_GetMatchPools = (
  * }
  * ```
  */
-export const useMatchPoolsApi_CreateMatchPool = (
+export const useMatchPoolsApi_CreateMatchPoolMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchPool }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -101,7 +101,7 @@ export const useMatchPoolsApi_CreateMatchPool = (
  * }
  * ```
  */
-export const useMatchPoolsApi_DeleteMatchPool_ByPool = (
+export const useMatchPoolsApi_DeleteMatchPool_ByPoolMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { pool: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -164,7 +164,7 @@ export const useMatchPoolsApi_GetMatchPool_ByPool = (
  * }
  * ```
  */
-export const useMatchPoolsApi_UpdateMatchPool_ByPool = (
+export const useMatchPoolsApi_UpdateMatchPool_ByPoolMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MatchPool, AxiosError<ApiError>, SdkSetConfigParam & { pool: string; data: MatchPoolConfig }>,

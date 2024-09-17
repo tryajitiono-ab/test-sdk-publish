@@ -24,7 +24,14 @@ export function DevTools({ setSdk, tier }: Props) {
   const [isPanelShown, setIsPanelShown] = useState(false)
 
   const onSubmit = handleSubmit(data => {
-    setSdk(AccelByte.SDK(createSdkConfig(data)))
+    setSdk(
+      AccelByte.SDK(
+        createSdkConfig({
+          ...data,
+          baseURL: `${data.namespace}.${data.baseURL}`
+        })
+      )
+    )
     setIsPanelShown(false)
   })
 

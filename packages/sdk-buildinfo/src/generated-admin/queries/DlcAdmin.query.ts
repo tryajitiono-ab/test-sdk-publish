@@ -32,7 +32,7 @@ export enum Key_DlcAdmin {
  * }
  * ```
  */
-export const useDlcAdminApi_UpdateDlcLink = (
+export const useDlcAdminApi_UpdateDlcLinkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateDependencyLinkRequest }>,

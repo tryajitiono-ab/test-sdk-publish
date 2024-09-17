@@ -162,7 +162,7 @@ export const useBansAdminApi_GetBansUsers_v3 = (
  * }
  * ```
  */
-export const useBansAdminApi_CreateBanUser_v3 = (
+export const useBansAdminApi_CreateBanUserMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ListBulkUserBanResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkBanCreateRequestV3 }>,
@@ -194,7 +194,7 @@ export const useBansAdminApi_CreateBanUser_v3 = (
  * }
  * ```
  */
-export const useBansAdminApi_PatchBanUserDisabled_v3 = (
+export const useBansAdminApi_PatchBanUserDisabledMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ListBulkUserBanResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUnbanCreateRequestV3 }>,

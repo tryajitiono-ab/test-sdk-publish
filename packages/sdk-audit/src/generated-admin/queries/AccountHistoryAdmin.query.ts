@@ -67,7 +67,7 @@ export const useAccountHistoryAdminApi_GetUsersMeAccountHistories = (
  * }
  * ```
  */
-export const useAccountHistoryAdminApi_DeleteAccountHistory_ByUserId = (
+export const useAccountHistoryAdminApi_DeleteAccountHistory_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

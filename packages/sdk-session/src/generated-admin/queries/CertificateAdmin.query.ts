@@ -30,7 +30,7 @@ export enum Key_CertificateAdmin {
  * }
  * ```
  */
-export const useCertificateAdminApi_UpdateCertificatePfxPlatformXbl = (
+export const useCertificateAdminApi_UpdateCertificatePfxPlatformXblMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

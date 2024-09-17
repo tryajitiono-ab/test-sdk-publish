@@ -38,7 +38,7 @@ export enum Key_OAuth20V4 {
  * }
  * ```
  */
-export const useOAuth20V4Api_PostOauthToken_v4 = (
+export const useOAuth20V4Api_PostOauthTokenMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -156,7 +156,7 @@ export const useOAuth20V4Api_PostOauthToken_v4 = (
  * }
  * ```
  */
-export const useOAuth20V4Api_PostOauthMfaVerify_v4 = (
+export const useOAuth20V4Api_PostOauthMfaVerifyMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -206,7 +206,7 @@ export const useOAuth20V4Api_PostOauthMfaVerify_v4 = (
  * }
  * ```
  */
-export const useOAuth20V4Api_PostOauthHeadlesToken_v4 = (
+export const useOAuth20V4Api_PostOauthHeadlesTokenMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -254,7 +254,7 @@ export const useOAuth20V4Api_PostOauthHeadlesToken_v4 = (
  * }
  * ```
  */
-export const useOAuth20V4Api_PostOauthTokenExchange_v4 = (
+export const useOAuth20V4Api_PostOauthTokenExchangeMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -300,7 +300,7 @@ export const useOAuth20V4Api_PostOauthTokenExchange_v4 = (
  * }
  * ```
  */
-export const useOAuth20V4Api_PostOauthSimultaneousLogin_v4 = (
+export const useOAuth20V4Api_PostOauthSimultaneousLoginMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -373,7 +373,7 @@ export const useOAuth20V4Api_PostOauthSimultaneousLogin_v4 = (
  * }
  * ```
  */
-export const useOAuth20V4Api_PostOauthAuthenticateWithLink_v4 = (
+export const useOAuth20V4Api_PostOauthAuthenticateWithLinkMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -446,7 +446,7 @@ export const useOAuth20V4Api_PostOauthAuthenticateWithLink_v4 = (
  * }
  * ```
  */
-export const useOAuth20V4Api_PostTokenOauth_ByPlatformId_v4 = (
+export const useOAuth20V4Api_PostTokenOauth_ByPlatformIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

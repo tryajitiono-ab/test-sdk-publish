@@ -70,7 +70,7 @@ export const usePublicStagingContentApi_GetStagingContents_ByUserId_v2 = (
  * }
  * ```
  */
-export const usePublicStagingContentApi_DeleteStagingContent_ByUserId_ByContentId_v2 = (
+export const usePublicStagingContentApi_DeleteStagingContent_ByUserId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; contentId: string }>,
@@ -139,7 +139,7 @@ export const usePublicStagingContentApi_GetStagingContent_ByUserId_ByContentId_v
  * }
  * ```
  */
-export const usePublicStagingContentApi_UpdateStagingContent_ByUserId_ByContentId_v2 = (
+export const usePublicStagingContentApi_UpdateStagingContent_ByUserId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

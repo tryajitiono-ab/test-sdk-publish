@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { AnonymizationAdminApi } from './generated-admin/AnonymizationAdminApi.js'
 import { ConfigAdminApi } from './generated-admin/ConfigAdminApi.js'
 import { FileUploadAdminApi } from './generated-admin/FileUploadAdminApi.js'
@@ -18,6 +19,8 @@ import { MiscApi } from './generated-public/MiscApi.js'
 import { NamespaceApi } from './generated-public/NamespaceApi.js'
 import { UserProfileApi } from './generated-public/UserProfileApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   NamespaceAdminApi,
   ConfigAdminApi,
@@ -28,7 +31,13 @@ const apis = {
   MiscApi,
   NamespaceApi,
   UserProfileApi,
-  FileUploadApi
+  FileUploadApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Basic = apis

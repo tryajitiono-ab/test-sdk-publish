@@ -94,7 +94,7 @@ export const useOrderApi_GetOrders_ByUserId = (
  * }
  * ```
  */
-export const useOrderApi_CreateOrder_ByUserId = (
+export const useOrderApi_CreateOrder_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: OrderCreate }>,
@@ -162,7 +162,7 @@ export const useOrderApi_GetOrder_ByUserId_ByOrderNo = (
  * }
  * ```
  */
-export const useOrderApi_UpdateCancel_ByUserId_ByOrderNo = (
+export const useOrderApi_UpdateCancel_ByUserId_ByOrderNoMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; orderNo: string }>,
@@ -197,7 +197,7 @@ export const useOrderApi_UpdateCancel_ByUserId_ByOrderNo = (
  * }
  * ```
  */
-export const useOrderApi_CreateOrderDiscountPreview_ByUserId = (
+export const useOrderApi_CreateOrderDiscountPreview_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

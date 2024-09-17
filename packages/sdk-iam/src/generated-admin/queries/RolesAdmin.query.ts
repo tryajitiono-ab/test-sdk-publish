@@ -98,7 +98,7 @@ export const useRolesAdminApi_GetRoles_v3 = (
  * }
  * ```
  */
-export const useRolesAdminApi_CreateRole_v3 = (
+export const useRolesAdminApi_CreateRoleMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<RoleV3, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleCreateV3Request }>, 'mutationKey'>,
   callback?: (data: RoleV3) => void
@@ -159,7 +159,7 @@ export const useRolesAdminApi_GetRoles_v4 = (
  * }
  * ```
  */
-export const useRolesAdminApi_CreateRole_v4 = (
+export const useRolesAdminApi_CreateRoleMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<RoleV4Response, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleV4Request }>, 'mutationKey'>,
   callback?: (data: RoleV4Response) => void
@@ -188,7 +188,7 @@ export const useRolesAdminApi_CreateRole_v4 = (
  * }
  * ```
  */
-export const useRolesAdminApi_DeleteRole_ByRoleId_v3 = (
+export const useRolesAdminApi_DeleteRole_ByRoleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -251,7 +251,7 @@ export const useRolesAdminApi_GetRole_ByRoleId_v3 = (
  * }
  * ```
  */
-export const useRolesAdminApi_PatchRole_ByRoleId_v3 = (
+export const useRolesAdminApi_PatchRole_ByRoleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RoleResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: RoleUpdateRequestV3 }>,
@@ -286,7 +286,7 @@ export const useRolesAdminApi_PatchRole_ByRoleId_v3 = (
  * }
  * ```
  */
-export const useRolesAdminApi_DeleteRole_ByRoleId_v4 = (
+export const useRolesAdminApi_DeleteRole_ByRoleIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -349,7 +349,7 @@ export const useRolesAdminApi_GetRole_ByRoleId_v4 = (
  * }
  * ```
  */
-export const useRolesAdminApi_PatchRole_ByRoleId_v4 = (
+export const useRolesAdminApi_PatchRole_ByRoleIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RoleV4Response, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: RoleV4Request }>,
@@ -384,7 +384,7 @@ export const useRolesAdminApi_PatchRole_ByRoleId_v4 = (
  * }
  * ```
  */
-export const useRolesAdminApi_DeleteAdmin_ByRoleId_v3 = (
+export const useRolesAdminApi_DeleteAdmin_ByRoleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -447,7 +447,7 @@ export const useRolesAdminApi_GetAdmin_ByRoleId_v3 = (
  * }
  * ```
  */
-export const useRolesAdminApi_UpdateAdmin_ByRoleId_v3 = (
+export const useRolesAdminApi_UpdateAdmin_ByRoleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -478,7 +478,7 @@ export const useRolesAdminApi_UpdateAdmin_ByRoleId_v3 = (
  * }
  * ```
  */
-export const useRolesAdminApi_DeleteUser_ByRoleId_v4 = (
+export const useRolesAdminApi_DeleteUser_ByRoleIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: RevokeUserV4Request }>,
@@ -546,7 +546,7 @@ export const useRolesAdminApi_GetUsers_ByRoleId_v4 = (
  * }
  * ```
  */
-export const useRolesAdminApi_UpdateUser_ByRoleId_v4 = (
+export const useRolesAdminApi_UpdateUser_ByRoleIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AssignedUserV4Response, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: AssignUserV4Request }>,
@@ -582,7 +582,7 @@ export const useRolesAdminApi_UpdateUser_ByRoleId_v4 = (
  * }
  * ```
  */
-export const useRolesAdminApi_DeleteMember_ByRoleId_v3 = (
+export const useRolesAdminApi_DeleteMember_ByRoleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: RoleMembersRequestV3 }>,
@@ -650,7 +650,7 @@ export const useRolesAdminApi_GetMembers_ByRoleId_v3 = (
  * }
  * ```
  */
-export const useRolesAdminApi_UpdateMember_ByRoleId_v3 = (
+export const useRolesAdminApi_UpdateMember_ByRoleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: RoleMembersRequestV3 }>,
@@ -685,7 +685,7 @@ export const useRolesAdminApi_UpdateMember_ByRoleId_v3 = (
  * }
  * ```
  */
-export const useRolesAdminApi_DeleteManager_ByRoleId_v3 = (
+export const useRolesAdminApi_DeleteManager_ByRoleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: RoleManagersRequestV3 }>,
@@ -753,7 +753,7 @@ export const useRolesAdminApi_GetManagers_ByRoleId_v3 = (
  * }
  * ```
  */
-export const useRolesAdminApi_UpdateManager_ByRoleId_v3 = (
+export const useRolesAdminApi_UpdateManager_ByRoleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: RoleManagersRequestV3 }>,
@@ -777,7 +777,7 @@ export const useRolesAdminApi_UpdateManager_ByRoleId_v3 = (
   })
 }
 
-export const useRolesAdminApi_DeletePermission_ByRoleId_v3 = (
+export const useRolesAdminApi_DeletePermission_ByRoleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: string[] }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -809,7 +809,7 @@ export const useRolesAdminApi_DeletePermission_ByRoleId_v3 = (
  * }
  * ```
  */
-export const useRolesAdminApi_UpdatePermission_ByRoleId_v3 = (
+export const useRolesAdminApi_UpdatePermission_ByRoleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: PermissionsV3 }>,
@@ -844,7 +844,7 @@ export const useRolesAdminApi_UpdatePermission_ByRoleId_v3 = (
  * }
  * ```
  */
-export const useRolesAdminApi_UpdatePermission_ByRoleId_admin_v3 = (
+export const useRolesAdminApi_UpdatePermission_ByRoleId_adminMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: PermissionsV3 }>,
@@ -868,7 +868,7 @@ export const useRolesAdminApi_UpdatePermission_ByRoleId_admin_v3 = (
   })
 }
 
-export const useRolesAdminApi_DeletePermission_ByRoleId_v4 = (
+export const useRolesAdminApi_DeletePermission_ByRoleIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: string[] }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -900,7 +900,7 @@ export const useRolesAdminApi_DeletePermission_ByRoleId_v4 = (
  * }
  * ```
  */
-export const useRolesAdminApi_UpdatePermission_ByRoleId_v4 = (
+export const useRolesAdminApi_UpdatePermission_ByRoleIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RoleV4Response, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: PermissionsV3 }>,
@@ -935,7 +935,7 @@ export const useRolesAdminApi_UpdatePermission_ByRoleId_v4 = (
  * }
  * ```
  */
-export const useRolesAdminApi_UpdatePermission_ByRoleId_admin_v4 = (
+export const useRolesAdminApi_UpdatePermission_ByRoleId_adminMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RoleV4Response, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: PermissionsV3 }>,
@@ -970,7 +970,7 @@ export const useRolesAdminApi_UpdatePermission_ByRoleId_admin_v4 = (
  * }
  * ```
  */
-export const useRolesAdminApi_DeletePermission_ByRoleId_ByResource_ByAction_v3 = (
+export const useRolesAdminApi_DeletePermission_ByRoleId_ByResource_ByActionMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; resource: string; action: number }>,

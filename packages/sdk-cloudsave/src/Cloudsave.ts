@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { ConcurrentRecordAdminApi } from './generated-admin/ConcurrentRecordAdminApi.js'
 import { GameBinaryRecordAdminApi } from './generated-admin/GameBinaryRecordAdminApi.js'
 import { GameRecordAdminApi } from './generated-admin/GameRecordAdminApi.js'
@@ -23,6 +24,8 @@ import { PublicPlayerBinaryRecordApi } from './generated-public/PublicPlayerBina
 import { PublicPlayerRecordApi } from './generated-public/PublicPlayerRecordApi.js'
 import { PublicTagsApi } from './generated-public/PublicTagsApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   TagsAdminApi,
   PluginConfigAdminApi,
@@ -38,7 +41,13 @@ const apis = {
   PublicGameRecordApi,
   PublicPlayerRecordApi,
   PublicPlayerBinaryRecordApi,
-  ConcurrentRecordApi
+  ConcurrentRecordApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Cloudsave = apis

@@ -67,7 +67,7 @@ export const useAchievementPlatformAdminApi_GetAchievementXbl_ByUserId = (
  * }
  * ```
  */
-export const useAchievementPlatformAdminApi_UpdateAchievementXbl_ByUserId = (
+export const useAchievementPlatformAdminApi_UpdateAchievementXbl_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: XblAchievementUpdateRequest }>,
@@ -102,7 +102,7 @@ export const useAchievementPlatformAdminApi_UpdateAchievementXbl_ByUserId = (
  * }
  * ```
  */
-export const useAchievementPlatformAdminApi_UpdateAchievementSteam_ByUserId = (
+export const useAchievementPlatformAdminApi_UpdateAchievementSteam_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: SteamAchievementUpdateRequest }>,

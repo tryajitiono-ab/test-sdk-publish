@@ -31,7 +31,7 @@ export enum Key_GdprAdmin {
  * }
  * ```
  */
-export const useGdprAdminApi_DeleteGdprRemove = (
+export const useGdprAdminApi_DeleteGdprRemoveMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BuildInfoPii, AxiosError<ApiError>, SdkSetConfigParam & { queryParams: { userId: string | null } }>,

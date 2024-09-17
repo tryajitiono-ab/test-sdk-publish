@@ -37,7 +37,7 @@ export enum Key_ConcurrentRecordAdmin {
  * }
  * ```
  */
-export const useConcurrentRecordAdminApi_UpdateConcurrentRecord_ByKey = (
+export const useConcurrentRecordAdminApi_UpdateConcurrentRecord_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key: string; data: AdminConcurrentRecordRequest }>,
@@ -72,7 +72,7 @@ export const useConcurrentRecordAdminApi_UpdateConcurrentRecord_ByKey = (
  * }
  * ```
  */
-export const useConcurrentRecordAdminApi_UpdateConcurrentAdminrecord_ByKey = (
+export const useConcurrentRecordAdminApi_UpdateConcurrentAdminrecord_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key: string; data: AdminGameConcurrentRecordRequest }>,
@@ -107,7 +107,7 @@ export const useConcurrentRecordAdminApi_UpdateConcurrentAdminrecord_ByKey = (
  * }
  * ```
  */
-export const useConcurrentRecordAdminApi_UpdateConcurrentRecord_ByUserId_ByKey = (
+export const useConcurrentRecordAdminApi_UpdateConcurrentRecord_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -162,7 +162,7 @@ export const useConcurrentRecordAdminApi_UpdateConcurrentRecord_ByUserId_ByKey =
  * }
  * ```
  */
-export const useConcurrentRecordAdminApi_UpdateConcurrentAdminrecord_ByUserId_ByKey = (
+export const useConcurrentRecordAdminApi_UpdateConcurrentAdminrecord_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -222,7 +222,7 @@ export const useConcurrentRecordAdminApi_UpdateConcurrentAdminrecord_ByUserId_By
  * }
  * ```
  */
-export const useConcurrentRecordAdminApi_UpdatePublicConcurrent_ByUserId_ByKey = (
+export const useConcurrentRecordAdminApi_UpdatePublicConcurrent_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

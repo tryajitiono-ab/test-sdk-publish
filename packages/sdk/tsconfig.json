@@ -14,6 +14,7 @@
     "paths": {
       "~/iam-definitions/*": ["../sdk-iam/src/generated-definitions/*"],
       "@accelbyte/sdk-iam": ["../sdk-iam/src"],
+      "@accelbyte/sdk-legal": ["../sdk-legal/src"],
     }
   },
   "include": ["src", "test"],

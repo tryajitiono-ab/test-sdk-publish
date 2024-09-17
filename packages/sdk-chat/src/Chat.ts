@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { ConfigAdminApi } from './generated-admin/ConfigAdminApi.js'
 import { InboxAdminApi } from './generated-admin/InboxAdminApi.js'
 import { ModerationAdminApi } from './generated-admin/ModerationAdminApi.js'
@@ -16,6 +17,8 @@ import { ConfigApi } from './generated-public/ConfigApi.js'
 import { ModerationApi } from './generated-public/ModerationApi.js'
 import { TopicApi } from './generated-public/TopicApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   ConfigAdminApi,
   TopicAdminApi,
@@ -24,7 +27,13 @@ const apis = {
   ProfanityAdminApi,
   TopicApi,
   ConfigApi,
-  ModerationApi
+  ModerationApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Chat = apis

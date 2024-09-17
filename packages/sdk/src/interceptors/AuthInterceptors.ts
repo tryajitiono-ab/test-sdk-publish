@@ -96,7 +96,14 @@ export class RefreshToken {
     const { axiosConfig, refreshToken, clientId, tokenUrl } = this.config
     const config = {
       ...axiosConfig,
-      withCredentials: false,
+      /**
+       * Ideally `withCredentials` should be `true` to make sure that
+       * cookies always included when refreshing token
+       * especially on cross-origin requests.
+       * But if `refreshToken` is provided (e.g. from Launcher),
+       * we can set it to false and send refresh_token via payload.
+       */
+      withCredentials: !refreshToken,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Basic ${Buffer.from(`${clientId}:`).toString('base64')}`

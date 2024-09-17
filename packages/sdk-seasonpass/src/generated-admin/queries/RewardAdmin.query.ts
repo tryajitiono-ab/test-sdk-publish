@@ -68,7 +68,7 @@ export const useRewardAdminApi_GetRewards_BySeasonId = (
  * }
  * ```
  */
-export const useRewardAdminApi_CreateReward_BySeasonId = (
+export const useRewardAdminApi_CreateReward_BySeasonIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string; data: RewardCreate }>,
@@ -103,7 +103,7 @@ export const useRewardAdminApi_CreateReward_BySeasonId = (
  * }
  * ```
  */
-export const useRewardAdminApi_DeleteReward_BySeasonId_ByCode = (
+export const useRewardAdminApi_DeleteReward_BySeasonId_ByCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string; code: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -168,7 +168,7 @@ export const useRewardAdminApi_GetReward_BySeasonId_ByCode = (
  * }
  * ```
  */
-export const useRewardAdminApi_PatchReward_BySeasonId_ByCode = (
+export const useRewardAdminApi_PatchReward_BySeasonId_ByCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string; code: string; data: RewardUpdate }>,

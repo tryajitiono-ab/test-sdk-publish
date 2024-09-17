@@ -31,7 +31,7 @@ export enum Key_Fulfillment {
  * }
  * ```
  */
-export const useFulfillmentApi_CreateFulfillmentCode_ByUserId = (
+export const useFulfillmentApi_CreateFulfillmentCode_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FulfillmentResult, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: FulfillCodeRequest }>,

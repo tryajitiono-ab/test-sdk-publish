@@ -89,7 +89,7 @@ export const useFriendsApi_GetFriendsMe = (
  * }
  * ```
  */
-export const useFriendsApi_PatchFriendSyncMe = (
+export const useFriendsApi_PatchFriendSyncMeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<NativeFriendSyncResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: NativeFriendRequest[] }>,
@@ -121,7 +121,7 @@ export const useFriendsApi_PatchFriendSyncMe = (
  * }
  * ```
  */
-export const useFriendsApi_CreateFriendMeRequest = (
+export const useFriendsApi_CreateFriendMeRequestMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserRequestFriendRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -216,7 +216,7 @@ export const useFriendsApi_GetFriendsMeOutgoing = (
  * }
  * ```
  */
-export const useFriendsApi_CreateFriendMeUnfriend = (
+export const useFriendsApi_CreateFriendMeUnfriendMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserUnfriendRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -343,7 +343,7 @@ export const useFriendsApi_GetFriendsMeOutgoingTime = (
  * }
  * ```
  */
-export const useFriendsApi_CreateFriendMeRequestAccept = (
+export const useFriendsApi_CreateFriendMeRequestAcceptMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserAcceptFriendRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -374,7 +374,7 @@ export const useFriendsApi_CreateFriendMeRequestAccept = (
  * }
  * ```
  */
-export const useFriendsApi_CreateFriendMeRequestCancel = (
+export const useFriendsApi_CreateFriendMeRequestCancelMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserCancelFriendRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -405,7 +405,7 @@ export const useFriendsApi_CreateFriendMeRequestCancel = (
  * }
  * ```
  */
-export const useFriendsApi_CreateFriendMeRequestReject = (
+export const useFriendsApi_CreateFriendMeRequestRejectMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserRejectFriendRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -468,7 +468,7 @@ export const useFriendsApi_GetFriendMeStatu_ByFriendId = (
  * }
  * ```
  */
-export const useFriendsApi_CreateAddBulkFriend_ByUserId = (
+export const useFriendsApi_CreateAddBulkFriend_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: BulkFriendsRequest }>,
@@ -503,7 +503,7 @@ export const useFriendsApi_CreateAddBulkFriend_ByUserId = (
  * }
  * ```
  */
-export const useFriendsApi_CreateDeleteBulkFriend_ByUserId = (
+export const useFriendsApi_CreateDeleteBulkFriend_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkFriendsResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: BulkFriendsRequest }>,

@@ -77,7 +77,7 @@ export const useServerApi_GetServers = (
  * }
  * ```
  */
-export const useServerApi_CreateServerRegister = (
+export const useServerApi_CreateServerRegisterMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<Server, AxiosError<ApiError>, SdkSetConfigParam & { data: RegisterServerRequest }>, 'mutationKey'>,
   callback?: (data: Server) => void
@@ -106,7 +106,7 @@ export const useServerApi_CreateServerRegister = (
  * }
  * ```
  */
-export const useServerApi_CreateServerShutdown = (
+export const useServerApi_CreateServerShutdownMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ShutdownServerRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -135,7 +135,7 @@ export const useServerApi_CreateServerShutdown = (
  * }
  * ```
  */
-export const useServerApi_UpdateServerHeartbeat = (
+export const useServerApi_UpdateServerHeartbeatMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DsHeartbeatRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -198,7 +198,7 @@ export const useServerApi_GetServersCountDetailed = (
  * }
  * ```
  */
-export const useServerApi_CreateServerLocalRegister = (
+export const useServerApi_CreateServerLocalRegisterMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<Server, AxiosError<ApiError>, SdkSetConfigParam & { data: RegisterLocalServerRequest }>, 'mutationKey'>,
   callback?: (data: Server) => void
@@ -229,7 +229,7 @@ export const useServerApi_CreateServerLocalRegister = (
  * }
  * ```
  */
-export const useServerApi_CreateServerLocalDeregister = (
+export const useServerApi_CreateServerLocalDeregisterMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DeregisterLocalServerRequest }>,

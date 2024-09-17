@@ -123,7 +123,7 @@ export const useFulfillmentAdminApi_GetFulfillmentHistory = (
  * }
  * ```
  */
-export const useFulfillmentAdminApi_CreateFulfillment_ByUserId = (
+export const useFulfillmentAdminApi_CreateFulfillment_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FulfillmentResult, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: FulfillmentRequest }>,
@@ -158,7 +158,7 @@ export const useFulfillmentAdminApi_CreateFulfillment_ByUserId = (
  * }
  * ```
  */
-export const useFulfillmentAdminApi_CreateFulfillmentCode_ByUserId = (
+export const useFulfillmentAdminApi_CreateFulfillmentCode_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FulfillmentResult, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: FulfillCodeRequest }>,
@@ -193,7 +193,7 @@ export const useFulfillmentAdminApi_CreateFulfillmentCode_ByUserId = (
  * }
  * ```
  */
-export const useFulfillmentAdminApi_CreateFulfillmentReward_ByUserId = (
+export const useFulfillmentAdminApi_CreateFulfillmentReward_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: RewardsRequest }>,
@@ -228,7 +228,7 @@ export const useFulfillmentAdminApi_CreateFulfillmentReward_ByUserId = (
  * }
  * ```
  */
-export const useFulfillmentAdminApi_CreateFulfillmentPreCheck_ByUserId = (
+export const useFulfillmentAdminApi_CreateFulfillmentPreCheck_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -271,7 +271,7 @@ export const useFulfillmentAdminApi_CreateFulfillmentPreCheck_ByUserId = (
  * }
  * ```
  */
-export const useFulfillmentAdminApi_CreateFulfillmentReward_ByUserId_v2 = (
+export const useFulfillmentAdminApi_CreateFulfillmentReward_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FulfillmentResult, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: RewardsRequest }>,
@@ -306,7 +306,7 @@ export const useFulfillmentAdminApi_CreateFulfillmentReward_ByUserId_v2 = (
  * }
  * ```
  */
-export const useFulfillmentAdminApi_UpdateFulfillment_ByUserId_ByTransactionId_v2 = (
+export const useFulfillmentAdminApi_UpdateFulfillment_ByUserId_ByTransactionIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -349,7 +349,7 @@ export const useFulfillmentAdminApi_UpdateFulfillment_ByUserId_ByTransactionId_v
  * }
  * ```
  */
-export const useFulfillmentAdminApi_UpdateRetry_ByUserId_ByTransactionId_v2 = (
+export const useFulfillmentAdminApi_UpdateRetry_ByUserId_ByTransactionIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FulfillmentV2Result, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; transactionId: string }>,
@@ -384,7 +384,7 @@ export const useFulfillmentAdminApi_UpdateRetry_ByUserId_ByTransactionId_v2 = (
  * }
  * ```
  */
-export const useFulfillmentAdminApi_UpdateRevoke_ByUserId_ByTransactionId_v2 = (
+export const useFulfillmentAdminApi_UpdateRevoke_ByUserId_ByTransactionIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RevokeFulfillmentV2Result, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; transactionId: string }>,

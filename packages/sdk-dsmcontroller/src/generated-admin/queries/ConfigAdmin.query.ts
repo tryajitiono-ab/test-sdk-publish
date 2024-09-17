@@ -74,7 +74,7 @@ export const useConfigAdminApi_GetConfigs = (
  * }
  * ```
  */
-export const useConfigAdminApi_CreateConfig = (
+export const useConfigAdminApi_CreateConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DsmConfigRecord }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -103,7 +103,7 @@ export const useConfigAdminApi_CreateConfig = (
  * }
  * ```
  */
-export const useConfigAdminApi_DeleteConfig = (
+export const useConfigAdminApi_DeleteConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -162,7 +162,7 @@ export const useConfigAdminApi_GetConfigs_ByNS = (
  * }
  * ```
  */
-export const useConfigAdminApi_PatchConfig = (
+export const useConfigAdminApi_PatchConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { data: UpdateDsmConfigRequest }>,
@@ -194,7 +194,7 @@ export const useConfigAdminApi_PatchConfig = (
  * }
  * ```
  */
-export const useConfigAdminApi_CreateConfig_ByNS = (
+export const useConfigAdminApi_CreateConfig_ByNSMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateDsmConfigRequest }>,
@@ -228,7 +228,7 @@ export const useConfigAdminApi_CreateConfig_ByNS = (
  * }
  * ```
  */
-export const useConfigAdminApi_DeleteConfigCache = (
+export const useConfigAdminApi_DeleteConfigCacheMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -287,7 +287,7 @@ export const useConfigAdminApi_GetConfigsExport = (
  * }
  * ```
  */
-export const useConfigAdminApi_CreateConfigImport = (
+export const useConfigAdminApi_CreateConfigImportMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<ImportResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: { file?: File } }>, 'mutationKey'>,
   callback?: (data: ImportResponse) => void
@@ -318,7 +318,7 @@ export const useConfigAdminApi_CreateConfigImport = (
  * }
  * ```
  */
-export const useConfigAdminApi_DeleteConfigPort_ByName = (
+export const useConfigAdminApi_DeleteConfigPort_ByNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name: string }>, 'mutationKey'>,
   callback?: (data: DsmConfigRecord) => void
@@ -349,7 +349,7 @@ export const useConfigAdminApi_DeleteConfigPort_ByName = (
  * }
  * ```
  */
-export const useConfigAdminApi_PatchConfigPort_ByName = (
+export const useConfigAdminApi_PatchConfigPort_ByNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name: string; data: UpdatePortRequest }>,
@@ -384,7 +384,7 @@ export const useConfigAdminApi_PatchConfigPort_ByName = (
  * }
  * ```
  */
-export const useConfigAdminApi_CreateConfigPort_ByName = (
+export const useConfigAdminApi_CreateConfigPort_ByNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<DsmConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name: string; data: CreatePortRequest }>,

@@ -219,7 +219,7 @@ export const useOrderAdminApi_GetOrders_ByUserId = (
  * }
  * ```
  */
-export const useOrderAdminApi_CreateOrder_ByUserId = (
+export const useOrderAdminApi_CreateOrder_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: AdminOrderCreate }>,
@@ -254,7 +254,7 @@ export const useOrderAdminApi_CreateOrder_ByUserId = (
  * }
  * ```
  */
-export const useOrderAdminApi_UpdateRefund_ByOrderNo = (
+export const useOrderAdminApi_UpdateRefund_ByOrderNoMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { orderNo: string; data: OrderRefundCreate }>,
@@ -322,7 +322,7 @@ export const useOrderAdminApi_GetOrder_ByUserId_ByOrderNo = (
  * }
  * ```
  */
-export const useOrderAdminApi_UpdateOrder_ByUserId_ByOrderNo = (
+export const useOrderAdminApi_UpdateOrder_ByUserId_ByOrderNoMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; orderNo: string; data: OrderUpdate }>,
@@ -424,7 +424,7 @@ export const useOrderAdminApi_GetGrant_ByUserId_ByOrderNo = (
  * }
  * ```
  */
-export const useOrderAdminApi_UpdateFulfill_ByUserId_ByOrderNo = (
+export const useOrderAdminApi_UpdateFulfill_ByUserId_ByOrderNoMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<OrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; orderNo: string }>,
@@ -525,7 +525,7 @@ export const useOrderAdminApi_GetReceiptPdf_ByUserId_ByOrderNo = (
  * }
  * ```
  */
-export const useOrderAdminApi_CreateNotification_ByUserId_ByOrderNo = (
+export const useOrderAdminApi_CreateNotification_ByUserId_ByOrderNoMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; orderNo: string; data: TradeNotification }>,

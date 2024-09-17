@@ -121,7 +121,7 @@ export const useGameSessionAdminApi_FetchGamesession = (
  * }
  * ```
  */
-export const useGameSessionAdminApi_DeleteGamesessionBulk = (
+export const useGameSessionAdminApi_DeleteGamesessionBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<DeleteBulkGameSessionsApiResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: DeleteBulkGameSessionRequest }>,
@@ -159,7 +159,7 @@ export const useGameSessionAdminApi_DeleteGamesessionBulk = (
  * }
  * ```
  */
-export const useGameSessionAdminApi_UpdateD_BySessionId = (
+export const useGameSessionAdminApi_UpdateD_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string; data: SetDsReadyRequest }>,
@@ -194,7 +194,7 @@ export const useGameSessionAdminApi_UpdateD_BySessionId = (
  * }
  * ```
  */
-export const useGameSessionAdminApi_DeleteKick_BySessionId_ByMemberId = (
+export const useGameSessionAdminApi_DeleteKick_BySessionId_ByMemberIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string; memberId: string }>,
@@ -229,7 +229,7 @@ export const useGameSessionAdminApi_DeleteKick_BySessionId_ByMemberId = (
  * }
  * ```
  */
-export const useGameSessionAdminApi_UpdateStatu_BySessionId_ByMemberId_ByStatusType = (
+export const useGameSessionAdminApi_UpdateStatu_BySessionId_ByMemberId_ByStatusTypeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

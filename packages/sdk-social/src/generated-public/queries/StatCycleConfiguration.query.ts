@@ -76,7 +76,7 @@ export const useStatCycleConfigurationApi_GetStatCycles = (
  * }
  * ```
  */
-export const useStatCycleConfigurationApi_CreateStatCycleBulk = (
+export const useStatCycleConfigurationApi_CreateStatCycleBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkStatCycleResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkStatCycleRequest }>,

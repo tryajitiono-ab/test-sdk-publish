@@ -87,7 +87,7 @@ export const useSessionAdminApi_GetGamesession = (
  * }
  * ```
  */
-export const useSessionAdminApi_DeleteGamesession_BySessionId = (
+export const useSessionAdminApi_DeleteGamesession_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<AdminSessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID: string }>, 'mutationKey'>,
   callback?: (data: AdminSessionResponse) => void

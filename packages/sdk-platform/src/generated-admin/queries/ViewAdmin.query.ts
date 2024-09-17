@@ -65,7 +65,7 @@ export const useViewAdminApi_GetViews = (
  * }
  * ```
  */
-export const useViewAdminApi_CreateView = (
+export const useViewAdminApi_CreateViewMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -108,7 +108,7 @@ export const useViewAdminApi_CreateView = (
  * }
  * ```
  */
-export const useViewAdminApi_DeleteView_ByViewId = (
+export const useViewAdminApi_DeleteView_ByViewIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { viewId: string; queryParams: { storeId: string | null } }>,
@@ -176,7 +176,7 @@ export const useViewAdminApi_GetView_ByViewId = (
  * }
  * ```
  */
-export const useViewAdminApi_UpdateView_ByViewId = (
+export const useViewAdminApi_UpdateView_ByViewIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

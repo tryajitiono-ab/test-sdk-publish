@@ -5,12 +5,12 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@accelbyte/sdk-basic@npm:0.0.0-dev-20240904033042":
-  version: 0.0.0-dev-20240904033042
-  resolution: "@accelbyte/sdk-basic@npm:0.0.0-dev-20240904033042"
+"@accelbyte/sdk-basic@npm:0.0.0-dev-20240912075533":
+  version: 0.0.0-dev-20240912075533
+  resolution: "@accelbyte/sdk-basic@npm:0.0.0-dev-20240912075533"
   dependencies:
-    "@accelbyte/validator": "npm:0.0.0-dev-20240904033042"
-    axios: "npm:1.3.6"
+    "@accelbyte/validator": "npm:0.0.0-dev-20240912075533"
+    axios: "npm:1.7.7"
     buffer: "npm:6.0.3"
     crypto-js: "npm:4.1.1"
     platform: "npm:1.3.6"
@@ -18,21 +18,21 @@ __metadata:
     validator: "npm:13.7.0"
     zod: "npm:3.23.8"
   peerDependencies:
-    "@accelbyte/sdk": 0.0.0-dev-20240904033042
+    "@accelbyte/sdk": 0.0.0-dev-20240912075533
     "@tanstack/react-query": ^4.36.1
   peerDependenciesMeta:
     "@tanstack/react-query":
       optional: true
-  checksum: 10c0/97110b9877e18e3bfb3dc966622902e80794bf5cbbb59916c159b5d10ca766a67b82cd3a5ae75e8ec89c3b4016082e5614c9a73640af6daca9d9e782088278f6
+  checksum: 10c0/8820a92d5761e641651dc26c7321de5b0edc7a1782a06e1b9168a32254c2ddc96e7e59662dadeb2a280bec4c67b56be6d78dece3bfcc63444e8bf89d8d00c409
   languageName: node
   linkType: hard
 
-"@accelbyte/sdk-cloudsave@npm:0.0.0-dev-20240904033042":
-  version: 0.0.0-dev-20240904033042
-  resolution: "@accelbyte/sdk-cloudsave@npm:0.0.0-dev-20240904033042"
+"@accelbyte/sdk-cloudsave@npm:0.0.0-dev-20240912075533":
+  version: 0.0.0-dev-20240912075533
+  resolution: "@accelbyte/sdk-cloudsave@npm:0.0.0-dev-20240912075533"
   dependencies:
-    "@accelbyte/validator": "npm:0.0.0-dev-20240904033042"
-    axios: "npm:1.3.6"
+    "@accelbyte/validator": "npm:0.0.0-dev-20240912075533"
+    axios: "npm:1.7.7"
     buffer: "npm:6.0.3"
     crypto-js: "npm:4.1.1"
     platform: "npm:1.3.6"
@@ -40,21 +40,21 @@ __metadata:
     validator: "npm:13.7.0"
     zod: "npm:3.23.8"
   peerDependencies:
-    "@accelbyte/sdk": 0.0.0-dev-20240904033042
+    "@accelbyte/sdk": 0.0.0-dev-20240912075533
     "@tanstack/react-query": ^4.36.1
   peerDependenciesMeta:
     "@tanstack/react-query":
       optional: true
-  checksum: 10c0/01bfc7b9173edc9e9699b4b226006227f95e5cedc6dea07c6bb7af7d89200efc2cff171f73c4bd04f87185e3f5b97fd00ee0f9c5bf1ee03e6d61567af6324a99
+  checksum: 10c0/e8fcd806ffc0baebdfe95f70348eb9a146f59a6468607677205aaef8111388136776b3548b192f9ff2c280bdf4e2d049dafb6471f7803812f9e066b750206d1d
   languageName: node
   linkType: hard
 
-"@accelbyte/sdk-iam@npm:0.0.0-dev-20240904033042":
-  version: 0.0.0-dev-20240904033042
-  resolution: "@accelbyte/sdk-iam@npm:0.0.0-dev-20240904033042"
+"@accelbyte/sdk-iam@npm:0.0.0-dev-20240912075533":
+  version: 0.0.0-dev-20240912075533
+  resolution: "@accelbyte/sdk-iam@npm:0.0.0-dev-20240912075533"
   dependencies:
-    "@accelbyte/validator": "npm:0.0.0-dev-20240904033042"
-    axios: "npm:1.3.6"
+    "@accelbyte/validator": "npm:0.0.0-dev-20240912075533"
+    axios: "npm:1.7.7"
     buffer: "npm:6.0.3"
     crypto-js: "npm:4.1.1"
     platform: "npm:1.3.6"
@@ -62,22 +62,22 @@ __metadata:
     validator: "npm:13.7.0"
     zod: "npm:3.23.8"
   peerDependencies:
-    "@accelbyte/sdk": 0.0.0-dev-20240904033042
+    "@accelbyte/sdk": 0.0.0-dev-20240912075533
     "@tanstack/react-query": ^4.36.1
   peerDependenciesMeta:
     "@tanstack/react-query":
       optional: true
-  checksum: 10c0/524be59b7a5d130c87782d9d4f18844c5a28e0bc6a00a4cc05d9917a553b0ec573522abbd20bb6ebc1eacb276282685710f259c3af8bcbf73770c30b9e2809dc
+  checksum: 10c0/9d87c514f28618b8c85f6adda5de3a236c32645c2cff52bea45c151346b507e291b774d065cf78ba134c7148102dca2823b493a63e20c1ef9046c3fc438b8958
   languageName: node
   linkType: hard
 
-"@accelbyte/sdk-legal@npm:0.0.0-dev-20240904033042":
-  version: 0.0.0-dev-20240904033042
-  resolution: "@accelbyte/sdk-legal@npm:0.0.0-dev-20240904033042"
+"@accelbyte/sdk-legal@npm:0.0.0-dev-20240912075533":
+  version: 0.0.0-dev-20240912075533
+  resolution: "@accelbyte/sdk-legal@npm:0.0.0-dev-20240912075533"
   dependencies:
-    "@accelbyte/sdk-iam": "npm:0.0.0-dev-20240904033042"
-    "@accelbyte/validator": "npm:0.0.0-dev-20240904033042"
-    axios: "npm:1.3.6"
+    "@accelbyte/sdk-iam": "npm:0.0.0-dev-20240912075533"
+    "@accelbyte/validator": "npm:0.0.0-dev-20240912075533"
+    axios: "npm:1.7.7"
     buffer: "npm:6.0.3"
     crypto-js: "npm:4.1.1"
     dompurify: "npm:3.0.5"
@@ -86,21 +86,21 @@ __metadata:
     validator: "npm:13.7.0"
     zod: "npm:3.23.8"
   peerDependencies:
-    "@accelbyte/sdk": 0.0.0-dev-20240904033042
+    "@accelbyte/sdk": 0.0.0-dev-20240912075533
     "@tanstack/react-query": ^4.36.1
   peerDependenciesMeta:
     "@tanstack/react-query":
       optional: true
-  checksum: 10c0/8b0c7a1a71551e59b34c84f474b84ed550e89d3a1530be83a56bc158854cebd3c8064e290529096d913977bea552f34a2695380a0f9643d41404dab49ea8c1a2
+  checksum: 10c0/9f3668eef08598755610962dab5b6e1315f1dd1c383c90153ce0d5f46becc2038bfbddad0d3bc8eb177bb77836856e2cd7263a1c483e83877837b4c3584e98be
   languageName: node
   linkType: hard
 
-"@accelbyte/sdk-platform@npm:0.0.0-dev-20240904033042":
-  version: 0.0.0-dev-20240904033042
-  resolution: "@accelbyte/sdk-platform@npm:0.0.0-dev-20240904033042"
+"@accelbyte/sdk-platform@npm:0.0.0-dev-20240912075533":
+  version: 0.0.0-dev-20240912075533
+  resolution: "@accelbyte/sdk-platform@npm:0.0.0-dev-20240912075533"
   dependencies:
-    "@accelbyte/validator": "npm:0.0.0-dev-20240904033042"
-    axios: "npm:1.3.6"
+    "@accelbyte/validator": "npm:0.0.0-dev-20240912075533"
+    axios: "npm:1.7.7"
     buffer: "npm:6.0.3"
     crypto-js: "npm:4.1.1"
     platform: "npm:1.3.6"
@@ -108,21 +108,21 @@ __metadata:
     validator: "npm:13.7.0"
     zod: "npm:3.23.8"
   peerDependencies:
-    "@accelbyte/sdk": 0.0.0-dev-20240904033042
+    "@accelbyte/sdk": 0.0.0-dev-20240912075533
     "@tanstack/react-query": ^4.36.1
   peerDependenciesMeta:
     "@tanstack/react-query":
       optional: true
-  checksum: 10c0/a0c44d0f6ebdc09b542c0d11582ab74ee28987eceb912e5a28a19050c3bd6d04541dcd4da8c5a6fc8913421f6e079ae6bded5573dc1b8f4a67d10e203cb18d68
+  checksum: 10c0/7c642ec597878c86e175abdc0edad73156d2959073e602bfebc92b18c24f3067c9958feef69f72355a4e8e75e517b1180ce1cbcf984fdc43b31a2279353780ce
   languageName: node
   linkType: hard
 
-"@accelbyte/sdk@npm:0.0.0-dev-20240904033042":
-  version: 0.0.0-dev-20240904033042
-  resolution: "@accelbyte/sdk@npm:0.0.0-dev-20240904033042"
+"@accelbyte/sdk@npm:0.0.0-dev-20240912075533":
+  version: 0.0.0-dev-20240912075533
+  resolution: "@accelbyte/sdk@npm:0.0.0-dev-20240912075533"
   dependencies:
-    "@accelbyte/validator": "npm:0.0.0-dev-20240904033042"
-    axios: "npm:1.3.6"
+    "@accelbyte/validator": "npm:0.0.0-dev-20240912075533"
+    axios: "npm:1.7.7"
     buffer: "npm:6.0.3"
     crypto-js: "npm:4.1.1"
     nanoid: "npm:3.1.31"
@@ -131,20 +131,20 @@ __metadata:
     uuid: "npm:8.3.2"
     validator: "npm:13.7.0"
     zod: "npm:3.23.8"
-  checksum: 10c0/f20781c4f7aeb9ced16730743eb2d068e8966879228eb0a5911a865b9023a28910076a6e75949841aff676b5e075070027a54b19b5cec36ede16809ee58cc35d
+  checksum: 10c0/6bd774600261e58cf2664a4f447e983324cf83f5d5a72721bb1686cb4c74c826916d734c47ed0c692e639f180e9abfc7a1978cd8b7e80eb35b2c9a3bff0febf0
   languageName: node
   linkType: hard
 
-"@accelbyte/validator@npm:0.0.0-dev-20240904033042":
-  version: 0.0.0-dev-20240904033042
-  resolution: "@accelbyte/validator@npm:0.0.0-dev-20240904033042"
+"@accelbyte/validator@npm:0.0.0-dev-20240912075533":
+  version: 0.0.0-dev-20240912075533
+  resolution: "@accelbyte/validator@npm:0.0.0-dev-20240912075533"
   dependencies:
     naughty-words: "npm:1.2.0"
     xregexp: "npm:5.1.0"
   peerDependencies:
     validator: ^13.7.0
     zod: ^3.17.3
-  checksum: 10c0/d6a09c17a47588c234742a234c46aebb656b43b2c4f1b058c2018d4961d15770dc67a47809e60847b030ebc2dffc40a3eb7799b0a3a282c98b8a00e3eadfb606
+  checksum: 10c0/03f78986bf95071e10e6ce4760ded714ec495abf110d35b7cbb66e572a15d1b1029424b8c44dfc724891a1fc8a7617543f1063688891b4c11ab3b6cd2b57f3c8
   languageName: node
   linkType: hard
 
@@ -165,14 +165,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:1.3.6":
-  version: 1.3.6
-  resolution: "axios@npm:1.3.6"
+"axios@npm:1.7.7":
+  version: 1.7.7
+  resolution: "axios@npm:1.7.7"
   dependencies:
-    follow-redirects: "npm:^1.15.0"
+    follow-redirects: "npm:^1.15.6"
     form-data: "npm:^4.0.0"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10c0/451d7ec576a74b2846978e193458466f17ab676f1976630290e717e96aff84c90f755612d268731f722d363e45993e1844ef4fe8cdd022fe5663fc8f6267a7e3
+  checksum: 10c0/4499efc89e86b0b49ffddc018798de05fab26e3bf57913818266be73279a6418c3ce8f9e934c7d2d707ab8c095e837fc6c90608fb7715b94d357720b5f568af7
   languageName: node
   linkType: hard
 
@@ -251,13 +251,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.15.0":
-  version: 1.15.2
-  resolution: "follow-redirects@npm:1.15.2"
+"follow-redirects@npm:^1.15.6":
+  version: 1.15.9
+  resolution: "follow-redirects@npm:1.15.9"
   peerDependenciesMeta:
     debug:
       optional: true
-  checksum: 10c0/da5932b70e63944d38eecaa16954bac4347036f08303c913d166eda74809d8797d38386e3a0eb1d2fe37d2aaff2764cce8e9dbd99459d860cf2cdfa237923b5f
+  checksum: 10c0/5829165bd112c3c0e82be6c15b1a58fa9dcfaede3b3c54697a82fe4a62dd5ae5e8222956b448d2f98e331525f05d00404aba7d696de9e761ef6e42fdc780244f
   languageName: node
   linkType: hard
 
@@ -344,16 +344,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sdk-demo-node@workspace:.":
+"sdk-node-example@workspace:.":
   version: 0.0.0-use.local
-  resolution: "sdk-demo-node@workspace:."
+  resolution: "sdk-node-example@workspace:."
   dependencies:
-    "@accelbyte/sdk": "npm:0.0.0-dev-20240904033042"
-    "@accelbyte/sdk-basic": "npm:0.0.0-dev-20240904033042"
-    "@accelbyte/sdk-cloudsave": "npm:0.0.0-dev-20240904033042"
-    "@accelbyte/sdk-iam": "npm:0.0.0-dev-20240904033042"
-    "@accelbyte/sdk-legal": "npm:0.0.0-dev-20240904033042"
-    "@accelbyte/sdk-platform": "npm:0.0.0-dev-20240904033042"
+    "@accelbyte/sdk": "npm:0.0.0-dev-20240912075533"
+    "@accelbyte/sdk-basic": "npm:0.0.0-dev-20240912075533"
+    "@accelbyte/sdk-cloudsave": "npm:0.0.0-dev-20240912075533"
+    "@accelbyte/sdk-iam": "npm:0.0.0-dev-20240912075533"
+    "@accelbyte/sdk-legal": "npm:0.0.0-dev-20240912075533"
+    "@accelbyte/sdk-platform": "npm:0.0.0-dev-20240912075533"
     dotenv: "npm:16.0.3"
   languageName: unknown
   linkType: soft

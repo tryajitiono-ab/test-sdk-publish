@@ -139,7 +139,7 @@ export const useStagingContentAdminApi_GetStagingContents_ByUserId_v2 = (
  * }
  * ```
  */
-export const useStagingContentAdminApi_CreateApprove_ByContentId_v2 = (
+export const useStagingContentAdminApi_CreateApprove_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

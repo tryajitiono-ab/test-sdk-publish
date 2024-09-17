@@ -66,7 +66,7 @@ export const useAccountAdminApi_GetAccount = (
  * }
  * ```
  */
-export const useAccountAdminApi_CreateAccount = (
+export const useAccountAdminApi_CreateAccountMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AccountCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AccountCreateRequest }>,
@@ -128,7 +128,7 @@ export const useAccountAdminApi_GetAccountLink = (
  * }
  * ```
  */
-export const useAccountAdminApi_CreateAccountLink = (
+export const useAccountAdminApi_CreateAccountLinkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AccountLinkResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AccountLinkRequest }>,

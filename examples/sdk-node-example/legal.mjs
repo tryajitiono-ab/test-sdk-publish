@@ -1,19 +1,18 @@
+import 'dotenv/config'
 import { AccelByte } from '@accelbyte/sdk'
 import { EligibilitiesApi, Legal, LegalHelper } from '@accelbyte/sdk-legal'
 
+
 const sdk = AccelByte.SDK({
   coreConfig: {
-    baseURL: 'https://prod.gamingservices.accelbyte.io',
-    clientId: '5b5c6809088b4b039d499a23429f2ba8',
-    namespace: 'foundations',
-    redirectURI: 'http://localhost:3000'
+    baseURL: process.env.AB_BASE_URL || '',
+    clientId: process.env.AB_CLIENT_ID || '',
+    redirectURI: process.env.AB_REDIRECT_URI || '',
+    namespace: process.env.AB_NAMESPACE || ''
   }
 })
 
-const accessToken = '<user access token>'
-
-// Sample SDK calls:
-main()
+sdk.setToken({accessToken: '<user access token>'})
 
 async function main() {
   console.info(sdk.assembly())
@@ -21,16 +20,7 @@ async function main() {
   let userEligibilities
   let unsignedPolicies
   try {
-    const result = await EligibilitiesApi(sdk, {
-      axiosConfig: {
-        request: {
-          headers: {
-            Authorization: `Bearer ${accessToken}`
-          }
-        }
-      },
-      coreConfig: {namespace: 'accelbyte'}
-    }).getEligibility_ByNamespace()
+    const result = await EligibilitiesApi(sdk).getEligibility_ByNamespace()
     userEligibilities = result.data
     console.log('\n userEligibilities:', userEligibilities)
 
@@ -71,3 +61,5 @@ function handleError(err) {
     console.log(err)
   }
 }
+
+main()

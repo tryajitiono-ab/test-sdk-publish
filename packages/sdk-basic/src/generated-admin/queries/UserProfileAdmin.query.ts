@@ -43,7 +43,7 @@ export enum Key_UserProfileAdmin {
  * }
  * ```
  */
-export const useUserProfileAdminApi_CreateProfilePublic = (
+export const useUserProfileAdminApi_CreateProfilePublicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserProfilePublicInfoArray, AxiosError<ApiError>, SdkSetConfigParam & { data: UserProfileBulkRequest }>,
@@ -109,7 +109,7 @@ export const useUserProfileAdminApi_GetProfilesByPublicId = (
  * }
  * ```
  */
-export const useUserProfileAdminApi_DeleteProfile_ByUserId = (
+export const useUserProfileAdminApi_DeleteProfile_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<UserProfilePrivateInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: UserProfilePrivateInfo) => void
@@ -173,7 +173,7 @@ export const useUserProfileAdminApi_GetProfiles_ByUserId = (
  * }
  * ```
  */
-export const useUserProfileAdminApi_UpdateProfile_ByUserId = (
+export const useUserProfileAdminApi_UpdateProfile_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserProfilePrivateInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserProfileAdmin }>,
@@ -208,7 +208,7 @@ export const useUserProfileAdminApi_UpdateProfile_ByUserId = (
  * }
  * ```
  */
-export const useUserProfileAdminApi_PatchProfileStatus_ByUserId = (
+export const useUserProfileAdminApi_PatchProfileStatus_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserProfilePrivateInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserProfileStatusUpdate }>,
@@ -281,7 +281,7 @@ export const useUserProfileAdminApi_GetProfilesCustomAttributes_ByUserId = (
  * }
  * ```
  */
-export const useUserProfileAdminApi_UpdateProfileCustomAttribute_ByUserId = (
+export const useUserProfileAdminApi_UpdateProfileCustomAttribute_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: any }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -347,7 +347,7 @@ export const useUserProfileAdminApi_GetProfilesPrivateCustomAttributes_ByUserId 
  * }
  * ```
  */
-export const useUserProfileAdminApi_UpdateProfilePrivateCustomAttribute_ByUserId = (
+export const useUserProfileAdminApi_UpdateProfilePrivateCustomAttribute_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: any }>, 'mutationKey'>,
   callback?: (data: unknown) => void

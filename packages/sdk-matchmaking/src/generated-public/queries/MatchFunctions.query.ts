@@ -66,7 +66,7 @@ export const useMatchFunctionsApi_GetMatchFunctions = (
  * }
  * ```
  */
-export const useMatchFunctionsApi_CreateMatchFunction = (
+export const useMatchFunctionsApi_CreateMatchFunctionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchFunctionRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -97,7 +97,7 @@ export const useMatchFunctionsApi_CreateMatchFunction = (
  * }
  * ```
  */
-export const useMatchFunctionsApi_DeleteMatchFunction_ByName = (
+export const useMatchFunctionsApi_DeleteMatchFunction_ByNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -129,7 +129,7 @@ export const useMatchFunctionsApi_DeleteMatchFunction_ByName = (
  * }
  * ```
  */
-export const useMatchFunctionsApi_UpdateMatchFunction_ByName = (
+export const useMatchFunctionsApi_UpdateMatchFunction_ByNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MatchFunctionConfig, AxiosError<ApiError>, SdkSetConfigParam & { name: string; data: MatchFunctionRequest }>,

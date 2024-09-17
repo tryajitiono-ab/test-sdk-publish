@@ -174,4 +174,23 @@ describe('AccelByteSDK', () => {
 
     expect(sdkInstance.getToken()).toEqual({})
   })
+
+  test('setConfig should merge provided headers into existing Axios config instead of replacing them', () => {
+    const sdkInstance = AccelByte.SDK({ coreConfig })
+
+    const token = {
+      accessToken: '1234',
+      refreshToken: '1234'
+    }
+    const headers = { 'x-ab-hello': 'world' }
+    sdkInstance.setToken(token)
+    sdkInstance.setConfig({ axiosConfig: { request: { headers } } })
+
+    expect(sdkInstance.getToken()).toStrictEqual(token)
+
+    const { axiosConfig } = sdkInstance.assembly()
+
+    expect(axiosConfig.request.headers?.['x-ab-hello']).toStrictEqual(headers['x-ab-hello'])
+    expect(axiosConfig.request.headers?.Authorization).toStrictEqual(`Bearer ${token.accessToken}`)
+  })
 })

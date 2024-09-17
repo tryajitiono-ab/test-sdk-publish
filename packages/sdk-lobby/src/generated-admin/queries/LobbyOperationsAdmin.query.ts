@@ -32,7 +32,7 @@ export enum Key_LobbyOperationsAdmin {
  * }
  * ```
  */
-export const useLobbyOperationsAdminApi_UpdateAttributeParty_ByPartyId = (
+export const useLobbyOperationsAdminApi_UpdateAttributeParty_ByPartyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PartyData, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string; data: PartyPutCustomAttributesRequest }>,
@@ -67,7 +67,7 @@ export const useLobbyOperationsAdminApi_UpdateAttributeParty_ByPartyId = (
  * }
  * ```
  */
-export const useLobbyOperationsAdminApi_UpdateJoinParty_ByPartyId_ByUserId = (
+export const useLobbyOperationsAdminApi_UpdateJoinParty_ByPartyId_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string; userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

@@ -33,7 +33,7 @@ export enum Key_Fleets {
  * }
  * ```
  */
-export const useFleetsApi_UpdateServerClaim = (
+export const useFleetsApi_UpdateServerClaimMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FleetClaimResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: FleetClaimByKeysReq }>,
@@ -65,7 +65,7 @@ export const useFleetsApi_UpdateServerClaim = (
  * }
  * ```
  */
-export const useFleetsApi_UpdateClaim_ByFleetId = (
+export const useFleetsApi_UpdateClaim_ByFleetIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FleetClaimResponse, AxiosError<ApiError>, SdkSetConfigParam & { fleetID: string; data: FleetClaimReq }>,

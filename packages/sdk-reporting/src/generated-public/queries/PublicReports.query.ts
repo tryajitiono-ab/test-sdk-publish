@@ -31,7 +31,7 @@ export enum Key_PublicReports {
  * }
  * ```
  */
-export const usePublicReportsApi_CreateReport = (
+export const usePublicReportsApi_CreateReportMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SubmitReportResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: SubmitReportRequest }>,

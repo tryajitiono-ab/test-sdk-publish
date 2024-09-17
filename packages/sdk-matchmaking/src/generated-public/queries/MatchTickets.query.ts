@@ -35,7 +35,7 @@ export enum Key_MatchTickets {
  * }
  * ```
  */
-export const useMatchTicketsApi_CreateMatchTicket = (
+export const useMatchTicketsApi_CreateMatchTicketMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MatchTicketResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchTicketRequest }>,
@@ -101,7 +101,7 @@ export const useMatchTicketsApi_GetMatchTicketsMe = (
  * }
  * ```
  */
-export const useMatchTicketsApi_DeleteMatchTicket_ByTicketid = (
+export const useMatchTicketsApi_DeleteMatchTicket_ByTicketidMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ticketid: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

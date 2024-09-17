@@ -72,7 +72,7 @@ export enum Key_XRayAdmin {
  * }
  * ```
  */
-export const useXRayAdminApi_CreateXrayTicket_v2 = (
+export const useXRayAdminApi_CreateXrayTicketMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<XRayTicketObservabilityResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: XRayTicketObservabilityRequest }>,
@@ -110,7 +110,7 @@ export const useXRayAdminApi_CreateXrayTicket_v2 = (
  * }
  * ```
  */
-export const useXRayAdminApi_CreateXrayTicketBulk_v2 = (
+export const useXRayAdminApi_CreateXrayTicketBulkMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

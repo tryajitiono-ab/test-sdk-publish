@@ -78,7 +78,7 @@ export enum Key_UsersV4 {
  * }
  * ```
  */
-export const useUsersV4Api_CreateUserInvite_v4 = (
+export const useUsersV4Api_CreateUserInviteMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<InviteUserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicInviteUserRequestV4 }>,
@@ -110,7 +110,7 @@ export const useUsersV4Api_CreateUserInvite_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateUser_v4 = (
+export const useUsersV4Api_CreateUserMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateUserResponseV4, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateUserRequestV4 }>,
@@ -142,7 +142,7 @@ export const useUsersV4Api_CreateUser_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_PatchUserMe_v4 = (
+export const useUsersV4Api_PatchUserMeMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicUserUpdateRequestV3 }>,
@@ -174,7 +174,7 @@ export const useUsersV4Api_PatchUserMe_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateTestUser_v4 = (
+export const useUsersV4Api_CreateTestUserMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateUserResponseV4, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTestUserRequestV4 }>,
@@ -238,7 +238,7 @@ export const useUsersV4Api_GetUser_ByUserId_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_UpdateUserMeEmail_v4 = (
+export const useUsersV4Api_UpdateUserMeEmailMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: EmailUpdateRequestV4 }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -269,7 +269,7 @@ export const useUsersV4Api_UpdateUserMeEmail_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_DeleteUserMeMfaDevice_v4 = (
+export const useUsersV4Api_DeleteUserMeMfaDeviceMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -328,7 +328,7 @@ export const useUsersV4Api_GetUsersMeMfaFactor_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_PostUserMeMfaFactor_v4 = (
+export const useUsersV4Api_PostUserMeMfaFactorMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: { factor: string | null } }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -390,7 +390,7 @@ export const useUsersV4Api_GetUsersMeMfaStatus_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateUserMeMfaStatus_v4 = (
+export const useUsersV4Api_CreateUserMeMfaStatusMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<UserMfaStatusResponseV4, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: UserMfaStatusResponseV4) => void
@@ -451,7 +451,7 @@ export const useUsersV4Api_GetUsersMeMfaBackupCode_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateUserMeMfaBackupCode_v4 = (
+export const useUsersV4Api_CreateUserMeMfaBackupCodeMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<BackupCodesResponseV4, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: BackupCodesResponseV4) => void
@@ -480,7 +480,7 @@ export const useUsersV4Api_CreateUserMeMfaBackupCode_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_PostUserMeMfaEmailCode_v4 = (
+export const useUsersV4Api_PostUserMeMfaEmailCodeMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -522,7 +522,7 @@ export const useUsersV4Api_PostUserMeMfaEmailCode_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateUserMeHeadlesVerify_v4 = (
+export const useUsersV4Api_CreateUserMeHeadlesVerifyMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserResponseV4, AxiosError<ApiError>, SdkSetConfigParam & { data: UpgradeHeadlessAccountRequestV4 }>,
@@ -588,7 +588,7 @@ export const useUsersV4Api_GetUsersMeMfaBackupCodes_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateUserMeMfaBackupCode_ByNS_v4 = (
+export const useUsersV4Api_CreateUserMeMfaBackupCode_ByNSMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { queryParams?: { languageTag?: string | null } }>,
@@ -623,7 +623,7 @@ export const useUsersV4Api_CreateUserMeMfaBackupCode_ByNS_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_PostUserMeMfaEmailEnable_v4 = (
+export const useUsersV4Api_PostUserMeMfaEmailEnableMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: { code: string | null } }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -654,7 +654,7 @@ export const useUsersV4Api_PostUserMeMfaEmailEnable_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateUserMeMfaEmailDisable_v4 = (
+export const useUsersV4Api_CreateUserMeMfaEmailDisableMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DisableMfaRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -685,7 +685,7 @@ export const useUsersV4Api_CreateUserMeMfaEmailDisable_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateUserInvite_ByInvitationId_v4 = (
+export const useUsersV4Api_CreateUserInvite_ByInvitationIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateUserResponseV4, AxiosError<ApiError>, SdkSetConfigParam & { invitationId: string; data: CreateUserRequestV4 }>,
@@ -724,7 +724,7 @@ export const useUsersV4Api_CreateUserInvite_ByInvitationId_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateUser_ByPlatformId_v4 = (
+export const useUsersV4Api_CreateUser_ByPlatformIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -770,7 +770,7 @@ export const useUsersV4Api_CreateUser_ByPlatformId_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateUserMeHeadlesCodeVerify_v4 = (
+export const useUsersV4Api_CreateUserMeHeadlesCodeVerifyMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -813,7 +813,7 @@ export const useUsersV4Api_CreateUserMeHeadlesCodeVerify_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_PostUserMeMfaChallengeVerify_v4 = (
+export const useUsersV4Api_PostUserMeMfaChallengeVerifyMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -856,7 +856,7 @@ export const useUsersV4Api_PostUserMeMfaChallengeVerify_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateUserMeMfaAuthenticatorKey_v4 = (
+export const useUsersV4Api_CreateUserMeMfaAuthenticatorKeyMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<AuthenticatorKeyResponseV4, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: AuthenticatorKeyResponseV4) => void
@@ -889,7 +889,7 @@ export const useUsersV4Api_CreateUserMeMfaAuthenticatorKey_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateUserMeMfaBackupCodeEnable_v4 = (
+export const useUsersV4Api_CreateUserMeMfaBackupCodeEnableMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<BackupCodesResponseV4, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: BackupCodesResponseV4) => void
@@ -921,7 +921,7 @@ export const useUsersV4Api_CreateUserMeMfaBackupCodeEnable_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_DeleteUserMeMfaBackupCodeDisable_v4 = (
+export const useUsersV4Api_DeleteUserMeMfaBackupCodeDisableMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DisableMfaRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -953,7 +953,7 @@ export const useUsersV4Api_DeleteUserMeMfaBackupCodeDisable_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_CreateUserMeMfaBackupCodeEnable_ByNS_v4 = (
+export const useUsersV4Api_CreateUserMeMfaBackupCodeEnable_ByNSMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { queryParams?: { languageTag?: string | null } }>,
@@ -1022,7 +1022,7 @@ export const useUsersV4Api_GetUsersMeMfaBackupCodeDownload_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_PostUserMeMfaAuthenticatorEnable_v4 = (
+export const useUsersV4Api_PostUserMeMfaAuthenticatorEnableMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: { code: string | null } }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1054,7 +1054,7 @@ export const useUsersV4Api_PostUserMeMfaAuthenticatorEnable_v4 = (
  * }
  * ```
  */
-export const useUsersV4Api_DeleteUserMeMfaAuthenticatorDisable_v4 = (
+export const useUsersV4Api_DeleteUserMeMfaAuthenticatorDisableMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DisableMfaRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void

@@ -76,7 +76,7 @@ export const useNamespaceAdminApi_GetNamespaces = (
  * }
  * ```
  */
-export const useNamespaceAdminApi_CreateNamespace = (
+export const useNamespaceAdminApi_CreateNamespaceMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<NamespaceInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: NamespaceCreate }>, 'mutationKey'>,
   callback?: (data: NamespaceInfo) => void
@@ -107,7 +107,7 @@ export const useNamespaceAdminApi_CreateNamespace = (
  * }
  * ```
  */
-export const useNamespaceAdminApi_DeleteNamespace_ByNamespace = (
+export const useNamespaceAdminApi_DeleteNamespace_ByNamespaceMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<NamespaceInfo, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: NamespaceInfo) => void
@@ -204,7 +204,7 @@ export const useNamespaceAdminApi_GetGame = (
  * }
  * ```
  */
-export const useNamespaceAdminApi_PatchBasic = (
+export const useNamespaceAdminApi_PatchBasicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<NamespaceInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: NamespaceUpdate }>, 'mutationKey'>,
   callback?: (data: NamespaceInfo) => void
@@ -265,7 +265,7 @@ export const useNamespaceAdminApi_GetChild = (
  * }
  * ```
  */
-export const useNamespaceAdminApi_PatchStatus = (
+export const useNamespaceAdminApi_PatchStatusMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<NamespaceInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: NamespaceStatusUpdate }>,

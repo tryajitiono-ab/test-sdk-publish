@@ -109,7 +109,7 @@ export const useDlcApi_GetDlcRewardsDurableMap = (
  * }
  * ```
  */
-export const useDlcApi_UpdateDlcPsnSync_ByUserId = (
+export const useDlcApi_UpdateDlcPsnSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: PlayStationDlcSyncRequest }>,
@@ -144,7 +144,7 @@ export const useDlcApi_UpdateDlcPsnSync_ByUserId = (
  * }
  * ```
  */
-export const useDlcApi_UpdateDlcXblSync_ByUserId = (
+export const useDlcApi_UpdateDlcXblSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: XblDlcSyncRequest }>,
@@ -179,7 +179,7 @@ export const useDlcApi_UpdateDlcXblSync_ByUserId = (
  * }
  * ```
  */
-export const useDlcApi_UpdateDlcSteamSync_ByUserId = (
+export const useDlcApi_UpdateDlcSteamSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: SteamDlcSyncRequest }>,
@@ -214,7 +214,7 @@ export const useDlcApi_UpdateDlcSteamSync_ByUserId = (
  * }
  * ```
  */
-export const useDlcApi_UpdateDlcOculuSync_ByUserId = (
+export const useDlcApi_UpdateDlcOculuSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -245,7 +245,7 @@ export const useDlcApi_UpdateDlcOculuSync_ByUserId = (
  * }
  * ```
  */
-export const useDlcApi_UpdateDlcEpicgameSync_ByUserId = (
+export const useDlcApi_UpdateDlcEpicgameSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: EpicGamesDlcSyncRequest }>,
@@ -280,7 +280,7 @@ export const useDlcApi_UpdateDlcEpicgameSync_ByUserId = (
  * }
  * ```
  */
-export const useDlcApi_UpdateDlcPsnSyncMultiServiceLabel_ByUserId = (
+export const useDlcApi_UpdateDlcPsnSyncMultiServiceLabel_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

@@ -104,7 +104,7 @@ export const useTopicApi_GetTopic = (
  * }
  * ```
  */
-export const useTopicApi_UpdateMute_ByTopic = (
+export const useTopicApi_UpdateMute_ByTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic: string; data: MuteUserRequest }>,
@@ -172,7 +172,7 @@ export const useTopicApi_GetChats_ByTopic = (
  * }
  * ```
  */
-export const useTopicApi_UpdateUnmute_ByTopic = (
+export const useTopicApi_UpdateUnmute_ByTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic: string; data: UnmuteUserRequest }>,
@@ -207,7 +207,7 @@ export const useTopicApi_UpdateUnmute_ByTopic = (
  * }
  * ```
  */
-export const useTopicApi_UpdateBanMember_ByTopic = (
+export const useTopicApi_UpdateBanMember_ByTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -250,7 +250,7 @@ export const useTopicApi_UpdateBanMember_ByTopic = (
  * }
  * ```
  */
-export const useTopicApi_UpdateUnbanMember_ByTopic = (
+export const useTopicApi_UpdateUnbanMember_ByTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -293,7 +293,7 @@ export const useTopicApi_UpdateUnbanMember_ByTopic = (
  * }
  * ```
  */
-export const useTopicApi_DeleteChat_ByTopic_ByChatId = (
+export const useTopicApi_DeleteChat_ByTopic_ByChatIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic: string; chatId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

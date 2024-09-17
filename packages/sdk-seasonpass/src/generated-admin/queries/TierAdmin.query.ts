@@ -76,7 +76,7 @@ export const useTierAdminApi_GetTiers_BySeasonId = (
  * }
  * ```
  */
-export const useTierAdminApi_CreateTier_BySeasonId = (
+export const useTierAdminApi_CreateTier_BySeasonIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<TierArray, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string; data: TierCreate }>,
@@ -111,7 +111,7 @@ export const useTierAdminApi_CreateTier_BySeasonId = (
  * }
  * ```
  */
-export const useTierAdminApi_DeleteTier_BySeasonId_ById = (
+export const useTierAdminApi_DeleteTier_BySeasonId_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string; id: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -143,7 +143,7 @@ export const useTierAdminApi_DeleteTier_BySeasonId_ById = (
  * }
  * ```
  */
-export const useTierAdminApi_UpdateTier_BySeasonId_ById = (
+export const useTierAdminApi_UpdateTier_BySeasonId_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<Tier, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string; id: string; data: TierInput }>,
@@ -179,7 +179,7 @@ export const useTierAdminApi_UpdateTier_BySeasonId_ById = (
  * }
  * ```
  */
-export const useTierAdminApi_CreateSeasonCurrentExp_ByUserId = (
+export const useTierAdminApi_CreateSeasonCurrentExp_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserSeasonSummary, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserExpGrant }>,
@@ -214,7 +214,7 @@ export const useTierAdminApi_CreateSeasonCurrentExp_ByUserId = (
  * }
  * ```
  */
-export const useTierAdminApi_CreateSeasonCurrentTier_ByUserId = (
+export const useTierAdminApi_CreateSeasonCurrentTier_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserSeasonSummary, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserTierGrant }>,
@@ -249,7 +249,7 @@ export const useTierAdminApi_CreateSeasonCurrentTier_ByUserId = (
  * }
  * ```
  */
-export const useTierAdminApi_UpdateReorder_BySeasonId_ById = (
+export const useTierAdminApi_UpdateReorder_BySeasonId_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<Tier, AxiosError<ApiError>, SdkSetConfigParam & { seasonId: string; id: string; data: TierReorder }>,

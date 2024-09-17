@@ -33,7 +33,7 @@ export enum Key_DiffCalculation {
  * }
  * ```
  */
-export const useDiffCalculationApi_CreateDiff = (
+export const useDiffCalculationApi_CreateDiffMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: LateDiffRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -81,7 +81,7 @@ export const useDiffCalculationApi_GetPing = (
  * }
  * ```
  */
-export const useDiffCalculationApi_CreateDiff_v2 = (
+export const useDiffCalculationApi_CreateDiffMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: LateDiffRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void

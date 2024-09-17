@@ -38,7 +38,7 @@ export enum Key_MultipartUploaderAdmin {
  * }
  * ```
  */
-export const useMultipartUploaderAdminApi_CreateBlockMultipart = (
+export const useMultipartUploaderAdminApi_CreateBlockMultipartMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MultipartUploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { data: StartMultipartUploadRequest }>,
@@ -73,7 +73,7 @@ export const useMultipartUploaderAdminApi_CreateBlockMultipart = (
  * }
  * ```
  */
-export const useMultipartUploaderAdminApi_CreateBlockMultipart_v2 = (
+export const useMultipartUploaderAdminApi_CreateBlockMultipartMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MultipartUploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { data: StartMultipartUploadRequest }>,
@@ -108,7 +108,7 @@ export const useMultipartUploaderAdminApi_CreateBlockMultipart_v2 = (
  * }
  * ```
  */
-export const useMultipartUploaderAdminApi_DeleteBlockMultipart_ByHash = (
+export const useMultipartUploaderAdminApi_DeleteBlockMultipart_ByHashMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash: string }>, 'mutationKey'>,
   callback?: (data: BlockManifest) => void
@@ -140,7 +140,7 @@ export const useMultipartUploaderAdminApi_DeleteBlockMultipart_ByHash = (
  * }
  * ```
  */
-export const useMultipartUploaderAdminApi_PatchBlockMultipart_ByHash = (
+export const useMultipartUploaderAdminApi_PatchBlockMultipart_ByHashMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash: string; data: CommitMultipartUploadRequest }>,
@@ -175,7 +175,7 @@ export const useMultipartUploaderAdminApi_PatchBlockMultipart_ByHash = (
  * }
  * ```
  */
-export const useMultipartUploaderAdminApi_DeleteBlockMultipart_ByHash_v2 = (
+export const useMultipartUploaderAdminApi_DeleteBlockMultipart_ByHashMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash: string }>, 'mutationKey'>,
   callback?: (data: BlockManifest) => void
@@ -207,7 +207,7 @@ export const useMultipartUploaderAdminApi_DeleteBlockMultipart_ByHash_v2 = (
  * }
  * ```
  */
-export const useMultipartUploaderAdminApi_PatchBlockMultipart_ByHash_v2 = (
+export const useMultipartUploaderAdminApi_PatchBlockMultipart_ByHashMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash: string }>, 'mutationKey'>,
   callback?: (data: BlockManifest) => void
@@ -239,7 +239,7 @@ export const useMultipartUploaderAdminApi_PatchBlockMultipart_ByHash_v2 = (
  * }
  * ```
  */
-export const useMultipartUploaderAdminApi_CreatePartBlock_ByHash_v2 = (
+export const useMultipartUploaderAdminApi_CreatePartBlock_ByHashMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MultipartUploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { hash: string; data: MultipartUploadedPart }>,

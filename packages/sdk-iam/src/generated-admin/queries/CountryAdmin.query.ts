@@ -96,7 +96,7 @@ export const useCountryAdminApi_GetCountriesBlacklist_v3 = (
  * }
  * ```
  */
-export const useCountryAdminApi_UpdateCountryBlacklist_v3 = (
+export const useCountryAdminApi_UpdateCountryBlacklistMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CountryBlacklistRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void

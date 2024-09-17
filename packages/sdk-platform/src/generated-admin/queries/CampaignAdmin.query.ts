@@ -90,7 +90,7 @@ export const useCampaignAdminApi_GetCampaigns = (
  * }
  * ```
  */
-export const useCampaignAdminApi_CreateCampaign = (
+export const useCampaignAdminApi_CreateCampaignMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<CampaignInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CampaignCreate }>, 'mutationKey'>,
   callback?: (data: CampaignInfo) => void
@@ -154,7 +154,7 @@ export const useCampaignAdminApi_GetCode_ByCode = (
  * }
  * ```
  */
-export const useCampaignAdminApi_UpdateEnable_ByCode = (
+export const useCampaignAdminApi_UpdateEnable_ByCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<CodeInfo, AxiosError<ApiError>, SdkSetConfigParam & { code: string }>, 'mutationKey'>,
   callback?: (data: CodeInfo) => void
@@ -185,7 +185,7 @@ export const useCampaignAdminApi_UpdateEnable_ByCode = (
  * }
  * ```
  */
-export const useCampaignAdminApi_UpdateDisable_ByCode = (
+export const useCampaignAdminApi_UpdateDisable_ByCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<CodeInfo, AxiosError<ApiError>, SdkSetConfigParam & { code: string }>, 'mutationKey'>,
   callback?: (data: CodeInfo) => void
@@ -248,7 +248,7 @@ export const useCampaignAdminApi_GetCampaign_ByCampaignId = (
  * }
  * ```
  */
-export const useCampaignAdminApi_UpdateCampaign_ByCampaignId = (
+export const useCampaignAdminApi_UpdateCampaign_ByCampaignIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CampaignInfo, AxiosError<ApiError>, SdkSetConfigParam & { campaignId: string; data: CampaignUpdate }>,
@@ -283,7 +283,7 @@ export const useCampaignAdminApi_UpdateCampaign_ByCampaignId = (
  * }
  * ```
  */
-export const useCampaignAdminApi_CreateRedemption_ByUserId = (
+export const useCampaignAdminApi_CreateRedemption_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RedeemResult, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: RedeemRequest }>,
@@ -362,7 +362,7 @@ export const useCampaignAdminApi_GetCodeCampaign_ByCampaignId = (
  * }
  * ```
  */
-export const useCampaignAdminApi_CreateCodeCampaign_ByCampaignId = (
+export const useCampaignAdminApi_CreateCodeCampaign_ByCampaignIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CodeCreateResult, AxiosError<ApiError>, SdkSetConfigParam & { campaignId: string; data: CodeCreate }>,
@@ -429,7 +429,7 @@ export const useCampaignAdminApi_GetDynamic_ByCampaignId = (
  * }
  * ```
  */
-export const useCampaignAdminApi_UpdateBatchName_ByCampaignId = (
+export const useCampaignAdminApi_UpdateBatchName_ByCampaignIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { campaignId: string; data: CampaignBatchNameChange }>,
@@ -569,7 +569,7 @@ export const useCampaignAdminApi_GetCodesCsv_ByCampaignId = (
  * }
  * ```
  */
-export const useCampaignAdminApi_UpdateEnableBulkCode_ByCampaignId = (
+export const useCampaignAdminApi_UpdateEnableBulkCode_ByCampaignIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -614,7 +614,7 @@ export const useCampaignAdminApi_UpdateEnableBulkCode_ByCampaignId = (
  * }
  * ```
  */
-export const useCampaignAdminApi_UpdateDisableBulkCode_ByCampaignId = (
+export const useCampaignAdminApi_UpdateDisableBulkCode_ByCampaignIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

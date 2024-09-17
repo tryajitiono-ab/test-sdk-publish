@@ -64,7 +64,7 @@ export const useConfigAdminApi_GetConfigs_v2 = (
  * }
  * ```
  */
-export const useConfigAdminApi_PatchConfig_ByKey_v2 = (
+export const useConfigAdminApi_PatchConfig_ByKeyMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key: string; data: UpdateConfigRequest }>,

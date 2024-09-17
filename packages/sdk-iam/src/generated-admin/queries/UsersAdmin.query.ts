@@ -264,7 +264,7 @@ export const useUsersAdminApi_GetUsers_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdateUser_v3 = (
+export const useUsersAdminApi_UpdateUserMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UsersUpdateRequestV3 }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -368,7 +368,7 @@ export const useUsersAdminApi_FetchUserBan_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_CreateUserBulk_v3 = (
+export const useUsersAdminApi_CreateUserBulkMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ListUserInformationResult, AxiosError<ApiError>, SdkSetConfigParam & { data: UserIDsRequest }>,
@@ -402,7 +402,7 @@ export const useUsersAdminApi_CreateUserBulk_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_CreateUserInvite_v3 = (
+export const useUsersAdminApi_CreateUserInviteMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<InviteUserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: InviteUserRequestV3 }>,
@@ -517,7 +517,7 @@ export const useUsersAdminApi_GetUser_ByUserId_v2 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PatchUser_ByUserId_v2 = (
+export const useUsersAdminApi_PatchUser_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserUpdateRequest }>,
@@ -584,7 +584,7 @@ export const useUsersAdminApi_GetUser_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PatchUser_ByUserId_v3 = (
+export const useUsersAdminApi_PatchUser_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserUpdateRequestV3 }>,
@@ -651,7 +651,7 @@ export const useUsersAdminApi_GetAgerestrictions_v2 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PatchAgerestriction_v2 = (
+export const useUsersAdminApi_PatchAgerestrictionMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AgeRestrictionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AgeRestrictionRequest }>,
@@ -715,7 +715,7 @@ export const useUsersAdminApi_GetAgerestrictions_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PatchAgerestriction_v3 = (
+export const useUsersAdminApi_PatchAgerestrictionMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AgeRestrictionResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: AgeRestrictionRequestV3 }>,
@@ -782,7 +782,7 @@ export const useUsersAdminApi_FetchUserSearchBulk_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_CreateBan_ByUserId_v2 = (
+export const useUsersAdminApi_CreateBan_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserBanResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: BanCreateRequest }>,
@@ -887,7 +887,7 @@ export const useUsersAdminApi_GetBans_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_CreateBan_ByUserId_v3 = (
+export const useUsersAdminApi_CreateBan_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserBanResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: BanCreateRequest }>,
@@ -957,7 +957,7 @@ export const useUsersAdminApi_GetUsersLinkhistories_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdateRole_ByUserId_v2 = (
+export const useUsersAdminApi_UpdateRole_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: string[] }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -990,7 +990,7 @@ export const useUsersAdminApi_UpdateRole_ByUserId_v2 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdateRole_ByUserId_ByNS_v2 = (
+export const useUsersAdminApi_UpdateRole_ByUserId_ByNSMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: string[] }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1087,7 +1087,7 @@ export const useUsersAdminApi_GetCodes_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_DeleteRole_ByUserId_v3 = (
+export const useUsersAdminApi_DeleteRole_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: string[] }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1119,7 +1119,7 @@ export const useUsersAdminApi_DeleteRole_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PatchRole_ByUserId_v3 = (
+export const useUsersAdminApi_PatchRole_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: NamespaceRoleRequest[] }>,
@@ -1187,7 +1187,7 @@ export const useUsersAdminApi_FetchUserBulkPlatform_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdateEnable_ByUserId_v2 = (
+export const useUsersAdminApi_UpdateEnable_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1218,7 +1218,7 @@ export const useUsersAdminApi_UpdateEnable_ByUserId_v2 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PatchStatus_ByUserId_v3 = (
+export const useUsersAdminApi_PatchStatus_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UpdateUserStatusRequest }>,
@@ -1253,7 +1253,7 @@ export const useUsersAdminApi_PatchStatus_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdateVerify_ByUserId_v3 = (
+export const useUsersAdminApi_UpdateVerify_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1285,7 +1285,7 @@ export const useUsersAdminApi_UpdateVerify_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdateDisable_ByUserId_v2 = (
+export const useUsersAdminApi_UpdateDisable_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: DisableUserRequest }>,
@@ -1321,7 +1321,7 @@ export const useUsersAdminApi_UpdateDisable_ByUserId_v2 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PatchCountry_ByCountryCode_v2 = (
+export const useUsersAdminApi_PatchCountry_ByCountryCodeMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<Country, AxiosError<ApiError>, SdkSetConfigParam & { countryCode: string; data: CountryAgeRestrictionRequest }>,
@@ -1357,7 +1357,7 @@ export const useUsersAdminApi_PatchCountry_ByCountryCode_v2 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdatePassword_ByUserId_v2 = (
+export const useUsersAdminApi_UpdatePassword_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserPasswordUpdateRequest }>,
@@ -1392,7 +1392,7 @@ export const useUsersAdminApi_UpdatePassword_ByUserId_v2 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdatePassword_ByUserId_v3 = (
+export const useUsersAdminApi_UpdatePassword_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserPasswordUpdateV3Request }>,
@@ -1568,7 +1568,7 @@ export const useUsersAdminApi_GetAgerestrictionsCountries_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdateCodeVerify_ByUserId_v3 = (
+export const useUsersAdminApi_UpdateCodeVerify_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserVerificationRequest }>,
@@ -1603,7 +1603,7 @@ export const useUsersAdminApi_UpdateCodeVerify_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_DeleteInformation_ByUserId_v3 = (
+export const useUsersAdminApi_DeleteInformation_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1635,7 +1635,7 @@ export const useUsersAdminApi_DeleteInformation_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_DeletePermission_ByUserId_v3 = (
+export const useUsersAdminApi_DeletePermission_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: PermissionDeleteRequest[] }>,
@@ -1670,7 +1670,7 @@ export const useUsersAdminApi_DeletePermission_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_CreatePermission_ByUserId_v3 = (
+export const useUsersAdminApi_CreatePermission_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: Permissions }>,
@@ -1705,7 +1705,7 @@ export const useUsersAdminApi_CreatePermission_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdatePermission_ByUserId_v3 = (
+export const useUsersAdminApi_UpdatePermission_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: Permissions }>,
@@ -1740,7 +1740,7 @@ export const useUsersAdminApi_UpdatePermission_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PatchBan_ByUserId_ByBanId_v3 = (
+export const useUsersAdminApi_PatchBan_ByUserId_ByBanIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1815,7 +1815,7 @@ export const useUsersAdminApi_GetBansSummary_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdateCodeRequest_ByUserId_v3 = (
+export const useUsersAdminApi_UpdateCodeRequest_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: SendVerificationCodeRequestV3 }>,
@@ -1888,7 +1888,7 @@ export const useUsersAdminApi_FetchUser_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdatePlatformLink_ByUserId_v3 = (
+export const useUsersAdminApi_UpdatePlatformLink_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1933,7 +1933,7 @@ export const useUsersAdminApi_UpdatePlatformLink_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_DeleteRole_ByUserId_ByRoleId_v3 = (
+export const useUsersAdminApi_DeleteRole_ByUserId_ByRoleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; roleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1965,7 +1965,7 @@ export const useUsersAdminApi_DeleteRole_ByUserId_ByRoleId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdateRole_ByUserId_ByRoleId_v3 = (
+export const useUsersAdminApi_UpdateRole_ByUserId_ByRoleIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; roleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -2030,7 +2030,7 @@ export const useUsersAdminApi_GetDeletionStatus_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PatchDeletionStatus_ByUserId_v3 = (
+export const useUsersAdminApi_PatchDeletionStatus_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UpdateUserDeletionStatusRequest }>,
@@ -2098,7 +2098,7 @@ export const useUsersAdminApi_GetLoginsHistories_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PatchTrustlyIdentity_ByUserId_v3 = (
+export const useUsersAdminApi_PatchTrustlyIdentity_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserIdentityUpdateRequestV3 }>,
@@ -2232,7 +2232,7 @@ export const useUsersAdminApi_GetPlatformsDistinct_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_UpdateHeadlesCodeVerify_ByUserId_v3 = (
+export const useUsersAdminApi_UpdateHeadlesCodeVerify_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -2276,7 +2276,7 @@ export const useUsersAdminApi_UpdateHeadlesCodeVerify_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_DeletePlatform_ByUserId_ByPlatformId_v3 = (
+export const useUsersAdminApi_DeletePlatform_ByUserId_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -2319,7 +2319,7 @@ export const useUsersAdminApi_DeletePlatform_ByUserId_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PatchAgerestrictionCountry_ByCountryCode_v3 = (
+export const useUsersAdminApi_PatchAgerestrictionCountry_ByCountryCodeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -2395,7 +2395,7 @@ export const useUsersAdminApi_GetPlatformsLinkHistories_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_DeleteAll_ByUserId_ByPlatformId_v3 = (
+export const useUsersAdminApi_DeleteAll_ByUserId_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; platformId: string }>,
@@ -2431,7 +2431,7 @@ export const useUsersAdminApi_DeleteAll_ByUserId_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_DeleteLink_ByUserId_ByPlatformId_v2 = (
+export const useUsersAdminApi_DeleteLink_ByUserId_ByPlatformIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -2476,7 +2476,7 @@ export const useUsersAdminApi_DeleteLink_ByUserId_ByPlatformId_v2 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PostLink_ByUserId_ByPlatformId_v3 = (
+export const useUsersAdminApi_PostLink_ByUserId_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -2553,7 +2553,7 @@ export const useUsersAdminApi_GetUser_ByPlatformId_ByPlatformUserId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_DeletePermission_ByUserId_ByResource_ByAction_v3 = (
+export const useUsersAdminApi_DeletePermission_ByUserId_ByResource_ByActionMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; resource: string; action: number }>,
@@ -2621,7 +2621,7 @@ export const useUsersAdminApi_GetMetadata_ByUserId_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_PostLinkStatu_ByUserId_ByPlatformId_v3 = (
+export const useUsersAdminApi_PostLinkStatu_ByUserId_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -2698,7 +2698,7 @@ export const useUsersAdminApi_GetPlatformJustice_ByUserId_ByTargetNamespace_v3 =
  * }
  * ```
  */
-export const useUsersAdminApi_CreatePlatformJustice_ByUserId_ByTargetNamespace_v3 = (
+export const useUsersAdminApi_CreatePlatformJustice_ByUserId_ByTargetNamespaceMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateJusticeUserResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; targetNamespace: string }>,
@@ -2734,7 +2734,7 @@ export const useUsersAdminApi_CreatePlatformJustice_ByUserId_ByTargetNamespace_v
  * }
  * ```
  */
-export const useUsersAdminApi_DeleteLinkHistory_ByUserId_ByPlatformId_v3 = (
+export const useUsersAdminApi_DeleteLinkHistory_ByUserId_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; platformId: string }>,
@@ -2769,7 +2769,7 @@ export const useUsersAdminApi_DeleteLinkHistory_ByUserId_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useUsersAdminApi_DeleteLinkRestriction_ByUserId_ByPlatformId_v3 = (
+export const useUsersAdminApi_DeleteLinkRestriction_ByUserId_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; platformId: string }>,

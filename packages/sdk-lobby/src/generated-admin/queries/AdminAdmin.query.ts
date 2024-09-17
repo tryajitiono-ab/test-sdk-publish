@@ -32,7 +32,7 @@ export enum Key_AdminAdmin {
  * }
  * ```
  */
-export const useAdminAdminApi_DeleteGlobalConfiguration = (
+export const useAdminAdminApi_DeleteGlobalConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -91,7 +91,7 @@ export const useAdminAdminApi_GetGlobalConfigurations = (
  * }
  * ```
  */
-export const useAdminAdminApi_UpdateGlobalConfiguration = (
+export const useAdminAdminApi_UpdateGlobalConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GlobalConfiguration, AxiosError<ApiError>, SdkSetConfigParam & { data: PutGlobalConfigurationRequest }>,

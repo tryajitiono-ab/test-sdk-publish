@@ -69,7 +69,7 @@ export const useGroupRolesAdminApi_GetRoles = (
  * }
  * ```
  */
-export const useGroupRolesAdminApi_CreateRole = (
+export const useGroupRolesAdminApi_CreateRoleMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MemberRoleResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateMemberRoleRequestV1 }>,
@@ -101,7 +101,7 @@ export const useGroupRolesAdminApi_CreateRole = (
  * }
  * ```
  */
-export const useGroupRolesAdminApi_DeleteRole_ByMemberRoleId = (
+export const useGroupRolesAdminApi_DeleteRole_ByMemberRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { memberRoleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -165,7 +165,7 @@ export const useGroupRolesAdminApi_GetRole_ByMemberRoleId = (
  * }
  * ```
  */
-export const useGroupRolesAdminApi_PatchRole_ByMemberRoleId = (
+export const useGroupRolesAdminApi_PatchRole_ByMemberRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -208,7 +208,7 @@ export const useGroupRolesAdminApi_PatchRole_ByMemberRoleId = (
  * }
  * ```
  */
-export const useGroupRolesAdminApi_UpdatePermission_ByMemberRoleId = (
+export const useGroupRolesAdminApi_UpdatePermission_ByMemberRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

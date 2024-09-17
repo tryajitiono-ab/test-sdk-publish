@@ -67,7 +67,7 @@ export const useAgreementApi_GetAgreementsPolicies = (
  * }
  * ```
  */
-export const useAgreementApi_CreateAgreementPolicy = (
+export const useAgreementApi_CreateAgreementPolicyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AcceptAgreementResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AcceptAgreementRequest[] }>,
@@ -102,7 +102,7 @@ export const useAgreementApi_CreateAgreementPolicy = (
  * }
  * ```
  */
-export const useAgreementApi_CreateAgreementPolicyUser_ByUserId = (
+export const useAgreementApi_CreateAgreementPolicyUser_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -145,7 +145,7 @@ export const useAgreementApi_CreateAgreementPolicyUser_ByUserId = (
  * }
  * ```
  */
-export const useAgreementApi_PatchAgreementLocalizedPolicyVersionPreference = (
+export const useAgreementApi_PatchAgreementLocalizedPolicyVersionPreferenceMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: AcceptAgreementRequest[] }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -177,7 +177,7 @@ export const useAgreementApi_PatchAgreementLocalizedPolicyVersionPreference = (
  * }
  * ```
  */
-export const useAgreementApi_CreateAgreementLocalizedPolicyVersion_ByLocalizedPolicyVersionId = (
+export const useAgreementApi_CreateAgreementLocalizedPolicyVersion_ByLocalizedPolicyVersionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { localizedPolicyVersionId: string }>,
@@ -213,7 +213,7 @@ export const useAgreementApi_CreateAgreementLocalizedPolicyVersion_ByLocalizedPo
  * }
  * ```
  */
-export const useAgreementApi_CreateUserPolicyAgreement_ByCountryCode_ByClientId_ByUserId = (
+export const useAgreementApi_CreateUserPolicyAgreement_ByCountryCode_ByClientId_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

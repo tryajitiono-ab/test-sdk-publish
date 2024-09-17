@@ -173,7 +173,7 @@ export const useSubscriptionAdminApi_GetSubscriptionsActivities_ByUserId = (
  * }
  * ```
  */
-export const useSubscriptionAdminApi_UpdateRecurring_BySubscriptionId = (
+export const useSubscriptionAdminApi_UpdateRecurring_BySubscriptionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RecurringChargeResult, AxiosError<ApiError>, SdkSetConfigParam & { subscriptionId: string }>,
@@ -208,7 +208,7 @@ export const useSubscriptionAdminApi_UpdateRecurring_BySubscriptionId = (
  * }
  * ```
  */
-export const useSubscriptionAdminApi_DeleteSubscription_ByUserId_BySubscriptionId = (
+export const useSubscriptionAdminApi_DeleteSubscription_ByUserId_BySubscriptionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; subscriptionId: string }>,
@@ -277,7 +277,7 @@ export const useSubscriptionAdminApi_GetSubscription_ByUserId_BySubscriptionId =
  * }
  * ```
  */
-export const useSubscriptionAdminApi_CreateSubscriptionPlatformSubscribe_ByUserId = (
+export const useSubscriptionAdminApi_CreateSubscriptionPlatformSubscribe_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SubscriptionInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: PlatformSubscribeRequest }>,
@@ -346,7 +346,7 @@ export const useSubscriptionAdminApi_GetSubscriptionsSubscribableByItemId_ByUser
  * }
  * ```
  */
-export const useSubscriptionAdminApi_UpdateGrant_ByUserId_BySubscriptionId = (
+export const useSubscriptionAdminApi_UpdateGrant_ByUserId_BySubscriptionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -389,7 +389,7 @@ export const useSubscriptionAdminApi_UpdateGrant_ByUserId_BySubscriptionId = (
  * }
  * ```
  */
-export const useSubscriptionAdminApi_UpdateCancel_ByUserId_BySubscriptionId = (
+export const useSubscriptionAdminApi_UpdateCancel_ByUserId_BySubscriptionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -472,7 +472,7 @@ export const useSubscriptionAdminApi_GetHistory_ByUserId_BySubscriptionId = (
  * }
  * ```
  */
-export const useSubscriptionAdminApi_CreateNotification_ByUserId_BySubscriptionId = (
+export const useSubscriptionAdminApi_CreateNotification_ByUserId_BySubscriptionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

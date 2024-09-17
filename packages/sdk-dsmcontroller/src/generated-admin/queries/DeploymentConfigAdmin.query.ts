@@ -75,7 +75,7 @@ export const useDeploymentConfigAdminApi_GetConfigsDeployments = (
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_DeleteConfigDeployment_ByDeployment = (
+export const useDeploymentConfigAdminApi_DeleteConfigDeployment_ByDeploymentMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { deployment: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -141,7 +141,7 @@ export const useDeploymentConfigAdminApi_GetConfigDeployment_ByDeployment = (
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_PatchConfigDeployment_ByDeployment = (
+export const useDeploymentConfigAdminApi_PatchConfigDeployment_ByDeploymentMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -184,7 +184,7 @@ export const useDeploymentConfigAdminApi_PatchConfigDeployment_ByDeployment = (
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_CreateConfigDeployment_ByDeployment = (
+export const useDeploymentConfigAdminApi_CreateConfigDeployment_ByDeploymentMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -227,7 +227,7 @@ export const useDeploymentConfigAdminApi_CreateConfigDeployment_ByDeployment = (
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_DeleteQueueConfig_ByDeployment_ByVersion = (
+export const useDeploymentConfigAdminApi_DeleteQueueConfig_ByDeployment_ByVersionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { deployment: string; version: string }>,
@@ -262,7 +262,7 @@ export const useDeploymentConfigAdminApi_DeleteQueueConfig_ByDeployment_ByVersio
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_DeleteOverrideRegionConfig_ByDeployment_ByRegion = (
+export const useDeploymentConfigAdminApi_DeleteOverrideRegionConfig_ByDeployment_ByRegionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<DeploymentWithOverride, AxiosError<ApiError>, SdkSetConfigParam & { deployment: string; region: string }>,
@@ -297,7 +297,7 @@ export const useDeploymentConfigAdminApi_DeleteOverrideRegionConfig_ByDeployment
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_PatchOverrideRegionConfig_ByDeployment_ByRegion = (
+export const useDeploymentConfigAdminApi_PatchOverrideRegionConfig_ByDeployment_ByRegionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -340,7 +340,7 @@ export const useDeploymentConfigAdminApi_PatchOverrideRegionConfig_ByDeployment_
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_CreateOverrideRegionConfig_ByDeployment_ByRegion = (
+export const useDeploymentConfigAdminApi_CreateOverrideRegionConfig_ByDeployment_ByRegionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -383,7 +383,7 @@ export const useDeploymentConfigAdminApi_CreateOverrideRegionConfig_ByDeployment
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_CreateOverrideVersionConfig_ByDeployment_ByVersion = (
+export const useDeploymentConfigAdminApi_CreateOverrideVersionConfig_ByDeployment_ByVersionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -426,7 +426,7 @@ export const useDeploymentConfigAdminApi_CreateOverrideVersionConfig_ByDeploymen
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_DeleteOverrideVersionConfig_ByDeployment_ByVersion = (
+export const useDeploymentConfigAdminApi_DeleteOverrideVersionConfig_ByDeployment_ByVersionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<DeploymentWithOverride, AxiosError<ApiError>, SdkSetConfigParam & { deployment: string; version: string }>,
@@ -461,7 +461,7 @@ export const useDeploymentConfigAdminApi_DeleteOverrideVersionConfig_ByDeploymen
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_PatchOverrideVersionConfig_ByDeployment_ByVersion = (
+export const useDeploymentConfigAdminApi_PatchOverrideVersionConfig_ByDeployment_ByVersionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -504,7 +504,7 @@ export const useDeploymentConfigAdminApi_PatchOverrideVersionConfig_ByDeployment
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_DeleteRegionOverrideConfig_ByDeployment_ByVersion_ByRegion = (
+export const useDeploymentConfigAdminApi_DeleteRegionOverrideConfig_ByDeployment_ByVersion_ByRegionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -547,7 +547,7 @@ export const useDeploymentConfigAdminApi_DeleteRegionOverrideConfig_ByDeployment
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_PatchRegionOverrideConfig_ByDeployment_ByVersion_ByRegion = (
+export const useDeploymentConfigAdminApi_PatchRegionOverrideConfig_ByDeployment_ByVersion_ByRegionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -592,7 +592,7 @@ export const useDeploymentConfigAdminApi_PatchRegionOverrideConfig_ByDeployment_
  * }
  * ```
  */
-export const useDeploymentConfigAdminApi_CreateRegionOverrideConfig_ByDeployment_ByVersion_ByRegion = (
+export const useDeploymentConfigAdminApi_CreateRegionOverrideConfig_ByDeployment_ByVersion_ByRegionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

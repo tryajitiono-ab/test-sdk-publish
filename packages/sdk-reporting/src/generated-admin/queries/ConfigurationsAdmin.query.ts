@@ -64,7 +64,7 @@ export const useConfigurationsAdminApi_GetConfigurations = (
  * }
  * ```
  */
-export const useConfigurationsAdminApi_CreateConfiguration = (
+export const useConfigurationsAdminApi_CreateConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<ConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ReportingLimit }>, 'mutationKey'>,
   callback?: (data: ConfigResponse) => void

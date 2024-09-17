@@ -79,7 +79,7 @@ export const useOAuth20Api_GetOauthJwks_v3 = (
  * }
  * ```
  */
-export const useOAuth20Api_PostOauthToken_v3 = (
+export const useOAuth20Api_PostOauthTokenMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -181,7 +181,7 @@ export const useOAuth20Api_PostOauthToken_v3 = (
  * }
  * ```
  */
-export const useOAuth20Api_PostOauthRevoke_v3 = (
+export const useOAuth20Api_PostOauthRevokeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: { token: string | null } }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -210,7 +210,7 @@ export const useOAuth20Api_PostOauthRevoke_v3 = (
  * }
  * ```
  */
-export const useOAuth20Api_PostOauthVerify_v3 = (
+export const useOAuth20Api_PostOauthVerifyMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<TokenResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: { token: string | null } }>,
@@ -242,7 +242,7 @@ export const useOAuth20Api_PostOauthVerify_v3 = (
  * }
  * ```
  */
-export const useOAuth20Api_PostOauthMfaCode_v3 = (
+export const useOAuth20Api_PostOauthMfaCodeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -330,7 +330,7 @@ export const useOAuth20Api_GetOauthAuthorize_v3 = (
  * }
  * ```
  */
-export const useOAuth20Api_PostOauthIntrospect_v3 = (
+export const useOAuth20Api_PostOauthIntrospectMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<TokenIntrospectResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: { token: string | null } }>,
@@ -364,7 +364,7 @@ export const useOAuth20Api_PostOauthIntrospect_v3 = (
  * }
  * ```
  */
-export const useOAuth20Api_PostOauthMfaVerify_v3 = (
+export const useOAuth20Api_PostOauthMfaVerifyMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -440,7 +440,7 @@ export const useOAuth20Api_GetOauthRevocationlist_v3 = (
  * }
  * ```
  */
-export const useOAuth20Api_PostOauthMfaFactorChange_v3 = (
+export const useOAuth20Api_PostOauthMfaFactorChangeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: { factor: string | null; mfaToken: string | null } }>,
@@ -474,7 +474,7 @@ export const useOAuth20Api_PostOauthMfaFactorChange_v3 = (
  * }
  * ```
  */
-export const useOAuth20Api_PostOauthSimultaneousLogin_v3 = (
+export const useOAuth20Api_PostOauthSimultaneousLoginMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -539,7 +539,7 @@ export const useOAuth20Api_PostOauthSimultaneousLogin_v3 = (
  * }
  * ```
  */
-export const useOAuth20Api_PostTokenOauth_ByPlatformId_v3 = (
+export const useOAuth20Api_PostTokenOauth_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

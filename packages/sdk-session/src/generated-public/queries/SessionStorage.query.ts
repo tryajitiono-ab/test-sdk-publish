@@ -29,7 +29,7 @@ export enum Key_SessionStorage {
  * }
  * ```
  */
-export const useSessionStorageApi_PatchStorageLeader_BySessionId = (
+export const useSessionStorageApi_PatchStorageLeader_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -61,7 +61,7 @@ export const useSessionStorageApi_PatchStorageLeader_BySessionId = (
  * }
  * ```
  */
-export const useSessionStorageApi_PatchStorageUser_BySessionId_ByUserId = (
+export const useSessionStorageApi_PatchStorageUser_BySessionId_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionId: string; userId: string }>,

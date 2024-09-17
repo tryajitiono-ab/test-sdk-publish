@@ -36,7 +36,7 @@ export enum Key_RevocationAdmin {
  * }
  * ```
  */
-export const useRevocationAdminApi_DeleteRevocationConfig = (
+export const useRevocationAdminApi_DeleteRevocationConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -98,7 +98,7 @@ export const useRevocationAdminApi_GetRevocationConfig = (
  * }
  * ```
  */
-export const useRevocationAdminApi_UpdateRevocationConfig = (
+export const useRevocationAdminApi_UpdateRevocationConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RevocationConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: RevocationConfigUpdate }>,
@@ -175,7 +175,7 @@ export const useRevocationAdminApi_GetRevocationHistory = (
  * }
  * ```
  */
-export const useRevocationAdminApi_UpdateRevocation_ByUserId = (
+export const useRevocationAdminApi_UpdateRevocation_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RevocationResult, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: RevocationRequest }>,

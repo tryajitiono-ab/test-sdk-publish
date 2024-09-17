@@ -29,7 +29,7 @@ export enum Key_TtlConfigAdmin {
  * }
  * ```
  */
-export const useTtlConfigAdminApi_DeleteTtl_ByKey = (
+export const useTtlConfigAdminApi_DeleteTtl_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -60,7 +60,7 @@ export const useTtlConfigAdminApi_DeleteTtl_ByKey = (
  * }
  * ```
  */
-export const useTtlConfigAdminApi_DeleteTtl_ByKey_ByNS = (
+export const useTtlConfigAdminApi_DeleteTtl_ByKey_ByNSMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

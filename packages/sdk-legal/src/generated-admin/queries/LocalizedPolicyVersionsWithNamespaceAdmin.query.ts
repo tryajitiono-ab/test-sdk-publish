@@ -78,7 +78,7 @@ export const useLocalizedPolicyVersionsWithNamespaceAdminApi_GetLocalizedPolicyV
  * }
  * ```
  */
-export const useLocalizedPolicyVersionsWithNamespaceAdminApi_UpdateLocalizedPolicyVersion_ByLocalizedPolicyVersionId = (
+export const useLocalizedPolicyVersionsWithNamespaceAdminApi_UpdateLocalizedPolicyVersion_ByLocalizedPolicyVersionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -159,7 +159,7 @@ export const useLocalizedPolicyVersionsWithNamespaceAdminApi_GetLocalizedPolicyV
  * }
  * ```
  */
-export const useLocalizedPolicyVersionsWithNamespaceAdminApi_CreateLocalizedPolicyVersionVersion_ByPolicyVersionId = (
+export const useLocalizedPolicyVersionsWithNamespaceAdminApi_CreateLocalizedPolicyVersionVersion_ByPolicyVersionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -202,7 +202,7 @@ export const useLocalizedPolicyVersionsWithNamespaceAdminApi_CreateLocalizedPoli
  * }
  * ```
  */
-export const useLocalizedPolicyVersionsWithNamespaceAdminApi_PatchDefault_ByLocalizedPolicyVersionId = (
+export const useLocalizedPolicyVersionsWithNamespaceAdminApi_PatchDefault_ByLocalizedPolicyVersionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { localizedPolicyVersionId: string }>,
@@ -237,7 +237,7 @@ export const useLocalizedPolicyVersionsWithNamespaceAdminApi_PatchDefault_ByLoca
  * }
  * ```
  */
-export const useLocalizedPolicyVersionsWithNamespaceAdminApi_CreateAttachment_ByLocalizedPolicyVersionId = (
+export const useLocalizedPolicyVersionsWithNamespaceAdminApi_CreateAttachment_ByLocalizedPolicyVersionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

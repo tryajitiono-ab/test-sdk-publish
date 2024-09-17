@@ -93,7 +93,7 @@ export const useConfigApi_GetConfig_ByNamespace = (
  * }
  * ```
  */
-export const useConfigApi_PatchConfig_ByNamespace = (
+export const useConfigApi_PatchConfig_ByNamespaceMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<NamespaceConfig, AxiosError<ApiError>, SdkSetConfigParam & { data: PatchNamespaceConfigRequest }>,

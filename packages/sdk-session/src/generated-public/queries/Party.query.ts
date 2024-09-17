@@ -49,7 +49,7 @@ export enum Key_Party {
  * }
  * ```
  */
-export const usePartyApi_CreateParty = (
+export const usePartyApi_CreatePartyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreatePartyRequest }>,
@@ -143,7 +143,7 @@ export const usePartyApi_GetParty_ByPartyId = (
  * }
  * ```
  */
-export const usePartyApi_PatchParty_ByPartyId = (
+export const usePartyApi_PatchParty_ByPartyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string; data: UpdatePartyRequest }>,
@@ -178,7 +178,7 @@ export const usePartyApi_PatchParty_ByPartyId = (
  * }
  * ```
  */
-export const usePartyApi_UpdateParty_ByPartyId = (
+export const usePartyApi_UpdateParty_ByPartyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string; data: UpdatePartyRequest }>,
@@ -213,7 +213,7 @@ export const usePartyApi_UpdateParty_ByPartyId = (
  * }
  * ```
  */
-export const usePartyApi_DeleteCode_ByPartyId = (
+export const usePartyApi_DeleteCode_ByPartyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -244,7 +244,7 @@ export const usePartyApi_DeleteCode_ByPartyId = (
  * }
  * ```
  */
-export const usePartyApi_UpdateCode_ByPartyId = (
+export const usePartyApi_UpdateCode_ByPartyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string }>, 'mutationKey'>,
   callback?: (data: PartySessionResponse) => void
@@ -275,7 +275,7 @@ export const usePartyApi_UpdateCode_ByPartyId = (
  * }
  * ```
  */
-export const usePartyApi_CreateInvite_ByPartyId = (
+export const usePartyApi_CreateInvite_ByPartyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SessionInviteResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string; data: SessionInviteRequest }>,
@@ -310,7 +310,7 @@ export const usePartyApi_CreateInvite_ByPartyId = (
  * }
  * ```
  */
-export const usePartyApi_UpdateLeader_ByPartyId = (
+export const usePartyApi_UpdateLeader_ByPartyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string; data: PromoteLeaderRequest }>,
@@ -345,7 +345,7 @@ export const usePartyApi_UpdateLeader_ByPartyId = (
  * }
  * ```
  */
-export const usePartyApi_CreatePartyUserMeJoinCode = (
+export const usePartyApi_CreatePartyUserMeJoinCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: JoinByCodeRequest }>,
@@ -379,7 +379,7 @@ export const usePartyApi_CreatePartyUserMeJoinCode = (
  * }
  * ```
  */
-export const usePartyApi_CreateUserMeJoin_ByPartyId = (
+export const usePartyApi_CreateUserMeJoin_ByPartyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<PartySessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string }>, 'mutationKey'>,
   callback?: (data: PartySessionResponse) => void
@@ -410,7 +410,7 @@ export const usePartyApi_CreateUserMeJoin_ByPartyId = (
  * }
  * ```
  */
-export const usePartyApi_DeleteUserMeLeave_ByPartyId = (
+export const usePartyApi_DeleteUserMeLeave_ByPartyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -441,7 +441,7 @@ export const usePartyApi_DeleteUserMeLeave_ByPartyId = (
  * }
  * ```
  */
-export const usePartyApi_DeleteUserMeReject_ByPartyId = (
+export const usePartyApi_DeleteUserMeReject_ByPartyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -472,7 +472,7 @@ export const usePartyApi_DeleteUserMeReject_ByPartyId = (
  * }
  * ```
  */
-export const usePartyApi_DeleteKick_ByPartyId_ByUserId = (
+export const usePartyApi_DeleteKick_ByPartyId_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<KickResponse, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string; userId: string }>,
@@ -507,7 +507,7 @@ export const usePartyApi_DeleteKick_ByPartyId_ByUserId = (
  * }
  * ```
  */
-export const usePartyApi_DeleteCancel_ByPartyId_ByUserId = (
+export const usePartyApi_DeleteCancel_ByPartyId_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { partyId: string; userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

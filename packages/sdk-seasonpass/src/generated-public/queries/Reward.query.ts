@@ -32,7 +32,7 @@ export enum Key_Reward {
  * }
  * ```
  */
-export const useRewardApi_CreateSeasonCurrentReward_ByUserId = (
+export const useRewardApi_CreateSeasonCurrentReward_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ClaimableRewards, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserRewardClaim }>,
@@ -67,7 +67,7 @@ export const useRewardApi_CreateSeasonCurrentReward_ByUserId = (
  * }
  * ```
  */
-export const useRewardApi_CreateSeasonCurrentRewardBulk_ByUserId = (
+export const useRewardApi_CreateSeasonCurrentRewardBulk_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<ClaimableRewards, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: ClaimableRewards) => void

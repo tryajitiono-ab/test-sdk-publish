@@ -125,7 +125,7 @@ export const useUserStatisticApi_GetUsersMeStatitems = (
  * }
  * ```
  */
-export const useUserStatisticApi_PatchStatitemValueBulk = (
+export const useUserStatisticApi_PatchStatitemValueBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserStatItemInc[] }>,
@@ -159,7 +159,7 @@ export const useUserStatisticApi_PatchStatitemValueBulk = (
  * }
  * ```
  */
-export const useUserStatisticApi_UpdateStatitemValueBulk = (
+export const useUserStatisticApi_UpdateStatitemValueBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserStatItemInc[] }>,
@@ -193,7 +193,7 @@ export const useUserStatisticApi_UpdateStatitemValueBulk = (
  * }
  * ```
  */
-export const useUserStatisticApi_UpdateStatitemValueBulk_v2 = (
+export const useUserStatisticApi_UpdateStatitemValueBulkMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserStatItemUpdate[] }>,
@@ -264,7 +264,7 @@ export const useUserStatisticApi_GetStatitems_ByUserId = (
  * }
  * ```
  */
-export const useUserStatisticApi_UpdateStatitemValueResetBulk = (
+export const useUserStatisticApi_UpdateStatitemValueResetBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkUserStatItemReset[] }>,
@@ -299,7 +299,7 @@ export const useUserStatisticApi_UpdateStatitemValueResetBulk = (
  * }
  * ```
  */
-export const useUserStatisticApi_CreateStatitemBulk_ByUserId = (
+export const useUserStatisticApi_CreateStatitemBulk_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -408,7 +408,7 @@ export const useUserStatisticApi_GetStatitemsValueBulk_ByUserId = (
  * }
  * ```
  */
-export const useUserStatisticApi_PatchStatitemValueBulk_ByUserId = (
+export const useUserStatisticApi_PatchStatitemValueBulk_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: BulkStatItemInc[] }>,
@@ -447,7 +447,7 @@ export const useUserStatisticApi_PatchStatitemValueBulk_ByUserId = (
  * }
  * ```
  */
-export const useUserStatisticApi_UpdateStatitemValueBulk_ByUserId = (
+export const useUserStatisticApi_UpdateStatitemValueBulk_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkStatOperationResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: BulkStatItemInc[] }>,
@@ -519,7 +519,7 @@ export const useUserStatisticApi_GetStatitemsValueBulk_ByUserId_v2 = (
  * }
  * ```
  */
-export const useUserStatisticApi_UpdateStatitemValueBulk_ByUserId_v2 = (
+export const useUserStatisticApi_UpdateStatitemValueBulk_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -564,7 +564,7 @@ export const useUserStatisticApi_UpdateStatitemValueBulk_ByUserId_v2 = (
  * }
  * ```
  */
-export const useUserStatisticApi_UpdateStatitemValueResetBulk_ByUserId = (
+export const useUserStatisticApi_UpdateStatitemValueResetBulk_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -607,7 +607,7 @@ export const useUserStatisticApi_UpdateStatitemValueResetBulk_ByUserId = (
  * }
  * ```
  */
-export const useUserStatisticApi_DeleteStatitem_ByUserId_ByStatCode = (
+export const useUserStatisticApi_DeleteStatitem_ByUserId_ByStatCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; statCode: string }>,
@@ -642,7 +642,7 @@ export const useUserStatisticApi_DeleteStatitem_ByUserId_ByStatCode = (
  * }
  * ```
  */
-export const useUserStatisticApi_CreateStatitem_ByUserId_ByStatCode = (
+export const useUserStatisticApi_CreateStatitem_ByUserId_ByStatCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; statCode: string }>,
@@ -677,7 +677,7 @@ export const useUserStatisticApi_CreateStatitem_ByUserId_ByStatCode = (
  * }
  * ```
  */
-export const useUserStatisticApi_PatchStatitemValue_ByUserId_ByStatCode = (
+export const useUserStatisticApi_PatchStatitemValue_ByUserId_ByStatCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -720,7 +720,7 @@ export const useUserStatisticApi_PatchStatitemValue_ByUserId_ByStatCode = (
  * }
  * ```
  */
-export const useUserStatisticApi_UpdateStatitemValue_ByUserId_ByStatCode = (
+export const useUserStatisticApi_UpdateStatitemValue_ByUserId_ByStatCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -763,7 +763,7 @@ export const useUserStatisticApi_UpdateStatitemValue_ByUserId_ByStatCode = (
  * }
  * ```
  */
-export const useUserStatisticApi_UpdateStatitemValue_ByUserId_ByStatCode_v2 = (
+export const useUserStatisticApi_UpdateStatitemValue_ByUserId_ByStatCodeMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -808,7 +808,7 @@ export const useUserStatisticApi_UpdateStatitemValue_ByUserId_ByStatCode_v2 = (
  * }
  * ```
  */
-export const useUserStatisticApi_UpdateStatitemValueReset_ByUserId_ByStatCode = (
+export const useUserStatisticApi_UpdateStatitemValueReset_ByUserId_ByStatCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<StatItemIncResult, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; statCode: string }>,

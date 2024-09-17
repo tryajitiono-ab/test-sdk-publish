@@ -122,7 +122,7 @@ export const useIapApi_GetIapAppleConfigVersion = (
  * }
  * ```
  */
-export const useIapApi_UpdateUserMeIapTwitchSync = (
+export const useIapApi_UpdateUserMeIapTwitchSyncMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<TwitchSyncResultArray, AxiosError<ApiError>, SdkSetConfigParam & { data: TwitchSyncRequest }>,
@@ -156,7 +156,7 @@ export const useIapApi_UpdateUserMeIapTwitchSync = (
  * }
  * ```
  */
-export const useIapApi_UpdateIapPsnSync_ByUserId = (
+export const useIapApi_UpdateIapPsnSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -199,7 +199,7 @@ export const useIapApi_UpdateIapPsnSync_ByUserId = (
  * }
  * ```
  */
-export const useIapApi_UpdateIapXblSync_ByUserId = (
+export const useIapApi_UpdateIapXblSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<XblReconcileResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: XblReconcileRequest }>,
@@ -234,7 +234,7 @@ export const useIapApi_UpdateIapXblSync_ByUserId = (
  * }
  * ```
  */
-export const useIapApi_UpdateIapSteamSync_ByUserId = (
+export const useIapApi_UpdateIapSteamSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: SteamSyncRequest }>,
@@ -269,7 +269,7 @@ export const useIapApi_UpdateIapSteamSync_ByUserId = (
  * }
  * ```
  */
-export const useIapApi_UpdateIapOculuSync_ByUserId = (
+export const useIapApi_UpdateIapOculuSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<OculusReconcileResultArray, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>,
@@ -303,7 +303,7 @@ export const useIapApi_UpdateIapOculuSync_ByUserId = (
  * }
  * ```
  */
-export const useIapApi_UpdateIapTwitchSync_ByUserId = (
+export const useIapApi_UpdateIapTwitchSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: TwitchSyncRequest }>,
@@ -338,7 +338,7 @@ export const useIapApi_UpdateIapTwitchSync_ByUserId = (
  * }
  * ```
  */
-export const useIapApi_UpdateIapAppleReceipt_ByUserId = (
+export const useIapApi_UpdateIapAppleReceipt_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: AppleIapReceipt }>,
@@ -373,7 +373,7 @@ export const useIapApi_UpdateIapAppleReceipt_ByUserId = (
  * }
  * ```
  */
-export const useIapApi_UpdateIapEpicgameSync_ByUserId = (
+export const useIapApi_UpdateIapEpicgameSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -416,7 +416,7 @@ export const useIapApi_UpdateIapEpicgameSync_ByUserId = (
  * }
  * ```
  */
-export const useIapApi_UpdateIapGoogleReceipt_ByUserId = (
+export const useIapApi_UpdateIapGoogleReceipt_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GoogleReceiptResolveResult, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: GoogleIapReceipt }>,
@@ -451,7 +451,7 @@ export const useIapApi_UpdateIapGoogleReceipt_ByUserId = (
  * }
  * ```
  */
-export const useIapApi_UpdateIapAppleReceipt_ByUserId_v2 = (
+export const useIapApi_UpdateIapAppleReceipt_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: AppleIapRequest }>,
@@ -486,7 +486,7 @@ export const useIapApi_UpdateIapAppleReceipt_ByUserId_v2 = (
  * }
  * ```
  */
-export const useIapApi_UpdateIapPsnSyncMultiServiceLabel_ByUserId = (
+export const useIapApi_UpdateIapPsnSyncMultiServiceLabel_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

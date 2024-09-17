@@ -36,7 +36,7 @@ export enum Key_ModerationRuleAdmin {
  * }
  * ```
  */
-export const useModerationRuleAdminApi_CreateRule = (
+export const useModerationRuleAdminApi_CreateRuleMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ModerationRuleRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -101,7 +101,7 @@ export const useModerationRuleAdminApi_GetRules = (
  * }
  * ```
  */
-export const useModerationRuleAdminApi_DeleteRule_ByRuleId = (
+export const useModerationRuleAdminApi_DeleteRule_ByRuleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ruleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -133,7 +133,7 @@ export const useModerationRuleAdminApi_DeleteRule_ByRuleId = (
  * }
  * ```
  */
-export const useModerationRuleAdminApi_UpdateRule_ByRuleId = (
+export const useModerationRuleAdminApi_UpdateRule_ByRuleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ModerationRuleResponse, AxiosError<ApiError>, SdkSetConfigParam & { ruleId: string; data: ModerationRuleRequest }>,
@@ -200,7 +200,7 @@ export const useModerationRuleAdminApi_GetRule_ByRuleId = (
  * }
  * ```
  */
-export const useModerationRuleAdminApi_UpdateStatus_ByRuleId = (
+export const useModerationRuleAdminApi_UpdateStatus_ByRuleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ruleId: string; data: ModerationRuleActiveRequest }>,

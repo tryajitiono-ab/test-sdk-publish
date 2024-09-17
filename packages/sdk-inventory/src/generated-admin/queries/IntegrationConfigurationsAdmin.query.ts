@@ -73,7 +73,7 @@ export const useIntegrationConfigurationsAdminApi_GetIntegrationConfigurations =
  * }
  * ```
  */
-export const useIntegrationConfigurationsAdminApi_CreateIntegrationConfiguration = (
+export const useIntegrationConfigurationsAdminApi_CreateIntegrationConfigurationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<IntegrationConfigurationResp, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateIntegrationConfigurationReq }>,
@@ -112,7 +112,7 @@ export const useIntegrationConfigurationsAdminApi_CreateIntegrationConfiguration
  * }
  * ```
  */
-export const useIntegrationConfigurationsAdminApi_UpdateIntegrationConfiguration_ByIntegrationConfigurationId = (
+export const useIntegrationConfigurationsAdminApi_UpdateIntegrationConfiguration_ByIntegrationConfigurationIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -155,7 +155,7 @@ export const useIntegrationConfigurationsAdminApi_UpdateIntegrationConfiguration
  * }
  * ```
  */
-export const useIntegrationConfigurationsAdminApi_UpdateStatus_ByIntegrationConfigurationId = (
+export const useIntegrationConfigurationsAdminApi_UpdateStatus_ByIntegrationConfigurationIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

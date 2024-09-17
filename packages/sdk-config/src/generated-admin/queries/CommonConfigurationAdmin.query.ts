@@ -68,7 +68,7 @@ export const useCommonConfigurationAdminApi_GetConfigs = (
  * }
  * ```
  */
-export const useCommonConfigurationAdminApi_CreateConfig = (
+export const useCommonConfigurationAdminApi_CreateConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateConfig }>, 'mutationKey'>,
   callback?: (data: ConfigInfo) => void
@@ -132,7 +132,7 @@ export const useCommonConfigurationAdminApi_GetConfig_ByConfigKey = (
  * }
  * ```
  */
-export const useCommonConfigurationAdminApi_DeleteConfig_ByConfigKey = (
+export const useCommonConfigurationAdminApi_DeleteConfig_ByConfigKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { configKey: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -164,7 +164,7 @@ export const useCommonConfigurationAdminApi_DeleteConfig_ByConfigKey = (
  * }
  * ```
  */
-export const useCommonConfigurationAdminApi_PatchConfig_ByConfigKey = (
+export const useCommonConfigurationAdminApi_PatchConfig_ByConfigKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { configKey: string; data: UpdateConfig }>,

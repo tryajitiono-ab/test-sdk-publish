@@ -38,7 +38,7 @@ export enum Key_DlcAdmin {
  * }
  * ```
  */
-export const useDlcAdminApi_DeleteDlcConfigItem = (
+export const useDlcAdminApi_DeleteDlcConfigItemMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -97,7 +97,7 @@ export const useDlcAdminApi_GetDlcConfigItem = (
  * }
  * ```
  */
-export const useDlcAdminApi_UpdateDlcConfigItem = (
+export const useDlcAdminApi_UpdateDlcConfigItemMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<DlcItemConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: DlcItemConfigUpdate }>,
@@ -164,7 +164,7 @@ export const useDlcAdminApi_GetDlc_ByUserId = (
  * }
  * ```
  */
-export const useDlcAdminApi_DeleteDlcConfigPlatformMap = (
+export const useDlcAdminApi_DeleteDlcConfigPlatformMapMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -223,7 +223,7 @@ export const useDlcAdminApi_GetDlcConfigPlatformMap = (
  * }
  * ```
  */
-export const useDlcAdminApi_UpdateDlcConfigPlatformMap = (
+export const useDlcAdminApi_UpdateDlcConfigPlatformMapMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PlatformDlcConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PlatformDlcConfigUpdate }>,

@@ -30,7 +30,7 @@ export enum Key_Server {
  * }
  * ```
  */
-export const useServerApi_CreateServerHeartbeat = (
+export const useServerApi_CreateServerHeartbeatMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: HeartbeatRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void

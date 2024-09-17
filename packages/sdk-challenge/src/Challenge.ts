@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { ChallengeConfigurationAdminApi } from './generated-admin/ChallengeConfigurationAdminApi.js'
 import { ChallengeProgressionAdminApi } from './generated-admin/ChallengeProgressionAdminApi.js'
 import { GoalConfigurationAdminApi } from './generated-admin/GoalConfigurationAdminApi.js'
@@ -16,6 +17,8 @@ import { ChallengeListApi } from './generated-public/ChallengeListApi.js'
 import { ChallengeProgressionApi } from './generated-public/ChallengeProgressionApi.js'
 import { PlayerRewardApi } from './generated-public/PlayerRewardApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   ChallengeConfigurationAdminApi,
   ChallengeProgressionAdminApi,
@@ -24,7 +27,13 @@ const apis = {
   GoalConfigurationAdminApi,
   ChallengeListApi,
   PlayerRewardApi,
-  ChallengeProgressionApi
+  ChallengeProgressionApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Challenge = apis

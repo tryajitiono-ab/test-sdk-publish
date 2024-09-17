@@ -112,7 +112,7 @@ export const useDevicesV4AdminApi_GetDevicesBans_v4 = (
  * }
  * ```
  */
-export const useDevicesV4AdminApi_CreateDeviceBan_v4 = (
+export const useDevicesV4AdminApi_CreateDeviceBanMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DeviceBanRequestV4 }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -271,7 +271,7 @@ export const useDevicesV4AdminApi_GetDeviceBan_ByBanId_v4 = (
  * }
  * ```
  */
-export const useDevicesV4AdminApi_UpdateDeviceBan_ByBanId_v4 = (
+export const useDevicesV4AdminApi_UpdateDeviceBan_ByBanIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { banId: string; data: DeviceBanUpdateRequestV4 }>,
@@ -338,7 +338,7 @@ export const useDevicesV4AdminApi_GetBans_ByDeviceId_v4 = (
  * }
  * ```
  */
-export const useDevicesV4AdminApi_UpdateUnban_ByDeviceId_v4 = (
+export const useDevicesV4AdminApi_UpdateUnban_ByDeviceIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { deviceId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

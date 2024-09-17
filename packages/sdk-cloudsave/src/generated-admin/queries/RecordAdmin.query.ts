@@ -110,7 +110,7 @@ export const useRecordAdminApi_FetchAdminrecordBulk = (
  * }
  * ```
  */
-export const useRecordAdminApi_DeleteAdminrecord_ByKey = (
+export const useRecordAdminApi_DeleteAdminrecord_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -173,7 +173,7 @@ export const useRecordAdminApi_GetAdminrecord_ByKey = (
  * }
  * ```
  */
-export const useRecordAdminApi_CreateAdminrecord_ByKey = (
+export const useRecordAdminApi_CreateAdminrecord_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AdminGameRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { key: string; data: AdminGameRecordRequest }>,
@@ -208,7 +208,7 @@ export const useRecordAdminApi_CreateAdminrecord_ByKey = (
  * }
  * ```
  */
-export const useRecordAdminApi_UpdateAdminrecord_ByKey = (
+export const useRecordAdminApi_UpdateAdminrecord_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AdminGameRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { key: string; data: AdminGameRecordRequest }>,
@@ -342,7 +342,7 @@ export const useRecordAdminApi_FetchAdminrecordBulk_ByUserId = (
  * }
  * ```
  */
-export const useRecordAdminApi_DeleteAdminrecord_ByUserId_ByKey = (
+export const useRecordAdminApi_DeleteAdminrecord_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; key: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -407,7 +407,7 @@ export const useRecordAdminApi_GetAdminrecord_ByUserId_ByKey = (
  * }
  * ```
  */
-export const useRecordAdminApi_CreateAdminrecord_ByUserId_ByKey = (
+export const useRecordAdminApi_CreateAdminrecord_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -450,7 +450,7 @@ export const useRecordAdminApi_CreateAdminrecord_ByUserId_ByKey = (
  * }
  * ```
  */
-export const useRecordAdminApi_UpdateAdminrecord_ByUserId_ByKey = (
+export const useRecordAdminApi_UpdateAdminrecord_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

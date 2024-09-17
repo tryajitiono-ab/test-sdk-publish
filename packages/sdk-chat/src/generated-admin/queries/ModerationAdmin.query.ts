@@ -30,7 +30,7 @@ export enum Key_ModerationAdmin {
  * }
  * ```
  */
-export const useModerationAdminApi_DeleteSnapshot_ByChatId = (
+export const useModerationAdminApi_DeleteSnapshot_ByChatIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { chatId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

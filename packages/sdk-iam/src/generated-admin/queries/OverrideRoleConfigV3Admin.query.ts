@@ -70,7 +70,7 @@ export const useOverrideRoleConfigV3AdminApi_GetRoleoverride_v3 = (
  * }
  * ```
  */
-export const useOverrideRoleConfigV3AdminApi_PatchRoleoverride_v3 = (
+export const useOverrideRoleConfigV3AdminApi_PatchRoleoverrideMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -149,7 +149,7 @@ export const useOverrideRoleConfigV3AdminApi_GetRoleoverrideSource_v3 = (
  * }
  * ```
  */
-export const useOverrideRoleConfigV3AdminApi_PatchRoleoverrideStatus_v3 = (
+export const useOverrideRoleConfigV3AdminApi_PatchRoleoverrideStatusMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

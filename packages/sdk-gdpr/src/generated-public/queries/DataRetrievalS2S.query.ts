@@ -67,7 +67,7 @@ export const useDataRetrievalS2SApi_GetS2SRequestsFinished = (
  * }
  * ```
  */
-export const useDataRetrievalS2SApi_CreateRequestS2_ByUserId = (
+export const useDataRetrievalS2SApi_CreateRequestS2_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<S2SDataRetrievalResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: S2SDataRetrievalResponse) => void

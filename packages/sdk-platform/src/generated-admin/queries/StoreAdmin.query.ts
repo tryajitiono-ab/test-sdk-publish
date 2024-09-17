@@ -89,7 +89,7 @@ export const useStoreAdminApi_GetStores = (
  * }
  * ```
  */
-export const useStoreAdminApi_CreateStore = (
+export const useStoreAdminApi_CreateStoreMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StoreCreate }>, 'mutationKey'>,
   callback?: (data: StoreInfo) => void
@@ -119,7 +119,7 @@ export const useStoreAdminApi_CreateStore = (
  * }
  * ```
  */
-export const useStoreAdminApi_UpdateStoreImport = (
+export const useStoreAdminApi_UpdateStoreImportMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -192,7 +192,7 @@ export const useStoreAdminApi_GetCatalogConfigs = (
  * }
  * ```
  */
-export const useStoreAdminApi_UpdateCatalogConfig = (
+export const useStoreAdminApi_UpdateCatalogConfigMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CatalogConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CatalogConfigUpdate }>,
@@ -226,7 +226,7 @@ export const useStoreAdminApi_UpdateCatalogConfig = (
  * }
  * ```
  */
-export const useStoreAdminApi_DeleteStore_ByStoreId = (
+export const useStoreAdminApi_DeleteStore_ByStoreIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId: string }>, 'mutationKey'>,
   callback?: (data: StoreInfo) => void
@@ -289,7 +289,7 @@ export const useStoreAdminApi_GetStore_ByStoreId = (
  * }
  * ```
  */
-export const useStoreAdminApi_UpdateStore_ByStoreId = (
+export const useStoreAdminApi_UpdateStore_ByStoreIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam & { storeId: string; data: StoreUpdate }>,
@@ -324,7 +324,7 @@ export const useStoreAdminApi_UpdateStore_ByStoreId = (
  * }
  * ```
  */
-export const useStoreAdminApi_DeleteStorePublished = (
+export const useStoreAdminApi_DeleteStorePublishedMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: StoreInfo) => void
@@ -383,7 +383,7 @@ export const useStoreAdminApi_GetStoresPublished = (
  * }
  * ```
  */
-export const useStoreAdminApi_UpdateStoreImport_v2 = (
+export const useStoreAdminApi_UpdateStoreImportMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -428,7 +428,7 @@ export const useStoreAdminApi_UpdateStoreImport_v2 = (
  * }
  * ```
  */
-export const useStoreAdminApi_CreateStoreExportByCsv = (
+export const useStoreAdminApi_CreateStoreExportByCsvMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ExportStoreToCsvRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -459,7 +459,7 @@ export const useStoreAdminApi_CreateStoreExportByCsv = (
  * }
  * ```
  */
-export const useStoreAdminApi_UpdateClone_ByStoreId = (
+export const useStoreAdminApi_UpdateClone_ByStoreIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -597,7 +597,7 @@ export const useStoreAdminApi_GetStoresCatalogDefinition = (
  * }
  * ```
  */
-export const useStoreAdminApi_UpdateStorePublishedRollback = (
+export const useStoreAdminApi_UpdateStorePublishedRollbackMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<StoreInfo, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: StoreInfo) => void
@@ -629,7 +629,7 @@ export const useStoreAdminApi_UpdateStorePublishedRollback = (
  * }
  * ```
  */
-export const useStoreAdminApi_CreateExport_ByStoreId_v2 = (
+export const useStoreAdminApi_CreateExport_ByStoreIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { storeId: string; data: ExportStoreRequest }>,
@@ -697,7 +697,7 @@ export const useStoreAdminApi_GetStoresDownloadCsvTemplates = (
  * }
  * ```
  */
-export const useStoreAdminApi_CreateImportByCsv_ByStoreId = (
+export const useStoreAdminApi_CreateImportByCsv_ByStoreIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

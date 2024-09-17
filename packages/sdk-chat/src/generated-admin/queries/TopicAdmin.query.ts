@@ -144,7 +144,7 @@ export const useTopicAdminApi_GetTopic = (
  * }
  * ```
  */
-export const useTopicAdminApi_CreateTopic = (
+export const useTopicAdminApi_CreateTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateTopicResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTopicParams }>,
@@ -294,7 +294,7 @@ export const useTopicAdminApi_FetchChatFilter = (
  * }
  * ```
  */
-export const useTopicAdminApi_DeleteTopic_ByTopic = (
+export const useTopicAdminApi_DeleteTopic_ByTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<ActionDeleteTopicResult, AxiosError<ApiError>, SdkSetConfigParam & { topic: string }>, 'mutationKey'>,
   callback?: (data: ActionDeleteTopicResult) => void
@@ -325,7 +325,7 @@ export const useTopicAdminApi_DeleteTopic_ByTopic = (
  * }
  * ```
  */
-export const useTopicAdminApi_UpdateTopic_ByTopic = (
+export const useTopicAdminApi_UpdateTopic_ByTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateTopicResponse, AxiosError<ApiError>, SdkSetConfigParam & { topic: string; data: UpdateTopicParams }>,
@@ -392,7 +392,7 @@ export const useTopicAdminApi_GetTopicChannel = (
  * }
  * ```
  */
-export const useTopicAdminApi_CreateNamespaceTopic = (
+export const useTopicAdminApi_CreateNamespaceTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateTopicResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateNamespaceTopicParams }>,
@@ -473,7 +473,7 @@ export const useTopicAdminApi_GetChats_ByTopic = (
  * }
  * ```
  */
-export const useTopicAdminApi_UpdateChat_ByTopic = (
+export const useTopicAdminApi_UpdateChat_ByTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ChatMessageResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { topic: string; data: SendChatParams }>,
@@ -680,7 +680,7 @@ export const useTopicAdminApi_GetTopics_ByUserId = (
  * }
  * ```
  */
-export const useTopicAdminApi_UpdateBanMember_ByTopic = (
+export const useTopicAdminApi_UpdateBanMember_ByTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BanTopicMemberResult, AxiosError<ApiError>, SdkSetConfigParam & { topic: string; data: BanTopicMemberParam }>,
@@ -715,7 +715,7 @@ export const useTopicAdminApi_UpdateBanMember_ByTopic = (
  * }
  * ```
  */
-export const useTopicAdminApi_UpdateUnbanMember_ByTopic = (
+export const useTopicAdminApi_UpdateUnbanMember_ByTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UnbanTopicMemberResult, AxiosError<ApiError>, SdkSetConfigParam & { topic: string; data: UnbanTopicMemberParam }>,
@@ -750,7 +750,7 @@ export const useTopicAdminApi_UpdateUnbanMember_ByTopic = (
  * }
  * ```
  */
-export const useTopicAdminApi_DeleteUser_ByTopic_ByUserId = (
+export const useTopicAdminApi_DeleteUser_ByTopic_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ActionAddUserToTopicResult, AxiosError<ApiError>, SdkSetConfigParam & { topic: string; userId: string }>,
@@ -785,7 +785,7 @@ export const useTopicAdminApi_DeleteUser_ByTopic_ByUserId = (
  * }
  * ```
  */
-export const useTopicAdminApi_UpdateUser_ByTopic_ByUserId = (
+export const useTopicAdminApi_UpdateUser_ByTopic_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -829,7 +829,7 @@ export const useTopicAdminApi_UpdateUser_ByTopic_ByUserId = (
  * }
  * ```
  */
-export const useTopicAdminApi_DeleteChat_ByTopic_ByChatId = (
+export const useTopicAdminApi_DeleteChat_ByTopic_ByChatIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic: string; chatId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

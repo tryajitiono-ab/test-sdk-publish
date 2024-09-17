@@ -70,7 +70,7 @@ export const usePolicyVersionsAdminApi_GetVersions_ByPolicyId = (
  * }
  * ```
  */
-export const usePolicyVersionsAdminApi_CreateVersion_ByPolicyId = (
+export const usePolicyVersionsAdminApi_CreateVersion_ByPolicyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -113,7 +113,7 @@ export const usePolicyVersionsAdminApi_CreateVersion_ByPolicyId = (
  * }
  * ```
  */
-export const usePolicyVersionsAdminApi_PatchPolicyVersion_ByPolicyVersionId = (
+export const usePolicyVersionsAdminApi_PatchPolicyVersion_ByPolicyVersionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -156,7 +156,7 @@ export const usePolicyVersionsAdminApi_PatchPolicyVersion_ByPolicyVersionId = (
  * }
  * ```
  */
-export const usePolicyVersionsAdminApi_PatchLatestPolicy_ByPolicyVersionId = (
+export const usePolicyVersionsAdminApi_PatchLatestPolicy_ByPolicyVersionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

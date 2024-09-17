@@ -64,7 +64,7 @@ export const useTypeAdminApi_GetTypes = (
  * }
  * ```
  */
-export const useTypeAdminApi_CreateType = (
+export const useTypeAdminApi_CreateTypeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateTypeResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTypeRequest }>,
@@ -96,7 +96,7 @@ export const useTypeAdminApi_CreateType = (
  * }
  * ```
  */
-export const useTypeAdminApi_DeleteType_ByTypeId = (
+export const useTypeAdminApi_DeleteType_ByTypeIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { typeId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -127,7 +127,7 @@ export const useTypeAdminApi_DeleteType_ByTypeId = (
  * }
  * ```
  */
-export const useTypeAdminApi_UpdateType_ByTypeId = (
+export const useTypeAdminApi_UpdateType_ByTypeIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateTypeResponse, AxiosError<ApiError>, SdkSetConfigParam & { typeId: string; data: CreateTypeRequest }>,

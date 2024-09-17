@@ -31,7 +31,7 @@ export enum Key_DownloaderAdmin {
  * }
  * ```
  */
-export const useDownloaderAdminApi_CreateBlockUrl_ByBuildId = (
+export const useDownloaderAdminApi_CreateBlockUrl_ByBuildIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BlockDownloadUrls, AxiosError<ApiError>, SdkSetConfigParam & { buildId: string; data: BlockDownloadUrlsRequest }>,

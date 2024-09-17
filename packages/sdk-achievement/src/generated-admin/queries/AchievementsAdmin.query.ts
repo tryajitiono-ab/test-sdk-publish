@@ -88,7 +88,7 @@ export const useAchievementsAdminApi_GetAchievements = (
  * }
  * ```
  */
-export const useAchievementsAdminApi_CreateAchievement = (
+export const useAchievementsAdminApi_CreateAchievementMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AchievementResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AchievementRequest }>,
@@ -155,7 +155,7 @@ export const useAchievementsAdminApi_GetAchievementsExport = (
  * }
  * ```
  */
-export const useAchievementsAdminApi_UpdateAchievementImport = (
+export const useAchievementsAdminApi_UpdateAchievementImportMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ImportConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: { file?: File; strategy?: string | null } }>,
@@ -194,7 +194,7 @@ export const useAchievementsAdminApi_UpdateAchievementImport = (
  * }
  * ```
  */
-export const useAchievementsAdminApi_DeleteAchievement_ByAchievementCode = (
+export const useAchievementsAdminApi_DeleteAchievement_ByAchievementCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { achievementCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -260,7 +260,7 @@ export const useAchievementsAdminApi_GetAchievement_ByAchievementCode = (
  * }
  * ```
  */
-export const useAchievementsAdminApi_PatchAchievement_ByAchievementCode = (
+export const useAchievementsAdminApi_PatchAchievement_ByAchievementCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { achievementCode: string; data: AchievementOrderUpdateRequest }>,
@@ -299,7 +299,7 @@ export const useAchievementsAdminApi_PatchAchievement_ByAchievementCode = (
  * }
  * ```
  */
-export const useAchievementsAdminApi_UpdateAchievement_ByAchievementCode = (
+export const useAchievementsAdminApi_UpdateAchievement_ByAchievementCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

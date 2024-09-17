@@ -67,7 +67,7 @@ export const usePlayerApi_FetchUserBulkPlatform = (
  * }
  * ```
  */
-export const usePlayerApi_DeleteUserMeAttribute = (
+export const usePlayerApi_DeleteUserMeAttributeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -126,7 +126,7 @@ export const usePlayerApi_GetUsersMeAttributes = (
  * }
  * ```
  */
-export const usePlayerApi_CreateUserMeAttribute = (
+export const usePlayerApi_CreateUserMeAttributeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PlayerAttributesResponseBody, AxiosError<ApiError>, SdkSetConfigParam & { data: PlayerAttributesRequestBody }>,

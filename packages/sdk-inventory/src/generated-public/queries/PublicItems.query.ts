@@ -41,7 +41,7 @@ export enum Key_PublicItems {
  * }
  * ```
  */
-export const usePublicItemsApi_DeleteItemMeUser_ByInventoryId = (
+export const usePublicItemsApi_DeleteItemMeUser_ByInventoryIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -126,7 +126,7 @@ export const usePublicItemsApi_GetItemsMeUsers_ByInventoryId = (
  * }
  * ```
  */
-export const usePublicItemsApi_UpdateItemMeUser_ByInventoryId = (
+export const usePublicItemsApi_UpdateItemMeUser_ByInventoryIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UpdateItemRespArray, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId: string; data: UpdateItemReq[] }>,
@@ -161,7 +161,7 @@ export const usePublicItemsApi_UpdateItemMeUser_ByInventoryId = (
  * }
  * ```
  */
-export const usePublicItemsApi_CreateConsumeUser_ByInventoryId = (
+export const usePublicItemsApi_CreateConsumeUser_ByInventoryIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ItemResp, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId: string; data: ConsumeItemReq }>,
@@ -196,7 +196,7 @@ export const usePublicItemsApi_CreateConsumeUser_ByInventoryId = (
  * }
  * ```
  */
-export const usePublicItemsApi_CreateItemMovementUser_ByInventoryId = (
+export const usePublicItemsApi_CreateItemMovementUser_ByInventoryIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MoveItemsResp, AxiosError<ApiError>, SdkSetConfigParam & { inventoryId: string; data: MoveItemsReq }>,

@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { ChainingOperationsAdminApi } from './generated-admin/ChainingOperationsAdminApi.js'
 import { IntegrationConfigurationsAdminApi } from './generated-admin/IntegrationConfigurationsAdminApi.js'
 import { InventoriesAdminApi } from './generated-admin/InventoriesAdminApi.js'
@@ -20,6 +21,8 @@ import { PublicItemsApi } from './generated-public/PublicItemsApi.js'
 import { PublicItemTypesApi } from './generated-public/PublicItemTypesApi.js'
 import { PublicTagsApi } from './generated-public/PublicTagsApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   TagsAdminApi,
   ItemTypesAdminApi,
@@ -32,7 +35,13 @@ const apis = {
   PublicItemTypesApi,
   PublicInventoriesApi,
   PublicInventoryConfigurationsApi,
-  PublicItemsApi
+  PublicItemsApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Inventory = apis

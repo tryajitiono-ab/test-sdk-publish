@@ -115,7 +115,7 @@ export const usePaymentConfigAdminApi_GetPaymentConfigTax = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdatePaymentConfigTax = (
+export const usePaymentConfigAdminApi_UpdatePaymentConfigTaxMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PaymentTaxConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentTaxConfigEdit }>,
@@ -183,7 +183,7 @@ export const usePaymentConfigAdminApi_GetPaymentConfigProvider = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_CreatePaymentConfigProvider = (
+export const usePaymentConfigAdminApi_CreatePaymentConfigProviderMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PaymentProviderConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: PaymentProviderConfigEdit }>,
@@ -251,7 +251,7 @@ export const usePaymentConfigAdminApi_GetPaymentConfigMerchant_ById = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_DeletePaymentConfigProvider_ById = (
+export const usePaymentConfigAdminApi_DeletePaymentConfigProvider_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { id: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -283,7 +283,7 @@ export const usePaymentConfigAdminApi_DeletePaymentConfigProvider_ById = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdatePaymentConfigProvider_ById = (
+export const usePaymentConfigAdminApi_UpdatePaymentConfigProvider_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -462,7 +462,7 @@ export const usePaymentConfigAdminApi_GetPaymentConfigProviderAggregate = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdateAdyenconfigPayment_ById = (
+export const usePaymentConfigAdminApi_UpdateAdyenconfigPayment_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -507,7 +507,7 @@ export const usePaymentConfigAdminApi_UpdateAdyenconfigPayment_ById = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdateWxpayconfigPayment_ById = (
+export const usePaymentConfigAdminApi_UpdateWxpayconfigPayment_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -552,7 +552,7 @@ export const usePaymentConfigAdminApi_UpdateWxpayconfigPayment_ById = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantAdyenconfigTest = (
+export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantAdyenconfigTestMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -595,7 +595,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantAdyenconfigTest
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantWxpayconfigTest = (
+export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantWxpayconfigTestMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: WxPayConfigRequest }>, 'mutationKey'>,
   callback?: (data: TestResult) => void
@@ -627,7 +627,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantWxpayconfigTest
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdateAlipayconfigPayment_ById = (
+export const usePaymentConfigAdminApi_UpdateAlipayconfigPayment_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -672,7 +672,7 @@ export const usePaymentConfigAdminApi_UpdateAlipayconfigPayment_ById = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdatePaypalconfigPayment_ById = (
+export const usePaymentConfigAdminApi_UpdatePaypalconfigPayment_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -717,7 +717,7 @@ export const usePaymentConfigAdminApi_UpdatePaypalconfigPayment_ById = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdateStripeconfigPayment_ById = (
+export const usePaymentConfigAdminApi_UpdateStripeconfigPayment_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -762,7 +762,7 @@ export const usePaymentConfigAdminApi_UpdateStripeconfigPayment_ById = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdateXsollaconfigPayment_ById = (
+export const usePaymentConfigAdminApi_UpdateXsollaconfigPayment_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -805,7 +805,7 @@ export const usePaymentConfigAdminApi_UpdateXsollaconfigPayment_ById = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantAlipayconfigTest = (
+export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantAlipayconfigTestMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -848,7 +848,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantAlipayconfigTes
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantPaypalconfigTest = (
+export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantPaypalconfigTestMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -891,7 +891,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantPaypalconfigTes
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantStripeconfigTest = (
+export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantStripeconfigTestMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -934,7 +934,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantStripeconfigTes
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantXsollaconfigTest = (
+export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantXsollaconfigTestMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<TestResult, AxiosError<ApiError>, SdkSetConfigParam & { data: XsollaConfig }>, 'mutationKey'>,
   callback?: (data: TestResult) => void
@@ -966,7 +966,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantXsollaconfigTes
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdateNeonpayconfigPayment_ById = (
+export const usePaymentConfigAdminApi_UpdateNeonpayconfigPayment_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1011,7 +1011,7 @@ export const usePaymentConfigAdminApi_UpdateNeonpayconfigPayment_ById = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantNeonpayconfigTest = (
+export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantNeonpayconfigTestMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1054,7 +1054,7 @@ export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantNeonpayconfigTe
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdateCheckoutconfigPayment_ById = (
+export const usePaymentConfigAdminApi_UpdateCheckoutconfigPayment_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1099,7 +1099,7 @@ export const usePaymentConfigAdminApi_UpdateCheckoutconfigPayment_ById = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdateXsollauiconfigPayment_ById = (
+export const usePaymentConfigAdminApi_UpdateXsollauiconfigPayment_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1142,7 +1142,7 @@ export const usePaymentConfigAdminApi_UpdateXsollauiconfigPayment_ById = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantCheckoutconfigTest = (
+export const usePaymentConfigAdminApi_CreatePaymentConfigMerchantCheckoutconfigTestMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1218,7 +1218,7 @@ export const usePaymentConfigAdminApi_GetPaymentConfigDomains = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdatePaymentConfigDomain = (
+export const usePaymentConfigAdminApi_UpdatePaymentConfigDomainMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1294,7 +1294,7 @@ export const usePaymentConfigAdminApi_GetAdyenconfigTestPayment_ById = (
  * }
  * ```
  */
-export const usePaymentConfigAdminApi_UpdateWxpayconfigCertPayment_ById = (
+export const usePaymentConfigAdminApi_UpdateWxpayconfigCertPayment_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PaymentMerchantConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { id: string; data: { file?: File } }>,

@@ -81,7 +81,7 @@ export const usePublicPlayerBinaryRecordApi_GetUsersMeBinaries = (
  * }
  * ```
  */
-export const usePublicPlayerBinaryRecordApi_CreateUserMeBinaryBulk = (
+export const usePublicPlayerBinaryRecordApi_CreateUserMeBinaryBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkGetPlayerBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkGetPlayerRecordsRequest }>,
@@ -120,7 +120,7 @@ export const usePublicPlayerBinaryRecordApi_CreateUserMeBinaryBulk = (
  * }
  * ```
  */
-export const usePublicPlayerBinaryRecordApi_CreateBinary_ByUserId = (
+export const usePublicPlayerBinaryRecordApi_CreateBinary_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -163,7 +163,7 @@ export const usePublicPlayerBinaryRecordApi_CreateBinary_ByUserId = (
  * }
  * ```
  */
-export const usePublicPlayerBinaryRecordApi_DeleteBinary_ByUserId_ByKey = (
+export const usePublicPlayerBinaryRecordApi_DeleteBinary_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; key: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -228,7 +228,7 @@ export const usePublicPlayerBinaryRecordApi_GetBinary_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePublicPlayerBinaryRecordApi_UpdateBinary_ByUserId_ByKey = (
+export const usePublicPlayerBinaryRecordApi_UpdateBinary_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -405,7 +405,7 @@ export const usePublicPlayerBinaryRecordApi_GetPublic_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePublicPlayerBinaryRecordApi_UpdateMetadata_ByUserId_ByKey = (
+export const usePublicPlayerBinaryRecordApi_UpdateMetadata_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -448,7 +448,7 @@ export const usePublicPlayerBinaryRecordApi_UpdateMetadata_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePublicPlayerBinaryRecordApi_CreatePresigned_ByUserId_ByKey = (
+export const usePublicPlayerBinaryRecordApi_CreatePresigned_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

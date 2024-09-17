@@ -31,7 +31,7 @@ export enum Key_Blocks {
  * }
  * ```
  */
-export const useBlocksApi_PatchSyncMeBlock = (
+export const useBlocksApi_PatchSyncMeBlockMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<NativeUserBlockResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: NativeUserBlockRequest[] }>,

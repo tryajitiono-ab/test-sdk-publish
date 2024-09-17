@@ -209,7 +209,7 @@ export const useDownloaderApi_GetUpdategameBuild_ByBuildId = (
  * }
  * ```
  */
-export const useDownloaderApi_CreateBlockUrl_ByBuildId = (
+export const useDownloaderApi_CreateBlockUrl_ByBuildIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BlockDownloadUrls, AxiosError<ApiError>, SdkSetConfigParam & { buildId: string; data: BlockDownloadUrlsRequest }>,

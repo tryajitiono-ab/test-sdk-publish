@@ -66,7 +66,7 @@ export const useInputValidationsAdminApi_GetInputValidations_v3 = (
  * }
  * ```
  */
-export const useInputValidationsAdminApi_UpdateInputValidation_v3 = (
+export const useInputValidationsAdminApi_UpdateInputValidationMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: InputValidationUpdatePayload[] }>,
@@ -101,7 +101,7 @@ export const useInputValidationsAdminApi_UpdateInputValidation_v3 = (
  * }
  * ```
  */
-export const useInputValidationsAdminApi_DeleteInputValidation_ByField_v3 = (
+export const useInputValidationsAdminApi_DeleteInputValidation_ByFieldMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { field: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

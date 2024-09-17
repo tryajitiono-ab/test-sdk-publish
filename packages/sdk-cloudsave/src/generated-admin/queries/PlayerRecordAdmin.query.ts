@@ -182,7 +182,7 @@ export const usePlayerRecordAdminApi_FetchBulkUser_ByKey = (
  * }
  * ```
  */
-export const usePlayerRecordAdminApi_UpdateBulkUser_ByKey = (
+export const usePlayerRecordAdminApi_UpdateBulkUser_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -258,7 +258,7 @@ export const usePlayerRecordAdminApi_FetchRecordBulk_ByUserId = (
  * }
  * ```
  */
-export const usePlayerRecordAdminApi_UpdateRecordBulk_ByUserId = (
+export const usePlayerRecordAdminApi_UpdateRecordBulk_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -301,7 +301,7 @@ export const usePlayerRecordAdminApi_UpdateRecordBulk_ByUserId = (
  * }
  * ```
  */
-export const usePlayerRecordAdminApi_DeleteRecord_ByUserId_ByKey = (
+export const usePlayerRecordAdminApi_DeleteRecord_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; key: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -366,7 +366,7 @@ export const usePlayerRecordAdminApi_GetRecord_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePlayerRecordAdminApi_CreateRecord_ByUserId_ByKey = (
+export const usePlayerRecordAdminApi_CreateRecord_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -409,7 +409,7 @@ export const usePlayerRecordAdminApi_CreateRecord_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePlayerRecordAdminApi_UpdateRecord_ByUserId_ByKey = (
+export const usePlayerRecordAdminApi_UpdateRecord_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -485,7 +485,7 @@ export const usePlayerRecordAdminApi_GetSize_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePlayerRecordAdminApi_DeletePublic_ByUserId_ByKey = (
+export const usePlayerRecordAdminApi_DeletePublic_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; key: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -550,7 +550,7 @@ export const usePlayerRecordAdminApi_GetPublic_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePlayerRecordAdminApi_CreatePublic_ByUserId_ByKey = (
+export const usePlayerRecordAdminApi_CreatePublic_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -593,7 +593,7 @@ export const usePlayerRecordAdminApi_CreatePublic_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePlayerRecordAdminApi_UpdatePublic_ByUserId_ByKey = (
+export const usePlayerRecordAdminApi_UpdatePublic_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

@@ -31,7 +31,7 @@ export enum Key_OAuth20Admin {
  * }
  * ```
  */
-export const useOAuth20AdminApi_UpdateRevokeOauth_ByUserId_v3 = (
+export const useOAuth20AdminApi_UpdateRevokeOauth_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

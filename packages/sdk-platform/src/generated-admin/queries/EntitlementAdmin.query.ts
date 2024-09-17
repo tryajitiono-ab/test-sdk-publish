@@ -131,7 +131,7 @@ export const useEntitlementAdminApi_GetEntitlements = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_CreateEntitlementGrant = (
+export const useEntitlementAdminApi_CreateEntitlementGrantMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkEntitlementGrantResult, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkEntitlementGrantRequest }>,
@@ -166,7 +166,7 @@ export const useEntitlementAdminApi_CreateEntitlementGrant = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_CreateEntitlementRevoke = (
+export const useEntitlementAdminApi_CreateEntitlementRevokeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkEntitlementRevokeResult, AxiosError<ApiError>, SdkSetConfigParam & { data: string[] }>,
@@ -315,7 +315,7 @@ export const useEntitlementAdminApi_GetEntitlements_ByUserId = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_CreateEntitlement_ByUserId = (
+export const useEntitlementAdminApi_CreateEntitlement_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -432,7 +432,7 @@ export const useEntitlementAdminApi_GetEntitlementsBySku_ByUserId = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_UpdateEntitlementRevoke_ByUserId = (
+export const useEntitlementAdminApi_UpdateEntitlementRevoke_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<BulkOperationResult, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: BulkOperationResult) => void
@@ -642,7 +642,7 @@ export const useEntitlementAdminApi_GetEntitlementConfig_ByPlatform = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_UpdateEntitlementConfig_ByPlatform = (
+export const useEntitlementAdminApi_UpdateEntitlementConfig_ByPlatformMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -685,7 +685,7 @@ export const useEntitlementAdminApi_UpdateEntitlementConfig_ByPlatform = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_UpdateEntitlementRevokeById_ByUserId = (
+export const useEntitlementAdminApi_UpdateEntitlementRevokeById_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -799,7 +799,7 @@ export const useEntitlementAdminApi_GetEntitlement_ByUserId_ByEntitlementId = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_UpdateEntitlement_ByUserId_ByEntitlementId = (
+export const useEntitlementAdminApi_UpdateEntitlement_ByUserId_ByEntitlementIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -917,7 +917,7 @@ export const useEntitlementAdminApi_GetEntitlementsOwnershipBySku_ByUserId = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_UpdateEntitlementConfigEntitlementOriginEnable = (
+export const useEntitlementAdminApi_UpdateEntitlementConfigEntitlementOriginEnableMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<EntitlementConfigInfo, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: EntitlementConfigInfo) => void
@@ -1058,7 +1058,7 @@ export const useEntitlementAdminApi_GetEntitlementsOwnershipByItemIds_ByUserId =
  * }
  * ```
  */
-export const useEntitlementAdminApi_UpdateSell_ByUserId_ByEntitlementId = (
+export const useEntitlementAdminApi_UpdateSell_ByUserId_ByEntitlementIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1101,7 +1101,7 @@ export const useEntitlementAdminApi_UpdateSell_ByUserId_ByEntitlementId = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_UpdateEnable_ByUserId_ByEntitlementId = (
+export const useEntitlementAdminApi_UpdateEnable_ByUserId_ByEntitlementIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<EntitlementInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; entitlementId: string }>,
@@ -1136,7 +1136,7 @@ export const useEntitlementAdminApi_UpdateEnable_ByUserId_ByEntitlementId = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_UpdateRevoke_ByUserId_ByEntitlementId = (
+export const useEntitlementAdminApi_UpdateRevoke_ByUserId_ByEntitlementIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1179,7 +1179,7 @@ export const useEntitlementAdminApi_UpdateRevoke_ByUserId_ByEntitlementId = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_UpdateDisable_ByUserId_ByEntitlementId = (
+export const useEntitlementAdminApi_UpdateDisable_ByUserId_ByEntitlementIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<EntitlementInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; entitlementId: string }>,
@@ -1248,7 +1248,7 @@ export const useEntitlementAdminApi_GetHistory_ByUserId_ByEntitlementId = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_UpdateDecrement_ByUserId_ByEntitlementId = (
+export const useEntitlementAdminApi_UpdateDecrement_ByUserId_ByEntitlementIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1292,7 +1292,7 @@ export const useEntitlementAdminApi_UpdateDecrement_ByUserId_ByEntitlementId = (
  * }
  * ```
  */
-export const useEntitlementAdminApi_UpdateRevokeByUseCount_ByUserId_ByEntitlementId = (
+export const useEntitlementAdminApi_UpdateRevokeByUseCount_ByUserId_ByEntitlementIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1335,7 +1335,7 @@ export const useEntitlementAdminApi_UpdateRevokeByUseCount_ByUserId_ByEntitlemen
  * }
  * ```
  */
-export const useEntitlementAdminApi_CreateRevokeByUseCount_ByUserId_ByEntitlementId = (
+export const useEntitlementAdminApi_CreateRevokeByUseCount_ByUserId_ByEntitlementIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

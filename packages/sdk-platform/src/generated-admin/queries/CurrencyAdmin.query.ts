@@ -71,7 +71,7 @@ export const useCurrencyAdminApi_GetCurrencies = (
  * }
  * ```
  */
-export const useCurrencyAdminApi_CreateCurrency = (
+export const useCurrencyAdminApi_CreateCurrencyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<CurrencyInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CurrencyCreate }>, 'mutationKey'>,
   callback?: (data: CurrencyInfo) => void
@@ -102,7 +102,7 @@ export const useCurrencyAdminApi_CreateCurrency = (
  * }
  * ```
  */
-export const useCurrencyAdminApi_DeleteCurrency_ByCurrencyCode = (
+export const useCurrencyAdminApi_DeleteCurrency_ByCurrencyCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<CurrencyInfo, AxiosError<ApiError>, SdkSetConfigParam & { currencyCode: string }>, 'mutationKey'>,
   callback?: (data: CurrencyInfo) => void
@@ -134,7 +134,7 @@ export const useCurrencyAdminApi_DeleteCurrency_ByCurrencyCode = (
  * }
  * ```
  */
-export const useCurrencyAdminApi_UpdateCurrency_ByCurrencyCode = (
+export const useCurrencyAdminApi_UpdateCurrency_ByCurrencyCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CurrencyInfo, AxiosError<ApiError>, SdkSetConfigParam & { currencyCode: string; data: CurrencyUpdate }>,

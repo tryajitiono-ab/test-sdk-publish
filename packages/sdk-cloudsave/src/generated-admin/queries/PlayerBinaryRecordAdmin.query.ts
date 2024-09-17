@@ -73,7 +73,7 @@ export const usePlayerBinaryRecordAdminApi_GetBinaries_ByUserId = (
  * }
  * ```
  */
-export const usePlayerBinaryRecordAdminApi_CreateBinary_ByUserId = (
+export const usePlayerBinaryRecordAdminApi_CreateBinary_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -116,7 +116,7 @@ export const usePlayerBinaryRecordAdminApi_CreateBinary_ByUserId = (
  * }
  * ```
  */
-export const usePlayerBinaryRecordAdminApi_DeleteBinary_ByUserId_ByKey = (
+export const usePlayerBinaryRecordAdminApi_DeleteBinary_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; key: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -181,7 +181,7 @@ export const usePlayerBinaryRecordAdminApi_GetBinary_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePlayerBinaryRecordAdminApi_UpdateBinary_ByUserId_ByKey = (
+export const usePlayerBinaryRecordAdminApi_UpdateBinary_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -224,7 +224,7 @@ export const usePlayerBinaryRecordAdminApi_UpdateBinary_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePlayerBinaryRecordAdminApi_UpdateMetadata_ByUserId_ByKey = (
+export const usePlayerBinaryRecordAdminApi_UpdateMetadata_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -267,7 +267,7 @@ export const usePlayerBinaryRecordAdminApi_UpdateMetadata_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePlayerBinaryRecordAdminApi_CreatePresigned_ByUserId_ByKey = (
+export const usePlayerBinaryRecordAdminApi_CreatePresigned_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

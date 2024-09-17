@@ -39,7 +39,7 @@ export enum Key_ArtifactsAdmin {
  * }
  * ```
  */
-export const useArtifactsAdminApi_DeleteArtifact = (
+export const useArtifactsAdminApi_DeleteArtifactMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -160,7 +160,7 @@ export const useArtifactsAdminApi_GetArtifactsUsage = (
  * }
  * ```
  */
-export const useArtifactsAdminApi_DeleteArtifact_ByArtifactId = (
+export const useArtifactsAdminApi_DeleteArtifact_ByArtifactIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { artifactID: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -258,7 +258,7 @@ export const useArtifactsAdminApi_GetArtifactsSamplingRules_ByFleetId = (
  * }
  * ```
  */
-export const useArtifactsAdminApi_UpdateArtifactsSamplingRule_ByFleetId = (
+export const useArtifactsAdminApi_UpdateArtifactsSamplingRule_ByFleetIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

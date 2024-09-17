@@ -271,7 +271,7 @@ export const useLeaderboardDataApi_GetArchived_ByLeaderboardCode = (
  * }
  * ```
  */
-export const useLeaderboardDataApi_DeleteUser_ByLeaderboardCode_ByUserId = (
+export const useLeaderboardDataApi_DeleteUser_ByLeaderboardCode_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode: string; userId: string }>,

@@ -107,7 +107,7 @@ export const usePublicContentLegacyApi_GetContents = (
  * }
  * ```
  */
-export const usePublicContentLegacyApi_CreateContentBulk = (
+export const usePublicContentLegacyApi_CreateContentBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ContentDownloadResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicGetContentBulkRequest }>,
@@ -207,7 +207,7 @@ export const usePublicContentLegacyApi_GetContents_ByUserId = (
  * }
  * ```
  */
-export const usePublicContentLegacyApi_CreateContentSharecodeBulk = (
+export const usePublicContentLegacyApi_CreateContentSharecodeBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ContentDownloadResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: GetContentBulkByShareCodesRequest }>,
@@ -363,7 +363,7 @@ export const usePublicContentLegacyApi_GetContentSharecode_ByShareCode = (
  * }
  * ```
  */
-export const usePublicContentLegacyApi_CreateContent_ByUserId_ByChannelId = (
+export const usePublicContentLegacyApi_CreateContent_ByUserId_ByChannelIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -406,7 +406,7 @@ export const usePublicContentLegacyApi_CreateContent_ByUserId_ByChannelId = (
  * }
  * ```
  */
-export const usePublicContentLegacyApi_CreateContentS3_ByUserId_ByChannelId = (
+export const usePublicContentLegacyApi_CreateContentS3_ByUserId_ByChannelIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -449,7 +449,7 @@ export const usePublicContentLegacyApi_CreateContentS3_ByUserId_ByChannelId = (
  * }
  * ```
  */
-export const usePublicContentLegacyApi_CreateScreenshot_ByUserId_ByContentId = (
+export const usePublicContentLegacyApi_CreateScreenshot_ByUserId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -492,7 +492,7 @@ export const usePublicContentLegacyApi_CreateScreenshot_ByUserId_ByContentId = (
  * }
  * ```
  */
-export const usePublicContentLegacyApi_UpdateScreenshot_ByUserId_ByContentId = (
+export const usePublicContentLegacyApi_UpdateScreenshot_ByUserId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -535,7 +535,7 @@ export const usePublicContentLegacyApi_UpdateScreenshot_ByUserId_ByContentId = (
  * }
  * ```
  */
-export const usePublicContentLegacyApi_DeleteContent_ByUserId_ByChannelId_ByContentId = (
+export const usePublicContentLegacyApi_DeleteContent_ByUserId_ByChannelId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; channelId: string; contentId: string }>,
@@ -571,7 +571,7 @@ export const usePublicContentLegacyApi_DeleteContent_ByUserId_ByChannelId_ByCont
  * }
  * ```
  */
-export const usePublicContentLegacyApi_UpdateContent_ByUserId_ByChannelId_ByContentId = (
+export const usePublicContentLegacyApi_UpdateContent_ByUserId_ByChannelId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -616,7 +616,7 @@ export const usePublicContentLegacyApi_UpdateContent_ByUserId_ByChannelId_ByCont
  * }
  * ```
  */
-export const usePublicContentLegacyApi_UpdateContentS3_ByUserId_ByChannelId_ByContentId = (
+export const usePublicContentLegacyApi_UpdateContentS3_ByUserId_ByChannelId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -661,7 +661,7 @@ export const usePublicContentLegacyApi_UpdateContentS3_ByUserId_ByChannelId_ByCo
  * }
  * ```
  */
-export const usePublicContentLegacyApi_DeleteScreenshot_ByUserId_ByContentId_ByScreenshotId = (
+export const usePublicContentLegacyApi_DeleteScreenshot_ByUserId_ByContentId_ByScreenshotIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; contentId: string; screenshotId: string }>,
@@ -696,7 +696,7 @@ export const usePublicContentLegacyApi_DeleteScreenshot_ByUserId_ByContentId_ByS
  * }
  * ```
  */
-export const usePublicContentLegacyApi_PatchSharecode_ByUserId_ByChannelId_ByContentId = (
+export const usePublicContentLegacyApi_PatchSharecode_ByUserId_ByChannelId_ByContentIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -741,7 +741,7 @@ export const usePublicContentLegacyApi_PatchSharecode_ByUserId_ByChannelId_ByCon
  * }
  * ```
  */
-export const usePublicContentLegacyApi_DeleteContentSharecode_ByUserId_ByChannelId_ByShareCode = (
+export const usePublicContentLegacyApi_DeleteContentSharecode_ByUserId_ByChannelId_ByShareCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; channelId: string; shareCode: string }>,
@@ -776,7 +776,7 @@ export const usePublicContentLegacyApi_DeleteContentSharecode_ByUserId_ByChannel
  * }
  * ```
  */
-export const usePublicContentLegacyApi_UpdateContentS3Sharecode_ByUserId_ByChannelId_ByShareCode = (
+export const usePublicContentLegacyApi_UpdateContentS3Sharecode_ByUserId_ByChannelId_ByShareCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

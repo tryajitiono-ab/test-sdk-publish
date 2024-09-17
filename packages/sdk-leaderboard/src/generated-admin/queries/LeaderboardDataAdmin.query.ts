@@ -44,7 +44,7 @@ export enum Key_LeaderboardDataAdmin {
  * }
  * ```
  */
-export const useLeaderboardDataAdminApi_DeleteUser_ByUserId = (
+export const useLeaderboardDataAdminApi_DeleteUser_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; queryParams: { leaderboardCode: string[] } }>,
@@ -112,7 +112,7 @@ export const useLeaderboardDataAdminApi_GetLeaderboardsArchived = (
  * }
  * ```
  */
-export const useLeaderboardDataAdminApi_CreateLeaderboardArchived = (
+export const useLeaderboardDataAdminApi_CreateLeaderboardArchivedMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ArchiveLeaderboardReq }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -210,7 +210,7 @@ export const useLeaderboardDataAdminApi_GetMonth_ByLeaderboardCode = (
  * }
  * ```
  */
-export const useLeaderboardDataAdminApi_DeleteReset_ByLeaderboardCode = (
+export const useLeaderboardDataAdminApi_DeleteReset_ByLeaderboardCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -341,7 +341,7 @@ export const useLeaderboardDataAdminApi_GetAlltime_ByLeaderboardCode = (
  * }
  * ```
  */
-export const useLeaderboardDataAdminApi_DeleteUser_ByLeaderboardCode_ByUserId = (
+export const useLeaderboardDataAdminApi_DeleteUser_ByLeaderboardCode_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { leaderboardCode: string; userId: string }>,
@@ -410,7 +410,7 @@ export const useLeaderboardDataAdminApi_GetUser_ByLeaderboardCode_ByUserId = (
  * }
  * ```
  */
-export const useLeaderboardDataAdminApi_UpdateUser_ByLeaderboardCode_ByUserId = (
+export const useLeaderboardDataAdminApi_UpdateUser_ByLeaderboardCode_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

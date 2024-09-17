@@ -87,7 +87,7 @@ export enum Key_UsersV4Admin {
  * }
  * ```
  */
-export const useUsersV4AdminApi_PatchUserMe_v4 = (
+export const useUsersV4AdminApi_PatchUserMeMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: UserUpdateRequestV3 }>,
@@ -119,7 +119,7 @@ export const useUsersV4AdminApi_PatchUserMe_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_CreateUserInvite_v4 = (
+export const useUsersV4AdminApi_CreateUserInviteMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<InviteUserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: InviteUserRequestV4 }>,
@@ -154,7 +154,7 @@ export const useUsersV4AdminApi_CreateUserInvite_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_CreateUserUserInvite_v4 = (
+export const useUsersV4AdminApi_CreateUserUserInviteMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<InviteUserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: InviteUserRequestV4 }>,
@@ -250,7 +250,7 @@ export const useUsersV4AdminApi_GetUsersMeMfaFactor_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_PostUserMeMfaFactor_v4 = (
+export const useUsersV4AdminApi_PostUserMeMfaFactorMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: { factor: string | null } }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -312,7 +312,7 @@ export const useUsersV4AdminApi_GetUsersMeMfaStatus_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_CreateUserMeMfaStatus_v4 = (
+export const useUsersV4AdminApi_CreateUserMeMfaStatusMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<UserMfaStatusResponseV4, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: UserMfaStatusResponseV4) => void
@@ -376,7 +376,7 @@ export const useUsersV4AdminApi_GetUsersMeMfaBackupCode_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_CreateUserMeMfaBackupCode_v4 = (
+export const useUsersV4AdminApi_CreateUserMeMfaBackupCodeMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<BackupCodesResponseV4, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: BackupCodesResponseV4) => void
@@ -408,7 +408,7 @@ export const useUsersV4AdminApi_CreateUserMeMfaBackupCode_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_PostUserMeMfaEmailCode_v4 = (
+export const useUsersV4AdminApi_PostUserMeMfaEmailCodeMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -483,7 +483,7 @@ export const useUsersV4AdminApi_GetUsersMeMfaBackupCodes_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_CreateUserMeMfaBackupCode_admin_v4 = (
+export const useUsersV4AdminApi_CreateUserMeMfaBackupCode_adminMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { queryParams?: { languageTag?: string | null } }>,
@@ -518,7 +518,7 @@ export const useUsersV4AdminApi_CreateUserMeMfaBackupCode_admin_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_PostUserMeMfaEmailEnable_v4 = (
+export const useUsersV4AdminApi_PostUserMeMfaEmailEnableMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: { code: string | null } }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -550,7 +550,7 @@ export const useUsersV4AdminApi_PostUserMeMfaEmailEnable_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_CreateUserMeMfaEmailDisable_v4 = (
+export const useUsersV4AdminApi_CreateUserMeMfaEmailDisableMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DisableMfaRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -582,7 +582,7 @@ export const useUsersV4AdminApi_CreateUserMeMfaEmailDisable_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_CreateUser_v4 = (
+export const useUsersV4AdminApi_CreateUserMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateUserResponseV4, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateUserRequestV4 }>,
@@ -614,7 +614,7 @@ export const useUsersV4AdminApi_CreateUser_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_PostUserMeMfaChallengeVerify_v4 = (
+export const useUsersV4AdminApi_PostUserMeMfaChallengeVerifyMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -657,7 +657,7 @@ export const useUsersV4AdminApi_PostUserMeMfaChallengeVerify_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_CreateUserMeMfaAuthenticatorKey_v4 = (
+export const useUsersV4AdminApi_CreateUserMeMfaAuthenticatorKeyMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<AuthenticatorKeyResponseV4, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: AuthenticatorKeyResponseV4) => void
@@ -690,7 +690,7 @@ export const useUsersV4AdminApi_CreateUserMeMfaAuthenticatorKey_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_CreateUserMeMfaBackupCodeEnable_v4 = (
+export const useUsersV4AdminApi_CreateUserMeMfaBackupCodeEnableMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<BackupCodesResponseV4, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: BackupCodesResponseV4) => void
@@ -722,7 +722,7 @@ export const useUsersV4AdminApi_CreateUserMeMfaBackupCodeEnable_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_DeleteUserMeMfaBackupCodeDisable_v4 = (
+export const useUsersV4AdminApi_DeleteUserMeMfaBackupCodeDisableMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DisableMfaRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -754,7 +754,7 @@ export const useUsersV4AdminApi_DeleteUserMeMfaBackupCodeDisable_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_CreateUserMeMfaBackupCodeEnable_admin_v4 = (
+export const useUsersV4AdminApi_CreateUserMeMfaBackupCodeEnable_adminMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { queryParams?: { languageTag?: string | null } }>,
@@ -823,7 +823,7 @@ export const useUsersV4AdminApi_GetUsersMeMfaBackupCodeDownload_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_CreateTestUser_v4 = (
+export const useUsersV4AdminApi_CreateTestUserMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateTestUsersResponseV4, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTestUsersRequestV4 }>,
@@ -857,7 +857,7 @@ export const useUsersV4AdminApi_CreateTestUser_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_PostUserMeMfaAuthenticatorEnable_v4 = (
+export const useUsersV4AdminApi_PostUserMeMfaAuthenticatorEnableMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: { code: string | null } }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -889,7 +889,7 @@ export const useUsersV4AdminApi_PostUserMeMfaAuthenticatorEnable_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_DeleteUserMeMfaAuthenticatorDisable_v4 = (
+export const useUsersV4AdminApi_DeleteUserMeMfaAuthenticatorDisableMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DisableMfaRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -921,7 +921,7 @@ export const useUsersV4AdminApi_DeleteUserMeMfaAuthenticatorDisable_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_UpdateUser_ByUserId_v4 = (
+export const useUsersV4AdminApi_UpdateUser_ByUserIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserUpdateRequestV3 }>,
@@ -1021,7 +1021,7 @@ export const useUsersV4AdminApi_FetchUserBulkValidate_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_UpdateEmail_ByUserId_v4 = (
+export const useUsersV4AdminApi_UpdateEmail_ByUserIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: EmailUpdateRequestV4 }>,
@@ -1056,7 +1056,7 @@ export const useUsersV4AdminApi_UpdateEmail_ByUserId_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_DeleteRole_ByUserId_v4 = (
+export const useUsersV4AdminApi_DeleteRole_ByUserIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: RemoveUserRoleV4Request }>,
@@ -1123,7 +1123,7 @@ export const useUsersV4AdminApi_GetRoles_ByUserId_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_UpdateRole_ByUserId_v4 = (
+export const useUsersV4AdminApi_UpdateRole_ByUserIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ListUserRolesV4Response, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: AddUserRoleV4Request }>,
@@ -1158,7 +1158,7 @@ export const useUsersV4AdminApi_UpdateRole_ByUserId_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_UpdateRole_ByUserId_ByNS_v4 = (
+export const useUsersV4AdminApi_UpdateRole_ByUserId_ByNSMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ListUserRolesV4Response, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: AddUserRoleV4Request }>,
@@ -1193,7 +1193,7 @@ export const useUsersV4AdminApi_UpdateRole_ByUserId_ByNS_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_PatchUserBulkAccountType_v4 = (
+export const useUsersV4AdminApi_PatchUserBulkAccountTypeMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkAccountTypeUpdateRequestV4 }>,
@@ -1261,7 +1261,7 @@ export const useUsersV4AdminApi_GetInvitationHistoriesUsers_v4 = (
  * }
  * ```
  */
-export const useUsersV4AdminApi_DeleteMfaDisable_ByUserId_v4 = (
+export const useUsersV4AdminApi_DeleteMfaDisable_ByUserIdMutation_v4 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

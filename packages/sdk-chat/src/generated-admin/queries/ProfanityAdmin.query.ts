@@ -84,7 +84,7 @@ export const useProfanityAdminApi_GetProfanityDictionary = (
  * }
  * ```
  */
-export const useProfanityAdminApi_CreateProfanityDictionary = (
+export const useProfanityAdminApi_CreateProfanityDictionaryMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<Dictionary, AxiosError<ApiError>, SdkSetConfigParam & { data: DictionaryInsertRequest }>,
@@ -119,7 +119,7 @@ export const useProfanityAdminApi_CreateProfanityDictionary = (
  * }
  * ```
  */
-export const useProfanityAdminApi_DeleteProfanityDictionary_ById = (
+export const useProfanityAdminApi_DeleteProfanityDictionary_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { id: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -151,7 +151,7 @@ export const useProfanityAdminApi_DeleteProfanityDictionary_ById = (
  * }
  * ```
  */
-export const useProfanityAdminApi_UpdateProfanityDictionary_ById = (
+export const useProfanityAdminApi_UpdateProfanityDictionary_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<Dictionary, AxiosError<ApiError>, SdkSetConfigParam & { id: string; data: DictionaryUpdateRequest }>,
@@ -186,7 +186,7 @@ export const useProfanityAdminApi_UpdateProfanityDictionary_ById = (
  * }
  * ```
  */
-export const useProfanityAdminApi_CreateProfanityDictionaryBulk = (
+export const useProfanityAdminApi_CreateProfanityDictionaryBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<Dictionary, AxiosError<ApiError>, SdkSetConfigParam & { data: DictionaryInsertBulkRequest }>,
@@ -287,7 +287,7 @@ export const useProfanityAdminApi_GetProfanityDictionaryExport = (
  * }
  * ```
  */
-export const useProfanityAdminApi_CreateProfanityDictionaryImport = (
+export const useProfanityAdminApi_CreateProfanityDictionaryImportMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

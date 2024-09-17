@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { AdminAdminApi } from './generated-admin/AdminAdminApi.js'
 import { ConfigAdminApi } from './generated-admin/ConfigAdminApi.js'
 import { DeploymentConfigAdminApi } from './generated-admin/DeploymentConfigAdminApi.js'
@@ -20,6 +21,8 @@ import { PublicApi } from './generated-public/PublicApi.js'
 import { ServerApi } from './generated-public/ServerApi.js'
 import { SessionApi } from './generated-public/SessionApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   ImageConfigAdminApi,
   ConfigAdminApi,
@@ -32,7 +35,13 @@ const apis = {
   ServerApi,
   SessionApi,
   PodConfigApi,
-  DeploymentConfigApi
+  DeploymentConfigApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const DsmController = apis

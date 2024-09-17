@@ -97,7 +97,7 @@ export const useConfigAdminApi_GetConfigLog = (
  * }
  * ```
  */
-export const useConfigAdminApi_PatchConfigLog = (
+export const useConfigAdminApi_PatchConfigLogMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<Configuration, AxiosError<ApiError>, SdkSetConfigParam & { data: Configuration }>, 'mutationKey'>,
   callback?: (data: Configuration) => void
@@ -156,7 +156,7 @@ export const useConfigAdminApi_GetConfig_ByNamespace = (
  * }
  * ```
  */
-export const useConfigAdminApi_UpdateConfig_ByNamespace = (
+export const useConfigAdminApi_UpdateConfig_ByNamespaceMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<ConfigReq, AxiosError<ApiError>, SdkSetConfigParam & { data: ConfigReq }>, 'mutationKey'>,
   callback?: (data: ConfigReq) => void
@@ -217,7 +217,7 @@ export const useConfigAdminApi_GetConfigExport = (
  * }
  * ```
  */
-export const useConfigAdminApi_UpdateConfigImport = (
+export const useConfigAdminApi_UpdateConfigImportMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ImportConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: { file?: File } }>,

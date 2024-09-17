@@ -36,7 +36,7 @@ export enum Key_ReleaseNoteAdmin {
  * }
  * ```
  */
-export const useReleaseNoteAdminApi_PatchReleasenoteUploadCommit_ByHash = (
+export const useReleaseNoteAdminApi_PatchReleasenoteUploadCommit_ByHashMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash: string }>, 'mutationKey'>,
   callback?: (data: BlockManifest) => void
@@ -68,7 +68,7 @@ export const useReleaseNoteAdminApi_PatchReleasenoteUploadCommit_ByHash = (
  * }
  * ```
  */
-export const useReleaseNoteAdminApi_CreateReleasenoteUploadStart_ByUploaderId = (
+export const useReleaseNoteAdminApi_CreateReleasenoteUploadStart_ByUploaderIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { uploaderId: string; data: BinaryUpload }>,
@@ -103,7 +103,7 @@ export const useReleaseNoteAdminApi_CreateReleasenoteUploadStart_ByUploaderId = 
  * }
  * ```
  */
-export const useReleaseNoteAdminApi_CreateReleasenoteManifestSave_ByUploadMode = (
+export const useReleaseNoteAdminApi_CreateReleasenoteManifestSave_ByUploadModeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { uploadMode: string; data: ReleaseNoteManifest }>,

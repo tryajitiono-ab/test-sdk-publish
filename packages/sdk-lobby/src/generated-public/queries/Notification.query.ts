@@ -105,7 +105,7 @@ export const useNotificationApi_GetNotificationTopics = (
  * }
  * ```
  */
-export const useNotificationApi_CreateNotificationTopic = (
+export const useNotificationApi_CreateNotificationTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateTopicRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -136,7 +136,7 @@ export const useNotificationApi_CreateNotificationTopic = (
  * }
  * ```
  */
-export const useNotificationApi_DeleteNotificationTopic_ByTopic = (
+export const useNotificationApi_DeleteNotificationTopic_ByTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -201,7 +201,7 @@ export const useNotificationApi_GetNotificationTopic_ByTopic = (
  * }
  * ```
  */
-export const useNotificationApi_UpdateNotificationTopic_ByTopic = (
+export const useNotificationApi_UpdateNotificationTopic_ByTopicMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { topic: string; data: UpdateTopicRequest }>,
@@ -236,7 +236,7 @@ export const useNotificationApi_UpdateNotificationTopic_ByTopic = (
  * }
  * ```
  */
-export const useNotificationApi_CreateFreeformNotification_ByUserId = (
+export const useNotificationApi_CreateFreeformNotification_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: FreeFormNotificationRequest }>,
@@ -271,7 +271,7 @@ export const useNotificationApi_CreateFreeformNotification_ByUserId = (
  * }
  * ```
  */
-export const useNotificationApi_CreateTemplatedNotification_ByUserId = (
+export const useNotificationApi_CreateTemplatedNotification_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: NotificationWithTemplateRequest }>,

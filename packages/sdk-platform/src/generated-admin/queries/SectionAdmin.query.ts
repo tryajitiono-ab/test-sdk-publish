@@ -77,7 +77,7 @@ export const useSectionAdminApi_GetSections = (
  * }
  * ```
  */
-export const useSectionAdminApi_CreateSection = (
+export const useSectionAdminApi_CreateSectionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -120,7 +120,7 @@ export const useSectionAdminApi_CreateSection = (
  * }
  * ```
  */
-export const useSectionAdminApi_DeleteSection_BySectionId = (
+export const useSectionAdminApi_DeleteSection_BySectionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sectionId: string; queryParams: { storeId: string | null } }>,
@@ -188,7 +188,7 @@ export const useSectionAdminApi_GetSection_BySectionId = (
  * }
  * ```
  */
-export const useSectionAdminApi_UpdateSection_BySectionId = (
+export const useSectionAdminApi_UpdateSection_BySectionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -234,7 +234,7 @@ export const useSectionAdminApi_UpdateSection_BySectionId = (
  * }
  * ```
  */
-export const useSectionAdminApi_DeleteSectionPurgeExpired = (
+export const useSectionAdminApi_DeleteSectionPurgeExpiredMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { queryParams: { storeId: string | null } }>,

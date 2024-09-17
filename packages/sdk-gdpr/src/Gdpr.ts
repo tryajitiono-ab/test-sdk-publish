@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { ConfigurationAdminApi } from './generated-admin/ConfigurationAdminApi.js'
 import { DataDeletionAdminApi } from './generated-admin/DataDeletionAdminApi.js'
 import { DataRetrievalAdminApi } from './generated-admin/DataRetrievalAdminApi.js'
@@ -17,6 +18,8 @@ import { DataDeletionS2SApi } from './generated-public/DataDeletionS2SApi.js'
 import { DataRetrievalApi } from './generated-public/DataRetrievalApi.js'
 import { DataRetrievalS2SApi } from './generated-public/DataRetrievalS2SApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   DataRetrievalAdminApi,
   DataDeletionAdminApi,
@@ -26,7 +29,13 @@ const apis = {
   DataDeletionApi,
   DataRetrievalS2SApi,
   DataDeletionS2SApi,
-  DataRetrievalApi
+  DataRetrievalApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Gdpr = apis

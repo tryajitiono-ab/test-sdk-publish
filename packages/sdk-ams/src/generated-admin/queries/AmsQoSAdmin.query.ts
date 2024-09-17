@@ -62,7 +62,7 @@ export const useAmsQoSAdminApi_GetQos = (
  * }
  * ```
  */
-export const useAmsQoSAdminApi_PatchQo_ByRegion = (
+export const useAmsQoSAdminApi_PatchQo_ByRegionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { region: string; data: UpdateServerRequest }>,

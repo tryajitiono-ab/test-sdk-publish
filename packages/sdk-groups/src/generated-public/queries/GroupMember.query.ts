@@ -58,7 +58,7 @@ export enum Key_GroupMember {
  * }
  * ```
  */
-export const useGroupMemberApi_CreateLeave = (
+export const useGroupMemberApi_CreateLeaveMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<LeaveGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: LeaveGroupResponseV1) => void
@@ -151,7 +151,7 @@ export const useGroupMemberApi_GetUsersMeGroups_v2 = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateKick_ByUserId = (
+export const useGroupMemberApi_CreateKick_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<KickGroupMemberResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>,
@@ -185,7 +185,7 @@ export const useGroupMemberApi_CreateKick_ByUserId = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateJoin_ByGroupId = (
+export const useGroupMemberApi_CreateJoin_ByGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<JoinGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string }>, 'mutationKey'>,
   callback?: (data: JoinGroupResponseV1) => void
@@ -216,7 +216,7 @@ export const useGroupMemberApi_CreateJoin_ByGroupId = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateInvite_ByUserId = (
+export const useGroupMemberApi_CreateInvite_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<UserInvitationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: UserInvitationResponseV1) => void
@@ -247,7 +247,7 @@ export const useGroupMemberApi_CreateInvite_ByUserId = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateJoin_ByGroupId_v2 = (
+export const useGroupMemberApi_CreateJoin_ByGroupIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<JoinGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string }>, 'mutationKey'>,
   callback?: (data: JoinGroupResponseV1) => void
@@ -278,7 +278,7 @@ export const useGroupMemberApi_CreateJoin_ByGroupId_v2 = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateLeave_ByGroupId_v2 = (
+export const useGroupMemberApi_CreateLeave_ByGroupIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<LeaveGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string }>, 'mutationKey'>,
   callback?: (data: LeaveGroupResponseV1) => void
@@ -342,7 +342,7 @@ export const useGroupMemberApi_GetMembers_ByGroupId = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateJoinAccept_ByUserId = (
+export const useGroupMemberApi_CreateJoinAccept_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MemberRequestGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>,
@@ -376,7 +376,7 @@ export const useGroupMemberApi_CreateJoinAccept_ByUserId = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateJoinReject_ByUserId = (
+export const useGroupMemberApi_CreateJoinReject_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MemberRequestGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>,
@@ -410,7 +410,7 @@ export const useGroupMemberApi_CreateJoinReject_ByUserId = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateJoinCancel_ByGroupId = (
+export const useGroupMemberApi_CreateJoinCancel_ByGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MemberRequestGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string }>,
@@ -444,7 +444,7 @@ export const useGroupMemberApi_CreateJoinCancel_ByGroupId = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateInviteAccept_ByGroupId = (
+export const useGroupMemberApi_CreateInviteAccept_ByGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MemberRequestGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string }>,
@@ -479,7 +479,7 @@ export const useGroupMemberApi_CreateInviteAccept_ByGroupId = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateInviteReject_ByGroupId = (
+export const useGroupMemberApi_CreateInviteReject_ByGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MemberRequestGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string }>,
@@ -514,7 +514,7 @@ export const useGroupMemberApi_CreateInviteReject_ByGroupId = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateInviteAccept_ByGroupId_v2 = (
+export const useGroupMemberApi_CreateInviteAccept_ByGroupIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MemberRequestGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string }>,
@@ -549,7 +549,7 @@ export const useGroupMemberApi_CreateInviteAccept_ByGroupId_v2 = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateInviteReject_ByGroupId_v2 = (
+export const useGroupMemberApi_CreateInviteReject_ByGroupIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MemberRequestGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string }>,
@@ -584,7 +584,7 @@ export const useGroupMemberApi_CreateInviteReject_ByGroupId_v2 = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateKick_ByUserId_ByGroupId_v2 = (
+export const useGroupMemberApi_CreateKick_ByUserId_ByGroupIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<KickGroupMemberResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; groupId: string }>,
@@ -619,7 +619,7 @@ export const useGroupMemberApi_CreateKick_ByUserId_ByGroupId_v2 = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateInvite_ByUserId_ByGroupId_v2 = (
+export const useGroupMemberApi_CreateInvite_ByUserId_ByGroupIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserInvitationResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; groupId: string }>,
@@ -687,7 +687,7 @@ export const useGroupMemberApi_GetStatus_ByUserId_ByGroupId_v2 = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateJoinAccept_ByUserId_ByGroupId_v2 = (
+export const useGroupMemberApi_CreateJoinAccept_ByUserId_ByGroupIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MemberRequestGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; groupId: string }>,
@@ -722,7 +722,7 @@ export const useGroupMemberApi_CreateJoinAccept_ByUserId_ByGroupId_v2 = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateJoinReject_ByUserId_ByGroupId_v2 = (
+export const useGroupMemberApi_CreateJoinReject_ByUserId_ByGroupIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MemberRequestGroupResponseV1, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; groupId: string }>,
@@ -757,7 +757,7 @@ export const useGroupMemberApi_CreateJoinReject_ByUserId_ByGroupId_v2 = (
  * }
  * ```
  */
-export const useGroupMemberApi_CreateInviteCancel_ByUserId_ByGroupId_v2 = (
+export const useGroupMemberApi_CreateInviteCancel_ByUserId_ByGroupIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CancelInvitationGroupResponseV2, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; groupId: string }>,

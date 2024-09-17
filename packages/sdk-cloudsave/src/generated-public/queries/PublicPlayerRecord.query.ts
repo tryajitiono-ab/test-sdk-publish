@@ -74,7 +74,7 @@ export const usePublicPlayerRecordApi_GetUsersMeRecords = (
  * }
  * ```
  */
-export const usePublicPlayerRecordApi_CreateUserMeRecordBulk = (
+export const usePublicPlayerRecordApi_CreateUserMeRecordBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkGetPlayerRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkGetPlayerRecordsRequest }>,
@@ -109,7 +109,7 @@ export const usePublicPlayerRecordApi_CreateUserMeRecordBulk = (
  * }
  * ```
  */
-export const usePublicPlayerRecordApi_DeleteRecord_ByUserId_ByKey = (
+export const usePublicPlayerRecordApi_DeleteRecord_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; key: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -174,7 +174,7 @@ export const usePublicPlayerRecordApi_GetRecord_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePublicPlayerRecordApi_CreateRecord_ByUserId_ByKey = (
+export const usePublicPlayerRecordApi_CreateRecord_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -217,7 +217,7 @@ export const usePublicPlayerRecordApi_CreateRecord_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePublicPlayerRecordApi_UpdateRecord_ByUserId_ByKey = (
+export const usePublicPlayerRecordApi_UpdateRecord_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -293,7 +293,7 @@ export const usePublicPlayerRecordApi_GetRecordsPublic_ByUserId = (
  * }
  * ```
  */
-export const usePublicPlayerRecordApi_DeletePublicMeUser_ByKey = (
+export const usePublicPlayerRecordApi_DeletePublicMeUser_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -424,7 +424,7 @@ export const usePublicPlayerRecordApi_GetPublic_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePublicPlayerRecordApi_CreatePublic_ByUserId_ByKey = (
+export const usePublicPlayerRecordApi_CreatePublic_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -467,7 +467,7 @@ export const usePublicPlayerRecordApi_CreatePublic_ByUserId_ByKey = (
  * }
  * ```
  */
-export const usePublicPlayerRecordApi_UpdatePublic_ByUserId_ByKey = (
+export const usePublicPlayerRecordApi_UpdatePublic_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

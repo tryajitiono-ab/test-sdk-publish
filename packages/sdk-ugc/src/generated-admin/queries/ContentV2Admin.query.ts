@@ -280,7 +280,7 @@ export const useContentV2AdminApi_GetContents_ByChannelId_v2 = (
  * }
  * ```
  */
-export const useContentV2AdminApi_CreateContent_ByChannelId_v2 = (
+export const useContentV2AdminApi_CreateContent_ByChannelIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -389,7 +389,7 @@ export const useContentV2AdminApi_GetContentSharecode_ByShareCode_v2 = (
  * }
  * ```
  */
-export const useContentV2AdminApi_CreateScreenshot_ByContentId_v2 = (
+export const useContentV2AdminApi_CreateScreenshot_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -432,7 +432,7 @@ export const useContentV2AdminApi_CreateScreenshot_ByContentId_v2 = (
  * }
  * ```
  */
-export const useContentV2AdminApi_UpdateScreenshot_ByContentId_v2 = (
+export const useContentV2AdminApi_UpdateScreenshot_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -475,7 +475,7 @@ export const useContentV2AdminApi_UpdateScreenshot_ByContentId_v2 = (
  * }
  * ```
  */
-export const useContentV2AdminApi_UpdateHide_ByUserId_ByContentId_v2 = (
+export const useContentV2AdminApi_UpdateHide_ByUserId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -518,7 +518,7 @@ export const useContentV2AdminApi_UpdateHide_ByUserId_ByContentId_v2 = (
  * }
  * ```
  */
-export const useContentV2AdminApi_DeleteContent_ByChannelId_ByContentId_v2 = (
+export const useContentV2AdminApi_DeleteContent_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelId: string; contentId: string }>,
@@ -553,7 +553,7 @@ export const useContentV2AdminApi_DeleteContent_ByChannelId_ByContentId_v2 = (
  * }
  * ```
  */
-export const useContentV2AdminApi_PatchContent_ByChannelId_ByContentId_v2 = (
+export const useContentV2AdminApi_PatchContent_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -596,7 +596,7 @@ export const useContentV2AdminApi_PatchContent_ByChannelId_ByContentId_v2 = (
  * }
  * ```
  */
-export const useContentV2AdminApi_UpdateRollback_ByContentId_ByVersionId_v2 = (
+export const useContentV2AdminApi_UpdateRollback_ByContentId_ByVersionIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ContentDownloadResponse, AxiosError<ApiError>, SdkSetConfigParam & { contentId: string; versionId: string }>,
@@ -620,7 +620,7 @@ export const useContentV2AdminApi_UpdateRollback_ByContentId_ByVersionId_v2 = (
   })
 }
 
-export const useContentV2AdminApi_CreateCopy_ByChannelId_ByContentId_v2 = (
+export const useContentV2AdminApi_CreateCopy_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -663,7 +663,7 @@ export const useContentV2AdminApi_CreateCopy_ByChannelId_ByContentId_v2 = (
  * }
  * ```
  */
-export const useContentV2AdminApi_DeleteScreenshot_ByContentId_ByScreenshotId_v2 = (
+export const useContentV2AdminApi_DeleteScreenshot_ByContentId_ByScreenshotIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { contentId: string; screenshotId: string }>,
@@ -698,7 +698,7 @@ export const useContentV2AdminApi_DeleteScreenshot_ByContentId_ByScreenshotId_v2
  * }
  * ```
  */
-export const useContentV2AdminApi_PatchUploadUrl_ByChannelId_ByContentId_v2 = (
+export const useContentV2AdminApi_PatchUploadUrl_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -741,7 +741,7 @@ export const useContentV2AdminApi_PatchUploadUrl_ByChannelId_ByContentId_v2 = (
  * }
  * ```
  */
-export const useContentV2AdminApi_PatchFileLocation_ByChannelId_ByContentId_v2 = (
+export const useContentV2AdminApi_PatchFileLocation_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -784,7 +784,7 @@ export const useContentV2AdminApi_PatchFileLocation_ByChannelId_ByContentId_v2 =
  * }
  * ```
  */
-export const useContentV2AdminApi_DeleteContent_ByUserId_ByChannelId_ByContentId_v2 = (
+export const useContentV2AdminApi_DeleteContent_ByUserId_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; channelId: string; contentId: string }>,
@@ -819,7 +819,7 @@ export const useContentV2AdminApi_DeleteContent_ByUserId_ByChannelId_ByContentId
  * }
  * ```
  */
-export const useContentV2AdminApi_PatchContent_ByUserId_ByChannelId_ByContentId_v2 = (
+export const useContentV2AdminApi_PatchContent_ByUserId_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -864,7 +864,7 @@ export const useContentV2AdminApi_PatchContent_ByUserId_ByChannelId_ByContentId_
  * }
  * ```
  */
-export const useContentV2AdminApi_PatchUploadUrl_ByUserId_ByChannelId_ByContentId_v2 = (
+export const useContentV2AdminApi_PatchUploadUrl_ByUserId_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -909,7 +909,7 @@ export const useContentV2AdminApi_PatchUploadUrl_ByUserId_ByChannelId_ByContentI
  * }
  * ```
  */
-export const useContentV2AdminApi_DeleteContentSharecode_ByUserId_ByChannelId_ByShareCode_v2 = (
+export const useContentV2AdminApi_DeleteContentSharecode_ByUserId_ByChannelId_ByShareCodeMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; channelId: string; shareCode: string }>,
@@ -944,7 +944,7 @@ export const useContentV2AdminApi_DeleteContentSharecode_ByUserId_ByChannelId_By
  * }
  * ```
  */
-export const useContentV2AdminApi_PatchFileLocation_ByUserId_ByChannelId_ByContentId_v2 = (
+export const useContentV2AdminApi_PatchFileLocation_ByUserId_ByChannelId_ByContentIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -989,7 +989,7 @@ export const useContentV2AdminApi_PatchFileLocation_ByUserId_ByChannelId_ByConte
  * }
  * ```
  */
-export const useContentV2AdminApi_UpdateContentS3Sharecode_ByUserId_ByChannelId_ByShareCode_v2 = (
+export const useContentV2AdminApi_UpdateContentS3Sharecode_ByUserId_ByChannelId_ByShareCodeMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

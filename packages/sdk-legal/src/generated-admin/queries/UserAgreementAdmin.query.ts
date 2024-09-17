@@ -31,7 +31,7 @@ export enum Key_UserAgreementAdmin {
  * }
  * ```
  */
-export const useUserAgreementAdminApi_CreateAgreementPolicy_ByUserId = (
+export const useUserAgreementAdminApi_CreateAgreementPolicy_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

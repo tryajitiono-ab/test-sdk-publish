@@ -64,7 +64,7 @@ export const usePaymentAccountApi_GetPaymentAccounts_ByUserId = (
  * }
  * ```
  */
-export const usePaymentAccountApi_DeletePaymentAccount_ByUserId_ByType_ById = (
+export const usePaymentAccountApi_DeletePaymentAccount_ByUserId_ByType_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; type: string; id: string }>,

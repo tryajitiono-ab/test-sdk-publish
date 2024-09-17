@@ -114,7 +114,7 @@ export const useGlobalAchievementsAdminApi_GetGlobalAchievements_ByUserId = (
  * }
  * ```
  */
-export const useGlobalAchievementsAdminApi_DeleteResetGlobal_ByAchievementCode = (
+export const useGlobalAchievementsAdminApi_DeleteResetGlobal_ByAchievementCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { achievementCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

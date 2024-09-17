@@ -214,7 +214,7 @@ export const useUsersApi_GetUsersMe_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUser = (
+export const useUsersApi_CreateUserMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: UserCreateRequest }>,
@@ -360,7 +360,7 @@ export const useUsersApi_GetUsersSearch = (
  * }
  * ```
  */
-export const useUsersApi_DeleteUser_ByUserId = (
+export const useUsersApi_DeleteUser_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -421,7 +421,7 @@ export const useUsersApi_GetUser_ByUserId = (
  * }
  * ```
  */
-export const useUsersApi_UpdateUser_ByUserId = (
+export const useUsersApi_UpdateUser_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserUpdateRequest }>,
@@ -490,7 +490,7 @@ export const useUsersApi_GetUsersByLoginId = (
  * }
  * ```
  */
-export const useUsersApi_CreateUser_v2 = (
+export const useUsersApi_CreateUserMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserCreateResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: UserCreateRequest }>,
@@ -561,7 +561,7 @@ export const useUsersApi_GetUsers_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUser_v3 = (
+export const useUsersApi_CreateUserMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserCreateResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: UserCreateRequestV3 }>,
@@ -593,7 +593,7 @@ export const useUsersApi_CreateUser_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserMeVerifyLinkRequest_v3 = (
+export const useUsersApi_CreateUserMeVerifyLinkRequestMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: SendVerificationLinkRequest }>,
@@ -628,7 +628,7 @@ export const useUsersApi_CreateUserMeVerifyLinkRequest_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateBan_ByUserId = (
+export const useUsersApi_CreateBan_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserBanResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: BanCreateRequest }>,
@@ -663,7 +663,7 @@ export const useUsersApi_CreateBan_ByUserId = (
  * }
  * ```
  */
-export const useUsersApi_PatchUserMe_v3 = (
+export const useUsersApi_PatchUserMeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicUserUpdateRequestV3 }>,
@@ -695,7 +695,7 @@ export const useUsersApi_PatchUserMe_v3 = (
  * }
  * ```
  */
-export const useUsersApi_UpdateUserMe_v3 = (
+export const useUsersApi_UpdateUserMeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { data: PublicUserUpdateRequestV3 }>,
@@ -792,7 +792,7 @@ export const useUsersApi_GetBans_ByUserId = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserResetPassword = (
+export const useUsersApi_CreateUserResetPasswordMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ResetPasswordRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -824,7 +824,7 @@ export const useUsersApi_CreateUserResetPassword = (
  * }
  * ```
  */
-export const useUsersApi_UpdateRole_ByUserId = (
+export const useUsersApi_UpdateRole_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: string[] }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -857,7 +857,7 @@ export const useUsersApi_UpdateRole_ByUserId = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserForgotPassword = (
+export const useUsersApi_CreateUserForgotPasswordMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: SendVerificationCodeRequest }>,
@@ -925,7 +925,7 @@ export const useUsersApi_GetUsersListByLoginIds = (
  * }
  * ```
  */
-export const useUsersApi_UpdateEnable_ByUserId = (
+export const useUsersApi_UpdateEnable_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -956,7 +956,7 @@ export const useUsersApi_UpdateEnable_ByUserId = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserReset_v3 = (
+export const useUsersApi_CreateUserResetMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ResetPasswordRequestV3 }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -986,7 +986,7 @@ export const useUsersApi_CreateUserReset_v3 = (
  * }
  * ```
  */
-export const useUsersApi_UpdateDisable_ByUserId = (
+export const useUsersApi_UpdateDisable_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: DisableUserRequest }>,
@@ -1054,7 +1054,7 @@ export const useUsersApi_GetUsersByPlatformUserId = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserForgot_v3 = (
+export const useUsersApi_CreateUserForgotMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ForgotPasswordRequestV3 }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1084,7 +1084,7 @@ export const useUsersApi_CreateUserForgot_v3 = (
  * }
  * ```
  */
-export const useUsersApi_UpdatePassword_ByUserId = (
+export const useUsersApi_UpdatePassword_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserPasswordUpdateRequest }>,
@@ -1120,7 +1120,7 @@ export const useUsersApi_UpdatePassword_ByUserId = (
  * }
  * ```
  */
-export const useUsersApi_PostCrosslink_ByUserId = (
+export const useUsersApi_PostCrosslink_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -1263,7 +1263,7 @@ export const useUsersApi_GetUser_ByUserId_v2 = (
  * }
  * ```
  */
-export const useUsersApi_PatchUser_ByUserId_v2 = (
+export const useUsersApi_PatchUser_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserUpdateRequest }>,
@@ -1329,7 +1329,7 @@ export const useUsersApi_GetUser_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserMeHeadlesLinkWithProgression_v3 = (
+export const useUsersApi_CreateUserMeHeadlesLinkWithProgressionMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: LinkHeadlessAccountRequest }>,
@@ -1364,7 +1364,7 @@ export const useUsersApi_CreateUserMeHeadlesLinkWithProgression_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserPlatform_v3 = (
+export const useUsersApi_CreateUserPlatformMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UsersPlatformInfosResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: UsersPlatformInfosRequestV3 }>,
@@ -1397,7 +1397,7 @@ export const useUsersApi_CreateUserPlatform_v3 = (
  * }
  * ```
  */
-export const useUsersApi_DeleteInformation_ByUserId = (
+export const useUsersApi_DeleteInformation_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1462,7 +1462,7 @@ export const useUsersApi_GetInformation_ByUserId = (
  * }
  * ```
  */
-export const useUsersApi_UpdatePermission_ByUserId = (
+export const useUsersApi_UpdatePermission_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: Permissions }>,
@@ -1497,7 +1497,7 @@ export const useUsersApi_UpdatePermission_ByUserId = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserBulkBasic_v3 = (
+export const useUsersApi_CreateUserBulkBasicMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ListBulkUserResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: UserIDsRequest }>,
@@ -1532,7 +1532,7 @@ export const useUsersApi_CreateUserBulkBasic_v3 = (
  * }
  * ```
  */
-export const useUsersApi_UpdateVerification_ByUserId = (
+export const useUsersApi_UpdateVerification_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserVerificationRequest }>,
@@ -1567,7 +1567,7 @@ export const useUsersApi_UpdateVerification_ByUserId = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserCodeVerify_v3 = (
+export const useUsersApi_CreateUserCodeVerifyMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: VerifyRegistrationCode }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1598,7 +1598,7 @@ export const useUsersApi_CreateUserCodeVerify_v3 = (
  * }
  * ```
  */
-export const useUsersApi_UpdateUserMePassword_v3 = (
+export const useUsersApi_UpdateUserMePasswordMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserPasswordUpdateV3Request }>,
@@ -1664,7 +1664,7 @@ export const useUsersApi_GetUsersAvailability_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserCodeRequest_v3 = (
+export const useUsersApi_CreateUserCodeRequestMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: SendRegisterVerificationCodeRequest }>,
@@ -1699,7 +1699,7 @@ export const useUsersApi_CreateUserCodeRequest_v3 = (
  * }
  * ```
  */
-export const useUsersApi_DeleteRole_ByUserId_ByRoleId = (
+export const useUsersApi_DeleteRole_ByUserId_ByRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; roleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1732,7 +1732,7 @@ export const useUsersApi_DeleteRole_ByUserId_ByRoleId = (
  * }
  * ```
  */
-export const useUsersApi_UpdateRole_ByUserId_ByRoleId = (
+export const useUsersApi_UpdateRole_ByUserId_ByRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; roleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1799,7 +1799,7 @@ export const useUsersApi_GetBans_ByUserId_v2 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserResetPassword_v2 = (
+export const useUsersApi_CreateUserResetPasswordMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ResetPasswordRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1867,7 +1867,7 @@ export const useUsersApi_GetBans_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserForgotPassword_v2 = (
+export const useUsersApi_CreateUserForgotPasswordMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: SendVerificationCodeRequest }>,
@@ -1901,7 +1901,7 @@ export const useUsersApi_CreateUserForgotPassword_v2 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserMeCodeVerify_v3 = (
+export const useUsersApi_CreateUserMeCodeVerifyMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: UserVerificationRequestV3 }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -1967,7 +1967,7 @@ export const useUsersApi_GetLoginsHistories_ByUserId = (
  * }
  * ```
  */
-export const useUsersApi_UpdateVerificationcode_ByUserId = (
+export const useUsersApi_UpdateVerificationcode_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: SendVerificationCodeRequest }>,
@@ -2002,7 +2002,7 @@ export const useUsersApi_UpdateVerificationcode_ByUserId = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserMeCodeRequest_v3 = (
+export const useUsersApi_CreateUserMeCodeRequestMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: SendVerificationCodeRequestV3 }>,
@@ -2036,7 +2036,7 @@ export const useUsersApi_CreateUserMeCodeRequest_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserInputValidation_v3 = (
+export const useUsersApi_CreateUserInputValidationMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserInputValidationResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: UserInputValidationRequest }>,
@@ -2071,7 +2071,7 @@ export const useUsersApi_CreateUserInputValidation_v3 = (
  * }
  * ```
  */
-export const useUsersApi_UpdatePassword_ByUserId_v2 = (
+export const useUsersApi_UpdatePassword_ByUserIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UserPasswordUpdateRequest }>,
@@ -2106,7 +2106,7 @@ export const useUsersApi_UpdatePassword_ByUserId_v2 = (
  * }
  * ```
  */
-export const useUsersApi_PostValidate_ByUserId_v3 = (
+export const useUsersApi_PostValidate_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: { password: string | null } }>,
@@ -2142,7 +2142,7 @@ export const useUsersApi_PostValidate_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_UpdateEnable_ByUserId_ByBanId = (
+export const useUsersApi_UpdateEnable_ByUserId_ByBanIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserBanResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; banId: string }>,
@@ -2245,7 +2245,7 @@ export const useUsersApi_GetPublisher_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserMeHeadlesVerify_v3 = (
+export const useUsersApi_CreateUserMeHeadlesVerifyMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -2291,7 +2291,7 @@ export const useUsersApi_CreateUserMeHeadlesVerify_v3 = (
  * }
  * ```
  */
-export const useUsersApi_UpdateDisable_ByUserId_ByBanId = (
+export const useUsersApi_UpdateDisable_ByUserId_ByBanIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserBanResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; banId: string }>,
@@ -2359,7 +2359,7 @@ export const useUsersApi_GetInformation_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_UpdateUpgradeHeadlessAccount_ByUserId = (
+export const useUsersApi_UpdateUpgradeHeadlessAccount_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: UpgradeHeadlessAccountRequest }>,
@@ -2426,7 +2426,7 @@ export const useUsersApi_GetUserInvite_ByInvitationId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserInvite_ByInvitationId_v3 = (
+export const useUsersApi_CreateUserInvite_ByInvitationIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserCreateResponseV3, AxiosError<ApiError>, SdkSetConfigParam & { invitationId: string; data: UserCreateRequestV3 }>,
@@ -2466,7 +2466,7 @@ export const useUsersApi_CreateUserInvite_ByInvitationId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUser_ByPlatformId_v3 = (
+export const useUsersApi_CreateUser_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -2524,7 +2524,7 @@ export const useUsersApi_CreateUser_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreatePlatformLink_ByUserId_v3 = (
+export const useUsersApi_CreatePlatformLink_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: LinkPlatformAccountRequest }>,
@@ -2559,7 +2559,7 @@ export const useUsersApi_CreatePlatformLink_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserMeHeadlesCodeVerify_v3 = (
+export const useUsersApi_CreateUserMeHeadlesCodeVerifyMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -2635,7 +2635,7 @@ export const useUsersApi_GetLoginsHistories_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_DeleteUserMePlatform_ByPlatformId_v3 = (
+export const useUsersApi_DeleteUserMePlatform_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platformId: string; data: UnlinkUserPlatformRequest }>,
@@ -2670,7 +2670,7 @@ export const useUsersApi_DeleteUserMePlatform_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_PostUserMePlatform_ByPlatformId_v3 = (
+export const useUsersApi_PostUserMePlatform_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -2716,7 +2716,7 @@ export const useUsersApi_PostUserMePlatform_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_PostLink_ByUserId_ByPlatformId = (
+export const useUsersApi_PostLink_ByUserId_ByPlatformIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -2890,7 +2890,7 @@ export const useUsersApi_GetAsyncStatus_ByRequestId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_PostUnlink_ByUserId_ByPlatformId = (
+export const useUsersApi_PostUnlink_ByUserId_ByPlatformIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -2936,7 +2936,7 @@ export const useUsersApi_PostUnlink_ByUserId_ByPlatformId = (
  * }
  * ```
  */
-export const useUsersApi_DeleteAllMeUser_ByPlatformId_v3 = (
+export const useUsersApi_DeleteAllMeUser_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platformId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -2968,7 +2968,7 @@ export const useUsersApi_DeleteAllMeUser_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_DeletePermission_ByUserId_ByResource_ByAction = (
+export const useUsersApi_DeletePermission_ByUserId_ByResource_ByActionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; resource: string; action: number }>,
@@ -3004,7 +3004,7 @@ export const useUsersApi_DeletePermission_ByUserId_ByResource_ByAction = (
  * }
  * ```
  */
-export const useUsersApi_UpdatePermission_ByUserId_ByResource_ByAction = (
+export const useUsersApi_UpdatePermission_ByUserId_ByResource_ByActionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -3049,7 +3049,7 @@ export const useUsersApi_UpdatePermission_ByUserId_ByResource_ByAction = (
  * }
  * ```
  */
-export const useUsersApi_PostForceMeUser_ByPlatformId_v3 = (
+export const useUsersApi_PostForceMeUser_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platformId: string; data: { ticket: string | null } }>,
@@ -3187,7 +3187,7 @@ export const useUsersApi_GetPlatformJustice_ByUserId_ByTargetNamespace = (
  * }
  * ```
  */
-export const useUsersApi_UpdatePlatformJustice_ByUserId_ByTargetNamespace = (
+export const useUsersApi_UpdatePlatformJustice_ByUserId_ByTargetNamespaceMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -3264,7 +3264,7 @@ export const useUsersApi_GetWebLinkMeUsers_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_DeleteLink_ByUserId_ByPlatformId_v2 = (
+export const useUsersApi_DeleteLink_ByUserId_ByPlatformIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -3310,7 +3310,7 @@ export const useUsersApi_DeleteLink_ByUserId_ByPlatformId_v2 = (
  * }
  * ```
  */
-export const useUsersApi_PostLink_ByUserId_ByPlatformId_v2 = (
+export const useUsersApi_PostLink_ByUserId_ByPlatformIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -3353,7 +3353,7 @@ export const useUsersApi_PostLink_ByUserId_ByPlatformId_v2 = (
  * }
  * ```
  */
-export const useUsersApi_CreatePlatformLinkWithProgression_ByUserId_v3 = (
+export const useUsersApi_CreatePlatformLinkWithProgression_ByUserIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -3396,7 +3396,7 @@ export const useUsersApi_CreatePlatformLinkWithProgression_ByUserId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_CreateUserMePlatformJustice_ByTargetNamespace_v3 = (
+export const useUsersApi_CreateUserMePlatformJustice_ByTargetNamespaceMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateJusticeUserResponse, AxiosError<ApiError>, SdkSetConfigParam & { targetNamespace: string }>,
@@ -3465,7 +3465,7 @@ export const useUsersApi_GetUser_ByPlatformId_ByPlatformUserId_v3 = (
  * }
  * ```
  */
-export const useUsersApi_UpdateUpgradeHeadlessAccountWithVerificationCode_ByUserId = (
+export const useUsersApi_UpdateUpgradeHeadlessAccountWithVerificationCode_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -3508,7 +3508,7 @@ export const useUsersApi_UpdateUpgradeHeadlessAccountWithVerificationCode_ByUser
  * }
  * ```
  */
-export const useUsersApi_PostWebLinkProcesMeUser_ByPlatformId_v3 = (
+export const useUsersApi_PostWebLinkProcesMeUser_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

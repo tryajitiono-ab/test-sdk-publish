@@ -85,7 +85,7 @@ export const useRolesApi_GetRoles = (
  * }
  * ```
  */
-export const useRolesApi_CreateRole = (
+export const useRolesApi_CreateRoleMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<Role, AxiosError<ApiError>, SdkSetConfigParam & { data: RoleCreateRequest }>, 'mutationKey'>,
   callback?: (data: Role) => void
@@ -115,7 +115,7 @@ export const useRolesApi_CreateRole = (
  * }
  * ```
  */
-export const useRolesApi_DeleteRole_ByRoleId = (
+export const useRolesApi_DeleteRole_ByRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -176,7 +176,7 @@ export const useRolesApi_GetRole_ByRoleId = (
  * }
  * ```
  */
-export const useRolesApi_UpdateRole_ByRoleId = (
+export const useRolesApi_UpdateRole_ByRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RoleResponse, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: RoleUpdateRequest }>,
@@ -244,7 +244,7 @@ export const useRolesApi_GetRoles_v3 = (
  * }
  * ```
  */
-export const useRolesApi_DeleteAdmin_ByRoleId = (
+export const useRolesApi_DeleteAdmin_ByRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -307,7 +307,7 @@ export const useRolesApi_GetAdmin_ByRoleId = (
  * }
  * ```
  */
-export const useRolesApi_UpdateAdmin_ByRoleId = (
+export const useRolesApi_UpdateAdmin_ByRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -339,7 +339,7 @@ export const useRolesApi_UpdateAdmin_ByRoleId = (
  * }
  * ```
  */
-export const useRolesApi_DeleteMember_ByRoleId = (
+export const useRolesApi_DeleteMember_ByRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: RoleMembersRequest }>,
@@ -406,7 +406,7 @@ export const useRolesApi_GetMembers_ByRoleId = (
  * }
  * ```
  */
-export const useRolesApi_UpdateMember_ByRoleId = (
+export const useRolesApi_UpdateMember_ByRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: RoleMembersRequest }>,
@@ -442,7 +442,7 @@ export const useRolesApi_UpdateMember_ByRoleId = (
  * }
  * ```
  */
-export const useRolesApi_DeleteManager_ByRoleId = (
+export const useRolesApi_DeleteManager_ByRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: RoleManagersRequest }>,
@@ -511,7 +511,7 @@ export const useRolesApi_GetManagers_ByRoleId = (
  * }
  * ```
  */
-export const useRolesApi_UpdateManager_ByRoleId = (
+export const useRolesApi_UpdateManager_ByRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: RoleManagersRequest }>,
@@ -577,7 +577,7 @@ export const useRolesApi_GetRole_ByRoleId_v3 = (
  * }
  * ```
  */
-export const useRolesApi_UpdatePermission_ByRoleId = (
+export const useRolesApi_UpdatePermission_ByRoleIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; data: Permissions }>,
@@ -613,7 +613,7 @@ export const useRolesApi_UpdatePermission_ByRoleId = (
  * }
  * ```
  */
-export const useRolesApi_DeletePermission_ByRoleId_ByResource_ByAction = (
+export const useRolesApi_DeletePermission_ByRoleId_ByResource_ByActionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { roleId: string; resource: string; action: number }>,
@@ -649,7 +649,7 @@ export const useRolesApi_DeletePermission_ByRoleId_ByResource_ByAction = (
  * }
  * ```
  */
-export const useRolesApi_UpdatePermission_ByRoleId_ByResource_ByAction = (
+export const useRolesApi_UpdatePermission_ByRoleId_ByResource_ByActionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

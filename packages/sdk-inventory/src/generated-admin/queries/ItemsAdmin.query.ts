@@ -45,7 +45,7 @@ export enum Key_ItemsAdmin {
  * }
  * ```
  */
-export const useItemsAdminApi_CreateItem_ByUserId = (
+export const useItemsAdminApi_CreateItem_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ItemResp, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: SaveItemReq }>,
@@ -80,7 +80,7 @@ export const useItemsAdminApi_CreateItem_ByUserId = (
  * }
  * ```
  */
-export const useItemsAdminApi_CreateItemBulk_ByUserId = (
+export const useItemsAdminApi_CreateItemBulk_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkSaveItemRespArray, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: SaveItemReq[] }>,
@@ -157,7 +157,7 @@ export const useItemsAdminApi_GetItems_ByInventoryId = (
  * }
  * ```
  */
-export const useItemsAdminApi_UpdateItemEntitlementSync_ByUserId = (
+export const useItemsAdminApi_UpdateItemEntitlementSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -189,7 +189,7 @@ export const useItemsAdminApi_UpdateItemEntitlementSync_ByUserId = (
  * }
  * ```
  */
-export const useItemsAdminApi_DeleteItem_ByUserId_ByInventoryId = (
+export const useItemsAdminApi_DeleteItem_ByUserId_ByInventoryIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -232,7 +232,7 @@ export const useItemsAdminApi_DeleteItem_ByUserId_ByInventoryId = (
  * }
  * ```
  */
-export const useItemsAdminApi_CreateItem_ByUserId_ByInventoryId = (
+export const useItemsAdminApi_CreateItem_ByUserId_ByInventoryIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -275,7 +275,7 @@ export const useItemsAdminApi_CreateItem_ByUserId_ByInventoryId = (
  * }
  * ```
  */
-export const useItemsAdminApi_UpdateItem_ByUserId_ByInventoryId = (
+export const useItemsAdminApi_UpdateItem_ByUserId_ByInventoryIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -318,7 +318,7 @@ export const useItemsAdminApi_UpdateItem_ByUserId_ByInventoryId = (
  * }
  * ```
  */
-export const useItemsAdminApi_CreateConsume_ByUserId_ByInventoryId = (
+export const useItemsAdminApi_CreateConsume_ByUserId_ByInventoryIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ItemResp, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; inventoryId: string; data: ConsumeItemReq }>,
@@ -353,7 +353,7 @@ export const useItemsAdminApi_CreateConsume_ByUserId_ByInventoryId = (
  * }
  * ```
  */
-export const useItemsAdminApi_CreateItemBulk_ByUserId_ByInventoryId = (
+export const useItemsAdminApi_CreateItemBulk_ByUserId_ByInventoryIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

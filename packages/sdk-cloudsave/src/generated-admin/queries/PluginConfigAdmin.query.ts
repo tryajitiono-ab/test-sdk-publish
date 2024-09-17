@@ -32,7 +32,7 @@ export enum Key_PluginConfigAdmin {
  * }
  * ```
  */
-export const usePluginConfigAdminApi_DeletePlugin = (
+export const usePluginConfigAdminApi_DeletePluginMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -91,7 +91,7 @@ export const usePluginConfigAdminApi_GetPlugins = (
  * }
  * ```
  */
-export const usePluginConfigAdminApi_PatchPlugin = (
+export const usePluginConfigAdminApi_PatchPluginMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<PluginResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: PluginRequest }>, 'mutationKey'>,
   callback?: (data: PluginResponse) => void
@@ -122,7 +122,7 @@ export const usePluginConfigAdminApi_PatchPlugin = (
  * }
  * ```
  */
-export const usePluginConfigAdminApi_CreatePlugin = (
+export const usePluginConfigAdminApi_CreatePluginMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<PluginResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: PluginRequest }>, 'mutationKey'>,
   callback?: (data: PluginResponse) => void

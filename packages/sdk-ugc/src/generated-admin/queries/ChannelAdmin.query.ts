@@ -69,7 +69,7 @@ export const useChannelAdminApi_GetChannels = (
  * }
  * ```
  */
-export const useChannelAdminApi_CreateChannel = (
+export const useChannelAdminApi_CreateChannelMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ChannelRequest }>, 'mutationKey'>,
   callback?: (data: ChannelResponse) => void
@@ -98,7 +98,7 @@ export const useChannelAdminApi_CreateChannel = (
  * }
  * ```
  */
-export const useChannelAdminApi_DeleteChannel_ByChannelId = (
+export const useChannelAdminApi_DeleteChannel_ByChannelIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -129,7 +129,7 @@ export const useChannelAdminApi_DeleteChannel_ByChannelId = (
  * }
  * ```
  */
-export const useChannelAdminApi_UpdateChannel_ByChannelId = (
+export const useChannelAdminApi_UpdateChannel_ByChannelIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { channelId: string; data: UpdateChannelRequest }>,
@@ -197,7 +197,7 @@ export const useChannelAdminApi_GetChannels_ByUserId = (
  * }
  * ```
  */
-export const useChannelAdminApi_DeleteChannel_ByUserId_ByChannelId = (
+export const useChannelAdminApi_DeleteChannel_ByUserId_ByChannelIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; channelId: string }>,
@@ -232,7 +232,7 @@ export const useChannelAdminApi_DeleteChannel_ByUserId_ByChannelId = (
  * }
  * ```
  */
-export const useChannelAdminApi_UpdateChannel_ByUserId_ByChannelId = (
+export const useChannelAdminApi_UpdateChannel_ByUserId_ByChannelIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

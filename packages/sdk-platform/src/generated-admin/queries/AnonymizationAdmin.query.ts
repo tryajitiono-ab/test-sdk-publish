@@ -36,7 +36,7 @@ export enum Key_AnonymizationAdmin {
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteAnonymizationOrder_ByUserId = (
+export const useAnonymizationAdminApi_DeleteAnonymizationOrder_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -68,7 +68,7 @@ export const useAnonymizationAdminApi_DeleteAnonymizationOrder_ByUserId = (
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteAnonymizationPayment_ByUserId = (
+export const useAnonymizationAdminApi_DeleteAnonymizationPayment_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -100,7 +100,7 @@ export const useAnonymizationAdminApi_DeleteAnonymizationPayment_ByUserId = (
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteAnonymizationWallet_ByUserId = (
+export const useAnonymizationAdminApi_DeleteAnonymizationWallet_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -132,7 +132,7 @@ export const useAnonymizationAdminApi_DeleteAnonymizationWallet_ByUserId = (
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteAnonymizationCampaign_ByUserId = (
+export const useAnonymizationAdminApi_DeleteAnonymizationCampaign_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -164,7 +164,7 @@ export const useAnonymizationAdminApi_DeleteAnonymizationCampaign_ByUserId = (
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteAnonymizationRevocation_ByUserId = (
+export const useAnonymizationAdminApi_DeleteAnonymizationRevocation_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -196,7 +196,7 @@ export const useAnonymizationAdminApi_DeleteAnonymizationRevocation_ByUserId = (
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteAnonymizationFulfillment_ByUserId = (
+export const useAnonymizationAdminApi_DeleteAnonymizationFulfillment_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -228,7 +228,7 @@ export const useAnonymizationAdminApi_DeleteAnonymizationFulfillment_ByUserId = 
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteAnonymizationEntitlement_ByUserId = (
+export const useAnonymizationAdminApi_DeleteAnonymizationEntitlement_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -260,7 +260,7 @@ export const useAnonymizationAdminApi_DeleteAnonymizationEntitlement_ByUserId = 
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteAnonymizationIntegration_ByUserId = (
+export const useAnonymizationAdminApi_DeleteAnonymizationIntegration_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -292,7 +292,7 @@ export const useAnonymizationAdminApi_DeleteAnonymizationIntegration_ByUserId = 
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteAnonymizationSubscription_ByUserId = (
+export const useAnonymizationAdminApi_DeleteAnonymizationSubscription_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

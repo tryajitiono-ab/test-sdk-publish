@@ -50,7 +50,7 @@ export enum Key_ServicePluginConfigAdmin {
  * }
  * ```
  */
-export const useServicePluginConfigAdminApi_DeleteConfigServicePlugin = (
+export const useServicePluginConfigAdminApi_DeleteConfigServicePluginMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -117,7 +117,7 @@ export const useServicePluginConfigAdminApi_GetConfigsServicePlugin = (
  * }
  * ```
  */
-export const useServicePluginConfigAdminApi_UpdateConfigServicePlugin = (
+export const useServicePluginConfigAdminApi_UpdateConfigServicePluginMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ServicePluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: ServicePluginConfigUpdate }>,
@@ -152,7 +152,7 @@ export const useServicePluginConfigAdminApi_UpdateConfigServicePlugin = (
  * }
  * ```
  */
-export const useServicePluginConfigAdminApi_DeleteCatalogPluginLootbox = (
+export const useServicePluginConfigAdminApi_DeleteCatalogPluginLootboxMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -217,7 +217,7 @@ export const useServicePluginConfigAdminApi_GetCatalogPluginsLootbox = (
  * }
  * ```
  */
-export const useServicePluginConfigAdminApi_UpdateCatalogPluginLootbox = (
+export const useServicePluginConfigAdminApi_UpdateCatalogPluginLootboxMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<LootBoxPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: LootBoxPluginConfigUpdate }>,
@@ -252,7 +252,7 @@ export const useServicePluginConfigAdminApi_UpdateCatalogPluginLootbox = (
  * }
  * ```
  */
-export const useServicePluginConfigAdminApi_DeleteCatalogPluginSection = (
+export const useServicePluginConfigAdminApi_DeleteCatalogPluginSectionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -317,7 +317,7 @@ export const useServicePluginConfigAdminApi_GetCatalogPluginsSection = (
  * }
  * ```
  */
-export const useServicePluginConfigAdminApi_UpdateCatalogPluginSection = (
+export const useServicePluginConfigAdminApi_UpdateCatalogPluginSectionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SectionPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: SectionPluginConfigUpdate }>,
@@ -352,7 +352,7 @@ export const useServicePluginConfigAdminApi_UpdateCatalogPluginSection = (
  * }
  * ```
  */
-export const useServicePluginConfigAdminApi_DeleteRevocationPluginRevocation = (
+export const useServicePluginConfigAdminApi_DeleteRevocationPluginRevocationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -418,7 +418,7 @@ export const useServicePluginConfigAdminApi_GetRevocationPluginsRevocation = (
  * }
  * ```
  */
-export const useServicePluginConfigAdminApi_UpdateRevocationPluginRevocation = (
+export const useServicePluginConfigAdminApi_UpdateRevocationPluginRevocationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RevocationPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: RevocationPluginConfigUpdate }>,
@@ -487,7 +487,7 @@ export const useServicePluginConfigAdminApi_GetCatalogPluginsLootboxGrpcInfo = (
  * }
  * ```
  */
-export const useServicePluginConfigAdminApi_UpdateCatalogPluginLootboxCustomConfigCert = (
+export const useServicePluginConfigAdminApi_UpdateCatalogPluginLootboxCustomConfigCertMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<LootBoxPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: { file?: File } }>,
@@ -522,7 +522,7 @@ export const useServicePluginConfigAdminApi_UpdateCatalogPluginLootboxCustomConf
  * }
  * ```
  */
-export const useServicePluginConfigAdminApi_UpdateCatalogPluginSectionCustomConfigCert = (
+export const useServicePluginConfigAdminApi_UpdateCatalogPluginSectionCustomConfigCertMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SectionPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: { file?: File } }>,
@@ -557,7 +557,7 @@ export const useServicePluginConfigAdminApi_UpdateCatalogPluginSectionCustomConf
  * }
  * ```
  */
-export const useServicePluginConfigAdminApi_UpdateRevocationPluginRevocationRevocationCustomConfigCert = (
+export const useServicePluginConfigAdminApi_UpdateRevocationPluginRevocationRevocationCustomConfigCertMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RevocationPluginConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: { file?: File } }>,

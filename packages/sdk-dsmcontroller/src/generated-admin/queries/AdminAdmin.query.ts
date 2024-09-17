@@ -84,7 +84,7 @@ export const useAdminAdminApi_GetWorkers = (
  * }
  * ```
  */
-export const useAdminAdminApi_CreateWorker = (
+export const useAdminAdminApi_CreateWorkerMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<WorkerConfig, AxiosError<ApiError>, SdkSetConfigParam & { data: WorkerConfigRequest }>, 'mutationKey'>,
   callback?: (data: WorkerConfig) => void
@@ -113,7 +113,7 @@ export const useAdminAdminApi_CreateWorker = (
  * }
  * ```
  */
-export const useAdminAdminApi_UpdateWorker = (
+export const useAdminAdminApi_UpdateWorkerMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: WorkerConfigRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -142,7 +142,7 @@ export const useAdminAdminApi_UpdateWorker = (
  * }
  * ```
  */
-export const useAdminAdminApi_DeleteServer = (
+export const useAdminAdminApi_DeleteServerMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { queryParams: { version: string | null } }>,
@@ -362,7 +362,7 @@ export const useAdminAdminApi_GetSessionsCount = (
  * }
  * ```
  */
-export const useAdminAdminApi_CreateWorkerZombie = (
+export const useAdminAdminApi_CreateWorkerZombieMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DeleteZombieRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -393,7 +393,7 @@ export const useAdminAdminApi_CreateWorkerZombie = (
  * }
  * ```
  */
-export const useAdminAdminApi_CreateManualBufferAdd = (
+export const useAdminAdminApi_CreateManualBufferAddMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AddBufferResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AddBufferRequest }>,
@@ -427,7 +427,7 @@ export const useAdminAdminApi_CreateManualBufferAdd = (
  * }
  * ```
  */
-export const useAdminAdminApi_DeleteServer_ByPodName = (
+export const useAdminAdminApi_DeleteServer_ByPodNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { podName: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -490,7 +490,7 @@ export const useAdminAdminApi_GetServer_ByPodName = (
  * }
  * ```
  */
-export const useAdminAdminApi_DeleteServerLocal_ByName = (
+export const useAdminAdminApi_DeleteServerLocal_ByNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -521,7 +521,7 @@ export const useAdminAdminApi_DeleteServerLocal_ByName = (
  * }
  * ```
  */
-export const useAdminAdminApi_DeleteSession_BySessionId = (
+export const useAdminAdminApi_DeleteSession_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionID: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

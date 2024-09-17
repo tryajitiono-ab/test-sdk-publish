@@ -65,7 +65,7 @@ export const useEventRegistryApi_GetRegistryEventIds = (
  * }
  * ```
  */
-export const useEventRegistryApi_CreateRegistryEventId = (
+export const useEventRegistryApi_CreateRegistryEventIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: EventRegistry }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -97,7 +97,7 @@ export const useEventRegistryApi_CreateRegistryEventId = (
  * }
  * ```
  */
-export const useEventRegistryApi_DeleteRegistryEventId_ByEventId = (
+export const useEventRegistryApi_DeleteRegistryEventId_ByEventIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { eventId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -164,7 +164,7 @@ export const useEventRegistryApi_GetRegistryEventId_ByEventId = (
  * }
  * ```
  */
-export const useEventRegistryApi_CreateRegistryEventId_ByEventId = (
+export const useEventRegistryApi_CreateRegistryEventId_ByEventIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { eventId: string; data: EventRegistry }>,

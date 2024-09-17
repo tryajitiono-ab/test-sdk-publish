@@ -78,7 +78,7 @@ export const usePartyAdminApi_GetParties = (
  * }
  * ```
  */
-export const usePartyAdminApi_CreateNativeSync_ByUserId = (
+export const usePartyAdminApi_CreateNativeSync_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

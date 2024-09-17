@@ -165,7 +165,7 @@ export const useMiscAdminApi_GetMiscCountrygroups = (
  * }
  * ```
  */
-export const useMiscAdminApi_CreateMiscCountrygroup = (
+export const useMiscAdminApi_CreateMiscCountrygroupMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AddCountryGroupResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AddCountryGroupRequest }>,
@@ -199,7 +199,7 @@ export const useMiscAdminApi_CreateMiscCountrygroup = (
  * }
  * ```
  */
-export const useMiscAdminApi_DeleteMiscCountrygroup_ByCountryGroupCode = (
+export const useMiscAdminApi_DeleteMiscCountrygroup_ByCountryGroupCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { countryGroupCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -231,7 +231,7 @@ export const useMiscAdminApi_DeleteMiscCountrygroup_ByCountryGroupCode = (
  * }
  * ```
  */
-export const useMiscAdminApi_UpdateMiscCountrygroup_ByCountryGroupCode = (
+export const useMiscAdminApi_UpdateMiscCountrygroup_ByCountryGroupCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

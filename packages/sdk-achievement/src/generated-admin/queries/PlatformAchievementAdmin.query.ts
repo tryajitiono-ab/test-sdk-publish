@@ -31,7 +31,7 @@ export enum Key_PlatformAchievementAdmin {
  * }
  * ```
  */
-export const usePlatformAchievementAdminApi_CreatePlatformPsnBulk = (
+export const usePlatformAchievementAdminApi_CreatePlatformPsnBulkMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BulkCreatePsnEventResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: BulkCreatePsnEvents }>,

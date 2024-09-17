@@ -4,7 +4,7 @@
  * and restrictions contact your company contract manager.
  */
 
-// @vitest-environment happy-dom
+// @vitest-environment jsdom
 // @ts-check
 import { UsersApi } from '@accelbyte/sdk-iam'
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest'

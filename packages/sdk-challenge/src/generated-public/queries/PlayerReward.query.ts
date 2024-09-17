@@ -69,7 +69,7 @@ export const usePlayerRewardApi_GetUsersMeRewards = (
  * }
  * ```
  */
-export const usePlayerRewardApi_CreateUserMeRewardClaim = (
+export const usePlayerRewardApi_CreateUserMeRewardClaimMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserRewardArray, AxiosError<ApiError>, SdkSetConfigParam & { data: ClaimUserRewardsReq }>,
@@ -103,7 +103,7 @@ export const usePlayerRewardApi_CreateUserMeRewardClaim = (
  * }
  * ```
  */
-export const usePlayerRewardApi_CreateRewardClaimMeUser_ByChallengeCode = (
+export const usePlayerRewardApi_CreateRewardClaimMeUser_ByChallengeCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

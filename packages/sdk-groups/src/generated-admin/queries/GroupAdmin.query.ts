@@ -105,7 +105,7 @@ export const useGroupAdminApi_FetchGroupBulk_v2 = (
  * }
  * ```
  */
-export const useGroupAdminApi_DeleteGroup_ByGroupId = (
+export const useGroupAdminApi_DeleteGroup_ByGroupIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { groupId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

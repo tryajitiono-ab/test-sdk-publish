@@ -65,7 +65,7 @@ export const usePodConfigApi_GetConfigsPods = (
  * }
  * ```
  */
-export const usePodConfigApi_DeleteConfigPod_ByName = (
+export const usePodConfigApi_DeleteConfigPod_ByNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -96,7 +96,7 @@ export const usePodConfigApi_DeleteConfigPod_ByName = (
  * }
  * ```
  */
-export const usePodConfigApi_CreateConfigPod_ByName = (
+export const usePodConfigApi_CreateConfigPod_ByNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PodConfigRecord, AxiosError<ApiError>, SdkSetConfigParam & { name: string; data: CreatePodConfigRequest }>,

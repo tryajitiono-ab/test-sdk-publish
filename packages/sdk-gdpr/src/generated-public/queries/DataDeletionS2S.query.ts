@@ -65,7 +65,7 @@ export const useDataDeletionS2SApi_GetS2SDeletionsFinished = (
  * }
  * ```
  */
-export const useDataDeletionS2SApi_CreateDeletionS2_ByUserId = (
+export const useDataDeletionS2SApi_CreateDeletionS2_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<S2SRequestDeleteResponse, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: S2SRequestDeleteResponse) => void

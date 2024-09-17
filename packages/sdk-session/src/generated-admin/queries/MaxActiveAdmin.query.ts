@@ -32,7 +32,7 @@ export enum Key_MaxActiveAdmin {
  * }
  * ```
  */
-export const useMaxActiveAdminApi_UpdateReconcile_ByName = (
+export const useMaxActiveAdminApi_UpdateReconcile_ByNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { name: string; data: RequestReconcileMaxActiveSession }>,

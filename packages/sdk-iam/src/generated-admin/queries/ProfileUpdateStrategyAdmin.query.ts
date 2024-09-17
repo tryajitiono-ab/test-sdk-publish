@@ -67,7 +67,7 @@ export const useProfileUpdateStrategyAdminApi_GetProfileUpdateStrategies_v3 = (
  * }
  * ```
  */
-export const useProfileUpdateStrategyAdminApi_UpdateProfileUpdateStrategy_v3 = (
+export const useProfileUpdateStrategyAdminApi_UpdateProfileUpdateStrategyMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

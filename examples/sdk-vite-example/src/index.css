@@ -11,6 +11,15 @@ code {
   @apply text-red-500;
 }
 
-code::before, code::after {
-  content: "`";
+code::before,
+code::after {
+  content: '`';
+}
+
+a {
+  @apply text-blue-500;
+}
+
+a:hover {
+  @apply text-blue-400 underline;
 }

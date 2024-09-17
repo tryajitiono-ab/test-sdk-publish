@@ -143,7 +143,7 @@ export const useThirdPartyCredentialAdminApi_GetPlatformsAllClientsActive_v3 = (
  * }
  * ```
  */
-export const useThirdPartyCredentialAdminApi_DeleteClient_ByPlatformId_v3 = (
+export const useThirdPartyCredentialAdminApi_DeleteClient_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platformId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -209,7 +209,7 @@ export const useThirdPartyCredentialAdminApi_GetClients_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useThirdPartyCredentialAdminApi_PatchClient_ByPlatformId_v3 = (
+export const useThirdPartyCredentialAdminApi_PatchClient_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -252,7 +252,7 @@ export const useThirdPartyCredentialAdminApi_PatchClient_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useThirdPartyCredentialAdminApi_CreateClient_ByPlatformId_v3 = (
+export const useThirdPartyCredentialAdminApi_CreateClient_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -295,7 +295,7 @@ export const useThirdPartyCredentialAdminApi_CreateClient_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useThirdPartyCredentialAdminApi_DeleteClientDomain_ByPlatformId_v3 = (
+export const useThirdPartyCredentialAdminApi_DeleteClientDomain_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platformId: string; data: PlatformDomainDeleteRequest }>,
@@ -330,7 +330,7 @@ export const useThirdPartyCredentialAdminApi_DeleteClientDomain_ByPlatformId_v3 
  * }
  * ```
  */
-export const useThirdPartyCredentialAdminApi_UpdateClientDomain_ByPlatformId_v3 = (
+export const useThirdPartyCredentialAdminApi_UpdateClientDomain_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

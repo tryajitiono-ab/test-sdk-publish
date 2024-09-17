@@ -7,6 +7,7 @@
  * AUTO GENERATED
  */
 
+import { author, name, version } from '../package.json'
 import { AdminAdminApi } from './generated-admin/AdminAdminApi.js'
 import { ConfigAdminApi } from './generated-admin/ConfigAdminApi.js'
 import { FriendsAdminApi } from './generated-admin/FriendsAdminApi.js'
@@ -25,6 +26,8 @@ import { PartyApi } from './generated-public/PartyApi.js'
 import { PlayerApi } from './generated-public/PlayerApi.js'
 import { PresenceApi } from './generated-public/PresenceApi.js'
 
+console.log(`${name}@${version}`)
+
 const apis = {
   ConfigAdminApi,
   AdminAdminApi,
@@ -42,7 +45,13 @@ const apis = {
   AdminApi,
   PlayerApi,
   PartyApi,
-  PresenceApi
+  PresenceApi,
+  version: () =>
+    console.log({
+      version,
+      name,
+      author
+    })
 }
 
 export const Lobby = apis

@@ -147,7 +147,7 @@ export const useGlobalAchievementsApi_GetContributorsGlobal_ByAchievementCode = 
  * }
  * ```
  */
-export const useGlobalAchievementsApi_UpdateClaimGlobal_ByUserId_ByAchievementCode = (
+export const useGlobalAchievementsApi_UpdateClaimGlobal_ByUserId_ByAchievementCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; achievementCode: string }>,

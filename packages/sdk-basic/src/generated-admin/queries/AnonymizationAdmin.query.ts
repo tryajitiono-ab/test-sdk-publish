@@ -28,7 +28,7 @@ export enum Key_AnonymizationAdmin {
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteAnonymizationProfile_ByUserId = (
+export const useAnonymizationAdminApi_DeleteAnonymizationProfile_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

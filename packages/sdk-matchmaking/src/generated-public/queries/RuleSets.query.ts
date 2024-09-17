@@ -63,7 +63,7 @@ export const useRuleSetsApi_GetRulesets = (
  * }
  * ```
  */
-export const useRuleSetsApi_CreateRuleset = (
+export const useRuleSetsApi_CreateRulesetMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: RuleSetPayload }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -92,7 +92,7 @@ export const useRuleSetsApi_CreateRuleset = (
  * }
  * ```
  */
-export const useRuleSetsApi_DeleteRuleset_ByRuleset = (
+export const useRuleSetsApi_DeleteRuleset_ByRulesetMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { ruleset: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -155,7 +155,7 @@ export const useRuleSetsApi_GetRuleset_ByRuleset = (
  * }
  * ```
  */
-export const useRuleSetsApi_UpdateRuleset_ByRuleset = (
+export const useRuleSetsApi_UpdateRuleset_ByRulesetMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RuleSetPayload, AxiosError<ApiError>, SdkSetConfigParam & { ruleset: string; data: RuleSetPayload }>,

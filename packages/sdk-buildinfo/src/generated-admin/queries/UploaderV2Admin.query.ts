@@ -119,7 +119,7 @@ export const useUploaderV2AdminApi_GetDlcByGameAppId_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_DeleteBuild_ByBuildId_v2 = (
+export const useUploaderV2AdminApi_DeleteBuild_ByBuildIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -183,7 +183,7 @@ export const useUploaderV2AdminApi_GetBuild_ByBuildId_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_PatchBuild_ByBuildId_v2 = (
+export const useUploaderV2AdminApi_PatchBuild_ByBuildIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { buildId: string; data: UpdateBuildMetadataRequest }>,
@@ -218,7 +218,7 @@ export const useUploaderV2AdminApi_PatchBuild_ByBuildId_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_CreateStartbuildupload_v2 = (
+export const useUploaderV2AdminApi_CreateStartbuilduploadMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<BuildManifest, AxiosError<ApiError>, SdkSetConfigParam & { data: UploadBuildManifest }>, 'mutationKey'>,
   callback?: (data: BuildManifest) => void
@@ -283,7 +283,7 @@ export const useUploaderV2AdminApi_GetDifftriggerStatus_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_CreateCommitbuildmanifest_v2 = (
+export const useUploaderV2AdminApi_CreateCommitbuildmanifestMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BuildManifest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -315,7 +315,7 @@ export const useUploaderV2AdminApi_CreateCommitbuildmanifest_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_CreateStartdlcbuildupload_v2 = (
+export const useUploaderV2AdminApi_CreateStartdlcbuilduploadMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<BuildManifest, AxiosError<ApiError>, SdkSetConfigParam & { data: UploadBuildManifest }>, 'mutationKey'>,
   callback?: (data: BuildManifest) => void
@@ -347,7 +347,7 @@ export const useUploaderV2AdminApi_CreateStartdlcbuildupload_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_CreateCommitdlcbuildmanifest_v2 = (
+export const useUploaderV2AdminApi_CreateCommitdlcbuildmanifestMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: BuildManifest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -379,7 +379,7 @@ export const useUploaderV2AdminApi_CreateCommitdlcbuildmanifest_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_PatchDifftriggerStatu_ByValue_v2 = (
+export const useUploaderV2AdminApi_PatchDifftriggerStatu_ByValueMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { value: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -411,7 +411,7 @@ export const useUploaderV2AdminApi_PatchDifftriggerStatu_ByValue_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_CreateStartfileupload_ByUploaderId_v2 = (
+export const useUploaderV2AdminApi_CreateStartfileupload_ByUploaderIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { uploaderId: string; data: BinaryUpload }>,
@@ -446,7 +446,7 @@ export const useUploaderV2AdminApi_CreateStartfileupload_ByUploaderId_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_CreateStartzsyncfileupload_ByFileHash_v2 = (
+export const useUploaderV2AdminApi_CreateStartzsyncfileupload_ByFileHashMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { fileHash: string; data: BinaryUpload }>,
@@ -481,7 +481,7 @@ export const useUploaderV2AdminApi_CreateStartzsyncfileupload_ByFileHash_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_CreateStartbuildupload_BySourceBuildId_v2 = (
+export const useUploaderV2AdminApi_CreateStartbuildupload_BySourceBuildIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BuildManifest, AxiosError<ApiError>, SdkSetConfigParam & { sourceBuildId: string; data: UploadBuildManifest }>,
@@ -516,7 +516,7 @@ export const useUploaderV2AdminApi_CreateStartbuildupload_BySourceBuildId_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_PatchCommitfileupload_ByBuildId_ByHash_v2 = (
+export const useUploaderV2AdminApi_PatchCommitfileupload_ByBuildId_ByHashMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { buildId: string; hash: string }>,
@@ -551,7 +551,7 @@ export const useUploaderV2AdminApi_PatchCommitfileupload_ByBuildId_ByHash_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_CreateStartdlcbuildupload_BySourceBuildId_v2 = (
+export const useUploaderV2AdminApi_CreateStartdlcbuildupload_BySourceBuildIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BuildManifest, AxiosError<ApiError>, SdkSetConfigParam & { sourceBuildId: string; data: UploadBuildManifest }>,
@@ -586,7 +586,7 @@ export const useUploaderV2AdminApi_CreateStartdlcbuildupload_BySourceBuildId_v2 
  * }
  * ```
  */
-export const useUploaderV2AdminApi_PatchCommitzsyncfileupload_ByBuildId_ByHash_v2 = (
+export const useUploaderV2AdminApi_PatchCommitzsyncfileupload_ByBuildId_ByHashMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { buildId: string; hash: string }>,
@@ -621,7 +621,7 @@ export const useUploaderV2AdminApi_PatchCommitzsyncfileupload_ByBuildId_ByHash_v
  * }
  * ```
  */
-export const useUploaderV2AdminApi_UpdateVersion_ByAppId_ByVersion_ByPlatformId_v2 = (
+export const useUploaderV2AdminApi_UpdateVersion_ByAppId_ByVersion_ByPlatformIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { appId: string; version: string; platformId: string }>,
@@ -656,7 +656,7 @@ export const useUploaderV2AdminApi_UpdateVersion_ByAppId_ByVersion_ByPlatformId_
  * }
  * ```
  */
-export const useUploaderV2AdminApi_CreateDiffStart_BySourceBuildId_ByDestinationBuildId_v2 = (
+export const useUploaderV2AdminApi_CreateDiffStart_BySourceBuildId_ByDestinationBuildIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { sourceBuildId: string; destinationBuildId: string }>,
@@ -691,7 +691,7 @@ export const useUploaderV2AdminApi_CreateDiffStart_BySourceBuildId_ByDestination
  * }
  * ```
  */
-export const useUploaderV2AdminApi_PatchDiffCommit_BySourceBuildId_ByDestinationBuildId_v2 = (
+export const useUploaderV2AdminApi_PatchDiffCommit_BySourceBuildId_ByDestinationBuildIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sourceBuildId: string; destinationBuildId: string }>,
@@ -726,7 +726,7 @@ export const useUploaderV2AdminApi_PatchDiffCommit_BySourceBuildId_ByDestination
  * }
  * ```
  */
-export const useUploaderV2AdminApi_PatchHash_ByBuildId_ByHash_ByBlockSize_v2 = (
+export const useUploaderV2AdminApi_PatchHash_ByBuildId_ByHash_ByBlockSizeMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { buildId: string; hash: string; blockSize: number }>,
@@ -761,7 +761,7 @@ export const useUploaderV2AdminApi_PatchHash_ByBuildId_ByHash_ByBlockSize_v2 = (
  * }
  * ```
  */
-export const useUploaderV2AdminApi_CreateDiffSignedurl_BySourceBuildId_ByDestinationBuildId_v2 = (
+export const useUploaderV2AdminApi_CreateDiffSignedurl_BySourceBuildId_ByDestinationBuildIdMutation_v2 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { sourceBuildId: string; destinationBuildId: string }>,

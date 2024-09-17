@@ -105,7 +105,7 @@ export const useBaseLegalPoliciesAdminApi_GetBasePolicies = (
  * }
  * ```
  */
-export const useBaseLegalPoliciesAdminApi_CreateBasePolicy = (
+export const useBaseLegalPoliciesAdminApi_CreateBasePolicyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateBasePolicyResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateBasePolicyRequest }>,
@@ -174,7 +174,7 @@ export const useBaseLegalPoliciesAdminApi_GetBasePolicy_ByBasePolicyId = (
  * }
  * ```
  */
-export const useBaseLegalPoliciesAdminApi_PatchBasePolicy_ByBasePolicyId = (
+export const useBaseLegalPoliciesAdminApi_PatchBasePolicy_ByBasePolicyIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

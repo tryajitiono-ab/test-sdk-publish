@@ -83,7 +83,7 @@ export const useMatchmakingApi_GetChannels = (
  * }
  * ```
  */
-export const useMatchmakingApi_CreateChannel = (
+export const useMatchmakingApi_CreateChannelMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<CreateChannelResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ChannelRequest }>,
@@ -115,7 +115,7 @@ export const useMatchmakingApi_CreateChannel = (
  * }
  * ```
  */
-export const useMatchmakingApi_CreateSession = (
+export const useMatchmakingApi_CreateSessionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchmakingResult }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -144,7 +144,7 @@ export const useMatchmakingApi_CreateSession = (
  * }
  * ```
  */
-export const useMatchmakingApi_UpdateRebalance = (
+export const useMatchmakingApi_UpdateRebalanceMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RebalanceResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: RebalanceRequest }>,
@@ -176,7 +176,7 @@ export const useMatchmakingApi_UpdateRebalance = (
  * }
  * ```
  */
-export const useMatchmakingApi_CreateMatchresult = (
+export const useMatchmakingApi_CreateMatchresultMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<MatchResultResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: MatchResultRequest }>,
@@ -210,7 +210,7 @@ export const useMatchmakingApi_CreateMatchresult = (
  * }
  * ```
  */
-export const useMatchmakingApi_UpdateSessionDequeue = (
+export const useMatchmakingApi_UpdateSessionDequeueMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DequeueRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -241,7 +241,7 @@ export const useMatchmakingApi_UpdateSessionDequeue = (
  * }
  * ```
  */
-export const useMatchmakingApi_DeleteChannel_ByChannel = (
+export const useMatchmakingApi_DeleteChannel_ByChannelMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channel: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

@@ -72,7 +72,7 @@ export const useOAuthApi_GetOauthJwks = (
  * }
  * ```
  */
-export const useOAuthApi_PostOauthToken = (
+export const useOAuthApi_PostOauthTokenMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -148,7 +148,7 @@ export const useOAuthApi_PostOauthToken = (
  * }
  * ```
  */
-export const useOAuthApi_PostOauthVerify = (
+export const useOAuthApi_PostOauthVerifyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<TokenResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: { token: string | null } }>,
@@ -181,7 +181,7 @@ export const useOAuthApi_PostOauthVerify = (
  * }
  * ```
  */
-export const useOAuthApi_PostOauthAuthorize = (
+export const useOAuthApi_PostOauthAuthorizeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -254,7 +254,7 @@ export const useOAuthApi_PostOauthAuthorize = (
  * }
  * ```
  */
-export const useOAuthApi_PostOauthRevokeUser = (
+export const useOAuthApi_PostOauthRevokeUserMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: { userID: string | null } }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -284,7 +284,7 @@ export const useOAuthApi_PostOauthRevokeUser = (
  * }
  * ```
  */
-export const useOAuthApi_PostOauthRevokeToken = (
+export const useOAuthApi_PostOauthRevokeTokenMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: { token: string | null } }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -345,7 +345,7 @@ export const useOAuthApi_GetOauthRevocationlist = (
  * }
  * ```
  */
-export const useOAuthApi_UpdateRevokeOauth_ByUserId = (
+export const useOAuthApi_UpdateRevokeOauth_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -377,7 +377,7 @@ export const useOAuthApi_UpdateRevokeOauth_ByUserId = (
  * }
  * ```
  */
-export const useOAuthApi_PostTokenOauth_ByPlatformId = (
+export const useOAuthApi_PostTokenOauth_ByPlatformIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

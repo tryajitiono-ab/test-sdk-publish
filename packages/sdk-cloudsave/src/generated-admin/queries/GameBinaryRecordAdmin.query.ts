@@ -72,7 +72,7 @@ export const useGameBinaryRecordAdminApi_GetBinaries = (
  * }
  * ```
  */
-export const useGameBinaryRecordAdminApi_CreateBinary = (
+export const useGameBinaryRecordAdminApi_CreateBinaryMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UploadBinaryRecordResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: GameBinaryRecordCreate }>,
@@ -106,7 +106,7 @@ export const useGameBinaryRecordAdminApi_CreateBinary = (
  * }
  * ```
  */
-export const useGameBinaryRecordAdminApi_DeleteBinary_ByKey = (
+export const useGameBinaryRecordAdminApi_DeleteBinary_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -170,7 +170,7 @@ export const useGameBinaryRecordAdminApi_GetBinary_ByKey = (
  * }
  * ```
  */
-export const useGameBinaryRecordAdminApi_UpdateBinary_ByKey = (
+export const useGameBinaryRecordAdminApi_UpdateBinary_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<GameBinaryRecordAdminResponse, AxiosError<ApiError>, SdkSetConfigParam & { key: string; data: BinaryRecordRequest }>,
@@ -209,7 +209,7 @@ export const useGameBinaryRecordAdminApi_UpdateBinary_ByKey = (
  * }
  * ```
  */
-export const useGameBinaryRecordAdminApi_UpdateMetadata_ByKey = (
+export const useGameBinaryRecordAdminApi_UpdateMetadata_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -252,7 +252,7 @@ export const useGameBinaryRecordAdminApi_UpdateMetadata_ByKey = (
  * }
  * ```
  */
-export const useGameBinaryRecordAdminApi_CreatePresigned_ByKey = (
+export const useGameBinaryRecordAdminApi_CreatePresigned_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

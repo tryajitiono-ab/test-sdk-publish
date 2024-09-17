@@ -58,7 +58,7 @@ export enum Key_UploaderV3Admin {
  * }
  * ```
  */
-export const useUploaderV3AdminApi_CreateDiffSend = (
+export const useUploaderV3AdminApi_CreateDiffSendMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DiffPatchRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -89,7 +89,7 @@ export const useUploaderV3AdminApi_CreateDiffSend = (
  * }
  * ```
  */
-export const useUploaderV3AdminApi_CreatePatchSend = (
+export const useUploaderV3AdminApi_CreatePatchSendMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: DiffPatchRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -120,7 +120,7 @@ export const useUploaderV3AdminApi_CreatePatchSend = (
  * }
  * ```
  */
-export const useUploaderV3AdminApi_CreateListenDiffStatu = (
+export const useUploaderV3AdminApi_CreateListenDiffStatuMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FileDiffingStatus, AxiosError<ApiError>, SdkSetConfigParam & { data: DiffPatchRequest }>,
@@ -154,7 +154,7 @@ export const useUploaderV3AdminApi_CreateListenDiffStatu = (
  * }
  * ```
  */
-export const useUploaderV3AdminApi_CreateListenPatchStatu = (
+export const useUploaderV3AdminApi_CreateListenPatchStatuMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FileDiffingStatus, AxiosError<ApiError>, SdkSetConfigParam & { data: DiffPatchRequest }>,
@@ -188,7 +188,7 @@ export const useUploaderV3AdminApi_CreateListenPatchStatu = (
  * }
  * ```
  */
-export const useUploaderV3AdminApi_CreatePrezsyncupload_v3 = (
+export const useUploaderV3AdminApi_CreatePrezsyncuploadMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<DifferentialUploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { data: PreCheckUploadRequest }>,
@@ -223,7 +223,7 @@ export const useUploaderV3AdminApi_CreatePrezsyncupload_v3 = (
  * }
  * ```
  */
-export const useUploaderV3AdminApi_CreateStartbuildupload_v3 = (
+export const useUploaderV3AdminApi_CreateStartbuilduploadMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<DifferentialBuildManifest, AxiosError<ApiError>, SdkSetConfigParam & { data: UploadBuildManifest }>,
@@ -292,7 +292,7 @@ export const useUploaderV3AdminApi_GetCurrent_ByAppId_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useUploaderV3AdminApi_CreateStartfileupload_ByUploaderId_v3 = (
+export const useUploaderV3AdminApi_CreateStartfileupload_ByUploaderIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { uploaderId: string; data: BinaryUpload }>,
@@ -327,7 +327,7 @@ export const useUploaderV3AdminApi_CreateStartfileupload_ByUploaderId_v3 = (
  * }
  * ```
  */
-export const useUploaderV3AdminApi_CreateStartzsyncfileupload_ByFileHash_v3 = (
+export const useUploaderV3AdminApi_CreateStartzsyncfileupload_ByFileHashMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UploadSummary, AxiosError<ApiError>, SdkSetConfigParam & { fileHash: string; data: ZsyncDiffRequest }>,
@@ -396,7 +396,7 @@ export const useUploaderV3AdminApi_GetUploadmode_ByAppId_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useUploaderV3AdminApi_CreateStartbuildupload_BySourceBuildId_v3 = (
+export const useUploaderV3AdminApi_CreateStartbuildupload_BySourceBuildIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -439,7 +439,7 @@ export const useUploaderV3AdminApi_CreateStartbuildupload_BySourceBuildId_v3 = (
  * }
  * ```
  */
-export const useUploaderV3AdminApi_PatchCommitfileupload_ByBuildId_ByHash_v3 = (
+export const useUploaderV3AdminApi_PatchCommitfileupload_ByBuildId_ByHashMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { buildId: string; hash: string }>,
@@ -474,7 +474,7 @@ export const useUploaderV3AdminApi_PatchCommitfileupload_ByBuildId_ByHash_v3 = (
  * }
  * ```
  */
-export const useUploaderV3AdminApi_CreateCommitbuildmanifest_BySourceBuildId_v3 = (
+export const useUploaderV3AdminApi_CreateCommitbuildmanifest_BySourceBuildIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sourceBuildId: string; data: BuildManifest }>,
@@ -509,7 +509,7 @@ export const useUploaderV3AdminApi_CreateCommitbuildmanifest_BySourceBuildId_v3 
  * }
  * ```
  */
-export const useUploaderV3AdminApi_PatchCommitmissingbytesfileupload_ByHash_v3 = (
+export const useUploaderV3AdminApi_PatchCommitmissingbytesfileupload_ByHashMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { hash: string; data: DiffPatchRequest }>,
@@ -544,7 +544,7 @@ export const useUploaderV3AdminApi_PatchCommitmissingbytesfileupload_ByHash_v3 =
  * }
  * ```
  */
-export const useUploaderV3AdminApi_PatchCommitzsyncfileupload_ByBuildId_ByHash_v3 = (
+export const useUploaderV3AdminApi_PatchCommitzsyncfileupload_ByBuildId_ByHashMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<BlockManifest, AxiosError<ApiError>, SdkSetConfigParam & { buildId: string; hash: string; data: DiffPatchRequest }>,
@@ -583,7 +583,7 @@ export const useUploaderV3AdminApi_PatchCommitzsyncfileupload_ByBuildId_ByHash_v
  * }
  * ```
  */
-export const useUploaderV3AdminApi_UpdateVersion_ByAppId_ByVersion_ByPlatformId_v3 = (
+export const useUploaderV3AdminApi_UpdateVersion_ByAppId_ByVersion_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { appId: string; version: string; platformId: string }>,
@@ -618,7 +618,7 @@ export const useUploaderV3AdminApi_UpdateVersion_ByAppId_ByVersion_ByPlatformId_
  * }
  * ```
  */
-export const useUploaderV3AdminApi_PatchHash_ByBuildId_ByHash_ByBlockSize_v3 = (
+export const useUploaderV3AdminApi_PatchHash_ByBuildId_ByHash_ByBlockSizeMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

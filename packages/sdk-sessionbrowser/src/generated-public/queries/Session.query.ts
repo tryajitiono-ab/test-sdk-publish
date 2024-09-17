@@ -92,7 +92,7 @@ export const useSessionApi_GetGamesession = (
  * }
  * ```
  */
-export const useSessionApi_CreateGamesession = (
+export const useSessionApi_CreateGamesessionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateSessionRequest }>,
@@ -188,7 +188,7 @@ export const useSessionApi_GetRecentplayer_ByUserId = (
  * }
  * ```
  */
-export const useSessionApi_DeleteGamesession_BySessionId = (
+export const useSessionApi_DeleteGamesession_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID: string }>, 'mutationKey'>,
   callback?: (data: SessionResponse) => void
@@ -251,7 +251,7 @@ export const useSessionApi_GetGamesession_BySessionId = (
  * }
  * ```
  */
-export const useSessionApi_UpdateGamesession_BySessionId = (
+export const useSessionApi_UpdateGamesession_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID: string; data: UpdateSessionRequest }>,
@@ -319,7 +319,7 @@ export const useSessionApi_FetchJoin_BySessionId = (
  * }
  * ```
  */
-export const useSessionApi_UpdatePlayer_BySessionId = (
+export const useSessionApi_UpdatePlayer_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AddPlayerResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID: string; data: AddPlayerRequest }>,
@@ -354,7 +354,7 @@ export const useSessionApi_UpdatePlayer_BySessionId = (
  * }
  * ```
  */
-export const useSessionApi_DeleteLocald_BySessionId = (
+export const useSessionApi_DeleteLocald_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID: string }>, 'mutationKey'>,
   callback?: (data: SessionResponse) => void
@@ -385,7 +385,7 @@ export const useSessionApi_DeleteLocald_BySessionId = (
  * }
  * ```
  */
-export const useSessionApi_UpdateSetting_BySessionId = (
+export const useSessionApi_UpdateSetting_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID: string; data: UpdateSettingsRequest }>,
@@ -420,7 +420,7 @@ export const useSessionApi_UpdateSetting_BySessionId = (
  * }
  * ```
  */
-export const useSessionApi_DeletePlayer_BySessionId_ByUserId = (
+export const useSessionApi_DeletePlayer_BySessionId_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AddPlayerResponse, AxiosError<ApiError>, SdkSetConfigParam & { sessionID: string; userID: string }>,

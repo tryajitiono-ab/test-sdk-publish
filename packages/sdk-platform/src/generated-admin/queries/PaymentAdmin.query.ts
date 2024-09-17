@@ -174,7 +174,7 @@ export const usePaymentAdminApi_GetPaymentOrdersByExtTxId = (
  * }
  * ```
  */
-export const usePaymentAdminApi_CreatePaymentOrder_ByUserId = (
+export const usePaymentAdminApi_CreatePaymentOrder_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PaymentOrderInfo, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: PaymentOrderCreate }>,
@@ -242,7 +242,7 @@ export const usePaymentAdminApi_GetPaymentOrder_ByPaymentOrderNo = (
  * }
  * ```
  */
-export const usePaymentAdminApi_UpdatePaymentOrder_ByPaymentOrderNo = (
+export const usePaymentAdminApi_UpdatePaymentOrder_ByPaymentOrderNoMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -318,7 +318,7 @@ export const usePaymentAdminApi_GetStatusPayment_ByPaymentOrderNo = (
  * }
  * ```
  */
-export const usePaymentAdminApi_UpdateSimulateNotificationPayment_ByPaymentOrderNo = (
+export const usePaymentAdminApi_UpdateSimulateNotificationPayment_ByPaymentOrderNoMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -361,7 +361,7 @@ export const usePaymentAdminApi_UpdateSimulateNotificationPayment_ByPaymentOrder
  * }
  * ```
  */
-export const usePaymentAdminApi_UpdateRefundPayment_ByUserId_ByPaymentOrderNo = (
+export const usePaymentAdminApi_UpdateRefundPayment_ByUserId_ByPaymentOrderNoMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

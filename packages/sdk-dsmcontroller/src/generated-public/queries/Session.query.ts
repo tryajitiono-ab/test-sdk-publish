@@ -35,7 +35,7 @@ export enum Key_Session {
  * }
  * ```
  */
-export const useSessionApi_CreateSession = (
+export const useSessionApi_CreateSessionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SessionResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateSessionRequest }>,
@@ -67,7 +67,7 @@ export const useSessionApi_CreateSession = (
  * }
  * ```
  */
-export const useSessionApi_CreateSessionClaim = (
+export const useSessionApi_CreateSessionClaimMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: ClaimSessionRequest }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -128,7 +128,7 @@ export const useSessionApi_GetSession_BySessionId = (
  * }
  * ```
  */
-export const useSessionApi_DeleteCancel_BySessionId = (
+export const useSessionApi_DeleteCancel_BySessionIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { sessionID: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

@@ -82,7 +82,7 @@ export const useProfanityAdminApi_GetProfanityRule = (
  * }
  * ```
  */
-export const useProfanityAdminApi_UpdateProfanityRule = (
+export const useProfanityAdminApi_UpdateProfanityRuleMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: AdminSetProfanityRuleForNamespaceRequest }>,
@@ -146,7 +146,7 @@ export const useProfanityAdminApi_GetProfanityLists = (
  * }
  * ```
  */
-export const useProfanityAdminApi_CreateProfanityList = (
+export const useProfanityAdminApi_CreateProfanityListMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { data: AdminCreateProfanityListRequest }>,
@@ -212,7 +212,7 @@ export const useProfanityAdminApi_FetchProfanityVerify = (
  * }
  * ```
  */
-export const useProfanityAdminApi_DeleteProfanityList_ByList = (
+export const useProfanityAdminApi_DeleteProfanityList_ByListMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -244,7 +244,7 @@ export const useProfanityAdminApi_DeleteProfanityList_ByList = (
  * }
  * ```
  */
-export const useProfanityAdminApi_UpdateProfanityList_ByList = (
+export const useProfanityAdminApi_UpdateProfanityList_ByListMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list: string; data: AdminUpdateProfanityList }>,
@@ -345,7 +345,7 @@ export const useProfanityAdminApi_GetFiltersProfanity_ByList = (
  * }
  * ```
  */
-export const useProfanityAdminApi_CreateFilterProfanity_ByList = (
+export const useProfanityAdminApi_CreateFilterProfanity_ByListMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list: string; data: AdminAddProfanityFilterIntoListRequest }>,
@@ -380,7 +380,7 @@ export const useProfanityAdminApi_CreateFilterProfanity_ByList = (
  * }
  * ```
  */
-export const useProfanityAdminApi_CreateFilterBulkProfanity_ByList = (
+export const useProfanityAdminApi_CreateFilterBulkProfanity_ByListMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list: string; data: AdminAddProfanityFiltersRequest }>,
@@ -415,7 +415,7 @@ export const useProfanityAdminApi_CreateFilterBulkProfanity_ByList = (
  * }
  * ```
  */
-export const useProfanityAdminApi_CreateFilterDeleteProfanity_ByList = (
+export const useProfanityAdminApi_CreateFilterDeleteProfanity_ByListMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -458,7 +458,7 @@ export const useProfanityAdminApi_CreateFilterDeleteProfanity_ByList = (
  * }
  * ```
  */
-export const useProfanityAdminApi_CreateFilterBulkFileProfanity_ByList = (
+export const useProfanityAdminApi_CreateFilterBulkFileProfanity_ByListMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { list: string; data: number[] }>, 'mutationKey'>,
   callback?: (data: unknown) => void

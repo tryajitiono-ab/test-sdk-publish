@@ -50,9 +50,27 @@ export class AccelByteSDK {
   }
 
   private createAxiosInstance() {
-    return Network.create({ baseURL: this.coreConfig.baseURL, ...this.axiosConfig.request })
+    const axiosInstance = Network.create({ baseURL: this.coreConfig.baseURL, ...this.axiosConfig.request })
+    const interceptors = this.axiosConfig.interceptors
+
+    if (interceptors) {
+      for (const interceptor of interceptors) {
+        if (interceptor.type === 'request') {
+          axiosInstance.interceptors.request.use(interceptor?.onRequest, interceptor.onError)
+        }
+
+        if (interceptor.type === 'response') {
+          axiosInstance.interceptors.response.use(interceptor?.onSuccess, interceptor.onError)
+        }
+      }
+    }
+
+    return axiosInstance
   }
 
+  /**
+   * Assembles and returns the current Axios instance along with core and Axios configurations.
+   */
   assembly() {
     return {
       axiosInstance: this.axiosInstance,
@@ -61,6 +79,12 @@ export class AccelByteSDK {
     }
   }
 
+  /**
+   * Creates a new instance of AccelByteSDK with a shallow copy of the current configurations.
+   * Optionally allows excluding interceptors.
+   * @param {boolean} [opts.interceptors] - Whether to include interceptors in the clone. Default is true.
+   * @returns {AccelByteSDK} A new instance of AccelByteSDK with the cloned configuration.
+   */
   clone(opts?: { interceptors?: boolean }): AccelByteSDK {
     const newConfigs = {
       coreConfig: { ...this.coreConfig },
@@ -74,6 +98,9 @@ export class AccelByteSDK {
     return new AccelByteSDK(newConfigs)
   }
 
+  /**
+   * Adds interceptors to the current Axios configuration.
+   */
   addInterceptors(interceptors: Interceptor[]): AccelByteSDK {
     if (!this.axiosConfig.interceptors) {
       this.axiosConfig.interceptors = []
@@ -84,7 +111,10 @@ export class AccelByteSDK {
     return this
   }
 
-  // Method overloads.
+  /**
+   * Removes interceptors from the Axios configuration. Can remove all interceptors or filter specific ones.
+   * @param {function} [filterCallback] - Optional filter function to remove specific interceptors.
+   */
   removeInterceptors(): AccelByteSDK
   removeInterceptors(filterCallback: (interceptor: Interceptor) => boolean): AccelByteSDK
 
@@ -92,6 +122,8 @@ export class AccelByteSDK {
     if (!this.axiosConfig?.interceptors) return this
     if (!filterCallback) {
       this.axiosConfig.interceptors = undefined
+      this.axiosInstance.interceptors.request.clear()
+      this.axiosInstance.interceptors.response.clear()
       return this
     }
 
@@ -100,6 +132,10 @@ export class AccelByteSDK {
     return this
   }
 
+  /**
+   * Updates the SDK's core and Axios configurations.
+   * Merges the provided configurations with the current ones.
+   */
   setConfig({ coreConfig, axiosConfig }: SdkSetConfigParam) {
     this.coreConfig = {
       ...this.coreConfig,
@@ -107,13 +143,17 @@ export class AccelByteSDK {
     }
     this.axiosConfig = {
       ...this.axiosConfig,
-      ...axiosConfig
+      ...axiosConfig?.interceptors,
+      request: ApiUtils.mergeAxiosConfigs(this.axiosConfig.request as AxiosRequestConfig, axiosConfig?.request)
     }
     this.axiosInstance = this.createAxiosInstance()
 
     return this
   }
 
+  /**
+   * Set accessToken and refreshToken and updates the Axios request headers to use Bearer authentication.
+   */
   setToken(token: TokenConfig) {
     this.token = {
       ...this.token,
@@ -127,10 +167,16 @@ export class AccelByteSDK {
     this.axiosInstance = this.createAxiosInstance()
   }
 
+  /**
+   * Removes the currently set token.
+   */
   removeToken() {
     this.token = {}
   }
 
+  /**
+   * Retrieves the current token configuration.
+   */
   getToken() {
     return this.token
   }

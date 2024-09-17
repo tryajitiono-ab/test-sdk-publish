@@ -67,7 +67,7 @@ export const useFulfillmentScriptAdminApi_GetFulfillmentScripts = (
  * }
  * ```
  */
-export const useFulfillmentScriptAdminApi_DeleteFulfillmentScript_ById = (
+export const useFulfillmentScriptAdminApi_DeleteFulfillmentScript_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { id: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -132,7 +132,7 @@ export const useFulfillmentScriptAdminApi_GetFulfillmentScript_ById = (
  * }
  * ```
  */
-export const useFulfillmentScriptAdminApi_PatchFulfillmentScript_ById = (
+export const useFulfillmentScriptAdminApi_PatchFulfillmentScript_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FulfillmentScriptInfo, AxiosError<ApiError>, SdkSetConfigParam & { id: string; data: FulfillmentScriptUpdate }>,
@@ -167,7 +167,7 @@ export const useFulfillmentScriptAdminApi_PatchFulfillmentScript_ById = (
  * }
  * ```
  */
-export const useFulfillmentScriptAdminApi_CreateFulfillmentScript_ById = (
+export const useFulfillmentScriptAdminApi_CreateFulfillmentScript_ByIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<FulfillmentScriptInfo, AxiosError<ApiError>, SdkSetConfigParam & { id: string; data: FulfillmentScriptCreate }>,

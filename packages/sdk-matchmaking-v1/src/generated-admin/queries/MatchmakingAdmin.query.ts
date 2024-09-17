@@ -81,7 +81,7 @@ export const useMatchmakingAdminApi_GetChannelsExport = (
  * }
  * ```
  */
-export const useMatchmakingAdminApi_UpdateChannelImport = (
+export const useMatchmakingAdminApi_UpdateChannelImportMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ImportConfigResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: { file?: File; strategy?: string | null } }>,
@@ -185,7 +185,7 @@ export const useMatchmakingAdminApi_GetChannel_ByChannelName = (
  * }
  * ```
  */
-export const useMatchmakingAdminApi_PatchChannel_ByChannelName = (
+export const useMatchmakingAdminApi_PatchChannel_ByChannelNameMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName: string; data: UpdateChannelRequest }>,
@@ -474,7 +474,7 @@ export const useMatchmakingAdminApi_GetHistoryDetailed_ByMatchId = (
  * }
  * ```
  */
-export const useMatchmakingAdminApi_DeleteSession_ByChannelName_ByMatchId = (
+export const useMatchmakingAdminApi_DeleteSession_ByChannelName_ByMatchIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName: string; matchID: string }>,
@@ -509,7 +509,7 @@ export const useMatchmakingAdminApi_DeleteSession_ByChannelName_ByMatchId = (
  * }
  * ```
  */
-export const useMatchmakingAdminApi_CreateSession_ByChannelName_ByMatchId = (
+export const useMatchmakingAdminApi_CreateSession_ByChannelName_ByMatchIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -552,7 +552,7 @@ export const useMatchmakingAdminApi_CreateSession_ByChannelName_ByMatchId = (
  * }
  * ```
  */
-export const useMatchmakingAdminApi_DeleteUser_ByChannelName_ByMatchId_ByUserId = (
+export const useMatchmakingAdminApi_DeleteUser_ByChannelName_ByMatchId_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { channelName: string; matchID: string; userID: string }>,

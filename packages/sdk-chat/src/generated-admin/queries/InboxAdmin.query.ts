@@ -131,7 +131,7 @@ export const useInboxAdminApi_GetInboxMessages = (
  * }
  * ```
  */
-export const useInboxAdminApi_CreateInboxMessage = (
+export const useInboxAdminApi_CreateInboxMessageMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<SaveInboxMessageResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: SaveInboxMessageRequest }>,
@@ -195,7 +195,7 @@ export const useInboxAdminApi_GetInboxCategories = (
  * }
  * ```
  */
-export const useInboxAdminApi_CreateInboxCategory = (
+export const useInboxAdminApi_CreateInboxCategoryMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<AddInboxCategoryResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: AddInboxCategoryRequest }>,
@@ -229,7 +229,7 @@ export const useInboxAdminApi_CreateInboxCategory = (
  * }
  * ```
  */
-export const useInboxAdminApi_DeleteInboxMessage_ByMessageId = (
+export const useInboxAdminApi_DeleteInboxMessage_ByMessageIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { messageId: string; queryParams?: { force?: boolean | null } }>,
@@ -268,7 +268,7 @@ export const useInboxAdminApi_DeleteInboxMessage_ByMessageId = (
  * }
  * ```
  */
-export const useInboxAdminApi_PatchInboxMessage_ByMessageId = (
+export const useInboxAdminApi_PatchInboxMessage_ByMessageIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { messageId: string; data: UpdateInboxMessageRequest }>,
@@ -303,7 +303,7 @@ export const useInboxAdminApi_PatchInboxMessage_ByMessageId = (
  * }
  * ```
  */
-export const useInboxAdminApi_DeleteInboxCategory_ByCategory = (
+export const useInboxAdminApi_DeleteInboxCategory_ByCategoryMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { category: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -335,7 +335,7 @@ export const useInboxAdminApi_DeleteInboxCategory_ByCategory = (
  * }
  * ```
  */
-export const useInboxAdminApi_PatchInboxCategory_ByCategory = (
+export const useInboxAdminApi_PatchInboxCategory_ByCategoryMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { category: string; data: UpdateInboxCategoryRequest }>,
@@ -406,7 +406,7 @@ export const useInboxAdminApi_GetUsersInbox_ByInbox = (
  * }
  * ```
  */
-export const useInboxAdminApi_UpdateUnsendInbox_ByInbox = (
+export const useInboxAdminApi_UpdateUnsendInbox_ByInboxMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -449,7 +449,7 @@ export const useInboxAdminApi_UpdateUnsendInbox_ByInbox = (
  * }
  * ```
  */
-export const useInboxAdminApi_UpdateSendInbox_ByMessageId = (
+export const useInboxAdminApi_UpdateSendInbox_ByMessageIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

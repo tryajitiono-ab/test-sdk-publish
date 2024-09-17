@@ -42,7 +42,7 @@ export enum Key_RewardAdmin {
  * }
  * ```
  */
-export const useRewardAdminApi_CreateReward = (
+export const useRewardAdminApi_CreateRewardMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: RewardCreate }>, 'mutationKey'>,
   callback?: (data: RewardInfo) => void
@@ -101,7 +101,7 @@ export const useRewardAdminApi_GetRewardsExport = (
  * }
  * ```
  */
-export const useRewardAdminApi_CreateRewardImport = (
+export const useRewardAdminApi_CreateRewardImportMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -144,7 +144,7 @@ export const useRewardAdminApi_CreateRewardImport = (
  * }
  * ```
  */
-export const useRewardAdminApi_DeleteReward_ByRewardId = (
+export const useRewardAdminApi_DeleteReward_ByRewardIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { rewardId: string }>, 'mutationKey'>,
   callback?: (data: RewardInfo) => void
@@ -207,7 +207,7 @@ export const useRewardAdminApi_GetReward_ByRewardId = (
  * }
  * ```
  */
-export const useRewardAdminApi_UpdateReward_ByRewardId = (
+export const useRewardAdminApi_UpdateReward_ByRewardIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<RewardInfo, AxiosError<ApiError>, SdkSetConfigParam & { rewardId: string; data: RewardUpdate }>,
@@ -274,7 +274,7 @@ export const useRewardAdminApi_GetRewardsByCriteria = (
  * }
  * ```
  */
-export const useRewardAdminApi_UpdateMatch_ByRewardId = (
+export const useRewardAdminApi_UpdateMatch_ByRewardIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ConditionMatchResult, AxiosError<ApiError>, SdkSetConfigParam & { rewardId: string; data: EventPayload }>,
@@ -309,7 +309,7 @@ export const useRewardAdminApi_UpdateMatch_ByRewardId = (
  * }
  * ```
  */
-export const useRewardAdminApi_DeleteRecord_ByRewardId = (
+export const useRewardAdminApi_DeleteRecord_ByRewardIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { rewardId: string; data: DeleteRewardConditionRequest }>,

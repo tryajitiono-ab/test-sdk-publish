@@ -74,7 +74,7 @@ export const useStatConfigurationAdminApi_GetStats = (
  * }
  * ```
  */
-export const useStatConfigurationAdminApi_CreateStat = (
+export const useStatConfigurationAdminApi_CreateStatMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<StatInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StatCreate }>, 'mutationKey'>,
   callback?: (data: StatInfo) => void
@@ -135,7 +135,7 @@ export const useStatConfigurationAdminApi_GetStatsExport = (
  * }
  * ```
  */
-export const useStatConfigurationAdminApi_CreateStatImport = (
+export const useStatConfigurationAdminApi_CreateStatImportMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -212,7 +212,7 @@ export const useStatConfigurationAdminApi_GetStatsSearch = (
  * }
  * ```
  */
-export const useStatConfigurationAdminApi_DeleteStat_ByStatCode = (
+export const useStatConfigurationAdminApi_DeleteStat_ByStatCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { statCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -277,7 +277,7 @@ export const useStatConfigurationAdminApi_GetStat_ByStatCode = (
  * }
  * ```
  */
-export const useStatConfigurationAdminApi_PatchStat_ByStatCode = (
+export const useStatConfigurationAdminApi_PatchStat_ByStatCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<StatInfo, AxiosError<ApiError>, SdkSetConfigParam & { statCode: string; data: StatUpdate }>,
@@ -312,7 +312,7 @@ export const useStatConfigurationAdminApi_PatchStat_ByStatCode = (
  * }
  * ```
  */
-export const useStatConfigurationAdminApi_DeleteTied_ByStatCode = (
+export const useStatConfigurationAdminApi_DeleteTied_ByStatCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { statCode: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

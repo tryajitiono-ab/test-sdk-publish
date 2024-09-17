@@ -51,7 +51,7 @@ export const useSsoApi_GetSso_ByPlatformId_v3 = (
  * }
  * ```
  */
-export const useSsoApi_CreateLogout_ByPlatformId_v3 = (
+export const useSsoApi_CreateLogout_ByPlatformIdMutation_v3 = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { platformId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

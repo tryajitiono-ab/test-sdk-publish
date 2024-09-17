@@ -38,7 +38,7 @@ export enum Key_PlayerRewardAdmin {
  * }
  * ```
  */
-export const usePlayerRewardAdminApi_CreateUserRewardClaim = (
+export const usePlayerRewardAdminApi_CreateUserRewardClaimMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ClaimUsersRewardsResponseArray, AxiosError<ApiError>, SdkSetConfigParam & { data: ClaimUsersRewardsRequest[] }>,
@@ -109,7 +109,7 @@ export const usePlayerRewardAdminApi_GetRewards_ByUserId = (
  * }
  * ```
  */
-export const usePlayerRewardAdminApi_CreateRewardClaim_ByUserId = (
+export const usePlayerRewardAdminApi_CreateRewardClaim_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<UserRewardArray, AxiosError<ApiError>, SdkSetConfigParam & { userId: string; data: ClaimUserRewardsReq }>,
@@ -144,7 +144,7 @@ export const usePlayerRewardAdminApi_CreateRewardClaim_ByUserId = (
  * }
  * ```
  */
-export const usePlayerRewardAdminApi_CreateRewardClaim_ByUserId_ByChallengeCode = (
+export const usePlayerRewardAdminApi_CreateRewardClaim_ByUserId_ByChallengeCodeMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

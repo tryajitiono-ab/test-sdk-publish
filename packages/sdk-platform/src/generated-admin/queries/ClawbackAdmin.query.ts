@@ -76,7 +76,7 @@ export const useClawbackAdminApi_GetIapClawbackHistories = (
  * }
  * ```
  */
-export const useClawbackAdminApi_CreateIapClawbackPlaystationMock = (
+export const useClawbackAdminApi_CreateIapClawbackPlaystationMockMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<ClawbackInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: StreamEvent }>, 'mutationKey'>,
   callback?: (data: ClawbackInfo) => void

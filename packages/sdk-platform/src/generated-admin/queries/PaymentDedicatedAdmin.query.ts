@@ -68,7 +68,7 @@ export const usePaymentDedicatedAdminApi_GetPaymentOrders = (
  * }
  * ```
  */
-export const usePaymentDedicatedAdminApi_CreatePaymentOrder = (
+export const usePaymentDedicatedAdminApi_CreatePaymentOrderMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<PaymentOrderCreateResult, AxiosError<ApiError>, SdkSetConfigParam & { data: ExternalPaymentOrderCreate }>,
@@ -103,7 +103,7 @@ export const usePaymentDedicatedAdminApi_CreatePaymentOrder = (
  * }
  * ```
  */
-export const usePaymentDedicatedAdminApi_UpdateRefundPayment_ByPaymentOrderNo = (
+export const usePaymentDedicatedAdminApi_UpdateRefundPayment_ByPaymentOrderNoMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

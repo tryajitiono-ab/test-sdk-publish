@@ -31,7 +31,7 @@ export enum Key_AnonymizationAdmin {
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteGroup_ByUserId = (
+export const useAnonymizationAdminApi_DeleteGroup_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -63,7 +63,7 @@ export const useAnonymizationAdminApi_DeleteGroup_ByUserId = (
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteState_ByUserId = (
+export const useAnonymizationAdminApi_DeleteState_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -95,7 +95,7 @@ export const useAnonymizationAdminApi_DeleteState_ByUserId = (
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteChannel_ByUserId = (
+export const useAnonymizationAdminApi_DeleteChannel_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -127,7 +127,7 @@ export const useAnonymizationAdminApi_DeleteChannel_ByUserId = (
  * }
  * ```
  */
-export const useAnonymizationAdminApi_DeleteContent_ByUserId = (
+export const useAnonymizationAdminApi_DeleteContent_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void

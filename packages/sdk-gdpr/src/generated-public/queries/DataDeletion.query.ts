@@ -34,7 +34,7 @@ export enum Key_DataDeletion {
  * }
  * ```
  */
-export const useDataDeletionApi_DeleteUserMeDeletion = (
+export const useDataDeletionApi_DeleteUserMeDeletionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -63,7 +63,7 @@ export const useDataDeletionApi_DeleteUserMeDeletion = (
  * }
  * ```
  */
-export const useDataDeletionApi_PostUserMeDeletion = (
+export const useDataDeletionApi_PostUserMeDeletionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -138,7 +138,7 @@ export const useDataDeletionApi_GetUsersMeDeletionsStatus = (
  * }
  * ```
  */
-export const useDataDeletionApi_DeleteDeletion_ByUserId = (
+export const useDataDeletionApi_DeleteDeletion_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { userId: string }>, 'mutationKey'>,
   callback?: (data: unknown) => void
@@ -169,7 +169,7 @@ export const useDataDeletionApi_DeleteDeletion_ByUserId = (
  * }
  * ```
  */
-export const useDataDeletionApi_PostDeletion_ByUserId = (
+export const useDataDeletionApi_PostDeletion_ByUserIdMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

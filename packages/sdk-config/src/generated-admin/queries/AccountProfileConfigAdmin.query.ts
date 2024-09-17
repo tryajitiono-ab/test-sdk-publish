@@ -33,7 +33,7 @@ export enum Key_AccountProfileConfigAdmin {
  * }
  * ```
  */
-export const useAccountProfileConfigAdminApi_CreateConfigAccount = (
+export const useAccountProfileConfigAdminApi_CreateConfigAccountMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { data: CreateConfig }>, 'mutationKey'>,
   callback?: (data: ConfigInfo) => void
@@ -99,7 +99,7 @@ export const useAccountProfileConfigAdminApi_GetConfigAccount_ByConfigKey = (
  * }
  * ```
  */
-export const useAccountProfileConfigAdminApi_UpdateConfigAccount_ByConfigKey = (
+export const useAccountProfileConfigAdminApi_UpdateConfigAccount_ByConfigKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ConfigInfo, AxiosError<ApiError>, SdkSetConfigParam & { configKey: string; data: UpdateConfig }>,

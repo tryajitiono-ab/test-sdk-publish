@@ -73,7 +73,7 @@ export const useExtensionCategoriesAndAutoModerationActionsAdminApi_GetExtension
  * }
  * ```
  */
-export const useExtensionCategoriesAndAutoModerationActionsAdminApi_CreateExtensionAction = (
+export const useExtensionCategoriesAndAutoModerationActionsAdminApi_CreateExtensionActionMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ActionApiResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ActionApiRequest }>,
@@ -145,7 +145,7 @@ export const useExtensionCategoriesAndAutoModerationActionsAdminApi_GetExtension
  * }
  * ```
  */
-export const useExtensionCategoriesAndAutoModerationActionsAdminApi_CreateExtensionCategory = (
+export const useExtensionCategoriesAndAutoModerationActionsAdminApi_CreateExtensionCategoryMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ExtensionCategoryApiResponse, AxiosError<ApiError>, SdkSetConfigParam & { data: ExtensionCategoryApiRequest }>,

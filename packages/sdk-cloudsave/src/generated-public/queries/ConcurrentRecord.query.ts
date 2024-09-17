@@ -33,7 +33,7 @@ export enum Key_ConcurrentRecord {
  * }
  * ```
  */
-export const useConcurrentRecordApi_UpdateConcurrentRecord_ByKey = (
+export const useConcurrentRecordApi_UpdateConcurrentRecord_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<unknown, AxiosError<ApiError>, SdkSetConfigParam & { key: string; data: ConcurrentRecordRequest }>,
@@ -68,7 +68,7 @@ export const useConcurrentRecordApi_UpdateConcurrentRecord_ByKey = (
  * }
  * ```
  */
-export const useConcurrentRecordApi_UpdateConcurrentRecord_ByUserId_ByKey = (
+export const useConcurrentRecordApi_UpdateConcurrentRecord_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<
@@ -118,7 +118,7 @@ export const useConcurrentRecordApi_UpdateConcurrentRecord_ByUserId_ByKey = (
  * }
  * ```
  */
-export const useConcurrentRecordApi_UpdatePublicConcurrent_ByUserId_ByKey = (
+export const useConcurrentRecordApi_UpdatePublicConcurrent_ByUserId_ByKeyMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<

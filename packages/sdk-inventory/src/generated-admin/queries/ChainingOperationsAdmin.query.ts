@@ -31,7 +31,7 @@ export enum Key_ChainingOperationsAdmin {
  * }
  * ```
  */
-export const useChainingOperationsAdminApi_CreateChainingOperation = (
+export const useChainingOperationsAdminApi_CreateChainingOperationMutation = (
   sdk: AccelByteSDK,
   options?: Omit<
     UseMutationOptions<ChainingOperationResp, AxiosError<ApiError>, SdkSetConfigParam & { data: ChainingOperationReq }>,

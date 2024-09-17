@@ -60,7 +60,7 @@ export const useConfigAdminApi_GetConfigLog = (
  * }
  * ```
  */
-export const useConfigAdminApi_PatchConfigLog = (
+export const useConfigAdminApi_PatchConfigLogMutation = (
   sdk: AccelByteSDK,
   options?: Omit<UseMutationOptions<Configuration, AxiosError<ApiError>, SdkSetConfigParam & { data: Configuration }>, 'mutationKey'>,
   callback?: (data: Configuration) => void
