@@ -10,7 +10,10 @@ export const BASE_SDK_CORE_CONFIG = {
 
 export function createSdkConfig(coreConfig: SdkConstructorParam['coreConfig']): SdkConstructorParam {
   return {
-    coreConfig,
+    coreConfig: {
+      ...coreConfig,
+      baseURL: `https://${coreConfig.namespace}.${new URL(coreConfig.baseURL).host}`
+    },
     axiosConfig: {
       interceptors: [
         createAuthInterceptor({
