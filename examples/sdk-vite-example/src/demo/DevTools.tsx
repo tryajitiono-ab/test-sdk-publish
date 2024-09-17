@@ -28,7 +28,7 @@ export function DevTools({ setSdk, tier }: Props) {
       AccelByte.SDK(
         createSdkConfig({
           ...data,
-          baseURL: `${data.namespace}.${data.baseURL}`
+          baseURL: `https://${data.namespace}.${new URL(data.baseURL).host}`
         })
       )
     )
