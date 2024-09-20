@@ -73,7 +73,11 @@ export function UpdateMyProfile() {
 
 function formatDate(dateString: string | null | undefined) {
   const date = dateString ? new Date(dateString) : new Date()
-  return `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDate()}`
+  return `${date.getUTCFullYear()}-${padNumber(date.getUTCMonth() + 1)}-${padNumber(date.getUTCDate())}`
+}
+
+function padNumber(value: number) {
+  return value.toString().padStart(2, '0')
 }
 
 function getDefaultValue(user: UserResponseV3 | null) {

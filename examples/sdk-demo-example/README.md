@@ -1,6 +1,6 @@
-# SDK Usage Example: Vite
+# SDK Demo Example
 
-This is a sample usage of SDK using [Vite](https://vitejs.dev/).
+This is a demo page to showcase AccelByte TypeScript SDK using [Vite](https://vitejs.dev/).
 
 ## Prerequisites
 
@@ -16,6 +16,8 @@ This is a sample usage of SDK using [Vite](https://vitejs.dev/).
 
 To start using the this demo, you need to instantiate it with some basic configuration. This setup requires an IAM Client ID (`VITE_CLIENT_ID`) and other core configurations. You can set this configuration by copying the `.env.template` to `.env` and set the configuration accordingly. 
 
+Then, install the dependencies before start the development server
+
 ```sh
 # Install the dependencies.
 yarn install
@@ -24,24 +26,24 @@ yarn install
 yarn dev
 ```
 
-After that, open http://localhost:3000. There will be few requests fired on the background, which then you could inspect the response by collapsing the `<details>` element.
+After that, open `http://localhost:3000`. You will see several features, including:
 
-There will be also a `<details>` element with the title `currentUser`, which will contain your user information. By default, if you aren't logged in, then you will get `401 Unauthorized` in the network response.
+- Login with Device ID
+  
+  Before accessing other features, you must authenticate by logging in with your device ID. This will send your device ID to the server and return an access token and refresh token, both stored in cookies and the response. The recommended method for authentication is using cookies; however, since this is a cross-origin demo, cookies cannot be used. Instead, you can authenticate using a Bearer token.
 
-If you want to log in, you can click on the "Log in" button and it will redirect you to the Login website. After you submit with the valid credentials, you will be redirected back to http://localhost:3000 with some query parameters in it. These query parameters will be processed by this function `exchangeAuthorizationCode`, which will exchange the code passed in the query parameters to cookies.
+- Get User Detail
 
-## Authentication Flow
+  Retrieve detailed information about the currently authenticated user, including username, namespace, and roles.
 
-The authentication flow to the IAM service consists of these steps:
+- Update User Data
 
-1. Log in through the login page
-2. Get redirected back to the main site
-3. Main site sends the authorization code to the IAM service 
-4. IAM service receives the authorization code and sets the cookie to the browser if valid 
+  Modify and update the user's personal information.
 
-By default, using cookie is the recommended way. However, if you really need to use the `Authorization` header, you can store the `access_token` and `refresh_token` fields from the response returned from (4) then pass them to `sdk.refreshTokens`, which will inject the token to the `Authorization` header on every future requests.
+- Get Items and Currencies
 
-Before accessing other features, you must authenticate by logging in with your device ID. This will send your device ID to the server and return an access token and refresh token, both stored in cookies and the response. The recommended method for authentication is using cookies; however, since this is a cross-origin demo, cookies cannot be used. Instead, you can authenticate using a Bearer token.
+  Fetch a list of available items and currencies values.
+
 
 ## Other Environments
 

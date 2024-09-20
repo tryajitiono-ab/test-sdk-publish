@@ -5,7 +5,6 @@
  */
 
 // @vitest-environment jsdom
-// @ts-check
 import { UsersApi } from '@accelbyte/sdk-iam'
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import { AccelByte } from '../AccelByteSDK'

@@ -1,5 +1,5 @@
 {
-  "name": "sdk-vite-example",
+  "name": "sdk-demo-example",
   "version": "1.0.2",
   "author": "AccelByte Inc",
   "license": "SEE LICENSE IN LICENSE",
@@ -16,10 +16,10 @@
     "@accelbyte/sdk-legal": "0.0.0-dev-20240912075533",
     "@accelbyte/sdk-platform": "0.0.0-dev-20240912075533",
     "axios": "1.7.7",
-    "classnames": "2.5.1",
     "dotenv": "16.0.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hook-form": "7.53.0"
   },
   "devDependencies": {
     "@types/react": "18.0.26",

@@ -1218,13 +1218,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:2.5.1":
-  version: 2.5.1
-  resolution: "classnames@npm:2.5.1"
-  checksum: 10c0/afff4f77e62cea2d79c39962980bf316bacb0d7c49e13a21adaadb9221e1c6b9d3cdb829d8bb1b23c406f4e740507f37e1dcf506f7e3b7113d17c5bab787aa69
-  languageName: node
-  linkType: hard
-
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -2513,6 +2506,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-hook-form@npm:7.53.0":
+  version: 7.53.0
+  resolution: "react-hook-form@npm:7.53.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 10c0/6d62b150618a833c17d59e669b707661499e2bb516a8d340ca37699f99eb448bbba7b5b78324938c8948014e21efaa32e3510c2ba246fd5e97a96fca0cfa7c98
+  languageName: node
+  linkType: hard
+
 "react-refresh@npm:^0.14.2":
   version: 0.14.2
   resolution: "react-refresh@npm:0.14.2"
@@ -2682,9 +2684,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sdk-vite-example@workspace:.":
+"sdk-demo-example@workspace:.":
   version: 0.0.0-use.local
-  resolution: "sdk-vite-example@workspace:."
+  resolution: "sdk-demo-example@workspace:."
   dependencies:
     "@accelbyte/sdk": "npm:0.0.0-dev-20240912075533"
     "@accelbyte/sdk-basic": "npm:0.0.0-dev-20240912075533"
@@ -2696,11 +2698,11 @@ __metadata:
     "@vitejs/plugin-react": "npm:4.3.1"
     autoprefixer: "npm:10.4.20"
     axios: "npm:1.7.7"
-    classnames: "npm:2.5.1"
     dotenv: "npm:16.0.3"
     postcss: "npm:8.4.45"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
+    react-hook-form: "npm:7.53.0"
     tailwindcss: "npm:3.4.10"
     typescript: "npm:5.5.4"
     vite: "npm:5.4.2"

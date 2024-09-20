@@ -9,10 +9,12 @@ export const BASE_SDK_CORE_CONFIG = {
 }
 
 export function createSdkConfig(coreConfig: SdkConstructorParam['coreConfig']): SdkConstructorParam {
+  const { protocol, host } = new URL(coreConfig.baseURL)
+
   return {
     coreConfig: {
       ...coreConfig,
-      baseURL: `https://${coreConfig.namespace}.${new URL(coreConfig.baseURL).host}`
+      baseURL: import.meta.env.DEV ? import.meta.env.VITE_SDK_BASE_URL : `${protocol}//${coreConfig.namespace}.${host}`
     },
     axiosConfig: {
       interceptors: [

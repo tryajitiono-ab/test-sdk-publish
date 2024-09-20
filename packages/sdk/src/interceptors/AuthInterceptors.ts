@@ -183,7 +183,7 @@ type SessionExpiredInterceptorOptions = {
   /**
    * A callback function that retrieves the current refresh token.
    */
-  getRefreshToken: () => string | undefined
+  getRefreshToken?: () => string | undefined
 
   /**
    * The URL endpoint for obtaining a new token. Defaults to `'/iam/v3/oauth/token'`.
@@ -227,7 +227,7 @@ export const createAuthInterceptor = ({
       if (response?.status === 401) {
         const { url } = config || {}
         const axiosConfig = config as AxiosRequestConfig
-        const refreshToken = getRefreshToken()
+        const refreshToken = getRefreshToken?.()
 
         // expected business case, exit
         if (!url || (url && expectedErrorUrls.includes(url))) {

@@ -95,7 +95,11 @@ export class AccelByteSDK {
       delete newConfigs.axiosConfig.interceptors
     }
 
-    return new AccelByteSDK(newConfigs)
+    const newSdkInstance = new AccelByteSDK(newConfigs)
+
+    newSdkInstance.setToken(this.token)
+
+    return newSdkInstance
   }
 
   /**
@@ -172,6 +176,12 @@ export class AccelByteSDK {
    */
   removeToken() {
     this.token = {}
+    const configOverride = { headers: { Authorization: undefined } }
+    this.axiosConfig = {
+      ...this.axiosConfig,
+      request: ApiUtils.mergeAxiosConfigs(this.axiosInstance.defaults as AxiosRequestConfig, configOverride)
+    }
+    this.axiosInstance = this.createAxiosInstance()
   }
 
   /**

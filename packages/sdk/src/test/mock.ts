@@ -11,5 +11,5 @@ export const emptyServer = setupServer()
 
 // uncomment this for debug outgoing request
 // emptyServer.events.on('request:start', ({ request }) => {
-//   console.log('Outgoing:', request.method, request.url)
+//   console.log('Outgoing:', request.method, request.url, request.headers)
 // })

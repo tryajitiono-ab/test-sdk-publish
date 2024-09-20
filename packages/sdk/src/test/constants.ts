@@ -3,7 +3,8 @@
  * This is licensed software from AccelByte Inc, for limitations
  * and restrictions contact your company contract manager.
  */
-import { UserResponseV3 } from '@accelbyte/sdk-iam'
+import { TokenWithDeviceCookieResponseV3, UserResponseV3 } from '@accelbyte/sdk-iam'
+import { generateMock } from '@anatine/zod-mock'
 import { AxiosError } from 'axios'
 import { Interceptor } from '../Types'
 
@@ -70,3 +71,13 @@ export const HEADLESS_USER: UserResponseV3 = {
   userId: '',
   namespaceRoles: []
 }
+
+export const USER_RESPONSE_V3 = generateMock(UserResponseV3)
+export const TOKEN_WITH_DEVICE_COOKIE_RESPONSE_V3 = generateMock(TokenWithDeviceCookieResponseV3)
+export const EMAIL_AND_PASSWORD = { username: 'test@mail.com', password: '123456' }
+
+export const TOKEN_CONFIG = {
+  accessToken: '1234',
+  refreshToken: '1234'
+}
+export const CUSTOM_HEADERS = { 'x-ab-hello': 'world' }

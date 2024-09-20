@@ -4,8 +4,9 @@
  * and restrictions contact your company contract manager.
  */
 
-#root {
+ #root {
   width: 100%;
+  text-align: center;
 }
 
 .logo {

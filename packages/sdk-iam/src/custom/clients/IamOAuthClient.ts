@@ -24,10 +24,17 @@ export class IamOAuthClient {
   conf: AxiosRequestConfig
   namespace: string
   options: OAuthApiOptions
+  sdk: AccelByteSDK
 
   constructor(sdk: AccelByteSDK, args?: SdkConstructorParam) {
     const { coreConfig, axiosInstance } = sdk.assembly()
-    this.conf = ApiUtils.mergeAxiosConfigs(axiosInstance.defaults as AxiosRequestConfig, args?.axiosConfig?.request)
+    const baseURLOverride = args?.coreConfig?.baseURL
+
+    this.sdk = sdk
+    this.conf = ApiUtils.mergeAxiosConfigs(axiosInstance.defaults as AxiosRequestConfig, {
+      ...(baseURLOverride ? { baseURL: baseURLOverride } : {}),
+      ...args?.axiosConfig?.request
+    })
     this.namespace = args?.coreConfig?.namespace ? args?.coreConfig?.namespace : coreConfig?.namespace
     this.options = {
       clientId: coreConfig?.clientId
@@ -52,7 +59,10 @@ export class IamOAuthClient {
       headers: { 'Content-Type': 'text/plain' }
     })
     localStorage.removeItem(MFA_DATA_STORAGE_KEY)
-    return new OAuth20Extension$(axios, this.namespace).createLogout_v3()
+    return new OAuth20Extension$(axios, this.namespace).createLogout_v3().then(response => {
+      this.sdk.removeToken()
+      return response
+    })
   }
 
   /**

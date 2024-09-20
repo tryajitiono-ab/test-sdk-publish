@@ -10,9 +10,11 @@ import { Interceptor } from './Types'
 import {
   coreConfig,
   coreConfigWithDefault,
+  CUSTOM_HEADERS,
   defaultAxiosConfig,
   requestInterceptor,
   responseInterceptor,
+  TOKEN_CONFIG,
   tooManyRequestInterceptor
 } from './test/constants'
 
@@ -129,13 +131,9 @@ describe('AccelByteSDK', () => {
 
     expect(sdkInstance.getToken()).toEqual({})
 
-    const token = {
-      accessToken: '1234',
-      refreshToken: '1234'
-    }
-    sdkInstance.setToken(token)
+    sdkInstance.setToken(TOKEN_CONFIG)
 
-    expect(sdkInstance.getToken()).toStrictEqual(token)
+    expect(sdkInstance.getToken()).toStrictEqual(TOKEN_CONFIG)
   })
 
   test('should retain existing refreshToken when set accessToken afteward', () => {
@@ -163,13 +161,9 @@ describe('AccelByteSDK', () => {
 
     expect(sdkInstance.getToken()).toEqual({})
 
-    const token = {
-      accessToken: '1234',
-      refreshToken: '1234'
-    }
-    sdkInstance.setToken(token)
+    sdkInstance.setToken(TOKEN_CONFIG)
 
-    expect(sdkInstance.getToken()).toStrictEqual(token)
+    expect(sdkInstance.getToken()).toStrictEqual(TOKEN_CONFIG)
     sdkInstance.removeToken()
 
     expect(sdkInstance.getToken()).toEqual({})
@@ -178,19 +172,57 @@ describe('AccelByteSDK', () => {
   test('setConfig should merge provided headers into existing Axios config instead of replacing them', () => {
     const sdkInstance = AccelByte.SDK({ coreConfig })
 
-    const token = {
-      accessToken: '1234',
-      refreshToken: '1234'
-    }
-    const headers = { 'x-ab-hello': 'world' }
-    sdkInstance.setToken(token)
-    sdkInstance.setConfig({ axiosConfig: { request: { headers } } })
+    sdkInstance.setToken(TOKEN_CONFIG)
+    sdkInstance.setConfig({ axiosConfig: { request: { headers: CUSTOM_HEADERS } } })
 
-    expect(sdkInstance.getToken()).toStrictEqual(token)
+    expect(sdkInstance.getToken()).toStrictEqual(TOKEN_CONFIG)
 
     const { axiosConfig } = sdkInstance.assembly()
 
-    expect(axiosConfig.request.headers?.['x-ab-hello']).toStrictEqual(headers['x-ab-hello'])
-    expect(axiosConfig.request.headers?.Authorization).toStrictEqual(`Bearer ${token.accessToken}`)
+    expect(axiosConfig.request.headers?.['x-ab-hello']).toStrictEqual(CUSTOM_HEADERS['x-ab-hello'])
+    expect(axiosConfig.request.headers?.Authorization).toStrictEqual(`Bearer ${TOKEN_CONFIG.accessToken}`)
+  })
+
+  test('SDK clone should clone the token config if token is present', () => {
+    const sdkInstance = AccelByte.SDK({ coreConfig })
+
+    sdkInstance.setToken(TOKEN_CONFIG)
+
+    expect(sdkInstance.getToken()).toStrictEqual(TOKEN_CONFIG)
+
+    const cloned = sdkInstance.clone()
+
+    expect(cloned.getToken()).toStrictEqual(TOKEN_CONFIG)
+  })
+
+  test('SDK clone should not clone the token config if token is not present', () => {
+    const sdkInstance = AccelByte.SDK({ coreConfig })
+
+    expect(sdkInstance.getToken()).toStrictEqual({})
+
+    const cloned = sdkInstance.clone()
+
+    expect(cloned.getToken()).toStrictEqual({})
+  })
+
+  test('SDK clone should clone config and token', () => {
+    const sdkInstance = AccelByte.SDK({ coreConfig })
+
+    sdkInstance.setToken(TOKEN_CONFIG)
+    sdkInstance.setConfig({ axiosConfig: { request: { headers: CUSTOM_HEADERS } } })
+
+    expect(sdkInstance.getToken()).toStrictEqual(TOKEN_CONFIG)
+
+    const { axiosConfig } = sdkInstance.assembly()
+
+    expect(axiosConfig.request.headers?.['x-ab-hello']).toStrictEqual(CUSTOM_HEADERS['x-ab-hello'])
+    expect(axiosConfig.request.headers?.Authorization).toStrictEqual(`Bearer ${TOKEN_CONFIG.accessToken}`)
+
+    const cloned = sdkInstance.clone()
+    const { axiosConfig: clonedAxiosConfig } = cloned.assembly()
+
+    expect(cloned.getToken()).toStrictEqual(TOKEN_CONFIG)
+    expect(clonedAxiosConfig.request.headers?.['x-ab-hello']).toStrictEqual(CUSTOM_HEADERS['x-ab-hello'])
+    expect(clonedAxiosConfig.request.headers?.Authorization).toStrictEqual(`Bearer ${TOKEN_CONFIG.accessToken}`)
   })
 })
