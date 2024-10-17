@@ -16,7 +16,7 @@ export function createSdkConfig(coreConfig: SdkConstructorParam['coreConfig']): 
 
   if (import.meta.env.DEV) {
     baseURL = import.meta.env.VITE_SDK_BASE_URL
-  } else if (host.endsWith(SHARED_CLOUD_SUFFIX)) {
+  } else if (host.endsWith(SHARED_CLOUD_SUFFIX) && coreConfig.namespace) {
     baseURL = `${protocol}//${coreConfig.namespace}.${host}`
   }
 
@@ -28,7 +28,7 @@ export function createSdkConfig(coreConfig: SdkConstructorParam['coreConfig']): 
     axiosConfig: {
       interceptors: [
         createAuthInterceptor({
-          clientId: BASE_SDK_CORE_CONFIG.clientId,
+          clientId: coreConfig.clientId,
           getRefreshToken: () => '',
           onSessionExpired: () => {
             console.log('expired')

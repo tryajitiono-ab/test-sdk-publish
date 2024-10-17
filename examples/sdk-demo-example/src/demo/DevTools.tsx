@@ -1,10 +1,10 @@
 import { AccelByte } from '@accelbyte/sdk'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Form, FormItem } from './components/Form'
 import { SectionContent } from './components/Section'
-import { useGlobal } from './GlobalContext'
-import { BASE_SDK_CORE_CONFIG, createSdkConfig } from './helpers'
+import { CONFIG_STORAGE_KEY, useGlobal } from './GlobalContext'
+import { createSdkConfig } from './helpers'
 
 interface Props {
   tier: 'shared' | 'private'
@@ -17,31 +17,13 @@ interface FormValues {
   redirectURI: string
 }
 
-const CONFIG_STORAGE_KEY = 'sdkConfig'
-
 export function DevTools({ tier }: Props) {
+  const { setSdk, setSDKCoreConfig, sdkCoreConfig } = useGlobal()
+
   const { handleSubmit, register } = useForm<FormValues>({
-    defaultValues: BASE_SDK_CORE_CONFIG
+    defaultValues: sdkCoreConfig
   })
   const [isPanelShown, setIsPanelShown] = useState(false)
-
-  const { setSdk, setSDKCoreConfig } = useGlobal()
-
-  useEffect(() => {
-    const storageContent = window.sessionStorage.getItem(CONFIG_STORAGE_KEY)
-    if (!storageContent) return
-
-    const parsed = JSON.parse(storageContent)
-
-    // Ensure all keys exist.
-    const parsedKeys = Object.keys(parsed)
-    const isValidConfig = Object.keys(BASE_SDK_CORE_CONFIG).every(key => parsedKeys.includes(key))
-
-    if (!isValidConfig) return
-
-    setSDKCoreConfig(parsed)
-    setSdk(AccelByte.SDK(createSdkConfig(parsed)))
-  }, [])
 
   const onSubmit = handleSubmit(data => {
     setSDKCoreConfig(data)

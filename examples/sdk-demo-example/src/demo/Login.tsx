@@ -1,3 +1,4 @@
+import { AccelByte } from '@accelbyte/sdk'
 import { IamUserAuthorizationClient, OAuth20V4Api, TokenResponseV3, UsersApi } from '@accelbyte/sdk-iam'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -20,13 +21,8 @@ export function Login() {
   const sdk = useMemo(() => {
     // For logging in, we always want to use the base URL (without namespace).
     // If you are a Private Cloud customer, you don't have to worry about this.
-    const cloned = globalSdk.clone()
-    if (!sdkCoreConfig) return cloned
-
-    cloned.setConfig({ coreConfig: { baseURL: sdkCoreConfig.baseURL } })
-
-    return cloned
-  }, [globalSdk, sdkCoreConfig])
+    return AccelByte.SDK({ coreConfig: sdkCoreConfig })
+  }, [sdkCoreConfig])
 
   const loginWithDeviceID = handleSubmit(async data => {
     try {
@@ -74,7 +70,6 @@ export function Login() {
 
   useEffect(() => {
     async function exchangeToken() {
-      console.info(sdk.assembly())
       const { code, error, state } = Object.fromEntries(new URL(window.location.href).searchParams)
       if (!code || !state || hasExchangedToken.current) return
 
