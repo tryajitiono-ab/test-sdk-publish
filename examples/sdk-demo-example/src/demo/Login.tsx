@@ -1,5 +1,5 @@
 import { IamUserAuthorizationClient, OAuth20V4Api, TokenResponseV3, UsersApi } from '@accelbyte/sdk-iam'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Form, FormItem } from './components/Form'
 import { Heading } from './components/Heading'
@@ -15,7 +15,18 @@ export function Login() {
     }
   })
   const [tokenResponse, setTokenResponse] = useState<any>(null)
-  const { setUser, sdk, setSdk } = useGlobal()
+  const { sdkCoreConfig, setUser, sdk: globalSdk, setSdk } = useGlobal()
+
+  const sdk = useMemo(() => {
+    // For logging in, we always want to use the base URL (without namespace).
+    // If you are a Private Cloud customer, you don't have to worry about this.
+    const cloned = globalSdk.clone()
+    if (!sdkCoreConfig) return cloned
+
+    cloned.setConfig({ coreConfig: { baseURL: sdkCoreConfig.baseURL } })
+
+    return cloned
+  }, [globalSdk, sdkCoreConfig])
 
   const loginWithDeviceID = handleSubmit(async data => {
     try {
