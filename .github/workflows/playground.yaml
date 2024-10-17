@@ -25,7 +25,7 @@ jobs:
           cache: yarn
 
       - name: Install dependencies and build
-        working-directory: ./examples/sdk-vite-example
+        working-directory: ./examples/sdk-demo-example
         env:
           BASE_PATH: /test-sdk-publish
           VITE_MODE: ${{ vars.VITE_MODE }}

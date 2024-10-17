@@ -1,0 +1,35 @@
+{
+  "name": "sdk-demo-example",
+  "version": "1.0.2",
+  "author": "AccelByte Inc",
+  "license": "SEE LICENSE IN LICENSE",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@accelbyte/sdk": "4.0.1",
+    "@accelbyte/sdk-basic": "6.0.1",
+    "@accelbyte/sdk-iam": "6.0.1",
+    "@accelbyte/sdk-legal": "6.0.1",
+    "@accelbyte/sdk-platform": "6.0.1",
+    "axios": "1.7.7",
+    "dotenv": "16.0.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "7.53.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.9",
+    "@vitejs/plugin-react": "4.3.1",
+    "autoprefixer": "10.4.20",
+    "cookie": "1.0.1",
+    "postcss": "8.4.45",
+    "tailwindcss": "3.4.10",
+    "typescript": "5.5.4",
+    "vite": "5.4.2"
+  }
+}
