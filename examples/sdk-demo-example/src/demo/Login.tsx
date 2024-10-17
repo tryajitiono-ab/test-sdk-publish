@@ -18,7 +18,7 @@ export function Login() {
   const [tokenResponse, setTokenResponse] = useState<any>(null)
   const { sdkCoreConfig, setUser, sdk: globalSdk, setSdk } = useGlobal()
 
-  const sdk = useMemo(() => {
+  const sdkForExchangeToken = useMemo(() => {
     // For logging in, we always want to use the base URL (without namespace).
     // If you are a Private Cloud customer, you don't have to worry about this.
     return AccelByte.SDK({ coreConfig: sdkCoreConfig })
@@ -26,11 +26,11 @@ export function Login() {
 
   const loginWithDeviceID = handleSubmit(async data => {
     try {
-      const response = await OAuth20V4Api(sdk, {
+      const response = await OAuth20V4Api(globalSdk, {
         axiosConfig: {
           request: {
             headers: {
-              Authorization: `Basic ${btoa(`${sdk.assembly().coreConfig.clientId}:`)}`
+              Authorization: `Basic ${btoa(`${globalSdk.assembly().coreConfig.clientId}:`)}`
             }
           }
         }
@@ -58,7 +58,7 @@ export function Login() {
 
   const loginWithTokenExchange = handleSubmit(() => {
     try {
-      const loginURL = new IamUserAuthorizationClient(sdk).createLoginURL()
+      const loginURL = new IamUserAuthorizationClient(sdkForExchangeToken).createLoginURL()
       window.location.href = loginURL
     } catch (err) {
       handleError(err, setTokenResponse)
@@ -76,7 +76,7 @@ export function Login() {
       hasExchangedToken.current = true
 
       try {
-        const result = await new IamUserAuthorizationClient(sdk).exchangeAuthorizationCode({ code, error, state })
+        const result = await new IamUserAuthorizationClient(sdkForExchangeToken).exchangeAuthorizationCode({ code, error, state })
         const tokenResponse = result?.response?.data
         setTokenResponse(tokenResponse)
 
@@ -101,7 +101,7 @@ export function Login() {
     }
 
     exchangeToken()
-  }, [sdk, globalSdk])
+  }, [sdkForExchangeToken, globalSdk])
 
   return (
     <Section>
