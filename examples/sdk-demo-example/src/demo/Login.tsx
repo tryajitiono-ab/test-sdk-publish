@@ -43,7 +43,7 @@ export function Login() {
       })
       setTokenResponse(response.data)
 
-      const cloned = sdk.clone()
+      const cloned = globalSdk.clone()
 
       if (import.meta.env.PROD) {
         // Only use token in Prod, because in Prod we don't have proxy.
@@ -74,6 +74,7 @@ export function Login() {
 
   useEffect(() => {
     async function exchangeToken() {
+      console.info(sdk.assembly())
       const { code, error, state } = Object.fromEntries(new URL(window.location.href).searchParams)
       if (!code || !state || hasExchangedToken.current) return
 
@@ -84,7 +85,7 @@ export function Login() {
         const tokenResponse = result?.response?.data
         setTokenResponse(tokenResponse)
 
-        const cloned = sdk.clone()
+        const cloned = globalSdk.clone()
 
         if (import.meta.env.PROD) {
           // Only use token in Prod, because in Prod we don't have proxy.
@@ -105,7 +106,7 @@ export function Login() {
     }
 
     exchangeToken()
-  }, [])
+  }, [sdk, globalSdk])
 
   return (
     <Section>
