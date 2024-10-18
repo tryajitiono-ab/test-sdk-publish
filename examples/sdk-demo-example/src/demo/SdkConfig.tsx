@@ -13,15 +13,19 @@ export function SdkConfig() {
 
       <SectionContent>
         <p>
-          To configure the SDK, use the "Configure SDK" button on the bottom-right part of the screen. Upon submission, the updated SDK
-          configuration will appear below.
+          To set up the SDK, click the "Configure SDK" button in the bottom-right corner of the screen. Once configured, the updated
+          settings will appear below.
         </p>
 
         <p>
-          Adjust the <code>baseURL</code>, <code>clientID</code>, <code>namespace</code>, and <code>redirectURI</code> according to the IAM
-          client that you have created. If you are using AGS Private Cloud, you can use IAM client on the Publisher/Game namespace level,
-          whereas if you are using AGS Shared Cloud, you can only use IAM client on the Game namespace level.
+          You'll need to adjust the <code>baseURL</code>, <code>clientId</code>, <code>namespace</code>, and <code>redirectURI</code> based
+          on the IAM client you created.
         </p>
+
+        <ul>
+          <li>For AGS Private Cloud, use the IAM client at the Publisher/Game namespace level.</li>
+          <li>For AGS Shared Cloud, the IAM client will only be at the Game namespace level.</li>
+        </ul>
 
         <Snippet>{JSON.stringify(sdk.assembly().coreConfig, null, 2)}</Snippet>
       </SectionContent>

@@ -7,7 +7,7 @@ import { Heading } from './components/Heading'
 import { Section, SectionContent } from './components/Section'
 import { Snippet } from './components/Snippet'
 import { useGlobal } from './GlobalContext'
-import { handleError } from './helpers'
+import { BASE_SDK_CORE_CONFIG, handleError } from './helpers'
 
 export function Login() {
   const { register, handleSubmit } = useForm({
@@ -65,6 +65,16 @@ export function Login() {
     }
   })
 
+  const loginWithTokenExchangeWithSharedCloudConfig = handleSubmit(() => {
+    try {
+      const sdk = AccelByte.SDK({ coreConfig: BASE_SDK_CORE_CONFIG })
+      const loginURL = new IamUserAuthorizationClient(sdk).createLoginURL()
+      window.location.href = loginURL
+    } catch (err) {
+      handleError(err, setTokenResponse)
+    }
+  })
+
   // A hack so that in local, it doesn't exchange code twice.
   const hasExchangedToken = useRef(false)
 
@@ -108,15 +118,26 @@ export function Login() {
       <Heading level={2}>Log in to AGS</Heading>
 
       <SectionContent>
-        <p>
-          In this section, you can try logging in with device ID (without an account). In order to set up login with device ID,{' '}
-          <a href="https://docs.accelbyte.io/gaming-services/getting-started/implement-login-with-device-id/">
-            follow the documentation here
-          </a>
-          . Alternatively, you can also log in to an AGS deployment using your account using the OAuth flow (via Login Website).
-        </p>
+        <p>You can log in using either:</p>
 
-        <p>You will need to log in first before trying out the other sections, because other sections require authentication.</p>
+        <ul>
+          <li>
+            Device ID (no account required). Follow the setup guide{' '}
+            <a href="https://docs.accelbyte.io/gaming-services/getting-started/implement-login-with-device-id/">here</a>.
+          </li>
+          <li>
+            OAuth Flow (via Login Website) using your AGS account. You can log in using the current SDK config or using a template SDK
+            config.
+          </li>
+        </ul>
+
+        <p>
+          Logging in is required to access the other features. For more details on AGS web authentication, visit the{' '}
+          <a href="https://docs.accelbyte.io/gaming-services/services/access/authentication/account-integration/#integration">
+            Documentation Portal
+          </a>
+          .
+        </p>
 
         <Form onSubmit={loginWithDeviceID}>
           <div className="flex flex-row items-end gap-x-2">
@@ -136,13 +157,29 @@ export function Login() {
           <div className="absolute -top-[13.5px] left-[75px] bg-slate-50 px-2">or</div>
         </div>
 
-        <Form onSubmit={loginWithTokenExchange}>
+        <div>
           <button
+            onClick={loginWithTokenExchange}
             type="submit"
             className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-            Log in via Login Website
+            Log in via Login Website (using current SDK config)
           </button>
-        </Form>
+        </div>
+
+        <div className="relative">
+          <hr className="border-dashed border-black w-[200px]" />
+
+          <div className="absolute -top-[13.5px] left-[75px] bg-slate-50 px-2">or</div>
+        </div>
+
+        <div>
+          <button
+            onClick={loginWithTokenExchangeWithSharedCloudConfig}
+            type="submit"
+            className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Log in to AGS Shared Cloud via Login Website (using template SDK config)
+          </button>
+        </div>
       </SectionContent>
 
       <Section>

@@ -25,13 +25,13 @@ function App() {
 
           <div className="flex flex-col gap-y-4">
             <p>
-              Welcome to the AccelByte TypeScript SDK demo. To use this demo, you will need to disable CORS (Cross-Origin Resource Sharing)
-              because our services are same-origin only (by default).
+              Welcome to the AccelByte TypeScript SDK demo! To use this demo, you'll need to disable CORS (Cross-Origin Resource Sharing)
+              since our services are restricted to same-origin (by default).
             </p>
 
             <p>
-              Cookies will only work when the site is in the same origin as the AGS services. So, these examples will not use cookies, but
-              rather <code>access_token</code> field that we can retrieve after logging in.
+              For this demo, cookies won't be used. Instead, we'll rely on the <code>access_token</code> retrieved after login, as cookies
+              only work when the site shares the same origin as AGS services.
             </p>
           </div>
 
@@ -91,7 +91,7 @@ function TOC() {
     <Section>
       <Heading level={2}>Table of contents</Heading>
 
-      <ul className="list-disc pl-4">
+      <ul>
         {h2Tags.map(h2Tag => (
           <li key={h2Tag.id}>
             <a className="text-blue-500 hover:text-blue-400" href={`#${h2Tag.id}`}>
